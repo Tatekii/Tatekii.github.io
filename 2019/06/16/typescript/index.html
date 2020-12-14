@@ -1,0 +1,806 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.jpeg">
+  <link rel="icon" type="image/png" href="/img/avatar.jpeg">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="tatekii">
+  <meta name="keywords" content="">
+  <title>TypeScript - 我好想用很酷的背景图片可是加载太慢了</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/tomorrow-night-eighties.min.css" />
+    
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_pf9vaxs7x7b.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+  <header style="height: 30vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Dr.🐎</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container page-header text-center fade-in-up">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2019-06-16 11:15" pubdate>
+        2019年6月16日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.7k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      23
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto" id="post">
+            <!-- SEO header -->
+            <h1 style="display: none">TypeScript</h1>
+            
+            <div class="markdown-body" id="post-body">
+              <h2 id="TypeScript-is-a-typed-superset-of-JavaScript-that-compiles-to-plain-JavaScript-ts是js的超集，相比js添加了可选的静态类型和基于类的面向对象编程"><a href="#TypeScript-is-a-typed-superset-of-JavaScript-that-compiles-to-plain-JavaScript-ts是js的超集，相比js添加了可选的静态类型和基于类的面向对象编程" class="headerlink" title="TypeScript is a typed superset of JavaScript that compiles to plain JavaScript. ts是js的超集，相比js添加了可选的静态类型和基于类的面向对象编程"></a>TypeScript is a typed superset of JavaScript that compiles to plain JavaScript. ts是js的超集，相比js添加了可选的静态类型和基于类的面向对象编程</h2><h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><ul>
+<li>string(字符串)</li>
+<li>number(数字)</li>
+<li>boolean(布尔)</li>
+<li>array(数组)</li>
+<li>tuple(元祖)</li>
+<li>enum(枚举)</li>
+<li>any(任意)</li>
+<li>null</li>
+<li>undefined</li>
+<li>void</li>
+<li>never</li>
+</ul>
+<h2 id="类型校验"><a href="#类型校验" class="headerlink" title="类型校验"></a>类型校验</h2><p> 不按照定义的数据类型赋值报错</p>
+<h3 id="array-数组"><a href="#array-数组" class="headerlink" title="array/数组"></a>array/数组</h3>  <div class="hljs"><pre><code class="hljs javascript"><span class="hljs-comment">//第一种</span>
+<span class="hljs-keyword">var</span> arr1:number:[] = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>]
+<span class="hljs-comment">//第二种</span>
+<span class="hljs-keyword">var</span> arr2:<span class="hljs-built_in">Array</span>&lt;number&gt; = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>]</code></pre></div>
+
+<ul>
+<li><p>数组的项中不能出现其他类型</p>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> fibonacci: number[] = [<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-string">'2'</span>, <span class="hljs-number">3</span>, <span class="hljs-number">5</span>];
+<span class="hljs-comment">// = 后的类型被推断为number|string，前面是number，报错</span></code></pre></div></li>
+<li><p>数组的一些方法的参数类型也会受到限制</p>
+<div class="hljs"><pre><code class="hljs javascript">number[]的数组中push(<span class="hljs-string">'abc'</span>)报错
+<span class="hljs-comment">// abc是字符串</span></code></pre></div>
+</li>
+<li><p>数组泛型</p>
+</li>
+<li><p>用接口表示数组</p>
+</li>
+<li><p>any/任意类型的数组</p>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> list: any[] = [<span class="hljs-string">'Xcat Liu'</span>, <span class="hljs-number">25</span>, &#123; <span class="hljs-attr">website</span>: <span class="hljs-string">'http://xcatliu.com'</span> &#125;];</code></pre></div></li>
+<li><p>类数组/Array-like Object<br>常见的类数组都有自己的接口定义</p>
+</li>
+</ul>
+<h3 id="tuple-元组"><a href="#tuple-元组" class="headerlink" title="tuple/元组"></a>tuple/元组</h3><p>元组按一定顺序预定义数组结构中的重数据类型</p>
+  <div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> tuple1: [number,string,boolean];
+tuple1 = [<span class="hljs-number">666</span>,<span class="hljs-string">'字符串'</span>,<span class="hljs-literal">true</span>]</code></pre></div>
+
+<h3 id="enum-枚举"><a href="#enum-枚举" class="headerlink" title="enum/枚举"></a>enum/枚举</h3><p>实现考虑到某一变量可能的值，尽量用自然语言中含义清楚的单词来表达他的每一个值。这种方法叫做枚举方法，用这种方法定义的数据类型</p>
+  <div class="hljs"><pre><code class="hljs javascript">enum Flag  &#123;
+  success = <span class="hljs-number">1</span>,
+  error = <span class="hljs-number">2</span>
+&#125;
+<span class="hljs-keyword">let</span> s:Flag = Flag.success
+<span class="hljs-built_in">console</span>.log(s) <span class="hljs-comment">// 1</span>
+<span class="hljs-comment">// 未赋值则打印下标</span></code></pre></div>
+
+<h3 id="任意值类型-any"><a href="#任意值类型-any" class="headerlink" title="任意值类型 any"></a>任意值类型 any</h3><blockquote>
+<p>ts中的普通类型在赋值过程中不能改变类型</p>
+</blockquote>
+  <div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> myFavoriteNumber: string = <span class="hljs-string">'seven'</span>;
+myFavoriteNumber = <span class="hljs-number">7</span>;
+
+<span class="hljs-comment">// index.ts(2,1): error TS2322: Type 'number' is not  assignable to type 'string'.</span>
+
+<span class="hljs-comment">// any类型就可以改变</span>
+<span class="hljs-keyword">let</span> myFavoriteNumber: any = <span class="hljs-string">'seven'</span>;
+myFavoriteNumber = <span class="hljs-number">7</span>;</code></pre></div>
+
+<ul>
+<li><p>任意值上可以访问任何属性和方法，</p>
+</li>
+<li><p>声明一个变量为任意值之后，对它的任何操作，返回的内容的类型都是任意值</p>
+</li>
+<li><p>未声明类型的变量，自动给识别为任意类型</p>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> something;
+something = <span class="hljs-string">'seven'</span>;
+something = <span class="hljs-number">7</span>;
+
+something.setName(<span class="hljs-string">'Tom'</span>);</code></pre></div>
+
+</li>
+</ul>
+<h3 id="其他类型-never"><a href="#其他类型-never" class="headerlink" title="其他类型/never"></a>其他类型/never</h3><p>  表示从不会出现的值</p>
+  <div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> a:never
+a = <span class="hljs-function">(<span class="hljs-params">(</span>)=&gt;</span>&#123;
+  <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">'错误'</span>)
+&#125;)</code></pre></div>
+
+<h3 id="null-undefined是never的子类型"><a href="#null-undefined是never的子类型" class="headerlink" title="null/undefined是never的子类型"></a>null/undefined是never的子类型</h3>  <div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> num1:<span class="hljs-literal">undefined</span>
+<span class="hljs-keyword">var</span> num2:<span class="hljs-literal">undefined</span> | number
+num = <span class="hljs-number">2</span>
+<span class="hljs-built_in">console</span>.log(num2) <span class="hljs-comment">//2</span>
+
+<span class="hljs-keyword">var</span> num3:<span class="hljs-literal">null</span>
+num = <span class="hljs-literal">null</span> <span class="hljs-comment">// ok</span>
+num = 其他都报错</code></pre></div>
+
+<h3 id="void"><a href="#void" class="headerlink" title="void"></a>void</h3><p>  一般用于定义的方法没有return</p>
+  <div class="hljs"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">yell</span>(<span class="hljs-params"></span>):<span class="hljs-title">void</span></span>&#123;
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'666'</span>)
+&#125;</code></pre></div>
+
+<h3 id="类型推论"><a href="#类型推论" class="headerlink" title="类型推论"></a>类型推论</h3><ul>
+<li><p>如果没有明确的指定类型，那么 TypeScript 会依照类型推论（Type      Inference）的规则推断出一个类型。  </p>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> myFavoriteNumber = <span class="hljs-string">'seven'</span>;
+<span class="hljs-comment">// 被自动推测为string类型</span>
+myFavoriteNumber = <span class="hljs-number">7</span>;
+
+<span class="hljs-comment">// index.ts(2,1): error TS2322: Type 'number' is not assignable to type 'string'.</span></code></pre></div>
+</li>
+<li><p>！！！！未声明类型的变量！！！！！<br>自动给识别为任意类型<br>不会被类型检查推测</p>
+</li>
+</ul>
+<h3 id="联合类型"><a href="#联合类型" class="headerlink" title="联合类型"></a>联合类型</h3>  <div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> myFavoriteNumber: string | number;
+myFavoriteNumber = <span class="hljs-string">'seven'</span>;
+myFavoriteNumber = <span class="hljs-number">7</span>;</code></pre></div>
+
+<ul>
+<li><p>可以访问联合类型的共有的属性或方法</p>
+</li>
+<li><p>联合类型的变量在赋值的时候，一样会被推断出一个类型</p>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getString</span>(<span class="hljs-params">something: string | number</span>): <span class="hljs-title">string</span> </span>&#123;
+  <span class="hljs-keyword">return</span> something.toString();
+&#125;
+<span class="hljs-keyword">let</span> myFavoriteNumber: string | number;
+myFavoriteNumber = <span class="hljs-string">'seven'</span>;
+<span class="hljs-built_in">console</span>.log(myFavoriteNumber.length); <span class="hljs-comment">// 5</span>
+myFavoriteNumber = <span class="hljs-number">7</span>;
+<span class="hljs-built_in">console</span>.log(myFavoriteNumber.length); <span class="hljs-comment">// 编译时报错</span></code></pre></div>
+</li>
+<li><p>类型别名常用于联合类型</p>
+<div class="hljs"><pre><code class="hljs javascript">type Name = string;
+type NameResolver = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> string;
+type NameOrResolver = Name | NameResolver;
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getName</span>(<span class="hljs-params">n: NameOrResolver</span>): <span class="hljs-title">Name</span> </span>&#123;
+  <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> n === <span class="hljs-string">'string'</span>) &#123;
+    <span class="hljs-keyword">return</span> n;
+  &#125; <span class="hljs-keyword">else</span> &#123;
+    <span class="hljs-keyword">return</span> n();
+  &#125;
+&#125;</code></pre></div>
+
+
+</li>
+</ul>
+<h3 id="对象的类型-接口-interfaces"><a href="#对象的类型-接口-interfaces" class="headerlink" title="对象的类型-接口/interfaces"></a>对象的类型-接口/interfaces</h3><ul>
+<li>在面向对象语言中，接口（Interfaces）是一个很重要的概念，它是对行为的抽象，而具体如何行动需要由类（classes）去实现（implement）。</li>
+<li>TypeScript 中的接口是一个非常灵活的概念，除了可用于对类的一部分行为进行抽象以外，也常用于对「对象的形状（Shape）」进行描述。<div class="hljs"><pre><code class="hljs javascript">interface Person &#123;
+name: string;
+age: number;
+&#125;
+<span class="hljs-keyword">let</span> xiaoming: Person = &#123;
+name: <span class="hljs-string">'xiaoming'</span>,
+age: <span class="hljs-number">66</span>
+&#125;</code></pre></div></li>
+<li>赋值时，变量的形状必须和接口的形状保持一致，属性不多也不少<ul>
+<li>可选属性<div class="hljs"><pre><code class="hljs javascript">age?: number;
+<span class="hljs-comment">//age可有可无</span></code></pre></div></li>
+<li>任意属性<br>一旦定义了任意属性，那么确定属性和可选属性的类型都必须是它的类型的子集<div class="hljs"><pre><code class="hljs javascript">interface Person &#123;
+name: string;
+age?: number;
+[propName: string]: string;
+&#125;
+
+<span class="hljs-keyword">let</span> tom: Person = &#123;
+    name: <span class="hljs-string">'Tom'</span>,
+    age: <span class="hljs-number">25</span>,
+    gender: <span class="hljs-string">'male'</span>
+&#125;;
+<span class="hljs-comment">//age?--&gt;25是number--&gt;number不是[propName: string]: string;的子集</span>
+
+<span class="hljs-comment">// index.ts(3,5): error TS2411: Property 'age' of type    'number' is not assignable to string index type 'string'.</span>
+<span class="hljs-comment">// index.ts(7,5): error TS2322: Type '&#123; [x: string]: string |     number; name: string; age: number; gender: string; &#125;' is not    assignable to type 'Person'.</span>
+<span class="hljs-comment">//   Index signatures are incompatible.</span>
+<span class="hljs-comment">//     Type 'string | number' is not assignable to type     'string'.</span>
+<span class="hljs-comment">//       Type 'number' is not assignable to type 'string'.</span></code></pre></div>
+<ul>
+<li>只读属性<br>只能在创建的时候被赋值<div class="hljs"><pre><code class="hljs javascript">interface Person &#123;
+readonly id: number;
+name: string;
+age?: number;
+[propName: string]: any;
+&#125;
+
+<span class="hljs-keyword">let</span> tom: Person = &#123;
+  id: <span class="hljs-number">89757</span>,
+  name: <span class="hljs-string">'Tom'</span>,
+  gender: <span class="hljs-string">'male'</span>
+&#125;;
+
+tom.id = <span class="hljs-number">9527</span>;
+
+<span class="hljs-comment">// index.ts(14,5): error TS2540: Cannot assign to 'id' because it is a constant or a read-only property.</span></code></pre></div>
+
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="函数的类型"><a href="#函数的类型" class="headerlink" title="函数的类型"></a>函数的类型</h3><ul>
+<li><p>函数声明</p>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sum</span>(<span class="hljs-params">x: number, y: number</span>): <span class="hljs-title">number</span> </span>&#123;
+  <span class="hljs-keyword">return</span> x + y;
+&#125;
+<span class="hljs-comment">// 输入的参数不能多也不能少</span></code></pre></div>
+</li>
+<li><p>函数表达式<br>！！！这里不是箭头函数</p>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> mySum: <span class="hljs-function">(<span class="hljs-params">x: number, y: number</span>) =&gt;</span> number&#123;
+  <span class="hljs-keyword">return</span> x + y
+&#125;
+<span class="hljs-keyword">let</span> mySum = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">x: number, y: number</span>): <span class="hljs-title">number</span> </span>&#123;
+  <span class="hljs-keyword">return</span> x + y;
+&#125;;
+<span class="hljs-comment">//在 TypeScript 的类型定义中，=&gt; 用来表示函数的定义，左边是输入类型，需要用括号括起来，右边是输出类型。</span></code></pre></div>
+</li>
+<li><p>用接口定义函数的形状</p>
+<div class="hljs"><pre><code class="hljs javascript">interface SearchFunc &#123;
+  (source: string, <span class="hljs-attr">subString</span>: string): boolean;
+&#125;
+
+<span class="hljs-keyword">let</span> mySearch: SearchFunc;
+mySearch = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">source: string, subString: string</span>) </span>&#123;
+  <span class="hljs-keyword">return</span> source.search(subString) !== <span class="hljs-number">-1</span>;
+&#125;</code></pre></div>
+</li>
+<li><p>可选参数和对象的可选属性一样，加?</p>
+  <div class="hljs"><pre><code class="hljs javascript"><span class="hljs-comment">// 可选参数只能配置到参数们的末尾</span>
+firstName?: string, <span class="hljs-attr">lastName</span>: string
+<span class="hljs-comment">// 报错！！！！</span>
+
+
+firstName: string, lastName?: string
+<span class="hljs-comment">// ok</span></code></pre></div>
+</li>
+<li><p>参数默认值</p>
+<p>  <code>(firstName: string, lastName: string = &#39;Cat&#39;)</code><br>  识别为可选参数<br>  不再受可选择参数必须放在必须参数后面的限制</p>
+</li>
+<li><p>函数重载</p>
+<ul>
+<li>不同输入输出选项的函数，可以重复定义多次，把精确的定义写在前面</li>
+<li>TypeScript 会优先从最前面的函数定义开始匹配</li>
+</ul>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">reverse</span>(<span class="hljs-params">x: number</span>): <span class="hljs-title">number</span>;</span>
+<span class="hljs-function"><span class="hljs-title">function</span> <span class="hljs-title">reverse</span>(<span class="hljs-params">x: string</span>): <span class="hljs-title">string</span>;</span>
+<span class="hljs-function"></span>
+<span class="hljs-function"><span class="hljs-title">function</span> <span class="hljs-title">reverse</span>(<span class="hljs-params">x: number | string</span>): <span class="hljs-title">number</span> | <span class="hljs-title">string</span> </span>&#123;
+  <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> x === <span class="hljs-string">'number'</span>) &#123;
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">Number</span>(x.toString().split(<span class="hljs-string">''</span>).reverse().join(<span class="hljs-string">''</span>));
+  &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> x === <span class="hljs-string">'string'</span>) &#123;
+    <span class="hljs-keyword">return</span> x.split(<span class="hljs-string">''</span>).reverse().join(<span class="hljs-string">''</span>);
+  &#125;
+&#125;</code></pre></div>
+
+</li>
+</ul>
+<h3 id="类型断言"><a href="#类型断言" class="headerlink" title="类型断言"></a>类型断言</h3><ul>
+<li><p>在不确定类型的时候就访问方法或者属性会报错</p>
+</li>
+<li><p>此时使用类型断言，在需要断言的变量之前加上<type></p>
+</li>
+<li><p>断言只能存在联合类型中的类型</p>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getLength</span>(<span class="hljs-params">something: string | number</span>): <span class="hljs-title">number</span> </span>&#123;
+  <span class="hljs-keyword">if</span> ((<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">string</span>&gt;</span>something).length) &#123;</span>
+      return (&lt;string&gt;something).length
+  &#125; else &#123;
+      return something.toString().length
+  &#125;
+&#125;</code></pre></div>
+
+</li>
+</ul>
+<h3 id="声明语句"><a href="#声明语句" class="headerlink" title="声明语句"></a>声明语句</h3><ul>
+<li>declare var 声明全局变量</li>
+<li>declare function 声明全局方法</li>
+<li>declare class 声明全局类</li>
+<li>declare enum 声明全局枚举类型</li>
+<li>declare namespace 声明（含有子属性的）全局对象</li>
+<li>interface 和 type 声明全局类型</li>
+<li>export 导出变量</li>
+<li>export namespace 导出（含有子属性的）对象</li>
+<li>export default ES6 默认导出</li>
+<li>export = commonjs 导出模块</li>
+<li>export as namespace UMD 库声明全局变量</li>
+<li>declare global 扩展全局变量</li>
+<li>declare module 扩展模块</li>
+<li>/// <reference /> 三斜线指令</li>
+<li>使用 @types 统一管理第三方库的声明文件。</li>
+</ul>
+<h3 id="内置对象"><a href="#内置对象" class="headerlink" title="内置对象"></a>内置对象</h3><p>  <a href="https://github.com/Microsoft/TypeScript/tree/master/src/lib" target="_blank" rel="noopener">https://github.com/Microsoft/TypeScript/tree/master/src/lib</a></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/javascript/">javascript</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2019/06/18/koa/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Koa</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2019/06/15/XML/">
+                        <span class="hidden-mobile">XML</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+    
+  <!-- 备案信息 -->
+  <div class="beian">
+    <a href="http://beian.miit.gov.cn/" target="_blank"
+       rel="nofollow noopener">粤ICP备2020115702号</a>
+    
+  </div>
+
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '#post-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "TypeScript&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?048f7ae77dbb92c9d2c83ca3df99d02f";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+</body>
+</html>

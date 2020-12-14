@@ -1,0 +1,664 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.jpeg">
+  <link rel="icon" type="image/png" href="/img/avatar.jpeg">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="tatekii">
+  <meta name="keywords" content="">
+  <title>地址中输入URL回车发生了什么 - 我好想用很酷的背景图片可是加载太慢了</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/tomorrow-night-eighties.min.css" />
+    
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_pf9vaxs7x7b.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+  <header style="height: 30vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Dr.🐎</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container page-header text-center fade-in-up">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2019-09-05 11:22" pubdate>
+        2019年9月5日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.4k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      15
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto" id="post">
+            <!-- SEO header -->
+            <h1 style="display: none">地址中输入URL回车发生了什么</h1>
+            
+            <div class="markdown-body" id="post-body">
+              <h2 id="浏览器内核"><a href="#浏览器内核" class="headerlink" title="浏览器内核"></a>浏览器内核</h2><p>负责对网页语法的解释（如标准通用标记语言下的一个应用HTML、JavaScript）并渲染（显示）网页。决定了浏览器如何显示网页的内容以及页面的格式信息。不同的浏览器内核对网页编写语法的解释也有不同，因此同一网页在不同的内核的浏览器里的渲染（显示）效果也可能不同</p>
+<p>常见内核：</p>
+<ul>
+<li>Trident内核：IE,遨游,世界之窗,360,搜狗,猎豹</li>
+<li>Gecko内核：网景，火狐</li>
+<li>Webkit内核：Safari</li>
+<li>Blink内核（webkit分支）：Chrome，Opera</li>
+</ul>
+<h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><ol>
+<li><p>分析请求资源</p>
+<ul>
+<li><p>chrome资源分类</p>
+</li>
+<li><p>安全策略检查 </p>
+<p>  网页安全政策（Content Security Policy，缩写 CSP）   是由浏览器提供的一种白名单制度。开发者通过配置，来告诉浏   览器各类外部资源的加载和执行限制，来提高网页的安全性。一   种最常用的应用就是通过限制非信任域名脚本的加载来预防XSS    攻击。</p>
+<p>  可以通过两种方式来配置CSP：</p>
+<ol>
+<li>HTTP请求头的<code>Content-Security-Policy</code></li>
+<li><code>meta</code>标签<div class="hljs"><pre><code class="hljs javascript">&lt;meta http-equiv=<span class="hljs-string">"Content-Security-Policy"</span> content=<span class="hljs-string">"script-src 'self'; style-src nos.netease.com kaola.com;"</span>&gt;</code></pre></div>
+</li>
+</ol>
+</li>
+<li><p>资源优先级计算</p>
+<ol>
+<li><code>html,font,css</code></li>
+<li><code>preload</code></li>
+<li><code>img,pic,video</code></li>
+<li><code>prefetch</code></li>
+</ol>
+</li>
+<li><p>顺序调整</p>
+<ol>
+<li><p>同步XHR请求优先级调整到最高</p>
+</li>
+<li><p>图片根据是否出现在可视区域</p>
+</li>
+<li><p><code>async/defer</code>的<code>script</code>标签请求优先级降低</p>
+<blockquote>
+<p>async 异步加载js，加载完后运行js并暂停页面解析</p>
+</blockquote>
+<blockquote>
+<p>defer 异步加载js，页面解析完时运行</p>
+</blockquote>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+<div class="hljs"><pre><code>- 按照调整后的顺序请求资源</code></pre></div><ol>
+<li><p>DNS解析</p>
+<ul>
+<li>查找本地DNS缓存</li>
+<li>查找HOST文件</li>
+<li>请求本地DNS服务器</li>
+<li>查询本地DNS服务器缓存</li>
+<li>本地服务器询向根域名服务器请求</li>
+</ul>
+</li>
+<li><p>对应IP，端口建立TCP连接，发送HTTP请求</p>
+<ul>
+<li>TCP三次握手</li>
+<li>https怎么获得加密密钥</li>
+</ul>
+</li>
+<li><p>应用缓存策略</p>
+<ul>
+<li>强缓存</li>
+<li>协商缓存</li>
+</ul>
+</li>
+<li><p>服务器响应请求返回资源，html，js，css</p>
+</li>
+<li><p>处理html标记，生成DOM树，所有标签都会包含在内</p>
+<ul>
+<li>解析完一个节点的所有子元素才会解析他的兄弟元素</li>
+<li>构建过程中遇到js则执行js，暂停构建</li>
+</ul>
+</li>
+<li><p>处理css标记（不管是内外联），生成CSSOM树</p>
+<ul>
+<li>构建过程中遇到js，js要等待CSSOM构建完才会执行</li>
+<li>由于CSSOM负责存储渲染信息，浏览器必须保证在合成渲染树之前，CSSOM是完整的，这种完备是指所有的CSS（内联、内部和外部）都已经下载完，并解析完，只有CSSOM和DOM的解析完全结束，浏览器才会进入下一步的渲染，这就是传说中的CSS阻塞渲染。</li>
+</ul>
+</li>
+</ol>
+<ol>
+<li><p>合成Render树，只包含DOM树中的可见元素(忽略像<code>display：none/&lt;header&gt;</code>)，并找到与其匹配的CSSOM规则并应用</p>
+</li>
+<li><p>【layout】浏览器依据Render树和设备屏幕信息<em>重排</em>一次，计算出每个节点的尺寸和在屏幕上的位置</p>
+</li>
+<li><p>【paint】绘制Render树像素信息</p>
+</li>
+<li><p>GPU合成各图层【composite】并显示在屏幕上</p>
+</li>
+</ol>
+<h3 id="图层"><a href="#图层" class="headerlink" title="图层"></a>图层</h3><ul>
+<li>节点在不同的渲染层中完成渲染互不干扰</li>
+<li>所有图层按照正确的顺序合成以处理元素重叠和透明元素</li>
+</ul>
+<h3 id="独立渲染层"><a href="#独立渲染层" class="headerlink" title="独立渲染层"></a>独立渲染层</h3><ul>
+<li><p><code>will-change</code></p>
+</li>
+<li><p><code>video</code>标签</p>
+</li>
+<li><p><code>canvas</code></p>
+</li>
+<li><p><code>WebGl</code></p>
+</li>
+<li><p><code>CSS3</code> 3D变换</p>
+</li>
+<li><p><code>CSS3</code> filter滤镜</p>
+</li>
+<li><p><code>z-index</code>大于兄弟元素</p>
+</li>
+<li><p><code>opacity</code></p>
+</li>
+<li><p>将原先的浏览器使用CPU绘制位图来实现的动画效果转为让GPU使用图层合成（composite）来实现，如果两张图层内部没有发生改变，浏览器就不再进行布局和绘制，直接使用GPU的缓存来绘制每个图层，GPU只负责将各个图层合成来实现动画，这就可以充分利用GPU的资源和优势，减轻CPU的负载，可以使动画更流畅。</p>
+</li>
+</ul>
+<h3 id="重排"><a href="#重排" class="headerlink" title="重排"></a>重排</h3><ul>
+<li>从 <code>&lt;html&gt;标签</code> 开始递归往下，依次计算所有的节点几何尺寸和位置</li>
+<li>有些情况下，比如修改了元素的样式，浏览器并不会立刻reflow，而是会把这样的操作积攒一批，然后做一次 处理，这又叫异步 reflow 或增量异步 reflow。但是在有些情况下，比如resize 窗口，改变了页面默认的字体等。对于这些操作，浏览器会马上进行 reflow。</li>
+<li>除了渲染树的直接变化，当获取一些属性时，浏览器为取得 正确的值也会触发重排。这样就使得浏览器的优化失效了。</li>
+<li>这些属性包括：<code>offsetTop、offsetLeft、 offsetWidth、offsetHeight、scrollTop、scrollLeft、scrollWidth、scrollHeight、 clientTop、clientLeft、clientWidth、clientHeight、getComputedStyle() (currentStyle in IE)。</code></li>
+</ul>
+<h3 id="重绘"><a href="#重绘" class="headerlink" title="重绘"></a>重绘</h3><p>改变某个元素的背景色、文字颜色、边框颜色等等不影响它周围或内部布局的属性时，屏幕的一部分要重画，但是元素的几何尺寸没有变。</p>
+<h3 id="优化性能"><a href="#优化性能" class="headerlink" title="优化性能"></a>优化性能</h3><blockquote>
+<p>GPU硬件加速就是把会触发重排重绘的元素提升到独立渲染层</p>
+</blockquote>
+<ol>
+<li>DOM style修改用css class代替</li>
+<li><code>display:none</code>后修改,只有隐藏和显示两次重排</li>
+<li>操作<code>Document Fragment</code>对象,<code>Document Fragment</code>是脱离真实DOM树结构的</li>
+<li><code>opacity</code>代替<code>visibility</code></li>
+<li>需要多次重排的元素使其脱离文档流<code>position:fixed/absolute</code></li>
+<li>缓存需要读取的DOM属性，而不是读写写在一起<code>div.style.left = div.offsetLeft + 10 + &quot;px&quot;;</code></li>
+<li>使用<code>transform</code>动画代替设置<code>left，right</code></li>
+<li>避免table布局</li>
+<li>虚拟DOM</li>
+</ol>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2019/12/01/h5bp%E5%88%B7%E9%A2%98/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">h5pb刷题</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2019/08/12/URLSearchParams%20API/">
+                        <span class="hidden-mobile">URLSearchParams</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+    
+  <!-- 备案信息 -->
+  <div class="beian">
+    <a href="http://beian.miit.gov.cn/" target="_blank"
+       rel="nofollow noopener">粤ICP备2020115702号</a>
+    
+  </div>
+
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '#post-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "地址中输入URL回车发生了什么&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?048f7ae77dbb92c9d2c83ca3df99d02f";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+</body>
+</html>

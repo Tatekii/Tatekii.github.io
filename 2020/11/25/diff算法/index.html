@@ -1,0 +1,641 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.jpeg">
+  <link rel="icon" type="image/png" href="/img/avatar.jpeg">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="tatekii">
+  <meta name="keywords" content="">
+  <title>diff算法 - 我好想用很酷的背景图片可是加载太慢了</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/tomorrow-night-eighties.min.css" />
+    
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_pf9vaxs7x7b.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+  <header style="height: 30vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Dr.🐎</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container page-header text-center fade-in-up">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-11-25 12:59" pubdate>
+        2020年11月25日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      969 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      12
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto" id="post">
+            <!-- SEO header -->
+            <h1 style="display: none">diff算法</h1>
+            
+            <div class="markdown-body" id="post-body">
+              <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>diff算法，包含渲染器如何对各种类型的vNode的属性，text，fragment进行patch更新，以及判断是patch vNode，还是新增还是删除</p>
+<h3 id="简单diff"><a href="#简单diff" class="headerlink" title="简单diff"></a>简单diff</h3><ul>
+<li>newNode.children.length = 0 =&gt; 删除oldNode.children</li>
+<li>oldNode.children = 0 =&gt; 新增newNode.children</li>
+<li>添加全部子节点/删除全部子节点</li>
+</ul>
+<h3 id="核心diff"><a href="#核心diff" class="headerlink" title="核心diff"></a>核心diff</h3><ul>
+<li>相对于简单diff就是优化对子节点的操作过程</li>
+<li>尽可能复用节点</li>
+</ul>
+<h4 id="key的作用"><a href="#key的作用" class="headerlink" title="key的作用"></a>key的作用</h4><ul>
+<li>vNode中的唯一标识符</li>
+<li>用于保存新旧vNode的映射关系</li>
+<li>找到可复用的vNode</li>
+</ul>
+<h4 id="移动节点-gt-最大索引值k"><a href="#移动节点-gt-最大索引值k" class="headerlink" title="移动节点-&gt;最大索引值k"></a>移动节点-&gt;最大索引值k</h4><ul>
+<li>新旧vNode，依次取出新vNode去旧vNode中寻找正确位置</li>
+<li>如果索引呈现递增趋势<br>（newA-&gt;oldA=&gt;0,newB-&gt;oldB=&gt;1,newC-&gt;oldC=&gt;2）则说明新旧 children 中节点顺序相同，不需要移动操作。相反的，如果在寻找的过程中遇到的索引值不呈现递增趋势，则说明需要移动操作</li>
+<li>如果匹配过程中递增规律被打破<br><code>k</code>为在旧 children 中所遇到的最大索引值，则后续匹配的索引小于这个值意味着都需要移动</li>
+</ul>
+<h4 id="vue2的双端比较"><a href="#vue2的双端比较" class="headerlink" title="vue2的双端比较"></a>vue2的双端比较</h4><ul>
+<li>vue同时从新旧children的两端开始比较</li>
+<li>四个指针，分别查找是否key相同</li>
+<li>有相同则匹配项目的两个指针向内移动，对匹配成功的vNode进行patch</li>
+<li>新children中拥有新的vNode时，会发生匹配不上的情况，新增节点</li>
+<li>匹配结束后旧children中还有未处理的节点，删除</li>
+</ul>
+<h4 id="vue3的inferno"><a href="#vue3的inferno" class="headerlink" title="vue3的inferno"></a>vue3的inferno</h4><ul>
+<li>文本diff-&gt;排除相同的前置和后置元素<div class="hljs"><pre><code class="hljs javascript">  a,b,c
+  | | |
+  -------
+  |   | |
+  a,e,b,c
+
+  <span class="hljs-string">``</span><span class="hljs-string">` </span>
+<span class="hljs-string">  - 分别从新旧节点的头和尾出发</span>
+<span class="hljs-string">  - 依次遍历到key值不一样时停止 </span>
+<span class="hljs-string">  - 这样匹配成功后剩下的部分就是需要新增/删除的vNode</span>
+<span class="hljs-string"></span>
+<span class="hljs-string">- 文本diff后，使用剩余新children的长度建立source索引数组</span>
+<span class="hljs-string">  `</span><span class="hljs-string">``</span>javascript
+  oldChildren = [b,c,d,f]
+  newChildren = [c,d,b,g]
+  source = [<span class="hljs-number">-1</span>,<span class="hljs-number">-1</span>,<span class="hljs-number">-1</span>,<span class="hljs-number">-1</span>]
+  <span class="hljs-comment">// 默认全为-1</span>
+  <span class="hljs-comment">// 如果在旧children中匹配到key，则把该位置的-1改为旧vNode的索引，并且patch该节点</span>
+  <span class="hljs-comment">// 比如</span>
+  source = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">0</span>,<span class="hljs-number">-1</span>]
+  <span class="hljs-string">``</span><span class="hljs-string">` </span>
+<span class="hljs-string"></span>
+<span class="hljs-string">- 使用最大索引算法判断节点是否需要移动</span>
+<span class="hljs-string">- 根据source求出最长递增子序列</span>
+<span class="hljs-string">  `</span><span class="hljs-string">``</span>javascript
+    LIS = [<span class="hljs-number">0</span>，<span class="hljs-number">1</span>]
+    <span class="hljs-comment">// LIS中存储的是source索引</span>
+    <span class="hljs-comment">// 表示新旧children中这几个节点的先后关系相同</span></code></pre></div></li>
+<li>根据LIS得出不进行移动的节点<div class="hljs"><pre><code class="hljs javascript">[c,d]</code></pre></div></li>
+<li>从LIS和新children尾处建立指针处理余下节点</li>
+</ul>
+<h4 id="最长上升子序列"><a href="#最长上升子序列" class="headerlink" title="最长上升子序列"></a>最长上升子序列</h4><ul>
+<li>子序列：不要求连续</li>
+<li>字串：要求连续</li>
+</ul>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-comment">// 求最长子序列的长度</span>
+<span class="hljs-comment">// 动态规划</span>
+<span class="hljs-keyword">const</span> longestChildSequence = <span class="hljs-function"><span class="hljs-params">arr</span> =&gt;</span> &#123;
+  <span class="hljs-keyword">let</span> len = arr.length
+  <span class="hljs-keyword">if</span>(len &lt; <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span>
+  <span class="hljs-keyword">const</span> dp = <span class="hljs-built_in">Array</span>(len).fill(<span class="hljs-number">1</span>)
+  <span class="hljs-comment">// dp[i]代表原始数组该位置的最长子序列长度</span>
+  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span> ; i &lt; len ; i++)&#123;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> j = <span class="hljs-number">0</span> ; j &lt; i : j++)&#123;
+      <span class="hljs-comment">// j遍历之前遍历过的所有元素</span>
+      <span class="hljs-comment">// 使用max取得没连续的长度值</span>
+      <span class="hljs-comment">// 避免上升中断后结果[dp:1,2,3,1,1,1]</span>
+      <span class="hljs-keyword">if</span>(arr[i] &gt; arr [j])&#123;
+        dp[i] = <span class="hljs-built_in">Math</span>.max(dp[i],dp[j]+<span class="hljs-number">1</span>)
+      &#125;
+    &#125;
+  &#125;
+  <span class="hljs-keyword">return</span> <span class="hljs-built_in">Math</span>.max(...dp)
+&#125;
+
+<span class="hljs-comment">// 贪心+二分</span>
+<span class="hljs-keyword">const</span> longestChildSequence = <span class="hljs-function"><span class="hljs-params">arr</span> =&gt;</span> &#123;
+  <span class="hljs-keyword">let</span> len = arr.length
+  <span class="hljs-keyword">if</span>(len &lt; <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span>
+  <span class="hljs-keyword">const</span> res = [arr[<span class="hljs-number">0</span>]]
+  <span class="hljs-comment">//将arr中后续元素arr[i]与res末尾元素比较</span>
+  <span class="hljs-comment">//大于则push进res</span>
+  <span class="hljs-comment">//小于则查找res中第一个比arr[i]大的元素并替换</span>
+  <span class="hljs-comment">//由于存在替换，子序列值不一定正确，但长度是正确的</span>
+  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span> ; i&lt; len ;i++)&#123;
+    <span class="hljs-keyword">if</span>(arr[i]&gt;res[res.length<span class="hljs-number">-1</span>])&#123;
+      res.push(arr[i])
+    &#125;<span class="hljs-keyword">else</span>&#123;
+      <span class="hljs-comment">// res中左右指针的index</span>
+      <span class="hljs-comment">// 二分查找</span>
+      <span class="hljs-keyword">let</span> left = <span class="hljs-number">0</span>
+      <span class="hljs-keyword">let</span> right = res.length - <span class="hljs-number">1</span>
+      <span class="hljs-keyword">while</span>(left&lt;right)&#123;
+        <span class="hljs-keyword">let</span> mid = <span class="hljs-built_in">Math</span>.floor((left+right)/<span class="hljs-number">2</span>)
+        <span class="hljs-comment">// let mid = ((left+right)/2) | 0</span>
+        <span class="hljs-comment">// 浮点小数向下求整</span>
+        <span class="hljs-keyword">if</span>(arr[i]&gt;res[mid])&#123;
+          left = mid + <span class="hljs-number">1</span>
+        &#125;<span class="hljs-keyword">else</span>&#123;
+          right = mid
+        &#125;
+      &#125;
+      res[left] = arr[i]
+    &#125;
+  &#125;
+  <span class="hljs-keyword">return</span> res.length 
+&#125;</code></pre></div>
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/javascript/">javascript</a>
+                    
+                      <a class="hover-with-bg" href="/tags/vue/">vue</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/11/30/%E6%89%93%E5%8C%85%E4%BC%98%E5%8C%96/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">vuecli打包优化踩坑</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/11/20/node%E4%B8%8B%E7%9A%84%E6%89%B9%E9%87%8F%E6%98%A0%E5%B0%84/">
+                        <span class="hidden-mobile">node下单文件模块批量映射到处</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+    
+  <!-- 备案信息 -->
+  <div class="beian">
+    <a href="http://beian.miit.gov.cn/" target="_blank"
+       rel="nofollow noopener">粤ICP备2020115702号</a>
+    
+  </div>
+
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '#post-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "diff算法&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?048f7ae77dbb92c9d2c83ca3df99d02f";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+</body>
+</html>

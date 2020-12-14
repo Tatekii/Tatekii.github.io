@@ -1,0 +1,725 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.jpeg">
+  <link rel="icon" type="image/png" href="/img/avatar.jpeg">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="tatekii">
+  <meta name="keywords" content="">
+  <title>vuex - 我好想用很酷的背景图片可是加载太慢了</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/tomorrow-night-eighties.min.css" />
+    
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_pf9vaxs7x7b.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+  <header style="height: 30vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Dr.🐎</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container page-header text-center fade-in-up">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2019-07-14 11:53" pubdate>
+        2019年7月14日 中午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      908 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      13
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto" id="post">
+            <!-- SEO header -->
+            <h1 style="display: none">vuex</h1>
+            
+            <div class="markdown-body" id="post-body">
+              <h2 id="vue全局的状态管理器，每个应用唯一"><a href="#vue全局的状态管理器，每个应用唯一" class="headerlink" title="vue全局的状态管理器，每个应用唯一"></a>vue全局的状态管理器，每个应用唯一</h2><h2 id="State"><a href="#State" class="headerlink" title="State"></a><code>State</code></h2><ul>
+<li><p>子组件通过<code>computed</code>读取state，</p>
+</li>
+<li><p><code>mapState</code>辅助函数展开以混入计算属性中  </p>
+<div class="hljs"><pre><code class="hljs javascript">computed: &#123;
+  localComputed () &#123; <span class="hljs-comment">/* ... */</span> &#125;,
+  <span class="hljs-comment">// 使用对象展开运算符将此对象混入到外部对象中</span>
+  ...mapState(&#123;
+  <span class="hljs-comment">// ...</span>
+    <span class="hljs-string">'count'</span>
+    <span class="hljs-comment">// 映射 this.count 为 store.state.count</span>
+  &#125;)
+&#125;</code></pre></div>
+
+</li>
+</ul>
+<h2 id="getter"><a href="#getter" class="headerlink" title="getter"></a><code>getter</code></h2><ul>
+<li><p>相当于store的计算属性</p>
+</li>
+<li><p>接受<code>state</code>作为其第一个参数</p>
+</li>
+<li><p>通过属性访问（被缓存，依赖改变才计算）</p>
+  <div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> store = <span class="hljs-keyword">new</span> Vuex.Store(&#123;
+  state: &#123;
+    todos: [&#123;
+        id: <span class="hljs-number">1</span>,
+        text: <span class="hljs-string">'...'</span>,
+        done: <span class="hljs-literal">true</span>
+      &#125;,
+      &#123;
+        id: <span class="hljs-number">2</span>,
+        text: <span class="hljs-string">'...'</span>,
+        done: <span class="hljs-literal">false</span>
+      &#125;
+    ]
+  &#125;,
+  getters: &#123;
+    doneTodos: <span class="hljs-function"><span class="hljs-params">state</span> =&gt;</span> &#123;
+      <span class="hljs-keyword">return</span> state.todos.filter(<span class="hljs-function"><span class="hljs-params">todo</span> =&gt;</span> todo.done)
+    &#125;
+  &#125;
+&#125;)
+
+store.getters.doneTodos <span class="hljs-comment">// -&gt; [&#123; id: 1, text: '...', done: true &#125;]</span></code></pre></div>
+</li>
+<li><p>通过方法访问（每次调用都计算,不缓存结果）</p>
+  <div class="hljs"><pre><code class="hljs javascript">getters: &#123;
+  <span class="hljs-comment">// ...</span>
+  getTodoById: <span class="hljs-function">(<span class="hljs-params">state</span>) =&gt;</span> <span class="hljs-function">(<span class="hljs-params">id</span>) =&gt;</span> &#123;
+    <span class="hljs-keyword">return</span> state.todos.find(<span class="hljs-function"><span class="hljs-params">todo</span> =&gt;</span> todo.id === id)
+  &#125;
+&#125;
+store.getters.getTodoById(<span class="hljs-number">2</span>) <span class="hljs-comment">// -&gt; &#123; id: 2, text: '...', done: false &#125;</span></code></pre></div>
+</li>
+<li><p>组件中一样的展开<code>...mapGetters</code>到局部计算属性中</p>
+</li>
+</ul>
+<h2 id="Mutations"><a href="#Mutations" class="headerlink" title="Mutations"></a><code>Mutations</code></h2><ul>
+<li><p>更改<code>state</code>的唯一方法是提交<code>mutation</code></p>
+</li>
+<li><p>你不能直接调用一个 <code>mutation handler</code>。需要以相应的 <code>type</code> 调用 <code>store.commit</code> 方法</p>
+  <div class="hljs"><pre><code class="hljs javascript"><span class="hljs-comment">// 载荷风格</span>
+store.commit(<span class="hljs-string">'increment'</span>,&#123;
+  amount:<span class="hljs-number">10</span>
+&#125;)
+
+<span class="hljs-comment">// 对象风格的提交</span>
+store.commit(&#123;
+  type: <span class="hljs-string">'increment'</span>,
+  amount: <span class="hljs-number">10</span>
+&#125;)
+
+mutations: &#123;
+  increment(state, payload) &#123;
+    state.count += payload.amount
+  &#125;
+&#125;</code></pre></div>
+</li>
+<li><p><code>mutation</code>必须是同步函数,<code>mutation</code>中对<code>state</code>的修改立即完成</p>
+</li>
+<li><p>组件中一样的展开<code>...Mutations</code>到局部计算属性中</p>
+</li>
+</ul>
+<h2 id="Action"><a href="#Action" class="headerlink" title="Action"></a><code>Action</code></h2><ul>
+<li><p><code>Action</code> 函数接受一个与<code>store</code>实例具有相同方法和属性的 <code>context</code> 对象，不是 <code>store</code>实例本身</p>
+</li>
+<li><p><code>context.commit</code> 提交一个 <code>mutation</code>，或者通过 <code>context.state</code> 和 <code>context.getters</code> 来获取 <code>state</code> 和 <code>getters</code></p>
+</li>
+</ul>
+<div class="hljs"><pre><code class="hljs javascript">actions: &#123;
+    increment (context) &#123;
+      context.commit(<span class="hljs-string">'increment'</span>)
+    &#125;
+  &#125;
+
+<span class="hljs-comment">// 参数解构</span>
+actions: &#123;
+  increment (&#123; commit &#125;) &#123;
+    commit(<span class="hljs-string">'increment'</span>)
+  &#125;
+&#125;</code></pre></div>
+
+<ul>
+<li><p><code>Action</code> 提交的是 <code>mutation</code>，而不是直接变更状态。</p>
+</li>
+<li><p><code>Action</code> 可以包含任意异步操作。</p>
+  <div class="hljs"><pre><code class="hljs javascript"><span class="hljs-comment">// 以载荷形式分发</span>
+store.dispatch(<span class="hljs-string">'incrementAsync'</span>, &#123;
+  amount: <span class="hljs-number">10</span>
+&#125;)
+
+<span class="hljs-comment">// 以对象形式分发</span>
+store.dispatch(&#123;
+  type: <span class="hljs-string">'incrementAsync'</span>,
+  amount: <span class="hljs-number">10</span>
+&#125;)</code></pre></div>
+</li>
+<li><p>组件中分发<code>...mapActions</code></p>
+</li>
+</ul>
+<h2 id="Module"><a href="#Module" class="headerlink" title="Module"></a><code>Module</code></h2><p>将 <code>store</code> 分割成模块（<code>module</code>）。每个模块拥有自己的<code>state、mutation、action、getter、</code>甚至是嵌套子模块</p>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> moduleA = &#123;
+  state: &#123; ... &#125;,
+  mutations: &#123; ... &#125;,
+  actions: &#123; ... &#125;,
+  getters: &#123; ... &#125;
+&#125;
+
+<span class="hljs-keyword">const</span> moduleB = &#123;
+  state: &#123; ... &#125;,
+  mutations: &#123; ... &#125;,
+  actions: &#123; ... &#125;
+&#125;
+
+<span class="hljs-keyword">const</span> store = <span class="hljs-keyword">new</span> Vuex.Store(&#123;
+  modules: &#123;
+    a: moduleA,
+    b: moduleB
+  &#125;
+&#125;)</code></pre></div>
+
+<ul>
+<li>内部的<code>mutation</code> 接收的<code>state</code>是<em>模块的局部状态对象</em></li>
+<li>内部的<code>getter</code>,<em>模块的局部状态对象</em><code>state</code>，<em>根节点状态</em><code>rootState</code></li>
+<li>模块内部的 <code>action</code>，<em>局部状态</em>通过 <code>context.state</code> 暴露出来，<em>根节点状态</em>则为 <code>context.rootState</code></li>
+</ul>
+<h3 id="命名空间"><a href="#命名空间" class="headerlink" title="命名空间"></a>命名空间</h3><ul>
+<li><code>namespaced:true</code></li>
+<li>命名空间中的方法只会访问本模块的内容</li>
+</ul>
+<h4 id="在带命名空间的模块内访问全局内容"><a href="#在带命名空间的模块内访问全局内容" class="headerlink" title="在带命名空间的模块内访问全局内容"></a>在带命名空间的模块内访问全局内容</h4><div class="hljs"><pre><code class="hljs javascript">modules: &#123;
+  foo: &#123;
+    namespaced: <span class="hljs-literal">true</span>,
+
+    getters: &#123;
+      <span class="hljs-comment">// 在这个模块的 getter 中，`getters` 被局部化了</span>
+      <span class="hljs-comment">// 你可以使用 getter 的第四个参数来调用 `rootGetters`</span>
+      someGetter (state, getters, rootState, rootGetters) &#123;
+        getters.someOtherGetter <span class="hljs-comment">// -&gt; 'foo/someOtherGetter'</span>
+        rootGetters.someOtherGetter <span class="hljs-comment">// -&gt; 'someOtherGetter'</span>
+      &#125;,
+      someOtherGetter: <span class="hljs-function"><span class="hljs-params">state</span> =&gt;</span> &#123; ... &#125;
+    &#125;,
+
+    actions: &#123;
+      <span class="hljs-comment">// 在这个模块中， dispatch 和 commit 也被局部化了</span>
+      <span class="hljs-comment">// 他们可以接受 `root` 属性以访问根 dispatch 或 commit</span>
+      someAction (&#123; dispatch, commit, getters, rootGetters &#125;) &#123;
+        getters.someGetter <span class="hljs-comment">// -&gt; 'foo/someGetter'</span>
+        rootGetters.someGetter <span class="hljs-comment">// -&gt; 'someGetter'</span>
+
+        dispatch(<span class="hljs-string">'someOtherAction'</span>) <span class="hljs-comment">// -&gt; 'foo/someOtherAction'</span>
+        dispatch(<span class="hljs-string">'someOtherAction'</span>, <span class="hljs-literal">null</span>, &#123; <span class="hljs-attr">root</span>: <span class="hljs-literal">true</span> &#125;) <span class="hljs-comment">// -&gt; 'someOtherAction'</span>
+
+        commit(<span class="hljs-string">'someMutation'</span>) <span class="hljs-comment">// -&gt; 'foo/someMutation'</span>
+        commit(<span class="hljs-string">'someMutation'</span>, <span class="hljs-literal">null</span>, &#123; <span class="hljs-attr">root</span>: <span class="hljs-literal">true</span> &#125;) <span class="hljs-comment">// -&gt; 'someMutation'</span>
+      &#125;,
+      someOtherAction (ctx, payload) &#123; ... &#125;
+    &#125;
+  &#125;
+&#125;</code></pre></div>
+
+<h4 id="带命名空间的绑定函数"><a href="#带命名空间的绑定函数" class="headerlink" title="带命名空间的绑定函数"></a>带命名空间的绑定函数</h4><div class="hljs"><pre><code class="hljs javascript">methods: &#123;
+  ...mapActions([
+    <span class="hljs-string">'some/nested/module/foo'</span>, <span class="hljs-comment">// -&gt; this['some/nested/module/foo']()</span>
+    <span class="hljs-string">'some/nested/module/bar'</span> <span class="hljs-comment">// -&gt; this['some/nested/module/bar']()</span>
+  ])
+&#125;
+
+---&gt;
+
+
+methods: &#123;
+  ...mapActions(<span class="hljs-string">'some/nested/module'</span>, [
+    <span class="hljs-string">'foo'</span>, <span class="hljs-comment">// -&gt; this.foo()</span>
+    <span class="hljs-string">'bar'</span> <span class="hljs-comment">// -&gt; this.bar()</span>
+  ])
+&#125;</code></pre></div>
+
+<h4 id="createNamespacedHelpers"><a href="#createNamespacedHelpers" class="headerlink" title="createNamespacedHelpers"></a>createNamespacedHelpers</h4><p>使用 <code>createNamespacedHelpers</code> 创建基于某个命名空间辅助函数。它返回一个对象，对象里有新的绑定在给定命名空间值上的组件绑定辅助函数</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/javascript/">javascript</a>
+                    
+                      <a class="hover-with-bg" href="/tags/vue/">vue</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2019/07/15/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%88%A4%E6%96%AD%E4%B8%8E%E8%BD%AC%E6%8D%A2/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">数据类型的判断与转换</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2019/07/13/js%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
+                        <span class="hidden-mobile">javascript常见设计模式</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+    
+  <!-- 备案信息 -->
+  <div class="beian">
+    <a href="http://beian.miit.gov.cn/" target="_blank"
+       rel="nofollow noopener">粤ICP备2020115702号</a>
+    
+  </div>
+
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '#post-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "vuex&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?048f7ae77dbb92c9d2c83ca3df99d02f";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+</body>
+</html>
