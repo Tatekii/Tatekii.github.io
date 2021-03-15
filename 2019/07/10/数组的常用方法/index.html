@@ -1,0 +1,839 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.jpeg">
+  <link rel="icon" type="image/png" href="/img/avatar.jpeg">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="tatekii">
+  <meta name="keywords" content="">
+  <title>操作数组的常用方法 - 不知名的笔记本</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/tomorrow-night-eighties.min.css" />
+    
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_pf9vaxs7x7b.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+  <header style="height: 30vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Dr.🐎</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container page-header text-center fade-in-up">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2019-07-10 11:26" pubdate>
+        2019年7月10日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.7k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      25
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto" id="post">
+            <!-- SEO header -->
+            <h1 style="display: none">操作数组的常用方法</h1>
+            
+            <div class="markdown-body" id="post-body">
+              <h2 id="变异-改变原数组"><a href="#变异-改变原数组" class="headerlink" title="变异-改变原数组"></a>变异-改变原数组</h2><ul>
+<li><p><code>pop()</code>删除最后一个元素</p>
+</li>
+<li><p><code>shift()</code>删除第一个元素</p>
+</li>
+<li><p><code>push()</code>添加元素至末尾</p>
+</li>
+<li><p><code>unshift()</code>添加元素至首位</p>
+</li>
+<li><p><code>splice()</code>往数组中添加/删除元素</p>
+<div class="hljs"><pre><code class="hljs javascript">splice(index,howmany,item1,.....,itemX)
+<span class="hljs-keyword">var</span> fruits = [<span class="hljs-string">"Banana"</span>, <span class="hljs-string">"Orange"</span>, <span class="hljs-string">"Apple"</span>, <span class="hljs-string">"Mango"</span>]
+  <span class="hljs-comment">// 必须传入一个参数，即splice(index)</span>
+  <span class="hljs-comment">// howmany不传则从该位置到结尾删除所有元素</span>
+  <span class="hljs-comment">// 第三个参数是要添加进的新元素</span>
+  <span class="hljs-comment">// **返回值**是删除的元素组成的新数组</span>
+--------------------------------------------
+<span class="hljs-built_in">console</span>.log(fruits.splice(<span class="hljs-number">0</span>))
+  <span class="hljs-comment">//["Banana", "Orange", "Apple", "Mango"]</span>
+<span class="hljs-built_in">console</span>.log(fruits)
+  <span class="hljs-comment">//[]</span>
+--------------------------------------------
+<span class="hljs-built_in">console</span>.log(fruits.splice(<span class="hljs-number">1</span>))
+  <span class="hljs-comment">//["Orange", "Apple", "Mango"]</span>
+<span class="hljs-built_in">console</span>.log(fruits)
+  <span class="hljs-comment">//["Banana"]</span>
+--------------------------------------------
+<span class="hljs-built_in">console</span>.log(fruits.splice(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>))
+  <span class="hljs-comment">//["Orange", "Apple"]</span>
+  <span class="hljs-comment">///--&gt;</span>
+<span class="hljs-built_in">console</span>.log(fruits.splice(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-string">'xiba'</span>,<span class="hljs-string">'qinjia'</span>))
+  <span class="hljs-comment">//["Orange", "Apple"]</span>
+<span class="hljs-built_in">console</span>.log(fruits)
+  <span class="hljs-comment">//["Banana", "xiba", "qinjia", "Mango"]</span></code></pre></div>
+</li>
+<li><p><code>sort()</code>排序</p>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-comment">// 数组排序，可传入排序顺序（函数）</span>
+<span class="hljs-keyword">let</span> num = [<span class="hljs-number">124</span>,<span class="hljs-number">235236</span>,<span class="hljs-number">234</span>,<span class="hljs-number">1</span>,<span class="hljs-number">5</span>,<span class="hljs-number">654</span>,<span class="hljs-number">23</span>,<span class="hljs-number">12</span>,<span class="hljs-number">33</span>,<span class="hljs-number">456</span>]
+<span class="hljs-built_in">console</span>.log(num.sort(<span class="hljs-function">(<span class="hljs-params">a,b</span>)=&gt;</span>a-b))
+<span class="hljs-comment">//[ 1, 5, 12, 23, 33, 124, 234, 456, 654, 235236 ]</span>
+<span class="hljs-built_in">console</span>.log(num.sort(<span class="hljs-function">(<span class="hljs-params">a,b</span>)=&gt;</span>b-a))
+<span class="hljs-comment">// 倒过来</span></code></pre></div>
+</li>
+<li><p><code>reverse()</code>倒序,返回新数组</p>
+</li>
+<li><p><code>copyWithin()</code>拷贝数组中已有元素</p>
+<div class="hljs"><pre><code class="hljs javascript">copyWithin(target,start,end)
+<span class="hljs-comment">//复制序列到该位置,开始复制元素的起始位置,复制结束位置（不复制该元素）</span>
+<span class="hljs-keyword">let</span> num = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>]
+num.copyWithin(<span class="hljs-number">3</span>,<span class="hljs-number">0</span>,<span class="hljs-number">2</span>)
+<span class="hljs-built_in">console</span>.log(num)
+<span class="hljs-comment">// [ 1, 2, 3, 1, 2 ]</span></code></pre></div>
+</li>
+<li><p><code>fill()</code>填充元素</p>
+<div class="hljs"><pre><code class="hljs javascript">fill(value,start,end)
+<span class="hljs-comment">// 填充的元素，填充开始位置，填充结束位置（不填充该元素）</span>
+<span class="hljs-comment">// 填充数组</span>
+<span class="hljs-keyword">let</span> num = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>]
+nums.fill(<span class="hljs-number">666</span>,<span class="hljs-number">0</span>,<span class="hljs-number">2</span>)
+<span class="hljs-built_in">console</span>.log(nums)
+<span class="hljs-comment">// [ 666, 666, 3, 4, 5 ]</span></code></pre></div>
+
+</li>
+</ul>
+<h2 id="非变异-不改变原数组"><a href="#非变异-不改变原数组" class="headerlink" title="非变异-不改变原数组"></a>非变异-不改变原数组</h2><ul>
+<li><p><code>slice()</code>潜拷贝，返回新数组</p>
+<div class="hljs"><pre><code class="hljs javascript">slice(begin,end)
+<span class="hljs-comment">// 潜拷贝,传入索引值</span>
+<span class="hljs-comment">// begin索引包括自己，end索引自身是不拷贝的</span>
+<span class="hljs-keyword">let</span> num = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>]
+<span class="hljs-built_in">console</span>.log(num.slice(<span class="hljs-number">1</span>,<span class="hljs-number">3</span>))
+<span class="hljs-comment">//[2,3]</span></code></pre></div>
+</li>
+<li><p><code>join()</code>指定分隔符将数字元素连成字符串</p>
+<div class="hljs"><pre><code class="hljs javascript">join(<span class="hljs-string">'str'</span>)
+<span class="hljs-comment">// 指定分隔符连成字符串</span>
+<span class="hljs-keyword">var</span> fruits = [<span class="hljs-string">"Banana"</span>, <span class="hljs-string">"Orange"</span>, <span class="hljs-string">"Apple"</span>, <span class="hljs-string">"Mango"</span>]
+<span class="hljs-built_in">console</span>.log(fruits.join())
+<span class="hljs-comment">//Banana,Orange,Apple,Mango 默认为逗号</span>
+<span class="hljs-built_in">console</span>.log(fruits.join(<span class="hljs-string">'-'</span>))
+<span class="hljs-comment">//Banana-Orange-Apple-Mango</span></code></pre></div>
+</li>
+<li><p><code>concat()</code>合并数组</p>
+</li>
+<li><p><code>indexOf()/lastIndexOf()</code>查找元素返回索引</p>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> nums = [<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">53</span>,<span class="hljs-number">46</span>,<span class="hljs-number">73</span>,<span class="hljs-number">9</span>,<span class="hljs-number">11</span>,<span class="hljs-number">22</span>,<span class="hljs-number">1</span>,<span class="hljs-number">9</span>]
+<span class="hljs-comment">// 一个从前往后找，一个倒着找(索引可是只有正的</span>
+  <span class="hljs-comment">// 传入serachElement和fromIndex（查找起始位置</span>
+  <span class="hljs-built_in">console</span>.log(nums.indexOf(<span class="hljs-number">9</span>))  <span class="hljs-comment">// 5</span>
+  <span class="hljs-built_in">console</span>.log(nums.indexOf(<span class="hljs-number">9</span>,<span class="hljs-number">5</span>))  <span class="hljs-comment">// 5</span>
+  <span class="hljs-built_in">console</span>.log(nums.indexOf(<span class="hljs-number">9</span>,<span class="hljs-number">6</span>))  <span class="hljs-comment">// 9</span>
+  <span class="hljs-built_in">console</span>.log(nums.lastIndexOf(<span class="hljs-number">9</span>,<span class="hljs-number">8</span>))  <span class="hljs-comment">// 5</span></code></pre></div>
+</li>
+<li><p><code>includes()</code>是否包含元素返回true/false</p>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-built_in">console</span>.log(nums.includes(<span class="hljs-number">2</span>)) <span class="hljs-comment">// true</span>
+<span class="hljs-built_in">console</span>.log(nums.includes(<span class="hljs-number">2</span>,<span class="hljs-number">1</span>)) <span class="hljs-comment">// false</span></code></pre></div>
+</li>
+<li><p>展开运算符</p>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-comment">//合并数组</span>
+<span class="hljs-keyword">let</span> a = [<span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>]
+<span class="hljs-keyword">let</span> b = [ <span class="hljs-number">4</span>,...a, <span class="hljs-number">4</span>, <span class="hljs-number">4</span>]
+<span class="hljs-built_in">console</span>.log(a,b)
+<span class="hljs-comment">//[2, 3, 4, 5] [4,2,3,4,5,4,4]</span></code></pre></div>
+
+</li>
+</ul>
+<h2 id="遍历数组"><a href="#遍历数组" class="headerlink" title="遍历数组"></a>遍历数组</h2><ul>
+<li><p><code>some()</code>方法测试是否至少有一个元素可以通过被提供的函数方法。该方法返回一个Boolean类型的值</p>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> array = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>];
+
+<span class="hljs-keyword">var</span> even = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">element</span>) </span>&#123;
+<span class="hljs-keyword">return</span> element % <span class="hljs-number">2</span> === <span class="hljs-number">0</span>;
+&#125;;
+
+<span class="hljs-built_in">console</span>.log(array.some(even));
+<span class="hljs-comment">// true</span>
+<span class="hljs-comment">// 2,4能被2整除</span></code></pre></div>
+</li>
+<li><p><code>every()</code>检测数组所有元素是否都符合判断条件</p>
+<p>如果数组中检测到有一个元素不满足, 则整个表达式返回false,且停止遍历</p>
+</li>
+<li><p><code>reduce()和reduceRight()</code>累加器</p>
+<p><em>扁平化（flatten）一个元素为数组的数组</em></p>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-comment">// reduce从左到右，right从右向左</span>
+<span class="hljs-keyword">const</span> array1 = [[<span class="hljs-number">0</span>, <span class="hljs-number">1</span>], [<span class="hljs-number">2</span>, <span class="hljs-number">3</span>], [<span class="hljs-number">4</span>, <span class="hljs-number">5</span>]].reduceRight(
+(accumulator, currentValue) =&gt; accumulator.concat(currentValue)
+);
+<span class="hljs-comment">// [4, 5, 2, 3, 0, 1]</span>
+<span class="hljs-keyword">const</span> array1 = [[<span class="hljs-number">0</span>, <span class="hljs-number">1</span>], [<span class="hljs-number">2</span>, <span class="hljs-number">3</span>], [<span class="hljs-number">4</span>, <span class="hljs-number">5</span>]].reduce(
+(accumulator, currentValue) =&gt; accumulator.concat(currentValue)
+);
+<span class="hljs-comment">// [0, 1, 2, 3, 4, 5]</span></code></pre></div>
+
+<p>*按属性</p>
+</li>
+<li><p><code>flat()</code>按照一个可指定的深度递归遍历数组，并将所有元素与遍历到的子数组中的元素合并为一个新数组返回。</p>
+<p><em>扁平化数组</em></p>
+<p><em>flat() 方法会移除数组中的空项</em></p>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> arr1 = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, [<span class="hljs-number">3</span>, <span class="hljs-number">4</span>]];
+arr1.flat();
+<span class="hljs-comment">// [1, 2, 3, 4]</span>
+
+<span class="hljs-keyword">var</span> arr2 = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, [<span class="hljs-number">3</span>, <span class="hljs-number">4</span>, [<span class="hljs-number">5</span>, <span class="hljs-number">6</span>]]];
+arr2.flat();
+<span class="hljs-comment">// [1, 2, 3, 4, [5, 6]]</span>
+
+<span class="hljs-keyword">var</span> arr3 = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, [<span class="hljs-number">3</span>, <span class="hljs-number">4</span>, [<span class="hljs-number">5</span>, <span class="hljs-number">6</span>]]];
+arr3.flat(<span class="hljs-number">2</span>);
+<span class="hljs-comment">// [1, 2, 3, 4, 5, 6]</span>
+
+<span class="hljs-comment">//使用 Infinity 作为深度，展开任意深度的嵌套数组</span>
+arr3.flat(<span class="hljs-literal">Infinity</span>);
+<span class="hljs-comment">// [1, 2, 3, 4, 5, 6]</span></code></pre></div>
+</li>
+<li><p><code>map()</code>创建一个新数组，其结果是该数组中的每个元素都调用一个提供的函数后返回的结果</p>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> array1 = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>].map(<span class="hljs-function"><span class="hljs-params">v</span>=&gt;</span>v+<span class="hljs-number">1</span>)
+<span class="hljs-built_in">console</span>.log(array1)
+<span class="hljs-comment">// [2,3,4,5,6]</span></code></pre></div>
+</li>
+<li><p><code>flatmap()</code>使用映射函数映射每个元素，然后将结果压缩成一个新数组</p>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> arr = [<span class="hljs-string">"今天天气不错"</span>, <span class="hljs-string">""</span>, <span class="hljs-string">"早上好"</span>]
+
+arr.map(<span class="hljs-function"><span class="hljs-params">s</span> =&gt;</span> s.split(<span class="hljs-string">""</span>))
+<span class="hljs-comment">// [["今", "天", "天", "气", "不", "错"],[""],["早", "上", "好"]]</span>
+
+arr.flatMap(<span class="hljs-function"><span class="hljs-params">s</span> =&gt;</span> s.split(<span class="hljs-string">''</span>));
+<span class="hljs-comment">// ["今", "天", "天", "气", "不", "错", "", "早", "上", "好"]</span></code></pre></div>
+</li>
+<li><p>关联es6中 <code>for...of</code>使用的</p>
+<ul>
+<li><code>keys()</code></li>
+<li><code>values()</code></li>
+<li><code>entries()</code></li>
+</ul>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> index <span class="hljs-keyword">of</span> [<span class="hljs-string">'a'</span>, <span class="hljs-string">'b'</span>].keys()) &#123;
+<span class="hljs-built_in">console</span>.log(index);
+&#125;
+<span class="hljs-comment">// 0</span>
+<span class="hljs-comment">// 1</span>
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> elem <span class="hljs-keyword">of</span> [<span class="hljs-string">'a'</span>, <span class="hljs-string">'b'</span>].values()) &#123;
+  <span class="hljs-built_in">console</span>.log(elem);
+&#125;
+<span class="hljs-comment">// 'a'</span>
+<span class="hljs-comment">// 'b'</span>
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> [index, elem] <span class="hljs-keyword">of</span> [<span class="hljs-string">'a'</span>, <span class="hljs-string">'b'</span>].entries()) &#123;
+  <span class="hljs-built_in">console</span>.log(index, elem);
+&#125;
+<span class="hljs-comment">// 0 "a"</span>
+<span class="hljs-comment">// 1 "b"</span></code></pre></div>
+</li>
+<li><p><code>forEach()</code>对数组的每个元素执行一次提供的函数。</p>
+<p><em>无法中途退出循环</em></p>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> array = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>]
+array.forEach(<span class="hljs-function"><span class="hljs-params">v</span>=&gt;</span><span class="hljs-built_in">console</span>.log(v))
+<span class="hljs-comment">// 1 2 3 4 5</span></code></pre></div>
+</li>
+<li><p><code>find()</code>返回数组中满足提供的测试函数的第一个元素的值。否则返回 undefined</p>
+</li>
+<li><p><code>findIndex()</code>返回数组中满足提供的测试函数的第一个元素的索引。否则返回-1</p>
+</li>
+<li><p><code>filter()</code>返回过滤后的数组</p>
+<p><em>过滤器</em></p>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> words = [<span class="hljs-string">'spray'</span>, <span class="hljs-string">'limit'</span>, <span class="hljs-string">'elite'</span>, <span class="hljs-string">'exuberant'</span>, <span class="hljs-string">'destruction'</span>, <span class="hljs-string">'present'</span>];
+
+<span class="hljs-keyword">const</span> result = words.filter(<span class="hljs-function"><span class="hljs-params">word</span> =&gt;</span> word.length &gt; <span class="hljs-number">6</span>);
+
+<span class="hljs-built_in">console</span>.log(result);
+<span class="hljs-comment">// ["exuberant", "destruction", "present"]</span></code></pre></div>
+
+</li>
+</ul>
+<h2 id="判断是否为数组"><a href="#判断是否为数组" class="headerlink" title="判断是否为数组"></a>判断是否为数组</h2><ul>
+<li><p><code>Object.prototype.toString()</code></p>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isArray</span>(<span class="hljs-params">obj</span>)</span>&#123;
+<span class="hljs-keyword">return</span> <span class="hljs-built_in">Object</span>.prototype.toString.call( obj ) === <span class="hljs-string">'[object Array]'</span>;
+&#125;</code></pre></div>
+</li>
+<li><p><code>_proto_</code></p>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isArray</span>(<span class="hljs-params">obj</span>)</span>&#123;
+  <span class="hljs-keyword">return</span> obj.__proto__ === <span class="hljs-built_in">Array</span>.prototype
+  &#125;</code></pre></div>
+</li>
+<li><p>JQ的<code>$.isArray()</code></p>
+</li>
+</ul>
+<h2 id="数组去重"><a href="#数组去重" class="headerlink" title="数组去重"></a>数组去重</h2>  <div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> arr = [<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">4</span>,<span class="hljs-number">4</span>,<span class="hljs-number">4</span>]
+<span class="hljs-comment">//1</span>
+<span class="hljs-keyword">let</span> uni1 = <span class="hljs-built_in">Array</span>.from(<span class="hljs-keyword">new</span> <span class="hljs-built_in">Set</span>(arr))
+<span class="hljs-comment">//2</span>
+<span class="hljs-keyword">let</span> uni2 = [...new <span class="hljs-built_in">Set</span>(arr)]
+<span class="hljs-comment">//3</span>
+<span class="hljs-keyword">let</span> uni3 = arr.sort().reduce(<span class="hljs-function">(<span class="hljs-params">init,cur</span>)=&gt;</span>&#123;
+<span class="hljs-built_in">console</span>.log(init)
+<span class="hljs-keyword">if</span>(init.length === <span class="hljs-number">0</span> || init[init.length<span class="hljs-number">-1</span>]!==cur)&#123;
+  init.push(cur)
+&#125;
+<span class="hljs-keyword">return</span> init
+&#125;,[])</code></pre></div>
+
+<h2 id="计算数组中元素出现的次数"><a href="#计算数组中元素出现的次数" class="headerlink" title="计算数组中元素出现的次数"></a>计算数组中元素出现的次数</h2>  <div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> arr = [<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">4</span>,<span class="hljs-number">4</span>,<span class="hljs-number">4</span>]
+<span class="hljs-comment">//reduce</span>
+<span class="hljs-keyword">let</span> countArr = arr.reduce(<span class="hljs-function">(<span class="hljs-params">obj,i</span>)=&gt;</span>&#123;
+  <span class="hljs-keyword">if</span>(i <span class="hljs-keyword">in</span> obj)&#123;
+    obj[i]++
+  &#125;<span class="hljs-keyword">else</span>&#123;
+    obj[i]=<span class="hljs-number">1</span>
+  &#125;
+  <span class="hljs-keyword">return</span> obj
+&#125;,&#123;&#125;)
+
+<span class="hljs-comment">// &#123; '1': 2, '2': 2, '3': 2, '4': 4 &#125;</span>
+<span class="hljs-comment">// 循环</span>
+<span class="hljs-keyword">let</span> obj = &#123;&#125;
+<span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i <span class="hljs-keyword">of</span> arr)&#123;
+  <span class="hljs-keyword">if</span>(i <span class="hljs-keyword">in</span> obj)&#123;
+    obj[i]++
+  &#125;<span class="hljs-keyword">else</span>&#123;
+    obj[i]=<span class="hljs-number">1</span>
+  &#125;
+&#125;</code></pre></div>
+
+<h2 id="对于obj按照属性分类"><a href="#对于obj按照属性分类" class="headerlink" title="对于obj按照属性分类"></a>对于obj按照属性分类</h2>  <div class="hljs"><pre><code class="hljs javascript"><span class="hljs-comment">// 面试题教你归类json</span>
+<span class="hljs-comment">// JSON.parse(jsonStr)</span>
+<span class="hljs-keyword">let</span> person = [
+  &#123;<span class="hljs-attr">name</span>:<span class="hljs-string">'Alice'</span>,<span class="hljs-attr">age</span>:<span class="hljs-number">21</span>&#125;,
+  &#123;<span class="hljs-attr">name</span>:<span class="hljs-string">'Bob'</span>,<span class="hljs-attr">age</span>:<span class="hljs-number">21</span>&#125;,
+  &#123;<span class="hljs-attr">name</span>:<span class="hljs-string">'Hank'</span>,<span class="hljs-attr">age</span>:<span class="hljs-number">20</span>&#125;,
+  &#123;<span class="hljs-attr">name</span>:<span class="hljs-string">'Jery'</span>,<span class="hljs-attr">age</span>:<span class="hljs-number">19</span>&#125;
+]
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">groupBy</span>(<span class="hljs-params">objArr,prop</span>)</span>&#123;
+  <span class="hljs-keyword">return</span> objArr.reduce(<span class="hljs-function">(<span class="hljs-params">acc,obj</span>)=&gt;</span>&#123;
+    <span class="hljs-keyword">let</span> key = obj[prop]
+    <span class="hljs-keyword">if</span>(!acc[key])&#123;
+      acc[key] = []
+    &#125;
+    acc[key].push(obj)
+    <span class="hljs-keyword">return</span> acc
+  &#125;,&#123;&#125;)
+&#125;
+
+<span class="hljs-keyword">let</span> res = groupBy(person,<span class="hljs-string">'age'</span>)</code></pre></div>
+
+<h2 id="扁平化数组"><a href="#扁平化数组" class="headerlink" title="扁平化数组"></a>扁平化数组</h2>  <div class="hljs"><pre><code class="hljs javascript"><span class="hljs-comment">// 1 reduce</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">flat1</span>(<span class="hljs-params">arr</span>)</span>&#123;
+  <span class="hljs-keyword">return</span> arr.reduce(<span class="hljs-function">(<span class="hljs-params">res,item</span>)=&gt;</span>&#123;
+    <span class="hljs-keyword">return</span> res.concat(<span class="hljs-built_in">Array</span>.isArray(item)?flat1(item):item)
+  &#125;,[])
+&#125;
+<span class="hljs-comment">//2 递归</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">flat2</span>(<span class="hljs-params">arr</span>)</span>&#123;
+  <span class="hljs-keyword">let</span> res = []
+  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> item <span class="hljs-keyword">of</span> arr)&#123;
+    <span class="hljs-built_in">Array</span>.isArray(item)?res = res.concat.flat2(item):res.push(item)
+  &#125;
+  <span class="hljs-keyword">return</span> res
+&#125;
+<span class="hljs-comment">// 3 展开运算符</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">flat3</span>(<span class="hljs-params">arr</span>)</span>&#123;
+  <span class="hljs-keyword">while</span>(arr.some(<span class="hljs-function"><span class="hljs-params">item</span>=&gt;</span>&#123;
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">Array</span>.isArray(item)
+  &#125;))&#123;
+    arr = [].concat(...arr)
+  &#125;
+  <span class="hljs-keyword">return</span> arr
+&#125;
+<span class="hljs-comment">// 4 toString</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">flat4</span>(<span class="hljs-params">arr</span>)</span>&#123;
+  <span class="hljs-keyword">return</span> arr.toString().split(<span class="hljs-string">','</span>).map(<span class="hljs-function"><span class="hljs-params">item</span>=&gt;</span><span class="hljs-built_in">Number</span>(item))
+&#125;
+<span class="hljs-comment">// 5 join</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">flat5</span>(<span class="hljs-params">arr</span>)</span>&#123;
+  <span class="hljs-keyword">return</span> arr.join(<span class="hljs-string">','</span>).split(<span class="hljs-string">','</span>).map(<span class="hljs-function"><span class="hljs-params">item</span>=&gt;</span><span class="hljs-built_in">Number</span>(item))
+&#125;
+<span class="hljs-comment">// 6 flat()</span>
+flat(<span class="hljs-literal">Infinity</span>)</code></pre></div>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/javascript/">javascript</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2019/07/11/promise/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Promise</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2019/07/10/for...of/">
+                        <span class="hidden-mobile">for...of</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+    
+  <!-- 备案信息 -->
+  <div class="beian">
+    <a href="http://beian.miit.gov.cn/" target="_blank"
+       rel="nofollow noopener">粤ICP备2020115702号</a>
+    
+  </div>
+
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '#post-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "操作数组的常用方法&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?048f7ae77dbb92c9d2c83ca3df99d02f";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+</body>
+</html>

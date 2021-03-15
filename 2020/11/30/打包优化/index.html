@@ -1,0 +1,650 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.jpeg">
+  <link rel="icon" type="image/png" href="/img/avatar.jpeg">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="tatekii">
+  <meta name="keywords" content="">
+  <title>vuecli打包优化踩坑 - 不知名的笔记本</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/tomorrow-night-eighties.min.css" />
+    
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_pf9vaxs7x7b.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+  <header style="height: 30vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Dr.🐎</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container page-header text-center fade-in-up">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-11-30 12:05" pubdate>
+        2020年11月30日 中午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      550 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      9
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto" id="post">
+            <!-- SEO header -->
+            <h1 style="display: none">vuecli打包优化踩坑</h1>
+            
+            <div class="markdown-body" id="post-body">
+              <h2 id="按需引入"><a href="#按需引入" class="headerlink" title="按需引入"></a>按需引入</h2><ol>
+<li>elementui官网配置方法不适用</li>
+<li>vuecli中babel配置文件为<code>babel.config.js</code></li>
+<li>安装<code>babel-plugin-component</code></li>
+<li>配置<code>babel.config.js</code></li>
+</ol>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-built_in">module</span>.exports = &#123;
+  presets: [
+    <span class="hljs-string">'@vue/cli-plugin-babel/preset'</span>
+  ],
+  plugins: [
+    [
+      <span class="hljs-string">"component"</span>,<span class="hljs-comment">// 插件位置</span>
+      &#123;
+        <span class="hljs-string">"libraryName"</span>: <span class="hljs-string">"element-ui"</span>,
+        <span class="hljs-string">"styleLibraryName"</span>: <span class="hljs-string">"theme-chalk"</span>
+      &#125;
+    ]
+  ]
+&#125;</code></pre></div>
+
+<ol>
+<li>修改<code>main.js</code><div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">import</span> &#123; MenuItem,Container,Header,Aside,Main,Input,Footer,Avatar, Menu, Table, TableColumn, Pagination ,Button&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">"element-ui"</span>;
+
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> item <span class="hljs-keyword">of</span> [MenuItem,Container,Header,Aside,Main,Input,Footer,Avatar, Menu, Table, TableColumn, Pagination,Button]) &#123;
+  Vue.use(item);
+&#125;</code></pre></div></li>
+<li>也可以单独独立出自定义组件,二次封装<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-comment">// eleui.js</span>
+<span class="hljs-keyword">import</span> &#123; MenuItem,Container,Header,Aside,Main,Input,Footer,Avatar, Menu, Table, TableColumn, Pagination ,Button&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">"element-ui"</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;
+  install : <span class="hljs-function">(<span class="hljs-params">Vue</span>) =&gt;</span> &#123;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> co <span class="hljs-keyword">of</span> [MenuItem,Container,Header,Aside,Main,Input,Footer,Avatar, Menu, Table, TableColumn, Pagination ,Button])&#123;
+      Vue.use(co)
+    &#125;
+  &#125;
+&#125;
+
+
+<span class="hljs-comment">// main.js</span>
+<span class="hljs-keyword">import</span> eleUI <span class="hljs-keyword">from</span> <span class="hljs-string">'./eleUI.js'</span>
+Vue.use(eleUI)</code></pre></div>
+
+</li>
+</ol>
+<h2 id="CDN加载资源"><a href="#CDN加载资源" class="headerlink" title="CDN加载资源"></a>CDN加载资源</h2><ol>
+<li><p>安装<code>html-webpack-plugin</code></p>
+</li>
+<li><p>修改<code>public/index.html</code></p>
+<div class="hljs"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"en"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"utf-8"</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">"X-UA-Compatible"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"IE=edge"</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span></span>
+<span class="hljs-tag">      <span class="hljs-attr">name</span>=<span class="hljs-string">"viewport"</span></span>
+<span class="hljs-tag">      <span class="hljs-attr">content</span>=<span class="hljs-string">"width=device-width,initial-scale=1.0,user-scalable=no"</span></span>
+<span class="hljs-tag">    /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"icon"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"&lt;%= BASE_URL %&gt;favicon.ico"</span> /&gt;</span>
+
+    <span class="hljs-comment">&lt;!-- 使用CDN的CSS文件 --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">%</span> <span class="hljs-attr">for</span> (<span class="hljs-attr">var</span> <span class="hljs-attr">i</span> <span class="hljs-attr">in</span> <span class="hljs-attr">htmlWebpackPlugin.options.cdn</span> &amp;&amp;</span>
+<span class="hljs-tag">    <span class="hljs-attr">htmlWebpackPlugin.options.cdn.css</span>) &#123; %&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span></span>
+<span class="hljs-tag">      <span class="hljs-attr">href</span>=<span class="hljs-string">"&lt;%= htmlWebpackPlugin.options.cdn.css[i] %&gt;"</span></span>
+<span class="hljs-tag">      <span class="hljs-attr">rel</span>=<span class="hljs-string">"preload"</span></span>
+<span class="hljs-tag">      <span class="hljs-attr">as</span>=<span class="hljs-string">"style"</span></span>
+<span class="hljs-tag">    /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"&lt;%= htmlWebpackPlugin.options.cdn.css[i] %&gt;"</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">%</span> &#125; %&gt;</span>
+    <span class="hljs-comment">&lt;!-- 使用CDN的CSS文件 --&gt;</span>
+
+  <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">noscript</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">strong</span></span>
+<span class="hljs-tag">        &gt;</span>We're sorry but moviapp doesn't work properly without JavaScript
+        enabled. Please enable it to continue.<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span></span>
+<span class="hljs-tag">      &gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">noscript</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"app"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+    <span class="hljs-comment">&lt;!-- built files will be auto injected --&gt;</span>
+
+    <span class="hljs-comment">&lt;!-- 使用CDN的JS文件 --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">%</span> <span class="hljs-attr">for</span> (<span class="hljs-attr">var</span> <span class="hljs-attr">i</span> <span class="hljs-attr">in</span> <span class="hljs-attr">htmlWebpackPlugin.options.cdn</span> &amp;&amp;</span>
+<span class="hljs-tag">    <span class="hljs-attr">htmlWebpackPlugin.options.cdn.js</span>) &#123; %&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"&lt;%= htmlWebpackPlugin.options.cdn.js[i] %&gt;"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">%</span> &#125; %&gt;</span>
+    <span class="hljs-comment">&lt;!-- 使用CDN的JS文件 --&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></code></pre></div>
+</li>
+<li><p>配置<code>vue.config.js</code></p>
+</li>
+</ol>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-comment">// 判断生产环境</span>
+<span class="hljs-keyword">const</span> isProduction = process.env.NODE_ENV === <span class="hljs-string">"production"</span>;
+<span class="hljs-keyword">const</span> cdn = &#123;
+  <span class="hljs-comment">// 随便抓几个</span>
+  js: [
+    <span class="hljs-string">"https://cdn.bootcdn.net/ajax/libs/vue/2.6.0/vue.runtime.esm.js"</span>,
+    <span class="hljs-string">"https://cdn.bootcdn.net/ajax/libs/vue-router/3.1.3/vue-router.esm.js"</span>
+  ],
+&#125;;
+
+<span class="hljs-built_in">module</span>.exports = &#123;
+  configureWebpack: <span class="hljs-function">(<span class="hljs-params">config</span>) =&gt;</span> &#123;
+    <span class="hljs-keyword">if</span> (isProduction) &#123;
+      config.externals = &#123;
+        <span class="hljs-comment">// 排除的依赖，不从bundle中引入的依赖</span>
+        <span class="hljs-string">"vue"</span>: <span class="hljs-string">"Vue"</span>,
+        <span class="hljs-string">"vue-router"</span>: <span class="hljs-string">"VueRouter"</span>
+      &#125;;
+    &#125;
+  &#125;,
+  chainWebpack: <span class="hljs-function">(<span class="hljs-params">config</span>) =&gt;</span> &#123;
+    <span class="hljs-keyword">if</span> (isProduction) &#123;
+      config.plugin(<span class="hljs-string">"html"</span>).tap(<span class="hljs-function">(<span class="hljs-params">args</span>) =&gt;</span> &#123;
+        <span class="hljs-comment">// 传递给 html-webpack-plugin's 构造函数的新参数</span>
+        args[<span class="hljs-number">0</span>].cdn = cdn;
+        <span class="hljs-keyword">return</span> args;
+      &#125;);
+    &#125;
+  &#125;,
+&#125;;</code></pre></div>
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/vue/">vue</a>
+                    
+                      <a class="hover-with-bg" href="/tags/webpack/">webpack</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/01/27/axios/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">axios</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/11/25/diff%E7%AE%97%E6%B3%95/">
+                        <span class="hidden-mobile">diff算法</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+    
+  <!-- 备案信息 -->
+  <div class="beian">
+    <a href="http://beian.miit.gov.cn/" target="_blank"
+       rel="nofollow noopener">粤ICP备2020115702号</a>
+    
+  </div>
+
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '#post-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "vuecli打包优化踩坑&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?048f7ae77dbb92c9d2c83ca3df99d02f";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+</body>
+</html>

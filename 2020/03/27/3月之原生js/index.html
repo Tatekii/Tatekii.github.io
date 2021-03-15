@@ -1,0 +1,876 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.jpeg">
+  <link rel="icon" type="image/png" href="/img/avatar.jpeg">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="tatekii">
+  <meta name="keywords" content="">
+  <title>原生js与jq - 不知名的笔记本</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/tomorrow-night-eighties.min.css" />
+    
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_pf9vaxs7x7b.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+  <header style="height: 30vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Dr.🐎</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container page-header text-center fade-in-up">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-03-27 14:00" pubdate>
+        2020年3月27日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.9k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      25
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto" id="post">
+            <!-- SEO header -->
+            <h1 style="display: none">原生js与jq</h1>
+            
+            <div class="markdown-body" id="post-body">
+              <ul>
+<li><p>javascript</p>
+<p>js 是一门函数优先的轻量级解释型语言，基于原型编程的动态脚本语言</p>
+<ol>
+<li>函数是一等公民（变量提升，函数可以作为函数的参数，返回值，可以赋值给变量，【函数式编程的条件】</li>
+<li>面向对象编程</li>
+<li>弱类型语言（变量的类型在运行时会变化，强类型语言的变量类型编译时就确定且不会改变</li>
+<li>基于原型（区别于基于类[类和实例]，js 中万物皆为[对象]<blockquote>
+<p>基于原型的语言具有所谓原型对象（prototypical object）的概念。原型对象可以作为一个模板，新对象可以从中获得原始的属性。任何对象都可以指定其自身的属性，任何对象都可以作为另一个对象的原型（prototype），从而允许后者共享前者的属性。</p>
+</blockquote>
+</li>
+</ol>
+</li>
+<li><p>BOM 浏览器的编程接口</p>
+</li>
+</ul>
+<div class="hljs"><pre><code class="hljs javascript">navigator	浏览器信息
+location	浏览器定位和导航
+history	窗口浏览器历史
+screen 屏幕</code></pre></div>
+
+<ul>
+<li>DOM 文档的编程接口</li>
+</ul>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-built_in">document</span>.getElementById(id);
+<span class="hljs-built_in">document</span>.getElementsByTagName(name);
+<span class="hljs-built_in">document</span>.createElement(name);
+parentNode.appendChild(node);
+element.innerHTML;
+element.style.left;
+element.setAttribute();
+element.getAttribute();
+element.addEventListener();
+<span class="hljs-built_in">window</span>.content;
+<span class="hljs-built_in">window</span>.onload;
+<span class="hljs-built_in">window</span>.dump();
+<span class="hljs-built_in">window</span>.scrollTo();</code></pre></div>
+
+<ul>
+<li><p>面向对象与面向过程</p>
+<ul>
+<li><p>分析出解决问题的步骤，用函数分别实现各步骤</p>
+</li>
+<li><p>把构成问题的事物抽象分解成各个对象，用对象来描述某个事物在整个解决问题过程中的行为</p>
+</li>
+<li><p>面向对象三要素</p>
+<ol>
+<li>封装 -&gt; 利用抽象数据类型将数据和基于数据的操作封装在一起只留下接口给外部访问</li>
+<li>继承 -&gt; 子类自动共享父类数据结构和方法</li>
+<li>多态 -&gt; 相同的操作或函数可作用于多种类型的对象上并获得不同的结果</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>➡️ 箭头函数</p>
+<ul>
+<li>箭头函数的 this 是语法上的，静态绑定书写时的上下文</li>
+<li>箭头函数没有<code>prototype</code> —&gt; <strong>不能作为构造函数，不能 new</strong></li>
+<li>箭头函数不能用<code>arguments</code>属性</li>
+</ul>
+</li>
+<li><p><code>eval()</code>函数</p>
+<ul>
+<li>AMD 规范的 requireJS 加载模块时有使用</li>
+<li>严格模式下的 eval()函数有作用域</li>
+</ul>
+</li>
+<li><p>柯里化</p>
+<p>把同时接受多个参数的函数改造成接受首个参数并返回接受余下参数的函数</p>
+<ol>
+<li>参数复用</li>
+<li>提前确定 — isType 方法</li>
+<li>延迟执行 — bind 方法</li>
+</ol>
+<div class="hljs"><pre><code class="hljs javascript">add(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>);
+add(<span class="hljs-number">1</span>)(<span class="hljs-number">2</span>)(<span class="hljs-number">4</span>);
+<span class="hljs-keyword">const</span> add = <span class="hljs-function">(<span class="hljs-params">a, b</span>) =&gt;</span> a + b;
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sum</span>(<span class="hljs-params"></span>) </span>&#123;
+  <span class="hljs-keyword">let</span> cur = [...arguments].reduce(add);
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">nextAdd</span>(<span class="hljs-params"></span>) </span>&#123;
+    cur += [...arguments].reduce(add);
+    <span class="hljs-keyword">return</span> nextAdd;
+  &#125;
+  nextAdd.toString = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> cur;
+  <span class="hljs-keyword">return</span> nextAdd;
+&#125;</code></pre></div>
+</li>
+<li><p>作用域/作用域链/闭包</p>
+<ul>
+<li>作用域：js 中的作用域是函数级的，变量在它声明的函数体以及函数体内嵌套的任意函数体内有定义</li>
+<li>作用域链：js 执行时创建的执行上下文含有外部词法环境的引用，可以通过这个引用获取外部词法环境的变量、声明等，这些引用串联起来一直指向全局的词法环境，形成了作用域链。</li>
+<li>闭包：从内部函数访问外部函数作用域</li>
+<li>JavaScript 中，函数在每次创建时生成闭包</li>
+</ul>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++) &#123;
+  setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> &#123;
+    <span class="hljs-built_in">console</span>.log(i);
+  &#125;, <span class="hljs-number">1000</span> * i);
+&#125;</code></pre></div>
+</li>
+<li><p>垃圾回收机制</p>
+<ul>
+<li><p>js 具有自动垃圾收集机制，周期运行</p>
+</li>
+<li><p>标记清除</p>
+</li>
+<li><p>引用记数</p>
+</li>
+<li><p>内存泄漏</p>
+<ol>
+<li>全局变量</li>
+<li>循环引用</li>
+<li>闭包</li>
+<li>定时器</li>
+<li>控制台 console</li>
+</ol>
+</li>
+<li><p>es6 中的<code>WeakMap</code>和<code>WeakSet</code>，不被引用记数，不影响垃圾回收，即想往对象上加东西又不想影响垃圾回收</p>
+</li>
+</ul>
+</li>
+<li><p>map/flatMap/reduce</p>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-comment">// reduce的骚操作</span>
+<span class="hljs-comment">// 对对象内的数据求和</span>
+<span class="hljs-keyword">let</span> data = [
+  &#123; <span class="hljs-attr">name</span>: <span class="hljs-string">"mmm"</span>, <span class="hljs-attr">money</span>: <span class="hljs-number">120</span> &#125;,
+  &#123; <span class="hljs-attr">name</span>: <span class="hljs-string">"mmm"</span>, <span class="hljs-attr">money</span>: <span class="hljs-number">120</span> &#125;,
+  &#123; <span class="hljs-attr">name</span>: <span class="hljs-string">"mmm"</span>, <span class="hljs-attr">money</span>: <span class="hljs-number">120</span> &#125;,
+  &#123; <span class="hljs-attr">name</span>: <span class="hljs-string">"mmm"</span>, <span class="hljs-attr">money</span>: <span class="hljs-number">120</span> &#125;,
+  &#123; <span class="hljs-attr">name</span>: <span class="hljs-string">"mmm"</span>, <span class="hljs-attr">money</span>: <span class="hljs-number">120</span> &#125;,
+  &#123; <span class="hljs-attr">name</span>: <span class="hljs-string">"mmm"</span>, <span class="hljs-attr">money</span>: <span class="hljs-number">120</span> &#125;,
+];
+<span class="hljs-keyword">const</span> sumMoney = <span class="hljs-function">(<span class="hljs-params">data</span>) =&gt;</span> &#123;
+  <span class="hljs-keyword">return</span> data.reduce(<span class="hljs-function">(<span class="hljs-params">x, y</span>) =&gt;</span> a + y.money, <span class="hljs-number">0</span>);
+&#125;;
+<span class="hljs-comment">//720</span>
+
+<span class="hljs-comment">// 数组扁平化</span>
+[[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>], <span class="hljs-number">2345</span>, [<span class="hljs-number">12</span>, <span class="hljs-number">3</span>]].reduce(<span class="hljs-function">(<span class="hljs-params">x, y</span>) =&gt;</span> x.concat(y));
+
+<span class="hljs-comment">// 计算出现次数</span>
+<span class="hljs-keyword">const</span> showCount = <span class="hljs-function">(<span class="hljs-params">data</span>) =&gt;</span> &#123;
+  <span class="hljs-keyword">return</span> data.reduce(<span class="hljs-function">(<span class="hljs-params">showList, item</span>) =&gt;</span> &#123;
+    <span class="hljs-keyword">if</span> (item <span class="hljs-keyword">in</span> showList) &#123;
+      showList[item]++;
+    &#125; <span class="hljs-keyword">else</span> &#123;
+      showList[item] = <span class="hljs-number">1</span>;
+    &#125;
+    <span class="hljs-keyword">return</span> showList;
+  &#125;, &#123;&#125;);
+&#125;;
+
+<span class="hljs-comment">// orderBy按属性分类</span>
+<span class="hljs-keyword">const</span> orderBy = <span class="hljs-function">(<span class="hljs-params">data, prop</span>) =&gt;</span> &#123;
+  <span class="hljs-keyword">return</span> data.reduce(<span class="hljs-function">(<span class="hljs-params">list, item</span>) =&gt;</span> &#123;
+    <span class="hljs-keyword">let</span> key = item[prop];
+    <span class="hljs-keyword">if</span> (!list[key]) &#123;
+      list[ket] = [];
+    &#125;
+    list[key].push(item);
+    <span class="hljs-keyword">return</span> list;
+  &#125;, &#123;&#125;);
+&#125;;
+
+<span class="hljs-comment">// 对象中取出特定数据输出新数组</span>
+<span class="hljs-keyword">const</span> newArr = <span class="hljs-function">(<span class="hljs-params">data, prop</span>) =&gt;</span> &#123;
+  <span class="hljs-keyword">return</span> data.reduce(<span class="hljs-function">(<span class="hljs-params">arr, item</span>) =&gt;</span> &#123;
+    <span class="hljs-keyword">return</span> [...arr, ...item[prop]];
+  &#125;, []);
+&#125;;
+
+<span class="hljs-comment">// 数组去重</span>
+<span class="hljs-keyword">const</span> reduceSet = <span class="hljs-function">(<span class="hljs-params">arr</span>) =&gt;</span> &#123;
+  <span class="hljs-keyword">return</span> arr.sort().reduce(<span class="hljs-function">(<span class="hljs-params">acc, cur</span>) =&gt;</span> &#123;
+    <span class="hljs-keyword">if</span> (!acc.length || acc[acc.length - <span class="hljs-number">1</span>] !== cur) &#123;
+      acc.push(cur);
+    &#125;
+    <span class="hljs-keyword">return</span> acc;
+  &#125;, []);
+&#125;;</code></pre></div>
+</li>
+<li><p>window</p>
+<ul>
+<li><code>window.ready</code>样式应用到了 DOM 上</li>
+<li><code>window.load</code>加载完所有资源（图片</li>
+</ul>
+</li>
+<li><p>事件循环 EventLoop。主线程不断从任务队列中读取任务进入执行栈执行的过程,栈结构，后进后出</p>
+<ul>
+<li><p>同步任务，主线程中执行，单线程一个接一个</p>
+</li>
+<li><p>异步任务，加入任务队列中</p>
+<ul>
+<li>宏任务 <code>定时器,I/O,UI交互，整体函数</code></li>
+<li>微任务 <code>Promise.then, Promise.catch，nextTick()，Object.observe</code></li>
+</ul>
+</li>
+<li><p>顺序</p>
+<ol>
+<li>整体函数作为一个宏任务</li>
+<li>执行完同步函数，遇到异步任务分别加入各自队列</li>
+<li>执行微任务</li>
+<li>执行完则浏览器 GUI 渲染</li>
+<li>执行下一个宏任务</li>
+<li>blablablabla</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>进制转换</p>
+</li>
+</ul>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-comment">// 十进制转换为其他进制</span>
+<span class="hljs-built_in">Number</span>(val).toString(<span class="hljs-number">2</span>, <span class="hljs-number">4</span>, <span class="hljs-number">6</span>, <span class="hljs-number">8</span>);
+<span class="hljs-comment">// 其他进制转十进制</span>
+<span class="hljs-built_in">parseInt</span>(val, radix);</code></pre></div>
+
+<ul>
+<li><p>严格模式<code>use strick</code></p>
+<ul>
+<li>严格模式通过抛出错误来消除了一些原有静默错误和编码错误。</li>
+<li>严格模式修复了一些导致 JavaScript 引擎难以执行优化的缺陷，提高代码运行效率。</li>
+<li>严格模式禁用了在 ECMAScript 的未来版本中可能会定义的一些关键字</li>
+<li>无法再意外创建全局变量，全局作用域下，this 的值为 undefined。</li>
+<li>要求函数的参数名唯一</li>
+<li>eval()函数有自己的作用域</li>
+</ul>
+</li>
+<li><p>操作字符串</p>
+</li>
+</ul>
+<div class="hljs"><pre><code class="hljs javascript">charAt(); <span class="hljs-comment">//返回索引位置字符</span>
+concat(); <span class="hljs-comment">//拼接</span>
+indexOf(), lastIndexOf(); <span class="hljs-comment">//返回出现的索引位置</span>
+includes();
+match(); <span class="hljs-comment">//匹配正则</span>
+replace();
+split(); <span class="hljs-comment">//以xx分割字符串</span>
+slice(); <span class="hljs-comment">//截取返回新字符串，以索引</span>
+substring(); <span class="hljs-comment">//截取返回新字符串，以长度</span>
+trim(); <span class="hljs-comment">//删除空格</span>
+toLowerCase(), toUpperCase();</code></pre></div>
+
+<ul>
+<li><p>操作数组</p>
+<ul>
+<li>不改变原数组</li>
+</ul>
+<div class="hljs"><pre><code class="hljs javascript">filter();
+slice();
+concat();
+join(); <span class="hljs-comment">//返回字符串</span>
+includes();
+indexOf(), lastIndexOf();
+reduce();
+forEach();
+reduce();
+map();
+find(); <span class="hljs-comment">//返回符合条件的</span>
+every(); <span class="hljs-comment">//全都符合条件？</span>
+some(); <span class="hljs-comment">//有符合条件的</span></code></pre></div>
+
+<ul>
+<li>改变原数组</li>
+</ul>
+<div class="hljs"><pre><code class="hljs javascript">push();
+pop();
+shift();
+unshift();
+sort(); <span class="hljs-comment">//排序</span>
+reverse(); <span class="hljs-comment">//倒序</span>
+splice(); <span class="hljs-comment">// 删除</span>
+flat();</code></pre></div>
+</li>
+<li><p>洗牌</p>
+</li>
+</ul>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">shuffle</span>(<span class="hljs-params">arr</span>) </span>&#123;
+  <span class="hljs-keyword">let</span> len = arr.length
+  <span class="hljs-keyword">while</span> (len) &#123;
+    <span class="hljs-keyword">const</span> i = <span class="hljs-built_in">Math</span>.floor(<span class="hljs-built_in">Math</span>.random() * len--);
+    [arr[i],arr[len]] = [arr[len],arr[i]]
+  &#125;
+  <span class="hljs-keyword">return</span> arr;
+&#125;</code></pre></div>
+
+<ul>
+<li>实现 EventEmitter</li>
+</ul>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-comment">// 请实现下面的自定义事件 Event 对象的接口，功能见注释(测试1)</span>
+<span class="hljs-comment">// 该 Event 对象的接口需要能被其他对象拓展复用(测试2)</span>
+<span class="hljs-comment">// 测试1</span>
+Event.on(<span class="hljs-string">"test"</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">result</span>) </span>&#123;
+  <span class="hljs-built_in">console</span>.log(result);
+&#125;);
+Event.on(<span class="hljs-string">"test"</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"test"</span>);
+&#125;);
+Event.emit(<span class="hljs-string">"test"</span>, <span class="hljs-string">"hello world"</span>); <span class="hljs-comment">// 输出 'hello world' 和 'test'</span>
+<span class="hljs-comment">// 测试2</span>
+<span class="hljs-keyword">var</span> person1 = &#123;&#125;;
+<span class="hljs-keyword">var</span> person2 = &#123;&#125;;
+<span class="hljs-built_in">Object</span>.assign(person1, Event);
+<span class="hljs-built_in">Object</span>.assign(person2, Event);
+person1.on(<span class="hljs-string">"call1"</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"person1"</span>);
+&#125;);
+person2.on(<span class="hljs-string">"call2"</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"person2"</span>);
+&#125;);
+person1.emit(<span class="hljs-string">"call1"</span>); <span class="hljs-comment">// 输出 'person1'</span>
+person1.emit(<span class="hljs-string">"call2"</span>); <span class="hljs-comment">// 没有输出</span>
+person2.emit(<span class="hljs-string">"call1"</span>); <span class="hljs-comment">// 没有输出</span>
+person2.emit(<span class="hljs-string">"call2"</span>); <span class="hljs-comment">// 输出 'person2'</span>
+<span class="hljs-keyword">var</span> Event = &#123;
+  <span class="hljs-comment">// 通过on接口监听事件eventName</span>
+  <span class="hljs-comment">// 如果事件eventName被触发，则执行callback回调函数</span>
+  on: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">eventName, callback</span>) </span>&#123;
+    <span class="hljs-comment">//你的代码</span>
+  &#125;,
+  <span class="hljs-comment">// 触发事件 eventName</span>
+  emit: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">eventName</span>) </span>&#123;
+    <span class="hljs-comment">//你的代码</span>
+  &#125;,
+&#125;;</code></pre></div>
+
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> Event =&#123;
+  on:<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">name,cb</span>)</span>&#123;
+    <span class="hljs-keyword">if</span>(!<span class="hljs-keyword">this</span>.handles)&#123;
+      <span class="hljs-built_in">Object</span>.defineProperty(<span class="hljs-keyword">this</span>,<span class="hljs-string">'handles'</span>,&#123;
+        value:&#123;&#125;,
+        enumerable:<span class="hljs-literal">false</span><span class="hljs-comment">//不可枚举,</span>
+        configurable:<span class="hljs-literal">true</span>,
+        writable:<span class="hljs-literal">true</span>
+      &#125;)
+    &#125;
+    <span class="hljs-keyword">if</span>(!<span class="hljs-keyword">this</span>.handles[name])&#123;
+      <span class="hljs-keyword">this</span>.handles[name] = []
+    &#125;
+    <span class="hljs-keyword">this</span>.handles[name].push(cb)
+  &#125;,
+  emit:<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">name,...args</span>)</span>&#123;
+    <span class="hljs-keyword">if</span>(<span class="hljs-keyword">this</span>.handles[name])&#123;
+      <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i =<span class="hljs-number">0</span>;i&lt;<span class="hljs-keyword">this</span>.handles[name].length;i++)&#123;
+        <span class="hljs-keyword">this</span>.handles[name][i](arg)
+      &#125;
+    &#125;
+  &#125;
+&#125;</code></pre></div>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
+                    
+                      <a class="hover-with-bg" href="/tags/js/">js</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/04/02/3%E6%9C%88%E4%BB%BD%E7%9A%84%E4%B9%B1%E4%B8%83%E5%85%AB%E7%B3%9F%E5%88%B7%E9%A2%98/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">刷题刷题还是刷题</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/03/26/3%E6%9C%88%E4%B9%8B%E7%BB%BC%E5%90%88%E9%97%AE%E9%A2%98/">
+                        <span class="hidden-mobile">综合问题</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+    
+  <!-- 备案信息 -->
+  <div class="beian">
+    <a href="http://beian.miit.gov.cn/" target="_blank"
+       rel="nofollow noopener">粤ICP备2020115702号</a>
+    
+  </div>
+
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '#post-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "原生js与jq&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?048f7ae77dbb92c9d2c83ca3df99d02f";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,885 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.jpeg">
+  <link rel="icon" type="image/png" href="/img/avatar.jpeg">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="tatekii">
+  <meta name="keywords" content="">
+  <title>h5pb刷题 - 不知名的笔记本</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/tomorrow-night-eighties.min.css" />
+    
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_pf9vaxs7x7b.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+  <header style="height: 30vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Dr.🐎</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container page-header text-center fade-in-up">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2019-12-01 12:39" pubdate>
+        2019年12月1日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      3.7k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      41
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto" id="post">
+            <!-- SEO header -->
+            <h1 style="display: none">h5pb刷题</h1>
+            
+            <div class="markdown-body" id="post-body">
+              <h2 id="github"><a href="#github" class="headerlink" title="github"></a><a href="https://github.com/h5bp/Front-end-Developer-Interview-Questions" target="_blank" rel="noopener">github</a></h2><h2 id="HTML-CSS"><a href="#HTML-CSS" class="headerlink" title="HTML/CSS"></a>HTML/CSS</h2><ol>
+<li><p>img标签的<code>srcset</code>属性</p>
+<p> <code>srcset</code> 的值是一个字符串，用来定义一个或多个图像候选地址，以<code>,</code>分割，每个候选地址将在特定条件下得以使用。候选地址包含图片 URL 和一个可选的宽度描述符和像素密度描述符，该候选地址用来在特定条件下替代原始地址成为 src  的属性。</p>
+ <div class="hljs"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"/files/16797/clock-demo-200px.png"</span></span>
+<span class="hljs-tag"> <span class="hljs-attr">alt</span>=<span class="hljs-string">"Clock"</span></span>
+<span class="hljs-tag"> <span class="hljs-attr">srcset</span>=<span class="hljs-string">"/files/16864/clock-demo-200px.png 1x, /files/16797/clock-demo-400px.png 2x"</span>&gt;</span></code></pre></div>
+</li>
+<li><p>link标签</p>
+<ul>
+<li>link标签用来引入外部文件</li>
+<li>link标签不阻碍浏览器加载和解析故放在head标签内可最大化提升页面加载速度</li>
+</ul>
+</li>
+<li><p>渐进增强</p>
+<ul>
+<li><p>_优雅降级_：Web 站点在所有新式浏览器中都能正常工作，如果用户使用的是旧式浏览器，则代码会针对旧版本的 IE 进行降级处理，使之在旧式浏览器上以某种形式降级体验而不至于完全不能使用。</p>
+</li>
+<li><p>_渐进增强_：从被所有浏览器支持的基本功能开始，逐步地添加那些只有新版本浏览器才支持的功能，向页面增加不影响基础浏览器的额外样式和功能。当浏览器支持时，它们会自定地呈现出来并发挥作用。</p>
+</li>
+</ul>
+</li>
+<li><p>“resetting” and “normalizing” CSS</p>
+<p> 都是为了兼容各浏览器在布局和渲染时的不同</p>
+<ul>
+<li>resetting将去掉所有的浏览器默认样式</li>
+<li>normalizing会保留部分有用的浏览器默认样式</li>
+<li>normalizing是模块化的</li>
+<li>normalizing修复了浏览器的bug</li>
+<li>normalizing不会让调试工具变得杂乱</li>
+</ul>
+</li>
+<li><p>z-index和层叠上下文</p>
+<p> <code>z-index</code>:盒模型可以沿着三维坐标系中的z轴层叠摆放，用z-index来表明当前层在z轴中的位置，数字越大，元素越接近观察者。</p>
+<p> <img src="../images/z-index.jpg" srcset="/img/loading.gif" alt="z-index"><br>我们假定用户正面向（浏览器）视窗或网页，而 HTML 元素沿着其相对于用户的一条虚构的 z 轴排开，<code>层叠上下文</code>就是对这些 HTML 元素的一个三维构想。众 HTML 元素基于其元素属性按照优先级顺序占据这个空间。</p>
+<p> 层叠上下文中的每一个元素都有一个<code>层叠水平</code>，决定了同！一！个！层叠上下文中元素在z轴上的显示顺序。</p>
+<ul>
+<li>层叠上下文可以包含在其他层叠上下文中，并且一起创建一个层叠上下文的层级。</li>
+<li>每个层叠上下文都完全独立于它的兄弟元素：当处理层叠时只考虑子元素。</li>
+<li>每个层叠上下文都是自包含的：当一个元素的内容发生层叠后，该元素将被作为整体在父级层叠上下文中按顺序进行层叠。</li>
+</ul>
+<p>层叠上下文的形成：</p>
+<ul>
+<li>根元素</li>
+<li>定位元素<code>position</code> 值非 <code>static</code>且 <code>z-index</code> 值不为 <code>auto</code> 的元素；</li>
+<li><code>flex/grid</code>容器的子元素</li>
+<li><code>opacity</code>小于1</li>
+<li><code>transform</code>不为’none’</li>
+<li><code>filter</code>不为’none’</li>
+</ul>
+</li>
+<li><p>@media查询除了screen还能查询什么</p>
+<ul>
+<li>print打印</li>
+<li>speech屏幕阅读器</li>
+</ul>
+</li>
+<li><p>浏览器如何解析css选择器</p>
+<p> 将选择器从右到左匹配解析，性能优于从左到右匹配，第一步就筛选了大量dom树中的叶子节点（最右节点</p>
+</li>
+<li><p>pseudo-element,pseudo-class</p>
+<ul>
+<li><p>伪元素是一个附加至选择器末的关键词，允许你对被选择元素的特定部分修改样式。</p>
+</li>
+<li><p>伪元素不存在真实的dom树中</p>
+</li>
+<li><p>一个选择器中只能使用一个伪元素。伪元素必须紧跟在语句中的简单选择器/基础选择器之后。</p>
+<div class="hljs"><pre><code class="hljs javascript">::after (:after)
+::before (:before)
+::cue (:cue)
+::first-letter (:first-letter)
+::first-line (:first-line)</code></pre></div>
+</li>
+<li><p>伪类 是添加到选择器的关键字，指定要选择的元素的特殊状态</p>
+</li>
+<li><p>用来操作dom中存在的实际元素</p>
+<div class="hljs"><pre><code class="hljs javascript">:active
+:<span class="hljs-keyword">default</span>
+:checked
+:first-child
+:first-<span class="hljs-keyword">of</span>-type
+:focus
+:hover
+:last-child
+:last-<span class="hljs-keyword">of</span>-type
+:left
+:link
+:nth-child()
+:nth-col() 
+:nth-last-child()
+:nth-last-col() 
+:nth-last-<span class="hljs-keyword">of</span>-type()
+:nth-<span class="hljs-keyword">of</span>-type()
+:only-child
+:only-<span class="hljs-keyword">of</span>-type
+:visited</code></pre></div>
+</li>
+</ul>
+</li>
+<li><p>盒模型</p>
+<p> 在一个文档中，每个元素都被表示为一个矩形的盒子。确定这些盒子的尺寸, 属性和位置是渲染引擎的目标，css中用盒模型来描述这些盒子中的每一个所占的空间。</p>
+</li>
+<li><p>标准盒模型和IE盒模型</p>
+<ul>
+<li>content-box设置的宽高只是content的大小，整个盒子的尺寸还要加上内边距和边框</li>
+<li>border-box设置宽高都是直接的可见宽高（包含内边距和边框</li>
+<li>margin的大小计入盒模型的尺寸，该数值只影响盒子的外部空间</li>
+</ul>
+</li>
+<li><p>display 属性</p>
+<p> 指定了元素的显示类型，用于指定元素怎样生成盒模型 -&gt; 外部显示类型定义了元素怎样参与流式布局的处理，内部显示类型定义了元素内子元素的布局方式</p>
+ <div class="hljs"><pre><code class="hljs javascript"><span class="hljs-comment">//外部显示类型</span>
+display: block;<span class="hljs-comment">// 块级元素，独占一行，默认填满父元素宽度，可以设置宽高和所有边距</span>
+display: inline;<span class="hljs-comment">// 行内元素，不能更改宽高，大小由内容撑开，只能设置左右的边距效果</span>
+display: inline-block;<span class="hljs-comment">// 块级行内元素，不占满一行，也可以设置所有宽高边距</span>
+<span class="hljs-comment">//内部显示类型</span>
+display: flow;
+display: flow-root;
+display: table;
+display: flex;
+display: grid;
+<span class="hljs-comment">// </span>
+display: none;<span class="hljs-comment">//不显示</span>
+display: inherit;<span class="hljs-comment">//继承父元素的display属性</span></code></pre></div>
+</li>
+<li><p>nth-child和nth-of-type</p>
+<ul>
+<li><code>div:nth-child</code>父元素的第n个子元素div，！！如果第n个元素不是div元素则不生效</li>
+<li><code>div:nth-of-type</code>父元素的第n个子div</li>
+</ul>
+</li>
+<li><p>relative, fixed, absolute and statica</p>
+<ul>
+<li>relative  相对于其正常位置定位</li>
+<li>fixed 相对于浏览器窗口定位</li>
+<li>absolute 相对于static以外的第一个父元素进行定位</li>
+<li>static 正常流中，忽略 top, bottom, left, right 或者 z-index 声明</li>
+<li>inherit 继承自父元素</li>
+</ul>
+</li>
+<li><p>响应式网站和移动端优先策略</p>
+<ul>
+<li>采用响应式设计，在不同设备中，网站会重新排列，展现出不同的设计风格，以完美的适配任何尺寸的屏幕</li>
+<li>移动优先的响应式布局采用的是渐进增强原则，制作响应式网站时，先搞定手机版，然后再去为更大设备去设计和开发更复杂的功能。特征是使用min-width匹配页面宽度。书写样式时，首先考虑的是移动设备的使用场景，默认查询的是最窄的情况，再依次考虑设备屏幕逐渐变宽的情况</li>
+</ul>
+</li>
+<li><p>视网膜屏幕，多倍屏</p>
+<ul>
+<li>媒体查询</li>
+<li>svg图</li>
+<li>多倍图</li>
+</ul>
+</li>
+<li><p>translate和绝对定位加上left/top的区别</p>
+<ul>
+<li>translate改变元素的位置不会影响offsetTop和offsetLeft</li>
+<li>改变translate不会导致页面重排</li>
+</ul>
+</li>
+</ol>
+<h2 id="JS"><a href="#JS" class="headerlink" title="JS"></a>JS</h2><ol>
+<li><p>console.log(“foo” &amp;&amp; “bar”)</p>
+</li>
+<li><p>console.log(“hello” || “world”)</p>
+<ul>
+<li>以下内容会被当成false处理：”” , false , 0 , null , undefined , NaN</li>
+<li>布尔值的运算，运算到谁的时候-&gt;!得!出!结!果!&lt;-就返回谁</li>
+</ul>
+</li>
+<li><p>IIFE立即执行函数</p>
+ <div class="hljs"><pre><code class="hljs javascript"><span class="hljs-comment">//1</span>
+(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f1</span>(<span class="hljs-params"></span>)</span>&#123;...&#125;)()
+<span class="hljs-comment">//2</span>
+(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f2</span>(<span class="hljs-params"></span>)</span>&#123;...&#125;())</code></pre></div>
+</li>
+<li><p>this</p>
+<p> <a href="https://medium.com/@arnav_aggarwal" target="_blank" rel="noopener">https://medium.com/@arnav_aggarwal</a></p>
+<p> 函数的调用方式决定了this的值</p>
+<ol>
+<li><code>new()</code>关键字函数内的this是一个全新的对象</li>
+<li><code>apply/call/bind</code>方法函数内的this是传入的参数对象</li>
+<li>函数作为方法被调用时，this是调用该函数的对象</li>
+<li>都不符合则指向全局对象<code>window/global</code>,严格模式下为<code>undefined</code></li>
+<li><code>箭头函数</code>的this是创建它的上下文</li>
+<li>符合上述多个规则，按照优先级决定this的值得(1&gt;2&gt;3&gt;4)</li>
+</ol>
+</li>
+<li><p><code>use strick</code>严格模式</p>
+<ul>
+<li>严格模式通过抛出错误（eg删除不可删除的属性）来消除了一些原有静默错误和编码错误。</li>
+<li>严格模式修复了一些导致 JavaScript引擎难以执行优化的缺陷：有时候，相同的代码，严格模式可以比非严格模式下运行得更快。</li>
+<li>严格模式禁用了在ECMAScript的未来版本中可能会定义的一些语法。</li>
+<li>无法再意外创建全局变量，全局作用域下，this的值为undefined。</li>
+<li>要求函数的参数名卫唯一</li>
+<li>在js文件顶部或function内部第一行声明使用严格模式</li>
+</ul>
+</li>
+<li><p>undedined/null和未声明变量</p>
+<ul>
+<li><p>未声明变量：会脱离当前作用域变成全局下的变量，严格模式下会报错</p>
+</li>
+<li><p><code>undefined</code>：声明变量未赋值 / 无返回值的函数执行结果赋值给变量,只能用全等于和<code>typeof</code>来检查</p>
+</li>
+<li><p><code>null</code>只能显示赋值给变量，只能用全等于来检查</p>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">typeof</span> foo === <span class="hljs-string">'undefined'</span>); <span class="hljs-comment">// true</span>
+<span class="hljs-built_in">console</span>.log(<span class="hljs-literal">null</span> == <span class="hljs-literal">undefined</span>) <span class="hljs-comment">// true</span>
+<span class="hljs-built_in">console</span>.log(<span class="hljs-literal">null</span> === <span class="hljs-literal">undefined</span>) <span class="hljs-comment">// false</span></code></pre></div>
+
+
+</li>
+</ul>
+</li>
+</ol>
+<ol>
+<li><p>forEach和map</p>
+<ul>
+<li>遍历数组中的元素</li>
+<li>为每个元素执行回调</li>
+<li>都不修改原数组</li>
+<li>forEach返回undefined</li>
+<li>map返回映射出的新数组</li>
+</ul>
+</li>
+<li><p>宿主对象</p>
+<ul>
+<li><p>原生对象是由 ECMAScript 规范定义的 JavaScript 内置对象，比如String、Math、RegExp、Object、Function等等。</p>
+</li>
+<li><p>宿主对象是由运行时环境（浏览器或 Node）提供，比如window、XMLHTTPRequest等等。</p>
+</li>
+</ul>
+</li>
+<li><p>Ajax（异步js和XML，asynchronous JavaScript and XML）是描述使用现有技术标准(HTML,DOM,XMLHttpRequest,XML等)的新方法，网页应用能够快速地将增量更新呈现在用户界面上，而不需要重载（刷新）整个页面。js可以在后台异步与服务器进行数据交换并更新视图，目前普遍使用JSON格式来打包这些信息</p>
+<ul>
+<li>优点<ul>
+<li>交互性更好。来自服务器的新内容可以动态更改，无需重新加载整个页面。</li>
+<li>减少与服务器的连接，因为脚本和样式只需要被请求一次。</li>
+<li>状态可以维护在一个页面上。JavaScript 变量和 DOM 状态将得到保持，因为主容器页面未被重新加载。</li>
+</ul>
+</li>
+<li>缺点<ul>
+<li>动态网页很难收藏。</li>
+<li>如果 JavaScript 已在浏览器中被禁用，则不起作用。</li>
+<li>有些网络爬虫不执行 JavaScript，也不会看到 JavaScript 加载的内容。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>ajax的核心是通过<code>XmlHttpRequest API</code>获取非本页内容，而<code>jsonp</code>的核心则是动态添加<code>script标签</code>。</p>
+</li>
+<li><p>变量提升</p>
+<ul>
+<li>使用var关键字声明或初始化的变量，会将声明语句“提升”到当前作用域的顶部。赋值语句不提升</li>
+<li>函数声明会提升整个函数体，函数表达式遵循变量提升规则</li>
+</ul>
+</li>
+<li><p><code>load</code>和<code>DOMContentLoaded</code></p>
+<ul>
+<li><p>当初始的 HTML 文档被完全加载和解析完成之后，DOMContentLoaded事件被触发，而无需等待样式表、图像和子框架的完成加载。</p>
+</li>
+<li><p>window的load事件仅在 DOM 和所有相关资源全部完成加载后才会触发。</p>
+</li>
+</ul>
+</li>
+<li><p>==&amp;===</p>
+<p> ===不会进行类型转换</p>
+</li>
+<li><p>同源</p>
+<ul>
+<li><p>同协议+同主机名+同端口</p>
+</li>
+<li><p>同源策略限制了从同一个源加载的文档或脚本如何与来自另一个源的资源进行交互。这是一个用于隔离潜在恶意文件的重要安全机制。如<code>Cookie</code>,<code>LocalStorage</code>,<code>indexDB</code>的读取，<code>DOM</code>的获取，<code>Ajax请求</code></p>
+</li>
+</ul>
+</li>
+<li><p>请解释单页应用是什么，如何使其对 SEO 友好。</p>
+<ul>
+<li><p>在过去，浏览器从服务器接收 HTML 并渲染。当用户导航到其它 URL 时，需要整页刷新，服务器会为新页面发送新的 HTML。这被称为服务器端渲染。</p>
+</li>
+<li><p>然而，在现代的 SPA 中，客户端渲染取而代之。浏览器从服务器加载初始页面、整个应用程序所需的脚本（框架、库、应用代码）和样式表。当用户导航到其他页面时，不会触发页面刷新。该页面的 URL 通过 HTML5 History API 进行更新。浏览器通过 AJAX 请求向服务器检索新页面所需的数据（通常采用 JSON 格式）。然后，SPA 通过 JavaScript 来动态更新页面，这些 JavaScript 脚本在初始页面加载时已经下载。这种模式类似于原生移动应用的工作方式。</p>
+</li>
+<li><p>好处：</p>
+<ul>
+<li>用户感知响应更快，用户切换页面时，不再看到因页面刷新而导致的白屏。</li>
+<li>对服务器进行的 HTTP 请求减少，因为对于每个页面加载，不必再次下载相同的资源。</li>
+<li>客户端和服务器之间的关注点分离。可以为不同平台（例如手机、聊天机器人、智能手表）建立新的客户端，而无需修改服务器代码。只要 API 没有修改，可以单独修改客户端和服务器上的代码。</li>
+</ul>
+</li>
+<li><p>坏处：</p>
+<ul>
+<li>由于加载了多个页面所需的框架、应用代码和资源，导致初始页面加载时间较长。</li>
+<li>服务器还需要进行额外的工作，需要将所有请求路由配置到单个入口点，然后由客户端接管路由。</li>
+<li>SPA 依赖于 JavaScript 来呈现内容，但并非所有搜索引擎都在抓取过程中执行 JavaScript，可能抓不到内容</li>
+</ul>
+</li>
+<li><p>spa的seo优化—&gt; SSR服务端渲染，将SEO关键信息在后端先渲染进HTML</p>
+</li>
+</ul>
+</li>
+<li><p><code>事件循环</code>是一个单线程循环，用于监视<code>调用栈</code>并检查是否有工作即将在<code>任务队列</code>中完成。如果<code>调用栈</code>为空并且<code>任务队列</code>中有<code>回调函数</code>，则将<code>回调函数</code>出队并推送到<code>调用栈</code>中执行。</p>
+</li>
+<li><p>es5和es6的构造函数方式</p>
+ <div class="hljs"><pre><code class="hljs javascript"><span class="hljs-comment">// ES5 构造函数</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Student</span>(<span class="hljs-params">name, studentId</span>) </span>&#123;
+<span class="hljs-comment">// 调用父类的构造函数来初始化父类的成员变量</span>
+Person.call(<span class="hljs-keyword">this</span>, name);
+
+<span class="hljs-comment">// 初始化子类自己的成员变量</span>
+<span class="hljs-keyword">this</span>.studentId = studentId;
+&#125;
+
+Student.prototype = <span class="hljs-built_in">Object</span>.create(Person.prototype);
+Student.prototype.constructor = Student;
+
+<span class="hljs-comment">// ES6 类</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Student</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Person</span> </span>&#123;
+<span class="hljs-keyword">constructor</span>(name, studentId) &#123;
+    <span class="hljs-keyword">super</span>(name);
+    <span class="hljs-keyword">this</span>.studentId = studentId;
+&#125;
+&#125;</code></pre></div>
+</li>
+<li><p>一般函数的this只能在运行时确定，箭头函数的this则静态绑定了书写时的上下文</p>
+</li>
+<li><p>高阶函数</p>
+<p> 函数作为参数进行数据处理或者返回函数</p>
+<p> （forEach，filte人，reduce）</p>
+</li>
+<li><p>解构</p>
+<div class="hljs"><pre><code class="javascript"><span class="comment">// 数组解构</span>
+<span class="comment">// 变量赋值</span>
+<span class="keyword">const</span> foo = [<span class="string">'one'</span>, <span class="string">'two'</span>, <span class="string">'three'</span>];
+
+<span class="keyword">const</span> [one, two, three] = foo;
+<span class="built_in">console</span>.log(one); <span class="comment">// "one"</span>
+<span class="built_in">console</span>.log(two); <span class="comment">// "two"</span>
+<span class="built_in">console</span>.log(three); <span class="comment">// "three"</span>
+
+<span class="comment">// 变量交换</span>
+<span class="keyword">let</span> a = <span class="number">1</span>;
+<span class="keyword">let</span> b = <span class="number">3</span>;
+
+[a, b] = [b, a];
+<span class="built_in">console</span>.log(a); <span class="comment">// 3</span>
+<span class="built_in">console</span>.log(b); <span class="comment">// 1</span>
+
+<span class="comment">// 对象解构</span>
+
+<span class="comment">// 变量赋值</span>
+<span class="keyword">const</span> o = { <span class="attr">p</span>: <span class="number">42</span>, <span class="attr">q</span>: <span class="literal">true</span> };
+<span class="keyword">const</span> { p, q } = o;
+
+<span class="built_in">console</span>.log(p); <span class="comment">// 42</span>
+<span class="built_in">console</span>.log(q); <span class="comment">// true</span></code></pre></div>
+</li>
+<li><p>es6模版字符串</p>
+<ul>
+<li>多行字符串</li>
+<li>字符串插值</li>
+</ul>
+</li>
+<li><p>静态类成员（属性或方法）不绑定到某个类的特定实例，不管哪个实例引用它，都具有相同的值。</p>
+</li>
+</ol>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2019/12/16/12_16%E5%88%B7%E9%A2%98/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">1216刷题</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2019/09/05/%E8%BE%93%E5%85%A5URL%E5%9B%9E%E8%BD%A6%E5%8F%91%E7%94%9F%E4%BA%86%E4%BB%80%E4%B9%88/">
+                        <span class="hidden-mobile">地址中输入URL回车发生了什么</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+    
+  <!-- 备案信息 -->
+  <div class="beian">
+    <a href="http://beian.miit.gov.cn/" target="_blank"
+       rel="nofollow noopener">粤ICP备2020115702号</a>
+    
+  </div>
+
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '#post-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "h5pb刷题&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?048f7ae77dbb92c9d2c83ca3df99d02f";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+</body>
+</html>
