@@ -315,10 +315,14 @@ public <span class="hljs-class"><span class="hljs-keyword">class</span> <span cl
 <li><code>JavaScript</code> 常被描述为一种基于原型的语言 (prototype-based language),每个对象拥有一个原型对象，对象以其原型为模板创建新对象、并从原型继承方法和属性。而这个原型对象也可能拥有原型，并从中继承方法和属性，一层一层、以此类推。这种关系常被称为<code>原型链 (prototype chain)</code>，它解释了为何一个对象会拥有定义在其他对象中的属性和方法。</li>
 </ol>
 <ol>
-<li><p>特殊的<code>Object</code>和<code>Function</code>，这种特殊情况只出现在原型链末端</p>
- <div class="hljs"><pre><code class="hljs javascript"><span class="hljs-comment">// 函数对象都是由Function函数生成的</span>
-<span class="hljs-built_in">Function</span>.__proto__ === <span class="hljs-built_in">Function</span>.prototype  <span class="hljs-comment">//true</span>
-<span class="hljs-built_in">Object</span>.__proto__ === <span class="hljs-built_in">Function</span>.prototype  <span class="hljs-comment">//true</span></code></pre></div>
+<li><p>特殊的<code>Object</code>和<code>Function</code></p>
+ <div class="hljs"><pre><code class="hljs javascript"><span class="hljs-comment">// 函数对象都是由Function函数生成的,则</span>
+<span class="hljs-built_in">Object</span>._proto_ === <span class="hljs-built_in">Function</span>.prototype
+
+<span class="hljs-comment">//特例</span>
+
+<span class="hljs-built_in">Function</span>.__proto__ ===  <span class="hljs-built_in">Function</span>.prototype
+ƒ () &#123; [native code] &#125;</code></pre></div>
 </li>
 <li><p>原形链的终点</p>
  <div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">typeof</span> <span class="hljs-built_in">Object</span>.prototye === <span class="hljs-string">'object'</span>

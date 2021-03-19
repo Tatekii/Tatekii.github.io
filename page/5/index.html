@@ -160,413 +160,6 @@
     
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
-        <a href="/2019/07/10/%E6%95%B0%E7%BB%84%E7%9A%84%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/">操作数组的常用方法</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2019/07/10/%E6%95%B0%E7%BB%84%E7%9A%84%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/">
-          
-          
-            
-          
-          变异-改变原数组
-pop()删除最后一个元素
-
-shift()删除第一个元素
-
-push()添加元素至末尾
-
-unshift()添加元素至首位
-
-splice()往数组中添加/删除元素
-splice(index,howmany,item1,.....,itemX)
-var fruits = ["Banana", "Orange", "Apple", "Mango"]
-  // 必须传入一个参数，即
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2019-07-10 11:26" pubdate>
-              2019-07-10
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/javascript/">javascript</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        <a href="/2019/07/10/for...of/">for...of</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2019/07/10/for...of/">
-          
-          
-            
-          
-          数组数组原生具备iterator接口（即默认部署了Symbol.iterator属性），for…of循环本质上就是调用这个接口产生的遍历器
-for…of循环可以代替数组实例的forEach方法const arr = ['red', 'green', 'blue'];
-
-arr.forEach(function (element, index) &#123;
-  console.log(elemen
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2019-07-10 10:43" pubdate>
-              2019-07-10
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/javascript/">javascript</a>
-            
-              <a href="/tags/es6/">es6</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        <a href="/2019/07/09/js%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6/">垃圾回收机制</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2019/07/09/js%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6/">
-          
-          
-            
-          
-          javascript具有自动垃圾收集机制执行环境会负责管理代码执行过程中使用的内存\
-
-垃圾收集器是周期性运行的，触发垃圾收集的阀值是动态设定的
-
-方法标记清除
-最主流的垃圾收集算法
-离开作用域，没有被引用的值被标记为可以回收。在垃圾收集期间被删除
-
-引用计数
-跟踪记录值被引用的次数
-次数为0的值所占的内存会被下次垃圾收集回收
-
-循环引用objA.obj = objB
-objB.obj = obj
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2019-07-09 15:44" pubdate>
-              2019-07-09
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/javascript/">javascript</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        <a href="/2019/07/08/%E9%97%AD%E5%8C%85/">闭包</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2019/07/08/%E9%97%AD%E5%8C%85/">
-          
-          
-            
-          
-          闭包的定义
-函数与对其状态即词法环境（lexical environment）的引用共同构成 闭包（closure） 。也就是说，闭包可以让你从内部函数访问外部函数作用域。在 JavaScript，函数在每次创建时生成闭包。
-
-闭包中，即使内部函数在执行前被外部函数返回，任然可以访问原词法环境。这个环境包含了这个闭包创建时所能访问的所有局部变量。
-
-
-在 js 中变量的作用域属于函数作用域, 在函
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2019-07-08 18:19" pubdate>
-              2019-07-08
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/javascript/">javascript</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        <a href="/2019/07/04/compose%E5%87%BD%E6%95%B0/">compose函数</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2019/07/04/compose%E5%87%BD%E6%95%B0/">
-          
-          
-            
-          
-          特性
-接受函数参数，返回函数
-作为参数的函数自右向左依次执行
-第一个函数接受参数
-其他函数的参数是上一个函数的执行结果
-执行到最后return出一个函数才算执行结束
-
-实现lodashvar flow = function(funcs) &#123;
-    var length = funcs.length
-    var index = length
-    while (index--) &
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2019-07-04 17:00" pubdate>
-              2019-07-04
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/javascript/">javascript</a>
-            
-              <a href="/tags/%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/">函数式编程</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        <a href="/2019/07/04/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%80%82%E9%85%8D/">移动端适配</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2019/07/04/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%80%82%E9%85%8D/">
-          
-          
-            
-          
-          设备像素比 dpr
-物理像素即设备上真实的物理像素单元
-逻辑像素 = css像素，软件使用的直觉上的尺寸大小，是抽象概念
-苹果提出视网膜屏幕之前移动设备都是直接使用物理像素来进行展示
-即1个逻辑像素1个物理像素显示
-
-
-
-
-高分辨率屏幕出现后，UI元素（例如 按钮）在低密度屏幕上看起来较大，在高密度屏幕上看起来较小。这些 密度相关的大小变化可能给应用布局和易用性带来问题
-
-设备独立像素（又称设备无
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2019-07-04 11:08" pubdate>
-              2019-07-04
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/css/">css</a>
-            
-              <a href="/tags/webapp/">webapp</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        <a href="/2019/07/03/%E5%AE%9E%E7%8E%B0sleep()/">实现一个sleep()函数</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2019/07/03/%E5%AE%9E%E7%8E%B0sleep()/">
-          
-          
-            
-          
-          sleep()
-执行挂起，延迟执行函数
-
-实现while循环funciton sleep(delay) &#123;
-  let start = new Date().getTime()
-  while(new Date().getTime() - start &lt; delay) &#123;
-    continue
-  &#125;
-&#125;
-sleep(3000)
-console.l
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2019-07-03 17:13" pubdate>
-              2019-07-03
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
-            
-              <a href="/tags/javascript/">javascript</a>
-            
-              <a href="/tags/es6/">es6</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        <a href="/2019/07/03/css%E9%80%89%E6%8B%A9%E5%99%A8/">css选择器</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2019/07/03/css%E9%80%89%E6%8B%A9%E5%99%A8/">
-          
-          
-            
-          
-          优先级!important&gt;行内样式&gt;id选择器&gt;类选择器&gt;标签选择器&gt;通配符&gt;继承
-属性选择器
-E[attribute] 表示存在attr属性即可
-div[class]
-
-E[attr=val] 表示属性值完全等于val
-div[class=mydemo]
-
-E[attr|=val] 表示属性值中以val值开始，val不是字符而是完整单词
-div[class|
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2019-07-03 10:38" pubdate>
-              2019-07-03
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
-            
-              <a href="/tags/css/">css</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
         <a href="/2019/06/18/koa/">Koa</a>
       </h1>
 
@@ -652,6 +245,402 @@ unde
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/javascript/">javascript</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2019/06/15/XML/">XML</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2019/06/15/XML/">
+          
+          
+            
+          
+          什么是 XMLXML 指可扩展标记语言（EXtensible Markup Language）XML 是一种标记语言，很类似 HTMLXML 的设计宗旨是传输数据，而非显示数据，本身是不作为的XML 标签没有被预定义。您需要自行定义标签。XML 被设计为具有自我描述性。XML 是 W3C 的推荐标准
+一句话区别
+XML 被设计用来传输和存储数据。
+HTML 被设计用来显示数据。
+
+语法规则
+标签必
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2019-06-15 10:06" pubdate>
+              2019-06-15
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
+            
+              <a href="/tags/html/">html</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2019/06/05/html,xhtml,xml/">html,xhtml,xml</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2019/06/05/html,xhtml,xml/">
+          
+          
+            
+          
+          HTML  (HyperText Markup Language)，超文本标记语言。“超文本”就是指页面内可以包含图片、链接，甚至音乐、程序等非文字元素，“标记”是指用特定的标记符号来标记要显示的内容的各个部分。超文本标记语言是标准通用标记语言下的一个应用，也是一种规范，一种标准，它被设计用来显示数据。HTML文本就是我们通常所说的网页，扩展名可以是html或htm。
+XML  (Extensib
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2019-06-05 12:42" pubdate>
+              2019-06-05
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2019/05/24/vue%E7%BB%84%E4%BB%B6%E4%B9%8B%E9%97%B4%E9%80%9A%E4%BF%A1/">vue组件之间通信</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2019/05/24/vue%E7%BB%84%E4%BB%B6%E4%B9%8B%E9%97%B4%E9%80%9A%E4%BF%A1/">
+          
+          
+            
+          
+          ref和$refs
+ref挂载在普通HTML组件上访问它得到DOM
+
+ref挂载在VUE组件上访问它得到组件实例
+
+
+&lt;base-input ref="usernameInput"&gt;&lt;base-input&gt;
+this.$refs.usernameInput
+
+$emit和prop
+子组件props接收父组件传递的数据
+动态数据加冒号:
+子组件可对收到的props设置校验
+子
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2019-05-24 12:13" pubdate>
+              2019-05-24
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
+            
+              <a href="/tags/vue/">vue</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2019/05/24/tcp%E6%8F%A1%E6%89%8B/">tcp握手</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2019/05/24/tcp%E6%8F%A1%E6%89%8B/">
+          
+          
+            
+          
+          ref：关于三次握手与四次挥手面试官想考我们什么？
+三次握手
+为了确保通信双方收发能力正常
+指定自己的初始化序列号，为后面的可靠传送做准备
+过程：
+第一次握手：客户端给服务端发一个 SYN(同步序列编号) 报文，并指明客户端的初始化序列号 ISN(c)。此时客户端处于 SYN_Send 状态。
+第二次握手：服务器收到客户端的 SYN 报文之后，会以自己的 SYN 报文作为应答，并且也是指定了自己的
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2019-05-24 10:54" pubdate>
+              2019-05-24
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
+            
+              <a href="/tags/html/">html</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2019/05/21/EventLoop%E9%A2%98/">EventLoop题目</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2019/05/21/EventLoop%E9%A2%98/">
+          
+          
+            
+          
+          https://juejin.im/post/59e85eebf265da430d571f89https://juejin.im/post/5c9a43175188252d876e5903
+
+setTimeout(function()&#123;
+    console.log('定时器开始啦')
+&#125;);
+
+new Promise(function(resolve)&#123;
+    
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2019-05-21 15:32" pubdate>
+              2019-05-21
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
+            
+              <a href="/tags/javascript/">javascript</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2019/05/21/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">正则表达式</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2019/05/21/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
+          
+          
+            
+          
+          // 黑马课件
+正则表达式
+了解正则表达式基本语法
+能够使用JavaScript的正则对象
+
+正则表达式简介什么是正则表达式正则表达式：用于匹配规律规则的表达式，正则表达式最初是科学家对人类神经系统的工作原理的早期研究，现在在编程语言中有广泛的应用。正则表通常被用来检索、替换那些符合某个模式(规则)的文本。正则表达式是对字符串操作的一种逻辑公式，就是用事先定义好的一些特定字符、及这些特定字符的组合
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2019-05-21 14:34" pubdate>
+              2019-05-21
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2019/05/20/git%E5%88%86%E5%B8%83%E5%BC%8F%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/">git分布式版本控制</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2019/05/20/git%E5%88%86%E5%B8%83%E5%BC%8F%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/">
+          
+          
+            
+          
+          ref:liaoxuefeng
+
+创建与合并分支
+
+查看分支：git branch
+
+创建分支：git branch &lt;name&gt;
+
+切换分支：git checkout &lt;name&gt;
+
+创建+切换分支：git checkout -b &lt;name&gt;
+
+合并某分支到当前分支：git merge &lt;name&gt;
+
+删除分支：git branch -d &lt
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2019-05-20 22:54" pubdate>
+              2019-05-20
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
+            
+              <a href="/tags/git/">git</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2019/05/20/%E5%89%8D%E7%AB%AF%E6%A8%A1%E5%9D%97%E5%8C%96/">前端模块化</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2019/05/20/%E5%89%8D%E7%AB%AF%E6%A8%A1%E5%9D%97%E5%8C%96/">
+          
+          
+            
+          
+          模块化开发的思想模块化的开发方式可以提高代码复用率，方便进行代码的管理。通常一个文件就是一个模块，有自己的作用域，只向外暴露特定的变量和函数。
+模块化的好处
+命名冲突
+文件依赖
+代码复用
+
+CommonJS (Node.js)
+代码同步加载，服务器不用考虑速度
+
+代码可以多次加载，但是运行结果会被缓存
+
+require(&#39;xxx&#39;)加载模块
+module.exports和expor
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2019-05-20 13:41" pubdate>
+              2019-05-20
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
             
               <a href="/tags/javascript/">javascript</a>
             
