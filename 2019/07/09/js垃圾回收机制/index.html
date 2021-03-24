@@ -165,7 +165,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      302 字
+      301 字
     </span>
   
 
@@ -210,14 +210,14 @@
             <div class="markdown-body" id="post-body">
               <h2 id="javascript具有自动垃圾收集机制"><a href="#javascript具有自动垃圾收集机制" class="headerlink" title="javascript具有自动垃圾收集机制"></a>javascript具有自动垃圾收集机制</h2><p>执行环境会负责管理代码执行过程中使用的内存\</p>
 <blockquote>
-<p>垃圾收集器是周期性运行的，触发垃圾收集的阀值是动态设定的</p>
+<p>垃圾收集器是周期性运行的，触发垃圾收集的阈值是动态设定的</p>
 </blockquote>
 <h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><h3 id="标记清除"><a href="#标记清除" class="headerlink" title="标记清除"></a>标记清除</h3><ul>
 <li>最主流的垃圾收集算法</li>
 <li>离开作用域，没有被引用的值被标记为可以回收。在垃圾收集期间被删除</li>
 </ul>
 <h3 id="引用计数"><a href="#引用计数" class="headerlink" title="引用计数"></a>引用计数</h3><ul>
-<li>跟踪记录值被引用的次数</li>
+<li>跟踪记录被引用的次数</li>
 <li>次数为0的值所占的内存会被下次垃圾收集回收</li>
 </ul>
 <h4 id="循环引用"><a href="#循环引用" class="headerlink" title="循环引用"></a>循环引用</h4><div class="hljs"><pre><code class="hljs javascript">objA.obj = objB

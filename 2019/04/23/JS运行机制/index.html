@@ -165,7 +165,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      928 字
+      923 字
     </span>
   
 
@@ -245,10 +245,10 @@
 </li>
 <li><p>微任务包括 <code>process.nextTick</code> ，<code>promise.then</code> ，<code>catch</code>,<code>finally</code> ，<code>MutationObserver</code></p>
 <ul>
-<li>！<code>nextTick</code>会置与微任务的栈顶，越靠后的的<code>nextTick</code> 越先执行</li>
+<li>！遇到<code>nextTick</code>会提到微任务的栈顶</li>
 </ul>
 </li>
-<li><p>宏任务包括 <code>整体代码script</code> ， <code>setTimeout</code> ，<code>setInterval</code> ，<code>setImmediate</code> ，<code>I/O</code> ，<code>UI rendering</code></p>
+<li><p>宏任务包括 <code>整体代码script</code> ， <code>setTimeout</code> ，<code>setInterval</code> ，<code>setImmediate</code> ，<code>I/O</code>操作 ，<code>UI</code>渲染</p>
 </li>
 </ul>
 <div class="hljs"><pre><code class="hljs javascript"><span class="hljs-comment">// js执行顺序</span>
