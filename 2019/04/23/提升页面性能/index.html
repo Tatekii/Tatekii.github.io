@@ -165,7 +165,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      896 字
+      825 字
     </span>
   
 
@@ -255,33 +255,25 @@
 </li>
 </ul>
 <h2 id="前端涉及的数据存储"><a href="#前端涉及的数据存储" class="headerlink" title="前端涉及的数据存储"></a>前端涉及的数据存储</h2><ul>
-<li><p>LocalStorage</p>
+<li><p><code>LocalStorage</code></p>
 <ul>
-<li><p>除非被清理否则一直存在</p>
+<li><p>不会过期</p>
 </li>
 <li><p>数据大小5MB</p>
 </li>
-<li><p>不参与http通信</p>
-</li>
 <li><p>浏览器中共享</p>
 </li>
-<li><p>同源共享同一份localStorage</p>
+<li><p>同源共享同一份<code>localStorage</code></p>
 </li>
-<li><p>存放只能为<code>string</code>类型,插入时候要对象转为字符串JSON.stringfy，读取时要做JSON.parse转换</p>
+<li><p>只能为<code>string</code>类型,注意需要<code>JSON</code>转换</p>
 </li>
 </ul>
 </li>
 <li><p>SessionStorage</p>
 <ul>
-<li><p>页面关闭清理</p>
+<li><p>窗口/标签页关闭时清理</p>
 </li>
 <li><p>数据大小5MB</p>
-</li>
-<li><p>不参与http通信</p>
-</li>
-<li><p>同源并且同一标签下共享同一份sessionStorage</p>
-</li>
-<li><p>多个tab标签的会话不是同一个，不！共！享！sessionStorage</p>
 </li>
 </ul>
 </li>
@@ -303,9 +295,7 @@
 </li>
 <li><p>数据大小无限制</p>
 </li>
-<li><p>不参与http通信</p>
-</li>
-<li><p>IndexedDB是浏览器提供的本地数据库，它可以被网页脚本创建和操作。IndexedDB 允许储存大量数据，提供查找接口，还能建立索引。</p>
+<li><p>IndexedDB是浏览器提供的本地数据库，它可以被网页脚本创建和操作。IndexedDB  允许储存大量数据，提供查找接口，还能建立索引。</p>
 </li>
 </ul>
 </li>

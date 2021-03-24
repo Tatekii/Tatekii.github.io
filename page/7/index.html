@@ -385,11 +385,9 @@ script/script async/script defer的区别
           ref:javascript 运行机制 EventLoop
 JS的单线程JavaScript的单线程，与它的用途有关。作为浏览器脚本语言，JavaScript的主要用途是与用户互动，以及操作DOM。这决定了它只能是单线程，否则会带来很复杂的同步问题。
 EventLoop
-一句话概括；主线程不断从任务队列读取任务进入执行栈执行的循环过程
+概括：主线程不断从任务队列读取任务进入执行栈执行的循环过程
 
-事件循环的运行[栈结构，遵循先进后出的原则]
-
-循环开始，整
+因为 js 是单线程运行的，在代码执行的时候，通过将不同函数的执行
         </a>
       </p>
 
@@ -481,14 +479,10 @@ function bubbleSort(arr) &#123;
             
           
           Ajax// example
-var xhr;
-if (window.XMLHttpRequest)&#123;
-    //  IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
-    xhr=new XMLHttpRequest();
-&#125;
-else&#123;
-    // IE6, IE5 浏览器执行代码
-    xhr=new Active
+const request = (method,url,async=true,data) =&gt; &#123;
+  return new Promise((resolve,reject)=&gt;&#123;
+    const xhr = XMLHttpRequest()
+    xhr.onreadystateChange = function()&#123;
         </a>
       </p>
 

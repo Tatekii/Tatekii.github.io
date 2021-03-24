@@ -165,7 +165,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      3k 字
+      2.7k 字
     </span>
   
 
@@ -175,7 +175,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      43
+      38
        分钟
     </span>
   
@@ -264,65 +264,6 @@
 <p><strong>super 传入什么参数就继承父类构造函数的什么属性</strong></p>
 </li>
 </ol>
-<h2 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a>Promise</h2><p>实例,顺序读取 a,b,c 三个 txt 文件</p>
-<div class="hljs"><pre><code class="hljs javascript">onst fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'fs'</span>)
-
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getFile</span>(<span class="hljs-params">fpath</span>) </span>&#123;
-<span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">resolve,   reject</span>) </span>&#123;
-fs.readFile(fpath, <span class="hljs-string">'utf-8'</span>, (err, dataStr)   =&gt; &#123;
-<span class="hljs-comment">// if (err) throw (err)</span>
-<span class="hljs-comment">// console.log(dataStr)</span>
-<span class="hljs-keyword">if</span> (err) <span class="hljs-keyword">return</span> reject(err)
-resolve(dataStr)
-&#125;)
-&#125;)
-&#125;
-<span class="hljs-comment">//顺序读取abc</span>
-<span class="hljs-comment">//then之后第一个func代表执行成功的回调</span>
-<span class="hljs-comment">//在上一个then中返回下一步的promise实例，则下一 个then就可以继续调用</span>
-getFile(<span class="hljs-string">'./files/a.txt'</span>)
-.then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">data</span>) </span>&#123;
-<span class="hljs-built_in">console</span>.log(data)
-<span class="hljs-keyword">return</span> getFile(<span class="hljs-string">'./files/b.txt'</span>)
-&#125;).then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">data</span>) </span>&#123;
-<span class="hljs-built_in">console</span>.log(data)
-<span class="hljs-keyword">return</span> getFile(<span class="hljs-string">'./files/c.txt'</span>)
-&#125;).then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">data</span>) </span>&#123;
-<span class="hljs-built_in">console</span>.log(data)
-&#125;)
-
-<span class="hljs-comment">//添加失败回调，不阻止后续的回调执行</span>
-getFile(<span class="hljs-string">'./files/a.txt'</span>)
-.then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">data</span>) </span>&#123;
-<span class="hljs-built_in">console</span>.log(data)
-<span class="hljs-keyword">return</span> getFile(<span class="hljs-string">'./files/777.txt'</span>)
-&#125;, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">err</span>) </span>&#123;
-<span class="hljs-built_in">console</span>.log(err.message)
-<span class="hljs-keyword">return</span> getFile(<span class="hljs-string">'./files/b.txt'</span>)
-&#125;).then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">data</span>) </span>&#123;
-<span class="hljs-built_in">console</span>.log(data)
-<span class="hljs-keyword">return</span> getFile(<span class="hljs-string">'./files/c.txt'</span>)
-&#125;, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">err</span>) </span>&#123;
-<span class="hljs-built_in">console</span>.log(err.message)
-<span class="hljs-keyword">return</span> getFile(<span class="hljs-string">'./files/c.txt'</span>)
-&#125;).then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">data</span>) </span>&#123;
-<span class="hljs-built_in">console</span>.log(data)
-&#125;)
-<span class="hljs-comment">//如果有任意的执行失败，立即终止后续执行</span>
-getFile(<span class="hljs-string">'./files/999.txt'</span>)
-.then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">data</span>) </span>&#123;
-<span class="hljs-built_in">console</span>.log(data)
-<span class="hljs-keyword">return</span> getFile(<span class="hljs-string">'./files/b.txt'</span>)
-&#125;).then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">data</span>) </span>&#123;
-<span class="hljs-built_in">console</span>.log(data)
-<span class="hljs-keyword">return</span> getFile(<span class="hljs-string">'./files/c.txt'</span>)
-&#125;).then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">data</span>) </span>&#123;
-<span class="hljs-built_in">console</span>.log(data)
-&#125;).catch(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">err</span>) </span>&#123;
-<span class="hljs-built_in">console</span>.log(<span class="hljs-string">'catch捕获'</span> + err.message)
-&#125;)
-<span class="hljs-built_in">console</span>.log(<span class="hljs-string">'啦啦啦'</span>)</code></pre></div>
-
 <h2 id="ES6-中声明对象的方法"><a href="#ES6-中声明对象的方法" class="headerlink" title="ES6 中声明对象的方法"></a>ES6 中声明对象的方法</h2><ul>
 <li>var</li>
 <li>function</li>

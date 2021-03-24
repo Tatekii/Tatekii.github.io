@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="tatekii">
   <meta name="keywords" content="">
-  <title>web安全刷题 - 不知名的笔记本</title>
+  <title>web安全 - 不知名的笔记本</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -175,7 +175,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      19
+      20
        分钟
     </span>
   
@@ -205,7 +205,7 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto" id="post">
             <!-- SEO header -->
-            <h1 style="display: none">web安全刷题</h1>
+            <h1 style="display: none">web安全</h1>
             
             <div class="markdown-body" id="post-body">
               <h2 id="同源策略"><a href="#同源策略" class="headerlink" title="同源策略"></a>同源策略</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><ul>
@@ -214,12 +214,36 @@
 <li>三种标签不受同源限制<code>script</code> <code>link</code> <code>img</code></li>
 </ul>
 <h3 id="跨域的方法"><a href="#跨域的方法" class="headerlink" title="跨域的方法"></a>跨域的方法</h3><ul>
-<li><p><code>charles</code> 正向代理</p>
+<li><p>代理服务器-<code>nginx,devServer等</code></p>
 </li>
-<li><p><code>nginx</code> 反向代理</p>
-</li>
-<li><p><code>devSever</code><strong>proxyTable</strong></p>
-</li>
+<li><p>更改页面的源<code>document.domain</code></p>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-string">'someWebSite.com/dir1/pageA.html'</span>
+<span class="hljs-string">'someWebSite.com/dir2/pageB.html'</span>
+都设置<span class="hljs-built_in">document</span>.domain = <span class="hljs-string">'someWebSite.com'</span>
+则他们之间通信将通过同源检测，并都访问父源的cookie</code></pre></div></li>
+<li><p><code>postMessage</code></p>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-comment">// pageA通过iframe嵌入了pageB</span>
+<span class="hljs-comment">// pageA中代码</span>
+<span class="hljs-built_in">window</span>.iframe[i].postMessage(<span class="hljs-string">'data'</span>,<span class="hljs-string">'pqgeB的URL'</span>)
+<span class="hljs-comment">// pageB中的代码</span>
+<span class="hljs-built_in">window</span>.addEventListener(<span class="hljs-string">'message'</span>,funciton(e)&#123;
+    <span class="hljs-built_in">console</span>.log(e.data)     <span class="hljs-comment">// data</span>
+    <span class="hljs-built_in">console</span>.log(e.source)   <span class="hljs-comment">// a中window的引用</span>
+    <span class="hljs-built_in">console</span>.log(e.oringin)  <span class="hljs-comment">// pageA的URL</span>
+&#125;,<span class="hljs-literal">false</span>)
+
+<span class="hljs-comment">// 反过来pageB向pageA发送数据</span>
+<span class="hljs-comment">// 在pageA中加入window.addEventListener</span>
+<span class="hljs-comment">// 在pageB中e.source.postMessage</span></code></pre></div></li>
+<li><p><code>iframe</code>+<code>hash</code></p>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-comment">// pageA通过iframe嵌入了pageB</span>
+<span class="hljs-keyword">var</span> B = <span class="hljs-built_in">document</span>.getElementByTagName(<span class="hljs-string">"iframe"</span>);
+B.src = B.src + <span class="hljs-string">"#"</span> + <span class="hljs-string">"data"</span>;
+
+<span class="hljs-comment">// pageB中的代码</span>
+<span class="hljs-built_in">window</span>.onhashchange = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">data</span>) </span>&#123;
+data = <span class="hljs-built_in">window</span>.location.hash; <span class="hljs-comment">//  &lt;-  pageB就获取到了hash值</span>
+&#125;;</code></pre></div></li>
 <li><p><code>jsonp</code></p>
 <div class="hljs"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">jsonp</span>(<span class="hljs-params">&#123; url, params, callback &#125;</span>) </span>&#123;
     <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> &#123;
@@ -283,29 +307,6 @@ Upgrade: websocket</code></pre></div>
 </li>
 </ul>
 </li>
-<li><p>H5<code>postMessage</code>API</p>
-<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-comment">// pageA通过iframe嵌入了pageB</span>
-<span class="hljs-comment">// pageA中代码</span>
-<span class="hljs-built_in">window</span>.iframe[i].postMessage(<span class="hljs-string">'data'</span>,<span class="hljs-string">'pqgeB的URL'</span>)
-<span class="hljs-comment">// pageB中的代码</span>
-<span class="hljs-built_in">window</span>.addEventListener(<span class="hljs-string">'message'</span>,funciton(e)&#123;
-    <span class="hljs-built_in">console</span>.log(e.data)     <span class="hljs-comment">// data</span>
-    <span class="hljs-built_in">console</span>.log(e.source)   <span class="hljs-comment">// a中window的引用</span>
-    <span class="hljs-built_in">console</span>.log(e.oringin)  <span class="hljs-comment">// pageA的URL</span>
-&#125;,<span class="hljs-literal">false</span>)
-
-<span class="hljs-comment">// 反过来pageB向pageA发送数据</span>
-<span class="hljs-comment">// 在pageA中加入window.addEventListener</span>
-<span class="hljs-comment">// 在pageB中e.source.postMessage</span></code></pre></div></li>
-<li><p><code>iframe</code>+hash</p>
-<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-comment">// pageA通过iframe嵌入了pageB</span>
-<span class="hljs-keyword">var</span> B = <span class="hljs-built_in">document</span>.getElementByTagName(<span class="hljs-string">"iframe"</span>);
-B.src = B.src + <span class="hljs-string">"#"</span> + <span class="hljs-string">"data"</span>;
-
-<span class="hljs-comment">// pageB中的代码</span>
-<span class="hljs-built_in">window</span>.onhashchange = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">data</span>) </span>&#123;
-data = <span class="hljs-built_in">window</span>.location.hash; <span class="hljs-comment">//  &lt;-  pageB就获取到了hash值</span>
-&#125;;</code></pre></div></li>
 <li><p><code>Fetch</code>新API</p>
 <div class="hljs"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">postData</span>(<span class="hljs-params">url, data</span>) </span>&#123;
 <span class="hljs-comment">// Default options are marked with *</span>
@@ -385,7 +386,7 @@ xhr.withCredentials = <span class="hljs-literal">true</span>;  <span class="xml"
 <li>校验用户输入</li>
 <li>过滤用户上传的DOM事件和script，iframe，style标签</li>
 <li>对用户输入内容html编码</li>
-<li>使用CSP（内容安全策略）<code>Content Security Policy</code></li>
+<li>使用CSP<code>Content Security Policy</code>,服务端加入http首部或meta标签</li>
 <li>! <code>jsonp</code>如何防止xss<ol>
 <li>前后端约定jsonp请求的js的回调函数名</li>
 <li>服务器端指定返回的数据格式为json</li>
@@ -393,11 +394,11 @@ xhr.withCredentials = <span class="hljs-literal">true</span>;  <span class="xml"
 </ol>
 </li>
 </ul>
-<h2 id="CSRF跨域请求伪造"><a href="#CSRF跨域请求伪造" class="headerlink" title="CSRF跨域请求伪造"></a>CSRF跨域请求伪造</h2><p><code>Cross-site request forgery</code><br> 利用用户的登陆状态诱导至恶意网站，以合法身份向原先网站发送恶意请求<br><em>第三方只能使用cookie，而不能读取cookie内容</em></p>
+<h2 id="CSRF跨域请求伪造"><a href="#CSRF跨域请求伪造" class="headerlink" title="CSRF跨域请求伪造"></a>CSRF跨域请求伪造</h2><p><code>Cross-site request forgery</code><br> 利用用户的登陆状态诱导至恶意网站，以合法身份向原先网站发送恶意请求</p>
 <h3 id="防御CSRF"><a href="#防御CSRF" class="headerlink" title="防御CSRF"></a>防御CSRF</h3><ul>
 <li>同源检测，验证<code>http</code>请求的来源<code>origin</code>和<code>referrer</code></li>
-<li>设置<code>cookie</code>的<code>SameSite</code>属性，cookie只可被第一方使用</li>
-<li>向合法页面注入包含<code>token</code>的<code>cookie</code>，并在合法页面的后续请求（a标签和表单）中都加上这个<code>token</code>,服务器验证</li>
+<li>设置<code>cookie</code>的<code>SameSite</code>属性，使<code>cookie</code>只可被第一方使用</li>
+<li>合法页面中加入<code>token</code>，并在合法页面的后续请求（a标签和表单）中都加上这个<code>token</code>,服务器验证</li>
 </ul>
 <h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><h4 id="SQl注入"><a href="#SQl注入" class="headerlink" title="SQl注入"></a>SQl注入</h4><ol>
 <li><p>黑客提交畸形数据改变语义提交sql查询得到非法数据</p>
@@ -640,7 +641,7 @@ xhr.withCredentials = <span class="hljs-literal">true</span>;  <span class="xml"
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "web安全刷题&nbsp;",
+        "web安全&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,

@@ -248,7 +248,7 @@
 <h2 id="协商缓存"><a href="#协商缓存" class="headerlink" title="协商缓存"></a>协商缓存</h2><ul>
 <li>浏览器携带缓存标识向服务器发起请求，询问服务器缓存有效性</li>
 <li>协商缓存生效，返回<code>304</code>和<code>Not Modified</code></li>
-<li>协商缓存失效，返回<code>200</code>和请求结果<h3 id="Last-modified-If-Modified-Since）"><a href="#Last-modified-If-Modified-Since）" class="headerlink" title="Last-modified + If-Modified-Since）"></a><code>Last-modified + If-Modified-Since）</code></h3></li>
+<li>协商缓存失效，返回<code>200</code>和请求结果<h3 id="Last-modified-If-Modified-Since"><a href="#Last-modified-If-Modified-Since" class="headerlink" title="Last-modified + If-Modified-Since"></a><code>Last-modified + If-Modified-Since</code></h3></li>
 </ul>
 <ol>
 <li><p>服务器返回资源的同时在<code>response header</code>中添加 <code>Last-Modified</code>，值是这个资源在服务器上的最后修改时间<br> <code>Last-Modified: Fri, 22 Jul 2016 01:47:00 GMT</code></p>
@@ -274,7 +274,7 @@
 </li>
 <li><p><code>Cache-Control=no-cache</code>或者不符合<code>Expires</code>，浏览器向服务器发送请求</p>
 </li>
-<li><p>服务器同时判断<code>ETag</code>和<code>Last-Modified</code>，都一致，返回<code>304</code>，有任何一个不一致，返回<code>200</code>重新返回资源和缓存标识。</p>
+<li><p>服务器判断<code>If-Modified-Since</code>和<code>If-None-Match</code>，两者同时出现时会忽略<code>If-Modified-Since</code>，有效则返回<code>304</code>，失效则返回新资源。</p>
 </li>
 </ol>
 <h2 id="用户行为的影响"><a href="#用户行为的影响" class="headerlink" title="用户行为的影响"></a>用户行为的影响</h2><ol>
@@ -307,7 +307,7 @@
                     
                       <a href="/2020/09/17/cookie%E5%92%8Csession/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">cookie和session</span>
+                        <span class="hidden-mobile">cookie</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     

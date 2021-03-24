@@ -165,7 +165,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      360 字
+      375 字
     </span>
   
 
@@ -175,7 +175,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      5
+      6
        分钟
     </span>
   
@@ -209,26 +209,33 @@
             
             <div class="markdown-body" id="post-body">
               <h2 id="Ajax"><a href="#Ajax" class="headerlink" title="Ajax"></a><code>Ajax</code></h2><div class="hljs"><pre><code class="hljs javascript"><span class="hljs-comment">// example</span>
-<span class="hljs-keyword">var</span> xhr;
-<span class="hljs-keyword">if</span> (<span class="hljs-built_in">window</span>.XMLHttpRequest)&#123;
-    <span class="hljs-comment">//  IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码</span>
-    xhr=<span class="hljs-keyword">new</span> XMLHttpRequest();
+<span class="hljs-keyword">const</span> request = <span class="hljs-function">(<span class="hljs-params">method,url,<span class="hljs-keyword">async</span>=<span class="hljs-literal">true</span>,data</span>) =&gt;</span> &#123;
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve,reject</span>)=&gt;</span>&#123;
+    <span class="hljs-keyword">const</span> xhr = XMLHttpRequest()
+    xhr.onreadystateChange = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;
+      <span class="hljs-keyword">if</span>(<span class="hljs-keyword">this</span>.readyState !== <span class="hljs-number">4</span>)<span class="hljs-keyword">return</span>
+      <span class="hljs-keyword">if</span>(<span class="hljs-keyword">this</span>.status === <span class="hljs-number">200</span>)&#123;
+        resolve(<span class="hljs-keyword">this</span>.response)
+      &#125;<span class="hljs-keyword">else</span>&#123;
+        reject(<span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-keyword">this</span>.statusText))
+      &#125;
+    &#125;
+    xhr.onerror = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;
+      reject(<span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-keyword">this</span>.))
+    &#125;
+    xhr.responseType = <span class="hljs-string">'json'</span>
+    xhr.setRequestHeader(<span class="hljs-string">"Accept"</span>, <span class="hljs-string">"application/json"</span>)
+    <span class="hljs-keyword">if</span>(method===<span class="hljs-string">'GET'</span>)&#123;
+      xhr.open(<span class="hljs-string">"GET"</span>,URl+<span class="hljs-string">'?'</span>+data,<span class="hljs-literal">true</span>)
+      xhr.send()
+    &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(method === <span class="hljs-string">" POST"</span>)&#123;
+      xhr.setRequestHeader(<span class="hljs-string">"Content-type"</span>,<span class="hljs-string">"application/x-www-form-urlencode"</span>)
+      xhr.send(<span class="hljs-built_in">encodeURIComponent</span>(data))
+    &#125;
+  &#125;)
 &#125;
-<span class="hljs-keyword">else</span>&#123;
-    <span class="hljs-comment">// IE6, IE5 浏览器执行代码</span>
-    xhr=<span class="hljs-keyword">new</span> ActiveXObject(<span class="hljs-string">"Microsoft.XMLHTTP"</span>);
-&#125;
-xhr.onreadystatechange = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;
-  <span class="hljs-keyword">if</span> (xhr.readyState === <span class="hljs-number">4</span> &amp;&amp; xhr.status === <span class="hljs-number">200</span>) &#123;
-    <span class="hljs-keyword">return</span> success(xhr.responseText) <span class="hljs-comment">//成功回调</span>
-  &#125; <span class="hljs-keyword">else</span> &#123;
-    <span class="hljs-keyword">return</span> fail(xhr.status) <span class="hljs-comment">//失败回调</span>
-  &#125;
-&#125;
-
 <span class="hljs-comment">//GET</span>
-xhr.open(<span class="hljs-string">"GET"</span>,URl+<span class="hljs-string">'?'</span>+data,<span class="hljs-literal">true</span>)
-xhr.send()
+
 
 <span class="hljs-comment">//POST</span>
 xhr.open(<span class="hljs-string">"POST"</span>,URL,<span class="hljs-literal">true</span>)

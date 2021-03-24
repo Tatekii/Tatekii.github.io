@@ -175,7 +175,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      39
+      40
        分钟
     </span>
   
@@ -467,12 +467,14 @@ div &#123;
 <span class="hljs-comment">// content 只能获取内联样式</span>
 <span class="hljs-number">2.</span> dom.currentStyle.width/height
 <span class="hljs-comment">// 只支持ie</span>
-<span class="hljs-number">3.</span> <span class="hljs-built_in">window</span>.getComputedStyle(dom).width/height
-<span class="hljs-comment">// 永远只算content</span>
-<span class="hljs-number">5.</span> dom.offsetWidth()/offsetHeight()
+<span class="hljs-number">3.</span> <span class="hljs-built_in">window</span>.getComputedStyle(ele).width/height
+<span class="hljs-comment">// content</span>
+<span class="hljs-number">5.</span> ele.offsetWidth/offsetHeight
 <span class="hljs-comment">// content+padding+border+滚动条</span>
-<span class="hljs-number">6.</span> dom.clientWidth()/clientWidth()
-<span class="hljs-comment">// 永远只算content+padding</span></code></pre></div>
+<span class="hljs-number">6.</span> ele.clientWidth/clientHeight
+<span class="hljs-comment">// content+padding 不含滚动条</span>
+<span class="hljs-number">7.</span> ele.scrollTop/ele.scrollLeft
+<span class="hljs-comment">// 滚动像素数</span></code></pre></div>
 
 <h3 id="边距重叠"><a href="#边距重叠" class="headerlink" title="边距重叠"></a>边距重叠</h3><p>两个或多个块级盒子的!!垂直!!相邻边界会重合，它们的边界宽度是相邻边界宽度中的最大值。<br>特别注意内容为空的盒子。</p>
 <h2 id="BFC-Block-Formatting-Context-块级格式化上下文"><a href="#BFC-Block-Formatting-Context-块级格式化上下文" class="headerlink" title="BFC/Block Formatting Context 块级格式化上下文"></a>BFC/Block Formatting Context 块级格式化上下文</h2><ul>

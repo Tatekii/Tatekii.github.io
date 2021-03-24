@@ -165,7 +165,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.7k 字
+      1.4k 字
     </span>
   
 
@@ -175,7 +175,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      25
+      21
        分钟
     </span>
   
@@ -208,7 +208,7 @@
             <h1 style="display: none">操作数组的常用方法</h1>
             
             <div class="markdown-body" id="post-body">
-              <h2 id="变异-改变原数组"><a href="#变异-改变原数组" class="headerlink" title="变异-改变原数组"></a>变异-改变原数组</h2><ul>
+              <h2 id="变异方法（改变原数组）"><a href="#变异方法（改变原数组）" class="headerlink" title="变异方法（改变原数组）"></a>变异方法（改变原数组）</h2><ul>
 <li><p><code>pop()</code>删除最后一个元素</p>
 </li>
 <li><p><code>shift()</code>删除第一个元素</p>
@@ -217,69 +217,17 @@
 </li>
 <li><p><code>unshift()</code>添加元素至首位</p>
 </li>
-<li><p><code>splice()</code>往数组中添加/删除元素</p>
-<div class="hljs"><pre><code class="hljs javascript">splice(index,howmany,item1,.....,itemX)
-<span class="hljs-keyword">var</span> fruits = [<span class="hljs-string">"Banana"</span>, <span class="hljs-string">"Orange"</span>, <span class="hljs-string">"Apple"</span>, <span class="hljs-string">"Mango"</span>]
-  <span class="hljs-comment">// 必须传入一个参数，即splice(index)</span>
-  <span class="hljs-comment">// howmany不传则从该位置到结尾删除所有元素</span>
-  <span class="hljs-comment">// 第三个参数是要添加进的新元素</span>
-  <span class="hljs-comment">// **返回值**是删除的元素组成的新数组</span>
---------------------------------------------
-<span class="hljs-built_in">console</span>.log(fruits.splice(<span class="hljs-number">0</span>))
-  <span class="hljs-comment">//["Banana", "Orange", "Apple", "Mango"]</span>
-<span class="hljs-built_in">console</span>.log(fruits)
-  <span class="hljs-comment">//[]</span>
---------------------------------------------
-<span class="hljs-built_in">console</span>.log(fruits.splice(<span class="hljs-number">1</span>))
-  <span class="hljs-comment">//["Orange", "Apple", "Mango"]</span>
-<span class="hljs-built_in">console</span>.log(fruits)
-  <span class="hljs-comment">//["Banana"]</span>
---------------------------------------------
-<span class="hljs-built_in">console</span>.log(fruits.splice(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>))
-  <span class="hljs-comment">//["Orange", "Apple"]</span>
-  <span class="hljs-comment">///--&gt;</span>
-<span class="hljs-built_in">console</span>.log(fruits.splice(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-string">'xiba'</span>,<span class="hljs-string">'qinjia'</span>))
-  <span class="hljs-comment">//["Orange", "Apple"]</span>
-<span class="hljs-built_in">console</span>.log(fruits)
-  <span class="hljs-comment">//["Banana", "xiba", "qinjia", "Mango"]</span></code></pre></div>
+<li><p><code>splice(start,delCount,new1,new2...)</code>往数组索引为start位置删除delCont个元素，并从该位置加入new新元素</p>
 </li>
 <li><p><code>sort()</code>排序</p>
-<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-comment">// 数组排序，可传入排序顺序（函数）</span>
-<span class="hljs-keyword">let</span> num = [<span class="hljs-number">124</span>,<span class="hljs-number">235236</span>,<span class="hljs-number">234</span>,<span class="hljs-number">1</span>,<span class="hljs-number">5</span>,<span class="hljs-number">654</span>,<span class="hljs-number">23</span>,<span class="hljs-number">12</span>,<span class="hljs-number">33</span>,<span class="hljs-number">456</span>]
-<span class="hljs-built_in">console</span>.log(num.sort(<span class="hljs-function">(<span class="hljs-params">a,b</span>)=&gt;</span>a-b))
-<span class="hljs-comment">//[ 1, 5, 12, 23, 33, 124, 234, 456, 654, 235236 ]</span>
-<span class="hljs-built_in">console</span>.log(num.sort(<span class="hljs-function">(<span class="hljs-params">a,b</span>)=&gt;</span>b-a))
-<span class="hljs-comment">// 倒过来</span></code></pre></div>
 </li>
 <li><p><code>reverse()</code>倒序,返回新数组</p>
 </li>
-<li><p><code>copyWithin()</code>拷贝数组中已有元素</p>
-<div class="hljs"><pre><code class="hljs javascript">copyWithin(target,start,end)
-<span class="hljs-comment">//复制序列到该位置,开始复制元素的起始位置,复制结束位置（不复制该元素）</span>
-<span class="hljs-keyword">let</span> num = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>]
-num.copyWithin(<span class="hljs-number">3</span>,<span class="hljs-number">0</span>,<span class="hljs-number">2</span>)
-<span class="hljs-built_in">console</span>.log(num)
-<span class="hljs-comment">// [ 1, 2, 3, 1, 2 ]</span></code></pre></div>
+<li><p><code>copyWithin(target,start,end)</code>拷贝数组中索引从start到end（end）的元素添加至target</p>
 </li>
-<li><p><code>fill()</code>填充元素</p>
-<div class="hljs"><pre><code class="hljs javascript">fill(value,start,end)
-<span class="hljs-comment">// 填充的元素，填充开始位置，填充结束位置（不填充该元素）</span>
-<span class="hljs-comment">// 填充数组</span>
-<span class="hljs-keyword">let</span> num = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>]
-nums.fill(<span class="hljs-number">666</span>,<span class="hljs-number">0</span>,<span class="hljs-number">2</span>)
-<span class="hljs-built_in">console</span>.log(nums)
-<span class="hljs-comment">// [ 666, 666, 3, 4, 5 ]</span></code></pre></div>
-
-</li>
-</ul>
-<h2 id="非变异-不改变原数组"><a href="#非变异-不改变原数组" class="headerlink" title="非变异-不改变原数组"></a>非变异-不改变原数组</h2><ul>
-<li><p><code>slice()</code>潜拷贝，返回新数组</p>
-<div class="hljs"><pre><code class="hljs javascript">slice(begin,end)
-<span class="hljs-comment">// 潜拷贝,传入索引值</span>
-<span class="hljs-comment">// begin索引包括自己，end索引自身是不拷贝的</span>
-<span class="hljs-keyword">let</span> num = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>]
-<span class="hljs-built_in">console</span>.log(num.slice(<span class="hljs-number">1</span>,<span class="hljs-number">3</span>))
-<span class="hljs-comment">//[2,3]</span></code></pre></div>
+<li><p><code>fill(value,start,end)</code>将数组中索引start到end（不含）的位置填充为value元素</p>
+<h2 id="非变异方法（不改变原数组）"><a href="#非变异方法（不改变原数组）" class="headerlink" title="非变异方法（不改变原数组）"></a>非变异方法（不改变原数组）</h2></li>
+<li><p><code>slice(start,end)</code>潜拷贝，返回索引从start到end（不含）的元素组成新数组</p>
 </li>
 <li><p><code>join()</code>指定分隔符将数字元素连成字符串</p>
 <div class="hljs"><pre><code class="hljs javascript">join(<span class="hljs-string">'str'</span>)
@@ -316,22 +264,12 @@ nums.fill(<span class="hljs-number">666</span>,<span class="hljs-number">0</span
 </ul>
 <h2 id="遍历数组"><a href="#遍历数组" class="headerlink" title="遍历数组"></a>遍历数组</h2><ul>
 <li><p><code>some()</code>方法测试是否至少有一个元素可以通过被提供的函数方法。该方法返回一个Boolean类型的值</p>
-<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> array = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>];
-
-<span class="hljs-keyword">var</span> even = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">element</span>) </span>&#123;
-<span class="hljs-keyword">return</span> element % <span class="hljs-number">2</span> === <span class="hljs-number">0</span>;
-&#125;;
-
-<span class="hljs-built_in">console</span>.log(array.some(even));
-<span class="hljs-comment">// true</span>
-<span class="hljs-comment">// 2,4能被2整除</span></code></pre></div>
 </li>
-<li><p><code>every()</code>检测数组所有元素是否都符合判断条件</p>
-<p>如果数组中检测到有一个元素不满足, 则整个表达式返回false,且停止遍历</p>
+<li><p><code>every()</code>检测数组所有元素是否都符合判断条件,<br>如果数组中检测到有一个元素不满足, 则整个表达式返回false,且停止遍历</p>
 </li>
-<li><p><code>reduce()和reduceRight()</code>累加器</p>
-<p><em>扁平化（flatten）一个元素为数组的数组</em></p>
-<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-comment">// reduce从左到右，right从右向左</span>
+<li><p><code>reduce()和reduceRight()</code>累加器,累加函数的return作为下一次累加的pre值，并可指定初始值</p>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-comment">//扁平化（flatten）一个元素为数组的数组</span>
+<span class="hljs-comment">// reduce从左到右，right从右向左</span>
 <span class="hljs-keyword">const</span> array1 = [[<span class="hljs-number">0</span>, <span class="hljs-number">1</span>], [<span class="hljs-number">2</span>, <span class="hljs-number">3</span>], [<span class="hljs-number">4</span>, <span class="hljs-number">5</span>]].reduceRight(
 (accumulator, currentValue) =&gt; accumulator.concat(currentValue)
 );
@@ -340,8 +278,6 @@ nums.fill(<span class="hljs-number">666</span>,<span class="hljs-number">0</span
 (accumulator, currentValue) =&gt; accumulator.concat(currentValue)
 );
 <span class="hljs-comment">// [0, 1, 2, 3, 4, 5]</span></code></pre></div>
-
-<p>*按属性</p>
 </li>
 <li><p><code>flat()</code>按照一个可指定的深度递归遍历数组，并将所有元素与遍历到的子数组中的元素合并为一个新数组返回。</p>
 <p><em>扁平化数组</em></p>

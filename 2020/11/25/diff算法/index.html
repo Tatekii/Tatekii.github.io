@@ -165,7 +165,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      969 字
+      1k 字
     </span>
   
 
@@ -224,18 +224,22 @@
 <li>找到可复用的vNode</li>
 </ul>
 <h4 id="移动节点-gt-最大索引值k"><a href="#移动节点-gt-最大索引值k" class="headerlink" title="移动节点-&gt;最大索引值k"></a>移动节点-&gt;最大索引值k</h4><ul>
-<li>新旧vNode，依次取出新vNode去旧vNode中寻找正确位置</li>
-<li>如果索引呈现递增趋势<br>（newA-&gt;oldA=&gt;0,newB-&gt;oldB=&gt;1,newC-&gt;oldC=&gt;2）则说明新旧 children 中节点顺序相同，不需要移动操作。相反的，如果在寻找的过程中遇到的索引值不呈现递增趋势，则说明需要移动操作</li>
-<li>如果匹配过程中递增规律被打破<br><code>k</code>为在旧 children 中所遇到的最大索引值，则后续匹配的索引小于这个值意味着都需要移动</li>
+<li><p>新旧vNode，依次取出新vNode去旧vNode中寻找正确位置</p>
+</li>
+<li><p>如果索引呈现递增趋势<br>（newA-&gt;oldA=&gt;0,newB-&gt;oldB=&gt;1,newC-&gt;oldC=&gt;2）则说明新旧 children 中节点顺序相同，不需要移动操作。相反的，如果在寻找的过程中遇到的索引值不呈现递增趋势，则说明需要移动操作</p>
+</li>
+<li><p>如果匹配过程中递增规律被打破</p>
+<p><code>k</code>为在旧 children 中所遇到的最大索引值，则后续匹配的索引小于这个值意味着都需要移动</p>
+</li>
 </ul>
-<h4 id="vue2的双端比较"><a href="#vue2的双端比较" class="headerlink" title="vue2的双端比较"></a>vue2的双端比较</h4><ul>
+<h3 id="vue2的双端比较"><a href="#vue2的双端比较" class="headerlink" title="vue2的双端比较"></a>vue2的双端比较</h3><ul>
 <li>vue同时从新旧children的两端开始比较</li>
 <li>四个指针，分别查找是否key相同</li>
 <li>有相同则匹配项目的两个指针向内移动，对匹配成功的vNode进行patch</li>
 <li>新children中拥有新的vNode时，会发生匹配不上的情况，新增节点</li>
 <li>匹配结束后旧children中还有未处理的节点，删除</li>
 </ul>
-<h4 id="vue3的inferno"><a href="#vue3的inferno" class="headerlink" title="vue3的inferno"></a>vue3的inferno</h4><ul>
+<h3 id="vue3的inferno"><a href="#vue3的inferno" class="headerlink" title="vue3的inferno"></a>vue3的inferno</h3><ul>
 <li>文本diff-&gt;排除相同的前置和后置元素<div class="hljs"><pre><code class="hljs javascript">  a,b,c
   | | |
   -------
@@ -271,20 +275,22 @@
 <li>子序列：不要求连续</li>
 <li>字串：要求连续</li>
 </ul>
-<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-comment">// 求最长子序列的长度</span>
-<span class="hljs-comment">// 动态规划</span>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-comment">// 动态规划</span>
 <span class="hljs-keyword">const</span> longestChildSequence = <span class="hljs-function"><span class="hljs-params">arr</span> =&gt;</span> &#123;
   <span class="hljs-keyword">let</span> len = arr.length
   <span class="hljs-keyword">if</span>(len &lt; <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span>
   <span class="hljs-keyword">const</span> dp = <span class="hljs-built_in">Array</span>(len).fill(<span class="hljs-number">1</span>)
   <span class="hljs-comment">// dp[i]代表原始数组该位置的最长子序列长度</span>
   <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span> ; i &lt; len ; i++)&#123;
-    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> j = <span class="hljs-number">0</span> ; j &lt; i : j++)&#123;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> j = <span class="hljs-number">0</span> ; j &lt; i ; j++)&#123;
       <span class="hljs-comment">// j遍历之前遍历过的所有元素</span>
-      <span class="hljs-comment">// 使用max取得没连续的长度值</span>
-      <span class="hljs-comment">// 避免上升中断后结果[dp:1,2,3,1,1,1]</span>
+      <span class="hljs-comment">// 可能存在大小不一的递增序列，使用max取得最大值</span>
       <span class="hljs-keyword">if</span>(arr[i] &gt; arr [j])&#123;
         dp[i] = <span class="hljs-built_in">Math</span>.max(dp[i],dp[j]+<span class="hljs-number">1</span>)
+        <span class="hljs-comment">// [1,2,3,4,1,2,5]</span>
+        <span class="hljs-comment">// 如果只使用dp[j]+1 ，dp[6]会在[1,2,5]中得出结果3</span>
+        <span class="hljs-comment">// 使用max比较之前更长的序列[1，2，3，4，5]得到5</span>
+
       &#125;
     &#125;
   &#125;

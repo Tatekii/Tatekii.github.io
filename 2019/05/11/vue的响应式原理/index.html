@@ -165,7 +165,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      810 字
+      573 字
     </span>
   
 
@@ -175,7 +175,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      10
+      8
        分钟
     </span>
   
@@ -272,23 +272,17 @@ Dep.target = <span class="hljs-literal">null</span>;  <span class="hljs-comment"
 &#125;</code></pre></div>
 
 <h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><ol>
-<li><code>vue</code>实例化，<code>data</code>被代理到viewmodel</li>
-<li><code>data</code>被<code>Observer</code>绑定<code>getter/setter</code>化</li>
+<li><code>vue</code>实例化，<code>data</code>被代理到<code>viewmodel</code></li>
+<li><code>data</code>被<code>Observer</code>绑定<code>getter/setter</code></li>
 <li>组件渲染过程中，实例触摸到的<code>data</code>会触发其<code>getter</code>,<code>dep</code>将该依赖收集到对应组件的<code>watcher</code>(订阅了这个数据)</li>
 <li>数据改变时触发相应的<code>setter</code>,<code>dep</code>通知他的观察者<code>watcher</code></li>
 </ol>
 <h1 id="VUE整个实现流程"><a href="#VUE整个实现流程" class="headerlink" title="VUE整个实现流程"></a>VUE整个实现流程</h1><ol>
-<li><p>编译模版<code>template</code>成<code>render</code>函数，执行<code>render</code>函数得到虚拟节点树</p>
-<p> 简单说，Vue的编译过程就是将template转化为render函数的过程。会经历以下阶段（生成AST树/优化/codegen）：</p>
-<ul>
-<li>首先解析模版，生成AST语法树(一种用JavaScript对象的形式来描述整个模板)。使用大量的正则表达式对模板进行解析，遇到标签、文本的时候都会执行对应的钩子进行相关处理。</li>
-<li>Vue的数据是响应式的，但其实模板中并不是所有的数据都是响应式的。有一些数据首次渲染后就不会再变化，对应的DOM也不会变化。那么优化过程就是深度遍历AST树，按照相关条件对树节点进行标记。这些被标记的节点(静态节点)我们就可以跳过对它们的比对，对运行时的模板起到很大的优化作用。</li>
-<li>编译的最后一步是将优化后的AST树转换为可执行的代码。</li>
-</ul>
+<li><p>编译模版<code>template</code>成<code>render</code>函数，执行<code>render</code>函数得到虚拟节点树（同时为不同类型的节点标记</p>
 </li>
 <li><p>将data代理到<code>viewmodel</code>上，并且绑定<code>getter/setter</code>(Object.defineProperty)</p>
 </li>
-<li><p>组件初次渲染视图，<code>compile</code>触摸到的<code>data</code>会触发<code>getter</code>收集依赖到该组件的<code>watcher</code></p>
+<li><p>组件初次渲染视图，<code>compile</code>渲染html触摸到的<code>data</code>会触发<code>getter</code>收集依赖到该组件的<code>watcher</code></p>
 </li>
 <li><p><code>data</code>数据改变时，触发<code>setter</code>,<code>dep</code>通知其<code>watcher</code>更新数据，<code>cb</code>将会对比新旧数据，发现数据改变了则再更新视图，这里用到了<code>diff</code>算法</p>
 </li>

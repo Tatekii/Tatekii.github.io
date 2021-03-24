@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="tatekii">
   <meta name="keywords" content="">
-  <title>cookie和session - 不知名的笔记本</title>
+  <title>cookie - 不知名的笔记本</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -165,7 +165,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      347 字
+      426 字
     </span>
   
 
@@ -175,7 +175,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      3
+      4
        分钟
     </span>
   
@@ -205,7 +205,7 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto" id="post">
             <!-- SEO header -->
-            <h1 style="display: none">cookie和session</h1>
+            <h1 style="display: none">cookie</h1>
             
             <div class="markdown-body" id="post-body">
               <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><ul>
@@ -213,10 +213,10 @@
 </li>
 <li><p><strong>狭义</strong>上的<code>Session</code>：服务端保存的一个数据结构，用来跟踪用户的状态，这个数据可以保存在集群、数据库、文件中</p>
 </li>
-<li><p>目前大多数应用使用<code>cookie</code>来实现<code>Session</code>跟踪</p>
+<li><p>目前大多数应用使用<code>cookie</code>来实现<code>Session</code>跟踪，<code>http cookie</code>是服务器发送到用户浏览器并保存在本地的一小块数据，它会在浏览器下次向同一服务器再发起请求时被携带并发送到服务器上</p>
 <ol>
-<li>服务端通过<code>set-cookie</code>让浏览器记录对应本用户的<code>session id</code></li>
-<li>之后的请求都会带上<code>cookie</code>,服务器读取<code>session id</code>后加载相应的<code>session</code>数据</li>
+<li>服务端通过<code>set-cookie</code>让浏览器记录对应本用户的<code>cookie</code></li>
+<li>之后的请求都会带上<code>cookie</code>,服务器读取<code>cookie</code>后加载相应的<code>session</code>数据，识别该请求来源于特定的用户</li>
 </ol>
 </li>
 </ul>
@@ -238,20 +238,23 @@
 </li>
 <li><p><code>value</code></p>
 </li>
-<li><p>! <code>domain</code>　        可以访问此cookie的域</p>
+<li><p><code>domain</code>　        可以访问此cookie的域，默认为该请求源的域</p>
 </li>
-<li><p>! <code>path</code>　        　可以访问此cookie的页面路径</p>
+<li><p><code>path</code>　        　 可以访问此cookie的页面路径</p>
 </li>
 <li><p><code>expires/Max-Age</code> 过期时间，如没设置则与会话时效相同（关闭浏览器窗口失效）</p>
 </li>
-<li><p>! <code>http</code>　          设置<code>httpOnly</code>只能传输不能查看</p>
+<li><p><code>httponly</code>　      只能传输不能查看</p>
 </li>
-<li><p>! <code>secure</code>          使用HTTPS传输</p>
+<li><p><code>secure</code>          只使用HTTPS传输</p>
 </li>
-<li><p>! <code>sameSite</code>Chrome 80 中，Chrome 会将没有声明 SameSite 值的 cookie 默认设置为SameSite=Lax</p>
+<li><p><code>sameSite =</code></p>
 <ul>
 <li><code>Strict</code>  跨域时不允许带上任何cookie</li>
-<li><code>Lax</code>  三种情况可以带上cookie[a连接,get表单,预加载link]</li>
+<li><code>Lax</code>  只有三种情况可以带上cookie[a连接,get提交的表单,预加载link]<blockquote>
+<p>现代会将没有声明 SameSite 值的 cookie 默认设置为<code>SameSite=Lax</code></p>
+</blockquote>
+</li>
 <li><code>None</code> 需配合<code>secure</code>使用用 <code>Set-Cookie: widget_session=xxxxx; SameSite=None; Secure</code></li>
 </ul>
 </li>
@@ -468,7 +471,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "cookie和session&nbsp;",
+        "cookie&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,

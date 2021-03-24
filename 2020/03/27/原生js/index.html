@@ -175,7 +175,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      25
+      26
        分钟
     </span>
   
@@ -310,27 +310,6 @@ add(<span class="hljs-number">1</span>)(<span class="hljs-number">2</span>)(<spa
   &#125;, <span class="hljs-number">1000</span> * i);
 &#125;</code></pre></div>
 </li>
-<li><p>垃圾回收机制</p>
-<ul>
-<li><p>js 具有自动垃圾收集机制，周期运行</p>
-</li>
-<li><p>标记清除</p>
-</li>
-<li><p>引用记数</p>
-</li>
-<li><p>内存泄漏</p>
-<ol>
-<li>全局变量</li>
-<li>循环引用</li>
-<li>闭包</li>
-<li>定时器</li>
-<li>控制台 console</li>
-</ol>
-</li>
-<li><p>es6 中的<code>WeakMap</code>和<code>WeakSet</code>，不被引用记数，不影响垃圾回收，即想往对象上加东西又不想影响垃圾回收</p>
-</li>
-</ul>
-</li>
 <li><p>map/flatMap/reduce</p>
 <div class="hljs"><pre><code class="hljs javascript"><span class="hljs-comment">// reduce的骚操作</span>
 <span class="hljs-comment">// 对对象内的数据求和</span>
@@ -395,28 +374,6 @@ add(<span class="hljs-number">1</span>)(<span class="hljs-number">2</span>)(<spa
 <ul>
 <li><code>window.ready</code>样式应用到了 DOM 上</li>
 <li><code>window.load</code>加载完所有资源（图片</li>
-</ul>
-</li>
-<li><p>事件循环 EventLoop。主线程不断从任务队列中读取任务进入执行栈执行的过程,栈结构，后进后出</p>
-<ul>
-<li><p>同步任务，主线程中执行，单线程一个接一个</p>
-</li>
-<li><p>异步任务，加入任务队列中</p>
-<ul>
-<li>宏任务 <code>定时器,I/O,UI交互，整体函数</code></li>
-<li>微任务 <code>Promise.then, Promise.catch，nextTick()，Object.observe</code></li>
-</ul>
-</li>
-<li><p>顺序</p>
-<ol>
-<li>整体函数作为一个宏任务</li>
-<li>执行完同步函数，遇到异步任务分别加入各自队列</li>
-<li>执行微任务</li>
-<li>执行完则浏览器 GUI 渲染</li>
-<li>执行下一个宏任务</li>
-<li>blablablabla</li>
-</ol>
-</li>
 </ul>
 </li>
 <li><p>进制转换</p>
@@ -538,28 +495,72 @@ person2.emit(<span class="hljs-string">"call2"</span>); <span class="hljs-commen
 
 <div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> Event =&#123;
   on:<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">name,cb</span>)</span>&#123;
-    <span class="hljs-keyword">if</span>(!<span class="hljs-keyword">this</span>.handles)&#123;
-      <span class="hljs-built_in">Object</span>.defineProperty(<span class="hljs-keyword">this</span>,<span class="hljs-string">'handles'</span>,&#123;
+    <span class="hljs-keyword">if</span>(!<span class="hljs-keyword">this</span>.handlers)&#123;
+      <span class="hljs-built_in">Object</span>.defineProperty(<span class="hljs-keyword">this</span>,<span class="hljs-string">'handlers'</span>,&#123;
         value:&#123;&#125;,
-        enumerable:<span class="hljs-literal">false</span><span class="hljs-comment">//不可枚举,</span>
+        enumerable:<span class="hljs-literal">false</span>,
         configurable:<span class="hljs-literal">true</span>,
         writable:<span class="hljs-literal">true</span>
       &#125;)
     &#125;
-    <span class="hljs-keyword">if</span>(!<span class="hljs-keyword">this</span>.handles[name])&#123;
-      <span class="hljs-keyword">this</span>.handles[name] = []
+    <span class="hljs-keyword">if</span>(!<span class="hljs-keyword">this</span>.handlers[name])&#123;
+      <span class="hljs-keyword">this</span>.handlers[name] = []
     &#125;
     <span class="hljs-keyword">this</span>.handles[name].push(cb)
   &#125;,
   emit:<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">name,...args</span>)</span>&#123;
-    <span class="hljs-keyword">if</span>(<span class="hljs-keyword">this</span>.handles[name])&#123;
-      <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i =<span class="hljs-number">0</span>;i&lt;<span class="hljs-keyword">this</span>.handles[name].length;i++)&#123;
-        <span class="hljs-keyword">this</span>.handles[name][i](arg)
-      &#125;
+    <span class="hljs-keyword">if</span>(<span class="hljs-keyword">this</span>.handlers[name])&#123;
+      <span class="hljs-keyword">this</span>.handlers[name].forEach(<span class="hljs-function"><span class="hljs-params">cb</span>=&gt;</span>&#123;
+        cb(...args)
+      &#125;)
     &#125;
   &#125;
 &#125;</code></pre></div>
+<div class="hljs"><pre><code class="hljs javascript">
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Events</span></span>&#123;
+  <span class="hljs-keyword">constructor</span>()&#123;
+    <span class="hljs-keyword">this</span>.events = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Map</span>()
+  &#125;
+  addEvent(key,fn,isOnce,...args)&#123;
+    <span class="hljs-keyword">const</span> curEvent = <span class="hljs-keyword">this</span>.events.get(key) ? <span class="hljs-keyword">this</span>.events.get(key) : <span class="hljs-keyword">this</span>.events.set(key,<span class="hljs-keyword">new</span> <span class="hljs-built_in">Map</span>()).get(key)
+    curEvent.set(fn,(...args2)=&gt;&#123;
+      fn(...args,...args2)
+      <span class="hljs-keyword">if</span>(isOnce)<span class="hljs-keyword">this</span>.off(key,fn)
+    &#125;)
+  &#125;
+  on(key, fn, ...args) &#123;
+    <span class="hljs-keyword">this</span>.addEvent(key, fn, <span class="hljs-literal">false</span>, ...args)
+  &#125;
+  once(key,fn,...args)&#123;
+    <span class="hljs-keyword">this</span>.addEvent(key,fn,<span class="hljs-literal">true</span>,...args)
+  &#125;
+  off(key,fn)&#123;
+    <span class="hljs-keyword">this</span>.events.get(key).delete(fn)
+  &#125;
+  fire(key,...args)&#123;
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>.events.get(key));
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> cb <span class="hljs-keyword">of</span> <span class="hljs-keyword">this</span>.events.get(key).values())&#123;
+      cb(...args)
+    &#125;
+  &#125;
+&#125;
 
+<span class="hljs-comment">// 请使用原生代码实现一个Events模块，可以实现自定义事件的订阅、触发、移除功能</span>
+<span class="hljs-keyword">const</span> fn1 = <span class="hljs-function">(<span class="hljs-params">... args</span>)=&gt;</span><span class="hljs-built_in">console</span>.log(<span class="hljs-string">'I want sleep1'</span>, ... args)
+<span class="hljs-keyword">const</span> fn2 = <span class="hljs-function">(<span class="hljs-params">... args</span>)=&gt;</span><span class="hljs-built_in">console</span>.log(<span class="hljs-string">'I want sleep2'</span>, ... args)
+<span class="hljs-keyword">const</span> event = <span class="hljs-keyword">new</span> Events();
+event.on(<span class="hljs-string">'sleep'</span>, fn1, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>);
+event.on(<span class="hljs-string">'sleep'</span>, fn2, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>);
+event.fire(<span class="hljs-string">'sleep'</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>);
+<span class="hljs-comment">// I want sleep1 1 2 3 4 5 6</span>
+<span class="hljs-comment">// I want sleep2 1 2 3 4 5 6</span>
+event.off(<span class="hljs-string">'sleep'</span>, fn1);
+event.once(<span class="hljs-string">'sleep'</span>, () =&gt; <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'I want sleep'</span>));
+event.fire(<span class="hljs-string">'sleep'</span>);
+<span class="hljs-comment">// I want sleep2 1 2 3</span>
+<span class="hljs-comment">// I want sleep</span>
+event.fire(<span class="hljs-string">'sleep'</span>);
+<span class="hljs-comment">// I want sleep2 1 2 3</span></code></pre></div>
             </div>
             <hr>
             <div>
