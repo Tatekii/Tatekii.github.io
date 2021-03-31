@@ -191,7 +191,13 @@
           
             
           
-          中间件机制12345678910111213app.use(async(ctx,next)=&gt;&#123;  ctx.body = &#x27;hello koa!&#x27;  next()  ctx.body += &#x27;onion back step2&#x27;&#125;)app.use(async(ctx,next)=&gt;&#123;  ctx.body += &#x2
+          中间件机制app.use(async(ctx,next)=&gt;&#123;
+  ctx.body = &#x27;hello koa!&#x27;
+  next()
+  ctx.body += &#x27;onion back step2&#x27;
+&#125;)
+app.use(async(ctx,next)=&gt;&#123;
+  ctx.body += &#x27;onion bac
         </a>
       </p>
 
@@ -381,13 +387,13 @@ ref挂载在普通HTML组件上访问它得到DOM
 ref挂载在VUE组件上访问它得到组件实例
 
 
-1&lt;base-input ref=&quot;usernameInput&quot;&gt;&lt;base-input&gt;
-1this.$refs.usernameInput
+&lt;base-input ref=&quot;usernameInput&quot;&gt;&lt;base-input&gt;
+this.$refs.usernameInput
 
 $emit和prop
 子组件props接收父组件传递的数据
 动态数据加冒号:
-子组件可对收到
+子组件可对收到的p
         </a>
       </p>
 
@@ -481,7 +487,11 @@ $emit和prop
           
           https://juejin.im/post/59e85eebf265da430d571f89https://juejin.im/post/5c9a43175188252d876e5903
 
-1234567891011121314151617181920setTimeout(function()&#123;    console.log(&#x27;定时器开始啦&#x27;)&#125;);new
+setTimeout(function()&#123;
+    console.log(&#x27;定时器开始啦&#x27;)
+&#125;);
+
+new Promise(function(resolve)&
         </a>
       </p>
 

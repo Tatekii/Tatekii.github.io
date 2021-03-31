@@ -275,17 +275,60 @@
 <p>解决方案：</p>
 <ul>
 <li><p>border-image</p>
-<figure class="highlight css"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs css">border_1px &#123;<br>  <span class="hljs-attribute">border-bottom</span>:<span class="hljs-number">1px</span> solid <span class="hljs-number">#000</span>;<br>&#125;<br><br><span class="hljs-keyword">@media</span> <span class="hljs-keyword">only</span> screen <span class="hljs-keyword">and</span> (<span class="hljs-attribute">-webkit-min-device-pixel-ratio</span>: <span class="hljs-number">2</span>) &#123;<br>  . border_1px &#123;<br>    <span class="hljs-attribute">border-bottom</span>:none;<br>    <span class="hljs-attribute">border-width</span>:<span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">1px</span> <span class="hljs-number">0</span>;<br>    <span class="hljs-attribute">border-image</span>: <span class="hljs-built_in">url</span>(<span class="hljs-string">../ img / 1pxline . png</span>) <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">2</span> <span class="hljs-number">0</span> stretch;<br>  &#125;<br>&#125;<br><br></code></pre></div></td></tr></table></figure></li>
+<div class="hljs code-wrapper"><pre><code class="hljs css">border_1px &#123;
+  <span class="hljs-attribute">border-bottom</span>:<span class="hljs-number">1px</span> solid <span class="hljs-number">#000</span>;
+&#125;
+
+<span class="hljs-keyword">@media</span> <span class="hljs-keyword">only</span> screen <span class="hljs-keyword">and</span> (<span class="hljs-attribute">-webkit-min-device-pixel-ratio</span>: <span class="hljs-number">2</span>) &#123;
+  . border_1px &#123;
+    <span class="hljs-attribute">border-bottom</span>:none;
+    <span class="hljs-attribute">border-width</span>:<span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">1px</span> <span class="hljs-number">0</span>;
+    <span class="hljs-attribute">border-image</span>: <span class="hljs-built_in">url</span>(<span class="hljs-string">../ img / 1pxline . png</span>) <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">2</span> <span class="hljs-number">0</span> stretch;
+  &#125;
+&#125;
+</code></pre></div></li>
 <li><p>background-image</p>
-<figure class="highlight css"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs css">border_1px &#123;<br>  <span class="hljs-attribute">border-bottom</span>:<span class="hljs-number">1px</span> solid <span class="hljs-number">#000</span>;<br>&#125;<br><br><span class="hljs-keyword">@media</span> <span class="hljs-keyword">only</span> screen <span class="hljs-keyword">and</span> (<span class="hljs-attribute">-webkit-min-device-pixel-ratio</span>: <span class="hljs-number">2</span>) &#123;<br>  . border_1px &#123;<br>    <span class="hljs-attribute">background</span>:<span class="hljs-built_in">url</span>(<span class="hljs-string">../ img / 1pxline . png</span>) repeat - x left bottom;<br>    <span class="hljs-attribute">background-size</span>:<span class="hljs-number">100%</span> <span class="hljs-number">1px</span>;<br>  &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure></li>
+<div class="hljs code-wrapper"><pre><code class="hljs css">border_1px &#123;
+  <span class="hljs-attribute">border-bottom</span>:<span class="hljs-number">1px</span> solid <span class="hljs-number">#000</span>;
+&#125;
+
+<span class="hljs-keyword">@media</span> <span class="hljs-keyword">only</span> screen <span class="hljs-keyword">and</span> (<span class="hljs-attribute">-webkit-min-device-pixel-ratio</span>: <span class="hljs-number">2</span>) &#123;
+  . border_1px &#123;
+    <span class="hljs-attribute">background</span>:<span class="hljs-built_in">url</span>(<span class="hljs-string">../ img / 1pxline . png</span>) repeat - x left bottom;
+    <span class="hljs-attribute">background-size</span>:<span class="hljs-number">100%</span> <span class="hljs-number">1px</span>;
+  &#125;
+&#125;</code></pre></div></li>
 <li><p>box-shadow</p>
 </li>
 </ul>
-<figure class="highlight css"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs css"><span class="hljs-selector-class">.border_1px</span> &#123;<br>  <span class="hljs-attribute">box-shadow</span>: inset <span class="hljs-number">0px</span>-<span class="hljs-number">1px</span>1px-<span class="hljs-number">1px</span><span class="hljs-number">#d4d6d7</span><br>&#125;<br><span class="hljs-comment">/* 颜色会变浅 */</span><br></code></pre></div></td></tr></table></figure>
+<div class="hljs code-wrapper"><pre><code class="hljs css"><span class="hljs-selector-class">.border_1px</span> &#123;
+  <span class="hljs-attribute">box-shadow</span>: inset <span class="hljs-number">0px</span>-<span class="hljs-number">1px</span>1px-<span class="hljs-number">1px</span><span class="hljs-number">#d4d6d7</span>
+&#125;
+<span class="hljs-comment">/* 颜色会变浅 */</span></code></pre></div>
 
 <ul>
 <li><p>伪类 trasnform</p>
-<figure class="highlight css"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs css">. border_1px: before &#123;<br>  content: <span class="hljs-string">&#x27;&#x27;</span>;<br>  <span class="hljs-attribute">position</span>: absolute;<br>  <span class="hljs-attribute">top</span>: <span class="hljs-number">0</span>;<br>  <span class="hljs-attribute">height</span>: <span class="hljs-number">1px</span>;<br>  <span class="hljs-attribute">width</span>: <span class="hljs-number">100</span> %;<br>  <span class="hljs-attribute">background</span> - <span class="hljs-attribute">color</span>: <span class="hljs-number">#000</span>;<br>  <span class="hljs-attribute">transform</span> - origin: <span class="hljs-number">50</span> % <span class="hljs-number">0</span> %;<br>&#125;<br><br><span class="hljs-keyword">@media</span> <span class="hljs-keyword">only</span> screen <span class="hljs-keyword">and</span> (<span class="hljs-attribute">-webkit-min-device-pixel-ratio</span>: <span class="hljs-number">2</span>) &#123;<br>  . border_1px: before &#123;<br>    transform: scaleY (<span class="hljs-number">0.5</span>);<br>  &#125;<br>&#125;<br><br><span class="hljs-keyword">@media</span> <span class="hljs-keyword">only</span> screen <span class="hljs-keyword">and</span> (<span class="hljs-attribute">-webkit-min-device-pixel-ratio</span>: <span class="hljs-number">3</span>) &#123;<br>  . border_1px: before &#123;<br>    transform: scaleY (<span class="hljs-number">0.33</span>);<br>  &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure></li>
+<div class="hljs code-wrapper"><pre><code class="hljs css">. border_1px: before &#123;
+  content: <span class="hljs-string">&#x27;&#x27;</span>;
+  <span class="hljs-attribute">position</span>: absolute;
+  <span class="hljs-attribute">top</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">1px</span>;
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">100</span> %;
+  <span class="hljs-attribute">background</span> - <span class="hljs-attribute">color</span>: <span class="hljs-number">#000</span>;
+  <span class="hljs-attribute">transform</span> - origin: <span class="hljs-number">50</span> % <span class="hljs-number">0</span> %;
+&#125;
+
+<span class="hljs-keyword">@media</span> <span class="hljs-keyword">only</span> screen <span class="hljs-keyword">and</span> (<span class="hljs-attribute">-webkit-min-device-pixel-ratio</span>: <span class="hljs-number">2</span>) &#123;
+  . border_1px: before &#123;
+    transform: scaleY (<span class="hljs-number">0.5</span>);
+  &#125;
+&#125;
+
+<span class="hljs-keyword">@media</span> <span class="hljs-keyword">only</span> screen <span class="hljs-keyword">and</span> (<span class="hljs-attribute">-webkit-min-device-pixel-ratio</span>: <span class="hljs-number">3</span>) &#123;
+  . border_1px: before &#123;
+    transform: scaleY (<span class="hljs-number">0.33</span>);
+  &#125;
+&#125;</code></pre></div></li>
 <li><p>svg</p>
 <p>-&gt; 借助 PostCSS的 postcss-write-svg我们能直接使用 border-image和 background-image创建 svg的 1px边框</p>
 </li>
@@ -337,14 +380,52 @@
 <p>注意：我们必须指定 viweport-fit后才能使用这两个函数：</p>
 <p><code>&lt;meta name=&quot;viewport&quot; content=&quot;viewport-fit=cover&quot;&gt;</code></p>
 <p>constant在 iOS&lt;11.2的版本中生效， env在 iOS&gt;=11.2的版本中生效，这意味着我们往往要同时设置他们，将页面限制在安全区域内：</p>
-<figure class="highlight css"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs css"><span class="hljs-selector-tag">body</span> &#123;<br><br>  <span class="hljs-attribute">padding</span> - <span class="hljs-attribute">bottom</span>:<br>    constant (safe - area - inset - bottom);<br><br>  <span class="hljs-attribute">padding</span> - <span class="hljs-attribute">bottom</span>:<br>    env (safe - area - inset - bottom);<br><br>&#125;<br></code></pre></div></td></tr></table></figure>
+<div class="hljs code-wrapper"><pre><code class="hljs css"><span class="hljs-selector-tag">body</span> &#123;
+
+  <span class="hljs-attribute">padding</span> - <span class="hljs-attribute">bottom</span>:
+    constant (safe - area - inset - bottom);
+
+  <span class="hljs-attribute">padding</span> - <span class="hljs-attribute">bottom</span>:
+    env (safe - area - inset - bottom);
+
+&#125;</code></pre></div>
 
 <p>当使用底部固定导航栏时，我们要为他们设置 padding值：</p>
-<figure class="highlight css"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs css"><span class="hljs-selector-tag">body</span> &#123;<br><br>  <span class="hljs-attribute">padding</span> - <span class="hljs-attribute">bottom</span>:<br>    constant (safe - area - inset - bottom);<br><br>  <span class="hljs-attribute">padding</span> - <span class="hljs-attribute">bottom</span>:<br>    env (safe - area - inset - bottom);<br><br>&#125;<br></code></pre></div></td></tr></table></figure>
+<div class="hljs code-wrapper"><pre><code class="hljs css"><span class="hljs-selector-tag">body</span> &#123;
 
-<h2 id="横屏检测"><a href="#横屏检测" class="headerlink" title="横屏检测"></a>横屏检测</h2><figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-built_in">window</span>.addEventListener(<span class="hljs-string">&quot;resize&quot;</span>, <span class="hljs-function">() =&gt;</span> &#123;<br><br>  <span class="hljs-keyword">if</span> (<span class="hljs-built_in">window</span>.orientation === <span class="hljs-number">180</span> || <span class="hljs-built_in">window</span>.orientation === <span class="hljs-number">0</span>) &#123;<br>    <span class="hljs-comment">// 正常方向或屏幕旋转180度</span><br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;竖屏&#x27;</span>);<br>  &#125;<br>  <span class="hljs-keyword">if</span> (<span class="hljs-built_in">window</span>.orientation === <span class="hljs-number">90</span> || <span class="hljs-built_in">window</span>.orientation === -<span class="hljs-number">90</span>) &#123;<br>    <span class="hljs-comment">// 屏幕顺时钟旋转90度或屏幕逆时针旋转90度</span><br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;横屏&#x27;</span>);<br>  &#125;<br>&#125;);<br></code></pre></div></td></tr></table></figure>
+  <span class="hljs-attribute">padding</span> - <span class="hljs-attribute">bottom</span>:
+    constant (safe - area - inset - bottom);
 
-<figure class="highlight css"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs css"><br><span class="hljs-keyword">@media</span> screen <span class="hljs-keyword">and</span> (<span class="hljs-attribute">orientation</span>: portrait) &#123;<br><br>  <span class="hljs-comment">/*竖屏...*/</span><br><br>&#125;<br><br><span class="hljs-keyword">@media</span> screen <span class="hljs-keyword">and</span> (<span class="hljs-attribute">orientation</span>: landscape) &#123;<br><br>  <span class="hljs-comment">/*横屏...*/</span><br><br>&#125;<br><br></code></pre></div></td></tr></table></figure>
+  <span class="hljs-attribute">padding</span> - <span class="hljs-attribute">bottom</span>:
+    env (safe - area - inset - bottom);
+
+&#125;</code></pre></div>
+
+<h2 id="横屏检测"><a href="#横屏检测" class="headerlink" title="横屏检测"></a>横屏检测</h2><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-built_in">window</span>.addEventListener(<span class="hljs-string">&quot;resize&quot;</span>, <span class="hljs-function">() =&gt;</span> &#123;
+
+  <span class="hljs-keyword">if</span> (<span class="hljs-built_in">window</span>.orientation === <span class="hljs-number">180</span> || <span class="hljs-built_in">window</span>.orientation === <span class="hljs-number">0</span>) &#123;
+    <span class="hljs-comment">// 正常方向或屏幕旋转180度</span>
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;竖屏&#x27;</span>);
+  &#125;
+  <span class="hljs-keyword">if</span> (<span class="hljs-built_in">window</span>.orientation === <span class="hljs-number">90</span> || <span class="hljs-built_in">window</span>.orientation === -<span class="hljs-number">90</span>) &#123;
+    <span class="hljs-comment">// 屏幕顺时钟旋转90度或屏幕逆时针旋转90度</span>
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;横屏&#x27;</span>);
+  &#125;
+&#125;);</code></pre></div>
+
+<div class="hljs code-wrapper"><pre><code class="hljs css">
+<span class="hljs-keyword">@media</span> screen <span class="hljs-keyword">and</span> (<span class="hljs-attribute">orientation</span>: portrait) &#123;
+
+  <span class="hljs-comment">/*竖屏...*/</span>
+
+&#125;
+
+<span class="hljs-keyword">@media</span> screen <span class="hljs-keyword">and</span> (<span class="hljs-attribute">orientation</span>: landscape) &#123;
+
+  <span class="hljs-comment">/*横屏...*/</span>
+
+&#125;
+</code></pre></div>
 
 <h2 id="图片模糊问题"><a href="#图片模糊问题" class="headerlink" title="图片模糊问题"></a>图片模糊问题</h2><p>在 dpr&gt;1的屏幕上，位图的一个像素可能由多个物理像素来渲染，然而这些物理像素点并不能被准确的分配上对应位图像素的颜色，只能取近似值，所以相同的图片在 dpr&gt;1的屏幕上就会模糊:</p>
 <p>解决方法：</p>
@@ -354,12 +435,29 @@
 <li><p>@media查询改url(<strong>backgroundimgae</strong>)</p>
 </li>
 <li><p>-webkit-image-set(<strong>backgroundimgae</strong>)</p>
-<figure class="highlight css"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs css"><span class="hljs-selector-tag">div</span> &#123;<br>  <span class="hljs-attribute">background-image</span>: <span class="hljs-built_in">url</span>(<span class="hljs-string">&quot;foo.png&quot;</span>);<br>  <span class="hljs-attribute">background-image</span>: <span class="hljs-built_in">-webkit-image-set</span>(<span class="hljs-string">&quot;foo.png&quot;</span><span class="hljs-number">1</span>x,<br>      <span class="hljs-string">&quot;foo-2x.png&quot;</span><span class="hljs-number">2</span>x,<br>      <span class="hljs-string">&quot;foo-print.png&quot;</span><span class="hljs-number">600dpi</span>);<br>  <span class="hljs-attribute">background-image</span>: <span class="hljs-built_in">image-set</span>(<span class="hljs-string">&quot;foo.png&quot;</span><span class="hljs-number">1</span>x,<br>      <span class="hljs-string">&quot;foo-2x.png&quot;</span><span class="hljs-number">2</span>x,<br>      <span class="hljs-string">&quot;foo-print.png&quot;</span><span class="hljs-number">600dpi</span>);<br>&#125;<br><br>&lt; !-- 由于一些浏览器不支持image-set，所以先写常规的url方式。对于识别这个属性的，浏览器会在普通屏下显示<span class="hljs-number">1</span>x的图像；Retina屏幕下显示<span class="hljs-number">2</span>x的图像；更高分辨率（比如印刷）显示<span class="hljs-number">600dpi</span>图像。 --&gt;<br></code></pre></div></td></tr></table></figure></li>
+<div class="hljs code-wrapper"><pre><code class="hljs css"><span class="hljs-selector-tag">div</span> &#123;
+  <span class="hljs-attribute">background-image</span>: <span class="hljs-built_in">url</span>(<span class="hljs-string">&quot;foo.png&quot;</span>);
+  <span class="hljs-attribute">background-image</span>: <span class="hljs-built_in">-webkit-image-set</span>(<span class="hljs-string">&quot;foo.png&quot;</span><span class="hljs-number">1</span>x,
+      <span class="hljs-string">&quot;foo-2x.png&quot;</span><span class="hljs-number">2</span>x,
+      <span class="hljs-string">&quot;foo-print.png&quot;</span><span class="hljs-number">600dpi</span>);
+  <span class="hljs-attribute">background-image</span>: <span class="hljs-built_in">image-set</span>(<span class="hljs-string">&quot;foo.png&quot;</span><span class="hljs-number">1</span>x,
+      <span class="hljs-string">&quot;foo-2x.png&quot;</span><span class="hljs-number">2</span>x,
+      <span class="hljs-string">&quot;foo-print.png&quot;</span><span class="hljs-number">600dpi</span>);
+&#125;
+
+&lt; !-- 由于一些浏览器不支持image-set，所以先写常规的url方式。对于识别这个属性的，浏览器会在普通屏下显示<span class="hljs-number">1</span>x的图像；Retina屏幕下显示<span class="hljs-number">2</span>x的图像；更高分辨率（比如印刷）显示<span class="hljs-number">600dpi</span>图像。 --&gt;</code></pre></div></li>
 <li><p>srcset</p>
 <p>以最合适的src去匹配不同屏幕</p>
-<figure class="highlight"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs css">&lt;img src=&quot;source.jpg&quot; srcset=&quot;source_2x.jpg 2x, source_3x.jpg 3x&quot;&gt;<br></code></pre></div></td></tr></table></figure></li>
+<div class="hljs code-wrapper"><pre><code class="hljs css">&lt;img src=&quot;source.jpg&quot; srcset=&quot;source_2x.jpg 2x, source_3x.jpg 3x&quot;&gt;</code></pre></div></li>
 <li><p>使用js拼接图片src<br>先查询处当前设备dpr,正则替换掉文件名</p>
-<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> dpr = <span class="hljs-built_in">window</span>.devicePixelRatio;<br><span class="hljs-keyword">const</span> images = <span class="hljs-built_in">document</span>.querySelectorAll(<span class="hljs-string">&#x27;img&#x27;</span>);<br><br>images.forEach(<span class="hljs-function">(<span class="hljs-params">img</span>) =&gt;</span> &#123;<br>    img.src.replace(<span class="hljs-string">&quot;.&quot;</span>,<span class="hljs-string">`@<span class="hljs-subst">$&#123;dpr&#125;</span>x.`</span>);<br>&#125;<br>)<br><br></code></pre></div></td></tr></table></figure></li>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> dpr = <span class="hljs-built_in">window</span>.devicePixelRatio;
+<span class="hljs-keyword">const</span> images = <span class="hljs-built_in">document</span>.querySelectorAll(<span class="hljs-string">&#x27;img&#x27;</span>);
+
+images.forEach(<span class="hljs-function">(<span class="hljs-params">img</span>) =&gt;</span> &#123;
+    img.src.replace(<span class="hljs-string">&quot;.&quot;</span>,<span class="hljs-string">`@<span class="hljs-subst">$&#123;dpr&#125;</span>x.`</span>);
+&#125;
+)
+</code></pre></div></li>
 <li><p>使用svg</p>
 <p><em>可缩放矢量图（ ScalableVectorGraphics）</em></p>
 </li>

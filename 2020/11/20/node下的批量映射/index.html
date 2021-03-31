@@ -249,11 +249,48 @@
 <li><p>controllers写成单文件</p>
 </li>
 <li><p>使用index.js批量映射</p>
-<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">//index.js</span><br><span class="hljs-keyword">const</span> _ = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;lodash&#x27;</span>)<br><span class="hljs-keyword">const</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;fs&#x27;</span>)<br><span class="hljs-keyword">const</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;path&#x27;</span>)<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 映射文件夹下的文件为模块</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">const</span> mapDir = <span class="hljs-function"><span class="hljs-params">d</span> =&gt;</span> &#123;<br>    <span class="hljs-keyword">const</span> tree = &#123;&#125;<br><br>    <span class="hljs-comment">// 获得当前文件夹下的所有的文件夹和文件</span><br>    <span class="hljs-keyword">const</span> [dirs, files] = _(fs.readdirSync(d))<br>        .partition(<span class="hljs-function"><span class="hljs-params">p</span> =&gt;</span> fs.statSync(path.join(d, p)).isDirectory())<br><br>    <span class="hljs-comment">// _( ...)</span><br>    <span class="hljs-comment">// 创建一个经 lodash 包装后的对象会启用隐式链。返回的数组、集合、方法相互之间能够链式调用</span><br>    <br>    <span class="hljs-comment">// 递归映射文件夹</span><br>    dirs.forEach(<span class="hljs-function"><span class="hljs-params">dir</span> =&gt;</span> &#123;<br>        tree[dir] = mapDir(path.join(d, dir))<br>    &#125;)<br><br>    <span class="hljs-comment">// 映射文件</span><br>    files.forEach(<span class="hljs-function"><span class="hljs-params">file</span> =&gt;</span> &#123;<br>        <span class="hljs-keyword">if</span> (path.extname(file) === <span class="hljs-string">&#x27;.js&#x27;</span>) &#123;<br>            tree[path.basename(file, <span class="hljs-string">&#x27;.js&#x27;</span>)] = <span class="hljs-built_in">require</span>(path.join(d, file))<br>        &#125;<br>    &#125;)<br><br>    <span class="hljs-keyword">return</span> tree<br>&#125;<br><br><span class="hljs-built_in">module</span>.exports = mapDir(path.join(__dirname<span class="hljs-comment">//当前文件夹目录))</span><br></code></pre></div></td></tr></table></figure></li>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">//index.js</span>
+<span class="hljs-keyword">const</span> _ = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;lodash&#x27;</span>)
+<span class="hljs-keyword">const</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;fs&#x27;</span>)
+<span class="hljs-keyword">const</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;path&#x27;</span>)
+
+<span class="hljs-comment">/**</span>
+<span class="hljs-comment"> * 映射文件夹下的文件为模块</span>
+<span class="hljs-comment"> */</span>
+<span class="hljs-keyword">const</span> mapDir = <span class="hljs-function"><span class="hljs-params">d</span> =&gt;</span> &#123;
+    <span class="hljs-keyword">const</span> tree = &#123;&#125;
+
+    <span class="hljs-comment">// 获得当前文件夹下的所有的文件夹和文件</span>
+    <span class="hljs-keyword">const</span> [dirs, files] = _(fs.readdirSync(d))
+        .partition(<span class="hljs-function"><span class="hljs-params">p</span> =&gt;</span> fs.statSync(path.join(d, p)).isDirectory())
+
+    <span class="hljs-comment">// _( ...)</span>
+    <span class="hljs-comment">// 创建一个经 lodash 包装后的对象会启用隐式链。返回的数组、集合、方法相互之间能够链式调用</span>
+    
+    <span class="hljs-comment">// 递归映射文件夹</span>
+    dirs.forEach(<span class="hljs-function"><span class="hljs-params">dir</span> =&gt;</span> &#123;
+        tree[dir] = mapDir(path.join(d, dir))
+    &#125;)
+
+    <span class="hljs-comment">// 映射文件</span>
+    files.forEach(<span class="hljs-function"><span class="hljs-params">file</span> =&gt;</span> &#123;
+        <span class="hljs-keyword">if</span> (path.extname(file) === <span class="hljs-string">&#x27;.js&#x27;</span>) &#123;
+            tree[path.basename(file, <span class="hljs-string">&#x27;.js&#x27;</span>)] = <span class="hljs-built_in">require</span>(path.join(d, file))
+        &#125;
+    &#125;)
+
+    <span class="hljs-keyword">return</span> tree
+&#125;
+
+<span class="hljs-built_in">module</span>.exports = mapDir(path.join(__dirname<span class="hljs-comment">//当前文件夹目录))</span></code></pre></div></li>
 <li><p>使用时候只需require(index.js)后.[module]即可</p>
 </li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> controllers = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;../controllers&quot;</span>);<br>router.get(<span class="hljs-string">&quot;/&quot;</span>, controllers.admin);<br>router.get(<span class="hljs-string">&#x27;/userList&#x27;</span>,controllers.adminUser)<br>router.post(<span class="hljs-string">&#x27;/userFreeze&#x27;</span>,controllers.adminFreeze)<br>router.post(<span class="hljs-string">&#x27;/userDelete&#x27;</span>,controllers.adminDelete)<br></code></pre></div></td></tr></table></figure>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> controllers = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;../controllers&quot;</span>);
+router.get(<span class="hljs-string">&quot;/&quot;</span>, controllers.admin);
+router.get(<span class="hljs-string">&#x27;/userList&#x27;</span>,controllers.adminUser)
+router.post(<span class="hljs-string">&#x27;/userFreeze&#x27;</span>,controllers.adminFreeze)
+router.post(<span class="hljs-string">&#x27;/userDelete&#x27;</span>,controllers.adminDelete)</code></pre></div>
             </div>
             <hr>
             <div>

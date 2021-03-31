@@ -217,7 +217,10 @@ vertical-align:top
 
 
 三角形2，椭圆
-不同边border之间45度拼接1234567div&#123;  width:0;  height
+不同边border之间45度拼接div&#123;
+  width:0;
+  height:0;
+ 
         </a>
       </p>
 
@@ -314,7 +317,7 @@ vertical-align:top
 代理服务器-nginx,devServer等
 
 更改页面的源document.domain
-1234&#x27;someWebSite.com/dir1/pag
+&#x27;someWebSite.com/dir1/pageA.h
         </a>
       </p>
 
@@ -358,7 +361,7 @@ vertical-align:top
           githubHTML/CSS
 img标签的srcset属性
  srcset 的值是一个字符串，用来定义一个或多个图像候选地址，以,分割，每个候选地址将在特定条件下得以使用。候选地址包含图片 URL 和一个可选的宽度描述符和像素密度描述符，该候选地址用来在特定条件下替代原始地址成为 src  的属性。
- 123&lt;img src=&quot;/files/16797/clock-demo-200
+ &lt;img src=&quot;/files/16797/clock-demo-200px.
         </a>
       </p>
 
@@ -449,7 +452,14 @@ HTTP请求头的Content-S
           
             
           
-          1234567891011121314151617var paramsString = &quot;q=URLUtils.searchParams&amp;topic=api&quot;var searchParams = new URLSearchParams(paramsString);for (let p of searchParams) &#123;  console.log(p);&#1
+          var paramsString = &quot;q=URLUtils.searchParams&amp;topic=api&quot;
+var searchParams = new URLSearchParams(paramsString);
+
+for (let p of searchParams) &#123;
+  console.log(p);
+&#125;
+
+searchParams.ha
         </a>
       </p>
 
@@ -540,12 +550,14 @@ String
 
 Number
 
-特殊的NaN123typeof NaN === &#x27;number&#x27;唯一一个自相反的值NaN !== NaN
+特殊的NaNtypeof NaN === &#x27;number&#x27;
+唯一一个自相反的值
+NaN !== NaN
 
 
 Boolean
 
-在条件判断时，除了 undefined， null， false， NaN， &#39;&#39;， 0， -0，其他所有值都转为 
+在条件判断时，除了 undefined， null， false， NaN， &#39;&#39;， 0， -0，其他所有值都转为 t
         </a>
       </p>
 
@@ -590,7 +602,12 @@ Boolean
 子组件通过computed读取state，
 
 mapState辅助函数展开以混入计算属性中  
-123456789computed: &#123;  localComputed () &#123; /* ... */ &#125;,  // 使用对象展开运算符将此对象混入到外部对象中  ...mapState(&#123;  // ...    &#
+computed: &#123;
+  localComputed () &#123; /* ... */ &#125;,
+  // 使用对象展开运算符将此对象混入到外部对象中
+  ...mapState(&#123;
+  // ...
+    &#x27;
         </a>
       </p>
 
@@ -639,7 +656,10 @@ mapState辅助函数展开以混入计算属性中
 作用：隐藏创建实例的复杂度，将构造函数和创建者分离
 
 举例：jQ的选择器
-1234567891011121314151617181920212223class User&#123;  constructor(name=&#x27;&#x27;,age=0)
+class User&#123;
+  constructor(name=&#x27;&#x27;,age=0)&#123;
+    this.name = name
+    this
         </a>
       </p>
 

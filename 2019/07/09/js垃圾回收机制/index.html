@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      299 字
+      301 字
     </span>
   
 
@@ -254,7 +254,9 @@
 <li>跟踪记录被引用的次数</li>
 <li>次数为0的值所占的内存会被下次垃圾收集回收</li>
 </ul>
-<h4 id="循环引用"><a href="#循环引用" class="headerlink" title="循环引用"></a>循环引用</h4><figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript">objA.obj = objB<br>objB.obj = objA<br>a/b中都包含指向对方的指针<br></code></pre></div></td></tr></table></figure>
+<h4 id="循环引用"><a href="#循环引用" class="headerlink" title="循环引用"></a>循环引用</h4><div class="hljs code-wrapper"><pre><code class="hljs javascript">objA.obj = objB
+objB.obj = objA
+a/b中都包含指向对方的指针</code></pre></div>
 
 
 <h2 id="手动解除变量的引用"><a href="#手动解除变量的引用" class="headerlink" title="手动解除变量的引用"></a>手动解除变量的引用</h2><ul>

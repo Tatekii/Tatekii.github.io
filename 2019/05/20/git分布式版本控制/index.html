@@ -276,7 +276,7 @@
 </li>
 <li><p>如果要强制禁用<code>Fast forward</code>模式，Git就会在merge时生成一个新的commit，这样，从分支历史上就可以看出分支信息。</p>
 </li>
-<li><figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js">git merge --no-ff -m <span class="hljs-string">&quot;merge with no-ff&quot;</span> dev<br></code></pre></div></td></tr></table></figure></li>
+<li><div class="hljs code-wrapper"><pre><code class="hljs js">git merge --no-ff -m <span class="hljs-string">&quot;merge with no-ff&quot;</span> dev</code></pre></div></li>
 <li><p>合并分支时，加上–no-ff参数就可以用普通模式合并，合并后的历史有分支，能看出来曾经做过合并，而fast forward合并就看不出来曾经做过合并。</p>
 </li>
 </ul>
@@ -336,7 +336,8 @@
 </ol>
 <ul>
 <li><code>.gitignore</code>文件用来制定git忽略追踪的文件和文件夹</li>
-<li>如果仓库已建立缓存（commit add push）后把原先文件加入忽略<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript">git rm -r --cached [path]<br><span class="hljs-comment">// 之后重新add即可</span><br></code></pre></div></td></tr></table></figure></li>
+<li>如果仓库已建立缓存（commit add push）后把原先文件加入忽略<div class="hljs code-wrapper"><pre><code class="hljs javascript">git rm -r --cached [path]
+<span class="hljs-comment">// 之后重新add即可</span></code></pre></div></li>
 </ul>
 
             </div>

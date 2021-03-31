@@ -245,7 +245,9 @@
               <h2 id="github"><a href="#github" class="headerlink" title="github"></a><a target="_blank" rel="noopener" href="https://github.com/h5bp/Front-end-Developer-Interview-Questions">github</a></h2><h2 id="HTML-CSS"><a href="#HTML-CSS" class="headerlink" title="HTML/CSS"></a>HTML/CSS</h2><ol>
 <li><p>img标签的<code>srcset</code>属性</p>
 <p> <code>srcset</code> 的值是一个字符串，用来定义一个或多个图像候选地址，以<code>,</code>分割，每个候选地址将在特定条件下得以使用。候选地址包含图片 URL 和一个可选的宽度描述符和像素密度描述符，该候选地址用来在特定条件下替代原始地址成为 src  的属性。</p>
- <figure class="highlight html"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;/files/16797/clock-demo-200px.png&quot;</span></span><br><span class="hljs-tag"> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;Clock&quot;</span></span><br><span class="hljs-tag"> <span class="hljs-attr">srcset</span>=<span class="hljs-string">&quot;/files/16864/clock-demo-200px.png 1x, /files/16797/clock-demo-400px.png 2x&quot;</span>&gt;</span><br></code></pre></div></td></tr></table></figure></li>
+ <div class="hljs code-wrapper"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;/files/16797/clock-demo-200px.png&quot;</span></span>
+<span class="hljs-tag"> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;Clock&quot;</span></span>
+<span class="hljs-tag"> <span class="hljs-attr">srcset</span>=<span class="hljs-string">&quot;/files/16864/clock-demo-200px.png 1x, /files/16797/clock-demo-400px.png 2x&quot;</span>&gt;</span></code></pre></div></li>
 <li><p>link标签</p>
 <ul>
 <li>link标签用来引入外部文件</li>
@@ -306,13 +308,36 @@
 <li>伪元素不存在真实的dom树中</li>
 <li>一个选择器中只能使用一个伪元素。伪元素必须紧跟在语句中的简单选择器/基础选择器之后。</li>
 </ul>
- <figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript">::after (:after)<br>::before (:before)<br>::cue (:cue)<br>::first-letter (:first-letter)<br>::first-line (:first-line)<br></code></pre></div></td></tr></table></figure>
+ <div class="hljs code-wrapper"><pre><code class="hljs javascript">::after (:after)
+::before (:before)
+::cue (:cue)
+::first-letter (:first-letter)
+::first-line (:first-line)</code></pre></div>
 
 <ul>
 <li>伪类 是添加到选择器的关键字，指定要选择的元素的特殊状态</li>
 <li>用来操作dom中存在的实际元素</li>
 </ul>
- <figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript">:active<br>:<span class="hljs-keyword">default</span><br>:checked<br>:first-child<br>:first-<span class="hljs-keyword">of</span>-type<br>:focus<br>:hover<br>:last-child<br>:last-<span class="hljs-keyword">of</span>-type<br>:left<br>:link<br>:nth-child()<br>:nth-col() <br>:nth-last-child()<br>:nth-last-col() <br>:nth-last-<span class="hljs-keyword">of</span>-type()<br>:nth-<span class="hljs-keyword">of</span>-type()<br>:only-child<br>:only-<span class="hljs-keyword">of</span>-type<br>:visited<br></code></pre></div></td></tr></table></figure></li>
+ <div class="hljs code-wrapper"><pre><code class="hljs javascript">:active
+:<span class="hljs-keyword">default</span>
+:checked
+:first-child
+:first-<span class="hljs-keyword">of</span>-type
+:focus
+:hover
+:last-child
+:last-<span class="hljs-keyword">of</span>-type
+:left
+:link
+:nth-child()
+:nth-col() 
+:nth-last-child()
+:nth-last-col() 
+:nth-last-<span class="hljs-keyword">of</span>-type()
+:nth-<span class="hljs-keyword">of</span>-type()
+:only-child
+:only-<span class="hljs-keyword">of</span>-type
+:visited</code></pre></div></li>
 <li><p>盒模型</p>
 <p> 在一个文档中，每个元素都被表示为一个矩形的盒子。确定这些盒子的尺寸, 属性和位置是渲染引擎的目标，css中用盒模型来描述这些盒子中的每一个所占的空间。</p>
 </li>
@@ -325,7 +350,19 @@
 </li>
 <li><p>display 属性</p>
 <p> 指定了元素的显示类型，用于指定元素怎样生成盒模型 -&gt; 外部显示类型定义了元素怎样参与流式布局的处理，内部显示类型定义了元素内子元素的布局方式</p>
- <figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">//外部显示类型</span><br>display: block;<span class="hljs-comment">// 块级元素，独占一行，默认填满父元素宽度，可以设置宽高和所有边距</span><br>display: inline;<span class="hljs-comment">// 行内元素，不能更改宽高，大小由内容撑开，只能设置左右的边距效果</span><br>display: inline-block;<span class="hljs-comment">// 块级行内元素，不占满一行，也可以设置所有宽高边距</span><br><span class="hljs-comment">//内部显示类型</span><br>display: flow;<br>display: flow-root;<br>display: table;<br>display: flex;<br>display: grid;<br><span class="hljs-comment">// </span><br>display: none;<span class="hljs-comment">//不显示</span><br>display: inherit;<span class="hljs-comment">//继承父元素的display属性</span><br></code></pre></div></td></tr></table></figure></li>
+ <div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">//外部显示类型</span>
+display: block;<span class="hljs-comment">// 块级元素，独占一行，默认填满父元素宽度，可以设置宽高和所有边距</span>
+display: inline;<span class="hljs-comment">// 行内元素，不能更改宽高，大小由内容撑开，只能设置左右的边距效果</span>
+display: inline-block;<span class="hljs-comment">// 块级行内元素，不占满一行，也可以设置所有宽高边距</span>
+<span class="hljs-comment">//内部显示类型</span>
+display: flow;
+display: flow-root;
+display: table;
+display: flex;
+display: grid;
+<span class="hljs-comment">// </span>
+display: none;<span class="hljs-comment">//不显示</span>
+display: inherit;<span class="hljs-comment">//继承父元素的display属性</span></code></pre></div></li>
 <li><p>nth-child和nth-of-type</p>
 <ul>
 <li><code>div:nth-child</code>父元素的第n个子元素div，！！如果第n个元素不是div元素则不生效</li>
@@ -371,7 +408,10 @@
 </ul>
 </li>
 <li><p>IIFE立即执行函数</p>
- <figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">//1</span><br>(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f1</span>(<span class="hljs-params"></span>)</span>&#123;...&#125;)()<br><span class="hljs-comment">//2</span><br>(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f2</span>(<span class="hljs-params"></span>)</span>&#123;...&#125;())<br></code></pre></div></td></tr></table></figure></li>
+ <div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">//1</span>
+(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f1</span>(<span class="hljs-params"></span>)</span>&#123;...&#125;)()
+<span class="hljs-comment">//2</span>
+(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f2</span>(<span class="hljs-params"></span>)</span>&#123;...&#125;())</code></pre></div></li>
 <li><p>this</p>
 <p> <a target="_blank" rel="noopener" href="https://medium.com/@arnav_aggarwal">https://medium.com/@arnav_aggarwal</a></p>
 <p> 函数的调用方式决定了this的值</p>
@@ -400,7 +440,9 @@
 <li><code>undefined</code>：声明变量未赋值 / 无返回值的函数执行结果赋值给变量,只能用全等于和<code>typeof</code>来检查</li>
 <li><code>null</code>只能显示赋值给变量，只能用全等于来检查</li>
 </ul>
- <figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">typeof</span> foo === <span class="hljs-string">&#x27;undefined&#x27;</span>); <span class="hljs-comment">// true</span><br><span class="hljs-built_in">console</span>.log(<span class="hljs-literal">null</span> == <span class="hljs-literal">undefined</span>) <span class="hljs-comment">// true</span><br><span class="hljs-built_in">console</span>.log(<span class="hljs-literal">null</span> === <span class="hljs-literal">undefined</span>) <span class="hljs-comment">// false</span><br></code></pre></div></td></tr></table></figure></li>
+ <div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">typeof</span> foo === <span class="hljs-string">&#x27;undefined&#x27;</span>); <span class="hljs-comment">// true</span>
+<span class="hljs-built_in">console</span>.log(<span class="hljs-literal">null</span> == <span class="hljs-literal">undefined</span>) <span class="hljs-comment">// true</span>
+<span class="hljs-built_in">console</span>.log(<span class="hljs-literal">null</span> === <span class="hljs-literal">undefined</span>) <span class="hljs-comment">// false</span></code></pre></div></li>
 </ol>
 <ol>
 <li><p>forEach和map</p>
@@ -490,7 +532,25 @@
 <li><p><code>事件循环</code>是一个单线程循环，用于监视<code>调用栈</code>并检查是否有工作即将在<code>任务队列</code>中完成。如果<code>调用栈</code>为空并且<code>任务队列</code>中有<code>回调函数</code>，则将<code>回调函数</code>出队并推送到<code>调用栈</code>中执行。</p>
 </li>
 <li><p>es5和es6的构造函数方式</p>
- <figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// ES5 构造函数</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Student</span>(<span class="hljs-params">name, studentId</span>) </span>&#123;<br><span class="hljs-comment">// 调用父类的构造函数来初始化父类的成员变量</span><br>Person.call(<span class="hljs-built_in">this</span>, name);<br><br><span class="hljs-comment">// 初始化子类自己的成员变量</span><br><span class="hljs-built_in">this</span>.studentId = studentId;<br>&#125;<br><br>Student.prototype = <span class="hljs-built_in">Object</span>.create(Person.prototype);<br>Student.prototype.constructor = Student;<br><br><span class="hljs-comment">// ES6 类</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Student</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Person</span> </span>&#123;<br><span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">name, studentId</span>)</span> &#123;<br>    <span class="hljs-built_in">super</span>(name);<br>    <span class="hljs-built_in">this</span>.studentId = studentId;<br>&#125;<br>&#125;<br></code></pre></div></td></tr></table></figure></li>
+ <div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// ES5 构造函数</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Student</span>(<span class="hljs-params">name, studentId</span>) </span>&#123;
+<span class="hljs-comment">// 调用父类的构造函数来初始化父类的成员变量</span>
+Person.call(<span class="hljs-built_in">this</span>, name);
+
+<span class="hljs-comment">// 初始化子类自己的成员变量</span>
+<span class="hljs-built_in">this</span>.studentId = studentId;
+&#125;
+
+Student.prototype = <span class="hljs-built_in">Object</span>.create(Person.prototype);
+Student.prototype.constructor = Student;
+
+<span class="hljs-comment">// ES6 类</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Student</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Person</span> </span>&#123;
+<span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">name, studentId</span>)</span> &#123;
+    <span class="hljs-built_in">super</span>(name);
+    <span class="hljs-built_in">this</span>.studentId = studentId;
+&#125;
+&#125;</code></pre></div></li>
 <li><p>一般函数的this只能在运行时确定，箭头函数的this则静态绑定了书写时的上下文</p>
 </li>
 <li><p>高阶函数</p>
@@ -498,7 +558,31 @@
 <p> （forEach，filte人，reduce）</p>
 </li>
 <li><p>解构</p>
- <figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// 数组解构</span><br><span class="hljs-comment">// 变量赋值</span><br><span class="hljs-keyword">const</span> foo = [<span class="hljs-string">&#x27;one&#x27;</span>, <span class="hljs-string">&#x27;two&#x27;</span>, <span class="hljs-string">&#x27;three&#x27;</span>];<br><br><span class="hljs-keyword">const</span> [one, two, three] = foo;<br><span class="hljs-built_in">console</span>.log(one); <span class="hljs-comment">// &quot;one&quot;</span><br><span class="hljs-built_in">console</span>.log(two); <span class="hljs-comment">// &quot;two&quot;</span><br><span class="hljs-built_in">console</span>.log(three); <span class="hljs-comment">// &quot;three&quot;</span><br><br><span class="hljs-comment">// 变量交换</span><br><span class="hljs-keyword">let</span> a = <span class="hljs-number">1</span>;<br><span class="hljs-keyword">let</span> b = <span class="hljs-number">3</span>;<br><br>[a, b] = [b, a];<br><span class="hljs-built_in">console</span>.log(a); <span class="hljs-comment">// 3</span><br><span class="hljs-built_in">console</span>.log(b); <span class="hljs-comment">// 1</span><br><br><span class="hljs-comment">// 对象解构</span><br><br><span class="hljs-comment">// 变量赋值</span><br><span class="hljs-keyword">const</span> o = &#123; <span class="hljs-attr">p</span>: <span class="hljs-number">42</span>, <span class="hljs-attr">q</span>: <span class="hljs-literal">true</span> &#125;;<br><span class="hljs-keyword">const</span> &#123; p, q &#125; = o;<br><br><span class="hljs-built_in">console</span>.log(p); <span class="hljs-comment">// 42</span><br><span class="hljs-built_in">console</span>.log(q); <span class="hljs-comment">// true</span><br></code></pre></div></td></tr></table></figure></li>
+ <div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// 数组解构</span>
+<span class="hljs-comment">// 变量赋值</span>
+<span class="hljs-keyword">const</span> foo = [<span class="hljs-string">&#x27;one&#x27;</span>, <span class="hljs-string">&#x27;two&#x27;</span>, <span class="hljs-string">&#x27;three&#x27;</span>];
+
+<span class="hljs-keyword">const</span> [one, two, three] = foo;
+<span class="hljs-built_in">console</span>.log(one); <span class="hljs-comment">// &quot;one&quot;</span>
+<span class="hljs-built_in">console</span>.log(two); <span class="hljs-comment">// &quot;two&quot;</span>
+<span class="hljs-built_in">console</span>.log(three); <span class="hljs-comment">// &quot;three&quot;</span>
+
+<span class="hljs-comment">// 变量交换</span>
+<span class="hljs-keyword">let</span> a = <span class="hljs-number">1</span>;
+<span class="hljs-keyword">let</span> b = <span class="hljs-number">3</span>;
+
+[a, b] = [b, a];
+<span class="hljs-built_in">console</span>.log(a); <span class="hljs-comment">// 3</span>
+<span class="hljs-built_in">console</span>.log(b); <span class="hljs-comment">// 1</span>
+
+<span class="hljs-comment">// 对象解构</span>
+
+<span class="hljs-comment">// 变量赋值</span>
+<span class="hljs-keyword">const</span> o = &#123; <span class="hljs-attr">p</span>: <span class="hljs-number">42</span>, <span class="hljs-attr">q</span>: <span class="hljs-literal">true</span> &#125;;
+<span class="hljs-keyword">const</span> &#123; p, q &#125; = o;
+
+<span class="hljs-built_in">console</span>.log(p); <span class="hljs-comment">// 42</span>
+<span class="hljs-built_in">console</span>.log(q); <span class="hljs-comment">// true</span></code></pre></div></li>
 <li><p>es6模版字符串</p>
 <ul>
 <li>多行字符串</li>

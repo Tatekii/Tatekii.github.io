@@ -242,7 +242,19 @@
               </p>
             
             <div class="markdown-body">
-              <h2 id="中间件机制"><a href="#中间件机制" class="headerlink" title="中间件机制"></a>中间件机制</h2><figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript">app.use(<span class="hljs-keyword">async</span>(ctx,next)=&gt;&#123;<br>  ctx.body = <span class="hljs-string">&#x27;hello koa!&#x27;</span><br>  next()<br>  ctx.body += <span class="hljs-string">&#x27;onion back step2&#x27;</span><br>&#125;)<br>app.use(<span class="hljs-keyword">async</span>(ctx,next)=&gt;&#123;<br>  ctx.body += <span class="hljs-string">&#x27;onion back step1&#x27;</span><br>  next()<br>  ctx.body += <span class="hljs-string">&#x27;hello next&#x27;</span><br>&#125;)<br><br><span class="hljs-comment">// 洋葱圈模型</span><br>hello koa!onion back step1hello nextonion back step2<br></code></pre></div></td></tr></table></figure>
+              <h2 id="中间件机制"><a href="#中间件机制" class="headerlink" title="中间件机制"></a>中间件机制</h2><div class="hljs code-wrapper"><pre><code class="hljs javascript">app.use(<span class="hljs-keyword">async</span>(ctx,next)=&gt;&#123;
+  ctx.body = <span class="hljs-string">&#x27;hello koa!&#x27;</span>
+  next()
+  ctx.body += <span class="hljs-string">&#x27;onion back step2&#x27;</span>
+&#125;)
+app.use(<span class="hljs-keyword">async</span>(ctx,next)=&gt;&#123;
+  ctx.body += <span class="hljs-string">&#x27;onion back step1&#x27;</span>
+  next()
+  ctx.body += <span class="hljs-string">&#x27;hello next&#x27;</span>
+&#125;)
+
+<span class="hljs-comment">// 洋葱圈模型</span>
+hello koa!onion back step1hello nextonion back step2</code></pre></div>
 
 <h2 id="async-wait"><a href="#async-wait" class="headerlink" title="async/wait"></a>async/wait</h2><h3 id="js异步处理的发展"><a href="#js异步处理的发展" class="headerlink" title="js异步处理的发展"></a>js异步处理的发展</h3><ol>
 <li>callbackHell </li>

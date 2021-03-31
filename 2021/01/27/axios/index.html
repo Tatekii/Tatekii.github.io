@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      227 字
+      231 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      3
+      4
        分钟
     </span>
   
@@ -244,15 +244,66 @@
             <div class="markdown-body">
               <h2 id="拦截器"><a href="#拦截器" class="headerlink" title="拦截器"></a>拦截器</h2><ul>
 <li><p>拦截器中可以修改config和response</p>
-<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript">axios.interceptors.request.use(<br>  (config) =&gt; &#123;<br>    &lt;!-- 加入参数 --&gt;<br>    config.params = &#123;<span class="hljs-attr">a</span>:<span class="hljs-number">666</span>&#125;<br>    <span class="hljs-keyword">return</span> config<br>  &#125;,<br>  (err) =&gt; &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">Promise</span>.reject(err)<br>  &#125;<br>);<br></code></pre></div></td></tr></table></figure></li>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript">axios.interceptors.request.use(
+  (config) =&gt; &#123;
+    &lt;!-- 加入参数 --&gt;
+    config.params = &#123;<span class="hljs-attr">a</span>:<span class="hljs-number">666</span>&#125;
+    <span class="hljs-keyword">return</span> config
+  &#125;,
+  (err) =&gt; &#123;
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">Promise</span>.reject(err)
+  &#125;
+);</code></pre></div></li>
 <li><p>执行顺序</p>
 <ul>
 <li>请求拦截器 后面的拦截器先执行</li>
 <li>响应拦截器 前面的拦截器先执行</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript">axios.interceptors.request.use(<span class="hljs-function"><span class="hljs-params">config</span>=&gt;</span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;request1&#x27;</span>)<br>&#125;,<span class="hljs-function"><span class="hljs-params">err</span>=&gt;</span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;err1&#x27;</span>)<br>&#125;)<br>axios.interceptors.request.use(<span class="hljs-function"><span class="hljs-params">config</span>=&gt;</span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;request2&#x27;</span>)<br>&#125;,<span class="hljs-function"><span class="hljs-params">err</span>=&gt;</span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;err2&#x27;</span>)<br>&#125;)<br><br>axios.interceptors.response.use(<span class="hljs-function"><span class="hljs-params">res</span>=&gt;</span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;response1&#x27;</span>)<br>&#125;，err=&gt;&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;resErr1&#x27;</span>)<br>&#125;)<br>axios.interceptors.response.use(<span class="hljs-function"><span class="hljs-params">res</span>=&gt;</span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;response2&#x27;</span>)<br>&#125;，err=&gt;&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;resErr2&#x27;</span>)<br>&#125;)<br><br>&lt;!-- <span class="hljs-built_in">console</span> --&gt;<br>request2<br>request1<br>response1<br>response2<br></code></pre></div></td></tr></table></figure></li>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript">axios.interceptors.request.use(<span class="hljs-function"><span class="hljs-params">config</span>=&gt;</span>&#123;
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;request1&#x27;</span>)
+&#125;,<span class="hljs-function"><span class="hljs-params">err</span>=&gt;</span>&#123;
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;err1&#x27;</span>)
+&#125;)
+axios.interceptors.request.use(<span class="hljs-function"><span class="hljs-params">config</span>=&gt;</span>&#123;
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;request2&#x27;</span>)
+&#125;,<span class="hljs-function"><span class="hljs-params">err</span>=&gt;</span>&#123;
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;err2&#x27;</span>)
+&#125;)
+
+axios.interceptors.response.use(<span class="hljs-function"><span class="hljs-params">res</span>=&gt;</span>&#123;
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;response1&#x27;</span>)
+&#125;，err=&gt;&#123;
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;resErr1&#x27;</span>)
+&#125;)
+axios.interceptors.response.use(<span class="hljs-function"><span class="hljs-params">res</span>=&gt;</span>&#123;
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;response2&#x27;</span>)
+&#125;，err=&gt;&#123;
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;resErr2&#x27;</span>)
+&#125;)
+
+&lt;!-- <span class="hljs-built_in">console</span> --&gt;
+request2
+request1
+response1
+response2</code></pre></div></li>
 <li><p>取消请求</p>
-<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> CancelToken = axios.CancelToken;<br><span class="hljs-keyword">let</span> cancel = <span class="hljs-literal">null</span><br>btn.onclick = <span class="hljs-function">() =&gt;</span> &#123;<br>  <span class="hljs-keyword">if</span>(cancel !== <span class="hljs-literal">null</span>) cancel()<br>  &lt;!-- 执行取消函数 --&gt;<br>  axios(&#123;<br>    method:<span class="hljs-string">&#x27;GET&#x27;</span>,<br>    url:<span class="hljs-string">&#x27;http://xxxxxxx&#x27;</span>,<br>    &lt;!--  --&gt;<br>    cancelToken : <span class="hljs-keyword">new</span> CancelToken(<span class="hljs-function"><span class="hljs-params">c</span>=&gt;</span>&#123;<br>      cancel = c<br>      &lt;!-- cancelToken --&gt;<br>    &#125;)<br>  &#125;)<br>&#125;.then(<span class="hljs-function"><span class="hljs-params">res</span>=&gt;</span>&#123;<br>  cancel = <span class="hljs-literal">null</span><br>&#125;)<br></code></pre></div></td></tr></table></figure></li>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> CancelToken = axios.CancelToken;
+<span class="hljs-keyword">let</span> cancel = <span class="hljs-literal">null</span>
+btn.onclick = <span class="hljs-function">() =&gt;</span> &#123;
+  <span class="hljs-keyword">if</span>(cancel !== <span class="hljs-literal">null</span>) cancel()
+  &lt;!-- 执行取消函数 --&gt;
+  axios(&#123;
+    method:<span class="hljs-string">&#x27;GET&#x27;</span>,
+    url:<span class="hljs-string">&#x27;http://xxxxxxx&#x27;</span>,
+    &lt;!--  --&gt;
+    cancelToken : <span class="hljs-keyword">new</span> CancelToken(<span class="hljs-function"><span class="hljs-params">c</span>=&gt;</span>&#123;
+      cancel = c
+      &lt;!-- cancelToken --&gt;
+    &#125;)
+  &#125;)
+&#125;.then(<span class="hljs-function"><span class="hljs-params">res</span>=&gt;</span>&#123;
+  cancel = <span class="hljs-literal">null</span>
+&#125;)</code></pre></div></li>
 </ul>
 
             </div>

@@ -262,8 +262,30 @@
 <li>满二叉树</li>
 <li>完全二叉树</li>
 </ul>
-<h2 id="二叉树遍历"><a href="#二叉树遍历" class="headerlink" title="二叉树遍历"></a>二叉树遍历</h2><figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">BinaryTree</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-keyword">const</span> Node = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">val</span>) </span>&#123;<br>    <span class="hljs-built_in">this</span>.val = val<br>    <span class="hljs-built_in">this</span>.left = <span class="hljs-literal">null</span><br>    <span class="hljs-built_in">this</span>.right = <span class="hljs-literal">null</span><br>  &#125;<br>  <span class="hljs-keyword">let</span> root = <span class="hljs-literal">null</span><br>&#125;<br></code></pre></div></td></tr></table></figure>
-<h3 id="前序遍历"><a href="#前序遍历" class="headerlink" title="前序遍历"></a>前序遍历</h3><figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">preOrderTraverse</span>(<span class="hljs-params">node</span>)</span>&#123;<br>  <span class="hljs-keyword">let</span> res = []<br>  <span class="hljs-keyword">let</span> stack = []<br>  <span class="hljs-keyword">if</span>(node) stack.push(node)<br>  <span class="hljs-keyword">while</span>(stack.length&gt;<span class="hljs-number">0</span>)&#123;<br>    <span class="hljs-keyword">let</span> curNode  = stack.pop()<br>    res.push(curNode.val)<br>    <span class="hljs-keyword">if</span>(curNode.right!==<span class="hljs-literal">null</span>)&#123;<br>      stack.push(curNode.right)<br>    &#125;<br>    <span class="hljs-keyword">if</span>(curNode.left!==<span class="hljs-literal">null</span>)&#123;<br>      stack.push(curNode.left)<br>    &#125;<br>  &#125;<br>  <span class="hljs-keyword">return</span> res<br>&#125;<br></code></pre></div></td></tr></table></figure>
+<h2 id="二叉树遍历"><a href="#二叉树遍历" class="headerlink" title="二叉树遍历"></a>二叉树遍历</h2><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">BinaryTree</span>(<span class="hljs-params"></span>) </span>&#123;
+  <span class="hljs-keyword">const</span> Node = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">val</span>) </span>&#123;
+    <span class="hljs-built_in">this</span>.val = val
+    <span class="hljs-built_in">this</span>.left = <span class="hljs-literal">null</span>
+    <span class="hljs-built_in">this</span>.right = <span class="hljs-literal">null</span>
+  &#125;
+  <span class="hljs-keyword">let</span> root = <span class="hljs-literal">null</span>
+&#125;</code></pre></div>
+<h3 id="前序遍历"><a href="#前序遍历" class="headerlink" title="前序遍历"></a>前序遍历</h3><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">preOrderTraverse</span>(<span class="hljs-params">node</span>)</span>&#123;
+  <span class="hljs-keyword">let</span> res = []
+  <span class="hljs-keyword">let</span> stack = []
+  <span class="hljs-keyword">if</span>(node) stack.push(node)
+  <span class="hljs-keyword">while</span>(stack.length&gt;<span class="hljs-number">0</span>)&#123;
+    <span class="hljs-keyword">let</span> curNode  = stack.pop()
+    res.push(curNode.val)
+    <span class="hljs-keyword">if</span>(curNode.right!==<span class="hljs-literal">null</span>)&#123;
+      stack.push(curNode.right)
+    &#125;
+    <span class="hljs-keyword">if</span>(curNode.left!==<span class="hljs-literal">null</span>)&#123;
+      stack.push(curNode.left)
+    &#125;
+  &#125;
+  <span class="hljs-keyword">return</span> res
+&#125;</code></pre></div>
             </div>
             <hr>
             <div>

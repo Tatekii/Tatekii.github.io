@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      641 字
+      644 字
     </span>
   
 
@@ -250,12 +250,53 @@
 <li><p>修改数组的长度时，例如：<code>vm.items.length = newLength</code></p>
 </li>
 <li><p>变通</p>
-<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// Object新增元素</span><br>Vue.set(object, propertyName, value)<br><span class="hljs-comment">// or</span><br><span class="hljs-built_in">this</span>.$set(<span class="hljs-built_in">this</span>.someObject,<span class="hljs-string">&#x27;b&#x27;</span>,<span class="hljs-number">2</span>)<br><br><br><span class="hljs-comment">// 下标修改数组</span><br>Vue.set(vm.array1, indexOfItem, newValue)<br><span class="hljs-comment">// or</span><br><span class="hljs-built_in">this</span>.$set(<span class="hljs-built_in">this</span>.array1, indexOfItem, newValue)<br><span class="hljs-comment">// or</span><br><span class="hljs-built_in">this</span>.array1.splice(indexOfItem, <span class="hljs-number">1</span>, newValue)<br><br><br><span class="hljs-comment">// 修改数组长度</span><br><span class="hljs-built_in">this</span>.array1.splice(newLength)<br></code></pre></div></td></tr></table></figure></li>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// Object新增元素</span>
+Vue.set(object, propertyName, value)
+<span class="hljs-comment">// or</span>
+<span class="hljs-built_in">this</span>.$set(<span class="hljs-built_in">this</span>.someObject,<span class="hljs-string">&#x27;b&#x27;</span>,<span class="hljs-number">2</span>)
+
+
+<span class="hljs-comment">// 下标修改数组</span>
+Vue.set(vm.array1, indexOfItem, newValue)
+<span class="hljs-comment">// or</span>
+<span class="hljs-built_in">this</span>.$set(<span class="hljs-built_in">this</span>.array1, indexOfItem, newValue)
+<span class="hljs-comment">// or</span>
+<span class="hljs-built_in">this</span>.array1.splice(indexOfItem, <span class="hljs-number">1</span>, newValue)
+
+
+<span class="hljs-comment">// 修改数组长度</span>
+<span class="hljs-built_in">this</span>.array1.splice(newLength)</code></pre></div></li>
 <li><p>包裹数组部分方法以支持响应式</p>
-<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript">pop()<br>push()<br>shift()<br>unshift()<br>splice()<br>sort()<br>reverse()<br></code></pre></div></td></tr></table></figure>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript">pop()
+push()
+shift()
+unshift()
+splice()
+sort()
+reverse()</code></pre></div>
 <h3 id="defineProperty"><a href="#defineProperty" class="headerlink" title="defineProperty"></a><code>defineProperty</code></h3></li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-built_in">Object</span>.defineProperty(obj<span class="hljs-comment">/* 对象*/</span>, prop<span class="hljs-comment">/* 属性*/</span>, descriptor<span class="hljs-comment">/*描述符*/</span>)&#123;<br>  <span class="hljs-comment">//对象里目前存在的属性描述符有两种主要形式：数据描述符和存取描述符。</span><br>  <span class="hljs-comment">//数据描述符是一个具有值的属性，该值可以是可写的，也可以是不可写的。</span><br>  <span class="hljs-comment">//存取描述符是由 getter 函数和 setter 函数所描述的属性。</span><br>  <span class="hljs-comment">//一个描述符只能是这两者其中之一；不能同时是两者。</span><br><br>  configurable: <span class="hljs-literal">true</span>,<br>  <span class="hljs-comment">//configurable 特性表示对象的属性是否可以被删除，以及除 value 和 writable 特性外的其他特性是否可以被修改。</span><br>  enumerable: <span class="hljs-literal">true</span>,<br>  <span class="hljs-comment">//enumerable 定义了对象的属性是否可以在 for...in 循环和 Object.keys() 中被枚举。</span><br>  value: <span class="hljs-literal">true</span>,<br>  writable: <span class="hljs-literal">true</span>,<br>  <span class="hljs-comment">//当 writable 属性设置为 false 时，该属性被称为“不可写的”。它不能被重新赋值。</span><br>  <span class="hljs-comment">//</span><br>  <span class="hljs-comment">// 或者</span><br>  <span class="hljs-comment">//</span><br>  <span class="hljs-function"><span class="hljs-title">get</span>(<span class="hljs-params"></span>)</span> &#123; ... &#125;,<br>  <span class="hljs-function"><span class="hljs-title">set</span>(<span class="hljs-params">newValue</span>)</span> &#123; ... &#125;,<br>  enumerable : <span class="hljs-literal">true</span>,<br>  configurable : <span class="hljs-literal">true</span><br>&#125;<br></code></pre></div></td></tr></table></figure>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-built_in">Object</span>.defineProperty(obj<span class="hljs-comment">/* 对象*/</span>, prop<span class="hljs-comment">/* 属性*/</span>, descriptor<span class="hljs-comment">/*描述符*/</span>)&#123;
+  <span class="hljs-comment">//对象里目前存在的属性描述符有两种主要形式：数据描述符和存取描述符。</span>
+  <span class="hljs-comment">//数据描述符是一个具有值的属性，该值可以是可写的，也可以是不可写的。</span>
+  <span class="hljs-comment">//存取描述符是由 getter 函数和 setter 函数所描述的属性。</span>
+  <span class="hljs-comment">//一个描述符只能是这两者其中之一；不能同时是两者。</span>
+
+  configurable: <span class="hljs-literal">true</span>,
+  <span class="hljs-comment">//configurable 特性表示对象的属性是否可以被删除，以及除 value 和 writable 特性外的其他特性是否可以被修改。</span>
+  enumerable: <span class="hljs-literal">true</span>,
+  <span class="hljs-comment">//enumerable 定义了对象的属性是否可以在 for...in 循环和 Object.keys() 中被枚举。</span>
+  value: <span class="hljs-literal">true</span>,
+  writable: <span class="hljs-literal">true</span>,
+  <span class="hljs-comment">//当 writable 属性设置为 false 时，该属性被称为“不可写的”。它不能被重新赋值。</span>
+  <span class="hljs-comment">//</span>
+  <span class="hljs-comment">// 或者</span>
+  <span class="hljs-comment">//</span>
+  <span class="hljs-function"><span class="hljs-title">get</span>(<span class="hljs-params"></span>)</span> &#123; ... &#125;,
+  <span class="hljs-function"><span class="hljs-title">set</span>(<span class="hljs-params">newValue</span>)</span> &#123; ... &#125;,
+  enumerable : <span class="hljs-literal">true</span>,
+  configurable : <span class="hljs-literal">true</span>
+&#125;</code></pre></div>
 <h4 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h4><ol>
 <li>兼容<code>IE9</code></li>
 <li>劫持了对象上的<code>属性</code></li>
@@ -263,7 +304,34 @@
 <li>为保持响应式还需要为新增数据再次绑定<code>defineProperty</code></li>
 <li>原数据的修改即可触发拦截器</li>
 </ol>
-<h3 id="proxy"><a href="#proxy" class="headerlink" title="proxy"></a><code>proxy</code></h3><figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> p = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Proxy</span>(target, handler)<br>handler.getPrototypeOf()<br><span class="hljs-comment">//Object.getPrototypeOf 方法的捕捉器。</span><br>handler.setPrototypeOf()<br><span class="hljs-comment">//Object.setPrototypeOf 方法的捕捉器。</span><br>handler.isExtensible()<br><span class="hljs-comment">//Object.isExtensible 方法的捕捉器。</span><br>handler.preventExtensions()<br><span class="hljs-comment">//Object.preventExtensions 方法的捕捉器。</span><br>handler.getOwnPropertyDescriptor()<br><span class="hljs-comment">//Object.getOwnPropertyDescriptor 方法的捕捉器。</span><br>handler.defineProperty()<br><span class="hljs-comment">//Object.defineProperty 方法的捕捉器。</span><br>handler.has()<br><span class="hljs-comment">//in 操作符的捕捉器。</span><br>handler.get()<br><span class="hljs-comment">//属性读取操作的捕捉器。</span><br>handler.set()<br><span class="hljs-comment">//属性设置操作的捕捉器。</span><br>handler.deleteProperty()<br><span class="hljs-comment">//delete 操作符的捕捉器。</span><br>handler.ownKeys()<br><span class="hljs-comment">//Object.getOwnPropertyNames 方法和 Object.getOwnPropertySymbols 方法的捕捉器。</span><br>handler.apply()<br><span class="hljs-comment">//函数调用操作的捕捉器。</span><br>handler.construct()<br><span class="hljs-comment">//new 操作符的捕捉器。</span><br><br></code></pre></div></td></tr></table></figure>
+<h3 id="proxy"><a href="#proxy" class="headerlink" title="proxy"></a><code>proxy</code></h3><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> p = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Proxy</span>(target, handler)
+handler.getPrototypeOf()
+<span class="hljs-comment">//Object.getPrototypeOf 方法的捕捉器。</span>
+handler.setPrototypeOf()
+<span class="hljs-comment">//Object.setPrototypeOf 方法的捕捉器。</span>
+handler.isExtensible()
+<span class="hljs-comment">//Object.isExtensible 方法的捕捉器。</span>
+handler.preventExtensions()
+<span class="hljs-comment">//Object.preventExtensions 方法的捕捉器。</span>
+handler.getOwnPropertyDescriptor()
+<span class="hljs-comment">//Object.getOwnPropertyDescriptor 方法的捕捉器。</span>
+handler.defineProperty()
+<span class="hljs-comment">//Object.defineProperty 方法的捕捉器。</span>
+handler.has()
+<span class="hljs-comment">//in 操作符的捕捉器。</span>
+handler.get()
+<span class="hljs-comment">//属性读取操作的捕捉器。</span>
+handler.set()
+<span class="hljs-comment">//属性设置操作的捕捉器。</span>
+handler.deleteProperty()
+<span class="hljs-comment">//delete 操作符的捕捉器。</span>
+handler.ownKeys()
+<span class="hljs-comment">//Object.getOwnPropertyNames 方法和 Object.getOwnPropertySymbols 方法的捕捉器。</span>
+handler.apply()
+<span class="hljs-comment">//函数调用操作的捕捉器。</span>
+handler.construct()
+<span class="hljs-comment">//new 操作符的捕捉器。</span>
+</code></pre></div>
 <ol>
 <li>不兼容<code>IE</code></li>
 <li>劫持<code>整个对象</code>，无需对对象本体的变化作出修改</li>

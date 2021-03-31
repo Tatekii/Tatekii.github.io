@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      556 字
+      559 字
     </span>
   
 
@@ -243,19 +243,113 @@
             
             <div class="markdown-body">
               <h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><p>数组原生具备iterator接口（即默认部署了Symbol.iterator属性），for…of循环本质上就是调用这个接口产生的遍历器</p>
-<h3 id="for…of循环可以代替数组实例的forEach方法"><a href="#for…of循环可以代替数组实例的forEach方法" class="headerlink" title="for…of循环可以代替数组实例的forEach方法"></a>for…of循环可以代替数组实例的forEach方法</h3><figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> arr = [<span class="hljs-string">&#x27;red&#x27;</span>, <span class="hljs-string">&#x27;green&#x27;</span>, <span class="hljs-string">&#x27;blue&#x27;</span>];<br><br>arr.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">element, index</span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(element); <span class="hljs-comment">// red green blue</span><br>  <span class="hljs-built_in">console</span>.log(index);   <span class="hljs-comment">// 0 1 2</span><br>&#125;);<br></code></pre></div></td></tr></table></figure>
+<h3 id="for…of循环可以代替数组实例的forEach方法"><a href="#for…of循环可以代替数组实例的forEach方法" class="headerlink" title="for…of循环可以代替数组实例的forEach方法"></a>for…of循环可以代替数组实例的forEach方法</h3><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> arr = [<span class="hljs-string">&#x27;red&#x27;</span>, <span class="hljs-string">&#x27;green&#x27;</span>, <span class="hljs-string">&#x27;blue&#x27;</span>];
 
-<h3 id="for…in循环读取键名，for…of循环读取键值"><a href="#for…in循环读取键名，for…of循环读取键值" class="headerlink" title="for…in循环读取键名，for…of循环读取键值"></a>for…in循环读取键名，for…of循环读取键值</h3><figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> arr = [<span class="hljs-string">&#x27;a&#x27;</span>, <span class="hljs-string">&#x27;b&#x27;</span>, <span class="hljs-string">&#x27;c&#x27;</span>, <span class="hljs-string">&#x27;d&#x27;</span>];<br><br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> a <span class="hljs-keyword">in</span> arr) &#123;<br>  <span class="hljs-built_in">console</span>.log(a); <span class="hljs-comment">// 0 1 2 3</span><br>&#125;<br><br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> a <span class="hljs-keyword">of</span> arr) &#123;<br>  <span class="hljs-built_in">console</span>.log(a); <span class="hljs-comment">// a b c d</span><br>&#125;<br></code></pre></div></td></tr></table></figure>
+arr.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">element, index</span>) </span>&#123;
+  <span class="hljs-built_in">console</span>.log(element); <span class="hljs-comment">// red green blue</span>
+  <span class="hljs-built_in">console</span>.log(index);   <span class="hljs-comment">// 0 1 2</span>
+&#125;);</code></pre></div>
 
-<h3 id="for…of循环调用遍历器接口，数组的遍历器接口只返回具有数字索引的属性"><a href="#for…of循环调用遍历器接口，数组的遍历器接口只返回具有数字索引的属性" class="headerlink" title="for…of循环调用遍历器接口，数组的遍历器接口只返回具有数字索引的属性"></a>for…of循环调用遍历器接口，数组的遍历器接口只返回具有数字索引的属性</h3><figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> arr = [<span class="hljs-number">3</span>, <span class="hljs-number">5</span>, <span class="hljs-number">7</span>];<br>arr.foo = <span class="hljs-string">&#x27;hello&#x27;</span>;<br><br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i <span class="hljs-keyword">in</span> arr) &#123;<br>  <span class="hljs-built_in">console</span>.log(i); <span class="hljs-comment">// &quot;0&quot;, &quot;1&quot;, &quot;2&quot;, &quot;foo&quot;</span><br>&#125;<br><br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i <span class="hljs-keyword">of</span> arr) &#123;<br>  <span class="hljs-built_in">console</span>.log(i); <span class="hljs-comment">//  &quot;3&quot;, &quot;5&quot;, &quot;7&quot;</span><br>&#125;<br><br><span class="hljs-comment">// 上面代码中，for...of循环不会返回数组arr的foo属性。</span><br></code></pre></div></td></tr></table></figure>
+<h3 id="for…in循环读取键名，for…of循环读取键值"><a href="#for…in循环读取键名，for…of循环读取键值" class="headerlink" title="for…in循环读取键名，for…of循环读取键值"></a>for…in循环读取键名，for…of循环读取键值</h3><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> arr = [<span class="hljs-string">&#x27;a&#x27;</span>, <span class="hljs-string">&#x27;b&#x27;</span>, <span class="hljs-string">&#x27;c&#x27;</span>, <span class="hljs-string">&#x27;d&#x27;</span>];
 
-<h3 id="如果要通过for-of循环获取数组的索引，可以借助数组实例的entries方法和keys方法"><a href="#如果要通过for-of循环获取数组的索引，可以借助数组实例的entries方法和keys方法" class="headerlink" title="如果要通过for...of循环获取数组的索引，可以借助数组实例的entries方法和keys方法"></a>如果要通过<code>for...of</code>循环获取数组的索引，可以借助数组实例的<code>entries</code>方法和<code>keys</code>方法</h3><figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> arr = [<span class="hljs-string">&#x27;a&#x27;</span>, <span class="hljs-string">&#x27;b&#x27;</span>, <span class="hljs-string">&#x27;c&#x27;</span>];<br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> pair <span class="hljs-keyword">of</span> arr) &#123;<br>  <span class="hljs-built_in">console</span>.log(pair);<br>&#125;<br><span class="hljs-comment">// a</span><br><span class="hljs-comment">// b</span><br><span class="hljs-comment">// c</span><br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> pair <span class="hljs-keyword">of</span> arr.entries()) &#123;<br>  <span class="hljs-built_in">console</span>.log(pair);<br>&#125;<br><span class="hljs-comment">// [0, &#x27;a&#x27;]</span><br><span class="hljs-comment">// [1, &#x27;b&#x27;]</span><br><span class="hljs-comment">// [2, &#x27;c&#x27;]</span><br><br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> pair <span class="hljs-keyword">of</span> arr.keys()) &#123;<br>  <span class="hljs-built_in">console</span>.log(pair);<br>&#125;<br><span class="hljs-comment">// 0</span><br><span class="hljs-comment">// 1</span><br><span class="hljs-comment">// 2</span><br></code></pre></div></td></tr></table></figure>
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> a <span class="hljs-keyword">in</span> arr) &#123;
+  <span class="hljs-built_in">console</span>.log(a); <span class="hljs-comment">// 0 1 2 3</span>
+&#125;
 
-<h2 id="set和map"><a href="#set和map" class="headerlink" title="set和map"></a>set和map</h2><figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> engines = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Set</span>([<span class="hljs-string">&quot;Gecko&quot;</span>, <span class="hljs-string">&quot;Trident&quot;</span>, <span class="hljs-string">&quot;Webkit&quot;</span>, <span class="hljs-string">&quot;Webkit&quot;</span>]);<br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> e <span class="hljs-keyword">of</span> engines) &#123;<br>  <span class="hljs-built_in">console</span>.log(e);<br>&#125;<br><span class="hljs-comment">// Gecko</span><br><span class="hljs-comment">// Trident</span><br><span class="hljs-comment">// Webkit</span><br><br><span class="hljs-keyword">var</span> es6 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Map</span>();<br>es6.set(<span class="hljs-string">&quot;edition&quot;</span>, <span class="hljs-number">6</span>);<br>es6.set(<span class="hljs-string">&quot;committee&quot;</span>, <span class="hljs-string">&quot;TC39&quot;</span>);<br>es6.set(<span class="hljs-string">&quot;standard&quot;</span>, <span class="hljs-string">&quot;ECMA-262&quot;</span>);<br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> [name, value] <span class="hljs-keyword">of</span> es6) &#123;<br>  <span class="hljs-built_in">console</span>.log(name + <span class="hljs-string">&quot;: &quot;</span> + value);  <span class="xml">&lt;-----按照添加的顺序</span><br><span class="xml">&#125;</span><br><span class="xml">// edition: 6</span><br><span class="xml">// committee: TC39</span><br><span class="xml">// standard: ECMA-262</span><br></code></pre></div></td></tr></table></figure>
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> a <span class="hljs-keyword">of</span> arr) &#123;
+  <span class="hljs-built_in">console</span>.log(a); <span class="hljs-comment">// a b c d</span>
+&#125;</code></pre></div>
 
-<h2 id="类数组的对象"><a href="#类数组的对象" class="headerlink" title="类数组的对象"></a>类数组的对象</h2><figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// 字符串</span><br><span class="hljs-keyword">let</span> str = <span class="hljs-string">&quot;hello&quot;</span>;<br><br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> s <span class="hljs-keyword">of</span> str) &#123;<br>  <span class="hljs-built_in">console</span>.log(s); <span class="hljs-comment">// h e l l o</span><br>&#125;<br><br><span class="hljs-comment">// DOM NodeList对象</span><br><span class="hljs-keyword">let</span> paras = <span class="hljs-built_in">document</span>.querySelectorAll(<span class="hljs-string">&quot;p&quot;</span>);<br><br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> p <span class="hljs-keyword">of</span> paras) &#123;<br>  p.classList.add(<span class="hljs-string">&quot;test&quot;</span>);<br>&#125;<br><br><span class="hljs-comment">// arguments对象</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">printArgs</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> x <span class="hljs-keyword">of</span> <span class="hljs-built_in">arguments</span>) &#123;<br>    <span class="hljs-built_in">console</span>.log(x);<br>  &#125;<br>&#125;<br>printArgs(<span class="hljs-string">&#x27;a&#x27;</span>, <span class="hljs-string">&#x27;b&#x27;</span>);<br><span class="hljs-comment">// &#x27;a&#x27;</span><br><span class="hljs-comment">// &#x27;b&#x27;</span><br></code></pre></div></td></tr></table></figure>
+<h3 id="for…of循环调用遍历器接口，数组的遍历器接口只返回具有数字索引的属性"><a href="#for…of循环调用遍历器接口，数组的遍历器接口只返回具有数字索引的属性" class="headerlink" title="for…of循环调用遍历器接口，数组的遍历器接口只返回具有数字索引的属性"></a>for…of循环调用遍历器接口，数组的遍历器接口只返回具有数字索引的属性</h3><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> arr = [<span class="hljs-number">3</span>, <span class="hljs-number">5</span>, <span class="hljs-number">7</span>];
+arr.foo = <span class="hljs-string">&#x27;hello&#x27;</span>;
 
-<h3 id="使用Array-from-将类数组对象转为数组"><a href="#使用Array-from-将类数组对象转为数组" class="headerlink" title="使用Array.from()将类数组对象转为数组"></a>使用Array.from()将类数组对象转为数组</h3><figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> arrayLike = &#123; <span class="hljs-attr">length</span>: <span class="hljs-number">2</span>, <span class="hljs-number">0</span>: <span class="hljs-string">&#x27;a&#x27;</span>, <span class="hljs-number">1</span>: <span class="hljs-string">&#x27;b&#x27;</span> &#125;;<br><br><span class="hljs-comment">// 报错</span><br><span class="hljs-comment">// for (let x of arrayLike) &#123;</span><br><span class="hljs-comment">//   console.log(x);</span><br><span class="hljs-comment">// &#125;</span><br><br><span class="hljs-comment">// 正确</span><br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> x <span class="hljs-keyword">of</span> <span class="hljs-built_in">Array</span>.from(arrayLike)) &#123;<br>  <span class="hljs-built_in">console</span>.log(x);<br>&#125;<br><span class="hljs-comment">// a</span><br><span class="hljs-comment">// b</span><br></code></pre></div></td></tr></table></figure>
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i <span class="hljs-keyword">in</span> arr) &#123;
+  <span class="hljs-built_in">console</span>.log(i); <span class="hljs-comment">// &quot;0&quot;, &quot;1&quot;, &quot;2&quot;, &quot;foo&quot;</span>
+&#125;
+
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i <span class="hljs-keyword">of</span> arr) &#123;
+  <span class="hljs-built_in">console</span>.log(i); <span class="hljs-comment">//  &quot;3&quot;, &quot;5&quot;, &quot;7&quot;</span>
+&#125;
+
+<span class="hljs-comment">// 上面代码中，for...of循环不会返回数组arr的foo属性。</span></code></pre></div>
+
+<h3 id="如果要通过for-of循环获取数组的索引，可以借助数组实例的entries方法和keys方法"><a href="#如果要通过for-of循环获取数组的索引，可以借助数组实例的entries方法和keys方法" class="headerlink" title="如果要通过for...of循环获取数组的索引，可以借助数组实例的entries方法和keys方法"></a>如果要通过<code>for...of</code>循环获取数组的索引，可以借助数组实例的<code>entries</code>方法和<code>keys</code>方法</h3><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> arr = [<span class="hljs-string">&#x27;a&#x27;</span>, <span class="hljs-string">&#x27;b&#x27;</span>, <span class="hljs-string">&#x27;c&#x27;</span>];
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> pair <span class="hljs-keyword">of</span> arr) &#123;
+  <span class="hljs-built_in">console</span>.log(pair);
+&#125;
+<span class="hljs-comment">// a</span>
+<span class="hljs-comment">// b</span>
+<span class="hljs-comment">// c</span>
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> pair <span class="hljs-keyword">of</span> arr.entries()) &#123;
+  <span class="hljs-built_in">console</span>.log(pair);
+&#125;
+<span class="hljs-comment">// [0, &#x27;a&#x27;]</span>
+<span class="hljs-comment">// [1, &#x27;b&#x27;]</span>
+<span class="hljs-comment">// [2, &#x27;c&#x27;]</span>
+
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> pair <span class="hljs-keyword">of</span> arr.keys()) &#123;
+  <span class="hljs-built_in">console</span>.log(pair);
+&#125;
+<span class="hljs-comment">// 0</span>
+<span class="hljs-comment">// 1</span>
+<span class="hljs-comment">// 2</span></code></pre></div>
+
+<h2 id="set和map"><a href="#set和map" class="headerlink" title="set和map"></a>set和map</h2><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> engines = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Set</span>([<span class="hljs-string">&quot;Gecko&quot;</span>, <span class="hljs-string">&quot;Trident&quot;</span>, <span class="hljs-string">&quot;Webkit&quot;</span>, <span class="hljs-string">&quot;Webkit&quot;</span>]);
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> e <span class="hljs-keyword">of</span> engines) &#123;
+  <span class="hljs-built_in">console</span>.log(e);
+&#125;
+<span class="hljs-comment">// Gecko</span>
+<span class="hljs-comment">// Trident</span>
+<span class="hljs-comment">// Webkit</span>
+
+<span class="hljs-keyword">var</span> es6 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Map</span>();
+es6.set(<span class="hljs-string">&quot;edition&quot;</span>, <span class="hljs-number">6</span>);
+es6.set(<span class="hljs-string">&quot;committee&quot;</span>, <span class="hljs-string">&quot;TC39&quot;</span>);
+es6.set(<span class="hljs-string">&quot;standard&quot;</span>, <span class="hljs-string">&quot;ECMA-262&quot;</span>);
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> [name, value] <span class="hljs-keyword">of</span> es6) &#123;
+  <span class="hljs-built_in">console</span>.log(name + <span class="hljs-string">&quot;: &quot;</span> + value);  <span class="xml">&lt;-----按照添加的顺序</span>
+<span class="xml">&#125;</span>
+<span class="xml">// edition: 6</span>
+<span class="xml">// committee: TC39</span>
+<span class="xml">// standard: ECMA-262</span></code></pre></div>
+
+<h2 id="类数组的对象"><a href="#类数组的对象" class="headerlink" title="类数组的对象"></a>类数组的对象</h2><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// 字符串</span>
+<span class="hljs-keyword">let</span> str = <span class="hljs-string">&quot;hello&quot;</span>;
+
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> s <span class="hljs-keyword">of</span> str) &#123;
+  <span class="hljs-built_in">console</span>.log(s); <span class="hljs-comment">// h e l l o</span>
+&#125;
+
+<span class="hljs-comment">// DOM NodeList对象</span>
+<span class="hljs-keyword">let</span> paras = <span class="hljs-built_in">document</span>.querySelectorAll(<span class="hljs-string">&quot;p&quot;</span>);
+
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> p <span class="hljs-keyword">of</span> paras) &#123;
+  p.classList.add(<span class="hljs-string">&quot;test&quot;</span>);
+&#125;
+
+<span class="hljs-comment">// arguments对象</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">printArgs</span>(<span class="hljs-params"></span>) </span>&#123;
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> x <span class="hljs-keyword">of</span> <span class="hljs-built_in">arguments</span>) &#123;
+    <span class="hljs-built_in">console</span>.log(x);
+  &#125;
+&#125;
+printArgs(<span class="hljs-string">&#x27;a&#x27;</span>, <span class="hljs-string">&#x27;b&#x27;</span>);
+<span class="hljs-comment">// &#x27;a&#x27;</span>
+<span class="hljs-comment">// &#x27;b&#x27;</span></code></pre></div>
+
+<h3 id="使用Array-from-将类数组对象转为数组"><a href="#使用Array-from-将类数组对象转为数组" class="headerlink" title="使用Array.from()将类数组对象转为数组"></a>使用Array.from()将类数组对象转为数组</h3><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> arrayLike = &#123; <span class="hljs-attr">length</span>: <span class="hljs-number">2</span>, <span class="hljs-number">0</span>: <span class="hljs-string">&#x27;a&#x27;</span>, <span class="hljs-number">1</span>: <span class="hljs-string">&#x27;b&#x27;</span> &#125;;
+
+<span class="hljs-comment">// 报错</span>
+<span class="hljs-comment">// for (let x of arrayLike) &#123;</span>
+<span class="hljs-comment">//   console.log(x);</span>
+<span class="hljs-comment">// &#125;</span>
+
+<span class="hljs-comment">// 正确</span>
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> x <span class="hljs-keyword">of</span> <span class="hljs-built_in">Array</span>.from(arrayLike)) &#123;
+  <span class="hljs-built_in">console</span>.log(x);
+&#125;
+<span class="hljs-comment">// a</span>
+<span class="hljs-comment">// b</span></code></pre></div>
 
             </div>
             <hr>

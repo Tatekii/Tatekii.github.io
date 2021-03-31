@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      886 字
+      880 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      15
+      14
        分钟
     </span>
   
@@ -242,13 +242,33 @@
               </p>
             
             <div class="markdown-body">
-              <h3 id="中间自适应，两边300px，高度已知"><a href="#中间自适应，两边300px，高度已知" class="headerlink" title="中间自适应，两边300px，高度已知"></a>中间自适应，两边300px，高度已知</h3><figure class="highlight html"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">artical</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;parent&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;left&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;center&quot;</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>center<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;right&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">artical</span>&gt;</span><br></code></pre></div></td></tr></table></figure>
+              <h3 id="中间自适应，两边300px，高度已知"><a href="#中间自适应，两边300px，高度已知" class="headerlink" title="中间自适应，两边300px，高度已知"></a>中间自适应，两边300px，高度已知</h3><div class="hljs code-wrapper"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">artical</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;parent&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;left&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;center&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>center<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;right&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">artical</span>&gt;</span></code></pre></div>
 
 <h4 id="float"><a href="#float" class="headerlink" title="float"></a>float</h4><ul>
 <li>左右div分别两边浮动</li>
 <li>默认div按照left，center，right排列，此处为例外，由于浮动元素不占据文档流，center要写right后面否则right挤到下一行</li>
 </ul>
-<figure class="highlight css"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs css"><span class="hljs-selector-class">.left</span>&#123;<br>  <span class="hljs-attribute">float</span><span class="hljs-selector-pseudo">:left</span>;<br>  <span class="hljs-attribute">background-color</span>:red;  <br>  <span class="hljs-attribute">width</span>:<span class="hljs-number">300px</span>;<br>&#125;<br><br><span class="hljs-selector-class">.right</span>&#123;<br>  <span class="hljs-attribute">float</span><span class="hljs-selector-pseudo">:right</span>;<br>   <span class="hljs-attribute">background-color</span>:yellow;<br>   <span class="hljs-attribute">width</span>:<span class="hljs-number">300px</span>;<br>&#125;<br><br><span class="hljs-selector-class">.center</span>&#123;<br>   <span class="hljs-attribute">background-color</span>:blue;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+<div class="hljs code-wrapper"><pre><code class="hljs css"><span class="hljs-selector-class">.left</span>&#123;
+  <span class="hljs-attribute">float</span><span class="hljs-selector-pseudo">:left</span>;
+  <span class="hljs-attribute">background-color</span>:red;  
+  <span class="hljs-attribute">width</span>:<span class="hljs-number">300px</span>;
+&#125;
+
+<span class="hljs-selector-class">.right</span>&#123;
+  <span class="hljs-attribute">float</span><span class="hljs-selector-pseudo">:right</span>;
+   <span class="hljs-attribute">background-color</span>:yellow;
+   <span class="hljs-attribute">width</span>:<span class="hljs-number">300px</span>;
+&#125;
+
+<span class="hljs-selector-class">.center</span>&#123;
+   <span class="hljs-attribute">background-color</span>:blue;
+&#125;</code></pre></div>
 
 <h4 id="圣杯布局"><a href="#圣杯布局" class="headerlink" title="圣杯布局"></a>圣杯布局</h4><ul>
 <li>三栏都浮动</li>
@@ -257,7 +277,61 @@
 <li>容器设置左右padding确保中间内容不会被挡住</li>
 <li>左右relative设置left/right值移动去padding出的空位</li>
 </ul>
-<figure class="highlight html"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">&quot;X-UA-Compatible&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;ie=edge&quot;</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Document<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><br>    * &#123;<br><span class="css">      <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span>;</span><br><span class="css">      <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;</span><br>    &#125;<br>    .container&#123;<br><span class="css">      <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span> <span class="hljs-number">200px</span>;</span><br><span class="css">      <span class="hljs-attribute">height</span>: <span class="hljs-number">200px</span>;</span><br>    &#125;<br>    .center &#123;<br><span class="css">      <span class="hljs-attribute">float</span>: left;</span><br><span class="css">      <span class="hljs-attribute">height</span>: <span class="hljs-number">200px</span>;</span><br><span class="css">      <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;</span><br><span class="css">      <span class="hljs-attribute">background</span>: red;</span><br>    &#125;<br><br>    .left &#123;<br><span class="css">      <span class="hljs-attribute">float</span>: left;</span><br><span class="css">      <span class="hljs-attribute">height</span>: <span class="hljs-number">200px</span>;</span><br><span class="css">      <span class="hljs-attribute">width</span>: <span class="hljs-number">200px</span>;</span><br><span class="css">      <span class="hljs-attribute">background</span>: blue;</span><br><span class="css">      <span class="hljs-attribute">position</span>: relative;</span><br><span class="css">      <span class="hljs-attribute">left</span>: -<span class="hljs-number">100%</span>;</span><br><span class="css">      <span class="hljs-attribute">margin-left</span>: -<span class="hljs-number">200px</span>;</span><br>    &#125;<br><br>    .right &#123;<br><span class="css">      <span class="hljs-attribute">float</span>: left;</span><br><span class="css">      <span class="hljs-attribute">height</span>: <span class="hljs-number">200px</span>;</span><br><span class="css">      <span class="hljs-attribute">width</span>: <span class="hljs-number">200px</span>;</span><br><span class="css">      <span class="hljs-attribute">background</span>: yellow;</span><br><span class="css">      <span class="hljs-attribute">position</span>: relative;</span><br><span class="css">      <span class="hljs-attribute">right</span>: -<span class="hljs-number">200px</span>;</span><br><span class="css">      <span class="hljs-attribute">margin-left</span>: -<span class="hljs-number">200px</span>;</span><br>    &#125;<br>  <span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;container&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;center&quot;</span>&gt;</span>center<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;left&quot;</span>&gt;</span>left<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;right&quot;</span>&gt;</span>right<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></div></td></tr></table></figure>
+<div class="hljs code-wrapper"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">&quot;X-UA-Compatible&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;ie=edge&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Document<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span>
+    * &#123;
+<span class="css">      <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span>;</span>
+<span class="css">      <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;</span>
+    &#125;
+    .container&#123;
+<span class="css">      <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span> <span class="hljs-number">200px</span>;</span>
+<span class="css">      <span class="hljs-attribute">height</span>: <span class="hljs-number">200px</span>;</span>
+    &#125;
+    .center &#123;
+<span class="css">      <span class="hljs-attribute">float</span>: left;</span>
+<span class="css">      <span class="hljs-attribute">height</span>: <span class="hljs-number">200px</span>;</span>
+<span class="css">      <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;</span>
+<span class="css">      <span class="hljs-attribute">background</span>: red;</span>
+    &#125;
+
+    .left &#123;
+<span class="css">      <span class="hljs-attribute">float</span>: left;</span>
+<span class="css">      <span class="hljs-attribute">height</span>: <span class="hljs-number">200px</span>;</span>
+<span class="css">      <span class="hljs-attribute">width</span>: <span class="hljs-number">200px</span>;</span>
+<span class="css">      <span class="hljs-attribute">background</span>: blue;</span>
+<span class="css">      <span class="hljs-attribute">position</span>: relative;</span>
+<span class="css">      <span class="hljs-attribute">left</span>: -<span class="hljs-number">100%</span>;</span>
+<span class="css">      <span class="hljs-attribute">margin-left</span>: -<span class="hljs-number">200px</span>;</span>
+    &#125;
+
+    .right &#123;
+<span class="css">      <span class="hljs-attribute">float</span>: left;</span>
+<span class="css">      <span class="hljs-attribute">height</span>: <span class="hljs-number">200px</span>;</span>
+<span class="css">      <span class="hljs-attribute">width</span>: <span class="hljs-number">200px</span>;</span>
+<span class="css">      <span class="hljs-attribute">background</span>: yellow;</span>
+<span class="css">      <span class="hljs-attribute">position</span>: relative;</span>
+<span class="css">      <span class="hljs-attribute">right</span>: -<span class="hljs-number">200px</span>;</span>
+<span class="css">      <span class="hljs-attribute">margin-left</span>: -<span class="hljs-number">200px</span>;</span>
+    &#125;
+  <span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;container&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;center&quot;</span>&gt;</span>center<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;left&quot;</span>&gt;</span>left<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;right&quot;</span>&gt;</span>right<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></code></pre></div>
 
 <h4 id="双飞翼布局"><a href="#双飞翼布局" class="headerlink" title="双飞翼布局"></a>双飞翼布局</h4><ul>
 <li>三栏都浮动</li>
@@ -266,28 +340,155 @@
 <li>在center中加入一个子块，为子块设置margin避免被遮挡</li>
 <li>center清除浮动</li>
 </ul>
-<figure class="highlight html"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">&quot;X-UA-Compatible&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;ie=edge&quot;</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Document<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><br>    * &#123;<br><span class="css">      <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span>;</span><br><span class="css">      <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;</span><br>    &#125;<br><br>    .container &#123;<br><span class="css">      <span class="hljs-attribute">float</span>: left;</span><br><span class="css">      <span class="hljs-attribute">height</span>: <span class="hljs-number">200px</span>;</span><br><span class="css">      <span class="hljs-attribute">width</span>:<span class="hljs-number">100%</span>;</span><br>    &#125;<br><br>    .center &#123;<br><span class="css">      <span class="hljs-attribute">height</span>: <span class="hljs-number">200px</span>;</span><br><span class="css">      <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;</span><br><span class="css">      <span class="hljs-attribute">background</span>: red;</span><br><span class="css">      <span class="hljs-attribute">margin-left</span>: <span class="hljs-number">200px</span>;</span><br><span class="css">      <span class="hljs-attribute">margin-right</span>: <span class="hljs-number">200px</span>;</span><br>    &#125;<br><br>    .left &#123;<br><span class="css">      <span class="hljs-attribute">float</span>: left;</span><br><span class="css">      <span class="hljs-attribute">height</span>: <span class="hljs-number">200px</span>;</span><br><span class="css">      <span class="hljs-attribute">width</span>: <span class="hljs-number">200px</span>;</span><br><span class="css">      <span class="hljs-attribute">background</span>: blue;</span><br><span class="css">      <span class="hljs-attribute">margin-left</span>: -<span class="hljs-number">100%</span>;</span><br>    &#125;<br><br>    .right &#123;<br><span class="css">      <span class="hljs-attribute">float</span>: left;</span><br><span class="css">      <span class="hljs-attribute">height</span>: <span class="hljs-number">200px</span>;</span><br><span class="css">      <span class="hljs-attribute">width</span>: <span class="hljs-number">200px</span>;</span><br><span class="css">      <span class="hljs-attribute">background</span>: yellow;</span><br><span class="css">      <span class="hljs-attribute">margin-left</span>: -<span class="hljs-number">200px</span>;</span><br>    &#125;<br>  <span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;container&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;center&quot;</span>&gt;</span>center<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;left&quot;</span>&gt;</span>left<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;right&quot;</span>&gt;</span>right<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><br><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></div></td></tr></table></figure>
+<div class="hljs code-wrapper"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">&quot;X-UA-Compatible&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;ie=edge&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Document<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span>
+    * &#123;
+<span class="css">      <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span>;</span>
+<span class="css">      <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;</span>
+    &#125;
+
+    .container &#123;
+<span class="css">      <span class="hljs-attribute">float</span>: left;</span>
+<span class="css">      <span class="hljs-attribute">height</span>: <span class="hljs-number">200px</span>;</span>
+<span class="css">      <span class="hljs-attribute">width</span>:<span class="hljs-number">100%</span>;</span>
+    &#125;
+
+    .center &#123;
+<span class="css">      <span class="hljs-attribute">height</span>: <span class="hljs-number">200px</span>;</span>
+<span class="css">      <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;</span>
+<span class="css">      <span class="hljs-attribute">background</span>: red;</span>
+<span class="css">      <span class="hljs-attribute">margin-left</span>: <span class="hljs-number">200px</span>;</span>
+<span class="css">      <span class="hljs-attribute">margin-right</span>: <span class="hljs-number">200px</span>;</span>
+    &#125;
+
+    .left &#123;
+<span class="css">      <span class="hljs-attribute">float</span>: left;</span>
+<span class="css">      <span class="hljs-attribute">height</span>: <span class="hljs-number">200px</span>;</span>
+<span class="css">      <span class="hljs-attribute">width</span>: <span class="hljs-number">200px</span>;</span>
+<span class="css">      <span class="hljs-attribute">background</span>: blue;</span>
+<span class="css">      <span class="hljs-attribute">margin-left</span>: -<span class="hljs-number">100%</span>;</span>
+    &#125;
+
+    .right &#123;
+<span class="css">      <span class="hljs-attribute">float</span>: left;</span>
+<span class="css">      <span class="hljs-attribute">height</span>: <span class="hljs-number">200px</span>;</span>
+<span class="css">      <span class="hljs-attribute">width</span>: <span class="hljs-number">200px</span>;</span>
+<span class="css">      <span class="hljs-attribute">background</span>: yellow;</span>
+<span class="css">      <span class="hljs-attribute">margin-left</span>: -<span class="hljs-number">200px</span>;</span>
+    &#125;
+  <span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;container&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;center&quot;</span>&gt;</span>center<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;left&quot;</span>&gt;</span>left<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;right&quot;</span>&gt;</span>right<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></code></pre></div>
 
 
 <h4 id="绝对定位"><a href="#绝对定位" class="headerlink" title="绝对定位"></a>绝对定位</h4><blockquote>
 <p>所有div设置绝对定位<br>左右div设置宽度和left, right=0<br>中间div的left和right值分别为左右div宽度</p>
 </blockquote>
-<figure class="highlight css"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs css"><span class="hljs-selector-tag">div</span>&#123;<br>  <span class="hljs-attribute">min-height</span>:<span class="hljs-number">200px</span>;<br>  <span class="hljs-attribute">position</span>:absolute<br>&#125;<br><span class="hljs-selector-class">.left</span>&#123;<br>  <span class="hljs-attribute">left</span>:<span class="hljs-number">0</span>;<br>  <span class="hljs-attribute">background-color</span>:red;  <br>  <span class="hljs-attribute">width</span>:<span class="hljs-number">300px</span>;<br>&#125;<br><br><span class="hljs-selector-class">.right</span>&#123;<br>  <span class="hljs-attribute">right</span>:<span class="hljs-number">0</span>;<br>   <span class="hljs-attribute">background-color</span>:yellow;<br>   <span class="hljs-attribute">width</span>:<span class="hljs-number">300px</span>;<br>&#125;<br><br><span class="hljs-selector-class">.center</span>&#123;<br>   <span class="hljs-attribute">background-color</span>:blue;<br>  <span class="hljs-attribute">left</span>:<span class="hljs-number">300px</span>;<br>  <span class="hljs-attribute">right</span>:<span class="hljs-number">300px</span>;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+<div class="hljs code-wrapper"><pre><code class="hljs css"><span class="hljs-selector-tag">div</span>&#123;
+  <span class="hljs-attribute">min-height</span>:<span class="hljs-number">200px</span>;
+  <span class="hljs-attribute">position</span>:absolute
+&#125;
+<span class="hljs-selector-class">.left</span>&#123;
+  <span class="hljs-attribute">left</span>:<span class="hljs-number">0</span>;
+  <span class="hljs-attribute">background-color</span>:red;  
+  <span class="hljs-attribute">width</span>:<span class="hljs-number">300px</span>;
+&#125;
+
+<span class="hljs-selector-class">.right</span>&#123;
+  <span class="hljs-attribute">right</span>:<span class="hljs-number">0</span>;
+   <span class="hljs-attribute">background-color</span>:yellow;
+   <span class="hljs-attribute">width</span>:<span class="hljs-number">300px</span>;
+&#125;
+
+<span class="hljs-selector-class">.center</span>&#123;
+   <span class="hljs-attribute">background-color</span>:blue;
+  <span class="hljs-attribute">left</span>:<span class="hljs-number">300px</span>;
+  <span class="hljs-attribute">right</span>:<span class="hljs-number">300px</span>;
+&#125;</code></pre></div>
 
 <h4 id="flex-（推荐）"><a href="#flex-（推荐）" class="headerlink" title="flex （推荐）"></a>flex （推荐）</h4><blockquote>
 <p>设置center的flex=1<br>设置flex后子元素的<code>float、clear 和 vertical-align</code>会失效</p>
 </blockquote>
-<figure class="highlight css"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs css"><br><span class="hljs-selector-class">.parent</span>&#123;<br>  <span class="hljs-attribute">display</span>:flex;<br>&#125;<br><span class="hljs-selector-class">.left</span> &#123;<br>  <span class="hljs-attribute">background</span>: green;<br>  <span class="hljs-attribute">flex-basis</span>:<span class="hljs-number">300px</span>;<br>&#125;<br><span class="hljs-selector-class">.center</span> &#123;––<br>  <span class="hljs-attribute">background</span>: red;<br>  <span class="hljs-attribute">flex</span>: <span class="hljs-number">1</span>;<br>&#125;<br><span class="hljs-selector-class">.right</span> &#123;<br>  <span class="hljs-attribute">background</span>: orange;<br>  <span class="hljs-attribute">flex-basis</span>: <span class="hljs-number">300px</span>;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+<div class="hljs code-wrapper"><pre><code class="hljs css">
+<span class="hljs-selector-class">.parent</span>&#123;
+  <span class="hljs-attribute">display</span>:flex;
+&#125;
+<span class="hljs-selector-class">.left</span> &#123;
+  <span class="hljs-attribute">background</span>: green;
+  <span class="hljs-attribute">flex-basis</span>:<span class="hljs-number">300px</span>;
+&#125;
+<span class="hljs-selector-class">.center</span> &#123;––
+  <span class="hljs-attribute">background</span>: red;
+  <span class="hljs-attribute">flex</span>: <span class="hljs-number">1</span>;
+&#125;
+<span class="hljs-selector-class">.right</span> &#123;
+  <span class="hljs-attribute">background</span>: orange;
+  <span class="hljs-attribute">flex-basis</span>: <span class="hljs-number">300px</span>;
+&#125;</code></pre></div>
 
 <h4 id="table"><a href="#table" class="headerlink" title="table"></a>table</h4><blockquote>
 <p>先把容器撑开，给不同格子设置宽度</p>
 </blockquote>
-<figure class="highlight css"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs css"><span class="hljs-selector-tag">div</span>&#123;<br>  <span class="hljs-attribute">display</span>:table-cell;<br>&#125;<br><span class="hljs-selector-class">.parent</span>&#123;<br>  <span class="hljs-attribute">display</span>:table;<br>  <span class="hljs-attribute">height</span>:<span class="hljs-number">200px</span>;<br>  <span class="hljs-attribute">width</span>:<span class="hljs-number">100%</span>;<br>&#125;<br><span class="hljs-selector-class">.left</span>&#123;<br>  <span class="hljs-attribute">background-color</span>:red;  <br>  <span class="hljs-attribute">width</span>:<span class="hljs-number">300px</span>;<br>&#125;<br><br><span class="hljs-selector-class">.right</span>&#123;<br>   <span class="hljs-attribute">background-color</span>:yellow;<br>   <span class="hljs-attribute">width</span>:<span class="hljs-number">300px</span>;<br>&#125;<br><br><span class="hljs-selector-class">.center</span>&#123;<br>   <span class="hljs-attribute">background-color</span>:blue;<br><br>&#125;<br></code></pre></div></td></tr></table></figure>
+<div class="hljs code-wrapper"><pre><code class="hljs css"><span class="hljs-selector-tag">div</span>&#123;
+  <span class="hljs-attribute">display</span>:table-cell;
+&#125;
+<span class="hljs-selector-class">.parent</span>&#123;
+  <span class="hljs-attribute">display</span>:table;
+  <span class="hljs-attribute">height</span>:<span class="hljs-number">200px</span>;
+  <span class="hljs-attribute">width</span>:<span class="hljs-number">100%</span>;
+&#125;
+<span class="hljs-selector-class">.left</span>&#123;
+  <span class="hljs-attribute">background-color</span>:red;  
+  <span class="hljs-attribute">width</span>:<span class="hljs-number">300px</span>;
+&#125;
+
+<span class="hljs-selector-class">.right</span>&#123;
+   <span class="hljs-attribute">background-color</span>:yellow;
+   <span class="hljs-attribute">width</span>:<span class="hljs-number">300px</span>;
+&#125;
+
+<span class="hljs-selector-class">.center</span>&#123;
+   <span class="hljs-attribute">background-color</span>:blue;
+
+&#125;</code></pre></div>
 
 <h4 id="grid"><a href="#grid" class="headerlink" title="grid"></a>grid</h4><blockquote>
 <p>一样把容器撑开，设置三列，分别给宽度<br>网格布局 grid-template-rows设置行，columns设置列</p>
 </blockquote>
-<figure class="highlight css"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs css"><span class="hljs-selector-class">.parent</span>&#123;<br>  <span class="hljs-attribute">display</span>:grid;<br>  <span class="hljs-attribute">width</span>:<span class="hljs-number">100%</span>;<br>  grid-template-<span class="hljs-attribute">columns</span>:<span class="hljs-number">300px</span> auto <span class="hljs-number">300px</span>;<br>  grid-template-rows:<span class="hljs-number">200px</span>;<br>&#125;<br><span class="hljs-selector-class">.left</span>&#123;<br>  <span class="hljs-attribute">background-color</span>:red;  <br>&#125;<br><br><span class="hljs-selector-class">.right</span>&#123;<br>   <span class="hljs-attribute">background-color</span>:yellow;<br>&#125;<br><br><span class="hljs-selector-class">.center</span>&#123;<br>   <span class="hljs-attribute">background-color</span>:blue;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+<div class="hljs code-wrapper"><pre><code class="hljs css"><span class="hljs-selector-class">.parent</span>&#123;
+  <span class="hljs-attribute">display</span>:grid;
+  <span class="hljs-attribute">width</span>:<span class="hljs-number">100%</span>;
+  grid-template-<span class="hljs-attribute">columns</span>:<span class="hljs-number">300px</span> auto <span class="hljs-number">300px</span>;
+  grid-template-rows:<span class="hljs-number">200px</span>;
+&#125;
+<span class="hljs-selector-class">.left</span>&#123;
+  <span class="hljs-attribute">background-color</span>:red;  
+&#125;
+
+<span class="hljs-selector-class">.right</span>&#123;
+   <span class="hljs-attribute">background-color</span>:yellow;
+&#125;
+
+<span class="hljs-selector-class">.center</span>&#123;
+   <span class="hljs-attribute">background-color</span>:blue;
+&#125;</code></pre></div>
 
 <h3 id="如果改成竖直方向"><a href="#如果改成竖直方向" class="headerlink" title="如果改成竖直方向"></a>如果改成竖直方向</h3><ul>
 <li>注意height100%是没用的，使用vh高度，视口高度</li>

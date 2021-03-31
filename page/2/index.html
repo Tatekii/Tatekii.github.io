@@ -193,7 +193,12 @@
           
           
 自动化注册组件
-12345678910111213141516171819202122232425262728293031323334353637383940414243// global.jsimport Vue from &#x27;vue&#x27;import upperFirst from &#x27;lodash/upperFirst&#x27;import camelCase fr
+// global.js
+import Vue from &#x27;vue&#x27;
+import upperFirst from &#x27;lodash/upperFirst&#x27;
+import camelCase from &#x27;lodash/camelCase&#x27;
+
+const requireComponent = require.context(
         </a>
       </p>
 
@@ -252,7 +257,9 @@
 建立堆
 将节点与父节点比较
 
-123456789101112131415//小顶堆function buildHeap(ite
+//小顶堆
+function buildHeap(items,heapSize)&#123;
+ 
         </a>
       </p>
 
@@ -315,7 +322,8 @@
 满二叉树
 完全二叉树
 
-二叉树遍历12345678function BinaryTree() &#123;  const Nod
+二叉树遍历function BinaryTree() &#123;
+  const Node = fun
         </a>
       </p>
 
@@ -360,7 +368,18 @@
           
           栈结构，先进后出
 最小栈
-12345678910111213141516171819202122232425262728293031function MinStack()&#123;  this.stack = []  this.min = null&#125;MinStack.prototype.push = item =&gt; &#123;  if(!this.stack.length)&#
+
+
+function MinStack()&#123;
+  this.stack = []
+  this.min = null
+&#125;
+
+MinStack.prototype.push = item =&gt; &#123;
+  if(!this.stack.length)&#123;
+    this.min = item
+  &#125;else&#123;
+ 
         </a>
       </p>
 
@@ -407,7 +426,12 @@
           
           
 寻找最长公公前缀
-12345678910111213141516// 输入: [&quot;flower&quot;,&quot;flow&quot;,&quot;flight&quot;]// 输出: &quot;fl&quot;function commonPrefix(...strs)&#123;  if(!strs.length || strs.length===0) return &q
+// 输入: [&quot;flower&quot;,&quot;flow&quot;,&quot;flight&quot;]
+// 输出: &quot;fl&quot;
+
+function commonPrefix(...strs)&#123;
+  if(!strs.length || strs.length===0) return &quot;&quot;
+  let re
         </a>
       </p>
 
@@ -521,7 +545,12 @@ tailNode.next = null
           
 字母的所有组合
 
-123456789101112131415161718192021222324252627282930const anagrams = str =&gt; &#123;  if(str.length&lt;=2) return str.length===2 ? [str , str[1] + str[0]] :str  // 这里使用reduce的第三个参数index，正在处理
+const anagrams = str =&gt; &#123;
+  if(str.length&lt;=2) return str.length===2 ? [str , str[1] + str[0]] :str
+
+  // 这里使用reduce的第三个参数index，正在处理的元素
+  // 如果提供了initialValue，则起始索引号为0，否则从索引1起始。
+  
         </a>
       </p>
 
@@ -565,7 +594,14 @@ tailNode.next = null
             
           
           
-两数之合123456789101112131415function twoSum(arr,target)&#123;  let res = []  let map = new Map()  // 使用数值-&gt;索引建立map  // 每次循环计算得出当前差值  // 在map中查找这个差值既能得出索引  for(let i = 0 ; i&lt;arr.length;i++)&#123;  
+两数之合function twoSum(arr,target)&#123;
+  let res = []
+  let map = new Map()
+  // 使用数值-&gt;索引建立map
+  // 每次循环计算得出当前差值
+  // 在map中查找这个差值既能得出索引
+  for(let i = 0 ; i&lt;arr.length;i++)&#123;
+    let k = targ
         </a>
       </p>
 
@@ -613,7 +649,13 @@ tailNode.next = null
           
 打车时可以打专车或快车。任何车都有车牌号和名称。快车每公里1元，专车每公里2元。行程开始时，显示车辆信息。行程结束时，显示打车金额。行程距离为5公里。
 
-123456789101112131415161718192021222324252627282930313233class Car&#123;  constructor(licence,name)&#123;    this.licence 
+class Car&#123;
+  constructor(licence,name)&#123;
+    this.licence = licence
+    this.name = name
+  &#125;
+&#125;
+class Fa
         </a>
       </p>
 

@@ -245,17 +245,124 @@
               <h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>把接受多个参数的函数变换成接受一个单一参数（最初函数的第一个参数）的函数，并且返回接受余下的参数而且返回结果的新函数的技术。<br>柯里化（currying）是一种模式，其中具有多个参数的函数被分解为多个函数，当被串联调用时，将一次一个地累积所有需要的参数。这种技术帮助编写函数式风格的代码，使代码更易读、紧凑。</p>
 <h2 id="优势"><a href="#优势" class="headerlink" title="优势"></a>优势</h2><ol>
 <li><p>参数复用</p>
-<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// 正常正则验证字符串 reg.test(txt)</span><br><br><span class="hljs-comment">// 函数封装后</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">check</span>(<span class="hljs-params">reg, txt</span>) </span>&#123;<br>  <span class="hljs-keyword">return</span> reg.test(txt);<br>&#125;<br><br>check(<span class="hljs-regexp">/\d+/g</span>, <span class="hljs-string">&quot;test&quot;</span>); <span class="hljs-comment">//false</span><br>check(<span class="hljs-regexp">/[a-z]+/g</span>, <span class="hljs-string">&quot;test&quot;</span>); <span class="hljs-comment">//true</span><br><br><span class="hljs-comment">// Currying后</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">curryingCheck</span>(<span class="hljs-params">reg</span>) </span>&#123;<br>  <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">txt</span>) </span>&#123;<br>    <span class="hljs-keyword">return</span> reg.test(txt);<br>  &#125;;<br>&#125;<br><br><span class="hljs-keyword">var</span> hasNumber = curryingCheck(<span class="hljs-regexp">/\d+/g</span>);<br><span class="hljs-keyword">var</span> hasLetter = curryingCheck(<span class="hljs-regexp">/[a-z]+/g</span>);<br><br>hasNumber(<span class="hljs-string">&quot;test1&quot;</span>); <span class="hljs-comment">// true</span><br>hasNumber(<span class="hljs-string">&quot;testtest&quot;</span>); <span class="hljs-comment">// false</span><br>hasLetter(<span class="hljs-string">&quot;21212&quot;</span>); <span class="hljs-comment">// false</span><br></code></pre></div></td></tr></table></figure></li>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// 正常正则验证字符串 reg.test(txt)</span>
+
+<span class="hljs-comment">// 函数封装后</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">check</span>(<span class="hljs-params">reg, txt</span>) </span>&#123;
+  <span class="hljs-keyword">return</span> reg.test(txt);
+&#125;
+
+check(<span class="hljs-regexp">/\d+/g</span>, <span class="hljs-string">&quot;test&quot;</span>); <span class="hljs-comment">//false</span>
+check(<span class="hljs-regexp">/[a-z]+/g</span>, <span class="hljs-string">&quot;test&quot;</span>); <span class="hljs-comment">//true</span>
+
+<span class="hljs-comment">// Currying后</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">curryingCheck</span>(<span class="hljs-params">reg</span>) </span>&#123;
+  <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">txt</span>) </span>&#123;
+    <span class="hljs-keyword">return</span> reg.test(txt);
+  &#125;;
+&#125;
+
+<span class="hljs-keyword">var</span> hasNumber = curryingCheck(<span class="hljs-regexp">/\d+/g</span>);
+<span class="hljs-keyword">var</span> hasLetter = curryingCheck(<span class="hljs-regexp">/[a-z]+/g</span>);
+
+hasNumber(<span class="hljs-string">&quot;test1&quot;</span>); <span class="hljs-comment">// true</span>
+hasNumber(<span class="hljs-string">&quot;testtest&quot;</span>); <span class="hljs-comment">// false</span>
+hasLetter(<span class="hljs-string">&quot;21212&quot;</span>); <span class="hljs-comment">// false</span></code></pre></div></li>
 <li><p>提前确定</p>
-<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// 避免每次执行都判断</span><br><span class="hljs-keyword">var</span> on = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">element, event, handler</span>) </span>&#123;<br>  <span class="hljs-keyword">if</span> (<span class="hljs-built_in">document</span>.addEventListener) &#123;<br>    <span class="hljs-keyword">if</span> (element &amp;&amp; event &amp;&amp; handler) &#123;<br>      element.addEventListener(event, handler, <span class="hljs-literal">false</span>);<br>    &#125;<br>  &#125; <span class="hljs-keyword">else</span> &#123;<br>    <span class="hljs-keyword">if</span> (element &amp;&amp; event &amp;&amp; handler) &#123;<br>      element.attachEvent(<span class="hljs-string">&quot;on&quot;</span> + event, handler);<br>    &#125;<br>  &#125;<br>&#125;;<br><br><span class="hljs-keyword">var</span> on = (<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-keyword">if</span> (<span class="hljs-built_in">document</span>.addEventListener) &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">element, event, handler</span>) </span>&#123;<br>      <span class="hljs-keyword">if</span> (element &amp;&amp; event &amp;&amp; handler) &#123;<br>        element.addEventListener(event, handler, <span class="hljs-literal">false</span>);<br>      &#125;<br>    &#125;;<br>  &#125; <span class="hljs-keyword">else</span> &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">element, event, handler</span>) </span>&#123;<br>      <span class="hljs-keyword">if</span> (element &amp;&amp; event &amp;&amp; handler) &#123;<br>        element.attachEvent(<span class="hljs-string">&quot;on&quot;</span> + event, handler);<br>      &#125;<br>    &#125;;<br>  &#125;<br>&#125;)();<br></code></pre></div></td></tr></table></figure></li>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// 避免每次执行都判断</span>
+<span class="hljs-keyword">var</span> on = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">element, event, handler</span>) </span>&#123;
+  <span class="hljs-keyword">if</span> (<span class="hljs-built_in">document</span>.addEventListener) &#123;
+    <span class="hljs-keyword">if</span> (element &amp;&amp; event &amp;&amp; handler) &#123;
+      element.addEventListener(event, handler, <span class="hljs-literal">false</span>);
+    &#125;
+  &#125; <span class="hljs-keyword">else</span> &#123;
+    <span class="hljs-keyword">if</span> (element &amp;&amp; event &amp;&amp; handler) &#123;
+      element.attachEvent(<span class="hljs-string">&quot;on&quot;</span> + event, handler);
+    &#125;
+  &#125;
+&#125;;
+
+<span class="hljs-keyword">var</span> on = (<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;
+  <span class="hljs-keyword">if</span> (<span class="hljs-built_in">document</span>.addEventListener) &#123;
+    <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">element, event, handler</span>) </span>&#123;
+      <span class="hljs-keyword">if</span> (element &amp;&amp; event &amp;&amp; handler) &#123;
+        element.addEventListener(event, handler, <span class="hljs-literal">false</span>);
+      &#125;
+    &#125;;
+  &#125; <span class="hljs-keyword">else</span> &#123;
+    <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">element, event, handler</span>) </span>&#123;
+      <span class="hljs-keyword">if</span> (element &amp;&amp; event &amp;&amp; handler) &#123;
+        element.attachEvent(<span class="hljs-string">&quot;on&quot;</span> + event, handler);
+      &#125;
+    &#125;;
+  &#125;
+&#125;)();</code></pre></div></li>
 <li><p>延迟运行</p>
- <figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">//bind</span><br><span class="hljs-built_in">Function</span>.prototype.bind = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">context</span>) </span>&#123;<br>  context = context || <span class="hljs-built_in">window</span>;<br>  <span class="hljs-keyword">let</span> bindArgs = [...arguments].slice(<span class="hljs-number">1</span>);<br>  <span class="hljs-keyword">let</span> func = <span class="hljs-built_in">this</span>;<br>  <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-keyword">let</span> callArgs = [...arguments];<br>    <span class="hljs-keyword">if</span> (<span class="hljs-built_in">this</span> <span class="hljs-keyword">instanceof</span> func) <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> func(callArgs);<br>    <span class="hljs-keyword">return</span> func.apply(context, bindArgs.concat(callArgs));<br>  &#125;;<br>&#125;;<br></code></pre></div></td></tr></table></figure></li>
+ <div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">//bind</span>
+<span class="hljs-built_in">Function</span>.prototype.bind = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">context</span>) </span>&#123;
+  context = context || <span class="hljs-built_in">window</span>;
+  <span class="hljs-keyword">let</span> bindArgs = [...arguments].slice(<span class="hljs-number">1</span>);
+  <span class="hljs-keyword">let</span> func = <span class="hljs-built_in">this</span>;
+  <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;
+    <span class="hljs-keyword">let</span> callArgs = [...arguments];
+    <span class="hljs-keyword">if</span> (<span class="hljs-built_in">this</span> <span class="hljs-keyword">instanceof</span> func) <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> func(callArgs);
+    <span class="hljs-keyword">return</span> func.apply(context, bindArgs.concat(callArgs));
+  &#125;;
+&#125;;</code></pre></div></li>
 </ol>
-<h2 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h2><figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// isType</span><br><span class="hljs-keyword">let</span> isType = <span class="hljs-function">(<span class="hljs-params">type</span>) =&gt;</span> <span class="hljs-function">(<span class="hljs-params">obj</span>) =&gt;</span> &#123;<br>  <span class="hljs-keyword">return</span> <span class="hljs-built_in">Object</span>.prototype.toString.call(obj) === <span class="hljs-string">&quot;[object &quot;</span> + type + <span class="hljs-string">&quot;]&quot;</span>;<br>&#125;;<br><span class="hljs-keyword">let</span> res = isType(<span class="hljs-string">&quot;String&quot;</span>)(<span class="hljs-string">&quot;123&quot;</span>);<br><span class="hljs-built_in">console</span>.log(res);<br><span class="hljs-comment">// let isType = function(type)&#123;</span><br><span class="hljs-comment">//  return function(obj)&#123;</span><br><span class="hljs-comment">//    return Object.prototype.toString.call</span><br><span class="hljs-comment">// (obj) === &#x27;[object &#x27; + type + &#x27;]&#x27;</span><br><span class="hljs-comment">//  &#125;</span><br><span class="hljs-comment">//&#125;</span><br></code></pre></div></td></tr></table></figure>
+<h2 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h2><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// isType</span>
+<span class="hljs-keyword">let</span> isType = <span class="hljs-function">(<span class="hljs-params">type</span>) =&gt;</span> <span class="hljs-function">(<span class="hljs-params">obj</span>) =&gt;</span> &#123;
+  <span class="hljs-keyword">return</span> <span class="hljs-built_in">Object</span>.prototype.toString.call(obj) === <span class="hljs-string">&quot;[object &quot;</span> + type + <span class="hljs-string">&quot;]&quot;</span>;
+&#125;;
+<span class="hljs-keyword">let</span> res = isType(<span class="hljs-string">&quot;String&quot;</span>)(<span class="hljs-string">&quot;123&quot;</span>);
+<span class="hljs-built_in">console</span>.log(res);
+<span class="hljs-comment">// let isType = function(type)&#123;</span>
+<span class="hljs-comment">//  return function(obj)&#123;</span>
+<span class="hljs-comment">//    return Object.prototype.toString.call</span>
+<span class="hljs-comment">// (obj) === &#x27;[object &#x27; + type + &#x27;]&#x27;</span>
+<span class="hljs-comment">//  &#125;</span>
+<span class="hljs-comment">//&#125;</span></code></pre></div>
 
-<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// 实现连续求和函数</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">add</span>(<span class="hljs-params">x,y</span>)</span>&#123;<br>  <span class="hljs-keyword">return</span> x+y<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sum</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-keyword">let</span> cur = [...arguments].reduce(add);<br><br>  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">innerSum</span>(<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-keyword">let</span> next = [...arguments].reduce(add);<br>    cur += next;<br>    <span class="hljs-keyword">return</span> innerSum;<br>  &#125;<br>  innerSum.toString = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-keyword">return</span> cur;<br>  &#125;;<br>  <span class="hljs-comment">// 控制台打印时候会自动调用toString方法</span><br>  <span class="hljs-keyword">return</span> innerSum;<br>&#125;<br><span class="hljs-built_in">console</span>.log(sum(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>)(<span class="hljs-number">4</span>, <span class="hljs-number">6</span>)(<span class="hljs-number">9</span>)); <span class="hljs-comment">// 25</span><br></code></pre></div></td></tr></table></figure>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// 实现连续求和函数</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">add</span>(<span class="hljs-params">x,y</span>)</span>&#123;
+  <span class="hljs-keyword">return</span> x+y
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sum</span>(<span class="hljs-params"></span>) </span>&#123;
+  <span class="hljs-keyword">let</span> cur = [...arguments].reduce(add);
 
-<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// 柯里化函数</span><br><span class="hljs-keyword">const</span> curry = <span class="hljs-function">(<span class="hljs-params">fn, ...args1</span>) =&gt;</span> <span class="hljs-function">(<span class="hljs-params">...args2</span>) =&gt;</span><br>  (<span class="hljs-function">(<span class="hljs-params">arr</span>) =&gt;</span> (arr.length === fn.length ? fn(...arr) : curry(fn, ...arr)))([<br>    <span class="hljs-comment">// fn.length获取function需要的参数个数</span><br>    ...args1,<br>    ...args2,<br>  ]);<br><span class="hljs-keyword">const</span> curry = <span class="hljs-function">(<span class="hljs-params">fn,...args</span>) =&gt;</span> fn.length &lt;= args.length ? fn(...args) : curry.bind(<span class="hljs-literal">null</span>,fn,...args)<br><br><span class="hljs-comment">// 拆开写版本</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">curry</span>(<span class="hljs-params">func,...args1</span>)</span>&#123;<br>  <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">...args2</span>)</span>&#123;<br>    <span class="hljs-keyword">let</span> args = [...args1,...args2]<br>    <span class="hljs-keyword">if</span>(args.length===func.length)&#123;<br>      <span class="hljs-keyword">return</span> func(...args)<br>    &#125;<span class="hljs-keyword">else</span>&#123;<br>      <span class="hljs-keyword">return</span> curry(func,...args)<br>    &#125;<br>  &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">innerSum</span>(<span class="hljs-params"></span>) </span>&#123;
+    <span class="hljs-keyword">let</span> next = [...arguments].reduce(add);
+    cur += next;
+    <span class="hljs-keyword">return</span> innerSum;
+  &#125;
+  innerSum.toString = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;
+    <span class="hljs-keyword">return</span> cur;
+  &#125;;
+  <span class="hljs-comment">// 控制台打印时候会自动调用toString方法</span>
+  <span class="hljs-keyword">return</span> innerSum;
+&#125;
+<span class="hljs-built_in">console</span>.log(sum(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>)(<span class="hljs-number">4</span>, <span class="hljs-number">6</span>)(<span class="hljs-number">9</span>)); <span class="hljs-comment">// 25</span></code></pre></div>
+
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// 柯里化函数</span>
+<span class="hljs-keyword">const</span> curry = <span class="hljs-function">(<span class="hljs-params">fn, ...args1</span>) =&gt;</span> <span class="hljs-function">(<span class="hljs-params">...args2</span>) =&gt;</span>
+  (<span class="hljs-function">(<span class="hljs-params">arr</span>) =&gt;</span> (arr.length === fn.length ? fn(...arr) : curry(fn, ...arr)))([
+    <span class="hljs-comment">// fn.length获取function需要的参数个数</span>
+    ...args1,
+    ...args2,
+  ]);
+<span class="hljs-keyword">const</span> curry = <span class="hljs-function">(<span class="hljs-params">fn,...args</span>) =&gt;</span> fn.length &lt;= args.length ? fn(...args) : curry.bind(<span class="hljs-literal">null</span>,fn,...args)
+
+<span class="hljs-comment">// 拆开写版本</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">curry</span>(<span class="hljs-params">func,...args1</span>)</span>&#123;
+  <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">...args2</span>)</span>&#123;
+    <span class="hljs-keyword">let</span> args = [...args1,...args2]
+    <span class="hljs-keyword">if</span>(args.length===func.length)&#123;
+      <span class="hljs-keyword">return</span> func(...args)
+    &#125;<span class="hljs-keyword">else</span>&#123;
+      <span class="hljs-keyword">return</span> curry(func,...args)
+    &#125;
+  &#125;
+&#125;</code></pre></div>
 
 <h3 id="打印对象时候的调用"><a href="#打印对象时候的调用" class="headerlink" title="打印对象时候的调用"></a>打印对象时候的调用</h3><ul>
 <li><p>直接打印对象,先<code>toString</code>再<code>valueOf</code></p>

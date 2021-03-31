@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      607 字
+      605 字
     </span>
   
 
@@ -242,11 +242,68 @@
               </p>
             
             <div class="markdown-body">
-              <h2 id="Observer"><a href="#Observer" class="headerlink" title="Observer()"></a>Observer()</h2><figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// 数据劫持的实现</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">observe</span>(<span class="hljs-params">obj</span>) </span>&#123;<br>  <span class="hljs-keyword">if</span> (!obj || <span class="hljs-keyword">typeof</span> obj !== <span class="hljs-string">&#x27;object&#x27;</span>) <span class="hljs-keyword">return</span><br>  <span class="hljs-built_in">Object</span>.keys(obj).forEach(<span class="hljs-function"><span class="hljs-params">key</span> =&gt;</span> &#123;<br>    defineReactive(obj, key, obj[key])<br>  &#125;)<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">defineReactive</span>(<span class="hljs-params">obj, key, val</span>) </span>&#123;<br>  observe(val) <span class="hljs-comment">//      &lt;---------------------------递归遍历所有属性</span><br>  <span class="hljs-keyword">let</span> dep = <span class="hljs-keyword">new</span> Dep()<br>  <span class="hljs-built_in">Object</span>.defineProperty(obj, key, &#123;<br>    enumerable: <span class="hljs-literal">true</span>,<br>    configurable: <span class="hljs-literal">true</span>,<br>    get: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;<br>      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;触发getter&#x27;</span>)<br>      <span class="hljs-keyword">if</span>(Dep.target) &#123;<br>        dep.addSub(Dep.target) <span class="hljs-comment">// &lt;------------往订阅队列里添加该订阅</span><br>      &#125;<br>      <span class="hljs-keyword">return</span> val<br>    &#125;,<br>    set: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">newVal</span>) </span>&#123;<br>      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;触发setter&#x27;</span>)<br>        val = newVal<br>        dep.notify()  <span class="hljs-comment">// &lt;----------------通知订阅者，触发其updata视图</span><br>    &#125;<br>  &#125;)<br>&#125;<br></code></pre></div></td></tr></table></figure>
+              <h2 id="Observer"><a href="#Observer" class="headerlink" title="Observer()"></a>Observer()</h2><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// 数据劫持的实现</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">observe</span>(<span class="hljs-params">obj</span>) </span>&#123;
+  <span class="hljs-keyword">if</span> (!obj || <span class="hljs-keyword">typeof</span> obj !== <span class="hljs-string">&#x27;object&#x27;</span>) <span class="hljs-keyword">return</span>
+  <span class="hljs-built_in">Object</span>.keys(obj).forEach(<span class="hljs-function"><span class="hljs-params">key</span> =&gt;</span> &#123;
+    defineReactive(obj, key, obj[key])
+  &#125;)
+&#125;
 
-<h2 id="订阅器Dep-收集依赖关系"><a href="#订阅器Dep-收集依赖关系" class="headerlink" title="订阅器Dep 收集依赖关系"></a>订阅器Dep 收集依赖关系</h2><figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// 给模版添加订阅</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Dep</span> </span>&#123;<br>  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"></span>)</span> &#123;<br>    <span class="hljs-built_in">this</span>.subs = []  <span class="hljs-comment">// 订阅队列</span><br>  &#125;<br>  <span class="hljs-function"><span class="hljs-title">addSub</span>(<span class="hljs-params">sub</span>)</span> &#123;<br>    <span class="hljs-built_in">this</span>.subs.push(sub)<br>  &#125;<br>  <span class="hljs-function"><span class="hljs-title">notify</span>(<span class="hljs-params"></span>)</span> &#123;<br>    <span class="hljs-built_in">this</span>.subs.forEach(<span class="hljs-function"><span class="hljs-params">sub</span> =&gt;</span> &#123;<br>      <span class="hljs-comment">// 更新数据</span><br>      sub.update()<br>    &#125;)<br>  &#125;<br>&#125;<br>Dep.target = <span class="hljs-literal">null</span>;  <span class="hljs-comment">//  &lt;------------</span><br><span class="hljs-comment">// Dep.target每次指定订阅者之后都清空</span><br></code></pre></div></td></tr></table></figure>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">defineReactive</span>(<span class="hljs-params">obj, key, val</span>) </span>&#123;
+  observe(val) <span class="hljs-comment">//      &lt;---------------------------递归遍历所有属性</span>
+  <span class="hljs-keyword">let</span> dep = <span class="hljs-keyword">new</span> Dep()
+  <span class="hljs-built_in">Object</span>.defineProperty(obj, key, &#123;
+    enumerable: <span class="hljs-literal">true</span>,
+    configurable: <span class="hljs-literal">true</span>,
+    get: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;
+      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;触发getter&#x27;</span>)
+      <span class="hljs-keyword">if</span>(Dep.target) &#123;
+        dep.addSub(Dep.target) <span class="hljs-comment">// &lt;------------往订阅队列里添加该订阅</span>
+      &#125;
+      <span class="hljs-keyword">return</span> val
+    &#125;,
+    set: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">newVal</span>) </span>&#123;
+      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;触发setter&#x27;</span>)
+        val = newVal
+        dep.notify()  <span class="hljs-comment">// &lt;----------------通知订阅者，触发其updata视图</span>
+    &#125;
+  &#125;)
+&#125;</code></pre></div>
 
-<h2 id="Watcher观察者"><a href="#Watcher观察者" class="headerlink" title="Watcher观察者"></a>Watcher观察者</h2><figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Watcher</span> </span>&#123;<br>  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">obj, key, cb</span>)</span> &#123;<br>    Dep.target = <span class="hljs-built_in">this</span>  <span class="hljs-comment">// &lt;-------此处触发getter</span><br>    <span class="hljs-built_in">this</span>.cb = cb<br>    <span class="hljs-built_in">this</span>.obj = obj<br>    <span class="hljs-built_in">this</span>.key = key<br>    <span class="hljs-built_in">this</span>.value = obj[key]<br>    Dep.target = <span class="hljs-literal">null</span><br>  &#125;<br>  <span class="hljs-function"><span class="hljs-title">update</span>(<span class="hljs-params"></span>)</span> &#123;<br>    <span class="hljs-built_in">this</span>.value = <span class="hljs-built_in">this</span>.obj[<span class="hljs-built_in">this</span>.key]<br>    <span class="hljs-comment">// 更新DOM</span><br>    <span class="hljs-built_in">this</span>.cb(<span class="hljs-built_in">this</span>.value)<br>  &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+<h2 id="订阅器Dep-收集依赖关系"><a href="#订阅器Dep-收集依赖关系" class="headerlink" title="订阅器Dep 收集依赖关系"></a>订阅器Dep 收集依赖关系</h2><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// 给模版添加订阅</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Dep</span> </span>&#123;
+  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"></span>)</span> &#123;
+    <span class="hljs-built_in">this</span>.subs = []  <span class="hljs-comment">// 订阅队列</span>
+  &#125;
+  <span class="hljs-function"><span class="hljs-title">addSub</span>(<span class="hljs-params">sub</span>)</span> &#123;
+    <span class="hljs-built_in">this</span>.subs.push(sub)
+  &#125;
+  <span class="hljs-function"><span class="hljs-title">notify</span>(<span class="hljs-params"></span>)</span> &#123;
+    <span class="hljs-built_in">this</span>.subs.forEach(<span class="hljs-function"><span class="hljs-params">sub</span> =&gt;</span> &#123;
+      <span class="hljs-comment">// 更新数据</span>
+      sub.update()
+    &#125;)
+  &#125;
+&#125;
+Dep.target = <span class="hljs-literal">null</span>;  <span class="hljs-comment">//  &lt;------------</span>
+<span class="hljs-comment">// Dep.target每次指定订阅者之后都清空</span></code></pre></div>
+
+<h2 id="Watcher观察者"><a href="#Watcher观察者" class="headerlink" title="Watcher观察者"></a>Watcher观察者</h2><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Watcher</span> </span>&#123;
+  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">obj, key, cb</span>)</span> &#123;
+    Dep.target = <span class="hljs-built_in">this</span>  <span class="hljs-comment">// &lt;-------此处触发getter</span>
+    <span class="hljs-built_in">this</span>.cb = cb
+    <span class="hljs-built_in">this</span>.obj = obj
+    <span class="hljs-built_in">this</span>.key = key
+    <span class="hljs-built_in">this</span>.value = obj[key]
+    Dep.target = <span class="hljs-literal">null</span>
+  &#125;
+  <span class="hljs-function"><span class="hljs-title">update</span>(<span class="hljs-params"></span>)</span> &#123;
+    <span class="hljs-built_in">this</span>.value = <span class="hljs-built_in">this</span>.obj[<span class="hljs-built_in">this</span>.key]
+    <span class="hljs-comment">// 更新DOM</span>
+    <span class="hljs-built_in">this</span>.cb(<span class="hljs-built_in">this</span>.value)
+  &#125;
+&#125;</code></pre></div>
 
 <h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><ol>
 <li><code>vue</code>实例化，<code>data</code>被代理到<code>viewmodel</code></li>
@@ -264,13 +321,54 @@
 <li><p><code>data</code>数据改变时，触发<code>setter</code>,<code>dep</code>通知其<code>watcher</code>更新数据，<code>cb</code>将会对比新旧数据，发现数据改变了则再更新视图，这里用到了<code>diff</code>算法</p>
 </li>
 </ol>
-<h2 id="with函数"><a href="#with函数" class="headerlink" title="with函数"></a>with函数</h2><figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> obj = &#123;<br>  name:<span class="hljs-string">&#x27;haungfeihong&#x27;</span>,<br>  age:<span class="hljs-string">&#x27;18&#x27;</span>,<br>  beat:<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>    alert(<span class="hljs-string">&#x27;佛山无影脚&#x27;</span>)<br>  &#125;<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fn1</span>(<span class="hljs-params"></span>)</span>&#123;<br>  <span class="hljs-function"><span class="hljs-title">with</span>(<span class="hljs-params">obj</span>)</span>&#123;<br>    alert(name)<br>    alert(age)<br>    beat()<br>  &#125;<br>&#125;<br>fn1( )<br></code></pre></div></td></tr></table></figure>
+<h2 id="with函数"><a href="#with函数" class="headerlink" title="with函数"></a>with函数</h2><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> obj = &#123;
+  name:<span class="hljs-string">&#x27;haungfeihong&#x27;</span>,
+  age:<span class="hljs-string">&#x27;18&#x27;</span>,
+  beat:<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;
+    alert(<span class="hljs-string">&#x27;佛山无影脚&#x27;</span>)
+  &#125;
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fn1</span>(<span class="hljs-params"></span>)</span>&#123;
+  <span class="hljs-function"><span class="hljs-title">with</span>(<span class="hljs-params">obj</span>)</span>&#123;
+    alert(name)
+    alert(age)
+    beat()
+  &#125;
+&#125;
+fn1( )</code></pre></div>
 
 <h2 id="render函数"><a href="#render函数" class="headerlink" title="render函数"></a>render函数</h2><ul>
 <li><p>类似snabbdom的h函数</p>
 </li>
 <li><p>返回vnode虚拟节点</p>
-<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-title">with</span>(<span class="hljs-params"><span class="hljs-built_in">this</span></span>)</span>&#123;<br> <span class="hljs-keyword">return</span> _c(<span class="hljs-string">&#x27;div&#x27;</span>,&#123;<br>   attrs: &#123;<br>      <span class="hljs-string">&quot;id&quot;</span>:<span class="hljs-string">&quot;app&quot;</span><br>   &#125;<br> &#125;,<br> [_c(<span class="hljs-string">&#x27;div&#x27;</span>,[_c(<span class="hljs-string">&#x27;input&#x27;</span>,&#123;<br>   directives: [&#123;<br>      name:<span class="hljs-string">&quot;model&quot;</span>,<br>     rewName:<span class="hljs-string">&quot;v-model&quot;</span>,<br>      value:(title),<br>     expression:<span class="hljs-string">&quot;title&quot;</span><br>   &#125;],<br>   domProps:&#123;<br>    <span class="hljs-string">&quot;value&quot;</span>:(title)<br>   &#125;,<br>    on:&#123;<br>     <span class="hljs-string">&quot;input&quot;</span>:<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">$event</span>)</span>&#123;<br>        <span class="hljs-keyword">if</span>($sevent.target.composing) <span class="hljs-keyword">return</span><br>        ...<br>        ...<br>        ...<br>     &#125;<br>    &#125;<br>  &#125;)])<br>  ]<br>  )<br>&#125;<br></code></pre></div></td></tr></table></figure></li>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-title">with</span>(<span class="hljs-params"><span class="hljs-built_in">this</span></span>)</span>&#123;
+ <span class="hljs-keyword">return</span> _c(<span class="hljs-string">&#x27;div&#x27;</span>,&#123;
+   attrs: &#123;
+      <span class="hljs-string">&quot;id&quot;</span>:<span class="hljs-string">&quot;app&quot;</span>
+   &#125;
+ &#125;,
+ [_c(<span class="hljs-string">&#x27;div&#x27;</span>,[_c(<span class="hljs-string">&#x27;input&#x27;</span>,&#123;
+   directives: [&#123;
+      name:<span class="hljs-string">&quot;model&quot;</span>,
+     rewName:<span class="hljs-string">&quot;v-model&quot;</span>,
+      value:(title),
+     expression:<span class="hljs-string">&quot;title&quot;</span>
+   &#125;],
+   domProps:&#123;
+    <span class="hljs-string">&quot;value&quot;</span>:(title)
+   &#125;,
+    on:&#123;
+     <span class="hljs-string">&quot;input&quot;</span>:<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">$event</span>)</span>&#123;
+        <span class="hljs-keyword">if</span>($sevent.target.composing) <span class="hljs-keyword">return</span>
+        ...
+        ...
+        ...
+     &#125;
+    &#125;
+  &#125;)])
+  ]
+  )
+&#125;</code></pre></div></li>
 </ul>
 <h2 id="patch函数"><a href="#patch函数" class="headerlink" title="patch函数"></a>patch函数</h2><ul>
 <li><p>可以把vmode渲染到文档中</p>

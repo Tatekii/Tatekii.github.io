@@ -252,7 +252,7 @@
 <p>  可以通过两种方式来配置CSP：</p>
 <ol>
 <li>HTTP请求头的<code>Content-Security-Policy</code></li>
-<li><code>meta</code>标签<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript">&lt;meta http-equiv=<span class="hljs-string">&quot;Content-Security-Policy&quot;</span> content=<span class="hljs-string">&quot;script-src &#x27;self&#x27;; style-src nos.netease.com kaola.com;&quot;</span>&gt;<br></code></pre></div></td></tr></table></figure></li>
+<li><code>meta</code>标签<div class="hljs code-wrapper"><pre><code class="hljs javascript">&lt;meta http-equiv=<span class="hljs-string">&quot;Content-Security-Policy&quot;</span> content=<span class="hljs-string">&quot;script-src &#x27;self&#x27;; style-src nos.netease.com kaola.com;&quot;</span>&gt;</code></pre></div></li>
 </ol>
 </li>
 <li><p>资源优先级计算</p>
@@ -293,8 +293,11 @@
 </li>
 <li><p>对应IP，端口建立TCP连接，发送HTTP请求</p>
 <ul>
-<li>TCP三次握手  <figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript">client:SYN_Send-[ISN(c)]-&gt; server <br><span class="hljs-comment">// 半连接队列</span><br>client &lt;-[ISN(s)+ACK[ISN(c)+<span class="hljs-number">1</span>]]- server:REVD<br>client =[ACK[ISN(s)+<span class="hljs-number">1</span>]][请求]-&gt; server<br></code></pre></div></td></tr></table></figure></li>
-<li>四次挥手断开TCP  <figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript">client -[FIN_1]-&gt; server<br></code></pre></div></td></tr></table></figure></li>
+<li>TCP三次握手  <div class="hljs code-wrapper"><pre><code class="hljs javascript">client:SYN_Send-[ISN(c)]-&gt; server 
+<span class="hljs-comment">// 半连接队列</span>
+client &lt;-[ISN(s)+ACK[ISN(c)+<span class="hljs-number">1</span>]]- server:REVD
+client =[ACK[ISN(s)+<span class="hljs-number">1</span>]][请求]-&gt; server</code></pre></div></li>
+<li>四次挥手断开TCP  <div class="hljs code-wrapper"><pre><code class="hljs javascript">client -[FIN_1]-&gt; server</code></pre></div></li>
 </ul>
 </li>
 <li><p>应用缓存策略</p>

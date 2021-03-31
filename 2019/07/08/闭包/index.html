@@ -252,9 +252,68 @@
 <p>在 js 中变量的作用域属于函数作用域, 在函数执行完后,作用域就会被清理,内存也会随之被回收,但是由于闭包可访问上级作用域,即使上级函数执行完, 作用域也不会随之销毁</p>
 <h2 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h2><p>闭包作用：可以引用外部函数的变量或者参数 使该变量或者参数常驻内存 避免被垃圾回收机制所回收</p>
 <p>总结：某个函数在定义时的词法作用域之外的地方被调用，闭包可以使该函数访问定义时的词法作用域</p>
-<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addCounter</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-keyword">let</span> counter = <span class="hljs-number">0</span>; <span class="hljs-comment">// 执行结束后不会被清除</span><br>  <span class="hljs-keyword">const</span> myFunction = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>    counter = counter + <span class="hljs-number">1</span>; <span class="hljs-comment">// myFunction函数可以读取add函数内部的变量</span><br>    <span class="hljs-keyword">return</span> counter;<br>  &#125;;<br>  <span class="hljs-keyword">return</span> myFunction;<br>&#125;<br><br><span class="hljs-keyword">const</span> increment = addCounter();<br><span class="hljs-keyword">const</span> c1 = increment();<br><span class="hljs-keyword">const</span> c2 = increment();<br><span class="hljs-keyword">const</span> c3 = increment();<br><span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;increment:&quot;</span>, c1, c2, c3);<br><span class="hljs-comment">// increment: 1 2 3</span><br></code></pre></div></td></tr></table></figure>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addCounter</span>(<span class="hljs-params"></span>) </span>&#123;
+  <span class="hljs-keyword">let</span> counter = <span class="hljs-number">0</span>; <span class="hljs-comment">// 执行结束后不会被清除</span>
+  <span class="hljs-keyword">const</span> myFunction = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;
+    counter = counter + <span class="hljs-number">1</span>; <span class="hljs-comment">// myFunction函数可以读取add函数内部的变量</span>
+    <span class="hljs-keyword">return</span> counter;
+  &#125;;
+  <span class="hljs-keyword">return</span> myFunction;
+&#125;
 
-<h2 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h2><figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">1</span>; i &lt; <span class="hljs-number">7</span>; i++) &#123;<br>  <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.log(i)<br>  &#125;, <span class="hljs-number">1000</span> * i)<br>&#125;<br><span class="hljs-comment">// 6 6 6 6 6 6</span><br><span class="hljs-comment">// 创建的6个setTimeout闭包共享一个词法作用域</span><br><br>**闭包只能取得包含函数中任何变量赋值最后一个值** <span class="hljs-comment">// 6</span><br><br><br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">1</span>; i &lt; <span class="hljs-number">7</span>; i++) &#123;<br>  (<span class="hljs-function">(<span class="hljs-params">j</span>) =&gt;</span> &#123;<br>    <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>      <span class="hljs-built_in">console</span>.log(j)<br>    &#125;, <span class="hljs-number">1000</span> * j)<br>  &#125;)(i)<br>&#125;<br><span class="hljs-comment">// 1 2 3 4 5 6</span><br><span class="hljs-comment">// 6个setTimeout闭包有自己独立的词法环境</span><br><span class="hljs-comment">// 闭包读取到不同的i值</span><br><br><br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i = <span class="hljs-number">1</span> ;i&lt;<span class="hljs-number">7</span>;i++)&#123;<br>  <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function"><span class="hljs-params">j</span>=&gt;</span>&#123;<br>    <span class="hljs-built_in">console</span>.log(j);<br>  &#125;,<span class="hljs-number">1000</span>*i,i)<br>&#125;<br><span class="hljs-comment">// setTimeout 可以接受一个参数当函数调用时传入</span><br><br><br>	<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fn</span>(<span class="hljs-params">num2</span>) </span>&#123;<br>	  <span class="hljs-keyword">var</span> num = <span class="hljs-number">15</span>;<br><br>	  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">abc</span>(<span class="hljs-params"></span>) </span>&#123; <span class="hljs-comment">// 函数作为返回值</span><br>	    num++;<br>	    <span class="hljs-keyword">return</span>(num + num2);<br>	  &#125;<br>	  <span class="hljs-keyword">return</span> abc;<br>	&#125;<br>	<span class="hljs-keyword">var</span> aa = fn(<span class="hljs-number">20</span>); <span class="hljs-comment">//  没有引用？？</span><br>	aa(); <span class="hljs-comment">//16+20</span><br>	aa(); <span class="hljs-comment">//17+20</span><br><br>	fn(<span class="hljs-number">20</span>)(); <span class="hljs-comment">//36</span><br>	fn(<span class="hljs-number">20</span>)(); <span class="hljs-comment">//36</span><br></code></pre></div></td></tr></table></figure>
+<span class="hljs-keyword">const</span> increment = addCounter();
+<span class="hljs-keyword">const</span> c1 = increment();
+<span class="hljs-keyword">const</span> c2 = increment();
+<span class="hljs-keyword">const</span> c3 = increment();
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;increment:&quot;</span>, c1, c2, c3);
+<span class="hljs-comment">// increment: 1 2 3</span></code></pre></div>
+
+<h2 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h2><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">1</span>; i &lt; <span class="hljs-number">7</span>; i++) &#123;
+  <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;
+    <span class="hljs-built_in">console</span>.log(i)
+  &#125;, <span class="hljs-number">1000</span> * i)
+&#125;
+<span class="hljs-comment">// 6 6 6 6 6 6</span>
+<span class="hljs-comment">// 创建的6个setTimeout闭包共享一个词法作用域</span>
+
+**闭包只能取得包含函数中任何变量赋值最后一个值** <span class="hljs-comment">// 6</span>
+
+
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">1</span>; i &lt; <span class="hljs-number">7</span>; i++) &#123;
+  (<span class="hljs-function">(<span class="hljs-params">j</span>) =&gt;</span> &#123;
+    <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> &#123;
+      <span class="hljs-built_in">console</span>.log(j)
+    &#125;, <span class="hljs-number">1000</span> * j)
+  &#125;)(i)
+&#125;
+<span class="hljs-comment">// 1 2 3 4 5 6</span>
+<span class="hljs-comment">// 6个setTimeout闭包有自己独立的词法环境</span>
+<span class="hljs-comment">// 闭包读取到不同的i值</span>
+
+
+<span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i = <span class="hljs-number">1</span> ;i&lt;<span class="hljs-number">7</span>;i++)&#123;
+  <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function"><span class="hljs-params">j</span>=&gt;</span>&#123;
+    <span class="hljs-built_in">console</span>.log(j);
+  &#125;,<span class="hljs-number">1000</span>*i,i)
+&#125;
+<span class="hljs-comment">// setTimeout 可以接受一个参数当函数调用时传入</span>
+
+
+	<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fn</span>(<span class="hljs-params">num2</span>) </span>&#123;
+	  <span class="hljs-keyword">var</span> num = <span class="hljs-number">15</span>;
+
+	  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">abc</span>(<span class="hljs-params"></span>) </span>&#123; <span class="hljs-comment">// 函数作为返回值</span>
+	    num++;
+	    <span class="hljs-keyword">return</span>(num + num2);
+	  &#125;
+	  <span class="hljs-keyword">return</span> abc;
+	&#125;
+	<span class="hljs-keyword">var</span> aa = fn(<span class="hljs-number">20</span>); <span class="hljs-comment">//  没有引用？？</span>
+	aa(); <span class="hljs-comment">//16+20</span>
+	aa(); <span class="hljs-comment">//17+20</span>
+
+	fn(<span class="hljs-number">20</span>)(); <span class="hljs-comment">//36</span>
+	fn(<span class="hljs-number">20</span>)(); <span class="hljs-comment">//36</span></code></pre></div>
 
 <h2 id="作用域与作用域链"><a href="#作用域与作用域链" class="headerlink" title="作用域与作用域链"></a>作用域与作用域链</h2><h3 id="作用域：变量可以起作用的范围"><a href="#作用域：变量可以起作用的范围" class="headerlink" title="作用域：变量可以起作用的范围"></a>作用域：变量可以起作用的范围</h3><h4 id="全局作用域"><a href="#全局作用域" class="headerlink" title="全局作用域"></a>全局作用域</h4><div class="hljs code-wrapper"><pre><code>全局变量对应的作用域
 

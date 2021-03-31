@@ -245,16 +245,155 @@
               <ul>
 <li>打车时可以打专车或快车。任何车都有车牌号和名称。快车每公里1元，专车每公里2元。行程开始时，显示车辆信息。行程结束时，显示打车金额。行程距离为5公里。</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Car</span></span>&#123;<br>  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">licence,name</span>)</span>&#123;<br>    <span class="hljs-built_in">this</span>.licence = licence<br>    <span class="hljs-built_in">this</span>.name = name<br>  &#125;<br>&#125;<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FastCar</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Car</span></span>&#123;<br>  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">licence,name</span>)</span>&#123;<br>    <span class="hljs-built_in">super</span>(licence,name)<br>    <span class="hljs-built_in">this</span>.price =<span class="hljs-number">1</span><br>  &#125;<br>&#125;<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PrivateCar</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Car</span></span>&#123;<br>  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">licence,name</span>)</span>&#123;<br>    <span class="hljs-built_in">super</span>(licence,name)<br>    <span class="hljs-built_in">this</span>.price = <span class="hljs-number">2</span><br>  &#125;<br>&#125;<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Order</span></span>&#123;<br>  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">car,distance</span>)</span>&#123;<br>    <span class="hljs-built_in">this</span>.car = car<br>    <span class="hljs-built_in">this</span>.distance = distance<br>  &#125;<br>  <span class="hljs-function"><span class="hljs-title">getIn</span>(<span class="hljs-params"></span>)</span>&#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>.car.name);<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>.car.licence);<br>  &#125;<br>  <span class="hljs-function"><span class="hljs-title">getOff</span>(<span class="hljs-params"></span>)</span>&#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>.car.price*<span class="hljs-built_in">this</span>.distance);<br>  &#125;<br>&#125;<br><span class="hljs-keyword">let</span> car1 = <span class="hljs-keyword">new</span> PrivateCar(<span class="hljs-string">&#x27;粤A8888888&#x27;</span>,<span class="hljs-string">&#x27;特斯拉&#x27;</span>)<br><span class="hljs-keyword">let</span> cost1 = <span class="hljs-keyword">new</span> Order(car1,<span class="hljs-number">5</span>).getOff()<br></code></pre></div></td></tr></table></figure>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Car</span></span>&#123;
+  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">licence,name</span>)</span>&#123;
+    <span class="hljs-built_in">this</span>.licence = licence
+    <span class="hljs-built_in">this</span>.name = name
+  &#125;
+&#125;
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FastCar</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Car</span></span>&#123;
+  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">licence,name</span>)</span>&#123;
+    <span class="hljs-built_in">super</span>(licence,name)
+    <span class="hljs-built_in">this</span>.price =<span class="hljs-number">1</span>
+  &#125;
+&#125;
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PrivateCar</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Car</span></span>&#123;
+  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">licence,name</span>)</span>&#123;
+    <span class="hljs-built_in">super</span>(licence,name)
+    <span class="hljs-built_in">this</span>.price = <span class="hljs-number">2</span>
+  &#125;
+&#125;
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Order</span></span>&#123;
+  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">car,distance</span>)</span>&#123;
+    <span class="hljs-built_in">this</span>.car = car
+    <span class="hljs-built_in">this</span>.distance = distance
+  &#125;
+  <span class="hljs-function"><span class="hljs-title">getIn</span>(<span class="hljs-params"></span>)</span>&#123;
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>.car.name);
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>.car.licence);
+  &#125;
+  <span class="hljs-function"><span class="hljs-title">getOff</span>(<span class="hljs-params"></span>)</span>&#123;
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>.car.price*<span class="hljs-built_in">this</span>.distance);
+  &#125;
+&#125;
+<span class="hljs-keyword">let</span> car1 = <span class="hljs-keyword">new</span> PrivateCar(<span class="hljs-string">&#x27;粤A8888888&#x27;</span>,<span class="hljs-string">&#x27;特斯拉&#x27;</span>)
+<span class="hljs-keyword">let</span> cost1 = <span class="hljs-keyword">new</span> Order(car1,<span class="hljs-number">5</span>).getOff()</code></pre></div>
 
 
 <ul>
 <li>某停车场, 分三层, 每层100 车位,每个车位都能监控到车辆的进入和离开,车辆进入前,显示每层的空余车位数量,车辆进入时,摄像头可识别车牌号和进入时间,车辆出来时,出口显示屏显示车牌号和停车时长</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Car</span></span>&#123;<br>  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">licence</span>)</span>&#123;<br>    <span class="hljs-built_in">this</span>.licence = licence<br>  &#125;<br>&#125;<br><span class="hljs-comment">// 整个停车场</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ParkingLot</span></span>&#123;<br>  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">floors</span>)</span>&#123;<br>    <span class="hljs-comment">// floors:[[300],[300],[300]]</span><br>    <span class="hljs-built_in">this</span>.floors = floors<br>    <span class="hljs-built_in">this</span>.dataBase = []<br>  &#125;<br>  <span class="hljs-function"><span class="hljs-title">showSpace</span>(<span class="hljs-params"></span>)</span>&#123;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-built_in">this</span>.floors.length;i++)&#123;<br>      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`第<span class="hljs-subst">$&#123;i+<span class="hljs-number">1</span>&#125;</span>层空闲车位(<span class="hljs-subst">$&#123;<span class="hljs-built_in">this</span>.floors[i].emptySpace()&#125;</span>)`</span>)<br>    &#125;<br>  &#125;<br>  <span class="hljs-function"><span class="hljs-title">intoLot</span>(<span class="hljs-params">car,floorIndex,lotIndex</span>)</span>&#123;<br>    <span class="hljs-comment">//车牌，时间</span><br>    <span class="hljs-keyword">let</span> licence = car.licence<br>    <span class="hljs-keyword">let</span> intoTime = <span class="hljs-built_in">Date</span>.now()<br>    <span class="hljs-keyword">let</span> space = <span class="hljs-built_in">this</span>.floors[floorIndex].lot[lotIndex]<br>    <span class="hljs-built_in">this</span>.dataBase[licence] = &#123;intoTime,floorIndex,lotIndex&#125;<br>    space.checkIn()<br>  &#125;<br>  <span class="hljs-function"><span class="hljs-title">outLot</span>(<span class="hljs-params">car</span>)</span>&#123;<br>    <span class="hljs-keyword">let</span> outTime = <span class="hljs-built_in">Date</span>.now()<br>    <span class="hljs-keyword">let</span> licence = car.licence<br>    <span class="hljs-keyword">let</span> info = <span class="hljs-built_in">this</span>.dataBase[licence]<br>    <span class="hljs-keyword">let</span> space = <span class="hljs-built_in">this</span>.floors[info.floorIndex].lot[info.lotIndex]<br>    <span class="hljs-keyword">let</span> timeCount = <span class="hljs-built_in">parseInt</span>((outTime-info.intoTime)/<span class="hljs-number">36000000</span>)<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`停车时长<span class="hljs-subst">$&#123;timeCount&#125;</span>小时`</span>)<br>    space.checkOut()<br>  &#125;<br>&#125;<br><span class="hljs-comment">// 车位,监视驶入离开</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ParkingSpace</span></span>&#123;<br>  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"></span>)</span>&#123;<br>    <span class="hljs-built_in">this</span>.free = <span class="hljs-literal">true</span><br>  &#125;<br>  <span class="hljs-function"><span class="hljs-title">checkIn</span>(<span class="hljs-params"></span>)</span>&#123;<br>    <span class="hljs-built_in">this</span>.free = <span class="hljs-literal">false</span><br>  &#125;<br>  <span class="hljs-function"><span class="hljs-title">checkOut</span>(<span class="hljs-params"></span>)</span>&#123;<br>    <span class="hljs-built_in">this</span>.free = <span class="hljs-literal">true</span><br>  &#125;<br>&#125;<br><span class="hljs-comment">// 层</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ParkingFloor</span></span>&#123;<br>  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">floor,lot</span>)</span>&#123;<br>    <span class="hljs-built_in">this</span>.floor = floor<br>    <span class="hljs-built_in">this</span>.lot = lot<br>  &#125;<br>  <span class="hljs-function"><span class="hljs-title">emptySpace</span>(<span class="hljs-params"></span>)</span>&#123;<br>    <span class="hljs-comment">//返回空闲车位</span><br>    <span class="hljs-keyword">let</span> freeLot = <span class="hljs-number">0</span><br>    <span class="hljs-built_in">this</span>.lot.forEach(<span class="hljs-function"><span class="hljs-params">item</span> =&gt;</span> &#123;<br>      <span class="hljs-keyword">if</span>(item.free)&#123;<br>        freeLot++<br>      &#125;<br>    &#125;);<br>    <span class="hljs-keyword">return</span> freeLot<br>  &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Car</span></span>&#123;
+  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">licence</span>)</span>&#123;
+    <span class="hljs-built_in">this</span>.licence = licence
+  &#125;
+&#125;
+<span class="hljs-comment">// 整个停车场</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ParkingLot</span></span>&#123;
+  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">floors</span>)</span>&#123;
+    <span class="hljs-comment">// floors:[[300],[300],[300]]</span>
+    <span class="hljs-built_in">this</span>.floors = floors
+    <span class="hljs-built_in">this</span>.dataBase = []
+  &#125;
+  <span class="hljs-function"><span class="hljs-title">showSpace</span>(<span class="hljs-params"></span>)</span>&#123;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-built_in">this</span>.floors.length;i++)&#123;
+      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`第<span class="hljs-subst">$&#123;i+<span class="hljs-number">1</span>&#125;</span>层空闲车位(<span class="hljs-subst">$&#123;<span class="hljs-built_in">this</span>.floors[i].emptySpace()&#125;</span>)`</span>)
+    &#125;
+  &#125;
+  <span class="hljs-function"><span class="hljs-title">intoLot</span>(<span class="hljs-params">car,floorIndex,lotIndex</span>)</span>&#123;
+    <span class="hljs-comment">//车牌，时间</span>
+    <span class="hljs-keyword">let</span> licence = car.licence
+    <span class="hljs-keyword">let</span> intoTime = <span class="hljs-built_in">Date</span>.now()
+    <span class="hljs-keyword">let</span> space = <span class="hljs-built_in">this</span>.floors[floorIndex].lot[lotIndex]
+    <span class="hljs-built_in">this</span>.dataBase[licence] = &#123;intoTime,floorIndex,lotIndex&#125;
+    space.checkIn()
+  &#125;
+  <span class="hljs-function"><span class="hljs-title">outLot</span>(<span class="hljs-params">car</span>)</span>&#123;
+    <span class="hljs-keyword">let</span> outTime = <span class="hljs-built_in">Date</span>.now()
+    <span class="hljs-keyword">let</span> licence = car.licence
+    <span class="hljs-keyword">let</span> info = <span class="hljs-built_in">this</span>.dataBase[licence]
+    <span class="hljs-keyword">let</span> space = <span class="hljs-built_in">this</span>.floors[info.floorIndex].lot[info.lotIndex]
+    <span class="hljs-keyword">let</span> timeCount = <span class="hljs-built_in">parseInt</span>((outTime-info.intoTime)/<span class="hljs-number">36000000</span>)
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`停车时长<span class="hljs-subst">$&#123;timeCount&#125;</span>小时`</span>)
+    space.checkOut()
+  &#125;
+&#125;
+<span class="hljs-comment">// 车位,监视驶入离开</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ParkingSpace</span></span>&#123;
+  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"></span>)</span>&#123;
+    <span class="hljs-built_in">this</span>.free = <span class="hljs-literal">true</span>
+  &#125;
+  <span class="hljs-function"><span class="hljs-title">checkIn</span>(<span class="hljs-params"></span>)</span>&#123;
+    <span class="hljs-built_in">this</span>.free = <span class="hljs-literal">false</span>
+  &#125;
+  <span class="hljs-function"><span class="hljs-title">checkOut</span>(<span class="hljs-params"></span>)</span>&#123;
+    <span class="hljs-built_in">this</span>.free = <span class="hljs-literal">true</span>
+  &#125;
+&#125;
+<span class="hljs-comment">// 层</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ParkingFloor</span></span>&#123;
+  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">floor,lot</span>)</span>&#123;
+    <span class="hljs-built_in">this</span>.floor = floor
+    <span class="hljs-built_in">this</span>.lot = lot
+  &#125;
+  <span class="hljs-function"><span class="hljs-title">emptySpace</span>(<span class="hljs-params"></span>)</span>&#123;
+    <span class="hljs-comment">//返回空闲车位</span>
+    <span class="hljs-keyword">let</span> freeLot = <span class="hljs-number">0</span>
+    <span class="hljs-built_in">this</span>.lot.forEach(<span class="hljs-function"><span class="hljs-params">item</span> =&gt;</span> &#123;
+      <span class="hljs-keyword">if</span>(item.free)&#123;
+        freeLot++
+      &#125;
+    &#125;);
+    <span class="hljs-keyword">return</span> freeLot
+  &#125;
+&#125;</code></pre></div>
 
 <ul>
-<li>一副扑克牌有54张牌，其中52张是正牌，另2张是副牌（大王和小王）。<br>52张正牌又均分为13张一组，并以黑桃、红桃、草花、方块四种花色表示各组，每组花色的牌包括从1-10（1通常表示为A）以及J、Q、K标示的13张牌。<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> numbers = [<span class="hljs-string">&#x27;A&#x27;</span>, <span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>,<span class="hljs-number">7</span>,<span class="hljs-number">8</span>,<span class="hljs-number">9</span>,<span class="hljs-string">&#x27;J&#x27;</span>,<span class="hljs-string">&#x27;Q&#x27;</span>,<span class="hljs-string">&#x27;K&#x27;</span>]<br><span class="hljs-keyword">const</span> signs = [<span class="hljs-string">&#x27;♥️&#x27;</span>, <span class="hljs-string">&#x27;♦️&#x27;</span>, <span class="hljs-string">&#x27;♣️&#x27;</span>, <span class="hljs-string">&#x27;♠️&#x27;</span>]<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Poker</span> </span>&#123;<br>  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">signs,numbers</span>)</span> &#123;<br>		<span class="hljs-built_in">this</span>.signs = signs<br>		<span class="hljs-built_in">this</span>.numbers = numbers<br>		<span class="hljs-built_in">this</span>.mounts = <span class="hljs-number">52</span><br>		<span class="hljs-built_in">this</span>.pokers = []<br>	&#125;<br>	<span class="hljs-function"><span class="hljs-title">initPokers</span>(<span class="hljs-params"></span>)</span>&#123;<br>		<span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i =<span class="hljs-number">0</span>;i&lt;<span class="hljs-built_in">this</span>.signs.length;i++)&#123;<br>			<span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> j = <span class="hljs-number">0</span>;j&lt;<span class="hljs-built_in">this</span>.numbers.length;j++)&#123;<br>				<span class="hljs-built_in">this</span>.pokers.push(<span class="hljs-keyword">new</span> Card(<span class="hljs-built_in">this</span>.signs[i],<span class="hljs-built_in">this</span>.numbers[j]))<br>			&#125;<br>		&#125;<br>		<span class="hljs-built_in">this</span>.pokers.push(<span class="hljs-keyword">new</span> Card(<span class="hljs-string">&#x27;BLACK&#x27;</span>,<span class="hljs-string">&#x27;GHOST&#x27;</span>))<br>		<span class="hljs-built_in">this</span>.pokers.push(<span class="hljs-keyword">new</span> Card(<span class="hljs-string">&#x27;RED&#x27;</span>,<span class="hljs-string">&#x27;GHOST&#x27;</span>))<br>	&#125;<br>  <span class="hljs-function"><span class="hljs-title">shuffleCard</span>(<span class="hljs-params"></span>)</span> &#123;<br>		<span class="hljs-comment">// let arr = this.pokers</span><br>		<span class="hljs-comment">// let len = arr.length</span><br>    <span class="hljs-comment">// let temp,i</span><br>    <span class="hljs-comment">// while(len)&#123;</span><br>    <span class="hljs-comment">//   i = Math.floor(Math.random()*len--)</span><br>    <span class="hljs-comment">//   temp = arr[i]</span><br>    <span class="hljs-comment">//   arr[i] = arr[len]</span><br>    <span class="hljs-comment">//   arr[len] = temp</span><br>    <span class="hljs-comment">// &#125;</span><br>    <span class="hljs-comment">// this.pokers = arr</span><br>    <span class="hljs-built_in">this</span>.pokers = <span class="hljs-built_in">this</span>.pokers.sort(<span class="hljs-function">()=&gt;</span><span class="hljs-built_in">Math</span>.random()-<span class="hljs-number">0.5</span>)<br>  &#125;<br>&#125;<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Card</span> </span>&#123;<br>  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">sign, number</span>)</span> &#123;<br>    <span class="hljs-built_in">this</span>.sign = sign;<br>    <span class="hljs-built_in">this</span>.number = number;<br>  &#125;<br>&#125;<br><br><span class="hljs-keyword">let</span> game1 = <span class="hljs-keyword">new</span> Poker(signs,numbers)<br>game1.initPokers()<br>game1.shuffleCard()<br><span class="hljs-built_in">console</span>.log(game1.pokers);<br>game1.shuffleCard()<br><span class="hljs-built_in">console</span>.log(game1.pokers);<br></code></pre></div></td></tr></table></figure></li>
+<li>一副扑克牌有54张牌，其中52张是正牌，另2张是副牌（大王和小王）。<br>52张正牌又均分为13张一组，并以黑桃、红桃、草花、方块四种花色表示各组，每组花色的牌包括从1-10（1通常表示为A）以及J、Q、K标示的13张牌。<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> numbers = [<span class="hljs-string">&#x27;A&#x27;</span>, <span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>,<span class="hljs-number">7</span>,<span class="hljs-number">8</span>,<span class="hljs-number">9</span>,<span class="hljs-string">&#x27;J&#x27;</span>,<span class="hljs-string">&#x27;Q&#x27;</span>,<span class="hljs-string">&#x27;K&#x27;</span>]
+<span class="hljs-keyword">const</span> signs = [<span class="hljs-string">&#x27;♥️&#x27;</span>, <span class="hljs-string">&#x27;♦️&#x27;</span>, <span class="hljs-string">&#x27;♣️&#x27;</span>, <span class="hljs-string">&#x27;♠️&#x27;</span>]
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Poker</span> </span>&#123;
+  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">signs,numbers</span>)</span> &#123;
+		<span class="hljs-built_in">this</span>.signs = signs
+		<span class="hljs-built_in">this</span>.numbers = numbers
+		<span class="hljs-built_in">this</span>.mounts = <span class="hljs-number">52</span>
+		<span class="hljs-built_in">this</span>.pokers = []
+	&#125;
+	<span class="hljs-function"><span class="hljs-title">initPokers</span>(<span class="hljs-params"></span>)</span>&#123;
+		<span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i =<span class="hljs-number">0</span>;i&lt;<span class="hljs-built_in">this</span>.signs.length;i++)&#123;
+			<span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> j = <span class="hljs-number">0</span>;j&lt;<span class="hljs-built_in">this</span>.numbers.length;j++)&#123;
+				<span class="hljs-built_in">this</span>.pokers.push(<span class="hljs-keyword">new</span> Card(<span class="hljs-built_in">this</span>.signs[i],<span class="hljs-built_in">this</span>.numbers[j]))
+			&#125;
+		&#125;
+		<span class="hljs-built_in">this</span>.pokers.push(<span class="hljs-keyword">new</span> Card(<span class="hljs-string">&#x27;BLACK&#x27;</span>,<span class="hljs-string">&#x27;GHOST&#x27;</span>))
+		<span class="hljs-built_in">this</span>.pokers.push(<span class="hljs-keyword">new</span> Card(<span class="hljs-string">&#x27;RED&#x27;</span>,<span class="hljs-string">&#x27;GHOST&#x27;</span>))
+	&#125;
+  <span class="hljs-function"><span class="hljs-title">shuffleCard</span>(<span class="hljs-params"></span>)</span> &#123;
+		<span class="hljs-comment">// let arr = this.pokers</span>
+		<span class="hljs-comment">// let len = arr.length</span>
+    <span class="hljs-comment">// let temp,i</span>
+    <span class="hljs-comment">// while(len)&#123;</span>
+    <span class="hljs-comment">//   i = Math.floor(Math.random()*len--)</span>
+    <span class="hljs-comment">//   temp = arr[i]</span>
+    <span class="hljs-comment">//   arr[i] = arr[len]</span>
+    <span class="hljs-comment">//   arr[len] = temp</span>
+    <span class="hljs-comment">// &#125;</span>
+    <span class="hljs-comment">// this.pokers = arr</span>
+    <span class="hljs-built_in">this</span>.pokers = <span class="hljs-built_in">this</span>.pokers.sort(<span class="hljs-function">()=&gt;</span><span class="hljs-built_in">Math</span>.random()-<span class="hljs-number">0.5</span>)
+  &#125;
+&#125;
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Card</span> </span>&#123;
+  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">sign, number</span>)</span> &#123;
+    <span class="hljs-built_in">this</span>.sign = sign;
+    <span class="hljs-built_in">this</span>.number = number;
+  &#125;
+&#125;
+
+<span class="hljs-keyword">let</span> game1 = <span class="hljs-keyword">new</span> Poker(signs,numbers)
+game1.initPokers()
+game1.shuffleCard()
+<span class="hljs-built_in">console</span>.log(game1.pokers);
+game1.shuffleCard()
+<span class="hljs-built_in">console</span>.log(game1.pokers);</code></pre></div></li>
 </ul>
 
             </div>

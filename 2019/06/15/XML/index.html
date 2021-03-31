@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      368 字
+      367 字
     </span>
   
 
@@ -273,7 +273,27 @@
 <p>tips：</p>
 <ul>
 <li>尽量使用元素来描述数据。而仅仅使用属性来提供与数据无关的信息。</li>
-<li>元数据（有关数据的数据）应当存储为属性，而数据本身应当存储为元素。<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// bad</span><br>&lt;note day=<span class="hljs-string">&quot;08&quot;</span> month=<span class="hljs-string">&quot;08&quot;</span> year=<span class="hljs-string">&quot;2008&quot;</span><br>to=<span class="hljs-string">&quot;George&quot;</span> <span class="hljs-keyword">from</span>=<span class="hljs-string">&quot;John&quot;</span> heading=<span class="hljs-string">&quot;Reminder&quot;</span> <br>body=<span class="hljs-string">&quot;Don&#x27;t forget the meeting!&quot;</span>&gt;<br>&lt;/note&gt;<br><br><span class="hljs-comment">// good</span><br>&lt;messages&gt;<br>  &lt;note id=<span class="hljs-string">&quot;501&quot;</span>&gt;<br>    &lt;to&gt;George&lt;/to&gt;<br>    &lt;<span class="hljs-keyword">from</span>&gt;John&lt;/<span class="hljs-keyword">from</span>&gt;<br>    &lt;heading&gt;Reminder&lt;/heading&gt;<br>    &lt;body&gt;Don<span class="hljs-string">&#x27;t forget the meeting!&lt;/body&gt;</span><br><span class="hljs-string">  &lt;/note&gt;</span><br><span class="hljs-string">  &lt;note id=&quot;502&quot;&gt;</span><br><span class="hljs-string">    &lt;to&gt;John&lt;/to&gt;</span><br><span class="hljs-string">    &lt;from&gt;George&lt;/from&gt;</span><br><span class="hljs-string">    &lt;heading&gt;Re: Reminder&lt;/heading&gt;</span><br><span class="hljs-string">    &lt;body&gt;I will not&lt;/body&gt;</span><br><span class="hljs-string">  &lt;/note&gt; </span><br><span class="hljs-string">&lt;/messages&gt;</span><br></code></pre></div></td></tr></table></figure></li>
+<li>元数据（有关数据的数据）应当存储为属性，而数据本身应当存储为元素。<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// bad</span>
+&lt;note day=<span class="hljs-string">&quot;08&quot;</span> month=<span class="hljs-string">&quot;08&quot;</span> year=<span class="hljs-string">&quot;2008&quot;</span>
+to=<span class="hljs-string">&quot;George&quot;</span> <span class="hljs-keyword">from</span>=<span class="hljs-string">&quot;John&quot;</span> heading=<span class="hljs-string">&quot;Reminder&quot;</span> 
+body=<span class="hljs-string">&quot;Don&#x27;t forget the meeting!&quot;</span>&gt;
+&lt;/note&gt;
+
+<span class="hljs-comment">// good</span>
+&lt;messages&gt;
+  &lt;note id=<span class="hljs-string">&quot;501&quot;</span>&gt;
+    &lt;to&gt;George&lt;/to&gt;
+    &lt;<span class="hljs-keyword">from</span>&gt;John&lt;/<span class="hljs-keyword">from</span>&gt;
+    &lt;heading&gt;Reminder&lt;/heading&gt;
+    &lt;body&gt;Don<span class="hljs-string">&#x27;t forget the meeting!&lt;/body&gt;</span>
+<span class="hljs-string">  &lt;/note&gt;</span>
+<span class="hljs-string">  &lt;note id=&quot;502&quot;&gt;</span>
+<span class="hljs-string">    &lt;to&gt;John&lt;/to&gt;</span>
+<span class="hljs-string">    &lt;from&gt;George&lt;/from&gt;</span>
+<span class="hljs-string">    &lt;heading&gt;Re: Reminder&lt;/heading&gt;</span>
+<span class="hljs-string">    &lt;body&gt;I will not&lt;/body&gt;</span>
+<span class="hljs-string">  &lt;/note&gt; </span>
+<span class="hljs-string">&lt;/messages&gt;</span></code></pre></div></li>
 </ul>
 
             </div>

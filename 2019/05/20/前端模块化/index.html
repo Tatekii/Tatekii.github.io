@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      745 字
+      746 字
     </span>
   
 
@@ -262,13 +262,28 @@
 <li><code>Async Module Definition</code></li>
 <li>代码异步加载，模块的加载不影响后续函数运行</li>
 <li>依赖前置，在定义模块的时候就要声明其依赖的模块</li>
-<li>执行顺序不一定和代码中顺序相同，而是谁先下载完执行谁  <figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// AMD</span><br>define([<span class="hljs-string">&quot;./a&quot;</span>, <span class="hljs-string">&quot;./b&quot;</span>], <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">a, b</span>) </span>&#123;<br><span class="hljs-comment">// ...</span><br>a.doSomething();<br><span class="hljs-comment">// ...</span><br>b.doSomething();<br><span class="hljs-comment">// ...可能b比a先do了</span><br>&#125;);<br></code></pre></div></td></tr></table></figure></li>
+<li>执行顺序不一定和代码中顺序相同，而是谁先下载完执行谁  <div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// AMD</span>
+define([<span class="hljs-string">&quot;./a&quot;</span>, <span class="hljs-string">&quot;./b&quot;</span>], <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">a, b</span>) </span>&#123;
+<span class="hljs-comment">// ...</span>
+a.doSomething();
+<span class="hljs-comment">// ...</span>
+b.doSomething();
+<span class="hljs-comment">// ...可能b比a先do了</span>
+&#125;);</code></pre></div></li>
 </ul>
 <h3 id="CMD-sea-js"><a href="#CMD-sea-js" class="headerlink" title="CMD (sea.js)"></a>CMD (sea.js)</h3><ul>
 <li><code>Common Module Definition</code></li>
 <li> 定义和加载与AMD相同</li>
 <li> 依赖可以就近书写</li>
-<li>依赖全部加载完才按顺序执行  <figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// CMD</span><br>define(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"><span class="hljs-built_in">require</span>, <span class="hljs-built_in">exports</span>, <span class="hljs-built_in">module</span></span>) </span>&#123;<br><span class="hljs-keyword">var</span> a = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;./a&quot;</span>);<br>a.doSomething();<br><span class="hljs-comment">//...</span><br><span class="hljs-keyword">var</span> b = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;./b&quot;</span>); <br>b.doSomething();<br><span class="hljs-comment">// ...</span><br>&#125;);<br></code></pre></div></td></tr></table></figure></li>
+<li>依赖全部加载完才按顺序执行  <div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// CMD</span>
+define(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"><span class="hljs-built_in">require</span>, <span class="hljs-built_in">exports</span>, <span class="hljs-built_in">module</span></span>) </span>&#123;
+<span class="hljs-keyword">var</span> a = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;./a&quot;</span>);
+a.doSomething();
+<span class="hljs-comment">//...</span>
+<span class="hljs-keyword">var</span> b = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;./b&quot;</span>); 
+b.doSomething();
+<span class="hljs-comment">// ...</span>
+&#125;);</code></pre></div></li>
 </ul>
 <h3 id="UMD"><a href="#UMD" class="headerlink" title="UMD"></a>UMD</h3><ul>
 <li> <code>Universal Module Definition</code></li>
@@ -285,9 +300,40 @@
 <li><p><code>import</code>引入</p>
 </li>
 <li><p><code>import</code>和<code>export</code>命令只能写在代码顶层</p>
-  <figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// modules.js</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">add</span>(<span class="hljs-params">x, y</span>) </span>&#123;<br>    <span class="hljs-keyword">return</span> x * y;<br>&#125;<br><span class="hljs-keyword">export</span> &#123;add <span class="hljs-keyword">as</span> <span class="hljs-keyword">default</span>&#125;;<br><span class="hljs-comment">// 等同于</span><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> add;<br><br><span class="hljs-comment">// app.js</span><br><span class="hljs-keyword">import</span> &#123; <span class="hljs-keyword">default</span> <span class="hljs-keyword">as</span> foo &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;modules&#x27;</span>;<br><span class="hljs-comment">// 等同于</span><br><span class="hljs-keyword">import</span> foo <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;modules&#x27;</span>;<br></code></pre></div></td></tr></table></figure></li>
+  <div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// modules.js</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">add</span>(<span class="hljs-params">x, y</span>) </span>&#123;
+    <span class="hljs-keyword">return</span> x * y;
+&#125;
+<span class="hljs-keyword">export</span> &#123;add <span class="hljs-keyword">as</span> <span class="hljs-keyword">default</span>&#125;;
+<span class="hljs-comment">// 等同于</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> add;
+
+<span class="hljs-comment">// app.js</span>
+<span class="hljs-keyword">import</span> &#123; <span class="hljs-keyword">default</span> <span class="hljs-keyword">as</span> foo &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;modules&#x27;</span>;
+<span class="hljs-comment">// 等同于</span>
+<span class="hljs-keyword">import</span> foo <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;modules&#x27;</span>;</code></pre></div></li>
 </ul>
-<h3 id="ES6-MODULE和CommonJS的区别"><a href="#ES6-MODULE和CommonJS的区别" class="headerlink" title="ES6 MODULE和CommonJS的区别"></a>ES6 MODULE和CommonJS的区别</h3><figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// CommonJS模块</span><br><span class="hljs-comment">// 运行时加载</span><br><span class="hljs-keyword">let</span> &#123; stat, exists, readFile &#125; = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;fs&#x27;</span>);<br><span class="hljs-comment">// 等同于</span><br><span class="hljs-keyword">let</span> _fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;fs&#x27;</span>);<br><span class="hljs-keyword">let</span> stat = _fs.stat;<br><span class="hljs-keyword">let</span> exists = _fs.exists;<br><span class="hljs-keyword">let</span> readfile = _fs.readfile;<br><span class="hljs-comment">//上面代码的实质是整体加载fs模块（即加载fs的所有方法），生成一个对象（_fs），然后再从这个对象上面读取 3 个方法。这种加载称为“运行时加载”，因为只有运行时才能得到这个对象，导致完全没办法在编译时做“静态优化”</span><br><br>modules.exports xxx<br><span class="hljs-comment">//CommonJS 模块输出的是值的拷贝，输出后模块内部的变化就影响不到这个值</span><br><br><span class="hljs-comment">// ES6</span><br><span class="hljs-comment">// 编译时加载</span><br><span class="hljs-keyword">import</span> &#123; stat, exists, readFile &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;fs&#x27;</span>;<br><span class="hljs-comment">//上面代码的实质是从fs模块加载 3 个方法，其他方法不加载</span><br><span class="hljs-comment">//这种加载称为“编译时加载”或者静态加载，即 ES6 可以在编译时就完成模块加载，效率要比 CommonJS 模块的加载方式高。</span><br><span class="hljs-comment">//当然，这也导致了没法引用 ES6 模块本身，因为它不是对象</span><br><span class="hljs-built_in">exports</span> <span class="hljs-keyword">default</span> xxx<br><span class="hljs-comment">// ES6 MODULES输出的是值的引用，运行时才到指定模块中取值</span><br></code></pre></div></td></tr></table></figure>
+<h3 id="ES6-MODULE和CommonJS的区别"><a href="#ES6-MODULE和CommonJS的区别" class="headerlink" title="ES6 MODULE和CommonJS的区别"></a>ES6 MODULE和CommonJS的区别</h3><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// CommonJS模块</span>
+<span class="hljs-comment">// 运行时加载</span>
+<span class="hljs-keyword">let</span> &#123; stat, exists, readFile &#125; = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;fs&#x27;</span>);
+<span class="hljs-comment">// 等同于</span>
+<span class="hljs-keyword">let</span> _fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;fs&#x27;</span>);
+<span class="hljs-keyword">let</span> stat = _fs.stat;
+<span class="hljs-keyword">let</span> exists = _fs.exists;
+<span class="hljs-keyword">let</span> readfile = _fs.readfile;
+<span class="hljs-comment">//上面代码的实质是整体加载fs模块（即加载fs的所有方法），生成一个对象（_fs），然后再从这个对象上面读取 3 个方法。这种加载称为“运行时加载”，因为只有运行时才能得到这个对象，导致完全没办法在编译时做“静态优化”</span>
+
+modules.exports xxx
+<span class="hljs-comment">//CommonJS 模块输出的是值的拷贝，输出后模块内部的变化就影响不到这个值</span>
+
+<span class="hljs-comment">// ES6</span>
+<span class="hljs-comment">// 编译时加载</span>
+<span class="hljs-keyword">import</span> &#123; stat, exists, readFile &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;fs&#x27;</span>;
+<span class="hljs-comment">//上面代码的实质是从fs模块加载 3 个方法，其他方法不加载</span>
+<span class="hljs-comment">//这种加载称为“编译时加载”或者静态加载，即 ES6 可以在编译时就完成模块加载，效率要比 CommonJS 模块的加载方式高。</span>
+<span class="hljs-comment">//当然，这也导致了没法引用 ES6 模块本身，因为它不是对象</span>
+<span class="hljs-built_in">exports</span> <span class="hljs-keyword">default</span> xxx
+<span class="hljs-comment">// ES6 MODULES输出的是值的引用，运行时才到指定模块中取值</span></code></pre></div>
 
             </div>
             <hr>

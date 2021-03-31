@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      970 字
+      968 字
     </span>
   
 
@@ -246,7 +246,15 @@
 <li><p>子组件通过<code>computed</code>读取state，</p>
 </li>
 <li><p><code>mapState</code>辅助函数展开以混入计算属性中  </p>
-<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript">computed: &#123;<br>  localComputed () &#123; <span class="hljs-comment">/* ... */</span> &#125;,<br>  <span class="hljs-comment">// 使用对象展开运算符将此对象混入到外部对象中</span><br>  ...mapState(&#123;<br>  <span class="hljs-comment">// ...</span><br>    <span class="hljs-string">&#x27;count&#x27;</span><br>    <span class="hljs-comment">// 映射 this.count 为 store.state.count</span><br>  &#125;)<br>&#125;<br></code></pre></div></td></tr></table></figure></li>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript">computed: &#123;
+  localComputed () &#123; <span class="hljs-comment">/* ... */</span> &#125;,
+  <span class="hljs-comment">// 使用对象展开运算符将此对象混入到外部对象中</span>
+  ...mapState(&#123;
+  <span class="hljs-comment">// ...</span>
+    <span class="hljs-string">&#x27;count&#x27;</span>
+    <span class="hljs-comment">// 映射 this.count 为 store.state.count</span>
+  &#125;)
+&#125;</code></pre></div></li>
 </ul>
 <h2 id="getter"><a href="#getter" class="headerlink" title="getter"></a><code>getter</code></h2><ul>
 <li><p>相当于store的计算属性</p>
@@ -254,9 +262,36 @@
 <li><p>接受<code>state</code>作为其第一个参数</p>
 </li>
 <li><p>通过属性访问（被缓存，依赖改变才计算）</p>
-  <figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> store = <span class="hljs-keyword">new</span> Vuex.Store(&#123;<br>  state: &#123;<br>    todos: [&#123;<br>        id: <span class="hljs-number">1</span>,<br>        text: <span class="hljs-string">&#x27;...&#x27;</span>,<br>        done: <span class="hljs-literal">true</span><br>      &#125;,<br>      &#123;<br>        id: <span class="hljs-number">2</span>,<br>        text: <span class="hljs-string">&#x27;...&#x27;</span>,<br>        done: <span class="hljs-literal">false</span><br>      &#125;<br>    ]<br>  &#125;,<br>  getters: &#123;<br>    doneTodos: <span class="hljs-function"><span class="hljs-params">state</span> =&gt;</span> &#123;<br>      <span class="hljs-keyword">return</span> state.todos.filter(<span class="hljs-function"><span class="hljs-params">todo</span> =&gt;</span> todo.done)<br>    &#125;<br>  &#125;<br>&#125;)<br><br>store.getters.doneTodos <span class="hljs-comment">// -&gt; [&#123; id: 1, text: &#x27;...&#x27;, done: true &#125;]</span><br></code></pre></div></td></tr></table></figure></li>
+  <div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> store = <span class="hljs-keyword">new</span> Vuex.Store(&#123;
+  state: &#123;
+    todos: [&#123;
+        id: <span class="hljs-number">1</span>,
+        text: <span class="hljs-string">&#x27;...&#x27;</span>,
+        done: <span class="hljs-literal">true</span>
+      &#125;,
+      &#123;
+        id: <span class="hljs-number">2</span>,
+        text: <span class="hljs-string">&#x27;...&#x27;</span>,
+        done: <span class="hljs-literal">false</span>
+      &#125;
+    ]
+  &#125;,
+  getters: &#123;
+    doneTodos: <span class="hljs-function"><span class="hljs-params">state</span> =&gt;</span> &#123;
+      <span class="hljs-keyword">return</span> state.todos.filter(<span class="hljs-function"><span class="hljs-params">todo</span> =&gt;</span> todo.done)
+    &#125;
+  &#125;
+&#125;)
+
+store.getters.doneTodos <span class="hljs-comment">// -&gt; [&#123; id: 1, text: &#x27;...&#x27;, done: true &#125;]</span></code></pre></div></li>
 <li><p>通过方法访问（每次调用都计算,不缓存结果）</p>
-  <figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript">getters: &#123;<br>  <span class="hljs-comment">// ...</span><br>  getTodoById: <span class="hljs-function">(<span class="hljs-params">state</span>) =&gt;</span> <span class="hljs-function">(<span class="hljs-params">id</span>) =&gt;</span> &#123;<br>    <span class="hljs-keyword">return</span> state.todos.find(<span class="hljs-function"><span class="hljs-params">todo</span> =&gt;</span> todo.id === id)<br>  &#125;<br>&#125;<br>store.getters.getTodoById(<span class="hljs-number">2</span>) <span class="hljs-comment">// -&gt; &#123; id: 2, text: &#x27;...&#x27;, done: false &#125;</span><br></code></pre></div></td></tr></table></figure></li>
+  <div class="hljs code-wrapper"><pre><code class="hljs javascript">getters: &#123;
+  <span class="hljs-comment">// ...</span>
+  getTodoById: <span class="hljs-function">(<span class="hljs-params">state</span>) =&gt;</span> <span class="hljs-function">(<span class="hljs-params">id</span>) =&gt;</span> &#123;
+    <span class="hljs-keyword">return</span> state.todos.find(<span class="hljs-function"><span class="hljs-params">todo</span> =&gt;</span> todo.id === id)
+  &#125;
+&#125;
+store.getters.getTodoById(<span class="hljs-number">2</span>) <span class="hljs-comment">// -&gt; &#123; id: 2, text: &#x27;...&#x27;, done: false &#125;</span></code></pre></div></li>
 <li><p>组件中一样的展开<code>...mapGetters</code>到局部计算属性中</p>
 </li>
 </ul>
@@ -264,7 +299,22 @@
 <li><p>更改<code>state</code>的唯一方法是提交<code>mutation</code></p>
 </li>
 <li><p>你不能直接调用一个 <code>mutation handler</code>。需要以相应的 <code>type</code> 调用 <code>store.commit</code> 方法</p>
-  <figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// 载荷风格</span><br>store.commit(<span class="hljs-string">&#x27;increment&#x27;</span>,&#123;<br>  amount:<span class="hljs-number">10</span><br>&#125;)<br><br><span class="hljs-comment">// 对象风格的提交</span><br>store.commit(&#123;<br>  type: <span class="hljs-string">&#x27;increment&#x27;</span>,<br>  amount: <span class="hljs-number">10</span><br>&#125;)<br><br>mutations: &#123;<br>  <span class="hljs-function"><span class="hljs-title">increment</span>(<span class="hljs-params">state, payload</span>)</span> &#123;<br>    state.count += payload.amount<br>  &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure></li>
+  <div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// 载荷风格</span>
+store.commit(<span class="hljs-string">&#x27;increment&#x27;</span>,&#123;
+  amount:<span class="hljs-number">10</span>
+&#125;)
+
+<span class="hljs-comment">// 对象风格的提交</span>
+store.commit(&#123;
+  type: <span class="hljs-string">&#x27;increment&#x27;</span>,
+  amount: <span class="hljs-number">10</span>
+&#125;)
+
+mutations: &#123;
+  <span class="hljs-function"><span class="hljs-title">increment</span>(<span class="hljs-params">state, payload</span>)</span> &#123;
+    state.count += payload.amount
+  &#125;
+&#125;</code></pre></div></li>
 <li><p><code>mutation</code>必须是同步函数,<code>mutation</code>中对<code>state</code>的修改立即完成</p>
 </li>
 <li><p>组件中一样的展开<code>...Mutations</code>到局部计算属性中</p>
@@ -276,18 +326,56 @@
 <li><p><code>context.commit</code> 提交一个 <code>mutation</code>，或者通过 <code>context.state</code> 和 <code>context.getters</code> 来获取 <code>state</code> 和 <code>getters</code></p>
 </li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript">actions: &#123;<br>    increment (context) &#123;<br>      context.commit(<span class="hljs-string">&#x27;increment&#x27;</span>)<br>    &#125;<br>  &#125;<br><br><span class="hljs-comment">// 参数解构</span><br>actions: &#123;<br>  increment (&#123; commit &#125;) &#123;<br>    commit(<span class="hljs-string">&#x27;increment&#x27;</span>)<br>  &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript">actions: &#123;
+    increment (context) &#123;
+      context.commit(<span class="hljs-string">&#x27;increment&#x27;</span>)
+    &#125;
+  &#125;
+
+<span class="hljs-comment">// 参数解构</span>
+actions: &#123;
+  increment (&#123; commit &#125;) &#123;
+    commit(<span class="hljs-string">&#x27;increment&#x27;</span>)
+  &#125;
+&#125;</code></pre></div>
 
 <ul>
 <li><p><code>Action</code> 提交的是 <code>mutation</code>，而不是直接变更状态。</p>
 </li>
 <li><p><code>Action</code> 可以包含任意异步操作。</p>
-  <figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// 以载荷形式分发</span><br>store.dispatch(<span class="hljs-string">&#x27;incrementAsync&#x27;</span>, &#123;<br>  amount: <span class="hljs-number">10</span><br>&#125;)<br><br><span class="hljs-comment">// 以对象形式分发</span><br>store.dispatch(&#123;<br>  type: <span class="hljs-string">&#x27;incrementAsync&#x27;</span>,<br>  amount: <span class="hljs-number">10</span><br>&#125;)<br></code></pre></div></td></tr></table></figure></li>
+  <div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// 以载荷形式分发</span>
+store.dispatch(<span class="hljs-string">&#x27;incrementAsync&#x27;</span>, &#123;
+  amount: <span class="hljs-number">10</span>
+&#125;)
+
+<span class="hljs-comment">// 以对象形式分发</span>
+store.dispatch(&#123;
+  type: <span class="hljs-string">&#x27;incrementAsync&#x27;</span>,
+  amount: <span class="hljs-number">10</span>
+&#125;)</code></pre></div></li>
 <li><p>组件中分发<code>...mapActions</code></p>
 </li>
 </ul>
 <h2 id="Module"><a href="#Module" class="headerlink" title="Module"></a><code>Module</code></h2><p>将 <code>store</code> 分割成模块（<code>module</code>）。每个模块拥有自己的<code>state、mutation、action、getter、</code>甚至是嵌套子模块</p>
-<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> moduleA = &#123;<br>  state: &#123; ... &#125;,<br>  mutations: &#123; ... &#125;,<br>  actions: &#123; ... &#125;,<br>  getters: &#123; ... &#125;<br>&#125;<br><br><span class="hljs-keyword">const</span> moduleB = &#123;<br>  state: &#123; ... &#125;,<br>  mutations: &#123; ... &#125;,<br>  actions: &#123; ... &#125;<br>&#125;<br><br><span class="hljs-keyword">const</span> store = <span class="hljs-keyword">new</span> Vuex.Store(&#123;<br>  modules: &#123;<br>    a: moduleA,<br>    b: moduleB<br>  &#125;<br>&#125;)<br></code></pre></div></td></tr></table></figure>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> moduleA = &#123;
+  state: &#123; ... &#125;,
+  mutations: &#123; ... &#125;,
+  actions: &#123; ... &#125;,
+  getters: &#123; ... &#125;
+&#125;
+
+<span class="hljs-keyword">const</span> moduleB = &#123;
+  state: &#123; ... &#125;,
+  mutations: &#123; ... &#125;,
+  actions: &#123; ... &#125;
+&#125;
+
+<span class="hljs-keyword">const</span> store = <span class="hljs-keyword">new</span> Vuex.Store(&#123;
+  modules: &#123;
+    a: moduleA,
+    b: moduleB
+  &#125;
+&#125;)</code></pre></div>
 
 <ul>
 <li>内部的<code>mutation</code> 接收的<code>state</code>是<em>模块的局部状态对象</em></li>
@@ -298,9 +386,54 @@
 <li><code>namespaced:true</code></li>
 <li>命名空间中的方法只会访问本模块的内容</li>
 </ul>
-<h4 id="在带命名空间的模块内访问全局内容"><a href="#在带命名空间的模块内访问全局内容" class="headerlink" title="在带命名空间的模块内访问全局内容"></a>在带命名空间的模块内访问全局内容</h4><figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript">modules: &#123;<br>  foo: &#123;<br>    namespaced: <span class="hljs-literal">true</span>,<br><br>    getters: &#123;<br>      <span class="hljs-comment">// 在这个模块的 getter 中，`getters` 被局部化了</span><br>      <span class="hljs-comment">// 你可以使用 getter 的第四个参数来调用 `rootGetters`</span><br>      someGetter (state, getters, rootState, rootGetters) &#123;<br>        getters.someOtherGetter <span class="hljs-comment">// -&gt; &#x27;foo/someOtherGetter&#x27;</span><br>        rootGetters.someOtherGetter <span class="hljs-comment">// -&gt; &#x27;someOtherGetter&#x27;</span><br>      &#125;,<br>      someOtherGetter: <span class="hljs-function"><span class="hljs-params">state</span> =&gt;</span> &#123; ... &#125;<br>    &#125;,<br><br>    actions: &#123;<br>      <span class="hljs-comment">// 在这个模块中， dispatch 和 commit 也被局部化了</span><br>      <span class="hljs-comment">// 他们可以接受 `root` 属性以访问根 dispatch 或 commit</span><br>      someAction (&#123; dispatch, commit, getters, rootGetters &#125;) &#123;<br>        getters.someGetter <span class="hljs-comment">// -&gt; &#x27;foo/someGetter&#x27;</span><br>        rootGetters.someGetter <span class="hljs-comment">// -&gt; &#x27;someGetter&#x27;</span><br><br>        dispatch(<span class="hljs-string">&#x27;someOtherAction&#x27;</span>) <span class="hljs-comment">// -&gt; &#x27;foo/someOtherAction&#x27;</span><br>        dispatch(<span class="hljs-string">&#x27;someOtherAction&#x27;</span>, <span class="hljs-literal">null</span>, &#123; <span class="hljs-attr">root</span>: <span class="hljs-literal">true</span> &#125;) <span class="hljs-comment">// -&gt; &#x27;someOtherAction&#x27;</span><br><br>        commit(<span class="hljs-string">&#x27;someMutation&#x27;</span>) <span class="hljs-comment">// -&gt; &#x27;foo/someMutation&#x27;</span><br>        commit(<span class="hljs-string">&#x27;someMutation&#x27;</span>, <span class="hljs-literal">null</span>, &#123; <span class="hljs-attr">root</span>: <span class="hljs-literal">true</span> &#125;) <span class="hljs-comment">// -&gt; &#x27;someMutation&#x27;</span><br>      &#125;,<br>      someOtherAction (ctx, payload) &#123; ... &#125;<br>    &#125;<br>  &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+<h4 id="在带命名空间的模块内访问全局内容"><a href="#在带命名空间的模块内访问全局内容" class="headerlink" title="在带命名空间的模块内访问全局内容"></a>在带命名空间的模块内访问全局内容</h4><div class="hljs code-wrapper"><pre><code class="hljs javascript">modules: &#123;
+  foo: &#123;
+    namespaced: <span class="hljs-literal">true</span>,
 
-<h4 id="带命名空间的绑定函数"><a href="#带命名空间的绑定函数" class="headerlink" title="带命名空间的绑定函数"></a>带命名空间的绑定函数</h4><figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript">methods: &#123;<br>  ...mapActions([<br>    <span class="hljs-string">&#x27;some/nested/module/foo&#x27;</span>, <span class="hljs-comment">// -&gt; this[&#x27;some/nested/module/foo&#x27;]()</span><br>    <span class="hljs-string">&#x27;some/nested/module/bar&#x27;</span> <span class="hljs-comment">// -&gt; this[&#x27;some/nested/module/bar&#x27;]()</span><br>  ])<br>&#125;<br><br>---&gt;<br><br><br>methods: &#123;<br>  ...mapActions(<span class="hljs-string">&#x27;some/nested/module&#x27;</span>, [<br>    <span class="hljs-string">&#x27;foo&#x27;</span>, <span class="hljs-comment">// -&gt; this.foo()</span><br>    <span class="hljs-string">&#x27;bar&#x27;</span> <span class="hljs-comment">// -&gt; this.bar()</span><br>  ])<br>&#125;<br></code></pre></div></td></tr></table></figure>
+    getters: &#123;
+      <span class="hljs-comment">// 在这个模块的 getter 中，`getters` 被局部化了</span>
+      <span class="hljs-comment">// 你可以使用 getter 的第四个参数来调用 `rootGetters`</span>
+      someGetter (state, getters, rootState, rootGetters) &#123;
+        getters.someOtherGetter <span class="hljs-comment">// -&gt; &#x27;foo/someOtherGetter&#x27;</span>
+        rootGetters.someOtherGetter <span class="hljs-comment">// -&gt; &#x27;someOtherGetter&#x27;</span>
+      &#125;,
+      someOtherGetter: <span class="hljs-function"><span class="hljs-params">state</span> =&gt;</span> &#123; ... &#125;
+    &#125;,
+
+    actions: &#123;
+      <span class="hljs-comment">// 在这个模块中， dispatch 和 commit 也被局部化了</span>
+      <span class="hljs-comment">// 他们可以接受 `root` 属性以访问根 dispatch 或 commit</span>
+      someAction (&#123; dispatch, commit, getters, rootGetters &#125;) &#123;
+        getters.someGetter <span class="hljs-comment">// -&gt; &#x27;foo/someGetter&#x27;</span>
+        rootGetters.someGetter <span class="hljs-comment">// -&gt; &#x27;someGetter&#x27;</span>
+
+        dispatch(<span class="hljs-string">&#x27;someOtherAction&#x27;</span>) <span class="hljs-comment">// -&gt; &#x27;foo/someOtherAction&#x27;</span>
+        dispatch(<span class="hljs-string">&#x27;someOtherAction&#x27;</span>, <span class="hljs-literal">null</span>, &#123; <span class="hljs-attr">root</span>: <span class="hljs-literal">true</span> &#125;) <span class="hljs-comment">// -&gt; &#x27;someOtherAction&#x27;</span>
+
+        commit(<span class="hljs-string">&#x27;someMutation&#x27;</span>) <span class="hljs-comment">// -&gt; &#x27;foo/someMutation&#x27;</span>
+        commit(<span class="hljs-string">&#x27;someMutation&#x27;</span>, <span class="hljs-literal">null</span>, &#123; <span class="hljs-attr">root</span>: <span class="hljs-literal">true</span> &#125;) <span class="hljs-comment">// -&gt; &#x27;someMutation&#x27;</span>
+      &#125;,
+      someOtherAction (ctx, payload) &#123; ... &#125;
+    &#125;
+  &#125;
+&#125;</code></pre></div>
+
+<h4 id="带命名空间的绑定函数"><a href="#带命名空间的绑定函数" class="headerlink" title="带命名空间的绑定函数"></a>带命名空间的绑定函数</h4><div class="hljs code-wrapper"><pre><code class="hljs javascript">methods: &#123;
+  ...mapActions([
+    <span class="hljs-string">&#x27;some/nested/module/foo&#x27;</span>, <span class="hljs-comment">// -&gt; this[&#x27;some/nested/module/foo&#x27;]()</span>
+    <span class="hljs-string">&#x27;some/nested/module/bar&#x27;</span> <span class="hljs-comment">// -&gt; this[&#x27;some/nested/module/bar&#x27;]()</span>
+  ])
+&#125;
+
+---&gt;
+
+
+methods: &#123;
+  ...mapActions(<span class="hljs-string">&#x27;some/nested/module&#x27;</span>, [
+    <span class="hljs-string">&#x27;foo&#x27;</span>, <span class="hljs-comment">// -&gt; this.foo()</span>
+    <span class="hljs-string">&#x27;bar&#x27;</span> <span class="hljs-comment">// -&gt; this.bar()</span>
+  ])
+&#125;</code></pre></div>
 
 <h4 id="createNamespacedHelpers"><a href="#createNamespacedHelpers" class="headerlink" title="createNamespacedHelpers"></a>createNamespacedHelpers</h4><p>使用 <code>createNamespacedHelpers</code> 创建基于某个命名空间辅助函数。它返回一个对象，对象里有新的绑定在给定命名空间值上的组件绑定辅助函数</p>
 

@@ -251,15 +251,71 @@
 <li><p>代理服务器-<code>nginx,devServer等</code></p>
 </li>
 <li><p>更改页面的源<code>document.domain</code></p>
-<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-string">&#x27;someWebSite.com/dir1/pageA.html&#x27;</span><br><span class="hljs-string">&#x27;someWebSite.com/dir2/pageB.html&#x27;</span><br>都设置<span class="hljs-built_in">document</span>.domain = <span class="hljs-string">&#x27;someWebSite.com&#x27;</span><br>则他们之间通信将通过同源检测，并都访问父源的cookie<br></code></pre></div></td></tr></table></figure></li>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-string">&#x27;someWebSite.com/dir1/pageA.html&#x27;</span>
+<span class="hljs-string">&#x27;someWebSite.com/dir2/pageB.html&#x27;</span>
+都设置<span class="hljs-built_in">document</span>.domain = <span class="hljs-string">&#x27;someWebSite.com&#x27;</span>
+则他们之间通信将通过同源检测，并都访问父源的cookie</code></pre></div></li>
 <li><p><code>postMessage</code></p>
-<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// pageA通过iframe嵌入了pageB</span><br><span class="hljs-comment">// pageA中代码</span><br><span class="hljs-built_in">window</span>.iframe[i].postMessage(<span class="hljs-string">&#x27;data&#x27;</span>,<span class="hljs-string">&#x27;pqgeB的URL&#x27;</span>)<br><span class="hljs-comment">// pageB中的代码</span><br><span class="hljs-built_in">window</span>.addEventListener(<span class="hljs-string">&#x27;message&#x27;</span>,<span class="hljs-function"><span class="hljs-title">funciton</span>(<span class="hljs-params">e</span>)</span>&#123;<br>    <span class="hljs-built_in">console</span>.log(e.data)     <span class="hljs-comment">// data</span><br>    <span class="hljs-built_in">console</span>.log(e.source)   <span class="hljs-comment">// a中window的引用</span><br>    <span class="hljs-built_in">console</span>.log(e.oringin)  <span class="hljs-comment">// pageA的URL</span><br>&#125;,<span class="hljs-literal">false</span>)<br><br><span class="hljs-comment">// 反过来pageB向pageA发送数据</span><br><span class="hljs-comment">// 在pageA中加入window.addEventListener</span><br><span class="hljs-comment">// 在pageB中e.source.postMessage</span><br><br></code></pre></div></td></tr></table></figure></li>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// pageA通过iframe嵌入了pageB</span>
+<span class="hljs-comment">// pageA中代码</span>
+<span class="hljs-built_in">window</span>.iframe[i].postMessage(<span class="hljs-string">&#x27;data&#x27;</span>,<span class="hljs-string">&#x27;pqgeB的URL&#x27;</span>)
+<span class="hljs-comment">// pageB中的代码</span>
+<span class="hljs-built_in">window</span>.addEventListener(<span class="hljs-string">&#x27;message&#x27;</span>,<span class="hljs-function"><span class="hljs-title">funciton</span>(<span class="hljs-params">e</span>)</span>&#123;
+    <span class="hljs-built_in">console</span>.log(e.data)     <span class="hljs-comment">// data</span>
+    <span class="hljs-built_in">console</span>.log(e.source)   <span class="hljs-comment">// a中window的引用</span>
+    <span class="hljs-built_in">console</span>.log(e.oringin)  <span class="hljs-comment">// pageA的URL</span>
+&#125;,<span class="hljs-literal">false</span>)
+
+<span class="hljs-comment">// 反过来pageB向pageA发送数据</span>
+<span class="hljs-comment">// 在pageA中加入window.addEventListener</span>
+<span class="hljs-comment">// 在pageB中e.source.postMessage</span>
+</code></pre></div></li>
 <li><p><code>iframe</code>+<code>hash</code></p>
-<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// pageA通过iframe嵌入了pageB</span><br><span class="hljs-keyword">var</span> B = <span class="hljs-built_in">document</span>.getElementByTagName(<span class="hljs-string">&quot;iframe&quot;</span>);<br>B.src = B.src + <span class="hljs-string">&quot;#&quot;</span> + <span class="hljs-string">&quot;data&quot;</span>;<br><br><span class="hljs-comment">// pageB中的代码</span><br><span class="hljs-built_in">window</span>.onhashchange = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">data</span>) </span>&#123;<br>data = <span class="hljs-built_in">window</span>.location.hash; <span class="hljs-comment">//  &lt;-  pageB就获取到了hash值</span><br>&#125;;<br></code></pre></div></td></tr></table></figure></li>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// pageA通过iframe嵌入了pageB</span>
+<span class="hljs-keyword">var</span> B = <span class="hljs-built_in">document</span>.getElementByTagName(<span class="hljs-string">&quot;iframe&quot;</span>);
+B.src = B.src + <span class="hljs-string">&quot;#&quot;</span> + <span class="hljs-string">&quot;data&quot;</span>;
+
+<span class="hljs-comment">// pageB中的代码</span>
+<span class="hljs-built_in">window</span>.onhashchange = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">data</span>) </span>&#123;
+data = <span class="hljs-built_in">window</span>.location.hash; <span class="hljs-comment">//  &lt;-  pageB就获取到了hash值</span>
+&#125;;</code></pre></div></li>
 <li><p><code>jsonp</code></p>
-<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">jsonp</span>(<span class="hljs-params">&#123; url, params, callback &#125;</span>) </span>&#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> &#123;<br>        <span class="hljs-comment">// 动态创建script标签</span><br>        <span class="hljs-comment">// 带有src的标签不受同源策略影响</span><br>        <span class="hljs-keyword">let</span> script = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">&quot;script&quot;</span>);<br>        <span class="hljs-comment">// 回调被执行则删除jsonp的script</span><br>        <span class="hljs-built_in">window</span>[callback] = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">data</span>) </span>&#123;<br>        <span class="hljs-comment">//全局注册`window[jsonpCallback]</span><br>          resolve(data);<br>          <span class="hljs-built_in">document</span>.body.removeChild(script);<br>        &#125;;<br>        <span class="hljs-comment">// src中加入参数并发出请求</span><br>        params = &#123; ...params, callback &#125;;<br>        <span class="hljs-keyword">let</span> attrs = [];<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> key <span class="hljs-keyword">in</span> params) &#123;<br>          attrs.push(<span class="hljs-string">`<span class="hljs-subst">$&#123;key&#125;</span>=<span class="hljs-subst">$&#123;params[key]&#125;</span>`</span>);<br>        &#125;<br>        script.src = <span class="hljs-string">`<span class="hljs-subst">$&#123;url&#125;</span>?<span class="hljs-subst">$&#123;attrs.join(<span class="hljs-string">&quot;&amp;&quot;</span>)&#125;</span>`</span>;<br>        <span class="hljs-built_in">document</span>.body.appendChild(script);<br>    &#125;);<br>&#125;<br><span class="hljs-comment">// 发送</span><br>jsonp(&#123;<br>url: <span class="hljs-string">&quot;http://localhost:3000/jsptest&quot;</span>,<br>params: &#123; <span class="hljs-attr">msg</span>: <span class="hljs-string">&quot;jsptestmessage&quot;</span> &#125;,<br>callback: <span class="hljs-string">&quot;jsonpCallback&quot;</span><br>&#125;).then(<span class="hljs-function"><span class="hljs-params">data</span> =&gt;</span> &#123;<br><span class="hljs-comment">//处理data</span><br>    &#125;);<br></code></pre></div></td></tr></table></figure></li>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">jsonp</span>(<span class="hljs-params">&#123; url, params, callback &#125;</span>) </span>&#123;
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> &#123;
+        <span class="hljs-comment">// 动态创建script标签</span>
+        <span class="hljs-comment">// 带有src的标签不受同源策略影响</span>
+        <span class="hljs-keyword">let</span> script = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">&quot;script&quot;</span>);
+        <span class="hljs-comment">// 回调被执行则删除jsonp的script</span>
+        <span class="hljs-built_in">window</span>[callback] = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">data</span>) </span>&#123;
+        <span class="hljs-comment">//全局注册`window[jsonpCallback]</span>
+          resolve(data);
+          <span class="hljs-built_in">document</span>.body.removeChild(script);
+        &#125;;
+        <span class="hljs-comment">// src中加入参数并发出请求</span>
+        params = &#123; ...params, callback &#125;;
+        <span class="hljs-keyword">let</span> attrs = [];
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> key <span class="hljs-keyword">in</span> params) &#123;
+          attrs.push(<span class="hljs-string">`<span class="hljs-subst">$&#123;key&#125;</span>=<span class="hljs-subst">$&#123;params[key]&#125;</span>`</span>);
+        &#125;
+        script.src = <span class="hljs-string">`<span class="hljs-subst">$&#123;url&#125;</span>?<span class="hljs-subst">$&#123;attrs.join(<span class="hljs-string">&quot;&amp;&quot;</span>)&#125;</span>`</span>;
+        <span class="hljs-built_in">document</span>.body.appendChild(script);
+    &#125;);
+&#125;
+<span class="hljs-comment">// 发送</span>
+jsonp(&#123;
+url: <span class="hljs-string">&quot;http://localhost:3000/jsptest&quot;</span>,
+params: &#123; <span class="hljs-attr">msg</span>: <span class="hljs-string">&quot;jsptestmessage&quot;</span> &#125;,
+callback: <span class="hljs-string">&quot;jsonpCallback&quot;</span>
+&#125;).then(<span class="hljs-function"><span class="hljs-params">data</span> =&gt;</span> &#123;
+<span class="hljs-comment">//处理data</span>
+    &#125;);</code></pre></div></li>
 <li><p><code>imgPing</code><strong>添加img标签src中放入get请求</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> img = <span class="hljs-keyword">new</span> Image();<br>img.onload = img.onerror = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;<br>    alert(<span class="hljs-string">&quot;已发送&quot;</span>);<br>&#125;;<br>img.src = <span class="hljs-string">&quot;http://xxx.xxx.com/query?key=value&quot;</span>;<br><span class="hljs-comment">// 设置完src属性那一刻开始请求就发送了</span><br></code></pre></div></td></tr></table></figure></li>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> img = <span class="hljs-keyword">new</span> Image();
+img.onload = img.onerror = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;
+    alert(<span class="hljs-string">&quot;已发送&quot;</span>);
+&#125;;
+img.src = <span class="hljs-string">&quot;http://xxx.xxx.com/query?key=value&quot;</span>;
+<span class="hljs-comment">// 设置完src属性那一刻开始请求就发送了</span></code></pre></div></li>
 <li><p><code>CORS</code>跨域资源共享（详见下文）</p>
 </li>
 <li><p><code>websocket</code>协议</p>
@@ -268,12 +324,13 @@
 <ol>
 <li>客户端请求</li>
 </ol>
-<figure class="highlight avrasm"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs avrasm"><span class="hljs-symbol">Connection:</span> Upgrade<br><span class="hljs-symbol">Upgrade:</span> websocket<br></code></pre></div></td></tr></table></figure>
+<div class="hljs code-wrapper"><pre><code class="hljs avrasm"><span class="hljs-symbol">Connection:</span> Upgrade
+<span class="hljs-symbol">Upgrade:</span> websocket</code></pre></div>
 
 <ol start="2">
 <li>服务端响应协议升级</li>
 </ol>
-<figure class="highlight apache"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs apache"><span class="hljs-attribute">HTTP</span>/<span class="hljs-number">1</span>.<span class="hljs-number">1</span> <span class="hljs-number">101</span> Switching Protocols<br></code></pre></div></td></tr></table></figure></li>
+<div class="hljs code-wrapper"><pre><code class="hljs apache"><span class="hljs-attribute">HTTP</span>/<span class="hljs-number">1</span>.<span class="hljs-number">1</span> <span class="hljs-number">101</span> Switching Protocols</code></pre></div></li>
 <li><p>构造函数就要传入<code>绝对URL</code></p>
 </li>
 <li><p>全双工，双向通信</p>
@@ -285,7 +342,22 @@
 </ul>
 </li>
 <li><p><code>Fetch</code>新API</p>
-<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">postData</span>(<span class="hljs-params">url, data</span>) </span>&#123;<br><span class="hljs-comment">// Default options are marked with *</span><br>  <span class="hljs-keyword">return</span> fetch(url, &#123;<br>      body: <span class="hljs-built_in">JSON</span>.stringify(data), <span class="hljs-comment">// must match &#x27;Content-Type&#x27; header</span><br>      cache: <span class="hljs-string">&quot;no-cache&quot;</span>, <span class="hljs-comment">// *default, no-cache, reload, force-cache, only-if-cached</span><br>      credentials: <span class="hljs-string">&quot;same-origin&quot;</span>, <span class="hljs-comment">// include, same-origin, *omit</span><br>      headers: &#123;<br>        <span class="hljs-string">&quot;user-agent&quot;</span>: <span class="hljs-string">&quot;Mozilla/4.0 MDN Example&quot;</span>,<br>       <span class="hljs-string">&quot;content-type&quot;</span>: <span class="hljs-string">&quot;application/json&quot;</span><br>      &#125;,<br>      method: <span class="hljs-string">&quot;POST&quot;</span>, <span class="hljs-comment">// *GET, POST, PUT, DELETE, etc.</span><br>      mode: <span class="hljs-string">&quot;cors&quot;</span>, <span class="hljs-comment">// no-cors, cors, *same-origin</span><br>      redirect: <span class="hljs-string">&quot;follow&quot;</span>, <span class="hljs-comment">// manual, *follow, error</span><br>      referrer: <span class="hljs-string">&quot;no-referrer&quot;</span> <span class="hljs-comment">// *client, no-referrer</span><br>      &#125;).then(<span class="hljs-function"><span class="hljs-params">response</span> =&gt;</span> response.json()); <span class="hljs-comment">// parses response to JSON</span><br>  &#125;<br></code></pre></div></td></tr></table></figure></li>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">postData</span>(<span class="hljs-params">url, data</span>) </span>&#123;
+<span class="hljs-comment">// Default options are marked with *</span>
+  <span class="hljs-keyword">return</span> fetch(url, &#123;
+      body: <span class="hljs-built_in">JSON</span>.stringify(data), <span class="hljs-comment">// must match &#x27;Content-Type&#x27; header</span>
+      cache: <span class="hljs-string">&quot;no-cache&quot;</span>, <span class="hljs-comment">// *default, no-cache, reload, force-cache, only-if-cached</span>
+      credentials: <span class="hljs-string">&quot;same-origin&quot;</span>, <span class="hljs-comment">// include, same-origin, *omit</span>
+      headers: &#123;
+        <span class="hljs-string">&quot;user-agent&quot;</span>: <span class="hljs-string">&quot;Mozilla/4.0 MDN Example&quot;</span>,
+       <span class="hljs-string">&quot;content-type&quot;</span>: <span class="hljs-string">&quot;application/json&quot;</span>
+      &#125;,
+      method: <span class="hljs-string">&quot;POST&quot;</span>, <span class="hljs-comment">// *GET, POST, PUT, DELETE, etc.</span>
+      mode: <span class="hljs-string">&quot;cors&quot;</span>, <span class="hljs-comment">// no-cors, cors, *same-origin</span>
+      redirect: <span class="hljs-string">&quot;follow&quot;</span>, <span class="hljs-comment">// manual, *follow, error</span>
+      referrer: <span class="hljs-string">&quot;no-referrer&quot;</span> <span class="hljs-comment">// *client, no-referrer</span>
+      &#125;).then(<span class="hljs-function"><span class="hljs-params">response</span> =&gt;</span> response.json()); <span class="hljs-comment">// parses response to JSON</span>
+  &#125;</code></pre></div></li>
 </ul>
 <h3 id="CORS跨域"><a href="#CORS跨域" class="headerlink" title="CORS跨域"></a><code>CORS</code>跨域</h3><p><a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2016/04/cors.html">跨域资源共享 CORS 详解 - 阮一峰</a></p>
 <p>跨源资源共享标准通过新增一系列 HTTP 头，让服务器能声明那些来源可以通过浏览器访问该服务器上的各类资源</p>
@@ -302,7 +374,8 @@
 <li><p><code>Access-Control-Allow-Credentials</code>:是否允许请求带有 cookie</p>
 <p>如果要发送<code>Cookie，Access-Control-Allow-Origin</code>就不能设为星号，必须指定明确的、与请求网页一致的域名</p>
 <p>并且 ajax 中要打开</p>
-<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> xhr = <span class="hljs-keyword">new</span> XMLHttpRequest();<br>xhr.withCredentials = <span class="hljs-literal">true</span>;  <span class="xml">&lt;-------</span><br></code></pre></div></td></tr></table></figure></li>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> xhr = <span class="hljs-keyword">new</span> XMLHttpRequest();
+xhr.withCredentials = <span class="hljs-literal">true</span>;  <span class="xml">&lt;-------</span></code></pre></div></li>
 <li><p><code>Access-Control-Expose-Headers</code>: 自定义字段</p>
 </li>
 </ul>

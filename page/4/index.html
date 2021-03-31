@@ -343,7 +343,9 @@ copyWithin(target,s
             
           
           数组数组原生具备iterator接口（即默认部署了Symbol.iterator属性），for…of循环本质上就是调用这个接口产生的遍历器
-for…of循环可以代替数组实例的forEach方法123456const arr = [&#x27;red&#x27;, &#x27;green&#x27;, &#x27;blue&#x27;];arr.forEach(function (element, 
+for…of循环可以代替数组实例的forEach方法const arr = [&#x27;red&#x27;, &#x27;green&#x27;, &#x27;blue&#x27;];
+
+arr.forEach(function (element, inde
         </a>
       </p>
 
@@ -398,7 +400,8 @@ for…of循环可以代替数组实例的forEach方法123456const arr = [&#x27;r
 跟踪记录被引用的次数
 次数为0的值所占的内存会被下次垃圾收集回收
 
-循环引用123objA.obj = objBobjB.obj = ob
+循环引用objA.obj = objB
+objB.obj = objA
         </a>
       </p>
 
@@ -489,7 +492,10 @@ ECMAScript规范中对词法环境的描述如下：词法环境是用来定义 
 其他函数的参数是上一个函数的执行结果
 执行到最后return出一个函数才算执行结束
 
-实现lodash1234567891011121314151617181920var flow = function(funcs) &#123;    var length = funcs.length    var index =
+实现lodashvar flow = function(funcs) &#123;
+    var length = funcs.length
+    var index = length
+    while (index--) &
         </a>
       </p>
 
@@ -589,7 +595,14 @@ ECMAScript规范中对词法环境的描述如下：词法环境是用来定义 
           sleep()
 执行挂起，延迟执行函数
 
-实现while循环123456789funciton sleep(delay) &#123;  let start = new Date().getTime()  while(new Date().getTime() - start &lt; delay) &#123;    continue  &#125;&#125;sleep(3000)console
+实现while循环funciton sleep(delay) &#123;
+  let start = new Date().getTime()
+  while(new Date().getTime() - start &lt; delay) &#123;
+    continue
+  &#125;
+&#125;
+sleep(3000)
+console.l
         </a>
       </p>
 

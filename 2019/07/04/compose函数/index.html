@@ -249,9 +249,38 @@
 <li>其他函数的参数是上一个函数的执行结果</li>
 <li>执行到最后return出一个函数才算执行结束</li>
 </ul>
-<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><h3 id="lodash"><a href="#lodash" class="headerlink" title="lodash"></a>lodash</h3><figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> flow = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">funcs</span>) </span>&#123;<br>    <span class="hljs-keyword">var</span> length = funcs.length<br>    <span class="hljs-keyword">var</span> index = length<br>    <span class="hljs-keyword">while</span> (index--) &#123;<br>        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> funcs[index] !== <span class="hljs-string">&#x27;function&#x27;</span>) &#123;<br>            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">TypeError</span>(<span class="hljs-string">&#x27;Expected a function&#x27;</span>);<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">...args</span>) </span>&#123;<br>        <span class="hljs-keyword">var</span> index = <span class="hljs-number">0</span><br>        <span class="hljs-keyword">var</span> result = length ? funcs[index].apply(<span class="hljs-built_in">this</span>, args) : args[<span class="hljs-number">0</span>]<br>        <span class="hljs-keyword">while</span> (++index &lt; length) &#123;<br>            result = funcs[index].call(<span class="hljs-built_in">this</span>, result)<br>        &#125;<br>        <span class="hljs-keyword">return</span> result<br>    &#125;<br>&#125;<br><span class="hljs-keyword">var</span> flowRight = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">funcs</span>) </span>&#123;<br>    <span class="hljs-keyword">return</span> flow(funcs.reverse())<br>&#125;<br></code></pre></div></td></tr></table></figure>
+<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><h3 id="lodash"><a href="#lodash" class="headerlink" title="lodash"></a>lodash</h3><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> flow = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">funcs</span>) </span>&#123;
+    <span class="hljs-keyword">var</span> length = funcs.length
+    <span class="hljs-keyword">var</span> index = length
+    <span class="hljs-keyword">while</span> (index--) &#123;
+        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> funcs[index] !== <span class="hljs-string">&#x27;function&#x27;</span>) &#123;
+            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">TypeError</span>(<span class="hljs-string">&#x27;Expected a function&#x27;</span>);
+        &#125;
+    &#125;
+    <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">...args</span>) </span>&#123;
+        <span class="hljs-keyword">var</span> index = <span class="hljs-number">0</span>
+        <span class="hljs-keyword">var</span> result = length ? funcs[index].apply(<span class="hljs-built_in">this</span>, args) : args[<span class="hljs-number">0</span>]
+        <span class="hljs-keyword">while</span> (++index &lt; length) &#123;
+            result = funcs[index].call(<span class="hljs-built_in">this</span>, result)
+        &#125;
+        <span class="hljs-keyword">return</span> result
+    &#125;
+&#125;
+<span class="hljs-keyword">var</span> flowRight = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">funcs</span>) </span>&#123;
+    <span class="hljs-keyword">return</span> flow(funcs.reverse())
+&#125;</code></pre></div>
 
-<h3 id="reduce"><a href="#reduce" class="headerlink" title="reduce"></a>reduce</h3><figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">compose</span>(<span class="hljs-params">...funcs</span>) </span>&#123;<br>  <span class="hljs-keyword">if</span> (funcs.length === <span class="hljs-number">0</span>) &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-params">arg</span> =&gt;</span> arg<br>  &#125;<br>  <span class="hljs-keyword">if</span> (funcs.length === <span class="hljs-number">1</span>) &#123;<br>    <span class="hljs-keyword">return</span> funcs[<span class="hljs-number">0</span>]<br>  &#125;<br>  <span class="hljs-comment">// 哭了就只用reduce一句。。。。</span><br>  <span class="hljs-keyword">return</span> funcs.reduce(<span class="hljs-function">(<span class="hljs-params">a, b</span>) =&gt;</span> <span class="hljs-function">(<span class="hljs-params">...args</span>) =&gt;</span> a(b(...args)))<br><br>&#125;<br></code></pre></div></td></tr></table></figure>
+<h3 id="reduce"><a href="#reduce" class="headerlink" title="reduce"></a>reduce</h3><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">compose</span>(<span class="hljs-params">...funcs</span>) </span>&#123;
+  <span class="hljs-keyword">if</span> (funcs.length === <span class="hljs-number">0</span>) &#123;
+    <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-params">arg</span> =&gt;</span> arg
+  &#125;
+  <span class="hljs-keyword">if</span> (funcs.length === <span class="hljs-number">1</span>) &#123;
+    <span class="hljs-keyword">return</span> funcs[<span class="hljs-number">0</span>]
+  &#125;
+  <span class="hljs-comment">// 哭了就只用reduce一句。。。。</span>
+  <span class="hljs-keyword">return</span> funcs.reduce(<span class="hljs-function">(<span class="hljs-params">a, b</span>) =&gt;</span> <span class="hljs-function">(<span class="hljs-params">...args</span>) =&gt;</span> a(b(...args)))
+
+&#125;</code></pre></div>
 
             </div>
             <hr>

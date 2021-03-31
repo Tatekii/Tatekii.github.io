@@ -194,7 +194,10 @@
           定义把接受多个参数的函数变换成接受一个单一参数（最初函数的第一个参数）的函数，并且返回接受余下的参数而且返回结果的新函数的技术。柯里化（currying）是一种模式，其中具有多个参数的函数被分解为多个函数，当被串联调用时，将一次一个地累积所有需要的参数。这种技术帮助编写函数式风格的代码，使代码更易读、紧凑。
 优势
 参数复用
-1234567891011121314151617181920212223
+// 正常正则验证字符串 reg.test(txt)
+
+// 函数封装后
+
         </a>
       </p>
 
@@ -241,7 +244,12 @@
 该功能由http-proxy-middleware提供
 
 开发环境中经常会用ajax获取假数据模拟渲染页面
-123456789methods: &#123;  getHomeInfo () &#123;    axios.get(&#x27;/static/testData/index.json&#x27;)      .then(this.getHomeInfoSucc)  &#125;,  
+methods: &#123;
+  getHomeInfo () &#123;
+    axios.get(&#x27;/static/testData/index.json&#x27;)
+      .then(this.getHomeInfoSucc)
+  &#125;,
+  getH
         </a>
       </p>
 
@@ -381,7 +389,13 @@ created
           
             
           
-          Observer()12345678910111213141516171819202122232425262728// 数据劫持的实现function observe(obj) &#123;  if (!obj || typeof obj !== &#x27;object&#x27;) return  Object.keys(obj).forEach(key =&gt; &#123;    def
+          Observer()// 数据劫持的实现
+function observe(obj) &#123;
+  if (!obj || typeof obj !== &#x27;object&#x27;) return
+  Object.keys(obj).forEach(key =&gt; &#123;
+    defineReactive(obj, key, obj[key])
+  &#125;)
+&
         </a>
       </p>
 
@@ -426,7 +440,15 @@ created
           
           
 向 setTimeout 传参
-1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586function func1(name)
+function func1(name) &#123;
+  return function () &#123;
+    alert(name + &quot;最帅&quot;);
+  &#125;;
+&#125;
+var n1 = func1(&quot;刘德华&quot;);
+setTimeout(n1, 1000);
+//使用setTimeout第三个参数
+s
         </a>
       </p>
 
@@ -529,12 +551,16 @@ hybrid的实现
           
           MVC/MVP/MVVM
 MVCModel-View-Controller
-12345View-&gt;Controller-&gt;Model^                     ||                     ||                     v&lt;---------------------&lt;
+View-&gt;Controller-&gt;Model
+^                     |
+|                     |
+|                     v
+&lt;---------------------&lt;
 
 
 View 传送指令到 Controller ；
 
-Co
+Con
         </a>
       </p>
 
@@ -580,7 +606,10 @@ Co
 DOM变化的对比，放在js层来做
 目的：提高重绘性能
 
-js模拟12345678&lt;div class=&quot;&quot;container&gt;  &lt;ul id=&quot;list&quot;&gt;    &lt;li class=&quot;class&quot;&gt;item1&lt;/li&gt;    &lt;li cla
+js模拟&lt;div class=&quot;&quot;container&gt;
+  &lt;ul id=&quot;list&quot;&gt;
+    &lt;li class=&quot;class&quot;&gt;item1&lt;/li&gt;
+    &lt;li class=&q
         </a>
       </p>
 
@@ -627,7 +656,11 @@ js模拟12345678&lt;div class=&quot;&quot;container&gt;  &lt;ul id=&quot;list&qu
 语法
 
 export / export
-123456789101112131415161718192021222324252627// 这是 Node 中向外暴露成员的形式：// module.exports = &#123;&#125;// ES6中导入模块，使用 import 模块名称 from &#x27;模块标识符&#x27; import &#x27;表示路径&#x27;// 在
+// 这是 Node 中向外暴露成员的形式：
+// module.exports = &#123;&#125;
+
+// ES6中导入模块，使用 import 模块名称 from &#x27;模块标识符&#x27; import &#x27;表示路径&#x27;
+// 在 ES6 中，使用 export default 和 export 向外暴露成员：
         </a>
       </p>
 

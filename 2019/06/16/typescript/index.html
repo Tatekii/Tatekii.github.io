@@ -256,72 +256,169 @@
 <li>never</li>
 </ul>
 <h2 id="类型校验"><a href="#类型校验" class="headerlink" title="类型校验"></a>类型校验</h2><p> 不按照定义的数据类型赋值报错</p>
-<h3 id="array-数组"><a href="#array-数组" class="headerlink" title="array/数组"></a>array/数组</h3>  <figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">//第一种</span><br><span class="hljs-keyword">var</span> arr1:number:[] = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>]<br><span class="hljs-comment">//第二种</span><br><span class="hljs-keyword">var</span> arr2:<span class="hljs-built_in">Array</span>&lt;number&gt; = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>]<br></code></pre></div></td></tr></table></figure>
+<h3 id="array-数组"><a href="#array-数组" class="headerlink" title="array/数组"></a>array/数组</h3>  <div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">//第一种</span>
+<span class="hljs-keyword">var</span> arr1:number:[] = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>]
+<span class="hljs-comment">//第二种</span>
+<span class="hljs-keyword">var</span> arr2:<span class="hljs-built_in">Array</span>&lt;number&gt; = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>]</code></pre></div>
 
 <ul>
 <li><p>数组的项中不能出现其他类型</p>
-<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> fibonacci: number[] = [<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-string">&#x27;2&#x27;</span>, <span class="hljs-number">3</span>, <span class="hljs-number">5</span>];<br><span class="hljs-comment">// = 后的类型被推断为number|string，前面是number，报错</span><br></code></pre></div></td></tr></table></figure></li>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> fibonacci: number[] = [<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-string">&#x27;2&#x27;</span>, <span class="hljs-number">3</span>, <span class="hljs-number">5</span>];
+<span class="hljs-comment">// = 后的类型被推断为number|string，前面是number，报错</span></code></pre></div></li>
 <li><p>数组的一些方法的参数类型也会受到限制</p>
-<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript">number[]的数组中push(<span class="hljs-string">&#x27;abc&#x27;</span>)报错<br><span class="hljs-comment">// abc是字符串</span><br></code></pre></div></td></tr></table></figure></li>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript">number[]的数组中push(<span class="hljs-string">&#x27;abc&#x27;</span>)报错
+<span class="hljs-comment">// abc是字符串</span></code></pre></div></li>
 <li><p>数组泛型</p>
 </li>
 <li><p>用接口表示数组</p>
 </li>
 <li><p>any/任意类型的数组</p>
-<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> list: any[] = [<span class="hljs-string">&#x27;Xcat Liu&#x27;</span>, <span class="hljs-number">25</span>, &#123; <span class="hljs-attr">website</span>: <span class="hljs-string">&#x27;http://xcatliu.com&#x27;</span> &#125;];<br></code></pre></div></td></tr></table></figure></li>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> list: any[] = [<span class="hljs-string">&#x27;Xcat Liu&#x27;</span>, <span class="hljs-number">25</span>, &#123; <span class="hljs-attr">website</span>: <span class="hljs-string">&#x27;http://xcatliu.com&#x27;</span> &#125;];</code></pre></div></li>
 <li><p>类数组/Array-like Object<br>常见的类数组都有自己的接口定义</p>
 </li>
 </ul>
 <h3 id="tuple-元组"><a href="#tuple-元组" class="headerlink" title="tuple/元组"></a>tuple/元组</h3><p>元组按一定顺序预定义数组结构中的重数据类型</p>
-  <figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> tuple1: [number,string,boolean];<br>tuple1 = [<span class="hljs-number">666</span>,<span class="hljs-string">&#x27;字符串&#x27;</span>,<span class="hljs-literal">true</span>]  <br></code></pre></div></td></tr></table></figure>
+  <div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> tuple1: [number,string,boolean];
+tuple1 = [<span class="hljs-number">666</span>,<span class="hljs-string">&#x27;字符串&#x27;</span>,<span class="hljs-literal">true</span>]</code></pre></div>
 
 <h3 id="enum-枚举"><a href="#enum-枚举" class="headerlink" title="enum/枚举"></a>enum/枚举</h3><p>实现考虑到某一变量可能的值，尽量用自然语言中含义清楚的单词来表达他的每一个值。这种方法叫做枚举方法，用这种方法定义的数据类型</p>
-  <figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript">enum Flag  &#123;<br>  success = <span class="hljs-number">1</span>,<br>  error = <span class="hljs-number">2</span><br>&#125;<br><span class="hljs-keyword">let</span> s:Flag = Flag.success<br><span class="hljs-built_in">console</span>.log(s) <span class="hljs-comment">// 1</span><br><span class="hljs-comment">// 未赋值则打印下标</span><br></code></pre></div></td></tr></table></figure>
+  <div class="hljs code-wrapper"><pre><code class="hljs javascript">enum Flag  &#123;
+  success = <span class="hljs-number">1</span>,
+  error = <span class="hljs-number">2</span>
+&#125;
+<span class="hljs-keyword">let</span> s:Flag = Flag.success
+<span class="hljs-built_in">console</span>.log(s) <span class="hljs-comment">// 1</span>
+<span class="hljs-comment">// 未赋值则打印下标</span></code></pre></div>
 
 <h3 id="任意值类型-any"><a href="#任意值类型-any" class="headerlink" title="任意值类型 any"></a>任意值类型 any</h3><blockquote>
 <p>ts中的普通类型在赋值过程中不能改变类型</p>
 </blockquote>
-  <figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> myFavoriteNumber: string = <span class="hljs-string">&#x27;seven&#x27;</span>;<br>myFavoriteNumber = <span class="hljs-number">7</span>;<br><br><span class="hljs-comment">// index.ts(2,1): error TS2322: Type &#x27;number&#x27; is not  assignable to type &#x27;string&#x27;.</span><br><br><span class="hljs-comment">// any类型就可以改变</span><br><span class="hljs-keyword">let</span> myFavoriteNumber: any = <span class="hljs-string">&#x27;seven&#x27;</span>;<br>myFavoriteNumber = <span class="hljs-number">7</span>;<br></code></pre></div></td></tr></table></figure>
+  <div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> myFavoriteNumber: string = <span class="hljs-string">&#x27;seven&#x27;</span>;
+myFavoriteNumber = <span class="hljs-number">7</span>;
+
+<span class="hljs-comment">// index.ts(2,1): error TS2322: Type &#x27;number&#x27; is not  assignable to type &#x27;string&#x27;.</span>
+
+<span class="hljs-comment">// any类型就可以改变</span>
+<span class="hljs-keyword">let</span> myFavoriteNumber: any = <span class="hljs-string">&#x27;seven&#x27;</span>;
+myFavoriteNumber = <span class="hljs-number">7</span>;</code></pre></div>
 
 <ul>
 <li>任意值上可以访问任何属性和方法，</li>
 <li>声明一个变量为任意值之后，对它的任何操作，返回的内容的类型都是任意值</li>
-<li>未声明类型的变量，自动给识别为任意类型<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> something;<br>something = <span class="hljs-string">&#x27;seven&#x27;</span>;<br>something = <span class="hljs-number">7</span>;<br><br>something.setName(<span class="hljs-string">&#x27;Tom&#x27;</span>);<br></code></pre></div></td></tr></table></figure></li>
+<li>未声明类型的变量，自动给识别为任意类型<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> something;
+something = <span class="hljs-string">&#x27;seven&#x27;</span>;
+something = <span class="hljs-number">7</span>;
+
+something.setName(<span class="hljs-string">&#x27;Tom&#x27;</span>);</code></pre></div></li>
 </ul>
 <h3 id="其他类型-never"><a href="#其他类型-never" class="headerlink" title="其他类型/never"></a>其他类型/never</h3><p>  表示从不会出现的值</p>
-  <figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> a:never<br>a = (<span class="hljs-function">()=&gt;</span>&#123;<br>  <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">&#x27;错误&#x27;</span>)<br>&#125;)<br></code></pre></div></td></tr></table></figure>
+  <div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> a:never
+a = (<span class="hljs-function">()=&gt;</span>&#123;
+  <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">&#x27;错误&#x27;</span>)
+&#125;)</code></pre></div>
 
-<h3 id="null-undefined是never的子类型"><a href="#null-undefined是never的子类型" class="headerlink" title="null/undefined是never的子类型"></a>null/undefined是never的子类型</h3>  <figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> num1:<span class="hljs-literal">undefined</span><br><span class="hljs-keyword">var</span> num2:<span class="hljs-literal">undefined</span> | number<br>num = <span class="hljs-number">2</span><br><span class="hljs-built_in">console</span>.log(num2) <span class="hljs-comment">//2</span><br><br><span class="hljs-keyword">var</span> num3:<span class="hljs-literal">null</span><br>num = <span class="hljs-literal">null</span> <span class="hljs-comment">// ok</span><br>num = 其他都报错<br></code></pre></div></td></tr></table></figure>
+<h3 id="null-undefined是never的子类型"><a href="#null-undefined是never的子类型" class="headerlink" title="null/undefined是never的子类型"></a>null/undefined是never的子类型</h3>  <div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> num1:<span class="hljs-literal">undefined</span>
+<span class="hljs-keyword">var</span> num2:<span class="hljs-literal">undefined</span> | number
+num = <span class="hljs-number">2</span>
+<span class="hljs-built_in">console</span>.log(num2) <span class="hljs-comment">//2</span>
+
+<span class="hljs-keyword">var</span> num3:<span class="hljs-literal">null</span>
+num = <span class="hljs-literal">null</span> <span class="hljs-comment">// ok</span>
+num = 其他都报错</code></pre></div>
 
 <h3 id="void"><a href="#void" class="headerlink" title="void"></a>void</h3><p>  一般用于定义的方法没有return</p>
-  <figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">yell</span>(<span class="hljs-params"></span>):<span class="hljs-title">void</span></span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;666&#x27;</span>)<br>&#125;<br></code></pre></div></td></tr></table></figure>
+  <div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">yell</span>(<span class="hljs-params"></span>):<span class="hljs-title">void</span></span>&#123;
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;666&#x27;</span>)
+&#125;</code></pre></div>
 
 <h3 id="类型推论"><a href="#类型推论" class="headerlink" title="类型推论"></a>类型推论</h3><ul>
 <li><p>如果没有明确的指定类型，那么 TypeScript 会依照类型推论（Type      Inference）的规则推断出一个类型。  </p>
-<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> myFavoriteNumber = <span class="hljs-string">&#x27;seven&#x27;</span>;<br><span class="hljs-comment">// 被自动推测为string类型</span><br>myFavoriteNumber = <span class="hljs-number">7</span>;<br><br><span class="hljs-comment">// index.ts(2,1): error TS2322: Type &#x27;number&#x27; is not assignable to type &#x27;string&#x27;.</span><br></code></pre></div></td></tr></table></figure></li>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> myFavoriteNumber = <span class="hljs-string">&#x27;seven&#x27;</span>;
+<span class="hljs-comment">// 被自动推测为string类型</span>
+myFavoriteNumber = <span class="hljs-number">7</span>;
+
+<span class="hljs-comment">// index.ts(2,1): error TS2322: Type &#x27;number&#x27; is not assignable to type &#x27;string&#x27;.</span></code></pre></div></li>
 <li><p>！！！！未声明类型的变量！！！！！<br>自动给识别为任意类型<br>不会被类型检查推测</p>
 </li>
 </ul>
-<h3 id="联合类型"><a href="#联合类型" class="headerlink" title="联合类型"></a>联合类型</h3>  <figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> myFavoriteNumber: string | number;<br>myFavoriteNumber = <span class="hljs-string">&#x27;seven&#x27;</span>;<br>myFavoriteNumber = <span class="hljs-number">7</span>;<br></code></pre></div></td></tr></table></figure>
+<h3 id="联合类型"><a href="#联合类型" class="headerlink" title="联合类型"></a>联合类型</h3>  <div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> myFavoriteNumber: string | number;
+myFavoriteNumber = <span class="hljs-string">&#x27;seven&#x27;</span>;
+myFavoriteNumber = <span class="hljs-number">7</span>;</code></pre></div>
 
 <ul>
 <li>可以访问联合类型的共有的属性或方法</li>
 <li>联合类型的变量在赋值的时候，一样会被推断出一个类型</li>
 </ul>
-  <figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getString</span>(<span class="hljs-params">something: string | number</span>): <span class="hljs-title">string</span> </span>&#123;<br>  <span class="hljs-keyword">return</span> something.toString();<br>&#125;<br><span class="hljs-keyword">let</span> myFavoriteNumber: string | number;<br>myFavoriteNumber = <span class="hljs-string">&#x27;seven&#x27;</span>;<br><span class="hljs-built_in">console</span>.log(myFavoriteNumber.length); <span class="hljs-comment">// 5</span><br>myFavoriteNumber = <span class="hljs-number">7</span>;<br><span class="hljs-built_in">console</span>.log(myFavoriteNumber.length); <span class="hljs-comment">// 编译时报错</span><br></code></pre></div></td></tr></table></figure>
+  <div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getString</span>(<span class="hljs-params">something: string | number</span>): <span class="hljs-title">string</span> </span>&#123;
+  <span class="hljs-keyword">return</span> something.toString();
+&#125;
+<span class="hljs-keyword">let</span> myFavoriteNumber: string | number;
+myFavoriteNumber = <span class="hljs-string">&#x27;seven&#x27;</span>;
+<span class="hljs-built_in">console</span>.log(myFavoriteNumber.length); <span class="hljs-comment">// 5</span>
+myFavoriteNumber = <span class="hljs-number">7</span>;
+<span class="hljs-built_in">console</span>.log(myFavoriteNumber.length); <span class="hljs-comment">// 编译时报错</span></code></pre></div>
 
 <ul>
 <li><p>类型别名常用于联合类型</p>
-<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript">type Name = string;<br>type NameResolver = <span class="hljs-function">() =&gt;</span> string;<br>type NameOrResolver = Name | NameResolver;<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getName</span>(<span class="hljs-params">n: NameOrResolver</span>): <span class="hljs-title">Name</span> </span>&#123;<br>  <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> n === <span class="hljs-string">&#x27;string&#x27;</span>) &#123;<br>    <span class="hljs-keyword">return</span> n;<br>  &#125; <span class="hljs-keyword">else</span> &#123;<br>    <span class="hljs-keyword">return</span> n();<br>  &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure></li>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript">type Name = string;
+type NameResolver = <span class="hljs-function">() =&gt;</span> string;
+type NameOrResolver = Name | NameResolver;
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getName</span>(<span class="hljs-params">n: NameOrResolver</span>): <span class="hljs-title">Name</span> </span>&#123;
+  <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> n === <span class="hljs-string">&#x27;string&#x27;</span>) &#123;
+    <span class="hljs-keyword">return</span> n;
+  &#125; <span class="hljs-keyword">else</span> &#123;
+    <span class="hljs-keyword">return</span> n();
+  &#125;
+&#125;</code></pre></div></li>
 </ul>
 <h3 id="对象的类型-接口-interfaces"><a href="#对象的类型-接口-interfaces" class="headerlink" title="对象的类型-接口/interfaces"></a>对象的类型-接口/interfaces</h3><ul>
 <li>在面向对象语言中，接口（Interfaces）是一个很重要的概念，它是对行为的抽象，而具体如何行动需要由类（classes）去实现（implement）。</li>
-<li>TypeScript 中的接口是一个非常灵活的概念，除了可用于对类的一部分行为进行抽象以外，也常用于对「对象的形状（Shape）」进行描述。<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript">interface Person &#123;<br>name: string;<br>age: number;<br>&#125;<br><span class="hljs-keyword">let</span> xiaoming: Person = &#123;<br>name: <span class="hljs-string">&#x27;xiaoming&#x27;</span>,<br>age: <span class="hljs-number">66</span><br>&#125;<br></code></pre></div></td></tr></table></figure></li>
+<li>TypeScript 中的接口是一个非常灵活的概念，除了可用于对类的一部分行为进行抽象以外，也常用于对「对象的形状（Shape）」进行描述。<div class="hljs code-wrapper"><pre><code class="hljs javascript">interface Person &#123;
+name: string;
+age: number;
+&#125;
+<span class="hljs-keyword">let</span> xiaoming: Person = &#123;
+name: <span class="hljs-string">&#x27;xiaoming&#x27;</span>,
+age: <span class="hljs-number">66</span>
+&#125;</code></pre></div></li>
 <li>赋值时，变量的形状必须和接口的形状保持一致，属性不多也不少<ul>
-<li>可选属性<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript">age?: number;<br><span class="hljs-comment">//age可有可无</span><br></code></pre></div></td></tr></table></figure></li>
-<li>任意属性<br>一旦定义了任意属性，那么确定属性和可选属性的类型都必须是它的类型的子集<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript">interface Person &#123;<br>name: string;<br>age?: number;<br>[propName: string]: string;<br>&#125;<br><br><span class="hljs-keyword">let</span> tom: Person = &#123;<br>    name: <span class="hljs-string">&#x27;Tom&#x27;</span>,<br>    age: <span class="hljs-number">25</span>,<br>    gender: <span class="hljs-string">&#x27;male&#x27;</span><br>&#125;;<br><span class="hljs-comment">//age?--&gt;25是number--&gt;number不是[propName: string]: string;的子集</span><br><br><span class="hljs-comment">// index.ts(3,5): error TS2411: Property &#x27;age&#x27; of type    &#x27;number&#x27; is not assignable to string index type &#x27;string&#x27;.</span><br><span class="hljs-comment">// index.ts(7,5): error TS2322: Type &#x27;&#123; [x: string]: string |     number; name: string; age: number; gender: string; &#125;&#x27; is not    assignable to type &#x27;Person&#x27;.</span><br><span class="hljs-comment">//   Index signatures are incompatible.</span><br><span class="hljs-comment">//     Type &#x27;string | number&#x27; is not assignable to type     &#x27;string&#x27;.</span><br><span class="hljs-comment">//       Type &#x27;number&#x27; is not assignable to type &#x27;string&#x27;.</span><br></code></pre></div></td></tr></table></figure>
+<li>可选属性<div class="hljs code-wrapper"><pre><code class="hljs javascript">age?: number;
+<span class="hljs-comment">//age可有可无</span></code></pre></div></li>
+<li>任意属性<br>一旦定义了任意属性，那么确定属性和可选属性的类型都必须是它的类型的子集<div class="hljs code-wrapper"><pre><code class="hljs javascript">interface Person &#123;
+name: string;
+age?: number;
+[propName: string]: string;
+&#125;
+
+<span class="hljs-keyword">let</span> tom: Person = &#123;
+    name: <span class="hljs-string">&#x27;Tom&#x27;</span>,
+    age: <span class="hljs-number">25</span>,
+    gender: <span class="hljs-string">&#x27;male&#x27;</span>
+&#125;;
+<span class="hljs-comment">//age?--&gt;25是number--&gt;number不是[propName: string]: string;的子集</span>
+
+<span class="hljs-comment">// index.ts(3,5): error TS2411: Property &#x27;age&#x27; of type    &#x27;number&#x27; is not assignable to string index type &#x27;string&#x27;.</span>
+<span class="hljs-comment">// index.ts(7,5): error TS2322: Type &#x27;&#123; [x: string]: string |     number; name: string; age: number; gender: string; &#125;&#x27; is not    assignable to type &#x27;Person&#x27;.</span>
+<span class="hljs-comment">//   Index signatures are incompatible.</span>
+<span class="hljs-comment">//     Type &#x27;string | number&#x27; is not assignable to type     &#x27;string&#x27;.</span>
+<span class="hljs-comment">//       Type &#x27;number&#x27; is not assignable to type &#x27;string&#x27;.</span></code></pre></div>
 <ul>
-<li>只读属性<br>只能在创建的时候被赋值<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript">interface Person &#123;<br>readonly id: number;<br>name: string;<br>age?: number;<br>[propName: string]: any;<br>&#125;<br><br><span class="hljs-keyword">let</span> tom: Person = &#123;<br>  id: <span class="hljs-number">89757</span>,<br>  name: <span class="hljs-string">&#x27;Tom&#x27;</span>,<br>  gender: <span class="hljs-string">&#x27;male&#x27;</span><br>&#125;;<br><br>tom.id = <span class="hljs-number">9527</span>;<br><br><span class="hljs-comment">// index.ts(14,5): error TS2540: Cannot assign to &#x27;id&#x27; because it is a constant or a read-only property.</span><br></code></pre></div></td></tr></table></figure></li>
+<li>只读属性<br>只能在创建的时候被赋值<div class="hljs code-wrapper"><pre><code class="hljs javascript">interface Person &#123;
+readonly id: number;
+name: string;
+age?: number;
+[propName: string]: any;
+&#125;
+
+<span class="hljs-keyword">let</span> tom: Person = &#123;
+  id: <span class="hljs-number">89757</span>,
+  name: <span class="hljs-string">&#x27;Tom&#x27;</span>,
+  gender: <span class="hljs-string">&#x27;male&#x27;</span>
+&#125;;
+
+tom.id = <span class="hljs-number">9527</span>;
+
+<span class="hljs-comment">// index.ts(14,5): error TS2540: Cannot assign to &#x27;id&#x27; because it is a constant or a read-only property.</span></code></pre></div></li>
 </ul>
 </li>
 </ul>
@@ -329,13 +426,35 @@
 </ul>
 <h3 id="函数的类型"><a href="#函数的类型" class="headerlink" title="函数的类型"></a>函数的类型</h3><ul>
 <li><p>函数声明</p>
-<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sum</span>(<span class="hljs-params">x: number, y: number</span>): <span class="hljs-title">number</span> </span>&#123;<br>  <span class="hljs-keyword">return</span> x + y;<br>&#125;<br><span class="hljs-comment">// 输入的参数不能多也不能少</span><br></code></pre></div></td></tr></table></figure></li>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sum</span>(<span class="hljs-params">x: number, y: number</span>): <span class="hljs-title">number</span> </span>&#123;
+  <span class="hljs-keyword">return</span> x + y;
+&#125;
+<span class="hljs-comment">// 输入的参数不能多也不能少</span></code></pre></div></li>
 <li><p>函数表达式<br>！！！这里不是箭头函数</p>
-<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> mySum: <span class="hljs-function">(<span class="hljs-params">x: number, y: number</span>) =&gt;</span> number&#123;<br>  <span class="hljs-keyword">return</span> x + y<br>&#125;<br><span class="hljs-keyword">let</span> mySum = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">x: number, y: number</span>): <span class="hljs-title">number</span> </span>&#123;<br>  <span class="hljs-keyword">return</span> x + y;<br>&#125;;<br><span class="hljs-comment">//在 TypeScript 的类型定义中，=&gt; 用来表示函数的定义，左边是输入类型，需要用括号括起来，右边是输出类型。</span><br></code></pre></div></td></tr></table></figure></li>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> mySum: <span class="hljs-function">(<span class="hljs-params">x: number, y: number</span>) =&gt;</span> number&#123;
+  <span class="hljs-keyword">return</span> x + y
+&#125;
+<span class="hljs-keyword">let</span> mySum = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">x: number, y: number</span>): <span class="hljs-title">number</span> </span>&#123;
+  <span class="hljs-keyword">return</span> x + y;
+&#125;;
+<span class="hljs-comment">//在 TypeScript 的类型定义中，=&gt; 用来表示函数的定义，左边是输入类型，需要用括号括起来，右边是输出类型。</span></code></pre></div></li>
 <li><p>用接口定义函数的形状</p>
-<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript">interface SearchFunc &#123;<br>  (source: string, <span class="hljs-attr">subString</span>: string): boolean;<br>&#125;<br><br><span class="hljs-keyword">let</span> mySearch: SearchFunc;<br>mySearch = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">source: string, subString: string</span>) </span>&#123;<br>  <span class="hljs-keyword">return</span> source.search(subString) !== -<span class="hljs-number">1</span>;<br>&#125;<br></code></pre></div></td></tr></table></figure></li>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript">interface SearchFunc &#123;
+  (source: string, <span class="hljs-attr">subString</span>: string): boolean;
+&#125;
+
+<span class="hljs-keyword">let</span> mySearch: SearchFunc;
+mySearch = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">source: string, subString: string</span>) </span>&#123;
+  <span class="hljs-keyword">return</span> source.search(subString) !== -<span class="hljs-number">1</span>;
+&#125;</code></pre></div></li>
 <li><p>可选参数和对象的可选属性一样，加?</p>
-  <figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// 可选参数只能配置到参数们的末尾</span><br>firstName?: string, <span class="hljs-attr">lastName</span>: string<br><span class="hljs-comment">// 报错！！！！</span><br><br><br>firstName: string, lastName?: string<br><span class="hljs-comment">// ok</span><br></code></pre></div></td></tr></table></figure></li>
+  <div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// 可选参数只能配置到参数们的末尾</span>
+firstName?: string, <span class="hljs-attr">lastName</span>: string
+<span class="hljs-comment">// 报错！！！！</span>
+
+
+firstName: string, lastName?: string
+<span class="hljs-comment">// ok</span></code></pre></div></li>
 <li><p>参数默认值</p>
 <p>  <code>(firstName: string, lastName: string = &#39;Cat&#39;)</code><br>  识别为可选参数<br>  不再受可选择参数必须放在必须参数后面的限制</p>
 </li>
@@ -344,14 +463,29 @@
 <li>不同输入输出选项的函数，可以重复定义多次，把精确的定义写在前面</li>
 <li>TypeScript 会优先从最前面的函数定义开始匹配</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">reverse</span>(<span class="hljs-params">x: number</span>): <span class="hljs-title">number</span></span>;<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">reverse</span>(<span class="hljs-params">x: string</span>): <span class="hljs-title">string</span></span>;<br><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">reverse</span>(<span class="hljs-params">x: number | string</span>): <span class="hljs-title">number</span> | <span class="hljs-title">string</span> </span>&#123;<br>  <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> x === <span class="hljs-string">&#x27;number&#x27;</span>) &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">Number</span>(x.toString().split(<span class="hljs-string">&#x27;&#x27;</span>).reverse().join(<span class="hljs-string">&#x27;&#x27;</span>));<br>  &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> x === <span class="hljs-string">&#x27;string&#x27;</span>) &#123;<br>    <span class="hljs-keyword">return</span> x.split(<span class="hljs-string">&#x27;&#x27;</span>).reverse().join(<span class="hljs-string">&#x27;&#x27;</span>);<br>  &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure></li>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">reverse</span>(<span class="hljs-params">x: number</span>): <span class="hljs-title">number</span></span>;
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">reverse</span>(<span class="hljs-params">x: string</span>): <span class="hljs-title">string</span></span>;
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">reverse</span>(<span class="hljs-params">x: number | string</span>): <span class="hljs-title">number</span> | <span class="hljs-title">string</span> </span>&#123;
+  <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> x === <span class="hljs-string">&#x27;number&#x27;</span>) &#123;
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">Number</span>(x.toString().split(<span class="hljs-string">&#x27;&#x27;</span>).reverse().join(<span class="hljs-string">&#x27;&#x27;</span>));
+  &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> x === <span class="hljs-string">&#x27;string&#x27;</span>) &#123;
+    <span class="hljs-keyword">return</span> x.split(<span class="hljs-string">&#x27;&#x27;</span>).reverse().join(<span class="hljs-string">&#x27;&#x27;</span>);
+  &#125;
+&#125;</code></pre></div></li>
 </ul>
 <h3 id="类型断言"><a href="#类型断言" class="headerlink" title="类型断言"></a>类型断言</h3><ul>
 <li>在不确定类型的时候就访问方法或者属性会报错</li>
 <li>此时使用类型断言，在需要断言的变量之前加上<type></li>
 <li>断言只能存在联合类型中的类型</li>
 </ul>
-  <figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getLength</span>(<span class="hljs-params">something: string | number</span>): <span class="hljs-title">number</span> </span>&#123;<br>  <span class="hljs-keyword">if</span> ((&lt;string&gt;something).length) &#123;<br>      <span class="hljs-keyword">return</span> (&lt;string&gt;something).length<br>  &#125; <span class="hljs-keyword">else</span> &#123;<br>      <span class="hljs-keyword">return</span> something.toString().length<br>  &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+  <div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getLength</span>(<span class="hljs-params">something: string | number</span>): <span class="hljs-title">number</span> </span>&#123;
+  <span class="hljs-keyword">if</span> ((&lt;string&gt;something).length) &#123;
+      <span class="hljs-keyword">return</span> (&lt;string&gt;something).length
+  &#125; <span class="hljs-keyword">else</span> &#123;
+      <span class="hljs-keyword">return</span> something.toString().length
+  &#125;
+&#125;</code></pre></div>
 
 <h3 id="声明语句"><a href="#声明语句" class="headerlink" title="声明语句"></a>声明语句</h3><ul>
 <li>declare var 声明全局变量</li>

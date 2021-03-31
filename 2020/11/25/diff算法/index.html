@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1k 字
+      999 字
     </span>
   
 
@@ -275,7 +275,12 @@
 </ul>
 <h3 id="vue3的inferno"><a href="#vue3的inferno" class="headerlink" title="vue3的inferno"></a>vue3的inferno</h3><ul>
 <li><p>文本diff-&gt;排除相同的前置和后置元素</p>
-<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript">a,b,c<br>| | |<br>-------<br>|   | |<br>a,e,b,c<br><br></code></pre></div></td></tr></table></figure>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript">a,b,c
+| | |
+-------
+|   | |
+a,e,b,c
+</code></pre></div>
 <ul>
 <li>分别从新旧节点的头和尾出发</li>
 <li>依次遍历到key值不一样时停止 </li>
@@ -283,13 +288,21 @@
 </ul>
 </li>
 <li><p>文本diff后，使用剩余新children的长度建立source索引数组</p>
-<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript">oldChildren = [b,c,d,f]<br>newChildren = [c,d,b,g]<br>source = [-<span class="hljs-number">1</span>,-<span class="hljs-number">1</span>,-<span class="hljs-number">1</span>,-<span class="hljs-number">1</span>]<br><span class="hljs-comment">// 默认全为-1</span><br><span class="hljs-comment">// 如果在旧children中匹配到key，则把该位置的-1改为旧vNode的索引，并且patch该节点</span><br><span class="hljs-comment">// 比如</span><br>source = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">0</span>,-<span class="hljs-number">1</span>]<br></code></pre></div></td></tr></table></figure></li>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript">oldChildren = [b,c,d,f]
+newChildren = [c,d,b,g]
+source = [-<span class="hljs-number">1</span>,-<span class="hljs-number">1</span>,-<span class="hljs-number">1</span>,-<span class="hljs-number">1</span>]
+<span class="hljs-comment">// 默认全为-1</span>
+<span class="hljs-comment">// 如果在旧children中匹配到key，则把该位置的-1改为旧vNode的索引，并且patch该节点</span>
+<span class="hljs-comment">// 比如</span>
+source = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">0</span>,-<span class="hljs-number">1</span>]</code></pre></div></li>
 <li><p>使用最大索引算法判断节点是否需要移动</p>
 </li>
 <li><p>根据source求出最长递增子序列</p>
-<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript">LIS = [<span class="hljs-number">0</span>，<span class="hljs-number">1</span>]<br><span class="hljs-comment">// LIS中存储的是source索引</span><br><span class="hljs-comment">// 表示新旧children中这几个节点的先后关系相同</span><br></code></pre></div></td></tr></table></figure></li>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript">LIS = [<span class="hljs-number">0</span>，<span class="hljs-number">1</span>]
+<span class="hljs-comment">// LIS中存储的是source索引</span>
+<span class="hljs-comment">// 表示新旧children中这几个节点的先后关系相同</span></code></pre></div></li>
 <li><p>根据LIS得出不进行移动的节点</p>
-<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript">[c,d]<br></code></pre></div></td></tr></table></figure></li>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript">[c,d]</code></pre></div></li>
 <li><p>从LIS和新children尾处建立指针处理余下节点</p>
 </li>
 </ul>
@@ -297,7 +310,60 @@
 <li>子序列：不要求连续</li>
 <li>字串：要求连续</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// 动态规划</span><br><span class="hljs-keyword">const</span> longestChildSequence = <span class="hljs-function"><span class="hljs-params">arr</span> =&gt;</span> &#123;<br>  <span class="hljs-keyword">let</span> len = arr.length<br>  <span class="hljs-keyword">if</span>(len &lt; <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span><br>  <span class="hljs-keyword">const</span> dp = <span class="hljs-built_in">Array</span>(len).fill(<span class="hljs-number">1</span>)<br>  <span class="hljs-comment">// dp[i]代表原始数组该位置的最长子序列长度</span><br>  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span> ; i &lt; len ; i++)&#123;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> j = <span class="hljs-number">0</span> ; j &lt; i ; j++)&#123;<br>      <span class="hljs-comment">// j遍历之前遍历过的所有元素</span><br>      <span class="hljs-comment">// 可能存在大小不一的递增序列，使用max取得最大值</span><br>      <span class="hljs-keyword">if</span>(arr[i] &gt; arr [j])&#123;<br>        dp[i] = <span class="hljs-built_in">Math</span>.max(dp[i],dp[j]+<span class="hljs-number">1</span>)<br>        <span class="hljs-comment">// [1,2,3,4,1,2,5]</span><br>        <span class="hljs-comment">// 如果只使用dp[j]+1 ，dp[6]会在[1,2,5]中得出结果3</span><br>        <span class="hljs-comment">// 使用max比较之前更长的序列[1，2，3，4，5]得到5</span><br><br>      &#125;<br>    &#125;<br>  &#125;<br>  <span class="hljs-keyword">return</span> <span class="hljs-built_in">Math</span>.max(...dp)<br>&#125;<br><br><span class="hljs-comment">// 贪心+二分</span><br><span class="hljs-keyword">const</span> longestChildSequence = <span class="hljs-function"><span class="hljs-params">arr</span> =&gt;</span> &#123;<br>  <span class="hljs-keyword">let</span> len = arr.length<br>  <span class="hljs-keyword">if</span>(len &lt; <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span><br>  <span class="hljs-keyword">const</span> res = [arr[<span class="hljs-number">0</span>]]<br>  <span class="hljs-comment">//将arr中后续元素arr[i]与res末尾元素比较</span><br>  <span class="hljs-comment">//大于则push进res</span><br>  <span class="hljs-comment">//小于则查找res中第一个比arr[i]大的元素并替换</span><br>  <span class="hljs-comment">//由于存在替换，子序列值不一定正确，但长度是正确的</span><br>  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span> ; i&lt; len ;i++)&#123;<br>    <span class="hljs-keyword">if</span>(arr[i]&gt;res[res.length-<span class="hljs-number">1</span>])&#123;<br>      res.push(arr[i])<br>    &#125;<span class="hljs-keyword">else</span>&#123;<br>      <span class="hljs-comment">// res中左右指针的index</span><br>      <span class="hljs-comment">// 二分查找</span><br>      <span class="hljs-keyword">let</span> left = <span class="hljs-number">0</span><br>      <span class="hljs-keyword">let</span> right = res.length - <span class="hljs-number">1</span><br>      <span class="hljs-keyword">while</span>(left&lt;right)&#123;<br>        <span class="hljs-keyword">let</span> mid = <span class="hljs-built_in">Math</span>.floor((left+right)/<span class="hljs-number">2</span>)<br>        <span class="hljs-comment">// let mid = ((left+right)/2) | 0</span><br>        <span class="hljs-comment">// 浮点小数向下求整</span><br>        <span class="hljs-keyword">if</span>(arr[i]&gt;res[mid])&#123;<br>          left = mid + <span class="hljs-number">1</span><br>        &#125;<span class="hljs-keyword">else</span>&#123;<br>          right = mid<br>        &#125;<br>      &#125;<br>      res[left] = arr[i]<br>    &#125;<br>  &#125;<br>  <span class="hljs-keyword">return</span> res.length <br>&#125;<br></code></pre></div></td></tr></table></figure>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// 动态规划</span>
+<span class="hljs-keyword">const</span> longestChildSequence = <span class="hljs-function"><span class="hljs-params">arr</span> =&gt;</span> &#123;
+  <span class="hljs-keyword">let</span> len = arr.length
+  <span class="hljs-keyword">if</span>(len &lt; <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span>
+  <span class="hljs-keyword">const</span> dp = <span class="hljs-built_in">Array</span>(len).fill(<span class="hljs-number">1</span>)
+  <span class="hljs-comment">// dp[i]代表原始数组该位置的最长子序列长度</span>
+  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span> ; i &lt; len ; i++)&#123;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> j = <span class="hljs-number">0</span> ; j &lt; i ; j++)&#123;
+      <span class="hljs-comment">// j遍历之前遍历过的所有元素</span>
+      <span class="hljs-comment">// 可能存在大小不一的递增序列，使用max取得最大值</span>
+      <span class="hljs-keyword">if</span>(arr[i] &gt; arr [j])&#123;
+        dp[i] = <span class="hljs-built_in">Math</span>.max(dp[i],dp[j]+<span class="hljs-number">1</span>)
+        <span class="hljs-comment">// [1,2,3,4,1,2,5]</span>
+        <span class="hljs-comment">// 如果只使用dp[j]+1 ，dp[6]会在[1,2,5]中得出结果3</span>
+        <span class="hljs-comment">// 使用max比较之前更长的序列[1，2，3，4，5]得到5</span>
+
+      &#125;
+    &#125;
+  &#125;
+  <span class="hljs-keyword">return</span> <span class="hljs-built_in">Math</span>.max(...dp)
+&#125;
+
+<span class="hljs-comment">// 贪心+二分</span>
+<span class="hljs-keyword">const</span> longestChildSequence = <span class="hljs-function"><span class="hljs-params">arr</span> =&gt;</span> &#123;
+  <span class="hljs-keyword">let</span> len = arr.length
+  <span class="hljs-keyword">if</span>(len &lt; <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span>
+  <span class="hljs-keyword">const</span> res = [arr[<span class="hljs-number">0</span>]]
+  <span class="hljs-comment">//将arr中后续元素arr[i]与res末尾元素比较</span>
+  <span class="hljs-comment">//大于则push进res</span>
+  <span class="hljs-comment">//小于则查找res中第一个比arr[i]大的元素并替换</span>
+  <span class="hljs-comment">//由于存在替换，子序列值不一定正确，但长度是正确的</span>
+  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span> ; i&lt; len ;i++)&#123;
+    <span class="hljs-keyword">if</span>(arr[i]&gt;res[res.length-<span class="hljs-number">1</span>])&#123;
+      res.push(arr[i])
+    &#125;<span class="hljs-keyword">else</span>&#123;
+      <span class="hljs-comment">// res中左右指针的index</span>
+      <span class="hljs-comment">// 二分查找</span>
+      <span class="hljs-keyword">let</span> left = <span class="hljs-number">0</span>
+      <span class="hljs-keyword">let</span> right = res.length - <span class="hljs-number">1</span>
+      <span class="hljs-keyword">while</span>(left&lt;right)&#123;
+        <span class="hljs-keyword">let</span> mid = <span class="hljs-built_in">Math</span>.floor((left+right)/<span class="hljs-number">2</span>)
+        <span class="hljs-comment">// let mid = ((left+right)/2) | 0</span>
+        <span class="hljs-comment">// 浮点小数向下求整</span>
+        <span class="hljs-keyword">if</span>(arr[i]&gt;res[mid])&#123;
+          left = mid + <span class="hljs-number">1</span>
+        &#125;<span class="hljs-keyword">else</span>&#123;
+          right = mid
+        &#125;
+      &#125;
+      res[left] = arr[i]
+    &#125;
+  &#125;
+  <span class="hljs-keyword">return</span> res.length 
+&#125;</code></pre></div>
             </div>
             <hr>
             <div>

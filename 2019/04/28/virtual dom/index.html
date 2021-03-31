@@ -247,12 +247,104 @@
 <li>DOM变化的对比，放在js层来做</li>
 <li>目的：<strong>提高重绘性能</strong></li>
 </ul>
-<h2 id="js模拟"><a href="#js模拟" class="headerlink" title="js模拟"></a>js模拟</h2><figure class="highlight html"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;&quot;</span><span class="hljs-attr">container</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;list&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;class&quot;</span>&gt;</span>item1<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;class&quot;</span>&gt;</span>item2<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;class&quot;</span>&gt;</span>item3<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span> <br>  <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;btn&quot;</span>&gt;</span>改变list<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>  <br></code></pre></div></td></tr></table></figure>
+<h2 id="js模拟"><a href="#js模拟" class="headerlink" title="js模拟"></a>js模拟</h2><div class="hljs code-wrapper"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;&quot;</span><span class="hljs-attr">container</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;list&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;class&quot;</span>&gt;</span>item1<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;class&quot;</span>&gt;</span>item2<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;class&quot;</span>&gt;</span>item3<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span> 
+  <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;btn&quot;</span>&gt;</span>改变list<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></code></pre></div>
 
 
-<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"> <span class="hljs-comment">//用js模拟DOM</span><br><span class="hljs-keyword">var</span> data=&#123;<br>   tag: <span class="hljs-string">&#x27;ul&#x27;</span>,<br>   attrs: &#123;<br>     id: <span class="hljs-string">&#x27;list&#x27;</span><br>   &#125;,<br>   children: [&#123;<br>     tag: <span class="hljs-string">&#x27;li&#x27;</span>,<br>     attrs: &#123;<br>       className: <span class="hljs-string">&#x27;item&#x27;</span><br>     &#125;,<br>     children: [<br>       <span class="hljs-string">&#x27;item1&#x27;</span><br>     ]<br>   &#125;, &#123;<br>     tag: <span class="hljs-string">&#x27;li&#x27;</span>,<br>     attrs: &#123;<br>       className: <span class="hljs-string">&#x27;item&#x27;</span><br>     &#125;,<br>     children: [<br>       <span class="hljs-string">&#x27;item2&#x27;</span><br>     ]<br>   &#125;,<br>   &#123;<br>     tag: <span class="hljs-string">&#x27;li&#x27;</span>,<br>     attrs: &#123;<br>       className: <span class="hljs-string">&#x27;item&#x27;</span><br>     &#125;,<br>     children: [<br>       <span class="hljs-string">&#x27;item3&#x27;</span><br>     ]<br>   &#125;]<br> &#125;<br><br> <span class="hljs-comment">//用jquery操作</span><br><br> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">render</span> (<span class="hljs-params">data</span>)</span>&#123;<br>   <span class="hljs-keyword">var</span> $container = $(<span class="hljs-string">&#x27;.container&#x27;</span>)<br>   $container.html(<span class="hljs-string">&#x27;&#x27;</span>)  <span class="hljs-comment">// &lt;----每次都要全部清空</span><br>   <span class="hljs-keyword">var</span> $ul = $(<span class="hljs-string">&#x27;&lt;ul&gt;&#x27;</span>)<br>   data.children.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">item</span>)</span>&#123;<br>     $ul.append($(<span class="hljs-string">&#x27;&lt;&#x27;</span>+ item.tag +<span class="hljs-string">&#x27;&gt;&#x27;</span>+ item.children[<span class="hljs-number">0</span>] +<span class="hljs-string">&#x27;&lt;/&#x27;</span>+ item.tag +<span class="hljs-string">&#x27;&gt;&#x27;</span>))<br>   &#125;)<br>   $container.append($ul)<br> &#125;<br> render(data)<br> $(<span class="hljs-string">&#x27;#btn&#x27;</span>).click(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>   data.children[<span class="hljs-number">1</span>].children = [<span class="hljs-built_in">Math</span>.floor(<span class="hljs-built_in">Math</span>.random() * <span class="hljs-number">100</span>)]<br>   render(data)<br> &#125;)<br></code></pre></div></td></tr></table></figure>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"> <span class="hljs-comment">//用js模拟DOM</span>
+<span class="hljs-keyword">var</span> data=&#123;
+   tag: <span class="hljs-string">&#x27;ul&#x27;</span>,
+   attrs: &#123;
+     id: <span class="hljs-string">&#x27;list&#x27;</span>
+   &#125;,
+   children: [&#123;
+     tag: <span class="hljs-string">&#x27;li&#x27;</span>,
+     attrs: &#123;
+       className: <span class="hljs-string">&#x27;item&#x27;</span>
+     &#125;,
+     children: [
+       <span class="hljs-string">&#x27;item1&#x27;</span>
+     ]
+   &#125;, &#123;
+     tag: <span class="hljs-string">&#x27;li&#x27;</span>,
+     attrs: &#123;
+       className: <span class="hljs-string">&#x27;item&#x27;</span>
+     &#125;,
+     children: [
+       <span class="hljs-string">&#x27;item2&#x27;</span>
+     ]
+   &#125;,
+   &#123;
+     tag: <span class="hljs-string">&#x27;li&#x27;</span>,
+     attrs: &#123;
+       className: <span class="hljs-string">&#x27;item&#x27;</span>
+     &#125;,
+     children: [
+       <span class="hljs-string">&#x27;item3&#x27;</span>
+     ]
+   &#125;]
+ &#125;
 
-<h2 id="snabbdom"><a href="#snabbdom" class="headerlink" title="snabbdom"></a>snabbdom</h2><figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript">&lt;script src=<span class="hljs-string">&quot;https://cdn.bootcss.com/snabbdom/0.7.3/snabbdom.js&quot;</span>&gt;&lt;/script&gt;<br>&lt;script src=<span class="hljs-string">&quot;https://cdn.bootcss.com/snabbdom/0.7.3/snabbdom-class.js&quot;</span>&gt;&lt;/script&gt;<br>&lt;script src=<span class="hljs-string">&quot;https://cdn.bootcss.com/snabbdom/0.7.3/snabbdom-props.js&quot;</span>&gt;&lt;/script&gt;<br>&lt;script src=<span class="hljs-string">&quot;https://cdn.bootcss.com/snabbdom/0.7.3/snabbdom-style.js&quot;</span>&gt;&lt;/script&gt;<br>&lt;script src=<span class="hljs-string">&quot;https://cdn.bootcss.com/snabbdom/0.7.3/snabbdom-eventlisteners.js&quot;</span>&gt;&lt;/script&gt;<br>&lt;script src=<span class="hljs-string">&quot;https://cdn.bootcss.com/snabbdom/0.7.3/h.js&quot;</span>&gt;&lt;/script&gt;<br><br>  <span class="hljs-keyword">var</span> snabbdom  = <span class="hljs-built_in">window</span>.snabbdom<br>  <span class="hljs-comment">//定义关键函数</span><br>  <span class="hljs-keyword">var</span> patch = snabbdom.init([<br>    snabbdom_class,<br>    snabbdom_props,<br>    snabbdom_style,<br>    snabbdom_eventlisteners<br>  ])<br>  <span class="hljs-keyword">var</span> h = snabbdom.h<br><br>  <span class="hljs-keyword">var</span> container = <span class="hljs-built_in">document</span>.getElementsByClassName(<span class="hljs-string">&#x27;container&#x27;</span>)[<span class="hljs-number">0</span>] <span class="hljs-comment">// 注意此处的返回</span><br>  <span class="hljs-comment">// console.log(document.getElementsByClassName(&#x27;container&#x27;))</span><br>  <span class="hljs-comment">// console.log(container)</span><br><br>  <span class="hljs-keyword">var</span> vnode = h(<span class="hljs-string">&#x27;ul#list&#x27;</span>, &#123;&#125;, [<br>    h(<span class="hljs-string">&#x27;li.item&#x27;</span>, &#123;&#125;, <span class="hljs-string">&#x27;item1&#x27;</span>),<br>    h(<span class="hljs-string">&#x27;li.item&#x27;</span>, &#123;&#125;, <span class="hljs-string">&#x27;item2&#x27;</span>),<br>    h(<span class="hljs-string">&#x27;li.item&#x27;</span>, &#123;&#125;, <span class="hljs-string">&#x27;item3&#x27;</span>)<br>  ])<br> <br>  patch(container, vnode)<br>  <br>  <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">&#x27;btn&#x27;</span>).addEventListener(<span class="hljs-string">&#x27;click&#x27;</span>,<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-keyword">var</span> newvnode = h(<span class="hljs-string">&#x27;ul#list&#x27;</span>, &#123;&#125;, [<br>      h(<span class="hljs-string">&#x27;li.item&#x27;</span>, &#123;&#125;, <span class="hljs-string">&#x27;item1&#x27;</span>),<br>      h(<span class="hljs-string">&#x27;li.item&#x27;</span>, &#123;&#125;, <span class="hljs-string">&#x27;666666&#x27;</span>),<br>      h(<span class="hljs-string">&#x27;li.item&#x27;</span>, &#123;&#125;, <span class="hljs-string">&#x27;item3&#x27;</span>)<br>    ])<br>    patch(vnode, newvnode) <span class="hljs-comment">// newnode patch oldnode</span><br>  &#125;)<br></code></pre></div></td></tr></table></figure>
+ <span class="hljs-comment">//用jquery操作</span>
+
+ <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">render</span> (<span class="hljs-params">data</span>)</span>&#123;
+   <span class="hljs-keyword">var</span> $container = $(<span class="hljs-string">&#x27;.container&#x27;</span>)
+   $container.html(<span class="hljs-string">&#x27;&#x27;</span>)  <span class="hljs-comment">// &lt;----每次都要全部清空</span>
+   <span class="hljs-keyword">var</span> $ul = $(<span class="hljs-string">&#x27;&lt;ul&gt;&#x27;</span>)
+   data.children.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">item</span>)</span>&#123;
+     $ul.append($(<span class="hljs-string">&#x27;&lt;&#x27;</span>+ item.tag +<span class="hljs-string">&#x27;&gt;&#x27;</span>+ item.children[<span class="hljs-number">0</span>] +<span class="hljs-string">&#x27;&lt;/&#x27;</span>+ item.tag +<span class="hljs-string">&#x27;&gt;&#x27;</span>))
+   &#125;)
+   $container.append($ul)
+ &#125;
+ render(data)
+ $(<span class="hljs-string">&#x27;#btn&#x27;</span>).click(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;
+   data.children[<span class="hljs-number">1</span>].children = [<span class="hljs-built_in">Math</span>.floor(<span class="hljs-built_in">Math</span>.random() * <span class="hljs-number">100</span>)]
+   render(data)
+ &#125;)</code></pre></div>
+
+<h2 id="snabbdom"><a href="#snabbdom" class="headerlink" title="snabbdom"></a>snabbdom</h2><div class="hljs code-wrapper"><pre><code class="hljs javascript">&lt;script src=<span class="hljs-string">&quot;https://cdn.bootcss.com/snabbdom/0.7.3/snabbdom.js&quot;</span>&gt;&lt;/script&gt;
+&lt;script src=<span class="hljs-string">&quot;https://cdn.bootcss.com/snabbdom/0.7.3/snabbdom-class.js&quot;</span>&gt;&lt;/script&gt;
+&lt;script src=<span class="hljs-string">&quot;https://cdn.bootcss.com/snabbdom/0.7.3/snabbdom-props.js&quot;</span>&gt;&lt;/script&gt;
+&lt;script src=<span class="hljs-string">&quot;https://cdn.bootcss.com/snabbdom/0.7.3/snabbdom-style.js&quot;</span>&gt;&lt;/script&gt;
+&lt;script src=<span class="hljs-string">&quot;https://cdn.bootcss.com/snabbdom/0.7.3/snabbdom-eventlisteners.js&quot;</span>&gt;&lt;/script&gt;
+&lt;script src=<span class="hljs-string">&quot;https://cdn.bootcss.com/snabbdom/0.7.3/h.js&quot;</span>&gt;&lt;/script&gt;
+
+  <span class="hljs-keyword">var</span> snabbdom  = <span class="hljs-built_in">window</span>.snabbdom
+  <span class="hljs-comment">//定义关键函数</span>
+  <span class="hljs-keyword">var</span> patch = snabbdom.init([
+    snabbdom_class,
+    snabbdom_props,
+    snabbdom_style,
+    snabbdom_eventlisteners
+  ])
+  <span class="hljs-keyword">var</span> h = snabbdom.h
+
+  <span class="hljs-keyword">var</span> container = <span class="hljs-built_in">document</span>.getElementsByClassName(<span class="hljs-string">&#x27;container&#x27;</span>)[<span class="hljs-number">0</span>] <span class="hljs-comment">// 注意此处的返回</span>
+  <span class="hljs-comment">// console.log(document.getElementsByClassName(&#x27;container&#x27;))</span>
+  <span class="hljs-comment">// console.log(container)</span>
+
+  <span class="hljs-keyword">var</span> vnode = h(<span class="hljs-string">&#x27;ul#list&#x27;</span>, &#123;&#125;, [
+    h(<span class="hljs-string">&#x27;li.item&#x27;</span>, &#123;&#125;, <span class="hljs-string">&#x27;item1&#x27;</span>),
+    h(<span class="hljs-string">&#x27;li.item&#x27;</span>, &#123;&#125;, <span class="hljs-string">&#x27;item2&#x27;</span>),
+    h(<span class="hljs-string">&#x27;li.item&#x27;</span>, &#123;&#125;, <span class="hljs-string">&#x27;item3&#x27;</span>)
+  ])
+ 
+  patch(container, vnode)
+  
+  <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">&#x27;btn&#x27;</span>).addEventListener(<span class="hljs-string">&#x27;click&#x27;</span>,<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;
+    <span class="hljs-keyword">var</span> newvnode = h(<span class="hljs-string">&#x27;ul#list&#x27;</span>, &#123;&#125;, [
+      h(<span class="hljs-string">&#x27;li.item&#x27;</span>, &#123;&#125;, <span class="hljs-string">&#x27;item1&#x27;</span>),
+      h(<span class="hljs-string">&#x27;li.item&#x27;</span>, &#123;&#125;, <span class="hljs-string">&#x27;666666&#x27;</span>),
+      h(<span class="hljs-string">&#x27;li.item&#x27;</span>, &#123;&#125;, <span class="hljs-string">&#x27;item3&#x27;</span>)
+    ])
+    patch(vnode, newvnode) <span class="hljs-comment">// newnode patch oldnode</span>
+  &#125;)</code></pre></div>
             </div>
             <hr>
             <div>

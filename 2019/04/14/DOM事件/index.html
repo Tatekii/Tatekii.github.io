@@ -247,22 +247,37 @@
 <h3 id="DOM的级别"><a href="#DOM的级别" class="headerlink" title="DOM的级别"></a>DOM的级别</h3><ul>
 <li>DOM0</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// 其实并没有这个级别，便于区分，浏览器刚开始引入js的时期</span><br><br><span class="hljs-comment">// example</span><br>element.onclick()<br></code></pre></div></td></tr></table></figure>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// 其实并没有这个级别，便于区分，浏览器刚开始引入js的时期</span>
+
+<span class="hljs-comment">// example</span>
+element.onclick()</code></pre></div>
 
 <ul>
 <li>DOM1</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// 该标准指定时没有涉及事件相关,主要映射文档结构</span><br></code></pre></div></td></tr></table></figure>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// 该标准指定时没有涉及事件相关,主要映射文档结构</span></code></pre></div>
 
 <ul>
 <li>DOM2</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// 在DOM1的基础上增加了视图、事件、样式、遍历和范围的接口，和支持XML命名空间</span><br><br><span class="hljs-comment">// example</span><br>element.addEventListener(<span class="hljs-string">&#x27;click&#x27;</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;&#125;,<span class="hljs-literal">false</span>)<br></code></pre></div></td></tr></table></figure>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// 在DOM1的基础上增加了视图、事件、样式、遍历和范围的接口，和支持XML命名空间</span>
+
+<span class="hljs-comment">// example</span>
+element.addEventListener(<span class="hljs-string">&#x27;click&#x27;</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;&#125;,<span class="hljs-literal">false</span>)</code></pre></div>
 
 <ul>
 <li>DOM3</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript">element.addEventListener(<span class="hljs-string">&#x27;keyup&#x27;</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;&#125;,<span class="hljs-literal">false</span>)<br><span class="hljs-comment">// UI事件，当用户与页面上的元素交互时触发，如：load、scroll</span><br><span class="hljs-comment">// 焦点事件，当元素获得或失去焦点时触发，如：blur、focus</span><br><span class="hljs-comment">// 鼠标事件，当用户通过鼠标在页面执行操作时触发如：dblclick、mouseup</span><br><span class="hljs-comment">// 滚轮事件，当使用鼠标滚轮或类似设备时触发，如：mousewheel</span><br><span class="hljs-comment">// 文本事件，当在文档中输入文本时触发，如：textInput</span><br><span class="hljs-comment">// 键盘事件，当用户通过键盘在页面上执行操作时触发，如：keydown、keypress</span><br><span class="hljs-comment">// 合成事件，当为IME（输入法编辑器）输入字符时触发，如：compositionstart</span><br><span class="hljs-comment">// 变动事件，当底层DOM结构发生变化时触发，如：DOMsubtreeModified</span><br><span class="hljs-comment">// 同时DOM3级事件也允许使用者自定义一些事件。</span><br></code></pre></div></td></tr></table></figure>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript">element.addEventListener(<span class="hljs-string">&#x27;keyup&#x27;</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;&#125;,<span class="hljs-literal">false</span>)
+<span class="hljs-comment">// UI事件，当用户与页面上的元素交互时触发，如：load、scroll</span>
+<span class="hljs-comment">// 焦点事件，当元素获得或失去焦点时触发，如：blur、focus</span>
+<span class="hljs-comment">// 鼠标事件，当用户通过鼠标在页面执行操作时触发如：dblclick、mouseup</span>
+<span class="hljs-comment">// 滚轮事件，当使用鼠标滚轮或类似设备时触发，如：mousewheel</span>
+<span class="hljs-comment">// 文本事件，当在文档中输入文本时触发，如：textInput</span>
+<span class="hljs-comment">// 键盘事件，当用户通过键盘在页面上执行操作时触发，如：keydown、keypress</span>
+<span class="hljs-comment">// 合成事件，当为IME（输入法编辑器）输入字符时触发，如：compositionstart</span>
+<span class="hljs-comment">// 变动事件，当底层DOM结构发生变化时触发，如：DOMsubtreeModified</span>
+<span class="hljs-comment">// 同时DOM3级事件也允许使用者自定义一些事件。</span></code></pre></div>
 
 <h3 id="DOM事件"><a href="#DOM事件" class="headerlink" title="DOM事件"></a>DOM事件</h3><ul>
 <li>捕获</li>
@@ -305,9 +320,24 @@
 <li>绑定<code>ev.addEventListener(&#39;Ename&#39;,fn)</code></li>
 <li>自定义触发事件<code>ev.dispathEvent(eve)</code></li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> event = <span class="hljs-keyword">new</span> CustomEvent(typeArg, customEventInit&#123;<br>       <span class="hljs-string">`bubbles`</span>, <span class="hljs-comment">// 事件是否支持冒泡</span><br>       <span class="hljs-string">`cancelable`</span>, <span class="hljs-comment">// 是否可取消事件的默认行为</span><br>       <span class="hljs-string">`composed`</span>, <span class="hljs-comment">// 事件是否会触发shadow DOM（阴影DOM）根节点之外的事件监听器</span><br>       <span class="hljs-string">`detail`</span><br>  &#125;);<br>-  typeArg：指定事件类型，传递一个字符串。<br>- customEventInit：可以接受EventInit字典的参数（bubbles等）和detail<br></code></pre></div></td></tr></table></figure>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> event = <span class="hljs-keyword">new</span> CustomEvent(typeArg, customEventInit&#123;
+       <span class="hljs-string">`bubbles`</span>, <span class="hljs-comment">// 事件是否支持冒泡</span>
+       <span class="hljs-string">`cancelable`</span>, <span class="hljs-comment">// 是否可取消事件的默认行为</span>
+       <span class="hljs-string">`composed`</span>, <span class="hljs-comment">// 事件是否会触发shadow DOM（阴影DOM）根节点之外的事件监听器</span>
+       <span class="hljs-string">`detail`</span>
+  &#125;);
+-  typeArg：指定事件类型，传递一个字符串。
+- customEventInit：可以接受EventInit字典的参数（bubbles等）和detail</code></pre></div>
 
-<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// Example</span><br><span class="hljs-keyword">const</span> event = <span class="hljs-keyword">new</span> CustomEvent(<span class="hljs-string">&#x27;msg&#x27;</span>, &#123;<br>  detail: <span class="hljs-string">&#x27;this is detail in CustomEvent&#x27;</span><br>&#125;)<br><span class="hljs-keyword">const</span> element = <span class="hljs-built_in">document</span>.body<br>element.addEventListener(<span class="hljs-string">&#x27;msg&#x27;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(e.detail);<br>&#125;, <span class="hljs-literal">false</span>)<br>element.dispatchEvent(event)<span class="hljs-comment">//this is detail in CustomEvent</span><br></code></pre></div></td></tr></table></figure>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// Example</span>
+<span class="hljs-keyword">const</span> event = <span class="hljs-keyword">new</span> CustomEvent(<span class="hljs-string">&#x27;msg&#x27;</span>, &#123;
+  detail: <span class="hljs-string">&#x27;this is detail in CustomEvent&#x27;</span>
+&#125;)
+<span class="hljs-keyword">const</span> element = <span class="hljs-built_in">document</span>.body
+element.addEventListener(<span class="hljs-string">&#x27;msg&#x27;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>) </span>&#123;
+  <span class="hljs-built_in">console</span>.log(e.detail);
+&#125;, <span class="hljs-literal">false</span>)
+element.dispatchEvent(event)<span class="hljs-comment">//this is detail in CustomEvent</span></code></pre></div>
 
 <h3 id="事件委托-事件代理"><a href="#事件委托-事件代理" class="headerlink" title="事件委托/事件代理"></a>事件委托/事件代理</h3><p>由于事件会在<em>冒泡</em>阶段向上传播到父节点，因此可以把子节点的监听函数定义在父节点上，由父节点的监听函数统一处理多个子元素的事件。这种方法叫做事件的代理。</p>
 <ul>

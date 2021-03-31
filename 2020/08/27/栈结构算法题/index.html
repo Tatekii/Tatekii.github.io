@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      442 字
+      440 字
     </span>
   
 
@@ -244,18 +244,105 @@
             <div class="markdown-body">
               <h2 id="栈结构，先进后出"><a href="#栈结构，先进后出" class="headerlink" title="栈结构，先进后出"></a>栈结构，先进后出</h2><ul>
 <li><p>最小栈</p>
-<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><br><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">MinStack</span>(<span class="hljs-params"></span>)</span>&#123;<br>  <span class="hljs-built_in">this</span>.stack = []<br>  <span class="hljs-built_in">this</span>.min = <span class="hljs-literal">null</span><br>&#125;<br><br>MinStack.prototype.push = <span class="hljs-function"><span class="hljs-params">item</span> =&gt;</span> &#123;<br>  <span class="hljs-keyword">if</span>(!<span class="hljs-built_in">this</span>.stack.length)&#123;<br>    <span class="hljs-built_in">this</span>.min = item<br>  &#125;<span class="hljs-keyword">else</span>&#123;<br>    <span class="hljs-built_in">this</span>.min = <span class="hljs-built_in">Math</span>.min(<span class="hljs-built_in">this</span>.min,item)<br>  &#125;<br>  <span class="hljs-built_in">this</span>.stack.push(item)<br>&#125;<br><br>MinStack.prototype.pop = <span class="hljs-function">() =&gt;</span> &#123;<br>  <span class="hljs-keyword">const</span> item  = <span class="hljs-built_in">this</span>.stack.pop()<br>  <span class="hljs-built_in">this</span>.min = <span class="hljs-built_in">Math</span>.min(...this.stack)<br>  <span class="hljs-keyword">return</span> item<br>&#125;<br><br>MinStack.prototype.top = <span class="hljs-function">() =&gt;</span> &#123;<br>  <span class="hljs-keyword">if</span>(!<span class="hljs-built_in">this</span>.stack.length) <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span><br>  <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.stack[<span class="hljs-built_in">this</span>.stack.length-<span class="hljs-number">1</span>]<br>&#125;<br><br>MinStack.prototype.getMin = <span class="hljs-function">() =&gt;</span> &#123;<br>  <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.min<br>&#125;<br><br></code></pre></div></td></tr></table></figure></li>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript">
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">MinStack</span>(<span class="hljs-params"></span>)</span>&#123;
+  <span class="hljs-built_in">this</span>.stack = []
+  <span class="hljs-built_in">this</span>.min = <span class="hljs-literal">null</span>
+&#125;
+
+MinStack.prototype.push = <span class="hljs-function"><span class="hljs-params">item</span> =&gt;</span> &#123;
+  <span class="hljs-keyword">if</span>(!<span class="hljs-built_in">this</span>.stack.length)&#123;
+    <span class="hljs-built_in">this</span>.min = item
+  &#125;<span class="hljs-keyword">else</span>&#123;
+    <span class="hljs-built_in">this</span>.min = <span class="hljs-built_in">Math</span>.min(<span class="hljs-built_in">this</span>.min,item)
+  &#125;
+  <span class="hljs-built_in">this</span>.stack.push(item)
+&#125;
+
+MinStack.prototype.pop = <span class="hljs-function">() =&gt;</span> &#123;
+  <span class="hljs-keyword">const</span> item  = <span class="hljs-built_in">this</span>.stack.pop()
+  <span class="hljs-built_in">this</span>.min = <span class="hljs-built_in">Math</span>.min(...this.stack)
+  <span class="hljs-keyword">return</span> item
+&#125;
+
+MinStack.prototype.top = <span class="hljs-function">() =&gt;</span> &#123;
+  <span class="hljs-keyword">if</span>(!<span class="hljs-built_in">this</span>.stack.length) <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>
+  <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.stack[<span class="hljs-built_in">this</span>.stack.length-<span class="hljs-number">1</span>]
+&#125;
+
+MinStack.prototype.getMin = <span class="hljs-function">() =&gt;</span> &#123;
+  <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.min
+&#125;
+</code></pre></div></li>
 <li><p>判断括号是否闭合</p>
 </li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// ()</span><br><span class="hljs-comment">// []</span><br><span class="hljs-comment">// &#123;&#125;</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">bracketCheck</span>(<span class="hljs-params">str</span>)</span>&#123;<br>  <span class="hljs-keyword">const</span> brackets = &#123;<br>    <span class="hljs-string">&#x27;(&#x27;</span>:<span class="hljs-string">&#x27;)&#x27;</span>,<br>    <span class="hljs-string">&#x27;&#123;&#x27;</span>:<span class="hljs-string">&#x27;&#125;&#x27;</span>,<br>    <span class="hljs-string">&#x27;[&#x27;</span>:<span class="hljs-string">&#x27;]&#x27;</span><br>  &#125;<br>  <span class="hljs-keyword">let</span> stack = []<br>  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span> ;i&lt;str.length;i++)&#123;<br>    <span class="hljs-keyword">if</span>(brackets[str[i]])&#123;<br>      stack.push([str[i]])<br>    &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(str[i] !== brackets[stack.pop()])&#123;<br>      <span class="hljs-comment">// 这个写法6⃣️啊</span><br>      <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span><br>    &#125;<br>  &#125;<br>  <span class="hljs-keyword">return</span> stack.length === <span class="hljs-number">0</span><br>&#125;<br></code></pre></div></td></tr></table></figure>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// ()</span>
+<span class="hljs-comment">// []</span>
+<span class="hljs-comment">// &#123;&#125;</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">bracketCheck</span>(<span class="hljs-params">str</span>)</span>&#123;
+  <span class="hljs-keyword">const</span> brackets = &#123;
+    <span class="hljs-string">&#x27;(&#x27;</span>:<span class="hljs-string">&#x27;)&#x27;</span>,
+    <span class="hljs-string">&#x27;&#123;&#x27;</span>:<span class="hljs-string">&#x27;&#125;&#x27;</span>,
+    <span class="hljs-string">&#x27;[&#x27;</span>:<span class="hljs-string">&#x27;]&#x27;</span>
+  &#125;
+  <span class="hljs-keyword">let</span> stack = []
+  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span> ;i&lt;str.length;i++)&#123;
+    <span class="hljs-keyword">if</span>(brackets[str[i]])&#123;
+      stack.push([str[i]])
+    &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(str[i] !== brackets[stack.pop()])&#123;
+      <span class="hljs-comment">// 这个写法6⃣️啊</span>
+      <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
+    &#125;
+  &#125;
+  <span class="hljs-keyword">return</span> stack.length === <span class="hljs-number">0</span>
+&#125;</code></pre></div>
 
 
 <ul>
-<li>删除字符串内相邻重复项<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript">给出由小写字母组成的字符串 S ，重复项删除操作 会选择两个相邻且相同的字母，并删除它们。<br><br>在 S 上反复执行重复项删除操作，直到无法继续删除。<br><br>在完成所有重复项删除操作后返回最终的字符串。答案保证唯一。<br><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">delDup</span>(<span class="hljs-params">S</span>)</span>&#123;<br>  <span class="hljs-keyword">let</span> stack = [],pre = <span class="hljs-string">&#x27;&#x27;</span><br>  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> c <span class="hljs-keyword">of</span> S)&#123;<br>    pre = stack.pop()<br>    <span class="hljs-keyword">if</span>(c !== pre)&#123;<br>      stack.push(pre)<br>      stack.push(c)<br>    &#125;<br>  &#125;<br>  <span class="hljs-keyword">return</span> stack.join(<span class="hljs-string">&#x27;&#x27;</span>)<br>&#125;<br></code></pre></div></td></tr></table></figure></li>
+<li>删除字符串内相邻重复项<div class="hljs code-wrapper"><pre><code class="hljs javascript">给出由小写字母组成的字符串 S ，重复项删除操作 会选择两个相邻且相同的字母，并删除它们。
+
+在 S 上反复执行重复项删除操作，直到无法继续删除。
+
+在完成所有重复项删除操作后返回最终的字符串。答案保证唯一。
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">delDup</span>(<span class="hljs-params">S</span>)</span>&#123;
+  <span class="hljs-keyword">let</span> stack = [],pre = <span class="hljs-string">&#x27;&#x27;</span>
+  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> c <span class="hljs-keyword">of</span> S)&#123;
+    pre = stack.pop()
+    <span class="hljs-keyword">if</span>(c !== pre)&#123;
+      stack.push(pre)
+      stack.push(c)
+    &#125;
+  &#125;
+  <span class="hljs-keyword">return</span> stack.join(<span class="hljs-string">&#x27;&#x27;</span>)
+&#125;</code></pre></div></li>
 </ul>
 <ul>
-<li>滑动窗口最大值<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// k 为窗口大小</span><br><span class="hljs-comment">// window存储数组索引</span><br><span class="hljs-comment">// 每次循环判断窗口长度</span><br><span class="hljs-comment">// 每次循环将arr[i]与窗口内值比较</span><br><span class="hljs-comment">// 保证最大值索引在窗口最左边</span><br><span class="hljs-comment">// 依次移动窗口，输出索引到res数组</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">maxInSlideWin</span>(<span class="hljs-params">arr,k</span>)</span>&#123;<br>  <span class="hljs-keyword">let</span> res = []<br>  <span class="hljs-keyword">let</span> <span class="hljs-built_in">window</span> = []<br>  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span> ; i &lt; arr.length ; i++)&#123;<br>    <span class="hljs-keyword">if</span>(i-<span class="hljs-built_in">window</span>[<span class="hljs-number">0</span>]&gt;=k)&#123;<br>      <span class="hljs-built_in">window</span>.shift()<br>    &#125;<br>    <span class="hljs-keyword">while</span>(arr[<span class="hljs-built_in">window</span>[<span class="hljs-built_in">window</span>.length-<span class="hljs-number">1</span>]]&lt;=arr[i])&#123;<br>      <span class="hljs-built_in">window</span>.pop()<br>    &#125;<br>    <span class="hljs-built_in">window</span>.push(i)<br>    <span class="hljs-keyword">if</span>(i&gt;=k-<span class="hljs-number">1</span>)&#123;<br>      res.push(arr[<span class="hljs-built_in">window</span>[<span class="hljs-number">0</span>]])<br>    &#125;<br>  &#125;<br>  <span class="hljs-keyword">return</span> res<br>&#125;<br></code></pre></div></td></tr></table></figure></li>
+<li>滑动窗口最大值<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// k 为窗口大小</span>
+<span class="hljs-comment">// window存储数组索引</span>
+<span class="hljs-comment">// 每次循环判断窗口长度</span>
+<span class="hljs-comment">// 每次循环将arr[i]与窗口内值比较</span>
+<span class="hljs-comment">// 保证最大值索引在窗口最左边</span>
+<span class="hljs-comment">// 依次移动窗口，输出索引到res数组</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">maxInSlideWin</span>(<span class="hljs-params">arr,k</span>)</span>&#123;
+  <span class="hljs-keyword">let</span> res = []
+  <span class="hljs-keyword">let</span> <span class="hljs-built_in">window</span> = []
+  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span> ; i &lt; arr.length ; i++)&#123;
+    <span class="hljs-keyword">if</span>(i-<span class="hljs-built_in">window</span>[<span class="hljs-number">0</span>]&gt;=k)&#123;
+      <span class="hljs-built_in">window</span>.shift()
+    &#125;
+    <span class="hljs-keyword">while</span>(arr[<span class="hljs-built_in">window</span>[<span class="hljs-built_in">window</span>.length-<span class="hljs-number">1</span>]]&lt;=arr[i])&#123;
+      <span class="hljs-built_in">window</span>.pop()
+    &#125;
+    <span class="hljs-built_in">window</span>.push(i)
+    <span class="hljs-keyword">if</span>(i&gt;=k-<span class="hljs-number">1</span>)&#123;
+      res.push(arr[<span class="hljs-built_in">window</span>[<span class="hljs-number">0</span>]])
+    &#125;
+  &#125;
+  <span class="hljs-keyword">return</span> res
+&#125;</code></pre></div></li>
 </ul>
 
             </div>

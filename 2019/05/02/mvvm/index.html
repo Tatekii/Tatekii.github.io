@@ -244,7 +244,11 @@
             <div class="markdown-body">
               <h2 id="MVC-MVP-MVVM"><a href="#MVC-MVP-MVVM" class="headerlink" title="MVC/MVP/MVVM"></a>MVC/MVP/MVVM</h2><ul>
 <li><p>MVC<code>Model-View-Controller</code></p>
-<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js">View-&gt;Controller-&gt;Model<br>^                     |<br>|                     |<br>|                     v<br>&lt;---------------------&lt;<br></code></pre></div></td></tr></table></figure>
+<div class="hljs code-wrapper"><pre><code class="hljs js">View-&gt;Controller-&gt;Model
+^                     |
+|                     |
+|                     v
+&lt;---------------------&lt;</code></pre></div>
 
 <ol>
 <li><p>View 传送指令到 Controller ；</p>
@@ -258,7 +262,7 @@
 <p><em>Model不依赖于View，但是 View是依赖于Model</em></p>
 </li>
 <li><p>MVP<code>Model-View-Presenter</code></p>
-<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript">View &lt;--&gt; Presenter &lt;==&gt; Model<br></code></pre></div></td></tr></table></figure>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript">View &lt;--&gt; Presenter &lt;==&gt; Model</code></pre></div>
 <ol>
 <li><p>M、V、P之间双向通信。</p>
 </li>
@@ -271,7 +275,7 @@
 </ol>
 </li>
 <li><p>MVVM<code>Model-View-ViewModel</code></p>
-<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript">View &lt;==&gt; ViewModel &lt;==&gt; Model<br></code></pre></div></td></tr></table></figure>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript">View &lt;==&gt; ViewModel &lt;==&gt; Model</code></pre></div>
 <ul>
 <li><code>Model</code> 层: 对应数据层的域模型，它主要做域模型的同步。通过 Ajax/fetch 等 API 完成客户端和服务端业务 Model 的同步。在层间关系里，它主要用于抽象出 ViewModel 中视图的 Model</li>
 <li><code>View</code> 层: 作为视图模板存在，在 MVVM 里，整个 View 是一个动态模板。除了定义结构、布局外，它展示的是 ViewModel 层的数据和状态。View 层不负责处理状态，View 层做的是数据绑定、 指令的声明、 事件绑定的声明。</li>

@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      620 字
+      619 字
     </span>
   
 
@@ -248,13 +248,78 @@
 <li><p>作用：隐藏创建实例的复杂度，将构造函数和创建者分离</p>
 </li>
 <li><p>举例：jQ的选择器</p>
-<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span></span>&#123;<br>  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">name=<span class="hljs-string">&#x27;&#x27;</span>,age=<span class="hljs-number">0</span></span>)</span>&#123;<br>    <span class="hljs-built_in">this</span>.name = name<br>    <span class="hljs-built_in">this</span>.age = age<br>  &#125;<br>&#125;<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UserFactory</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">User</span></span>&#123;<br>  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">name,age</span>)</span>&#123;<br>    <span class="hljs-built_in">super</span>(name,age)<br>  &#125;<br>  <span class="hljs-function"><span class="hljs-title">create</span>(<span class="hljs-params">type</span>)</span>&#123;<br>    <span class="hljs-keyword">switch</span>(type)&#123;<br>      <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;male&#x27;</span>:<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> UserFactory(<span class="hljs-string">&#x27;boy&#x27;</span>,<span class="hljs-number">29</span>)<br>        <span class="hljs-keyword">break</span><br>      <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;female&#x27;</span>:<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> UserFactory(<span class="hljs-string">&#x27;girl&#x27;</span>,<span class="hljs-number">18</span>)<br>        <span class="hljs-keyword">break</span><br>      <span class="hljs-keyword">default</span>:<br>        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">&#x27;type indeed&#x27;</span>)  <br>    &#125;<br>  &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure></li>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span></span>&#123;
+  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">name=<span class="hljs-string">&#x27;&#x27;</span>,age=<span class="hljs-number">0</span></span>)</span>&#123;
+    <span class="hljs-built_in">this</span>.name = name
+    <span class="hljs-built_in">this</span>.age = age
+  &#125;
+&#125;
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UserFactory</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">User</span></span>&#123;
+  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">name,age</span>)</span>&#123;
+    <span class="hljs-built_in">super</span>(name,age)
+  &#125;
+  <span class="hljs-function"><span class="hljs-title">create</span>(<span class="hljs-params">type</span>)</span>&#123;
+    <span class="hljs-keyword">switch</span>(type)&#123;
+      <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;male&#x27;</span>:
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> UserFactory(<span class="hljs-string">&#x27;boy&#x27;</span>,<span class="hljs-number">29</span>)
+        <span class="hljs-keyword">break</span>
+      <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;female&#x27;</span>:
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> UserFactory(<span class="hljs-string">&#x27;girl&#x27;</span>,<span class="hljs-number">18</span>)
+        <span class="hljs-keyword">break</span>
+      <span class="hljs-keyword">default</span>:
+        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">&#x27;type indeed&#x27;</span>)  
+    &#125;
+  &#125;
+&#125;</code></pre></div></li>
 </ol>
 <h2 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h2><ol>
 <li>保证该类只有一个实例</li>
 <li>如果已经创建过实例对象则放回该对象</li>
 </ol>
-<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// </span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">LoginForm</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"></span>)</span> &#123;<br>        <span class="hljs-built_in">this</span>.state = <span class="hljs-string">&#x27;hide&#x27;</span><br>    &#125;<br>    <span class="hljs-function"><span class="hljs-title">show</span>(<span class="hljs-params"></span>)</span> &#123;<br>        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">this</span>.state === <span class="hljs-string">&#x27;show&#x27;</span>) &#123;<br>            alert(<span class="hljs-string">&#x27;已经显示&#x27;</span>)<br>            <span class="hljs-keyword">return</span><br>        &#125;<br>        <span class="hljs-built_in">this</span>.state = <span class="hljs-string">&#x27;show&#x27;</span><br>        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;登录框已显示&#x27;</span>)<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-title">hide</span>(<span class="hljs-params"></span>)</span> &#123;<br>        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">this</span>.state === <span class="hljs-string">&#x27;hide&#x27;</span>) &#123;<br>            alert(<span class="hljs-string">&#x27;已经隐藏&#x27;</span>)<br>            <span class="hljs-keyword">return</span><br>        &#125;<br>        <span class="hljs-built_in">this</span>.state = <span class="hljs-string">&#x27;hide&#x27;</span><br>        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;登录框已隐藏&#x27;</span>)<br>    &#125;<br>&#125;<br>LoginForm.getInstance = (<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-comment">// 使用instance这个变量来保存</span><br>    <span class="hljs-keyword">let</span> instance<br>    <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>        <span class="hljs-keyword">if</span> (!instance) &#123;<br>            instance = <span class="hljs-keyword">new</span> LoginForm();<br>        &#125;<br>        <span class="hljs-keyword">return</span> instance<br>    &#125;<br>&#125;)()<br><br><span class="hljs-comment">// 一个页面中调用登录框</span><br><span class="hljs-keyword">let</span> login1 = LoginForm.getInstance()<br>login1.show()<br><span class="hljs-comment">// login1.hide()</span><br><br><span class="hljs-comment">// 另一个页面中调用登录框</span><br><span class="hljs-keyword">let</span> login2 = LoginForm.getInstance()<br>login2.show()<br><br><span class="hljs-comment">// 两者是否相等</span><br><span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;login1 === login2&#x27;</span>, login1 === login2)<br></code></pre></div></td></tr></table></figure>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// </span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">LoginForm</span> </span>&#123;
+    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"></span>)</span> &#123;
+        <span class="hljs-built_in">this</span>.state = <span class="hljs-string">&#x27;hide&#x27;</span>
+    &#125;
+    <span class="hljs-function"><span class="hljs-title">show</span>(<span class="hljs-params"></span>)</span> &#123;
+        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">this</span>.state === <span class="hljs-string">&#x27;show&#x27;</span>) &#123;
+            alert(<span class="hljs-string">&#x27;已经显示&#x27;</span>)
+            <span class="hljs-keyword">return</span>
+        &#125;
+        <span class="hljs-built_in">this</span>.state = <span class="hljs-string">&#x27;show&#x27;</span>
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;登录框已显示&#x27;</span>)
+    &#125;
+    <span class="hljs-function"><span class="hljs-title">hide</span>(<span class="hljs-params"></span>)</span> &#123;
+        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">this</span>.state === <span class="hljs-string">&#x27;hide&#x27;</span>) &#123;
+            alert(<span class="hljs-string">&#x27;已经隐藏&#x27;</span>)
+            <span class="hljs-keyword">return</span>
+        &#125;
+        <span class="hljs-built_in">this</span>.state = <span class="hljs-string">&#x27;hide&#x27;</span>
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;登录框已隐藏&#x27;</span>)
+    &#125;
+&#125;
+LoginForm.getInstance = (<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;
+  <span class="hljs-comment">// 使用instance这个变量来保存</span>
+    <span class="hljs-keyword">let</span> instance
+    <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;
+        <span class="hljs-keyword">if</span> (!instance) &#123;
+            instance = <span class="hljs-keyword">new</span> LoginForm();
+        &#125;
+        <span class="hljs-keyword">return</span> instance
+    &#125;
+&#125;)()
+
+<span class="hljs-comment">// 一个页面中调用登录框</span>
+<span class="hljs-keyword">let</span> login1 = LoginForm.getInstance()
+login1.show()
+<span class="hljs-comment">// login1.hide()</span>
+
+<span class="hljs-comment">// 另一个页面中调用登录框</span>
+<span class="hljs-keyword">let</span> login2 = LoginForm.getInstance()
+login2.show()
+
+<span class="hljs-comment">// 两者是否相等</span>
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;login1 === login2&#x27;</span>, login1 === login2)</code></pre></div>
 
 <h2 id="观察者模式-发布订阅模式"><a href="#观察者模式-发布订阅模式" class="headerlink" title="观察者模式/发布订阅模式"></a>观察者模式/发布订阅模式</h2><ol>
 <li>1对N的数据联动</li>
@@ -270,7 +335,25 @@
 <h2 id="装饰模式"><a href="#装饰模式" class="headerlink" title="装饰模式"></a>装饰模式</h2><ol>
 <li>装饰者(decorator)模式能够在不改变对象自身的基础上，在程序运行期间给对像动态的添加职责（方法或属性）。与继承相比，装饰者是一种更轻便灵活的做法。</li>
 </ol>
-<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Human</span></span>&#123;<br>  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"></span>)</span>&#123;<br>    <span class="hljs-built_in">this</span>.type = <span class="hljs-string">&#x27;正常人&#x27;</span><br>  &#125;<br>  <span class="hljs-function"><span class="hljs-title">say</span>(<span class="hljs-params"></span>)</span>&#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;23岁 是学生&#x27;</span>)<br>  &#125;<br>&#125;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MakeUp</span></span>&#123;<br>  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">human</span>)</span>&#123;<br>    <span class="hljs-built_in">this</span>.human = human<br>    <span class="hljs-built_in">this</span>.human.type = <span class="hljs-string">&#x27;赛亚人&#x27;</span><br>  &#125;<br>  <span class="hljs-function"><span class="hljs-title">sayAgain</span>(<span class="hljs-params"></span>)</span>&#123;<br>    <span class="hljs-built_in">this</span>.human.say()<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;我不当人了&#x27;</span>)<br>  &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Human</span></span>&#123;
+  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"></span>)</span>&#123;
+    <span class="hljs-built_in">this</span>.type = <span class="hljs-string">&#x27;正常人&#x27;</span>
+  &#125;
+  <span class="hljs-function"><span class="hljs-title">say</span>(<span class="hljs-params"></span>)</span>&#123;
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;23岁 是学生&#x27;</span>)
+  &#125;
+&#125;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MakeUp</span></span>&#123;
+  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">human</span>)</span>&#123;
+    <span class="hljs-built_in">this</span>.human = human
+    <span class="hljs-built_in">this</span>.human.type = <span class="hljs-string">&#x27;赛亚人&#x27;</span>
+  &#125;
+  <span class="hljs-function"><span class="hljs-title">sayAgain</span>(<span class="hljs-params"></span>)</span>&#123;
+    <span class="hljs-built_in">this</span>.human.say()
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;我不当人了&#x27;</span>)
+  &#125;
+&#125;</code></pre></div>
             </div>
             <hr>
             <div>

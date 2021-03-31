@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      531 字
+      529 字
     </span>
   
 
@@ -244,25 +244,114 @@
             <div class="markdown-body">
               <ul>
 <li><p>寻找最长公公前缀</p>
-<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// 输入: [&quot;flower&quot;,&quot;flow&quot;,&quot;flight&quot;]</span><br><span class="hljs-comment">// 输出: &quot;fl&quot;</span><br><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">commonPrefix</span>(<span class="hljs-params">...strs</span>)</span>&#123;<br>  <span class="hljs-keyword">if</span>(!strs.length || strs.length===<span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&quot;</span><br>  <span class="hljs-keyword">let</span> ref = strs[<span class="hljs-number">0</span>]<br>  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">1</span>;i&lt;strs.length;i++)&#123;<br>    <span class="hljs-keyword">let</span> j = <span class="hljs-number">0</span><br>    <span class="hljs-keyword">for</span>(;j&lt;ref.length &amp;&amp; j&lt;strs[i].length;j++)&#123;<br>      <span class="hljs-keyword">if</span>(ref.chartAt(j)!==strs[i].chartAt(j)) <span class="hljs-keyword">break</span><br>    &#125;<br>    ref = ref.subString(<span class="hljs-number">0</span>,j)<br>  &#125;<br>  <span class="hljs-keyword">return</span> ref<br>&#125;<br><br></code></pre></div></td></tr></table></figure></li>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// 输入: [&quot;flower&quot;,&quot;flow&quot;,&quot;flight&quot;]</span>
+<span class="hljs-comment">// 输出: &quot;fl&quot;</span>
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">commonPrefix</span>(<span class="hljs-params">...strs</span>)</span>&#123;
+  <span class="hljs-keyword">if</span>(!strs.length || strs.length===<span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&quot;</span>
+  <span class="hljs-keyword">let</span> ref = strs[<span class="hljs-number">0</span>]
+  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">1</span>;i&lt;strs.length;i++)&#123;
+    <span class="hljs-keyword">let</span> j = <span class="hljs-number">0</span>
+    <span class="hljs-keyword">for</span>(;j&lt;ref.length &amp;&amp; j&lt;strs[i].length;j++)&#123;
+      <span class="hljs-keyword">if</span>(ref.chartAt(j)!==strs[i].chartAt(j)) <span class="hljs-keyword">break</span>
+    &#125;
+    ref = ref.subString(<span class="hljs-number">0</span>,j)
+  &#125;
+  <span class="hljs-keyword">return</span> ref
+&#125;
+</code></pre></div></li>
 <li><p>连字符转为驼峰</p>
-<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">hump</span>(<span class="hljs-params">str</span>)</span>&#123;<br>  <span class="hljs-keyword">return</span> str.replace(<span class="hljs-regexp">/-\w/g</span>,$<span class="hljs-number">1</span>=&gt;&#123;<br>    <span class="hljs-keyword">return</span> $<span class="hljs-number">1.</span>slice(<span class="hljs-number">1</span>).toUpperCase()<br>  &#125;)<br>&#125;<br><br></code></pre></div></td></tr></table></figure></li>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">hump</span>(<span class="hljs-params">str</span>)</span>&#123;
+  <span class="hljs-keyword">return</span> str.replace(<span class="hljs-regexp">/-\w/g</span>,$<span class="hljs-number">1</span>=&gt;&#123;
+    <span class="hljs-keyword">return</span> $<span class="hljs-number">1.</span>slice(<span class="hljs-number">1</span>).toUpperCase()
+  &#125;)
+&#125;
+</code></pre></div></li>
 </ul>
 <ul>
-<li>将字符串改为首字母大写<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">//-i-hate -_you_</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Upper</span>(<span class="hljs-params">str</span>)</span>&#123;<br>  <span class="hljs-keyword">let</span> rule = <span class="hljs-regexp">/\b_?(\w)/g</span><br>  <span class="hljs-keyword">return</span> str.replace(rule,($<span class="hljs-number">1</span>=&gt;&#123;<br>    <span class="hljs-keyword">return</span> $<span class="hljs-number">1.</span>toUpperCase()<br>  &#125;))<br>&#125;<br></code></pre></div></td></tr></table></figure></li>
+<li>将字符串改为首字母大写<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">//-i-hate -_you_</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Upper</span>(<span class="hljs-params">str</span>)</span>&#123;
+  <span class="hljs-keyword">let</span> rule = <span class="hljs-regexp">/\b_?(\w)/g</span>
+  <span class="hljs-keyword">return</span> str.replace(rule,($<span class="hljs-number">1</span>=&gt;&#123;
+    <span class="hljs-keyword">return</span> $<span class="hljs-number">1.</span>toUpperCase()
+  &#125;))
+&#125;</code></pre></div></li>
 </ul>
 <ul>
-<li>反转句子<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">//  正则</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">reverseWords</span>(<span class="hljs-params">str</span>)</span>&#123;<br>  <span class="hljs-keyword">return</span> str.trim().replace(<span class="hljs-regexp">/\s+/g</span>,<span class="hljs-string">&#x27; &#x27;</span>).split(<span class="hljs-string">&#x27; &#x27;</span>).reverse().join(<span class="hljs-string">&#x27; &#x27;</span>)<br>  <span class="hljs-comment">// \s \s是指空白,包括空格、换行、tab缩进等所有的空白</span><br>  <span class="hljs-comment">// 去除单词之间多余的空白</span><br>&#125;<br><br><span class="hljs-comment">//</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">reverseWords</span>(<span class="hljs-params">str</span>)</span>&#123;<br>  <span class="hljs-keyword">let</span> arr = []<br>  <span class="hljs-keyword">let</span> left = <span class="hljs-number">0</span><br>  <span class="hljs-keyword">let</span> right = str.length-<span class="hljs-number">1</span><br>  <span class="hljs-keyword">let</span> word = <span class="hljs-string">&#x27;&#x27;</span><br>  <span class="hljs-keyword">while</span>(str.charAt(str)===<span class="hljs-string">&#x27; &#x27;</span>) left++<br>  <span class="hljs-keyword">while</span>(str.charAt(str)===<span class="hljs-string">&#x27; &#x27;</span>) right--<br>  <span class="hljs-comment">// 去除头尾多余空格</span><br>  <span class="hljs-keyword">while</span>(left&lt;=right)&#123;<br>    <span class="hljs-keyword">let</span> char = str.charAt(left)<br>    <span class="hljs-keyword">if</span>(char===<span class="hljs-string">&#x27; &#x27;</span> &amp;&amp; word)&#123;<br>      arr.unshift(word)<br>      word = <span class="hljs-string">&#x27;&#x27;</span><br>    &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(char!== <span class="hljs-string">&#x27; &#x27;</span>)&#123;<br>      word += char<br>    &#125;<br>    left ++<br>  &#125;<br>  arr.unshift(word)<br>  <span class="hljs-keyword">return</span> arr.join(<span class="hljs-string">&#x27; &#x27;</span>)<br>&#125;<br></code></pre></div></td></tr></table></figure></li>
+<li>反转句子<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">//  正则</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">reverseWords</span>(<span class="hljs-params">str</span>)</span>&#123;
+  <span class="hljs-keyword">return</span> str.trim().replace(<span class="hljs-regexp">/\s+/g</span>,<span class="hljs-string">&#x27; &#x27;</span>).split(<span class="hljs-string">&#x27; &#x27;</span>).reverse().join(<span class="hljs-string">&#x27; &#x27;</span>)
+  <span class="hljs-comment">// \s \s是指空白,包括空格、换行、tab缩进等所有的空白</span>
+  <span class="hljs-comment">// 去除单词之间多余的空白</span>
+&#125;
+
+<span class="hljs-comment">//</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">reverseWords</span>(<span class="hljs-params">str</span>)</span>&#123;
+  <span class="hljs-keyword">let</span> arr = []
+  <span class="hljs-keyword">let</span> left = <span class="hljs-number">0</span>
+  <span class="hljs-keyword">let</span> right = str.length-<span class="hljs-number">1</span>
+  <span class="hljs-keyword">let</span> word = <span class="hljs-string">&#x27;&#x27;</span>
+  <span class="hljs-keyword">while</span>(str.charAt(str)===<span class="hljs-string">&#x27; &#x27;</span>) left++
+  <span class="hljs-keyword">while</span>(str.charAt(str)===<span class="hljs-string">&#x27; &#x27;</span>) right--
+  <span class="hljs-comment">// 去除头尾多余空格</span>
+  <span class="hljs-keyword">while</span>(left&lt;=right)&#123;
+    <span class="hljs-keyword">let</span> char = str.charAt(left)
+    <span class="hljs-keyword">if</span>(char===<span class="hljs-string">&#x27; &#x27;</span> &amp;&amp; word)&#123;
+      arr.unshift(word)
+      word = <span class="hljs-string">&#x27;&#x27;</span>
+    &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(char!== <span class="hljs-string">&#x27; &#x27;</span>)&#123;
+      word += char
+    &#125;
+    left ++
+  &#125;
+  arr.unshift(word)
+  <span class="hljs-keyword">return</span> arr.join(<span class="hljs-string">&#x27; &#x27;</span>)
+&#125;</code></pre></div></li>
 </ul>
 <ul>
 <li>检查回文</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">reverseCheck</span>(<span class="hljs-params">str</span>)</span>&#123;<br>  <span class="hljs-keyword">let</span> s = str.toLowerCase().replace(<span class="hljs-regexp">/[\W_]/g</span>,<span class="hljs-string">&#x27;&#x27;</span>)<br>  <span class="hljs-comment">// 格式掉不是字母的别的玩意</span><br>  <span class="hljs-comment">// | `\W`   | 匹配任意不是字母，数字，下划线 |</span><br>  <span class="hljs-comment">// `[]` 字符串用中括号括起来，表示匹配其中的任一字符，相当于或的意思</span><br>  <span class="hljs-keyword">return</span> s === s.split(<span class="hljs-string">&#x27;&#x27;</span>).reverse().join(<span class="hljs-string">&#x27;&#x27;</span>)<br>&#125;<br></code></pre></div></td></tr></table></figure>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">reverseCheck</span>(<span class="hljs-params">str</span>)</span>&#123;
+  <span class="hljs-keyword">let</span> s = str.toLowerCase().replace(<span class="hljs-regexp">/[\W_]/g</span>,<span class="hljs-string">&#x27;&#x27;</span>)
+  <span class="hljs-comment">// 格式掉不是字母的别的玩意</span>
+  <span class="hljs-comment">// | `\W`   | 匹配任意不是字母，数字，下划线 |</span>
+  <span class="hljs-comment">// `[]` 字符串用中括号括起来，表示匹配其中的任一字符，相当于或的意思</span>
+  <span class="hljs-keyword">return</span> s === s.split(<span class="hljs-string">&#x27;&#x27;</span>).reverse().join(<span class="hljs-string">&#x27;&#x27;</span>)
+&#125;</code></pre></div>
 
 <ul>
 <li>计算最长不重复字符串</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">longestStr</span>(<span class="hljs-params">str</span>)</span>&#123;<br>  <span class="hljs-keyword">let</span> map = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Map</span>(),maxLength = <span class="hljs-number">0</span><br>  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; j = <span class="hljs-number">0</span>;j&lt;str.length;j++)&#123;<br>    <span class="hljs-keyword">if</span>(map.has(str[j]))&#123;<br>      i = <span class="hljs-built_in">Math</span>.max(map.get(str[j])+<span class="hljs-number">1</span>,i)<br>    &#125;<br>    maxLength = <span class="hljs-built_in">Math</span>.max(j-i+<span class="hljs-number">1</span>,maxLength)<br>    map.set(str[j],j)<br>  &#125;<br>  <span class="hljs-keyword">return</span> maxLength<br>&#125;<br><br><br><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">longestStr2</span>(<span class="hljs-params">str</span>)</span>&#123;<br>  <span class="hljs-keyword">let</span> arr = [],maxLen = <span class="hljs-number">0</span><br>  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span> ; i&lt;str.length;i++)&#123;<br>    <span class="hljs-keyword">let</span> index = arr.indexOf(str[i])<br>    <span class="hljs-keyword">if</span>(index!==-<span class="hljs-number">1</span>)&#123;<br>      arr.splice(<span class="hljs-number">0</span>,index+<span class="hljs-number">1</span>)<br>      <span class="hljs-comment">// splice() 方法向/从数组中添加/删除项目,然后返回被删除的项目</span><br>    &#125;<br>    arr.push(str[i])<br>    maxLen = <span class="hljs-built_in">Math</span>.max(maxLen,arr.length)<br><br>    <span class="hljs-comment">// 取最大值！！</span><br>    <span class="hljs-comment">// 最长的字符串不一定从头就开始出现</span><br>  &#125;<br>  <span class="hljs-keyword">return</span> maxLen<br>&#125;<br></code></pre></div></td></tr></table></figure>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">longestStr</span>(<span class="hljs-params">str</span>)</span>&#123;
+  <span class="hljs-keyword">let</span> map = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Map</span>(),maxLength = <span class="hljs-number">0</span>
+  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; j = <span class="hljs-number">0</span>;j&lt;str.length;j++)&#123;
+    <span class="hljs-keyword">if</span>(map.has(str[j]))&#123;
+      i = <span class="hljs-built_in">Math</span>.max(map.get(str[j])+<span class="hljs-number">1</span>,i)
+    &#125;
+    maxLength = <span class="hljs-built_in">Math</span>.max(j-i+<span class="hljs-number">1</span>,maxLength)
+    map.set(str[j],j)
+  &#125;
+  <span class="hljs-keyword">return</span> maxLength
+&#125;
+
+
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">longestStr2</span>(<span class="hljs-params">str</span>)</span>&#123;
+  <span class="hljs-keyword">let</span> arr = [],maxLen = <span class="hljs-number">0</span>
+  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span> ; i&lt;str.length;i++)&#123;
+    <span class="hljs-keyword">let</span> index = arr.indexOf(str[i])
+    <span class="hljs-keyword">if</span>(index!==-<span class="hljs-number">1</span>)&#123;
+      arr.splice(<span class="hljs-number">0</span>,index+<span class="hljs-number">1</span>)
+      <span class="hljs-comment">// splice() 方法向/从数组中添加/删除项目,然后返回被删除的项目</span>
+    &#125;
+    arr.push(str[i])
+    maxLen = <span class="hljs-built_in">Math</span>.max(maxLen,arr.length)
+
+    <span class="hljs-comment">// 取最大值！！</span>
+    <span class="hljs-comment">// 最长的字符串不一定从头就开始出现</span>
+  &#125;
+  <span class="hljs-keyword">return</span> maxLen
+&#125;</code></pre></div>
             </div>
             <hr>
             <div>

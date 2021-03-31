@@ -244,9 +244,69 @@
             <div class="markdown-body">
               <ul>
 <li><p>自动化注册组件</p>
-<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// global.js</span><br><span class="hljs-keyword">import</span> Vue <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue&#x27;</span><br><span class="hljs-keyword">import</span> upperFirst <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;lodash/upperFirst&#x27;</span><br><span class="hljs-keyword">import</span> camelCase <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;lodash/camelCase&#x27;</span><br><br><span class="hljs-keyword">const</span> requireComponent = <span class="hljs-built_in">require</span>.context(<br>  <span class="hljs-comment">// 其组件目录的相对路径</span><br>  <span class="hljs-comment">// 全局注册的目录</span><br>  .,<br>  <span class="hljs-comment">// 是否查询其子目录</span><br>  <span class="hljs-literal">false</span>,<br>  <span class="hljs-comment">// 匹配基础组件文件名的正则表达式</span><br>  <span class="hljs-comment">// /Base[A-Z]\w+\.(vue|js)$/</span><br>  /\.vue$/<br>)<br><br>requireComponent.keys().forEach(<span class="hljs-function"><span class="hljs-params">fileName</span> =&gt;</span> &#123;<br>  <span class="hljs-comment">// 获取组件配置</span><br>  <span class="hljs-keyword">const</span> componentConfig = requireComponent(fileName)<br><br>  <span class="hljs-comment">// 获取组件的 PascalCase 命名</span><br>  <span class="hljs-keyword">const</span> componentName = upperFirst(<br>    camelCase(<br>      <span class="hljs-comment">// 获取和目录深度无关的文件名</span><br>      fileName<br>        <span class="hljs-comment">// .split(&#x27;/&#x27;)</span><br>        <span class="hljs-comment">// .pop()</span><br>        .replace(<span class="hljs-regexp">/^\.\//</span>,<span class="hljs-string">&#x27;&#x27;</span>)<br>        <span class="hljs-comment">// ‘./ComA.vue’ =&gt; &#x27;ComA.vue&#x27;</span><br>        .replace(<span class="hljs-regexp">/\.\w+$/</span>, <span class="hljs-string">&#x27;&#x27;</span>)<br>        <span class="hljs-comment">// =&gt; &#x27;ComA&#x27;</span><br>    )<br>  )<br><br>  <span class="hljs-comment">// 全局注册组件</span><br>  Vue.component(<br>    componentName,<br>    <span class="hljs-comment">// 如果这个组件选项是通过 `export default` 导出的，</span><br>    <span class="hljs-comment">// 那么就会优先使用 `.default`，</span><br>    <span class="hljs-comment">// 否则回退到使用模块的根。</span><br>    componentConfig.default || componentConfig<br>  )<br>&#125;)<br></code></pre></div></td></tr></table></figure></li>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// global.js</span>
+<span class="hljs-keyword">import</span> Vue <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue&#x27;</span>
+<span class="hljs-keyword">import</span> upperFirst <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;lodash/upperFirst&#x27;</span>
+<span class="hljs-keyword">import</span> camelCase <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;lodash/camelCase&#x27;</span>
+
+<span class="hljs-keyword">const</span> requireComponent = <span class="hljs-built_in">require</span>.context(
+  <span class="hljs-comment">// 其组件目录的相对路径</span>
+  <span class="hljs-comment">// 全局注册的目录</span>
+  .,
+  <span class="hljs-comment">// 是否查询其子目录</span>
+  <span class="hljs-literal">false</span>,
+  <span class="hljs-comment">// 匹配基础组件文件名的正则表达式</span>
+  <span class="hljs-comment">// /Base[A-Z]\w+\.(vue|js)$/</span>
+  /\.vue$/
+)
+
+requireComponent.keys().forEach(<span class="hljs-function"><span class="hljs-params">fileName</span> =&gt;</span> &#123;
+  <span class="hljs-comment">// 获取组件配置</span>
+  <span class="hljs-keyword">const</span> componentConfig = requireComponent(fileName)
+
+  <span class="hljs-comment">// 获取组件的 PascalCase 命名</span>
+  <span class="hljs-keyword">const</span> componentName = upperFirst(
+    camelCase(
+      <span class="hljs-comment">// 获取和目录深度无关的文件名</span>
+      fileName
+        <span class="hljs-comment">// .split(&#x27;/&#x27;)</span>
+        <span class="hljs-comment">// .pop()</span>
+        .replace(<span class="hljs-regexp">/^\.\//</span>,<span class="hljs-string">&#x27;&#x27;</span>)
+        <span class="hljs-comment">// ‘./ComA.vue’ =&gt; &#x27;ComA.vue&#x27;</span>
+        .replace(<span class="hljs-regexp">/\.\w+$/</span>, <span class="hljs-string">&#x27;&#x27;</span>)
+        <span class="hljs-comment">// =&gt; &#x27;ComA&#x27;</span>
+    )
+  )
+
+  <span class="hljs-comment">// 全局注册组件</span>
+  Vue.component(
+    componentName,
+    <span class="hljs-comment">// 如果这个组件选项是通过 `export default` 导出的，</span>
+    <span class="hljs-comment">// 那么就会优先使用 `.default`，</span>
+    <span class="hljs-comment">// 否则回退到使用模块的根。</span>
+    componentConfig.default || componentConfig
+  )
+&#125;)</code></pre></div></li>
 <li><p>自动化注册路由</p>
-<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// router.js</span><br><span class="hljs-keyword">import</span> Vue <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue&#x27;</span><br><span class="hljs-keyword">import</span> Router <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue-router&#x27;</span><br><br>Vue.use(Router)<br><br><span class="hljs-keyword">const</span> routerList = []<br><br><span class="hljs-keyword">const</span> importAllRouter = <span class="hljs-function"><span class="hljs-params">r</span> =&gt;</span> &#123;<br>  r.keys().forEach(<span class="hljs-function"><span class="hljs-params">key</span>=&gt;</span>&#123;<br>    routerList.push(r[key].default  <span class="hljs-comment">/*export default*/</span>)<br>  &#125;)<br>&#125;<br><br>importAllRouter(<span class="hljs-built_in">require</span>.context(.<span class="hljs-comment">/* 查询目录*/</span>,<span class="hljs-literal">true</span><span class="hljs-comment">/*是否包含子目录*/</span>,<span class="hljs-regexp">/\.router\.js/</span><span class="hljs-regexp">/*匹配正则*/</span>))<br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">new</span> Router(&#123;<br>  ...routerList<br>&#125;)<br></code></pre></div></td></tr></table></figure></li>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// router.js</span>
+<span class="hljs-keyword">import</span> Vue <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue&#x27;</span>
+<span class="hljs-keyword">import</span> Router <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue-router&#x27;</span>
+
+Vue.use(Router)
+
+<span class="hljs-keyword">const</span> routerList = []
+
+<span class="hljs-keyword">const</span> importAllRouter = <span class="hljs-function"><span class="hljs-params">r</span> =&gt;</span> &#123;
+  r.keys().forEach(<span class="hljs-function"><span class="hljs-params">key</span>=&gt;</span>&#123;
+    routerList.push(r[key].default  <span class="hljs-comment">/*export default*/</span>)
+  &#125;)
+&#125;
+
+importAllRouter(<span class="hljs-built_in">require</span>.context(.<span class="hljs-comment">/* 查询目录*/</span>,<span class="hljs-literal">true</span><span class="hljs-comment">/*是否包含子目录*/</span>,<span class="hljs-regexp">/\.router\.js/</span><span class="hljs-regexp">/*匹配正则*/</span>))
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">new</span> Router(&#123;
+  ...routerList
+&#125;)</code></pre></div></li>
 </ul>
 
             </div>

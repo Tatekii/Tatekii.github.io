@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      864 字
+      863 字
     </span>
   
 
@@ -331,10 +331,42 @@
 </ul>
 </li>
 </ul>
-<h2 id="浏览器多个标签页之间的通信"><a href="#浏览器多个标签页之间的通信" class="headerlink" title="浏览器多个标签页之间的通信"></a>浏览器多个标签页之间的通信</h2><h3 id="使用localStorage"><a href="#使用localStorage" class="headerlink" title="使用localStorage"></a>使用localStorage</h3><figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// &lt;!-- 标签页1： --&gt; </span><br>    $(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>        $(<span class="hljs-string">&quot;#btn&quot;</span>).click(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>           <span class="hljs-keyword">var</span> name=$(<span class="hljs-string">&quot;#name&quot;</span>).val();<br>            <span class="hljs-built_in">localStorage</span>.setItem(<span class="hljs-string">&quot;name&quot;</span>, name); <span class="hljs-comment">//存储需要的信息 </span><br>        &#125;);<br>   &#125;);<br><br><span class="hljs-comment">// &lt;!-- 标签页2： --&gt;</span><br><br>$(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>    <span class="hljs-built_in">window</span>.addEventListener(<span class="hljs-string">&quot;storage&quot;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">event</span>)</span>&#123;<br>	   <span class="hljs-built_in">console</span>.log(event.key + <span class="hljs-string">&quot;=&quot;</span> + event.newValue);<br>    &#125;);     <span class="hljs-comment">//使用storage事件监听添加、修改、删除的动作  </span><br>&#125;);<br></code></pre></div></td></tr></table></figure>
+<h2 id="浏览器多个标签页之间的通信"><a href="#浏览器多个标签页之间的通信" class="headerlink" title="浏览器多个标签页之间的通信"></a>浏览器多个标签页之间的通信</h2><h3 id="使用localStorage"><a href="#使用localStorage" class="headerlink" title="使用localStorage"></a>使用localStorage</h3><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// &lt;!-- 标签页1： --&gt; </span>
+    $(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;
+        $(<span class="hljs-string">&quot;#btn&quot;</span>).click(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;
+           <span class="hljs-keyword">var</span> name=$(<span class="hljs-string">&quot;#name&quot;</span>).val();
+            <span class="hljs-built_in">localStorage</span>.setItem(<span class="hljs-string">&quot;name&quot;</span>, name); <span class="hljs-comment">//存储需要的信息 </span>
+        &#125;);
+   &#125;);
+
+<span class="hljs-comment">// &lt;!-- 标签页2： --&gt;</span>
+
+$(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;
+    <span class="hljs-built_in">window</span>.addEventListener(<span class="hljs-string">&quot;storage&quot;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">event</span>)</span>&#123;
+	   <span class="hljs-built_in">console</span>.log(event.key + <span class="hljs-string">&quot;=&quot;</span> + event.newValue);
+    &#125;);     <span class="hljs-comment">//使用storage事件监听添加、修改、删除的动作  </span>
+&#125;);</code></pre></div>
 
 <h3 id="使用cookie"><a href="#使用cookie" class="headerlink" title="使用cookie"></a>使用cookie</h3><p>将要传递的信息存储在cookie中，定时读取cookie</p>
-<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// 标签页1：</span><br><br>$(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;    <br>    $(<span class="hljs-string">&quot;#btn&quot;</span>).click(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;    <br>        <span class="hljs-keyword">var</span> name=$(<span class="hljs-string">&quot;#name&quot;</span>).val();    <br>        <span class="hljs-built_in">document</span>.cookie=<span class="hljs-string">&quot;name=&quot;</span>+name;    <br>    &#125;);    <br>&#125;);<br><span class="hljs-comment">// 标签页2：</span><br><br> $(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;   <br>	<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getCookie</span>(<span class="hljs-params">key</span>) </span>&#123;    <br>	   <span class="hljs-keyword">return</span> <span class="hljs-built_in">JSON</span>.parse(<span class="hljs-string">&quot;&#123;\&quot;&quot;</span> + <span class="hljs-built_in">document</span>.cookie.replace(<span class="hljs-regexp">/;\s+/gim</span>,<span class="hljs-string">&quot;\&quot;,\&quot;&quot;</span>).replace(<span class="hljs-regexp">/=/gim</span>, <span class="hljs-string">&quot;\&quot;:\&quot;&quot;</span>) + <span class="hljs-string">&quot;\&quot;&#125;&quot;</span>)[key];    <br>	&#125;     <br>	<span class="hljs-built_in">setInterval</span>(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;    <br>	   <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;name=&quot;</span> + getCookie(<span class="hljs-string">&quot;name&quot;</span>));    <br>	&#125;, <span class="hljs-number">10000</span>);    <br>&#125;);<br><br></code></pre></div></td></tr></table></figure>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// 标签页1：</span>
+
+$(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;    
+    $(<span class="hljs-string">&quot;#btn&quot;</span>).click(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;    
+        <span class="hljs-keyword">var</span> name=$(<span class="hljs-string">&quot;#name&quot;</span>).val();    
+        <span class="hljs-built_in">document</span>.cookie=<span class="hljs-string">&quot;name=&quot;</span>+name;    
+    &#125;);    
+&#125;);
+<span class="hljs-comment">// 标签页2：</span>
+
+ $(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;   
+	<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getCookie</span>(<span class="hljs-params">key</span>) </span>&#123;    
+	   <span class="hljs-keyword">return</span> <span class="hljs-built_in">JSON</span>.parse(<span class="hljs-string">&quot;&#123;\&quot;&quot;</span> + <span class="hljs-built_in">document</span>.cookie.replace(<span class="hljs-regexp">/;\s+/gim</span>,<span class="hljs-string">&quot;\&quot;,\&quot;&quot;</span>).replace(<span class="hljs-regexp">/=/gim</span>, <span class="hljs-string">&quot;\&quot;:\&quot;&quot;</span>) + <span class="hljs-string">&quot;\&quot;&#125;&quot;</span>)[key];    
+	&#125;     
+	<span class="hljs-built_in">setInterval</span>(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;    
+	   <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;name=&quot;</span> + getCookie(<span class="hljs-string">&quot;name&quot;</span>));    
+	&#125;, <span class="hljs-number">10000</span>);    
+&#125;);
+</code></pre></div>
 
             </div>
             <hr>

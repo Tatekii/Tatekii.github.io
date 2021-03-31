@@ -246,14 +246,77 @@
 <p>该功能由http-proxy-middleware提供</p>
 </blockquote>
 <p>开发环境中经常会用ajax获取假数据模拟渲染页面</p>
-<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript">methods: &#123;<br>  getHomeInfo () &#123;<br>    axios.get(<span class="hljs-string">&#x27;/static/testData/index.json&#x27;</span>)<br>      .then(<span class="hljs-built_in">this</span>.getHomeInfoSucc)<br>  &#125;,<br>  getHomeInfoSucc (res) &#123;<br>    <span class="hljs-built_in">console</span>.log(res)<br>  &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript">methods: &#123;
+  getHomeInfo () &#123;
+    axios.get(<span class="hljs-string">&#x27;/static/testData/index.json&#x27;</span>)
+      .then(<span class="hljs-built_in">this</span>.getHomeInfoSucc)
+  &#125;,
+  getHomeInfoSucc (res) &#123;
+    <span class="hljs-built_in">console</span>.log(res)
+  &#125;
+&#125;</code></pre></div>
 
 <p>项目上线时，api接口都要写成api的格式</p>
-<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript">axios.get(<span class="hljs-string">&#x27;/api/index.json&#x27;</span>)<br></code></pre></div></td></tr></table></figure>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript">axios.get(<span class="hljs-string">&#x27;/api/index.json&#x27;</span>)</code></pre></div>
 
 <p><em>实际生产中在项目上线之前修改代码是很高风险的操作</em></p>
 <p>所以我们可以使用代理来解决，即在开发环境下给url路径设置代理</p>
-<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// 配置该代理在config/index.js</span><br>dev: &#123;<br>...<br>    proxyTable: &#123;<br>      <span class="hljs-comment">//  请求 /api 都会被转发到target下的路径</span><br>      <span class="hljs-string">&#x27;/api&#x27;</span>: &#123;<br>        target: <span class="hljs-string">&#x27;http://localhost:3000&#x27;</span>,<br>        <span class="hljs-comment">// 并且改写路径</span><br>        pathRewrite: &#123;<br>          <span class="hljs-string">&#x27;^/api&#x27;</span>: <span class="hljs-string">&#x27;/static/data&#x27;</span><br>          <span class="hljs-comment">// 最终请求地址就是http://localhost:8080/static/data</span><br>          <span class="hljs-comment">// 也可以置空 改写 pathRewrite</span><br>        &#125;<br>      &#125;<br>    &#125;<br>...<br><br><br><span class="hljs-comment">// 多个代理可以使用数组</span><br>proxy: [&#123;<br>  context: [<span class="hljs-string">&quot;/auth&quot;</span>, <span class="hljs-string">&quot;/api&quot;</span>],<br>  target: <span class="hljs-string">&quot;http://localhost:3000&quot;</span>,<br>&#125;]<br><br><br><span class="hljs-comment">//默认情况下，不接受运行在 HTTPS 上，且使用了无效证书的后端服务器。如果你想要接受，修改配置如下：</span><br>proxy: &#123;<br>  <span class="hljs-string">&quot;/api&quot;</span>: &#123;<br>    target: <span class="hljs-string">&quot;https://other-server.example.com&quot;</span>,<br>    secure: <span class="hljs-literal">false</span><br>  &#125;<br>&#125;<br><br><br><span class="hljs-comment">// 有时你不想代理所有的请求。可以基于一个函数的返回值绕过代理</span><br>proxy: &#123;<br>  <span class="hljs-string">&quot;/api&quot;</span>: &#123;<br>    target: <span class="hljs-string">&quot;http://localhost:3000&quot;</span>,<br>    <span class="hljs-comment">// 在函数中你可以访问请求体、响应体和代理选项。必须返回 false 或路径，来跳过代理请求。</span><br><br>   <span class="hljs-comment">//对于浏览器请求，你想要提供一个 HTML 页面，但是对于其他 API 请求则保持代理。你可以这样做：</span><br>    bypass: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">req, res, proxyOptions</span>) </span>&#123;<br>      <span class="hljs-keyword">if</span> (req.headers.accept.indexOf(<span class="hljs-string">&quot;html&quot;</span>) !== -<span class="hljs-number">1</span>) &#123;<br>        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Skipping proxy for browser request.&quot;</span>);<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;/index.html&quot;</span>;<br>      &#125;<br>    &#125;<br>  &#125;<br>&#125;<br><br><span class="hljs-comment">// 受到跨域限制时</span><br>proxy: &#123;<br>      <span class="hljs-string">&#x27;/api&#x27;</span>: <span class="hljs-string">&#x27;http://localhost:3000&#x27;</span>,<br>      changeOrigin: <span class="hljs-literal">true</span><br>      <span class="hljs-comment">// 改变请求的源</span><br>    &#125;<br></code></pre></div></td></tr></table></figure>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// 配置该代理在config/index.js</span>
+dev: &#123;
+...
+    proxyTable: &#123;
+      <span class="hljs-comment">//  请求 /api 都会被转发到target下的路径</span>
+      <span class="hljs-string">&#x27;/api&#x27;</span>: &#123;
+        target: <span class="hljs-string">&#x27;http://localhost:3000&#x27;</span>,
+        <span class="hljs-comment">// 并且改写路径</span>
+        pathRewrite: &#123;
+          <span class="hljs-string">&#x27;^/api&#x27;</span>: <span class="hljs-string">&#x27;/static/data&#x27;</span>
+          <span class="hljs-comment">// 最终请求地址就是http://localhost:8080/static/data</span>
+          <span class="hljs-comment">// 也可以置空 改写 pathRewrite</span>
+        &#125;
+      &#125;
+    &#125;
+...
+
+
+<span class="hljs-comment">// 多个代理可以使用数组</span>
+proxy: [&#123;
+  context: [<span class="hljs-string">&quot;/auth&quot;</span>, <span class="hljs-string">&quot;/api&quot;</span>],
+  target: <span class="hljs-string">&quot;http://localhost:3000&quot;</span>,
+&#125;]
+
+
+<span class="hljs-comment">//默认情况下，不接受运行在 HTTPS 上，且使用了无效证书的后端服务器。如果你想要接受，修改配置如下：</span>
+proxy: &#123;
+  <span class="hljs-string">&quot;/api&quot;</span>: &#123;
+    target: <span class="hljs-string">&quot;https://other-server.example.com&quot;</span>,
+    secure: <span class="hljs-literal">false</span>
+  &#125;
+&#125;
+
+
+<span class="hljs-comment">// 有时你不想代理所有的请求。可以基于一个函数的返回值绕过代理</span>
+proxy: &#123;
+  <span class="hljs-string">&quot;/api&quot;</span>: &#123;
+    target: <span class="hljs-string">&quot;http://localhost:3000&quot;</span>,
+    <span class="hljs-comment">// 在函数中你可以访问请求体、响应体和代理选项。必须返回 false 或路径，来跳过代理请求。</span>
+
+   <span class="hljs-comment">//对于浏览器请求，你想要提供一个 HTML 页面，但是对于其他 API 请求则保持代理。你可以这样做：</span>
+    bypass: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">req, res, proxyOptions</span>) </span>&#123;
+      <span class="hljs-keyword">if</span> (req.headers.accept.indexOf(<span class="hljs-string">&quot;html&quot;</span>) !== -<span class="hljs-number">1</span>) &#123;
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Skipping proxy for browser request.&quot;</span>);
+        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;/index.html&quot;</span>;
+      &#125;
+    &#125;
+  &#125;
+&#125;
+
+<span class="hljs-comment">// 受到跨域限制时</span>
+proxy: &#123;
+      <span class="hljs-string">&#x27;/api&#x27;</span>: <span class="hljs-string">&#x27;http://localhost:3000&#x27;</span>,
+      changeOrigin: <span class="hljs-literal">true</span>
+      <span class="hljs-comment">// 改变请求的源</span>
+    &#125;</code></pre></div>
 
 
             </div>

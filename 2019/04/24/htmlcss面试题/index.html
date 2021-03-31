@@ -313,7 +313,30 @@
 <li>有浮动、绝对定位，inline-block 属性的元素，margin 不会和垂直方向上的其他元素 margin 折叠。</li>
 </ul>
 <h3 id="css-实现简单的幻灯片效果"><a href="#css-实现简单的幻灯片效果" class="headerlink" title="css 实现简单的幻灯片效果"></a>css 实现简单的幻灯片效果</h3><p><a target="_blank" rel="noopener" href="https://www.runoob.com/css3/css3-animations.html">css3 动画菜鸟教程</a></p>
-<figure class="highlight css"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs css"><span class="hljs-selector-tag">div</span> &#123;<br>  <span class="hljs-attribute">animation-name</span>: Myani;<br>  <span class="hljs-attribute">animation-duration</span>: <span class="hljs-number">5s</span>;<br>  <span class="hljs-attribute">animation-timing-function</span>: linear;<br>  <span class="hljs-attribute">animation-delay</span>: <span class="hljs-number">2s</span>;<br>  <span class="hljs-attribute">animation-iteration-count</span>: infinite;<br>  <span class="hljs-attribute">animation-direction</span>: alternate;<br>  <span class="hljs-attribute">animation-play-state</span>: running;<br>  <span class="hljs-comment">/* Firefox: */</span><br>  -moz-<br>  <span class="hljs-comment">/* Safari 和 Chrome: */</span><br>  -webkit-<br>  <span class="hljs-comment">/* Opera: */</span><br>  -o-<br>&#125;<br><br><span class="hljs-keyword">@keyframe</span> Myani &#123;<br>  &lt; !-- 从什么变到什么 --&gt;<span class="hljs-selector-tag">from</span> &#123;&#125;<br><br>  <span class="hljs-selector-tag">to</span> &#123;&#125;<br><br>  //or<br>  百分比<br>&#125;<br></code></pre></div></td></tr></table></figure>
+<div class="hljs code-wrapper"><pre><code class="hljs css"><span class="hljs-selector-tag">div</span> &#123;
+  <span class="hljs-attribute">animation-name</span>: Myani;
+  <span class="hljs-attribute">animation-duration</span>: <span class="hljs-number">5s</span>;
+  <span class="hljs-attribute">animation-timing-function</span>: linear;
+  <span class="hljs-attribute">animation-delay</span>: <span class="hljs-number">2s</span>;
+  <span class="hljs-attribute">animation-iteration-count</span>: infinite;
+  <span class="hljs-attribute">animation-direction</span>: alternate;
+  <span class="hljs-attribute">animation-play-state</span>: running;
+  <span class="hljs-comment">/* Firefox: */</span>
+  -moz-
+  <span class="hljs-comment">/* Safari 和 Chrome: */</span>
+  -webkit-
+  <span class="hljs-comment">/* Opera: */</span>
+  -o-
+&#125;
+
+<span class="hljs-keyword">@keyframe</span> Myani &#123;
+  &lt; !-- 从什么变到什么 --&gt;<span class="hljs-selector-tag">from</span> &#123;&#125;
+
+  <span class="hljs-selector-tag">to</span> &#123;&#125;
+
+  //or
+  百分比
+&#125;</code></pre></div>
 
 <h3 id="src-和-href-的区别"><a href="#src-和-href-的区别" class="headerlink" title="src 和 href 的区别"></a>src 和 href 的区别</h3><p><code>src</code>是指向外部资源的位置，指向的内容会嵌入到文档中当前标签所在的位置，在请求 src 资源时会将其指向的资源下载并应用到文档内，如 js 脚本，img 图片和 frame 等元素。<strong>当浏览器解析到该元素时，会暂停其他资源的下载和处理，直到将该资源加载、编译、执行完毕，所以一般 js 脚本会放在底部而不是头部。</strong></p>
 <p><code>href</code>是指网络资源所在位置，建立和当前元素（锚点）或当前文档（链接）之间的链接，用于超链接。</p>
@@ -323,12 +346,69 @@
 <li>混杂模式中，页面以宽松的向后兼容的方式显示。模拟老式浏览器的行为以 防止站点无法工作</li>
 </ul>
 <h3 id="超链接访问过后-hover-样式就不出现了"><a href="#超链接访问过后-hover-样式就不出现了" class="headerlink" title="超链接访问过后 hover 样式就不出现了"></a>超链接访问过后 hover 样式就不出现了</h3><p>被点击访问过的超链接样式不在具有 hover 和 active 了解决方法是改变 CSS 属性排列顺序: <code>L-V-H-A</code></p>
-<figure class="highlight css"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs css"><span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:link</span> &#123;<br>&#125;<br><span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:visited</span> &#123;<br>&#125;<br><span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:hover</span> &#123;<br>&#125;<br><span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:active</span> &#123;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+<div class="hljs code-wrapper"><pre><code class="hljs css"><span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:link</span> &#123;
+&#125;
+<span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:visited</span> &#123;
+&#125;
+<span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:hover</span> &#123;
+&#125;
+<span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:active</span> &#123;
+&#125;</code></pre></div>
 
 
-<div class="hljs code-wrapper"><pre><code><figure class="highlight css"><table><tr><td class="gutter hljs"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs css">    <span class="hljs-selector-tag">span</span>&#123;<br>  <span class="hljs-attribute">position</span>: absolute;<br>  <span class="hljs-attribute">top</span>: <span class="hljs-number">100px</span>;<br>  <span class="hljs-attribute">left</span>: <span class="hljs-number">100px</span>;<br>  <span class="hljs-attribute">width</span>: <span class="hljs-number">0</span>;<br>  <span class="hljs-attribute">height</span>: <span class="hljs-number">0</span>;<br>  <span class="hljs-attribute">border-top</span>:<span class="hljs-number">50px</span> red solid;<br>  <span class="hljs-attribute">border-left</span>:<span class="hljs-number">50px</span> white solid;<br>  <span class="hljs-attribute">border-right</span>: <span class="hljs-number">50px</span> white solid;<br>  &lt;!-- 一样粗的边框在边角会以<span class="hljs-number">45</span>度分割 --&gt;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+<div class="hljs code-wrapper"><pre><code><pre><code class="hljs css">    <span class="hljs-selector-tag">span</span>&#123;
+  <span class="hljs-attribute">position</span>: absolute;
+  <span class="hljs-attribute">top</span>: <span class="hljs-number">100px</span>;
+  <span class="hljs-attribute">left</span>: <span class="hljs-number">100px</span>;
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">border-top</span>:<span class="hljs-number">50px</span> red solid;
+  <span class="hljs-attribute">border-left</span>:<span class="hljs-number">50px</span> white solid;
+  <span class="hljs-attribute">border-right</span>: <span class="hljs-number">50px</span> white solid;
+  &lt;!-- 一样粗的边框在边角会以<span class="hljs-number">45</span>度分割 --&gt;
+&#125;</code></pre></div>
 </code></pre>
-<h3 id="让-div-水平居中"><a href="#让-div-水平居中" class="headerlink" title="让 div 水平居中"></a>让 div 水平居中</h3><div class="hljs code-wrapper"><pre><code><figure class="highlight javascript"><table><tr><td class="gutter hljs"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript">    .dv1&#123;<br>  width: <span class="hljs-number">100</span>%;<br>  height: 400px;<br>  background: skyblue;<br>&#125;<br>.dv2&#123;<br>  width: 300px;<br>  height: 200px;<br>  background: rebeccapurple;<br>&#125;<br><span class="hljs-comment">/* 第一种 */</span><br>.dv1&#123;<br>  position: relative;<br>&#125;<br>.dv2&#123;<br>  position: absolute;<br>  left: <span class="hljs-number">50</span>%;<br>  top: <span class="hljs-number">50</span>%;<br>  margin-left: -150px;<br>  margin-top: -100px;<br>&#125;<br><br><span class="hljs-comment">/* 第二种 */</span><br>.dv1&#123;<br>  position: relative;<br>&#125;<br>.dv2&#123;<br>  position: absolute;<br>  left: <span class="hljs-number">50</span>%;<br>  top: <span class="hljs-number">50</span>%;<br>  transform:translate(-<span class="hljs-number">50</span>%,-<span class="hljs-number">50</span>%);<br>&#125;<br><br><span class="hljs-comment">/* 第三种 */</span><br>.dv1&#123;<br>  display: flex;<br>  justify-content: center;<br>  <span class="hljs-comment">/* 主轴上的对齐的方式 */</span><br>  align-items: center;<br>  <span class="hljs-comment">/* 交叉轴上的对齐方式 */</span><br>&#125;<br></code></pre></div></td></tr></table></figure>
+<h3 id="让-div-水平居中"><a href="#让-div-水平居中" class="headerlink" title="让 div 水平居中"></a>让 div 水平居中</h3><div class="hljs code-wrapper"><pre><code><pre><code class="hljs javascript">    .dv1&#123;
+  width: <span class="hljs-number">100</span>%;
+  height: 400px;
+  background: skyblue;
+&#125;
+.dv2&#123;
+  width: 300px;
+  height: 200px;
+  background: rebeccapurple;
+&#125;
+<span class="hljs-comment">/* 第一种 */</span>
+.dv1&#123;
+  position: relative;
+&#125;
+.dv2&#123;
+  position: absolute;
+  left: <span class="hljs-number">50</span>%;
+  top: <span class="hljs-number">50</span>%;
+  margin-left: -150px;
+  margin-top: -100px;
+&#125;
+
+<span class="hljs-comment">/* 第二种 */</span>
+.dv1&#123;
+  position: relative;
+&#125;
+.dv2&#123;
+  position: absolute;
+  left: <span class="hljs-number">50</span>%;
+  top: <span class="hljs-number">50</span>%;
+  transform:translate(-<span class="hljs-number">50</span>%,-<span class="hljs-number">50</span>%);
+&#125;
+
+<span class="hljs-comment">/* 第三种 */</span>
+.dv1&#123;
+  display: flex;
+  justify-content: center;
+  <span class="hljs-comment">/* 主轴上的对齐的方式 */</span>
+  align-items: center;
+  <span class="hljs-comment">/* 交叉轴上的对齐方式 */</span>
+&#125;</code></pre></div>
 </code></pre>
 <h3 id="画圆和椭圆"><a href="#画圆和椭圆" class="headerlink" title="画圆和椭圆"></a>画圆和椭圆</h3><ul>
 <li><code>border-radius属性</code></li>
@@ -342,7 +422,17 @@
 </ul>
 </li>
 <li>```css<!--半椭圆-->width: 100px;
-height: 0;<br>border-style: solid;<br>border-color: #f00;<br>border-radius: 50%/100% 100% 0 0 <!-- 水平部分半径/垂直部分半径 -->;<figure class="highlight xml"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs xml"><br>- `canvcas`<br>  ```html<br>  <span class="hljs-tag">&lt;<span class="hljs-name">canvas</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;context&quot;</span>&gt;</span> <span class="hljs-tag">&lt;/<span class="hljs-name">canvas</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><br><span class="javascript">    <span class="hljs-keyword">let</span> c = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">&quot;context&quot;</span>);</span><br><span class="javascript">    <span class="hljs-keyword">let</span> ctx = c.getContext(<span class="hljs-string">&quot;2d&quot;</span>);</span><br><span class="javascript">    ctx.strokeStyle = <span class="hljs-string">&quot;red&quot;</span>;</span><br><span class="javascript">    ctx.arc(<span class="hljs-number">0</span>, <span class="hljs-number">10</span>, <span class="hljs-number">100</span>, <span class="hljs-number">0</span>, <span class="hljs-number">2</span> * <span class="hljs-built_in">Math</span>.PI);</span><br>    ctx.stroke();<br>  <span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></div></td></tr></table></figure></li>
+height: 0;<br>border-style: solid;<br>border-color: #f00;<br>border-radius: 50%/100% 100% 0 0 <!-- 水平部分半径/垂直部分半径 -->;<div class="hljs code-wrapper"><pre><code class="hljs xml">
+- `canvcas`
+  ```html
+  <span class="hljs-tag">&lt;<span class="hljs-name">canvas</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;context&quot;</span>&gt;</span> <span class="hljs-tag">&lt;/<span class="hljs-name">canvas</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span>
+<span class="javascript">    <span class="hljs-keyword">let</span> c = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">&quot;context&quot;</span>);</span>
+<span class="javascript">    <span class="hljs-keyword">let</span> ctx = c.getContext(<span class="hljs-string">&quot;2d&quot;</span>);</span>
+<span class="javascript">    ctx.strokeStyle = <span class="hljs-string">&quot;red&quot;</span>;</span>
+<span class="javascript">    ctx.arc(<span class="hljs-number">0</span>, <span class="hljs-number">10</span>, <span class="hljs-number">100</span>, <span class="hljs-number">0</span>, <span class="hljs-number">2</span> * <span class="hljs-built_in">Math</span>.PI);</span>
+    ctx.stroke();
+  <span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre></div></li>
 </ul>
 <h2 id="盒模型"><a href="#盒模型" class="headerlink" title="盒模型"></a>盒模型</h2><blockquote>
 <p>概念<br>html 文档中的每个元素都被描绘成矩形盒子，这些矩形盒子通过一个模型来描述其占用空间，这个模型称为盒模型。盒模型通过四个边界来描述：<code>margin</code>（外边距），<code>border</code>（边框），<code>padding</code>（内边距），<code>content</code>（内容区域</p>
@@ -360,7 +450,14 @@ height: 0;<br>border-style: solid;<br>border-color: #f00;<br>border-radius: 50%/
 <li><p>border 和 padding 可以设置，但是 border-top 和 padding-top 到页面顶部后就不再增加</p>
 </li>
 </ol>
-<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript">img; <span class="hljs-comment">//可以设置宽高</span><br>span;<br>lable;<br>strong;<br>a;<br>input; <span class="hljs-comment">//可以设置宽高</span><br>select; <span class="hljs-comment">//可以设置宽高</span><br>textarea; <span class="hljs-comment">//可以设置宽高</span><br></code></pre></div></td></tr></table></figure>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript">img; <span class="hljs-comment">//可以设置宽高</span>
+span;
+lable;
+strong;
+a;
+input; <span class="hljs-comment">//可以设置宽高</span>
+select; <span class="hljs-comment">//可以设置宽高</span>
+textarea; <span class="hljs-comment">//可以设置宽高</span></code></pre></div>
 
 <h4 id="块级元素"><a href="#块级元素" class="headerlink" title="块级元素"></a>块级元素</h4><p><code>display block</code></p>
 <ol>
@@ -371,12 +468,33 @@ height: 0;<br>border-style: solid;<br>border-color: #f00;<br>border-radius: 50%/
 <li><p>默认宽度是容器的 100%</p>
 </li>
 </ol>
-<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript">artical; <span class="hljs-comment">// h5</span><br>div;<br>header; <span class="hljs-comment">// h5</span><br>section; <span class="hljs-comment">// h5</span><br>adress; <span class="hljs-comment">// h5</span><br>ol;<br>ul;<br>aside; <span class="hljs-comment">// h5</span><br>footer; <span class="hljs-comment">// h5</span><br>audio; <span class="hljs-comment">// h5</span><br>video; <span class="hljs-comment">// h5</span><br>canvas; <span class="hljs-comment">// h5</span><br>hgroup; <span class="hljs-comment">// h5</span><br>p;<br>h1 - h6;<br>table;<br>form;<br></code></pre></div></td></tr></table></figure>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript">artical; <span class="hljs-comment">// h5</span>
+div;
+header; <span class="hljs-comment">// h5</span>
+section; <span class="hljs-comment">// h5</span>
+adress; <span class="hljs-comment">// h5</span>
+ol;
+ul;
+aside; <span class="hljs-comment">// h5</span>
+footer; <span class="hljs-comment">// h5</span>
+audio; <span class="hljs-comment">// h5</span>
+video; <span class="hljs-comment">// h5</span>
+canvas; <span class="hljs-comment">// h5</span>
+hgroup; <span class="hljs-comment">// h5</span>
+p;
+h1 - h6;
+table;
+form;</code></pre></div>
 
 <ul>
 <li>行内块级元素<br><code>display line-block</code></li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// 兼容</span><br>div &#123;<br>    display： inline-block；<br>    zoom： <span class="hljs-number">1</span>；   <span class="hljs-comment">//在IE下触发hasLayout</span><br>    display：inline；<span class="hljs-comment">//一旦触发了hasLayout设置display：inline和display：block效果相似。</span><br>&#125;<br></code></pre></div></td></tr></table></figure>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// 兼容</span>
+div &#123;
+    display： inline-block；
+    zoom： <span class="hljs-number">1</span>；   <span class="hljs-comment">//在IE下触发hasLayout</span>
+    display：inline；<span class="hljs-comment">//一旦触发了hasLayout设置display：inline和display：block效果相似。</span>
+&#125;</code></pre></div>
 
 <ol>
 <li>不自动换行</li>
@@ -393,7 +511,18 @@ height: 0;<br>border-style: solid;<br>border-color: #f00;<br>border-radius: 50%/
 <li>标准模型[content-box]的宽和高只计算 content 部分</li>
 <li>ie 模型[border-box]的宽高包括 padding 和 border</li>
 </ul>
-<h3 id="获取-DOM-元素的-style"><a href="#获取-DOM-元素的-style" class="headerlink" title="获取 DOM 元素的 style"></a>获取 DOM 元素的 style</h3><figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-number">1.</span> dom.style.width/height<br><span class="hljs-comment">// content 只能获取内联样式</span><br><span class="hljs-number">2.</span> dom.currentStyle.width/height<br><span class="hljs-comment">// 只支持ie</span><br><span class="hljs-number">3.</span> <span class="hljs-built_in">window</span>.getComputedStyle(ele).width/height<br><span class="hljs-comment">// content</span><br><span class="hljs-number">5.</span> ele.offsetWidth/offsetHeight<br><span class="hljs-comment">// content+padding+border+滚动条</span><br><span class="hljs-number">6.</span> ele.clientWidth/clientHeight<br><span class="hljs-comment">// content+padding 不含滚动条</span><br><span class="hljs-number">7.</span> ele.scrollTop/ele.scrollLeft<br><span class="hljs-comment">// 滚动像素数</span><br></code></pre></div></td></tr></table></figure>
+<h3 id="获取-DOM-元素的-style"><a href="#获取-DOM-元素的-style" class="headerlink" title="获取 DOM 元素的 style"></a>获取 DOM 元素的 style</h3><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-number">1.</span> dom.style.width/height
+<span class="hljs-comment">// content 只能获取内联样式</span>
+<span class="hljs-number">2.</span> dom.currentStyle.width/height
+<span class="hljs-comment">// 只支持ie</span>
+<span class="hljs-number">3.</span> <span class="hljs-built_in">window</span>.getComputedStyle(ele).width/height
+<span class="hljs-comment">// content</span>
+<span class="hljs-number">5.</span> ele.offsetWidth/offsetHeight
+<span class="hljs-comment">// content+padding+border+滚动条</span>
+<span class="hljs-number">6.</span> ele.clientWidth/clientHeight
+<span class="hljs-comment">// content+padding 不含滚动条</span>
+<span class="hljs-number">7.</span> ele.scrollTop/ele.scrollLeft
+<span class="hljs-comment">// 滚动像素数</span></code></pre></div>
 
 <h3 id="边距重叠"><a href="#边距重叠" class="headerlink" title="边距重叠"></a>边距重叠</h3><p>两个或多个块级盒子的!!垂直!!相邻边界会重合，它们的边界宽度是相邻边界宽度中的最大值。<br>特别注意内容为空的盒子。</p>
 <h2 id="BFC-Block-Formatting-Context-块级格式化上下文"><a href="#BFC-Block-Formatting-Context-块级格式化上下文" class="headerlink" title="BFC/Block Formatting Context 块级格式化上下文"></a>BFC/Block Formatting Context 块级格式化上下文</h2><ul>
@@ -420,9 +549,22 @@ height: 0;<br>border-style: solid;<br>border-color: #f00;<br>border-radius: 50%/
 <li>表格有关（<code>display</code> 为 <code>table-xx?</code>）</li>
 </ul>
 <p>[MDN] <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Block_formatting_context">https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Block_formatting_context</a> “块格式化上下文”</p>
-<h2 id="清除浮动"><a href="#清除浮动" class="headerlink" title="清除浮动"></a>清除浮动</h2><h3 id="用父元素伪类清除浮动"><a href="#用父元素伪类清除浮动" class="headerlink" title="用父元素伪类清除浮动"></a>用父元素伪类清除浮动</h3><figure class="highlight css"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs css"><span class="hljs-comment">/* 通用 */</span><br><span class="hljs-selector-class">.clearfather</span>:after &#123;<br>  content: <span class="hljs-string">&quot;&quot;</span>;<br>  <span class="hljs-attribute">clear</span>: both;<br>  <span class="hljs-attribute">display</span>: block;<br>  <span class="hljs-attribute">height</span>: <span class="hljs-number">0</span>;<br>  <span class="hljs-attribute">overflow</span>: hidden;<br>  <span class="hljs-attribute">visibility</span>: hidden;<br>&#125;<br><span class="hljs-selector-class">.clearfather</span> &#123;<br>  *zoom: <span class="hljs-number">1</span>; <span class="hljs-comment">/* ie6/7 */</span><br>&#125;<br></code></pre></div></td></tr></table></figure>
+<h2 id="清除浮动"><a href="#清除浮动" class="headerlink" title="清除浮动"></a>清除浮动</h2><h3 id="用父元素伪类清除浮动"><a href="#用父元素伪类清除浮动" class="headerlink" title="用父元素伪类清除浮动"></a>用父元素伪类清除浮动</h3><div class="hljs code-wrapper"><pre><code class="hljs css"><span class="hljs-comment">/* 通用 */</span>
+<span class="hljs-selector-class">.clearfather</span>:after &#123;
+  content: <span class="hljs-string">&quot;&quot;</span>;
+  <span class="hljs-attribute">clear</span>: both;
+  <span class="hljs-attribute">display</span>: block;
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">overflow</span>: hidden;
+  <span class="hljs-attribute">visibility</span>: hidden;
+&#125;
+<span class="hljs-selector-class">.clearfather</span> &#123;
+  *zoom: <span class="hljs-number">1</span>; <span class="hljs-comment">/* ie6/7 */</span>
+&#125;</code></pre></div>
 
-<h3 id="最后面加入一个空-div-清除浮动"><a href="#最后面加入一个空-div-清除浮动" class="headerlink" title="最后面加入一个空 div 清除浮动"></a>最后面加入一个空 div 清除浮动</h3><figure class="highlight css"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs css"><span class="hljs-selector-class">.clearfloat</span> &#123;<br>  <span class="hljs-attribute">clear</span>: both;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+<h3 id="最后面加入一个空-div-清除浮动"><a href="#最后面加入一个空-div-清除浮动" class="headerlink" title="最后面加入一个空 div 清除浮动"></a>最后面加入一个空 div 清除浮动</h3><div class="hljs code-wrapper"><pre><code class="hljs css"><span class="hljs-selector-class">.clearfloat</span> &#123;
+  <span class="hljs-attribute">clear</span>: both;
+&#125;</code></pre></div>
 
 <h3 id="父元素-BFC"><a href="#父元素-BFC" class="headerlink" title="父元素 BFC"></a>父元素 BFC</h3><p>设置能触发 BFC 的属性均可<br>【同上】</p>
 <ul>
