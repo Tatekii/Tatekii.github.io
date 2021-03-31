@@ -237,6 +237,11 @@ screen 屏幕</code></pre></div>
 <span class="hljs-built_in">document</span>.createElement(name);
 parentNode.appendChild(node);
 element.innerHTML;
+<span class="hljs-comment">//innerHTML 从对象起始位置到终止位置的全部内容（包括html标签</span>
+<span class="hljs-comment">//outerHTML 包括对象自身标签</span>
+<span class="hljs-comment">//innerText innerHTML但不包括html标签，</span>
+<span class="hljs-comment">//textContent 所有文本内容，包括script和style标签内</span>
+
 element.style.left;
 element.setAttribute();
 element.getAttribute();
@@ -260,15 +265,6 @@ element.addEventListener();
 <li>多态 -&gt; 相同的操作或函数可作用于多种类型的对象上并获得不同的结果</li>
 </ol>
 </li>
-</ul>
-</li>
-</ul>
-<ul>
-<li><p>➡️ 箭头函数</p>
-<ul>
-<li>箭头函数的 this 是语法上的，静态绑定书写时的上下文</li>
-<li>箭头函数没有<code>prototype</code> —&gt; <strong>不能作为构造函数，不能 new</strong></li>
-<li>箭头函数不能用<code>arguments</code>属性</li>
 </ul>
 </li>
 <li><p><code>eval()</code>函数</p>

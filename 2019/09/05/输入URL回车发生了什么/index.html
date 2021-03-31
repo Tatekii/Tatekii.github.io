@@ -165,7 +165,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.3k 字
+      1.2k 字
     </span>
   
 
@@ -175,7 +175,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      15
+      13
        分钟
     </span>
   
@@ -208,14 +208,13 @@
             <h1 style="display: none">地址中输入URL回车发生了什么</h1>
             
             <div class="markdown-body" id="post-body">
-              <h2 id="浏览器内核"><a href="#浏览器内核" class="headerlink" title="浏览器内核"></a>浏览器内核</h2><p>负责对网页语法的解释（如标准通用标记语言下的一个应用HTML、JavaScript）并渲染（显示）网页。决定了浏览器如何显示网页的内容以及页面的格式信息。不同的浏览器内核对网页编写语法的解释也有不同，因此同一网页在不同的内核的浏览器里的渲染（显示）效果也可能不同</p>
-<h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><ol>
+              <ol>
 <li><p>分析请求资源</p>
 <ul>
 <li><p>chrome资源分类</p>
 </li>
 <li><p>安全策略检查 </p>
-<p>  网页安全政策（Content Security Policy，缩写 CSP）   是由浏览器提供的一种白名单制度。开发者通过配置，来告诉浏   览器各类外部资源的加载和执行限制，来提高网页的安全性。一   种最常用的应用就是通过限制非信任域名脚本的加载来预防XSS    攻击。</p>
+<p>  网页安全政策（Content Security Policy，缩写 CSP）   是由浏览器提供的一种白名单制度。开发者通过配置，来告诉浏   览器各类外部资源的加载和执行限制，来提高网页的安全性。一种最常用的应用就是通过限制非信任域名脚本的加载来预防XSS攻击。</p>
 <p>  可以通过两种方式来配置CSP：</p>
 <ol>
 <li>HTTP请求头的<code>Content-Security-Policy</code></li>
@@ -262,8 +261,12 @@
 </li>
 <li><p>对应IP，端口建立TCP连接，发送HTTP请求</p>
 <ul>
-<li>TCP三次握手</li>
-<li>https怎么获得加密密钥</li>
+<li>TCP三次握手  <div class="hljs"><pre><code class="hljs javascript">client:SYN_Send-[ISN(c)]-&gt; server 
+<span class="hljs-comment">// 半连接队列</span>
+client &lt;-[ISN(s)+ACK[ISN(c)+<span class="hljs-number">1</span>]]- server:REVD
+client =[ACK[ISN(s)+<span class="hljs-number">1</span>]][请求]-&gt; server</code></pre></div></li>
+<li>四次挥手断开TCP  <div class="hljs"><pre><code class="hljs javascript">client -[FIN_1]-&gt; server</code></pre></div>
+</li>
 </ul>
 </li>
 <li><p>应用缓存策略</p>
@@ -297,12 +300,8 @@
 <li><p>GPU合成各图层【composite】并显示在屏幕上</p>
 </li>
 </ol>
-<h3 id="图层"><a href="#图层" class="headerlink" title="图层"></a>图层</h3><ul>
-<li>节点在不同的渲染层中完成渲染互不干扰</li>
-<li>所有图层按照正确的顺序合成以处理元素重叠和透明元素</li>
-</ul>
 <h3 id="独立渲染层"><a href="#独立渲染层" class="headerlink" title="独立渲染层"></a>独立渲染层</h3><ul>
-<li><p><code>will-change</code></p>
+<li><p><code>will-change</code>属性</p>
 </li>
 <li><p><code>video</code>标签</p>
 </li>

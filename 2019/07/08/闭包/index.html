@@ -165,7 +165,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.1k 字
+      1.2k 字
     </span>
   
 
@@ -175,7 +175,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      12
+      13
        分钟
     </span>
   
@@ -209,10 +209,11 @@
             
             <div class="markdown-body" id="post-body">
               <h2 id="闭包的定义"><a href="#闭包的定义" class="headerlink" title="闭包的定义"></a>闭包的定义</h2><ul>
-<li><p>函数<strong>与</strong>对其状态即词法环境（lexical environment）的引用共同构成 <em>闭包（closure）</em> 。也就是说，闭包可以让你从内部函数访问外部函数作用域。在 JavaScript，函数在每次创建时生成闭包。</p>
+<li>函数与对其周围状态（即词法环境）的引用共同构成 <em>闭包（closure）</em> 。也就是说，闭包可以让你从内部函数访问外部函数作用域。在 JavaScript，函数在每次创建时生成闭包。<blockquote>
+<p>ECMAScript规范中对词法环境的描述如下：词法环境是用来定义 基于词法嵌套结构的ECMAScript代码内的标识符与变量值和函数值之间的关联关系 的一种规范类型。一个词法环境由环境记录（Environment Record）和一个可能为null的对外部词法环境的引用（outer）组成。</p>
+</blockquote>
 </li>
-<li><p>闭包中，即使内部函数在执行前被外部函数返回，任然可以访问原词法环境。这个环境包含了这个闭包创建时所能访问的所有局部变量。</p>
-</li>
+<li>闭包中，即使内部函数在执行前被外部函数返回，任然可以访问原词法环境。这个环境包含了这个闭包创建时所能访问的所有局部变量。</li>
 </ul>
 <p>在 js 中变量的作用域属于函数作用域, 在函数执行完后,作用域就会被清理,内存也会随之被回收,但是由于闭包可访问上级作用域,即使上级函数执行完, 作用域也不会随之销毁</p>
 <h2 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h2><p>闭包作用：可以引用外部函数的变量或者参数 使该变量或者参数常驻内存 避免被垃圾回收机制所回收</p>

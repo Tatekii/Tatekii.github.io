@@ -165,7 +165,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      737 字
+      763 字
     </span>
   
 
@@ -175,7 +175,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      7
+      8
        分钟
     </span>
   
@@ -213,9 +213,12 @@
 <li>为了确保通信双方收发能力正常</li>
 <li>指定自己的初始化序列号，为后面的可靠传送做准备</li>
 <li>过程：<ul>
-<li>第一次握手：<br>客户端给服务端发一个 <code>SYN(同步序列编号)</code> 报文，并指明客户端的初始化序列号 <code>ISN(c)</code>。此时客户端处于 <code>SYN_Send</code> 状态。</li>
-<li>第二次握手：<br>服务器收到客户端的 <code>SYN</code> 报文之后，会以自己的 <code>SYN</code> 报文作为应答，并且也是指定了自己的初始化序列号 <code>ISN(s)</code>，同时会把客户端的 <code>ISN + 1</code> 作为 <code>ACK(确认字符)</code> 的值，表示自己已经收到了客户端的 <code>SYN</code>，此时服务器处于 <code>SYN_REVD</code> 的状态。</li>
-<li>第三次握手：<br>客户端收到 <code>SYN</code> 报文之后，会发送一个 <code>ACK</code> 报文，当然，也是一样把服务器的 <code>ISN + 1</code> 作为 <code>ACK</code> 的值，表示已经收到了服务端的 <code>SYN</code> 报文，此时客户端处于 <code>establised</code> 状态。</li>
+<li>第一次握手：<br>客户端给服务端发一个 <code>SYN</code> 报文，并指明客户端的初始化序列号 <code>ISN(c)</code>。此时客户端处于 <code>SYN_Send</code> 状态。</li>
+<li>第二次握手：<br>服务器收到客户端的 <code>SYN</code> 报文之后，会以自己的 <code>SYN</code> 报文作为应答，并且也是指定了自己的初始化序列号 <code>ISN(s)</code>，同时会把客户端的 <code>ISN(c) + 1</code> 作为 <code>ACK(确认字符)</code> 的值，表示自己已经收到了客户端的 <code>SYN</code>，此时服务器处于 <code>SYN_REVD</code> 的状态。</li>
+<li>第三次握手：<br>客户端收到 <code>SYN</code> 报文之后，会发送一个 <code>ACK</code> 报文，当然，也是一样把服务器的 <code>ISN(s) + 1</code> 作为 <code>ACK</code> 的值，表示已经收到了服务端的 <code>SYN</code> 报文，此时客户端处于 <code>establised</code> 状态。<blockquote>
+<p>同时该tcp栈已经允许请求数据，例如同时带上一个GET请求</p>
+</blockquote>
+</li>
 <li>服务器收到 ACK 报文之后，也处于 <code>establised</code> 状态，此时，双方以建立起了链接。</li>
 </ul>
 </li>
@@ -229,13 +232,16 @@
 <li>第一次挥手：<br>客户端发送<code>FIN</code> 报文，报文中会指定一个序列号。此时客户端处于 FIN_WAIT1 状态。</li>
 <li>第二次握手：<br>服务端收到 <code>FIN</code> 之后，会把客户端的序列号值 + 1 作为 <code>ACK</code> 报文的序列号值并发送给客户端，表明已经收到客户端的报文了，此时服务端处于 <code>CLOSE_WAIT</code>状态。</li>
 <li>第三次挥手：<br>如果服务端也想断开连接了，和客户端的第一次挥手一样，发给 <code>FIN</code> 报文，且指定一个序列号。此时服务端处于 <code>LAST_ACK</code> 的状态。</li>
-<li>第四次挥手：<br>客户端收到 FIN 之后，也把服务端的序列号值 + 1 作为自己 <code>ACK</code> 报文的序列号值并发送给服务端,此时客户端处于 <code>TIME_WAIT</code> 状态。需要过一阵子以确保服务端收到自己的 <code>ACK</code> 报文之后才会进入 <code>CLOSED</code> 状态</li>
+<li>第四次挥手：<br>客户端收到 FIN 之后，也把服务端的序列号值 + 1 作为自己 <code>ACK</code> 报文的序列号值并发送给服务端,此时客户端处于 <code>TIME_WAIT</code> 状态。之后才会进入 <code>CLOSED</code> 状态</li>
 <li>服务端收到 <code>ACK</code> 报文之后，就处于关闭连接了，处于 <code>CLOSED</code> 状态。</li>
 </ul>
 </li>
 </ol>
 <blockquote>
 <p><code>TIME_WAIT</code> 状态:<br>客户端发送 ACK 之后不直接关闭，而是要等一阵子才关闭,确保服务器是否已经收到了 ACK 报文，如果没有收到的话，服务器会重新发 FIN 报文给客户端，客户端再次收到 ACK 报文之后，就知道之前的 ACK 报文丢失了，然后再次发送 ACK 报文。</p>
+</blockquote>
+<blockquote>
+<p>也可缩短为三次挥手，上述二三步骤合并，服务器同时回复ACK和FIN</p>
 </blockquote>
 
             </div>

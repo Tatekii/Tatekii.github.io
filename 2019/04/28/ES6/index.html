@@ -165,7 +165,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      2.7k 字
+      3k 字
     </span>
   
 
@@ -175,7 +175,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      38
+      41
        分钟
     </span>
   
@@ -253,11 +253,16 @@
 </li>
 <li><p>Class 继承</p>
 <p>本质使用的是原型式继承</p>
-<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">A</span> <span class="hljs-title">extend</span> <span class="hljs-title">B</span></span>&#123;
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">B</span></span>&#123;
+  <span class="hljs-keyword">constructor</span>(name)&#123;
+    <span class="hljs-keyword">this</span>.name = name
+  &#125;
+&#125;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">A</span> <span class="hljs-title">extend</span> <span class="hljs-title">B</span></span>&#123;
   <span class="hljs-keyword">constructor</span> (name)&#123;
     <span class="hljs-keyword">super</span>(name)
-    <span class="hljs-keyword">this</span>.name = name
-     &#125;
+      &#125;
   &#125;</code></pre></div>
 
 <p><strong>super 就是父类的构造函数</strong></p>
@@ -403,7 +408,12 @@ s === <span class="hljs-built_in">Boolean</span>.prototype.toString <span class=
 
 <span class="hljs-comment">// 函数参数的解构赋注</span></code></pre></div>
 
-<h2 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h2><div class="hljs"><pre><code class="hljs javascript"><span class="hljs-comment">//es5</span>
+<h2 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h2><ul>
+<li>箭头函数的 this 是语法上的，静态绑定书写时的上下文</li>
+<li>箭头函数没有<code>prototype</code> —&gt; <strong>不能作为构造函数，不能 new</strong></li>
+<li>箭头函数不能用<code>arguments</code>属性</li>
+</ul>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-comment">//es5</span>
 <span class="hljs-keyword">var</span> arr = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];
 arr = arr.map(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">item</span>) </span>&#123;
   <span class="hljs-keyword">return</span> item + <span class="hljs-number">1</span>;
@@ -655,6 +665,25 @@ test();</code></pre></div>
 <li><code>...args</code>函数的参数数组</li>
 <li><code>...rest</code>函数的剩余参数</li>
 </ul>
+<h2 id="尾调优化"><a href="#尾调优化" class="headerlink" title="尾调优化"></a>尾调优化</h2><blockquote>
+<p>尾调函数：外部函数的返回值是以一个内部函数的返回值</p>
+</blockquote>
+<p>  es6新规范规定：尾调函数执行过程中可以把执行完成的外部函数弹出执行栈，节省栈空间（内存</p>
+  <div class="hljs"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">outer</span>(<span class="hljs-params"></span>)</span>&#123;
+  ...一些操作
+  <span class="hljs-keyword">return</span> inner() <span class="hljs-comment">// 尾调用</span>
+&#125;</code></pre></div>
+
+<p>  尾调用优化的条件就是确定外部栈帧真的没有必要存在了。涉及<br>  的条件如下：</p>
+<ol>
+<li>代码在 ** 严格模式 ** 下执行；<blockquote>
+<p>严格模式的意义：使用arguments和callee都会引用外部函数，优化失败</p>
+</blockquote>
+</li>
+<li>外部函数的返回值是对尾调用函数的调用；</li>
+<li>尾调用函数返回后不需要执行额外的逻辑；</li>
+<li>尾调用函数不是引用外部函数作用域中自由变量的闭包。</li>
+</ol>
 
             </div>
             <hr>

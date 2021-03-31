@@ -227,12 +227,16 @@
 </ul>
 <h3 id="处理-html5-的兼容"><a href="#处理-html5-的兼容" class="headerlink" title="处理 html5 的兼容"></a>处理 html5 的兼容</h3><p>IE8/IE7/IE6 支持通过 document.createElement 方法产生的标签，可以利用这一特性让这些浏览器支持 HTML5 新标签，浏览器支持新标签后，还需要添加默认的样式。</p>
 <p>也可以直接使用成熟的框架，如 html5shim：<br><code>&lt;script&gt; src=&quot;http://html5shim.googlecode.com/svn/trunk/html5.js&quot;&lt;/script&gt;</code></p>
-<h3 id="html5-新特性"><a href="#html5-新特性" class="headerlink" title="html5 新特性"></a>html5 新特性</h3><ul>
-<li><p>canvas 和内联 svg</p>
+<h3 id="html5-新特性"><a href="#html5-新特性" class="headerlink" title="html5 新特性"></a>html5 新特性</h3><h4 id="移除"><a href="#移除" class="headerlink" title="移除"></a>移除</h4><p>纯表现的元素：basefont，big，center，font, s，strike，tt，u；</p>
+<p>对可用性产生负面影响的元素：frame，frameset，noframes；</p>
+<h4 id="新增"><a href="#新增" class="headerlink" title="新增"></a>新增</h4><ul>
+<li><p>拖拽释放(Drag and drop) API </p>
 </li>
-<li><p>audio/video 元素</p>
+<li><p><code>canvas</code> 画布和内联 <code>svg</code></p>
 </li>
-<li><p>新增<code>localStorage</code>长期存储数据，浏览器关闭后数据不丢失；<code>sessionStorage</code>的数据在浏览器关闭后自动删除；</p>
+<li><p><code>audio/video</code> 音视频元素</p>
+</li>
+<li><p><code>localStorage``sessionStorage</code></p>
 </li>
 <li><p>语意化更好的标签，比如<code>header,nav,section,article,footer,aside</code></p>
 </li>
@@ -242,7 +246,9 @@
 </li>
 <li><p>web 应用程序离线缓存</p>
 </li>
-<li><p>地理定位</p>
+<li><p>地理定位Geolocation API</p>
+</li>
+<li><p>webworker，websocket</p>
 </li>
 </ul>
 <h3 id="HTML5-的离线存储"><a href="#HTML5-的离线存储" class="headerlink" title="HTML5 的离线存储"></a>HTML5 的离线存储</h3><p>在用户没有联网时，可以正常访问站点或应用；在联网的情况下，更新用户机器上的缓存文件。</p>
