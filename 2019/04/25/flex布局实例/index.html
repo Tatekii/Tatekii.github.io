@@ -1,14 +1,14 @@
 
 
 <!DOCTYPE html>
-<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+<html lang="zh-CN" data-default-color-scheme=&#34;dark&#34;>
 
 
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.jpeg">
-  <link rel="icon" type="image/png" href="/img/avatar.jpeg">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
   <meta name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -17,28 +17,32 @@
   <meta name="description" content="">
   <meta name="author" content="tatekii">
   <meta name="keywords" content="">
+  
   <title>flex布局实例 - 不知名的笔记本</title>
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
   <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
   
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/tomorrow-night-eighties.min.css" />
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/atom-one-dark.min.css" />
     
   
 
   
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
 
 
 <!-- 主题依赖的图标库，不要自行修改 -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_pf9vaxs7x7b.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
 
 
 
@@ -50,17 +54,21 @@
 <!-- 自定义样式保持在最底部 -->
 
 
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","version":"1.8.9-a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":"#"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 5.4.0"></head>
 
 
 <body>
-  <header style="height: 30vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
-       href="/">&nbsp;<strong>Dr.🐎</strong>&nbsp;</a>
+       href="/">&nbsp;<strong>Dr🐎 Note</strong>&nbsp;</a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent"
@@ -92,6 +100,18 @@
               <a class="nav-link" href="/archives/">
                 <i class="iconfont icon-archive-fill"></i>
                 归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
               </a>
             </li>
           
@@ -137,13 +157,13 @@
   </div>
 </nav>
 
-    <div class="banner intro-2" id="background" parallax=true
+    <div class="banner" id="banner" parallax=true
          style="background: url('/img/default.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="container page-header text-center fade-in-up">
-            <span class="h2" id="subtitle">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="flex布局实例">
               
             </span>
 
@@ -165,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      806 字
+      832 字
     </span>
   
 
@@ -182,6 +202,14 @@
 
   
   
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
 </div>
 
             
@@ -197,88 +225,31 @@
     
       
 
-<div class="container-fluid">
-  <div class="row">
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
     <div class="d-none d-lg-block col-lg-2"></div>
-    <div class="col-lg-8 nopadding-md">
-      <div class="container nopadding-md" id="board-ctn">
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
         <div class="py-5" id="board">
-          <article class="post-content mx-auto" id="post">
+          <article class="post-content mx-auto">
             <!-- SEO header -->
             <h1 style="display: none">flex布局实例</h1>
             
-            <div class="markdown-body" id="post-body">
-              <p>ref:<a href="http://www.ruanyifeng.com/blog/2015/07/flex-examples.html" target="_blank" rel="noopener">阮一峰的网络日志</a></p>
-<h2 id="flex实现圣杯布局"><a href="#flex实现圣杯布局" class="headerlink" title="flex实现圣杯布局"></a>flex实现圣杯布局</h2><div class="hljs"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"en"</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"UTF-8"</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"viewport"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"width=device-width, initial-scale=1.0"</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">"X-UA-Compatible"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"ie=edge"</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Document<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">header</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"background-color:burlywood"</span>&gt;</span>header<span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"body"</span>&gt;</span>
-    <span class="hljs-comment">&lt;!-- 按照顺序渲染，如果需提前修改元素order属性，越小越优先 --&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">nav</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"background-color:chocolate"</span>&gt;</span>nav<span class="hljs-tag">&lt;/<span class="hljs-name">nav</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">main</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"background-color:blueviolet"</span>&gt;</span>main<span class="hljs-tag">&lt;/<span class="hljs-name">main</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">aside</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"background-color:cadetblue"</span>&gt;</span>ADs<span class="hljs-tag">&lt;/<span class="hljs-name">aside</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">footer</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"background-color:darkslateblue"</span>&gt;</span>footer<span class="hljs-tag">&lt;/<span class="hljs-name">footer</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></code></pre></div>
-<div class="hljs"><pre><code class="hljs css">*&#123;
-  <span class="hljs-attribute">padding</span>:<span class="hljs-number">0</span>;
-  <span class="hljs-attribute">margin</span>:<span class="hljs-number">0</span>;
-&#125;
-<span class="hljs-selector-tag">body</span>&#123;
-  <span class="hljs-attribute">display</span>: flex;
-  <span class="hljs-attribute">min-height</span>: <span class="hljs-number">100vh</span>;
-  <span class="hljs-comment">/* 垂直方向 */</span>
-  <span class="hljs-attribute">flex-direction</span>: column;
-&#125;
-<span class="hljs-selector-tag">header</span>,<span class="hljs-selector-tag">footer</span>&#123;
-  <span class="hljs-comment">/* 6em 为本身的固定宽度 */</span>
-  <span class="hljs-attribute">flex</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">6em</span>;
-&#125;
-<span class="hljs-selector-class">.body</span>&#123;
-  <span class="hljs-attribute">flex</span>: <span class="hljs-number">1</span>;
-  <span class="hljs-attribute">display</span>: flex;
-&#125;
-<span class="hljs-selector-class">.body</span> <span class="hljs-selector-tag">nav</span>,<span class="hljs-selector-class">.body</span> <span class="hljs-selector-tag">aside</span>&#123;
-  <span class="hljs-comment">/* 10em 为本身的固定宽度 */</span>
-  <span class="hljs-attribute">flex</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">10em</span>;
-&#125;
-<span class="hljs-selector-class">.body</span> <span class="hljs-selector-tag">main</span>&#123;
-  <span class="hljs-attribute">flex</span>: <span class="hljs-number">1</span>
-&#125;</code></pre></div>
+              <p class="note note-info">
+                
+                  本文最后更新于：2020年10月23日 下午
+                
+              </p>
+            
+            <div class="markdown-body">
+              <p>ref:<a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2015/07/flex-examples.html">阮一峰的网络日志</a></p>
+<h2 id="flex实现圣杯布局"><a href="#flex实现圣杯布局" class="headerlink" title="flex实现圣杯布局"></a>flex实现圣杯布局</h2><figure class="highlight html"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">&quot;X-UA-Compatible&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;ie=edge&quot;</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Document<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">header</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;background-color:burlywood&quot;</span>&gt;</span>header<span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;body&quot;</span>&gt;</span><br>    <span class="hljs-comment">&lt;!-- 按照顺序渲染，如果需提前修改元素order属性，越小越优先 --&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">nav</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;background-color:chocolate&quot;</span>&gt;</span>nav<span class="hljs-tag">&lt;/<span class="hljs-name">nav</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">main</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;background-color:blueviolet&quot;</span>&gt;</span>main<span class="hljs-tag">&lt;/<span class="hljs-name">main</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">aside</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;background-color:cadetblue&quot;</span>&gt;</span>ADs<span class="hljs-tag">&lt;/<span class="hljs-name">aside</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">footer</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;background-color:darkslateblue&quot;</span>&gt;</span>footer<span class="hljs-tag">&lt;/<span class="hljs-name">footer</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></div></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs css">*&#123;<br>  <span class="hljs-attribute">padding</span>:<span class="hljs-number">0</span>;<br>  <span class="hljs-attribute">margin</span>:<span class="hljs-number">0</span>;<br>&#125;<br><span class="hljs-selector-tag">body</span>&#123;<br>  <span class="hljs-attribute">display</span>: flex;<br>  <span class="hljs-attribute">min-height</span>: <span class="hljs-number">100vh</span>;<br>  <span class="hljs-comment">/* 垂直方向 */</span><br>  <span class="hljs-attribute">flex-direction</span>: column;<br>&#125;<br><span class="hljs-selector-tag">header</span>,<span class="hljs-selector-tag">footer</span>&#123;<br>  <span class="hljs-comment">/* 6em 为本身的固定宽度 */</span><br>  <span class="hljs-attribute">flex</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">6em</span>;<br>&#125;<br><span class="hljs-selector-class">.body</span>&#123;<br>  <span class="hljs-attribute">flex</span>: <span class="hljs-number">1</span>;<br>  <span class="hljs-attribute">display</span>: flex;<br>&#125;<br><span class="hljs-selector-class">.body</span> <span class="hljs-selector-tag">nav</span>,<span class="hljs-selector-class">.body</span> <span class="hljs-selector-tag">aside</span>&#123;<br>  <span class="hljs-comment">/* 10em 为本身的固定宽度 */</span><br>  <span class="hljs-attribute">flex</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">10em</span>;<br>&#125;<br><span class="hljs-selector-class">.body</span> <span class="hljs-selector-tag">main</span>&#123;<br>  <span class="hljs-attribute">flex</span>: <span class="hljs-number">1</span><br>&#125;<br></code></pre></div></td></tr></table></figure>
 
 <blockquote>
 <p>简单的说通过固定flex中一个元素的大小，再把其他元素flex 1去平均分配剩余空间</p>
 </blockquote>
-<h2 id="固定的底栏"><a href="#固定的底栏" class="headerlink" title="固定的底栏"></a>固定的底栏</h2><div class="hljs"><pre><code class="hljs css">*&#123;
-  <span class="hljs-attribute">padding</span>:<span class="hljs-number">0</span>;
-  <span class="hljs-attribute">margin</span>:<span class="hljs-number">0</span>;
-&#125;
-<span class="hljs-selector-tag">body</span>&#123;
-  <span class="hljs-attribute">display</span>: flex;
-  <span class="hljs-comment">/* 改变flex朝向 */</span>
-  <span class="hljs-attribute">flex-direction</span>:column;
-  /* 占满视口高度 */ &lt;----------------
-  <span class="hljs-selector-tag">min-height</span><span class="hljs-selector-pseudo">:100vh</span>;
-&#125;
-<span class="hljs-selector-tag">header</span>&#123;
-  <span class="hljs-attribute">height</span>:<span class="hljs-number">30px</span>;
-  <span class="hljs-attribute">background</span>: blue;
-&#125;
-<span class="hljs-selector-tag">main</span>&#123;
-  <span class="hljs-comment">/* 主题内容填满剩余空间 */</span>
-  <span class="hljs-attribute">flex</span>:<span class="hljs-number">1</span>
-&#125;
-<span class="hljs-selector-tag">footer</span>&#123;
-  <span class="hljs-attribute">background</span>:black;
-&#125;</code></pre></div>
+<h2 id="固定的底栏"><a href="#固定的底栏" class="headerlink" title="固定的底栏"></a>固定的底栏</h2><figure class="highlight css"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs css">*&#123;<br>  <span class="hljs-attribute">padding</span>:<span class="hljs-number">0</span>;<br>  <span class="hljs-attribute">margin</span>:<span class="hljs-number">0</span>;<br>&#125;<br><span class="hljs-selector-tag">body</span>&#123;<br>  <span class="hljs-attribute">display</span>: flex;<br>  <span class="hljs-comment">/* 改变flex朝向 */</span><br>  <span class="hljs-attribute">flex-direction</span>:column;<br>  <span class="hljs-comment">/* 占满视口高度 */</span> &lt;----------------<br>  <span class="hljs-attribute">min-height</span>:<span class="hljs-number">100vh</span>;<br>&#125;<br><span class="hljs-selector-tag">header</span>&#123;<br>  <span class="hljs-attribute">height</span>:<span class="hljs-number">30px</span>;<br>  <span class="hljs-attribute">background</span>: blue;<br>&#125;<br><span class="hljs-selector-tag">main</span>&#123;<br>  <span class="hljs-comment">/* 主题内容填满剩余空间 */</span><br>  <span class="hljs-attribute">flex</span>:<span class="hljs-number">1</span><br>&#125;<br><span class="hljs-selector-tag">footer</span>&#123;<br>  <span class="hljs-attribute">background</span>:black;<br>&#125;<br></code></pre></div></td></tr></table></figure>
 <h2 id="容器的属性"><a href="#容器的属性" class="headerlink" title="容器的属性"></a>容器的属性</h2><ul>
 <li><p>flex-direction 主轴的方向</p>
 <p><code>flex-direction: row | row-reverse | column | column-reverse</code></p>
@@ -290,7 +261,7 @@
 <p><code>flex-flow属性是flex-direction属性和flex-wrap属性的简写</code></p>
 </li>
 <li><p>justify-content 主轴上的对齐方式</p>
-<p><code>flex-start（默认值）：左对齐</code><br><code>flex-end：右对齐</code><br><code>center： 居中</code><br><code>space-between：两端对齐，项目之间的间隔都相等</code><br><code>space-around：每个项目两侧的间隔相等。所以，项目之间的间隔比项目与边框的间隔大一倍</code></p>
+<p><code>flex-start（默认值）：左对齐 </code><br><code>flex-end：右对齐</code><br><code>center： 居中</code><br><code>space-between：两端对齐，项目之间的间隔都相等</code><br><code>space-around：每个项目两侧的间隔相等。所以，项目之间的间隔比项目与边框的间隔大一倍</code></p>
 </li>
 <li><p>align-items 项目在交叉轴上如何对齐 </p>
 <p><code>flex-start：交叉轴的起点对齐</code><br><code>flex-end：交叉轴的终点对齐</code><br><code>center：交叉轴的中点对齐</code><br><code>baseline: 项目的第一行文字的基线对齐</code><br><code>stretch（默认值）：如果项目未设置高度或设为auto，将占满整个容器的高度</code></p>
@@ -338,10 +309,14 @@
                 
               </div>
               
-                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
               
               
-                <div class="post-prevnext row">
+                <div class="post-prevnext">
                   <article class="post-prev col-6">
                     
                     
@@ -367,6 +342,30 @@
             </div>
 
             
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="twikoo"></div>
+  <script type="text/javascript">
+    Fluid.utils.lazyComments('comments', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/twikoo@1.3.0/dist/twikoo.all.min.js', function() {
+        twikoo.init({
+          el: '#twikoo',
+          envId: 'blog-1glh2chxcbf8757a',
+          region: 'ap-shanghai',
+          path: 'window.location.pathname',
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
           </article>
         </div>
       </div>
@@ -375,7 +374,7 @@
       <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
         <div id="toc">
   <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
-  <div id="tocbot"></div>
+  <div class="toc-body" id="toc-body"></div>
 </div>
 
       </div>
@@ -387,16 +386,15 @@
 
 
     
-  </main>
 
-  
-    <a id="scroll-top-button" href="#" role="button">
-      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
-    </a>
-  
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
 
-  
-    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
      aria-hidden="true">
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
@@ -417,21 +415,16 @@
     </div>
   </div>
 </div>
-  
-
-  
-
-  
-
-  <footer class="mt-5">
-  <div class="text-center py-3">
-    <div>
-      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
-      <i class="iconfont icon-love"></i>
-      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
-        <span>Fluid</span></a>
-    </div>
     
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+  </div>
+  
   <div class="statistics">
     
     
@@ -457,30 +450,47 @@
   </div>
 
 
-    
+  
   <!-- 备案信息 -->
   <div class="beian">
-    <a href="http://beian.miit.gov.cn/" target="_blank"
-       rel="nofollow noopener">粤ICP备2020115702号</a>
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        粤ICP备2020115702号
+      </a>
+    </span>
     
   </div>
 
 
-    
-  </div>
+  
 </footer>
 
-<!-- SCRIPTS -->
-<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
-<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
 <script  src="/js/debouncer.js" ></script>
-<script  src="/js/main.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
 
 <!-- Plugins -->
 
 
   
-    <script  src="/js/lazyload.js" ></script>
+    <script  src="/js/img-lazyload.js" ></script>
   
 
 
@@ -489,8 +499,19 @@
 
 
 
-  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
-  <script  src="/js/clipboard-use.js" ></script>
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
 
 
 
@@ -499,95 +520,30 @@
 
 
 
-
-  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
   <script>
-    $(document).ready(function () {
-      var boardCtn = $('#board-ctn');
-      var boardTop = boardCtn.offset().top;
-
-      tocbot.init({
-        tocSelector: '#tocbot',
-        contentSelector: '#post-body',
-        headingSelector: 'h1,h2,h3,h4,h5,h6',
-        linkClass: 'tocbot-link',
-        activeLinkClass: 'tocbot-active-link',
-        listClass: 'tocbot-list',
-        isCollapsedClass: 'tocbot-is-collapsed',
-        collapsibleClass: 'tocbot-is-collapsible',
-        collapseDepth: 0,
-        scrollSmooth: true,
-        headingsOffset: -boardTop
-      });
-      if ($('.toc-list-item').length > 0) {
-        $('#toc').css('visibility', 'visible');
-      }
-    });
-  </script>
-
-
-
-  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
-  <script>
-    var typed = new Typed('#subtitle', {
-      strings: [
-        '  ',
-        "flex布局实例&nbsp;",
-      ],
-      cursorChar: "_",
-      typeSpeed: 70,
-      loop: false,
-    });
-    typed.stop();
-    $(document).ready(function () {
-      $(".typed-cursor").addClass("h2");
-      typed.start();
-    });
-  </script>
-
-
-
-  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
-  <script>
-    anchors.options = {
-      placement: "right",
-      visible: "hover",
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
       
-    };
-    var el = "h1,h2,h3,h4,h5,h6".split(",");
-    var res = [];
-    for (item of el) {
-      res.push(".markdown-body > " + item)
-    }
-    anchors.add(res.join(", "))
+      typing(title)
+      
+    })(window, document);
   </script>
 
 
 
   <script  src="/js/local-search.js" ></script>
   <script>
-    var path = "/local-search.xml";
-    var inputArea = document.querySelector("#local-search-input");
-    inputArea.onclick = function () {
-      searchFunc(path, 'local-search-input', 'local-search-result');
-      this.onclick = null
-    }
-  </script>
-
-
-
-  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
-
-  <script>
-    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
-      function () {
-        var element = document.createElement('a');
-        $(element).attr('data-fancybox', 'images');
-        $(element).attr('href', $(this).attr('src'));
-        $(this).wrap(element);
-      }
-    );
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
   </script>
 
 
@@ -604,33 +560,8 @@
 
 
 
-
-
-  
-    <!-- Baidu Analytics -->
-    <script defer>
-      var _hmt = _hmt || [];
-      (function () {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?048f7ae77dbb92c9d2c83ca3df99d02f";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-      })();
-    </script>
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-
-
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
 
 
 </body>

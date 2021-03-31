@@ -1,14 +1,14 @@
 
 
 <!DOCTYPE html>
-<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+<html lang="zh-CN" data-default-color-scheme=&#34;dark&#34;>
 
 
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.jpeg">
-  <link rel="icon" type="image/png" href="/img/avatar.jpeg">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
   <meta name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -17,28 +17,32 @@
   <meta name="description" content="">
   <meta name="author" content="tatekii">
   <meta name="keywords" content="">
+  
   <title>移动端适配 - 不知名的笔记本</title>
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
   <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
   
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/tomorrow-night-eighties.min.css" />
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/atom-one-dark.min.css" />
     
   
 
   
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
 
 
 <!-- 主题依赖的图标库，不要自行修改 -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_pf9vaxs7x7b.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
 
 
 
@@ -50,17 +54,21 @@
 <!-- 自定义样式保持在最底部 -->
 
 
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","version":"1.8.9-a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":"#"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 5.4.0"></head>
 
 
 <body>
-  <header style="height: 30vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
-       href="/">&nbsp;<strong>Dr.🐎</strong>&nbsp;</a>
+       href="/">&nbsp;<strong>Dr🐎 Note</strong>&nbsp;</a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent"
@@ -92,6 +100,18 @@
               <a class="nav-link" href="/archives/">
                 <i class="iconfont icon-archive-fill"></i>
                 归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
               </a>
             </li>
           
@@ -137,13 +157,13 @@
   </div>
 </nav>
 
-    <div class="banner intro-2" id="background" parallax=true
+    <div class="banner" id="banner" parallax=true
          style="background: url('/img/default.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="container page-header text-center fade-in-up">
-            <span class="h2" id="subtitle">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="移动端适配">
               
             </span>
 
@@ -165,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.7k 字
+      1.8k 字
     </span>
   
 
@@ -175,12 +195,20 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      22
+      23
        分钟
     </span>
   
 
   
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
   
 </div>
 
@@ -197,17 +225,23 @@
     
       
 
-<div class="container-fluid">
-  <div class="row">
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
     <div class="d-none d-lg-block col-lg-2"></div>
-    <div class="col-lg-8 nopadding-md">
-      <div class="container nopadding-md" id="board-ctn">
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
         <div class="py-5" id="board">
-          <article class="post-content mx-auto" id="post">
+          <article class="post-content mx-auto">
             <!-- SEO header -->
             <h1 style="display: none">移动端适配</h1>
             
-            <div class="markdown-body" id="post-body">
+              <p class="note note-info">
+                
+                  本文最后更新于：2020年9月9日 下午
+                
+              </p>
+            
+            <div class="markdown-body">
               <h2 id="设备像素比-dpr"><a href="#设备像素比-dpr" class="headerlink" title="设备像素比 dpr"></a>设备像素比 dpr</h2><ul>
 <li><code>物理像素</code>即设备上真实的物理像素单元</li>
 <li><code>逻辑像素</code> = css像素，软件使用的直觉上的尺寸大小，是抽象概念<ol>
@@ -221,18 +255,16 @@
 </li>
 <li><p><code>设备独立像素</code>（又称设备无关像素 Device Independent Pixels 、密度独立性 Density Independent，简称DIP或DP），是一种物理测量单位</p>
 <ul>
-<li>由底层程序计算后将逻辑像素转化为设备独立像素进行显示，保证不同分辨率的屏幕显示UI大致相同（实现密度独立性）</li>
+<li> 由底层程序计算后将逻辑像素转化为设备独立像素进行显示，保证不同分辨率的屏幕显示UI大致相同（实现密度独立性）</li>
 <li></li>
 </ul>
 </li>
 <li><p><code>设备像素比</code> device pixel ratio简称 dpr，即<code>物理像素</code>和<code>设备独立像素</code>的比值</p>
 <ol>
-<li><p>在 web中，浏览器为我们提供了 window.devicePixelRatio来帮助我们获取 dpr。</p>
-</li>
-<li><p>在 css中，可以使用媒体查询 min-device-pixel-ratio，区分 dpr：</p>
-<p><code>@media(-webkit-min-device-pixel-ratio:2),(min-device-pixel-ratio:2){...css...}</code></p>
-</li>
+<li>在 web中，浏览器为我们提供了 window.devicePixelRatio来帮助我们获取 dpr。</li>
+<li>在 css中，可以使用媒体查询 min-device-pixel-ratio，区分 dpr：</li>
 </ol>
+<p>  <code>@media(-webkit-min-device-pixel-ratio:2),(min-device-pixel-ratio:2)&#123;...css...&#125;</code></p>
 </li>
 <li><p>css像素 = dp像素 = logic像素</p>
 </li>
@@ -243,62 +275,17 @@
 <p>解决方案：</p>
 <ul>
 <li><p>border-image</p>
-<div class="hljs"><pre><code class="hljs css"><span class="hljs-selector-tag">border_1px</span> &#123;
-  <span class="hljs-attribute">border-bottom</span>:<span class="hljs-number">1px</span> solid <span class="hljs-number">#000</span>;
-&#125;
-
-<span class="hljs-keyword">@media</span> <span class="hljs-keyword">only</span> screen <span class="hljs-keyword">and</span> (<span class="hljs-attribute">-webkit-min-device-pixel-ratio:</span> <span class="hljs-number">2</span>) &#123;
-  . <span class="hljs-selector-tag">border_1px</span> &#123;
-    <span class="hljs-attribute">border-bottom</span>:none;
-    <span class="hljs-attribute">border-width</span>:<span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">1px</span> <span class="hljs-number">0</span>;
-    <span class="hljs-attribute">border-image</span>: <span class="hljs-built_in">url</span>(../ img / <span class="hljs-number">1px</span>line . png) <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">2</span> <span class="hljs-number">0</span> stretch;
-  &#125;
-&#125;</code></pre></div>
-</li>
+<figure class="highlight css"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs css">border_1px &#123;<br>  <span class="hljs-attribute">border-bottom</span>:<span class="hljs-number">1px</span> solid <span class="hljs-number">#000</span>;<br>&#125;<br><br><span class="hljs-keyword">@media</span> <span class="hljs-keyword">only</span> screen <span class="hljs-keyword">and</span> (<span class="hljs-attribute">-webkit-min-device-pixel-ratio</span>: <span class="hljs-number">2</span>) &#123;<br>  . border_1px &#123;<br>    <span class="hljs-attribute">border-bottom</span>:none;<br>    <span class="hljs-attribute">border-width</span>:<span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">1px</span> <span class="hljs-number">0</span>;<br>    <span class="hljs-attribute">border-image</span>: <span class="hljs-built_in">url</span>(<span class="hljs-string">../ img / 1pxline . png</span>) <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">2</span> <span class="hljs-number">0</span> stretch;<br>  &#125;<br>&#125;<br><br></code></pre></div></td></tr></table></figure></li>
 <li><p>background-image</p>
-<div class="hljs"><pre><code class="hljs css"><span class="hljs-selector-tag">border_1px</span> &#123;
-  <span class="hljs-attribute">border-bottom</span>:<span class="hljs-number">1px</span> solid <span class="hljs-number">#000</span>;
-&#125;
-
-<span class="hljs-keyword">@media</span> <span class="hljs-keyword">only</span> screen <span class="hljs-keyword">and</span> (<span class="hljs-attribute">-webkit-min-device-pixel-ratio:</span> <span class="hljs-number">2</span>) &#123;
-  . <span class="hljs-selector-tag">border_1px</span> &#123;
-    <span class="hljs-attribute">background</span>:<span class="hljs-built_in">url</span>(../ img / <span class="hljs-number">1px</span>line . png) repeat - x left bottom;
-    <span class="hljs-attribute">background-size</span>:<span class="hljs-number">100%</span> <span class="hljs-number">1px</span>;
-  &#125;
-&#125;</code></pre></div>
-</li>
+<figure class="highlight css"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs css">border_1px &#123;<br>  <span class="hljs-attribute">border-bottom</span>:<span class="hljs-number">1px</span> solid <span class="hljs-number">#000</span>;<br>&#125;<br><br><span class="hljs-keyword">@media</span> <span class="hljs-keyword">only</span> screen <span class="hljs-keyword">and</span> (<span class="hljs-attribute">-webkit-min-device-pixel-ratio</span>: <span class="hljs-number">2</span>) &#123;<br>  . border_1px &#123;<br>    <span class="hljs-attribute">background</span>:<span class="hljs-built_in">url</span>(<span class="hljs-string">../ img / 1pxline . png</span>) repeat - x left bottom;<br>    <span class="hljs-attribute">background-size</span>:<span class="hljs-number">100%</span> <span class="hljs-number">1px</span>;<br>  &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure></li>
 <li><p>box-shadow</p>
 </li>
 </ul>
-<div class="hljs"><pre><code class="hljs css"><span class="hljs-selector-class">.border_1px</span> &#123;
-  <span class="hljs-attribute">box-shadow</span>: inset <span class="hljs-number">0px</span>-<span class="hljs-number">1px</span>1px-<span class="hljs-number">1px</span><span class="hljs-number">#d4d6d7</span>
-&#125;
-<span class="hljs-comment">/* 颜色会变浅 */</span></code></pre></div>
+<figure class="highlight css"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs css"><span class="hljs-selector-class">.border_1px</span> &#123;<br>  <span class="hljs-attribute">box-shadow</span>: inset <span class="hljs-number">0px</span>-<span class="hljs-number">1px</span>1px-<span class="hljs-number">1px</span><span class="hljs-number">#d4d6d7</span><br>&#125;<br><span class="hljs-comment">/* 颜色会变浅 */</span><br></code></pre></div></td></tr></table></figure>
 
 <ul>
 <li><p>伪类 trasnform</p>
-<div class="hljs"><pre><code class="hljs css">. <span class="hljs-selector-tag">border_1px</span>: <span class="hljs-selector-tag">before</span> &#123;
-  <span class="hljs-attribute">content</span>: <span class="hljs-string">''</span>;
-  <span class="hljs-attribute">position</span>: absolute;
-  <span class="hljs-attribute">top</span>: <span class="hljs-number">0</span>;
-  <span class="hljs-attribute">height</span>: <span class="hljs-number">1px</span>;
-  <span class="hljs-attribute">width</span>: <span class="hljs-number">100</span> %;
-  background - color: #000;
-  <span class="hljs-selector-tag">transform</span> <span class="hljs-selector-tag">-</span> <span class="hljs-selector-tag">origin</span>: 50 % 0 %;
-&#125;
-
-<span class="hljs-keyword">@media</span> <span class="hljs-keyword">only</span> screen <span class="hljs-keyword">and</span> (<span class="hljs-attribute">-webkit-min-device-pixel-ratio:</span> <span class="hljs-number">2</span>) &#123;
-  . <span class="hljs-selector-tag">border_1px</span>: <span class="hljs-selector-tag">before</span> &#123;
-    <span class="hljs-attribute">transform</span>: scaleY (<span class="hljs-number">0.5</span>);
-  &#125;
-&#125;
-
-<span class="hljs-keyword">@media</span> <span class="hljs-keyword">only</span> screen <span class="hljs-keyword">and</span> (<span class="hljs-attribute">-webkit-min-device-pixel-ratio:</span> <span class="hljs-number">3</span>) &#123;
-  . <span class="hljs-selector-tag">border_1px</span>: <span class="hljs-selector-tag">before</span> &#123;
-    <span class="hljs-attribute">transform</span>: scaleY (<span class="hljs-number">0.33</span>);
-  &#125;
-&#125;</code></pre></div>
-</li>
+<figure class="highlight css"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs css">. border_1px: before &#123;<br>  content: <span class="hljs-string">&#x27;&#x27;</span>;<br>  <span class="hljs-attribute">position</span>: absolute;<br>  <span class="hljs-attribute">top</span>: <span class="hljs-number">0</span>;<br>  <span class="hljs-attribute">height</span>: <span class="hljs-number">1px</span>;<br>  <span class="hljs-attribute">width</span>: <span class="hljs-number">100</span> %;<br>  <span class="hljs-attribute">background</span> - <span class="hljs-attribute">color</span>: <span class="hljs-number">#000</span>;<br>  <span class="hljs-attribute">transform</span> - origin: <span class="hljs-number">50</span> % <span class="hljs-number">0</span> %;<br>&#125;<br><br><span class="hljs-keyword">@media</span> <span class="hljs-keyword">only</span> screen <span class="hljs-keyword">and</span> (<span class="hljs-attribute">-webkit-min-device-pixel-ratio</span>: <span class="hljs-number">2</span>) &#123;<br>  . border_1px: before &#123;<br>    transform: scaleY (<span class="hljs-number">0.5</span>);<br>  &#125;<br>&#125;<br><br><span class="hljs-keyword">@media</span> <span class="hljs-keyword">only</span> screen <span class="hljs-keyword">and</span> (<span class="hljs-attribute">-webkit-min-device-pixel-ratio</span>: <span class="hljs-number">3</span>) &#123;<br>  . border_1px: before &#123;<br>    transform: scaleY (<span class="hljs-number">0.33</span>);<br>  &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure></li>
 <li><p>svg</p>
 <p>-&gt; 借助 PostCSS的 postcss-write-svg我们能直接使用 border-image和 background-image创建 svg的 1px边框</p>
 </li>
@@ -350,51 +337,14 @@
 <p>注意：我们必须指定 viweport-fit后才能使用这两个函数：</p>
 <p><code>&lt;meta name=&quot;viewport&quot; content=&quot;viewport-fit=cover&quot;&gt;</code></p>
 <p>constant在 iOS&lt;11.2的版本中生效， env在 iOS&gt;=11.2的版本中生效，这意味着我们往往要同时设置他们，将页面限制在安全区域内：</p>
-<div class="hljs"><pre><code class="hljs css"><span class="hljs-selector-tag">body</span> &#123;
-
-  padding - bottom:
-    <span class="hljs-selector-tag">constant</span> (<span class="hljs-selector-tag">safe</span> <span class="hljs-selector-tag">-</span> <span class="hljs-selector-tag">area</span> <span class="hljs-selector-tag">-</span> <span class="hljs-selector-tag">inset</span> <span class="hljs-selector-tag">-</span> <span class="hljs-selector-tag">bottom</span>);
-
-  <span class="hljs-selector-tag">padding</span> <span class="hljs-selector-tag">-</span> <span class="hljs-selector-tag">bottom</span>:
-    <span class="hljs-selector-tag">env</span> (<span class="hljs-selector-tag">safe</span> <span class="hljs-selector-tag">-</span> <span class="hljs-selector-tag">area</span> <span class="hljs-selector-tag">-</span> <span class="hljs-selector-tag">inset</span> <span class="hljs-selector-tag">-</span> <span class="hljs-selector-tag">bottom</span>);
-
-&#125;</code></pre></div>
+<figure class="highlight css"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs css"><span class="hljs-selector-tag">body</span> &#123;<br><br>  <span class="hljs-attribute">padding</span> - <span class="hljs-attribute">bottom</span>:<br>    constant (safe - area - inset - bottom);<br><br>  <span class="hljs-attribute">padding</span> - <span class="hljs-attribute">bottom</span>:<br>    env (safe - area - inset - bottom);<br><br>&#125;<br></code></pre></div></td></tr></table></figure>
 
 <p>当使用底部固定导航栏时，我们要为他们设置 padding值：</p>
-<div class="hljs"><pre><code class="hljs css"><span class="hljs-selector-tag">body</span> &#123;
+<figure class="highlight css"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs css"><span class="hljs-selector-tag">body</span> &#123;<br><br>  <span class="hljs-attribute">padding</span> - <span class="hljs-attribute">bottom</span>:<br>    constant (safe - area - inset - bottom);<br><br>  <span class="hljs-attribute">padding</span> - <span class="hljs-attribute">bottom</span>:<br>    env (safe - area - inset - bottom);<br><br>&#125;<br></code></pre></div></td></tr></table></figure>
 
-  padding - bottom:
-    <span class="hljs-selector-tag">constant</span> (<span class="hljs-selector-tag">safe</span> <span class="hljs-selector-tag">-</span> <span class="hljs-selector-tag">area</span> <span class="hljs-selector-tag">-</span> <span class="hljs-selector-tag">inset</span> <span class="hljs-selector-tag">-</span> <span class="hljs-selector-tag">bottom</span>);
+<h2 id="横屏检测"><a href="#横屏检测" class="headerlink" title="横屏检测"></a>横屏检测</h2><figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-built_in">window</span>.addEventListener(<span class="hljs-string">&quot;resize&quot;</span>, <span class="hljs-function">() =&gt;</span> &#123;<br><br>  <span class="hljs-keyword">if</span> (<span class="hljs-built_in">window</span>.orientation === <span class="hljs-number">180</span> || <span class="hljs-built_in">window</span>.orientation === <span class="hljs-number">0</span>) &#123;<br>    <span class="hljs-comment">// 正常方向或屏幕旋转180度</span><br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;竖屏&#x27;</span>);<br>  &#125;<br>  <span class="hljs-keyword">if</span> (<span class="hljs-built_in">window</span>.orientation === <span class="hljs-number">90</span> || <span class="hljs-built_in">window</span>.orientation === -<span class="hljs-number">90</span>) &#123;<br>    <span class="hljs-comment">// 屏幕顺时钟旋转90度或屏幕逆时针旋转90度</span><br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;横屏&#x27;</span>);<br>  &#125;<br>&#125;);<br></code></pre></div></td></tr></table></figure>
 
-  <span class="hljs-selector-tag">padding</span> <span class="hljs-selector-tag">-</span> <span class="hljs-selector-tag">bottom</span>:
-    <span class="hljs-selector-tag">env</span> (<span class="hljs-selector-tag">safe</span> <span class="hljs-selector-tag">-</span> <span class="hljs-selector-tag">area</span> <span class="hljs-selector-tag">-</span> <span class="hljs-selector-tag">inset</span> <span class="hljs-selector-tag">-</span> <span class="hljs-selector-tag">bottom</span>);
-
-&#125;</code></pre></div>
-
-<h2 id="横屏检测"><a href="#横屏检测" class="headerlink" title="横屏检测"></a>横屏检测</h2><div class="hljs"><pre><code class="hljs javascript"><span class="hljs-built_in">window</span>.addEventListener(<span class="hljs-string">"resize"</span>, () =&gt; &#123;
-
-  <span class="hljs-keyword">if</span> (<span class="hljs-built_in">window</span>.orientation === <span class="hljs-number">180</span> || <span class="hljs-built_in">window</span>.orientation === <span class="hljs-number">0</span>) &#123;
-    <span class="hljs-comment">// 正常方向或屏幕旋转180度</span>
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'竖屏'</span>);
-  &#125;
-  <span class="hljs-keyword">if</span> (<span class="hljs-built_in">window</span>.orientation === <span class="hljs-number">90</span> || <span class="hljs-built_in">window</span>.orientation === <span class="hljs-number">-90</span>) &#123;
-    <span class="hljs-comment">// 屏幕顺时钟旋转90度或屏幕逆时针旋转90度</span>
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'横屏'</span>);
-  &#125;
-&#125;);</code></pre></div>
-
-<div class="hljs"><pre><code class="hljs css">
-<span class="hljs-keyword">@media</span> screen <span class="hljs-keyword">and</span> (<span class="hljs-attribute">orientation:</span> portrait) &#123;
-
-  <span class="hljs-comment">/*竖屏...*/</span>
-
-&#125;
-
-<span class="hljs-keyword">@media</span> screen <span class="hljs-keyword">and</span> (<span class="hljs-attribute">orientation:</span> landscape) &#123;
-
-  <span class="hljs-comment">/*横屏...*/</span>
-
-&#125;</code></pre></div>
+<figure class="highlight css"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs css"><br><span class="hljs-keyword">@media</span> screen <span class="hljs-keyword">and</span> (<span class="hljs-attribute">orientation</span>: portrait) &#123;<br><br>  <span class="hljs-comment">/*竖屏...*/</span><br><br>&#125;<br><br><span class="hljs-keyword">@media</span> screen <span class="hljs-keyword">and</span> (<span class="hljs-attribute">orientation</span>: landscape) &#123;<br><br>  <span class="hljs-comment">/*横屏...*/</span><br><br>&#125;<br><br></code></pre></div></td></tr></table></figure>
 
 <h2 id="图片模糊问题"><a href="#图片模糊问题" class="headerlink" title="图片模糊问题"></a>图片模糊问题</h2><p>在 dpr&gt;1的屏幕上，位图的一个像素可能由多个物理像素来渲染，然而这些物理像素点并不能被准确的分配上对应位图像素的颜色，只能取近似值，所以相同的图片在 dpr&gt;1的屏幕上就会模糊:</p>
 <p>解决方法：</p>
@@ -404,31 +354,12 @@
 <li><p>@media查询改url(<strong>backgroundimgae</strong>)</p>
 </li>
 <li><p>-webkit-image-set(<strong>backgroundimgae</strong>)</p>
-<div class="hljs"><pre><code class="hljs css"><span class="hljs-selector-tag">div</span> &#123;
-  <span class="hljs-attribute">background-image</span>: <span class="hljs-built_in">url</span>(<span class="hljs-string">"foo.png"</span>);
-  <span class="hljs-attribute">background-image</span>: <span class="hljs-built_in">-webkit-image-set</span>(<span class="hljs-string">"foo.png"</span><span class="hljs-number">1</span>x,
-      <span class="hljs-string">"foo-2x.png"</span><span class="hljs-number">2</span>x,
-      <span class="hljs-string">"foo-print.png"</span><span class="hljs-number">600dpi</span>);
-  <span class="hljs-attribute">background-image</span>: <span class="hljs-built_in">image-set</span>(<span class="hljs-string">"foo.png"</span><span class="hljs-number">1</span>x,
-      <span class="hljs-string">"foo-2x.png"</span><span class="hljs-number">2</span>x,
-      <span class="hljs-string">"foo-print.png"</span><span class="hljs-number">600dpi</span>);
-&#125;
-
-&lt; !<span class="hljs-selector-tag">--</span> 由于一些浏览器不支持<span class="hljs-selector-tag">image-set</span>，所以先写常规的<span class="hljs-selector-tag">url</span>方式。对于识别这个属性的，浏览器会在普通屏下显示1<span class="hljs-selector-tag">x</span>的图像；<span class="hljs-selector-tag">Retina</span>屏幕下显示2<span class="hljs-selector-tag">x</span>的图像；更高分辨率（比如印刷）显示600<span class="hljs-selector-tag">dpi</span>图像。 <span class="hljs-selector-tag">--</span>&gt;</code></pre></div>
-</li>
+<figure class="highlight css"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs css"><span class="hljs-selector-tag">div</span> &#123;<br>  <span class="hljs-attribute">background-image</span>: <span class="hljs-built_in">url</span>(<span class="hljs-string">&quot;foo.png&quot;</span>);<br>  <span class="hljs-attribute">background-image</span>: <span class="hljs-built_in">-webkit-image-set</span>(<span class="hljs-string">&quot;foo.png&quot;</span><span class="hljs-number">1</span>x,<br>      <span class="hljs-string">&quot;foo-2x.png&quot;</span><span class="hljs-number">2</span>x,<br>      <span class="hljs-string">&quot;foo-print.png&quot;</span><span class="hljs-number">600dpi</span>);<br>  <span class="hljs-attribute">background-image</span>: <span class="hljs-built_in">image-set</span>(<span class="hljs-string">&quot;foo.png&quot;</span><span class="hljs-number">1</span>x,<br>      <span class="hljs-string">&quot;foo-2x.png&quot;</span><span class="hljs-number">2</span>x,<br>      <span class="hljs-string">&quot;foo-print.png&quot;</span><span class="hljs-number">600dpi</span>);<br>&#125;<br><br>&lt; !-- 由于一些浏览器不支持image-set，所以先写常规的url方式。对于识别这个属性的，浏览器会在普通屏下显示<span class="hljs-number">1</span>x的图像；Retina屏幕下显示<span class="hljs-number">2</span>x的图像；更高分辨率（比如印刷）显示<span class="hljs-number">600dpi</span>图像。 --&gt;<br></code></pre></div></td></tr></table></figure></li>
 <li><p>srcset</p>
 <p>以最合适的src去匹配不同屏幕</p>
-<div class="hljs"><pre><code class="hljs css">&lt;img src="source.jpg" srcset="source_2x.jpg 2x, source_3x.jpg 3x"&gt;</code></pre></div>
-</li>
+<figure class="highlight"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs css">&lt;img src=&quot;source.jpg&quot; srcset=&quot;source_2x.jpg 2x, source_3x.jpg 3x&quot;&gt;<br></code></pre></div></td></tr></table></figure></li>
 <li><p>使用js拼接图片src<br>先查询处当前设备dpr,正则替换掉文件名</p>
-<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> dpr = <span class="hljs-built_in">window</span>.devicePixelRatio;
-<span class="hljs-keyword">const</span> images = <span class="hljs-built_in">document</span>.querySelectorAll(<span class="hljs-string">'img'</span>);
-
-images.forEach(<span class="hljs-function">(<span class="hljs-params">img</span>) =&gt;</span> &#123;
-    img.src.replace(<span class="hljs-string">"."</span>,<span class="hljs-string">`@<span class="hljs-subst">$&#123;dpr&#125;</span>x.`</span>);
-&#125;
-)</code></pre></div>
-</li>
+<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> dpr = <span class="hljs-built_in">window</span>.devicePixelRatio;<br><span class="hljs-keyword">const</span> images = <span class="hljs-built_in">document</span>.querySelectorAll(<span class="hljs-string">&#x27;img&#x27;</span>);<br><br>images.forEach(<span class="hljs-function">(<span class="hljs-params">img</span>) =&gt;</span> &#123;<br>    img.src.replace(<span class="hljs-string">&quot;.&quot;</span>,<span class="hljs-string">`@<span class="hljs-subst">$&#123;dpr&#125;</span>x.`</span>);<br>&#125;<br>)<br><br></code></pre></div></td></tr></table></figure></li>
 <li><p>使用svg</p>
 <p><em>可缩放矢量图（ ScalableVectorGraphics）</em></p>
 </li>
@@ -453,10 +384,14 @@ images.forEach(<span class="hljs-function">(<span class="hljs-params">img</span>
                 
               </div>
               
-                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
               
               
-                <div class="post-prevnext row">
+                <div class="post-prevnext">
                   <article class="post-prev col-6">
                     
                     
@@ -482,6 +417,30 @@ images.forEach(<span class="hljs-function">(<span class="hljs-params">img</span>
             </div>
 
             
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="twikoo"></div>
+  <script type="text/javascript">
+    Fluid.utils.lazyComments('comments', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/twikoo@1.3.0/dist/twikoo.all.min.js', function() {
+        twikoo.init({
+          el: '#twikoo',
+          envId: 'blog-1glh2chxcbf8757a',
+          region: 'ap-shanghai',
+          path: 'window.location.pathname',
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
           </article>
         </div>
       </div>
@@ -490,7 +449,7 @@ images.forEach(<span class="hljs-function">(<span class="hljs-params">img</span>
       <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
         <div id="toc">
   <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
-  <div id="tocbot"></div>
+  <div class="toc-body" id="toc-body"></div>
 </div>
 
       </div>
@@ -502,16 +461,15 @@ images.forEach(<span class="hljs-function">(<span class="hljs-params">img</span>
 
 
     
-  </main>
 
-  
-    <a id="scroll-top-button" href="#" role="button">
-      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
-    </a>
-  
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
 
-  
-    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
      aria-hidden="true">
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
@@ -532,21 +490,16 @@ images.forEach(<span class="hljs-function">(<span class="hljs-params">img</span>
     </div>
   </div>
 </div>
-  
-
-  
-
-  
-
-  <footer class="mt-5">
-  <div class="text-center py-3">
-    <div>
-      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
-      <i class="iconfont icon-love"></i>
-      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
-        <span>Fluid</span></a>
-    </div>
     
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+  </div>
+  
   <div class="statistics">
     
     
@@ -572,30 +525,47 @@ images.forEach(<span class="hljs-function">(<span class="hljs-params">img</span>
   </div>
 
 
-    
+  
   <!-- 备案信息 -->
   <div class="beian">
-    <a href="http://beian.miit.gov.cn/" target="_blank"
-       rel="nofollow noopener">粤ICP备2020115702号</a>
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        粤ICP备2020115702号
+      </a>
+    </span>
     
   </div>
 
 
-    
-  </div>
+  
 </footer>
 
-<!-- SCRIPTS -->
-<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
-<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
 <script  src="/js/debouncer.js" ></script>
-<script  src="/js/main.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
 
 <!-- Plugins -->
 
 
   
-    <script  src="/js/lazyload.js" ></script>
+    <script  src="/js/img-lazyload.js" ></script>
   
 
 
@@ -604,8 +574,19 @@ images.forEach(<span class="hljs-function">(<span class="hljs-params">img</span>
 
 
 
-  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
-  <script  src="/js/clipboard-use.js" ></script>
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
 
 
 
@@ -614,95 +595,30 @@ images.forEach(<span class="hljs-function">(<span class="hljs-params">img</span>
 
 
 
-
-  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
   <script>
-    $(document).ready(function () {
-      var boardCtn = $('#board-ctn');
-      var boardTop = boardCtn.offset().top;
-
-      tocbot.init({
-        tocSelector: '#tocbot',
-        contentSelector: '#post-body',
-        headingSelector: 'h1,h2,h3,h4,h5,h6',
-        linkClass: 'tocbot-link',
-        activeLinkClass: 'tocbot-active-link',
-        listClass: 'tocbot-list',
-        isCollapsedClass: 'tocbot-is-collapsed',
-        collapsibleClass: 'tocbot-is-collapsible',
-        collapseDepth: 0,
-        scrollSmooth: true,
-        headingsOffset: -boardTop
-      });
-      if ($('.toc-list-item').length > 0) {
-        $('#toc').css('visibility', 'visible');
-      }
-    });
-  </script>
-
-
-
-  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
-  <script>
-    var typed = new Typed('#subtitle', {
-      strings: [
-        '  ',
-        "移动端适配&nbsp;",
-      ],
-      cursorChar: "_",
-      typeSpeed: 70,
-      loop: false,
-    });
-    typed.stop();
-    $(document).ready(function () {
-      $(".typed-cursor").addClass("h2");
-      typed.start();
-    });
-  </script>
-
-
-
-  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
-  <script>
-    anchors.options = {
-      placement: "right",
-      visible: "hover",
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
       
-    };
-    var el = "h1,h2,h3,h4,h5,h6".split(",");
-    var res = [];
-    for (item of el) {
-      res.push(".markdown-body > " + item)
-    }
-    anchors.add(res.join(", "))
+      typing(title)
+      
+    })(window, document);
   </script>
 
 
 
   <script  src="/js/local-search.js" ></script>
   <script>
-    var path = "/local-search.xml";
-    var inputArea = document.querySelector("#local-search-input");
-    inputArea.onclick = function () {
-      searchFunc(path, 'local-search-input', 'local-search-result');
-      this.onclick = null
-    }
-  </script>
-
-
-
-  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
-
-  <script>
-    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
-      function () {
-        var element = document.createElement('a');
-        $(element).attr('data-fancybox', 'images');
-        $(element).attr('href', $(this).attr('src'));
-        $(this).wrap(element);
-      }
-    );
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
   </script>
 
 
@@ -719,33 +635,8 @@ images.forEach(<span class="hljs-function">(<span class="hljs-params">img</span>
 
 
 
-
-
-  
-    <!-- Baidu Analytics -->
-    <script defer>
-      var _hmt = _hmt || [];
-      (function () {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?048f7ae77dbb92c9d2c83ca3df99d02f";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-      })();
-    </script>
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-
-
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
 
 
 </body>

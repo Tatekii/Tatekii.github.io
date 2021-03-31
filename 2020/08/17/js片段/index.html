@@ -1,14 +1,14 @@
 
 
 <!DOCTYPE html>
-<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+<html lang="zh-CN" data-default-color-scheme=&#34;dark&#34;>
 
 
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.jpeg">
-  <link rel="icon" type="image/png" href="/img/avatar.jpeg">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
   <meta name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -17,28 +17,32 @@
   <meta name="description" content="">
   <meta name="author" content="tatekii">
   <meta name="keywords" content="">
+  
   <title>待整理的js片段 - 不知名的笔记本</title>
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
   <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
   
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/tomorrow-night-eighties.min.css" />
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/atom-one-dark.min.css" />
     
   
 
   
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
 
 
 <!-- 主题依赖的图标库，不要自行修改 -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_pf9vaxs7x7b.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
 
 
 
@@ -50,17 +54,21 @@
 <!-- 自定义样式保持在最底部 -->
 
 
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","version":"1.8.9-a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":"#"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 5.4.0"></head>
 
 
 <body>
-  <header style="height: 30vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
-       href="/">&nbsp;<strong>Dr.🐎</strong>&nbsp;</a>
+       href="/">&nbsp;<strong>Dr🐎 Note</strong>&nbsp;</a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent"
@@ -92,6 +100,18 @@
               <a class="nav-link" href="/archives/">
                 <i class="iconfont icon-archive-fill"></i>
                 归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
               </a>
             </li>
           
@@ -137,13 +157,13 @@
   </div>
 </nav>
 
-    <div class="banner intro-2" id="background" parallax=true
+    <div class="banner" id="banner" parallax=true
          style="background: url('/img/default.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="container page-header text-center fade-in-up">
-            <span class="h2" id="subtitle">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="待整理的js片段">
               
             </span>
 
@@ -165,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      907 字
+      1k 字
     </span>
   
 
@@ -175,12 +195,20 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      15
+      17
        分钟
     </span>
   
 
   
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
   
 </div>
 
@@ -197,200 +225,101 @@
     
       
 
-<div class="container-fluid">
-  <div class="row">
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
     <div class="d-none d-lg-block col-lg-2"></div>
-    <div class="col-lg-8 nopadding-md">
-      <div class="container nopadding-md" id="board-ctn">
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
         <div class="py-5" id="board">
-          <article class="post-content mx-auto" id="post">
+          <article class="post-content mx-auto">
             <!-- SEO header -->
             <h1 style="display: none">待整理的js片段</h1>
             
-            <div class="markdown-body" id="post-body">
+              <p class="note note-info">
+                
+                  本文最后更新于：2021年3月19日 晚上
+                
+              </p>
+            
+            <div class="markdown-body">
               <ul>
 <li>字母的所有组合</li>
 </ul>
-<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> anagrams = <span class="hljs-function"><span class="hljs-params">str</span> =&gt;</span> &#123;
-  <span class="hljs-keyword">if</span>(str.length&lt;=<span class="hljs-number">2</span>) <span class="hljs-keyword">return</span> str.length===<span class="hljs-number">2</span> ? [str , str[<span class="hljs-number">1</span>] + str[<span class="hljs-number">0</span>]] :str
-
-  <span class="hljs-comment">// 这里使用reduce的第三个参数index，正在处理的元素</span>
-  <span class="hljs-comment">// 如果提供了initialValue，则起始索引号为0，否则从索引1起始。</span>
-  <span class="hljs-keyword">return</span> str.split(<span class="hljs-string">''</span>).reduce(<span class="hljs-function">(<span class="hljs-params">acc,cur,index</span>)=&gt;</span>&#123;
-    <span class="hljs-keyword">let</span> other = str.slice(<span class="hljs-number">0</span>,index)+str.slice(index+<span class="hljs-number">1</span>)
-    <span class="hljs-comment">// other为除了当前处理元素外的字母</span>
-    <span class="hljs-comment">// a bcd =&gt;</span>
-    <span class="hljs-comment">// b cd =&gt; bcd bdc</span>
-    <span class="hljs-comment">// c bd =&gt; cbd cdb</span>
-    <span class="hljs-comment">// d bc =&gt; dbc dcb</span>
-    <span class="hljs-comment">// b...</span>
-    <span class="hljs-keyword">return</span> acc.concat(anagrams(other).map(<span class="hljs-function"><span class="hljs-params">char</span>=&gt;</span>cur+char))
-    <span class="hljs-comment">// 递归至两位数数组颠倒排序,并将所有可能与当前处理元素组合</span>
-  &#125;,[])
-  <span class="hljs-comment">// 指定initialValue</span>
-&#125;
-
-
-anagrams(<span class="hljs-string">'abcd'</span>) =&gt; [
-  <span class="hljs-string">'abcd'</span>, <span class="hljs-string">'abdc'</span>, <span class="hljs-string">'acbd'</span>,
-  <span class="hljs-string">'acdb'</span>, <span class="hljs-string">'adbc'</span>, <span class="hljs-string">'adcb'</span>,
-  <span class="hljs-string">'bacd'</span>, <span class="hljs-string">'badc'</span>, <span class="hljs-string">'bcad'</span>,
-  <span class="hljs-string">'bcda'</span>, <span class="hljs-string">'bdac'</span>, <span class="hljs-string">'bdca'</span>,
-  <span class="hljs-string">'cabd'</span>, <span class="hljs-string">'cadb'</span>, <span class="hljs-string">'cbad'</span>,
-  <span class="hljs-string">'cbda'</span>, <span class="hljs-string">'cdab'</span>, <span class="hljs-string">'cdba'</span>,
-  <span class="hljs-string">'dabc'</span>, <span class="hljs-string">'dacb'</span>, <span class="hljs-string">'dbac'</span>,
-  <span class="hljs-string">'dbca'</span>, <span class="hljs-string">'dcab'</span>, <span class="hljs-string">'dcba'</span>
-]</code></pre></div>
+<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> anagrams = <span class="hljs-function"><span class="hljs-params">str</span> =&gt;</span> &#123;<br>  <span class="hljs-keyword">if</span>(str.length&lt;=<span class="hljs-number">2</span>) <span class="hljs-keyword">return</span> str.length===<span class="hljs-number">2</span> ? [str , str[<span class="hljs-number">1</span>] + str[<span class="hljs-number">0</span>]] :str<br><br>  <span class="hljs-comment">// 这里使用reduce的第三个参数index，正在处理的元素</span><br>  <span class="hljs-comment">// 如果提供了initialValue，则起始索引号为0，否则从索引1起始。</span><br>  <span class="hljs-keyword">return</span> str.split(<span class="hljs-string">&#x27;&#x27;</span>).reduce(<span class="hljs-function">(<span class="hljs-params">acc,cur,index</span>)=&gt;</span>&#123;<br>    <span class="hljs-keyword">let</span> other = str.slice(<span class="hljs-number">0</span>,index)+str.slice(index+<span class="hljs-number">1</span>)<br>    <span class="hljs-comment">// other为除了当前处理元素外的字母</span><br>    <span class="hljs-comment">// a bcd =&gt;</span><br>    <span class="hljs-comment">// b cd =&gt; bcd bdc</span><br>    <span class="hljs-comment">// c bd =&gt; cbd cdb</span><br>    <span class="hljs-comment">// d bc =&gt; dbc dcb</span><br>    <span class="hljs-comment">// b...</span><br>    <span class="hljs-keyword">return</span> acc.concat(anagrams(other).map(<span class="hljs-function"><span class="hljs-params">char</span>=&gt;</span>cur+char))<br>    <span class="hljs-comment">// 递归至两位数数组颠倒排序,并将所有可能与当前处理元素组合</span><br>  &#125;,[])<br>  <span class="hljs-comment">// 指定initialValue</span><br>&#125;<br><br><br>anagrams(<span class="hljs-string">&#x27;abcd&#x27;</span>) =&gt; [<br>  <span class="hljs-string">&#x27;abcd&#x27;</span>, <span class="hljs-string">&#x27;abdc&#x27;</span>, <span class="hljs-string">&#x27;acbd&#x27;</span>,<br>  <span class="hljs-string">&#x27;acdb&#x27;</span>, <span class="hljs-string">&#x27;adbc&#x27;</span>, <span class="hljs-string">&#x27;adcb&#x27;</span>,<br>  <span class="hljs-string">&#x27;bacd&#x27;</span>, <span class="hljs-string">&#x27;badc&#x27;</span>, <span class="hljs-string">&#x27;bcad&#x27;</span>,<br>  <span class="hljs-string">&#x27;bcda&#x27;</span>, <span class="hljs-string">&#x27;bdac&#x27;</span>, <span class="hljs-string">&#x27;bdca&#x27;</span>,<br>  <span class="hljs-string">&#x27;cabd&#x27;</span>, <span class="hljs-string">&#x27;cadb&#x27;</span>, <span class="hljs-string">&#x27;cbad&#x27;</span>,<br>  <span class="hljs-string">&#x27;cbda&#x27;</span>, <span class="hljs-string">&#x27;cdab&#x27;</span>, <span class="hljs-string">&#x27;cdba&#x27;</span>,<br>  <span class="hljs-string">&#x27;dabc&#x27;</span>, <span class="hljs-string">&#x27;dacb&#x27;</span>, <span class="hljs-string">&#x27;dbac&#x27;</span>,<br>  <span class="hljs-string">&#x27;dbca&#x27;</span>, <span class="hljs-string">&#x27;dcab&#x27;</span>, <span class="hljs-string">&#x27;dcba&#x27;</span><br>]<br></code></pre></div></td></tr></table></figure>
 
 <ul>
-<li>大写每个单词的首字母<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> capitalizeWords = <span class="hljs-function"><span class="hljs-params">words</span> =&gt;</span> &#123;
-  <span class="hljs-keyword">return</span> words.replace(<span class="hljs-regexp">/\b[a-z]/g</span>,word=&gt;word.toUpperCase())
-  <span class="hljs-comment">// \b匹配作为单词边界的那个字符</span>
-  <span class="hljs-comment">// 即匹配到了每一个单词的首字母</span>
-&#125;</code></pre></div>
-
-
-</li>
+<li>大写每个单词的首字母<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> capitalizeWords = <span class="hljs-function"><span class="hljs-params">words</span> =&gt;</span> &#123;<br>  <span class="hljs-keyword">return</span> words.replace(<span class="hljs-regexp">/\b[a-z]/g</span>,<span class="hljs-function"><span class="hljs-params">word</span>=&gt;</span>word.toUpperCase())<br>  <span class="hljs-comment">// \b匹配作为单词边界的那个字符</span><br>  <span class="hljs-comment">// 即匹配到了每一个单词的首字母</span><br>&#125;<br></code></pre></div></td></tr></table></figure></li>
 </ul>
 <ul>
 <li>格式化只有首字母大写</li>
 </ul>
-<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> capitalize = <span class="hljs-function">(<span class="hljs-params">str,lowerRest = <span class="hljs-literal">false</span></span>) =&gt;</span> &#123;
-  <span class="hljs-keyword">return</span> str.slice(<span class="hljs-number">0</span>,<span class="hljs-number">1</span>).toUpperCase() + (lowerRest?str.slice(<span class="hljs-number">1</span>).toLowerCase() : str.slice(<span class="hljs-number">1</span>))
-&#125;</code></pre></div>
+<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> capitalize = <span class="hljs-function">(<span class="hljs-params">str,lowerRest = <span class="hljs-literal">false</span></span>) =&gt;</span> &#123;<br>  <span class="hljs-keyword">return</span> str.slice(<span class="hljs-number">0</span>,<span class="hljs-number">1</span>).toUpperCase() + (lowerRest?str.slice(<span class="hljs-number">1</span>).toLowerCase() : str.slice(<span class="hljs-number">1</span>))<br>&#125;<br></code></pre></div></td></tr></table></figure>
 
 <ul>
 <li>检查回文</li>
 </ul>
-<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-comment">// 将字符串转换为toLowerCase（），并使用replace（）从中删除非字母的字符。然后，将其转换为tolowerCase（），将（''）拆分为单独字符，reverse（），join（''），与原始的非反转字符串进行比较，然后将其转换为tolowerCase（）。</span>
-
-<span class="hljs-keyword">const</span> palindrome = <span class="hljs-function"><span class="hljs-params">str</span> =&gt;</span> &#123;
-  <span class="hljs-keyword">const</span> s = str.toLowerCase().replace(<span class="hljs-regexp">/[\W_]/g</span>,<span class="hljs-string">''</span>);
-  <span class="hljs-comment">//匹配任意不是字母，数字，下划线 + _</span>
-  <span class="hljs-keyword">return</span> s === s.split(<span class="hljs-string">''</span>).reverse().join(<span class="hljs-string">''</span>);
-&#125;
-<span class="hljs-comment">// palindrome('taco cat') -&gt; true</span></code></pre></div>
+<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// 将字符串转换为toLowerCase（），并使用replace（）从中删除非字母的字符。然后，将其转换为tolowerCase（），将（&#x27;&#x27;）拆分为单独字符，reverse（），join（&#x27;&#x27;），与原始的非反转字符串进行比较，然后将其转换为tolowerCase（）。</span><br><br><span class="hljs-keyword">const</span> palindrome = <span class="hljs-function"><span class="hljs-params">str</span> =&gt;</span> &#123;<br>  <span class="hljs-keyword">const</span> s = str.toLowerCase().replace(<span class="hljs-regexp">/[\W_]/g</span>,<span class="hljs-string">&#x27;&#x27;</span>);<br>  <span class="hljs-comment">//匹配任意不是字母，数字，下划线 + _</span><br>  <span class="hljs-keyword">return</span> s === s.split(<span class="hljs-string">&#x27;&#x27;</span>).reverse().join(<span class="hljs-string">&#x27;&#x27;</span>);<br>&#125;<br><span class="hljs-comment">// palindrome(&#x27;taco cat&#x27;) -&gt; true</span><br></code></pre></div></td></tr></table></figure>
 
 
 <ul>
 <li>出现次数</li>
 </ul>
-<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> countOccurrences = <span class="hljs-function">(<span class="hljs-params">arr, value</span>) =&gt;</span> arr.reduce(<span class="hljs-function">(<span class="hljs-params">a, v</span>) =&gt;</span> v === value ? a + <span class="hljs-number">1</span> : a + <span class="hljs-number">0</span>, <span class="hljs-number">0</span>);
-<span class="hljs-comment">// countOccurrences([1,1,2,1,2,3], 1) -&gt; 3</span></code></pre></div>
+<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> countOccurrences = <span class="hljs-function">(<span class="hljs-params">arr, value</span>) =&gt;</span> arr.reduce(<span class="hljs-function">(<span class="hljs-params">a, v</span>) =&gt;</span> v === value ? a + <span class="hljs-number">1</span> : a + <span class="hljs-number">0</span>, <span class="hljs-number">0</span>);<br><span class="hljs-comment">// countOccurrences([1,1,2,1,2,3], 1) -&gt; 3</span><br></code></pre></div></td></tr></table></figure>
 
 
 <ul>
 <li>Deep flatten array</li>
 </ul>
-<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> deepFlatten = <span class="hljs-function"><span class="hljs-params">arr</span> =&gt;</span>
-  arr.reduce(<span class="hljs-function">(<span class="hljs-params">a, v</span>) =&gt;</span> a.concat(<span class="hljs-built_in">Array</span>.isArray(v) ? deepFlatten(v) : v), []);
-<span class="hljs-comment">// deepFlatten([1,[2],[[3],4],5]) -&gt; [1,2,3,4,5]</span></code></pre></div>
+<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> deepFlatten = <span class="hljs-function"><span class="hljs-params">arr</span> =&gt;</span><br>  arr.reduce(<span class="hljs-function">(<span class="hljs-params">a, v</span>) =&gt;</span> a.concat(<span class="hljs-built_in">Array</span>.isArray(v) ? deepFlatten(v) : v), []);<br><span class="hljs-comment">// deepFlatten([1,[2],[[3],4],5]) -&gt; [1,2,3,4,5]</span><br></code></pre></div></td></tr></table></figure>
 
 <ul>
-<li>bifurcate<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> bifurcate = <span class="hljs-function">(<span class="hljs-params">arr, filter</span>) =&gt;</span>
-  arr.reduce(<span class="hljs-function">(<span class="hljs-params">acc, val, i</span>) =&gt;</span> (acc[filter[i] ? <span class="hljs-number">0</span> : <span class="hljs-number">1</span>].push(val), acc), [[], []]);
-bifurcate([<span class="hljs-string">'beep'</span>, <span class="hljs-string">'boop'</span>, <span class="hljs-string">'foo'</span>, <span class="hljs-string">'bar'</span>], [<span class="hljs-literal">true</span>, <span class="hljs-literal">true</span>, <span class="hljs-literal">false</span>, <span class="hljs-literal">true</span>]);
-<span class="hljs-comment">// [ ['beep', 'boop', 'bar'], ['foo'] ]</span></code></pre></div>
-
-
-</li>
+<li>bifurcate<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> bifurcate = <span class="hljs-function">(<span class="hljs-params">arr, filter</span>) =&gt;</span><br>  arr.reduce(<span class="hljs-function">(<span class="hljs-params">acc, val, i</span>) =&gt;</span> (acc[filter[i] ? <span class="hljs-number">0</span> : <span class="hljs-number">1</span>].push(val), acc), [[], []]);<br>bifurcate([<span class="hljs-string">&#x27;beep&#x27;</span>, <span class="hljs-string">&#x27;boop&#x27;</span>, <span class="hljs-string">&#x27;foo&#x27;</span>, <span class="hljs-string">&#x27;bar&#x27;</span>], [<span class="hljs-literal">true</span>, <span class="hljs-literal">true</span>, <span class="hljs-literal">false</span>, <span class="hljs-literal">true</span>]);<br><span class="hljs-comment">// [ [&#x27;beep&#x27;, &#x27;boop&#x27;, &#x27;bar&#x27;], [&#x27;foo&#x27;] ]</span><br><br></code></pre></div></td></tr></table></figure></li>
 </ul>
 <ul>
 <li>阶乘</li>
 </ul>
-<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> factorial = <span class="hljs-function"><span class="hljs-params">n</span> =&gt;</span> n &lt;= <span class="hljs-number">1</span> ? <span class="hljs-number">1</span> : n * factorial(n - <span class="hljs-number">1</span>);
-<span class="hljs-comment">// factorial(6) -&gt; 720</span></code></pre></div>
+<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> factorial = <span class="hljs-function"><span class="hljs-params">n</span> =&gt;</span> n &lt;= <span class="hljs-number">1</span> ? <span class="hljs-number">1</span> : n * factorial(n - <span class="hljs-number">1</span>);<br><span class="hljs-comment">// factorial(6) -&gt; 720</span><br></code></pre></div></td></tr></table></figure>
 
 
 <ul>
 <li>斐波那契数组生成器</li>
 </ul>
-<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> fibonacci = <span class="hljs-function"><span class="hljs-params">n</span> =&gt;</span>
-  <span class="hljs-built_in">Array</span>(n).fill(<span class="hljs-number">0</span>).reduce(<span class="hljs-function">(<span class="hljs-params">acc, val, i</span>) =&gt;</span> acc.concat(i &gt; <span class="hljs-number">1</span> ? acc[i - <span class="hljs-number">1</span>] + acc[i - <span class="hljs-number">2</span>] : i), []);
-<span class="hljs-comment">// fibonacci(5) -&gt; [0,1,1,2,3]</span>
-
-
-<span class="hljs-function"><span class="hljs-keyword">function</span>* <span class="hljs-title">fib</span>(<span class="hljs-params"></span>)</span>&#123;
-  <span class="hljs-keyword">let</span> [pre,cur] = [<span class="hljs-number">0</span>,<span class="hljs-number">1</span>]
-  <span class="hljs-keyword">for</span>(;;)&#123;
-    <span class="hljs-comment">// 死循环的另一种写法</span>
-    <span class="hljs-comment">// while(true)</span>
-    [pre,cur] = [cur,cur+pre]
-    <span class="hljs-keyword">yield</span> cur
-  &#125;
-&#125;
-<span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> x <span class="hljs-keyword">of</span> fib())&#123;
-  <span class="hljs-keyword">if</span>(x&gt;<span class="hljs-number">100</span>) <span class="hljs-keyword">return</span>
-  <span class="hljs-built_in">console</span>.log(x);
-&#125;</code></pre></div>
+<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> fibonacci = <span class="hljs-function"><span class="hljs-params">n</span> =&gt;</span><br>  <span class="hljs-built_in">Array</span>(n).fill(<span class="hljs-number">0</span>).reduce(<span class="hljs-function">(<span class="hljs-params">acc, val, i</span>) =&gt;</span> acc.concat(i &gt; <span class="hljs-number">1</span> ? acc[i - <span class="hljs-number">1</span>] + acc[i - <span class="hljs-number">2</span>] : i), []);<br><span class="hljs-comment">// fibonacci(5) -&gt; [0,1,1,2,3]</span><br><br><br><span class="hljs-function"><span class="hljs-keyword">function</span>* <span class="hljs-title">fib</span>(<span class="hljs-params"></span>)</span>&#123;<br>  <span class="hljs-keyword">let</span> [pre,cur] = [<span class="hljs-number">0</span>,<span class="hljs-number">1</span>]<br>  <span class="hljs-keyword">for</span>(;;)&#123;<br>    <span class="hljs-comment">// 死循环的另一种写法</span><br>    <span class="hljs-comment">// while(true)</span><br>    [pre,cur] = [cur,cur+pre]<br>    <span class="hljs-keyword">yield</span> cur<br>  &#125;<br>&#125;<br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> x <span class="hljs-keyword">of</span> fib())&#123;<br>  <span class="hljs-keyword">if</span>(x&gt;<span class="hljs-number">100</span>) <span class="hljs-keyword">return</span><br>  <span class="hljs-built_in">console</span>.log(x);<br>&#125;<br></code></pre></div></td></tr></table></figure>
 
 <ul>
 <li><p>数组中唯一值</p>
-<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> filterNonUnique = <span class="hljs-function"><span class="hljs-params">arr</span> =&gt;</span> arr.filter(<span class="hljs-function"><span class="hljs-params">i</span> =&gt;</span> arr.indexOf(i) === arr.lastIndexOf(i));
-<span class="hljs-comment">// filterNonUnique([1,2,2,3,4,4,5]) -&gt; [1,3,5]</span></code></pre></div>
-</li>
+<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> filterNonUnique = <span class="hljs-function"><span class="hljs-params">arr</span> =&gt;</span> arr.filter(<span class="hljs-function"><span class="hljs-params">i</span> =&gt;</span> arr.indexOf(i) === arr.lastIndexOf(i));<br><span class="hljs-comment">// filterNonUnique([1,2,2,3,4,4,5]) -&gt; [1,3,5]</span><br></code></pre></div></td></tr></table></figure></li>
 <li><p>最大公约数（GCD）</p>
 </li>
 </ul>
 <p>使用递归。基本情况是当y等于0时。在这种情况下，返回x。否则，返回y的GCD和x / y的其余部分。</p>
-<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> gcd = <span class="hljs-function">(<span class="hljs-params">x, y</span>) =&gt;</span> !y ? x : gcd(y, x % y);
-<span class="hljs-comment">// gcd (8, 36) -&gt; 4</span></code></pre></div>
+<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> gcd = <span class="hljs-function">(<span class="hljs-params">x, y</span>) =&gt;</span> !y ? x : gcd(y, x % y);<br><span class="hljs-comment">// gcd (8, 36) -&gt; 4</span><br></code></pre></div></td></tr></table></figure>
 
 <ul>
 <li>范围内生成数组</li>
 </ul>
-<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> initializeArrayRange = <span class="hljs-function">(<span class="hljs-params">end, start = <span class="hljs-number">0</span></span>) =&gt;</span>
-  <span class="hljs-built_in">Array</span>.apply(<span class="hljs-literal">null</span>, <span class="hljs-built_in">Array</span>(end - start)).map(<span class="hljs-function">(<span class="hljs-params">v, i</span>) =&gt;</span> i + start);
-<span class="hljs-comment">// initializeArrayRange(5) -&gt; [0,1,2,3,4]</span></code></pre></div>
+<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> initializeArrayRange = <span class="hljs-function">(<span class="hljs-params">end, start = <span class="hljs-number">0</span></span>) =&gt;</span><br>  <span class="hljs-built_in">Array</span>.apply(<span class="hljs-literal">null</span>, <span class="hljs-built_in">Array</span>(end - start)).map(<span class="hljs-function">(<span class="hljs-params">v, i</span>) =&gt;</span> i + start);<br><span class="hljs-comment">// initializeArrayRange(5) -&gt; [0,1,2,3,4]</span><br></code></pre></div></td></tr></table></figure>
 
 <ul>
 <li>function计时</li>
 </ul>
-<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> timeTaken = <span class="hljs-function"><span class="hljs-params">callback</span> =&gt;</span> &#123;
-  <span class="hljs-built_in">console</span>.time(<span class="hljs-string">'timeTaken'</span>);
-  <span class="hljs-keyword">const</span> r = callback();
-  <span class="hljs-built_in">console</span>.timeEnd(<span class="hljs-string">'timeTaken'</span>);
-  <span class="hljs-keyword">return</span> r;
-&#125;;
-<span class="hljs-comment">// timeTaken(() =&gt; Math.pow(2, 10)) -&gt; 1024</span>
-<span class="hljs-comment">// (logged): timeTaken: 0.02099609375ms</span></code></pre></div>
+<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> timeTaken = <span class="hljs-function"><span class="hljs-params">callback</span> =&gt;</span> &#123;<br>  <span class="hljs-built_in">console</span>.time(<span class="hljs-string">&#x27;timeTaken&#x27;</span>);<br>  <span class="hljs-keyword">const</span> r = callback();<br>  <span class="hljs-built_in">console</span>.timeEnd(<span class="hljs-string">&#x27;timeTaken&#x27;</span>);<br>  <span class="hljs-keyword">return</span> r;<br>&#125;;<br><span class="hljs-comment">// timeTaken(() =&gt; Math.pow(2, 10)) -&gt; 1024</span><br><span class="hljs-comment">// (logged): timeTaken: 0.02099609375ms</span><br></code></pre></div></td></tr></table></figure>
 
 <ul>
 <li>打乱数组</li>
 </ul>
-<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> shuffle = <span class="hljs-function"><span class="hljs-params">arr</span> =&gt;</span> arr.sort(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-built_in">Math</span>.random() - <span class="hljs-number">0.5</span>);
-<span class="hljs-comment">// shuffle([1,2,3]) -&gt; [2,3,1]</span></code></pre></div>
+<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> shuffle = <span class="hljs-function"><span class="hljs-params">arr</span> =&gt;</span> arr.sort(<span class="hljs-function">() =&gt;</span> <span class="hljs-built_in">Math</span>.random() - <span class="hljs-number">0.5</span>);<br><span class="hljs-comment">// shuffle([1,2,3]) -&gt; [2,3,1]</span><br></code></pre></div></td></tr></table></figure>
 
 <ul>
 <li><p>RGB转十六进制</p>
-<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> rgbToHex = <span class="hljs-function">(<span class="hljs-params">r, g, b</span>) =&gt;</span> ((r &lt;&lt; <span class="hljs-number">16</span>) + (g &lt;&lt; <span class="hljs-number">8</span>) + b).toString(<span class="hljs-number">16</span>).padStart(<span class="hljs-number">6</span>, <span class="hljs-string">'0'</span>);
-<span class="hljs-comment">// rgbToHex(255, 165, 1) -&gt; 'ffa501'</span></code></pre></div>
-</li>
+<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> rgbToHex = <span class="hljs-function">(<span class="hljs-params">r, g, b</span>) =&gt;</span> ((r &lt;&lt; <span class="hljs-number">16</span>) + (g &lt;&lt; <span class="hljs-number">8</span>) + b).toString(<span class="hljs-number">16</span>).padStart(<span class="hljs-number">6</span>, <span class="hljs-string">&#x27;0&#x27;</span>);<br><span class="hljs-comment">// rgbToHex(255, 165, 1) -&gt; &#x27;ffa501&#x27;</span><br></code></pre></div></td></tr></table></figure></li>
 <li><p>字符串按字母排序</p>
-<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> sortCharactersInString = <span class="hljs-function"><span class="hljs-params">str</span> =&gt;</span>
-  str.split(<span class="hljs-string">''</span>).sort(<span class="hljs-function">(<span class="hljs-params">a, b</span>) =&gt;</span> a.localeCompare(b)).join(<span class="hljs-string">''</span>);
-<span class="hljs-comment">// sortCharactersInString('cabbage') -&gt; 'aabbceg'</span></code></pre></div>
-
-
-</li>
+<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> sortCharactersInString = <span class="hljs-function"><span class="hljs-params">str</span> =&gt;</span><br>  str.split(<span class="hljs-string">&#x27;&#x27;</span>).sort(<span class="hljs-function">(<span class="hljs-params">a, b</span>) =&gt;</span> a.localeCompare(b)).join(<span class="hljs-string">&#x27;&#x27;</span>);<br><span class="hljs-comment">// sortCharactersInString(&#x27;cabbage&#x27;) -&gt; &#x27;aabbceg&#x27;</span><br><br></code></pre></div></td></tr></table></figure></li>
 </ul>
 <ul>
 <li>获取URL参数</li>
 </ul>
-<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> getUrlParameters = <span class="hljs-function"><span class="hljs-params">url</span> =&gt;</span>
-  url.match(<span class="hljs-regexp">/([^?=&amp;]+)(=([^&amp;]*))/g</span>).reduce(
-    (a, v) =&gt; (a[v.slice(<span class="hljs-number">0</span>, v.indexOf(<span class="hljs-string">'='</span>))] = v.slice(v.indexOf(<span class="hljs-string">'='</span>) + <span class="hljs-number">1</span>), a), &#123;&#125;
-  );
-<span class="hljs-comment">// getUrlParameters('http://url.com/page?name=Adam&amp;surname=Smith') -&gt; &#123;name: 'Adam', surname: 'Smith'&#125;</span>
-<span class="hljs-comment">// 加入decode</span>
-<span class="hljs-keyword">const</span> getUrlParameters = <span class="hljs-function"><span class="hljs-params">url</span> =&gt;</span> 
-  url.match(<span class="hljs-regexp">/([^?=&amp;]+)(=([^&amp;]*))/g</span>).reduce(<span class="hljs-function">(<span class="hljs-params">pre,cur</span>)=&gt;</span>&#123;
-    <span class="hljs-keyword">let</span> [key,value] = cur.split(<span class="hljs-string">'='</span>)
-    key = <span class="hljs-built_in">decodeURIComponent</span>(key)
-    value = <span class="hljs-built_in">decodeURIComponent</span>(value)
-    pre[key] = pre[key]!==<span class="hljs-literal">undefined</span> ? [].concat(pre[key],value) : value
-    <span class="hljs-keyword">return</span> pre
-  &#125;,&#123;&#125;)</code></pre></div>
+<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> getUrlParameters = <span class="hljs-function"><span class="hljs-params">url</span> =&gt;</span><br>  url.match(<span class="hljs-regexp">/([^?=&amp;]+)(=([^&amp;]*))/g</span>).reduce(<br>    (a, v) =&gt; (a[v.slice(<span class="hljs-number">0</span>, v.indexOf(<span class="hljs-string">&#x27;=&#x27;</span>))] = v.slice(v.indexOf(<span class="hljs-string">&#x27;=&#x27;</span>) + <span class="hljs-number">1</span>), a), &#123;&#125;<br>  );<br><span class="hljs-comment">// getUrlParameters(&#x27;http://url.com/page?name=Adam&amp;surname=Smith&#x27;) -&gt; &#123;name: &#x27;Adam&#x27;, surname: &#x27;Smith&#x27;&#125;</span><br><span class="hljs-comment">// 加入decode</span><br><span class="hljs-keyword">const</span> getUrlParameters = <span class="hljs-function"><span class="hljs-params">url</span> =&gt;</span> <br>  url.match(<span class="hljs-regexp">/([^?=&amp;]+)(=([^&amp;]*))/g</span>).reduce(<span class="hljs-function">(<span class="hljs-params">pre,cur</span>)=&gt;</span>&#123;<br>    <span class="hljs-keyword">let</span> [key,value] = cur.split(<span class="hljs-string">&#x27;=&#x27;</span>)<br>    key = <span class="hljs-built_in">decodeURIComponent</span>(key)<br>    value = <span class="hljs-built_in">decodeURIComponent</span>(value)<br>    pre[key] = pre[key]!==<span class="hljs-literal">undefined</span> ? [].concat(pre[key],value) : value<br>    <span class="hljs-keyword">return</span> pre<br>  &#125;,&#123;&#125;)<br></code></pre></div></td></tr></table></figure>
 
 
             </div>
@@ -410,10 +339,14 @@ bifurcate([<span class="hljs-string">'beep'</span>, <span class="hljs-string">'b
                 
               </div>
               
-                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
               
               
-                <div class="post-prevnext row">
+                <div class="post-prevnext">
                   <article class="post-prev col-6">
                     
                     
@@ -439,6 +372,30 @@ bifurcate([<span class="hljs-string">'beep'</span>, <span class="hljs-string">'b
             </div>
 
             
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="twikoo"></div>
+  <script type="text/javascript">
+    Fluid.utils.lazyComments('comments', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/twikoo@1.3.0/dist/twikoo.all.min.js', function() {
+        twikoo.init({
+          el: '#twikoo',
+          envId: 'blog-1glh2chxcbf8757a',
+          region: 'ap-shanghai',
+          path: 'window.location.pathname',
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
           </article>
         </div>
       </div>
@@ -447,7 +404,7 @@ bifurcate([<span class="hljs-string">'beep'</span>, <span class="hljs-string">'b
       <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
         <div id="toc">
   <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
-  <div id="tocbot"></div>
+  <div class="toc-body" id="toc-body"></div>
 </div>
 
       </div>
@@ -459,16 +416,15 @@ bifurcate([<span class="hljs-string">'beep'</span>, <span class="hljs-string">'b
 
 
     
-  </main>
 
-  
-    <a id="scroll-top-button" href="#" role="button">
-      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
-    </a>
-  
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
 
-  
-    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
      aria-hidden="true">
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
@@ -489,21 +445,16 @@ bifurcate([<span class="hljs-string">'beep'</span>, <span class="hljs-string">'b
     </div>
   </div>
 </div>
-  
-
-  
-
-  
-
-  <footer class="mt-5">
-  <div class="text-center py-3">
-    <div>
-      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
-      <i class="iconfont icon-love"></i>
-      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
-        <span>Fluid</span></a>
-    </div>
     
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+  </div>
+  
   <div class="statistics">
     
     
@@ -529,30 +480,47 @@ bifurcate([<span class="hljs-string">'beep'</span>, <span class="hljs-string">'b
   </div>
 
 
-    
+  
   <!-- 备案信息 -->
   <div class="beian">
-    <a href="http://beian.miit.gov.cn/" target="_blank"
-       rel="nofollow noopener">粤ICP备2020115702号</a>
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        粤ICP备2020115702号
+      </a>
+    </span>
     
   </div>
 
 
-    
-  </div>
+  
 </footer>
 
-<!-- SCRIPTS -->
-<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
-<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
 <script  src="/js/debouncer.js" ></script>
-<script  src="/js/main.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
 
 <!-- Plugins -->
 
 
   
-    <script  src="/js/lazyload.js" ></script>
+    <script  src="/js/img-lazyload.js" ></script>
   
 
 
@@ -561,8 +529,19 @@ bifurcate([<span class="hljs-string">'beep'</span>, <span class="hljs-string">'b
 
 
 
-  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
-  <script  src="/js/clipboard-use.js" ></script>
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
 
 
 
@@ -571,95 +550,30 @@ bifurcate([<span class="hljs-string">'beep'</span>, <span class="hljs-string">'b
 
 
 
-
-  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
   <script>
-    $(document).ready(function () {
-      var boardCtn = $('#board-ctn');
-      var boardTop = boardCtn.offset().top;
-
-      tocbot.init({
-        tocSelector: '#tocbot',
-        contentSelector: '#post-body',
-        headingSelector: 'h1,h2,h3,h4,h5,h6',
-        linkClass: 'tocbot-link',
-        activeLinkClass: 'tocbot-active-link',
-        listClass: 'tocbot-list',
-        isCollapsedClass: 'tocbot-is-collapsed',
-        collapsibleClass: 'tocbot-is-collapsible',
-        collapseDepth: 0,
-        scrollSmooth: true,
-        headingsOffset: -boardTop
-      });
-      if ($('.toc-list-item').length > 0) {
-        $('#toc').css('visibility', 'visible');
-      }
-    });
-  </script>
-
-
-
-  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
-  <script>
-    var typed = new Typed('#subtitle', {
-      strings: [
-        '  ',
-        "待整理的js片段&nbsp;",
-      ],
-      cursorChar: "_",
-      typeSpeed: 70,
-      loop: false,
-    });
-    typed.stop();
-    $(document).ready(function () {
-      $(".typed-cursor").addClass("h2");
-      typed.start();
-    });
-  </script>
-
-
-
-  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
-  <script>
-    anchors.options = {
-      placement: "right",
-      visible: "hover",
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
       
-    };
-    var el = "h1,h2,h3,h4,h5,h6".split(",");
-    var res = [];
-    for (item of el) {
-      res.push(".markdown-body > " + item)
-    }
-    anchors.add(res.join(", "))
+      typing(title)
+      
+    })(window, document);
   </script>
 
 
 
   <script  src="/js/local-search.js" ></script>
   <script>
-    var path = "/local-search.xml";
-    var inputArea = document.querySelector("#local-search-input");
-    inputArea.onclick = function () {
-      searchFunc(path, 'local-search-input', 'local-search-result');
-      this.onclick = null
-    }
-  </script>
-
-
-
-  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
-
-  <script>
-    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
-      function () {
-        var element = document.createElement('a');
-        $(element).attr('data-fancybox', 'images');
-        $(element).attr('href', $(this).attr('src'));
-        $(this).wrap(element);
-      }
-    );
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
   </script>
 
 
@@ -676,33 +590,8 @@ bifurcate([<span class="hljs-string">'beep'</span>, <span class="hljs-string">'b
 
 
 
-
-
-  
-    <!-- Baidu Analytics -->
-    <script defer>
-      var _hmt = _hmt || [];
-      (function () {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?048f7ae77dbb92c9d2c83ca3df99d02f";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-      })();
-    </script>
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-
-
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
 
 
 </body>

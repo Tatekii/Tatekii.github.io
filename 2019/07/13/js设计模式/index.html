@@ -1,14 +1,14 @@
 
 
 <!DOCTYPE html>
-<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+<html lang="zh-CN" data-default-color-scheme=&#34;dark&#34;>
 
 
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.jpeg">
-  <link rel="icon" type="image/png" href="/img/avatar.jpeg">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
   <meta name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -17,28 +17,32 @@
   <meta name="description" content="">
   <meta name="author" content="tatekii">
   <meta name="keywords" content="">
+  
   <title>javascript常见设计模式 - 不知名的笔记本</title>
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
   <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
   
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/tomorrow-night-eighties.min.css" />
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/atom-one-dark.min.css" />
     
   
 
   
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
 
 
 <!-- 主题依赖的图标库，不要自行修改 -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_pf9vaxs7x7b.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
 
 
 
@@ -50,17 +54,21 @@
 <!-- 自定义样式保持在最底部 -->
 
 
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","version":"1.8.9-a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":"#"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 5.4.0"></head>
 
 
 <body>
-  <header style="height: 30vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
-       href="/">&nbsp;<strong>Dr.🐎</strong>&nbsp;</a>
+       href="/">&nbsp;<strong>Dr🐎 Note</strong>&nbsp;</a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent"
@@ -92,6 +100,18 @@
               <a class="nav-link" href="/archives/">
                 <i class="iconfont icon-archive-fill"></i>
                 归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
               </a>
             </li>
           
@@ -137,13 +157,13 @@
   </div>
 </nav>
 
-    <div class="banner intro-2" id="background" parallax=true
+    <div class="banner" id="banner" parallax=true
          style="background: url('/img/default.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="container page-header text-center fade-in-up">
-            <span class="h2" id="subtitle">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="javascript常见设计模式">
               
             </span>
 
@@ -165,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      579 字
+      620 字
     </span>
   
 
@@ -175,12 +195,20 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      7
+      8
        分钟
     </span>
   
 
   
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
   
 </div>
 
@@ -197,97 +225,36 @@
     
       
 
-<div class="container-fluid">
-  <div class="row">
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
     <div class="d-none d-lg-block col-lg-2"></div>
-    <div class="col-lg-8 nopadding-md">
-      <div class="container nopadding-md" id="board-ctn">
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
         <div class="py-5" id="board">
-          <article class="post-content mx-auto" id="post">
+          <article class="post-content mx-auto">
             <!-- SEO header -->
             <h1 style="display: none">javascript常见设计模式</h1>
             
-            <div class="markdown-body" id="post-body">
+              <p class="note note-info">
+                
+                  本文最后更新于：2020年11月6日 晚上
+                
+              </p>
+            
+            <div class="markdown-body">
               <h1 id="设计模式的定义：在面向对象软件设计过程中针对特定问题的简洁而优雅的解决方案。"><a href="#设计模式的定义：在面向对象软件设计过程中针对特定问题的简洁而优雅的解决方案。" class="headerlink" title="设计模式的定义：在面向对象软件设计过程中针对特定问题的简洁而优雅的解决方案。"></a>设计模式的定义：在面向对象软件设计过程中针对特定问题的简洁而优雅的解决方案。</h1><h2 id="工厂模式"><a href="#工厂模式" class="headerlink" title="工厂模式"></a>工厂模式</h2><ol>
 <li><p>设计思想：将 new 操作单独封装，只对外提供相应接口</p>
 </li>
 <li><p>作用：隐藏创建实例的复杂度，将构造函数和创建者分离</p>
 </li>
 <li><p>举例：jQ的选择器</p>
-<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span></span>&#123;
-  <span class="hljs-keyword">constructor</span>(name='',age=0)&#123;
-    <span class="hljs-keyword">this</span>.name = name
-    <span class="hljs-keyword">this</span>.age = age
-  &#125;
-&#125;
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UserFactory</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">User</span></span>&#123;
-  <span class="hljs-keyword">constructor</span>(name,age)&#123;
-    <span class="hljs-keyword">super</span>(name,age)
-  &#125;
-  create(type)&#123;
-    <span class="hljs-keyword">switch</span>(type)&#123;
-      <span class="hljs-keyword">case</span> <span class="hljs-string">'male'</span>:
-        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> UserFactory(<span class="hljs-string">'boy'</span>,<span class="hljs-number">29</span>)
-        <span class="hljs-keyword">break</span>
-      <span class="hljs-keyword">case</span> <span class="hljs-string">'female'</span>:
-        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> UserFactory(<span class="hljs-string">'girl'</span>,<span class="hljs-number">18</span>)
-        <span class="hljs-keyword">break</span>
-      <span class="hljs-keyword">default</span>:
-        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">'type indeed'</span>)  
-    &#125;
-  &#125;
-&#125;</code></pre></div>
-
-</li>
+<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span></span>&#123;<br>  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">name=<span class="hljs-string">&#x27;&#x27;</span>,age=<span class="hljs-number">0</span></span>)</span>&#123;<br>    <span class="hljs-built_in">this</span>.name = name<br>    <span class="hljs-built_in">this</span>.age = age<br>  &#125;<br>&#125;<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UserFactory</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">User</span></span>&#123;<br>  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">name,age</span>)</span>&#123;<br>    <span class="hljs-built_in">super</span>(name,age)<br>  &#125;<br>  <span class="hljs-function"><span class="hljs-title">create</span>(<span class="hljs-params">type</span>)</span>&#123;<br>    <span class="hljs-keyword">switch</span>(type)&#123;<br>      <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;male&#x27;</span>:<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> UserFactory(<span class="hljs-string">&#x27;boy&#x27;</span>,<span class="hljs-number">29</span>)<br>        <span class="hljs-keyword">break</span><br>      <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;female&#x27;</span>:<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> UserFactory(<span class="hljs-string">&#x27;girl&#x27;</span>,<span class="hljs-number">18</span>)<br>        <span class="hljs-keyword">break</span><br>      <span class="hljs-keyword">default</span>:<br>        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">&#x27;type indeed&#x27;</span>)  <br>    &#125;<br>  &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure></li>
 </ol>
 <h2 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h2><ol>
 <li>保证该类只有一个实例</li>
 <li>如果已经创建过实例对象则放回该对象</li>
 </ol>
-<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-comment">// </span>
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">LoginForm</span> </span>&#123;
-    <span class="hljs-keyword">constructor</span>() &#123;
-        <span class="hljs-keyword">this</span>.state = <span class="hljs-string">'hide'</span>
-    &#125;
-    show() &#123;
-        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.state === <span class="hljs-string">'show'</span>) &#123;
-            alert(<span class="hljs-string">'已经显示'</span>)
-            <span class="hljs-keyword">return</span>
-        &#125;
-        <span class="hljs-keyword">this</span>.state = <span class="hljs-string">'show'</span>
-        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'登录框已显示'</span>)
-    &#125;
-    hide() &#123;
-        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.state === <span class="hljs-string">'hide'</span>) &#123;
-            alert(<span class="hljs-string">'已经隐藏'</span>)
-            <span class="hljs-keyword">return</span>
-        &#125;
-        <span class="hljs-keyword">this</span>.state = <span class="hljs-string">'hide'</span>
-        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'登录框已隐藏'</span>)
-    &#125;
-&#125;
-LoginForm.getInstance = (<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;
-  <span class="hljs-comment">// 使用instance这个变量来保存</span>
-    <span class="hljs-keyword">let</span> instance
-    <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;
-        <span class="hljs-keyword">if</span> (!instance) &#123;
-            instance = <span class="hljs-keyword">new</span> LoginForm();
-        &#125;
-        <span class="hljs-keyword">return</span> instance
-    &#125;
-&#125;)()
-
-<span class="hljs-comment">// 一个页面中调用登录框</span>
-<span class="hljs-keyword">let</span> login1 = LoginForm.getInstance()
-login1.show()
-<span class="hljs-comment">// login1.hide()</span>
-
-<span class="hljs-comment">// 另一个页面中调用登录框</span>
-<span class="hljs-keyword">let</span> login2 = LoginForm.getInstance()
-login2.show()
-
-<span class="hljs-comment">// 两者是否相等</span>
-<span class="hljs-built_in">console</span>.log(<span class="hljs-string">'login1 === login2'</span>, login1 === login2)</code></pre></div>
+<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// </span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">LoginForm</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"></span>)</span> &#123;<br>        <span class="hljs-built_in">this</span>.state = <span class="hljs-string">&#x27;hide&#x27;</span><br>    &#125;<br>    <span class="hljs-function"><span class="hljs-title">show</span>(<span class="hljs-params"></span>)</span> &#123;<br>        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">this</span>.state === <span class="hljs-string">&#x27;show&#x27;</span>) &#123;<br>            alert(<span class="hljs-string">&#x27;已经显示&#x27;</span>)<br>            <span class="hljs-keyword">return</span><br>        &#125;<br>        <span class="hljs-built_in">this</span>.state = <span class="hljs-string">&#x27;show&#x27;</span><br>        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;登录框已显示&#x27;</span>)<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-title">hide</span>(<span class="hljs-params"></span>)</span> &#123;<br>        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">this</span>.state === <span class="hljs-string">&#x27;hide&#x27;</span>) &#123;<br>            alert(<span class="hljs-string">&#x27;已经隐藏&#x27;</span>)<br>            <span class="hljs-keyword">return</span><br>        &#125;<br>        <span class="hljs-built_in">this</span>.state = <span class="hljs-string">&#x27;hide&#x27;</span><br>        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;登录框已隐藏&#x27;</span>)<br>    &#125;<br>&#125;<br>LoginForm.getInstance = (<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-comment">// 使用instance这个变量来保存</span><br>    <span class="hljs-keyword">let</span> instance<br>    <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>        <span class="hljs-keyword">if</span> (!instance) &#123;<br>            instance = <span class="hljs-keyword">new</span> LoginForm();<br>        &#125;<br>        <span class="hljs-keyword">return</span> instance<br>    &#125;<br>&#125;)()<br><br><span class="hljs-comment">// 一个页面中调用登录框</span><br><span class="hljs-keyword">let</span> login1 = LoginForm.getInstance()<br>login1.show()<br><span class="hljs-comment">// login1.hide()</span><br><br><span class="hljs-comment">// 另一个页面中调用登录框</span><br><span class="hljs-keyword">let</span> login2 = LoginForm.getInstance()<br>login2.show()<br><br><span class="hljs-comment">// 两者是否相等</span><br><span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;login1 === login2&#x27;</span>, login1 === login2)<br></code></pre></div></td></tr></table></figure>
 
 <h2 id="观察者模式-发布订阅模式"><a href="#观察者模式-发布订阅模式" class="headerlink" title="观察者模式/发布订阅模式"></a>观察者模式/发布订阅模式</h2><ol>
 <li>1对N的数据联动</li>
@@ -303,25 +270,7 @@ login2.show()
 <h2 id="装饰模式"><a href="#装饰模式" class="headerlink" title="装饰模式"></a>装饰模式</h2><ol>
 <li>装饰者(decorator)模式能够在不改变对象自身的基础上，在程序运行期间给对像动态的添加职责（方法或属性）。与继承相比，装饰者是一种更轻便灵活的做法。</li>
 </ol>
-<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Human</span></span>&#123;
-  <span class="hljs-keyword">constructor</span>()&#123;
-    <span class="hljs-keyword">this</span>.type = <span class="hljs-string">'正常人'</span>
-  &#125;
-  say()&#123;
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'23岁 是学生'</span>)
-  &#125;
-&#125;
-
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MakeUp</span></span>&#123;
-  <span class="hljs-keyword">constructor</span>(human)&#123;
-    <span class="hljs-keyword">this</span>.human = human
-    <span class="hljs-keyword">this</span>.human.type = <span class="hljs-string">'赛亚人'</span>
-  &#125;
-  sayAgain()&#123;
-    <span class="hljs-keyword">this</span>.human.say()
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'我不当人了'</span>)
-  &#125;
-&#125;</code></pre></div>
+<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Human</span></span>&#123;<br>  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"></span>)</span>&#123;<br>    <span class="hljs-built_in">this</span>.type = <span class="hljs-string">&#x27;正常人&#x27;</span><br>  &#125;<br>  <span class="hljs-function"><span class="hljs-title">say</span>(<span class="hljs-params"></span>)</span>&#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;23岁 是学生&#x27;</span>)<br>  &#125;<br>&#125;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MakeUp</span></span>&#123;<br>  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">human</span>)</span>&#123;<br>    <span class="hljs-built_in">this</span>.human = human<br>    <span class="hljs-built_in">this</span>.human.type = <span class="hljs-string">&#x27;赛亚人&#x27;</span><br>  &#125;<br>  <span class="hljs-function"><span class="hljs-title">sayAgain</span>(<span class="hljs-params"></span>)</span>&#123;<br>    <span class="hljs-built_in">this</span>.human.say()<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;我不当人了&#x27;</span>)<br>  &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
             </div>
             <hr>
             <div>
@@ -339,10 +288,14 @@ login2.show()
                 
               </div>
               
-                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
               
               
-                <div class="post-prevnext row">
+                <div class="post-prevnext">
                   <article class="post-prev col-6">
                     
                     
@@ -368,6 +321,30 @@ login2.show()
             </div>
 
             
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="twikoo"></div>
+  <script type="text/javascript">
+    Fluid.utils.lazyComments('comments', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/twikoo@1.3.0/dist/twikoo.all.min.js', function() {
+        twikoo.init({
+          el: '#twikoo',
+          envId: 'blog-1glh2chxcbf8757a',
+          region: 'ap-shanghai',
+          path: 'window.location.pathname',
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
           </article>
         </div>
       </div>
@@ -376,7 +353,7 @@ login2.show()
       <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
         <div id="toc">
   <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
-  <div id="tocbot"></div>
+  <div class="toc-body" id="toc-body"></div>
 </div>
 
       </div>
@@ -388,16 +365,15 @@ login2.show()
 
 
     
-  </main>
 
-  
-    <a id="scroll-top-button" href="#" role="button">
-      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
-    </a>
-  
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
 
-  
-    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
      aria-hidden="true">
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
@@ -418,21 +394,16 @@ login2.show()
     </div>
   </div>
 </div>
-  
-
-  
-
-  
-
-  <footer class="mt-5">
-  <div class="text-center py-3">
-    <div>
-      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
-      <i class="iconfont icon-love"></i>
-      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
-        <span>Fluid</span></a>
-    </div>
     
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+  </div>
+  
   <div class="statistics">
     
     
@@ -458,30 +429,47 @@ login2.show()
   </div>
 
 
-    
+  
   <!-- 备案信息 -->
   <div class="beian">
-    <a href="http://beian.miit.gov.cn/" target="_blank"
-       rel="nofollow noopener">粤ICP备2020115702号</a>
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        粤ICP备2020115702号
+      </a>
+    </span>
     
   </div>
 
 
-    
-  </div>
+  
 </footer>
 
-<!-- SCRIPTS -->
-<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
-<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
 <script  src="/js/debouncer.js" ></script>
-<script  src="/js/main.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
 
 <!-- Plugins -->
 
 
   
-    <script  src="/js/lazyload.js" ></script>
+    <script  src="/js/img-lazyload.js" ></script>
   
 
 
@@ -490,8 +478,19 @@ login2.show()
 
 
 
-  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
-  <script  src="/js/clipboard-use.js" ></script>
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
 
 
 
@@ -500,95 +499,30 @@ login2.show()
 
 
 
-
-  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
   <script>
-    $(document).ready(function () {
-      var boardCtn = $('#board-ctn');
-      var boardTop = boardCtn.offset().top;
-
-      tocbot.init({
-        tocSelector: '#tocbot',
-        contentSelector: '#post-body',
-        headingSelector: 'h1,h2,h3,h4,h5,h6',
-        linkClass: 'tocbot-link',
-        activeLinkClass: 'tocbot-active-link',
-        listClass: 'tocbot-list',
-        isCollapsedClass: 'tocbot-is-collapsed',
-        collapsibleClass: 'tocbot-is-collapsible',
-        collapseDepth: 0,
-        scrollSmooth: true,
-        headingsOffset: -boardTop
-      });
-      if ($('.toc-list-item').length > 0) {
-        $('#toc').css('visibility', 'visible');
-      }
-    });
-  </script>
-
-
-
-  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
-  <script>
-    var typed = new Typed('#subtitle', {
-      strings: [
-        '  ',
-        "javascript常见设计模式&nbsp;",
-      ],
-      cursorChar: "_",
-      typeSpeed: 70,
-      loop: false,
-    });
-    typed.stop();
-    $(document).ready(function () {
-      $(".typed-cursor").addClass("h2");
-      typed.start();
-    });
-  </script>
-
-
-
-  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
-  <script>
-    anchors.options = {
-      placement: "right",
-      visible: "hover",
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
       
-    };
-    var el = "h1,h2,h3,h4,h5,h6".split(",");
-    var res = [];
-    for (item of el) {
-      res.push(".markdown-body > " + item)
-    }
-    anchors.add(res.join(", "))
+      typing(title)
+      
+    })(window, document);
   </script>
 
 
 
   <script  src="/js/local-search.js" ></script>
   <script>
-    var path = "/local-search.xml";
-    var inputArea = document.querySelector("#local-search-input");
-    inputArea.onclick = function () {
-      searchFunc(path, 'local-search-input', 'local-search-result');
-      this.onclick = null
-    }
-  </script>
-
-
-
-  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
-
-  <script>
-    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
-      function () {
-        var element = document.createElement('a');
-        $(element).attr('data-fancybox', 'images');
-        $(element).attr('href', $(this).attr('src'));
-        $(this).wrap(element);
-      }
-    );
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
   </script>
 
 
@@ -605,33 +539,8 @@ login2.show()
 
 
 
-
-
-  
-    <!-- Baidu Analytics -->
-    <script defer>
-      var _hmt = _hmt || [];
-      (function () {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?048f7ae77dbb92c9d2c83ca3df99d02f";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-      })();
-    </script>
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-
-
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
 
 
 </body>

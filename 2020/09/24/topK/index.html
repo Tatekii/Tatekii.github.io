@@ -1,14 +1,14 @@
 
 
 <!DOCTYPE html>
-<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+<html lang="zh-CN" data-default-color-scheme=&#34;dark&#34;>
 
 
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.jpeg">
-  <link rel="icon" type="image/png" href="/img/avatar.jpeg">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
   <meta name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -17,28 +17,32 @@
   <meta name="description" content="">
   <meta name="author" content="tatekii">
   <meta name="keywords" content="">
+  
   <title>topK问题 - 不知名的笔记本</title>
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
   <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
   
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/tomorrow-night-eighties.min.css" />
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/atom-one-dark.min.css" />
     
   
 
   
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
 
 
 <!-- 主题依赖的图标库，不要自行修改 -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_pf9vaxs7x7b.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
 
 
 
@@ -50,17 +54,21 @@
 <!-- 自定义样式保持在最底部 -->
 
 
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","version":"1.8.9-a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":"#"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 5.4.0"></head>
 
 
 <body>
-  <header style="height: 30vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
-       href="/">&nbsp;<strong>Dr.🐎</strong>&nbsp;</a>
+       href="/">&nbsp;<strong>Dr🐎 Note</strong>&nbsp;</a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent"
@@ -92,6 +100,18 @@
               <a class="nav-link" href="/archives/">
                 <i class="iconfont icon-archive-fill"></i>
                 归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
               </a>
             </li>
           
@@ -137,13 +157,13 @@
   </div>
 </nav>
 
-    <div class="banner intro-2" id="background" parallax=true
+    <div class="banner" id="banner" parallax=true
          style="background: url('/img/default.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="container page-header text-center fade-in-up">
-            <span class="h2" id="subtitle">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="topK问题">
               
             </span>
 
@@ -182,6 +202,14 @@
 
   
   
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
 </div>
 
             
@@ -197,292 +225,61 @@
     
       
 
-<div class="container-fluid">
-  <div class="row">
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
     <div class="d-none d-lg-block col-lg-2"></div>
-    <div class="col-lg-8 nopadding-md">
-      <div class="container nopadding-md" id="board-ctn">
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
         <div class="py-5" id="board">
-          <article class="post-content mx-auto" id="post">
+          <article class="post-content mx-auto">
             <!-- SEO header -->
             <h1 style="display: none">topK问题</h1>
             
-            <div class="markdown-body" id="post-body">
+              <p class="note note-info">
+                
+                  本文最后更新于：2020年10月29日 下午
+                
+              </p>
+            
+            <div class="markdown-body">
               <h2 id="最大-小的-K-个数，第-K-个最大-最小值"><a href="#最大-小的-K-个数，第-K-个最大-最小值" class="headerlink" title="最大/小的 K 个数，第 K 个最大/最小值"></a>最大/小的 K 个数，第 K 个最大/最小值</h2><ul>
 <li>数组完全排序</li>
 </ul>
-<div class="hljs"><pre><code class="hljs javascript">data = data.sort(<span class="hljs-function">(<span class="hljs-params">a, b</span>) =&gt;</span> b - a);
-<span class="hljs-comment">//前k个大值</span>
-<span class="hljs-keyword">let</span> res1 = data.slice(<span class="hljs-number">0</span>, k);
-<span class="hljs-comment">//第k大的值</span>
-<span class="hljs-keyword">let</span> res2 = data[k - <span class="hljs-number">1</span>];</code></pre></div>
+<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript">data = data.sort(<span class="hljs-function">(<span class="hljs-params">a, b</span>) =&gt;</span> b - a);<br><span class="hljs-comment">//前k个大值</span><br><span class="hljs-keyword">let</span> res1 = data.slice(<span class="hljs-number">0</span>, k);<br><span class="hljs-comment">//第k大的值</span><br><span class="hljs-keyword">let</span> res2 = data[k - <span class="hljs-number">1</span>];<br></code></pre></div></td></tr></table></figure>
 
 <ul>
 <li>局部冒泡</li>
 </ul>
-<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">bubbleSort</span>(<span class="hljs-params">arr, k</span>) </span>&#123;
-  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; k; i++) &#123;
-    <span class="hljs-keyword">let</span> flag = <span class="hljs-literal">false</span>;
-    <span class="hljs-comment">// 冒泡执行k次</span>
-    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> j = arr.length - <span class="hljs-number">1</span>; j &gt; <span class="hljs-number">0</span> + i; j--) &#123;
-      <span class="hljs-keyword">if</span> (arr[j] &lt; arr[j - <span class="hljs-number">1</span>]) &#123;
-        [arr[j], arr[j - <span class="hljs-number">1</span>]] = [arr[j - <span class="hljs-number">1</span>], arr[j]];
-        flag = <span class="hljs-literal">true</span>;
-      &#125;
-    &#125;
-    <span class="hljs-keyword">if</span> (!flag) <span class="hljs-keyword">break</span>;
-  &#125;
-&#125;
-<span class="hljs-comment">//前k个小值</span>
-data.slice(<span class="hljs-number">0</span>, k);
-<span class="hljs-comment">//第k小的值</span>
-data[k - <span class="hljs-number">1</span>];</code></pre></div>
+<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">bubbleSort</span>(<span class="hljs-params">arr, k</span>) </span>&#123;<br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; k; i++) &#123;<br>    <span class="hljs-keyword">let</span> flag = <span class="hljs-literal">false</span>;<br>    <span class="hljs-comment">// 冒泡执行k次</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> j = arr.length - <span class="hljs-number">1</span>; j &gt; <span class="hljs-number">0</span> + i; j--) &#123;<br>      <span class="hljs-keyword">if</span> (arr[j] &lt; arr[j - <span class="hljs-number">1</span>]) &#123;<br>        [arr[j], arr[j - <span class="hljs-number">1</span>]] = [arr[j - <span class="hljs-number">1</span>], arr[j]];<br>        flag = <span class="hljs-literal">true</span>;<br>      &#125;<br>    &#125;<br>    <span class="hljs-keyword">if</span> (!flag) <span class="hljs-keyword">break</span>;<br>  &#125;<br>&#125;<br><span class="hljs-comment">//前k个小值</span><br>data.slice(<span class="hljs-number">0</span>, k);<br><span class="hljs-comment">//第k小的值</span><br>data[k - <span class="hljs-number">1</span>];<br></code></pre></div></td></tr></table></figure>
 
 <ul>
 <li>堆排序</li>
 </ul>
-<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-comment">// topk</span>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">heapObj</span>(<span class="hljs-params">items,k</span>)</span>&#123;
-  <span class="hljs-keyword">const</span> heap = [,...items.slice(<span class="hljs-number">0</span>,k)]
-  <span class="hljs-keyword">const</span> heapSize = k
-  buildHeap(heap,heapSize)
-
-  <span class="hljs-comment">// 求大值，建立最小堆</span>
-  <span class="hljs-comment">// 后续与最小堆堆顶比较</span>
-  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> j = k ; j &lt; items.length ; j++)&#123;
-    <span class="hljs-keyword">if</span>(heap[<span class="hljs-number">1</span>] &lt; items[j])&#123;
-      heap[<span class="hljs-number">1</span>] = items[j]
-      heapify(heap,heapSize,<span class="hljs-number">1</span>)
-    &#125;
-  &#125;
-  <span class="hljs-keyword">return</span> heap
-  <span class="hljs-comment">// 前k个大值</span>
-  heap.slice(<span class="hljs-number">1</span>,k+<span class="hljs-number">1</span>)
-  <span class="hljs-comment">//第k大的值</span>
-  heap[k]
-&#125;
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">buildHeap</span>(<span class="hljs-params">items,heapSize</span>)</span>&#123;
-  <span class="hljs-keyword">if</span>(heapSize === <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span>
-  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-built_in">Math</span>.floor(heapSize/<span class="hljs-number">2</span>) ; i &gt;= <span class="hljs-number">1</span> ; i --)&#123;
-    heapify(items,heapSize,i)
-  &#125;
-&#125;
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">heapify</span>(<span class="hljs-params">items,heapSize,i</span>)</span>&#123;
-  <span class="hljs-keyword">while</span>(<span class="hljs-literal">true</span>)&#123;
-    <span class="hljs-keyword">let</span> minIndex = i
-    <span class="hljs-keyword">if</span>(<span class="hljs-number">2</span>*i &lt;= heapSize &amp;&amp; items[<span class="hljs-number">2</span>*i] &lt; items[i]) minIndex = <span class="hljs-number">2</span>*i
-    <span class="hljs-keyword">if</span>(<span class="hljs-number">2</span>*i+<span class="hljs-number">1</span> &lt;= heapSize &amp;&amp; items[<span class="hljs-number">2</span>*i+<span class="hljs-number">1</span>] &lt; items[minIndex]) minIndex = <span class="hljs-number">2</span>*i+<span class="hljs-number">1</span>
-    <span class="hljs-keyword">if</span>(minIndex===i) <span class="hljs-keyword">break</span>
-    [items[i],items[minIndex]] = [items[minIndex],items[i]]
-    i = minIndex
-  &#125;</code></pre></div>
+<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// topk</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">heapObj</span>(<span class="hljs-params">items,k</span>)</span>&#123;<br>  <span class="hljs-keyword">const</span> heap = [,...items.slice(<span class="hljs-number">0</span>,k)]<br>  <span class="hljs-keyword">const</span> heapSize = k<br>  buildHeap(heap,heapSize)<br><br>  <span class="hljs-comment">// 求大值，建立最小堆</span><br>  <span class="hljs-comment">// 后续与最小堆堆顶比较</span><br>  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> j = k ; j &lt; items.length ; j++)&#123;<br>    <span class="hljs-keyword">if</span>(heap[<span class="hljs-number">1</span>] &lt; items[j])&#123;<br>      heap[<span class="hljs-number">1</span>] = items[j]<br>      heapify(heap,heapSize,<span class="hljs-number">1</span>)<br>    &#125;<br>  &#125;<br>  <span class="hljs-keyword">return</span> heap<br>  <span class="hljs-comment">// 前k个大值</span><br>  heap.slice(<span class="hljs-number">1</span>,k+<span class="hljs-number">1</span>)<br>  <span class="hljs-comment">//第k大的值</span><br>  heap[k]<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">buildHeap</span>(<span class="hljs-params">items,heapSize</span>)</span>&#123;<br>  <span class="hljs-keyword">if</span>(heapSize === <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span><br>  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-built_in">Math</span>.floor(heapSize/<span class="hljs-number">2</span>) ; i &gt;= <span class="hljs-number">1</span> ; i --)&#123;<br>    heapify(items,heapSize,i)<br>  &#125;<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">heapify</span>(<span class="hljs-params">items,heapSize,i</span>)</span>&#123;<br>  <span class="hljs-keyword">while</span>(<span class="hljs-literal">true</span>)&#123;<br>    <span class="hljs-keyword">let</span> minIndex = i<br>    <span class="hljs-keyword">if</span>(<span class="hljs-number">2</span>*i &lt;= heapSize &amp;&amp; items[<span class="hljs-number">2</span>*i] &lt; items[i]) minIndex = <span class="hljs-number">2</span>*i<br>    <span class="hljs-keyword">if</span>(<span class="hljs-number">2</span>*i+<span class="hljs-number">1</span> &lt;= heapSize &amp;&amp; items[<span class="hljs-number">2</span>*i+<span class="hljs-number">1</span>] &lt; items[minIndex]) minIndex = <span class="hljs-number">2</span>*i+<span class="hljs-number">1</span><br>    <span class="hljs-keyword">if</span>(minIndex===i) <span class="hljs-keyword">break</span><br>    [items[i],items[minIndex]] = [items[minIndex],items[i]]<br>    i = minIndex<br>  &#125;<br></code></pre></div></td></tr></table></figure>
 
 <ul>
 <li>快速排序</li>
 </ul>
-<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-comment">// 随机选取基准，数组分成基准左右两部分</span>
-<span class="hljs-comment">// 将比基准大的移动基准右边，比基准小的移动到基准左边</span>
-<span class="hljs-comment">// 递归分割排序</span>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">quickSort</span>(<span class="hljs-params">arr</span>) </span>&#123;
-  quick(arr, <span class="hljs-number">0</span>, arr.length - <span class="hljs-number">1</span>);
-  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">quick</span>(<span class="hljs-params">arr, left, right</span>) </span>&#123;
-    <span class="hljs-keyword">let</span> index;
-    <span class="hljs-keyword">if</span> (left &lt; right) &#123;
-      <span class="hljs-comment">//</span>
-      index = partition(arr, left, right);
-      <span class="hljs-comment">// 分离一次</span>
-      <span class="hljs-keyword">if</span> (left &lt; index - <span class="hljs-number">1</span>) &#123;
-        quick(arr, left, index - <span class="hljs-number">1</span>);
-      &#125;
-      <span class="hljs-keyword">if</span> (index &lt; right) &#123;
-        quick(arr, index, right);
-      &#125;
-    &#125;
-  &#125;
-  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">partition</span>(<span class="hljs-params">arr, left, right</span>) </span>&#123;
-    <span class="hljs-keyword">const</span> base = arr[<span class="hljs-built_in">Math</span>.floor(<span class="hljs-built_in">Math</span>.random() * (right - left + <span class="hljs-number">1</span>)) + left];
-    <span class="hljs-keyword">let</span> L = left,
-      R = right;
-    <span class="hljs-keyword">while</span> (L &lt;= R) &#123;
-      <span class="hljs-keyword">while</span> (arr[L] &lt; base) &#123;
-        L++;
-      &#125;
-      <span class="hljs-keyword">while</span> (arr[R] &gt; base) &#123;
-        R--;
-      &#125;
-      <span class="hljs-keyword">if</span> (L &lt;= R) &#123;
-        [arr[L], arr[R]] = [arr[R], arr[L]];
-        L++;
-        R--;
-      &#125;
-    &#125;
-    <span class="hljs-keyword">return</span> L;
-  &#125;
-&#125;
-quickSort([<span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">6</span>, <span class="hljs-number">2</span>, <span class="hljs-number">7</span>, <span class="hljs-number">5</span>, <span class="hljs-number">8</span>]);
-<span class="hljs-comment">//[(1, 2, 3, 4, 5, 6, 7, 8)];</span>
-<span class="hljs-comment">//前k个大值</span>
-arr.slice(-k);
-<span class="hljs-comment">//第k大的值</span>
-arr[arr.length - k];</code></pre></div>
+<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// 随机选取基准，数组分成基准左右两部分</span><br><span class="hljs-comment">// 将比基准大的移动基准右边，比基准小的移动到基准左边</span><br><span class="hljs-comment">// 递归分割排序</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">quickSort</span>(<span class="hljs-params">arr</span>) </span>&#123;<br>  quick(arr, <span class="hljs-number">0</span>, arr.length - <span class="hljs-number">1</span>);<br>  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">quick</span>(<span class="hljs-params">arr, left, right</span>) </span>&#123;<br>    <span class="hljs-keyword">let</span> index;<br>    <span class="hljs-keyword">if</span> (left &lt; right) &#123;<br>      <span class="hljs-comment">//</span><br>      index = partition(arr, left, right);<br>      <span class="hljs-comment">// 分离一次</span><br>      <span class="hljs-keyword">if</span> (left &lt; index - <span class="hljs-number">1</span>) &#123;<br>        quick(arr, left, index - <span class="hljs-number">1</span>);<br>      &#125;<br>      <span class="hljs-keyword">if</span> (index &lt; right) &#123;<br>        quick(arr, index, right);<br>      &#125;<br>    &#125;<br>  &#125;<br>  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">partition</span>(<span class="hljs-params">arr, left, right</span>) </span>&#123;<br>    <span class="hljs-keyword">const</span> base = arr[<span class="hljs-built_in">Math</span>.floor(<span class="hljs-built_in">Math</span>.random() * (right - left + <span class="hljs-number">1</span>)) + left];<br>    <span class="hljs-keyword">let</span> L = left,<br>      R = right;<br>    <span class="hljs-keyword">while</span> (L &lt;= R) &#123;<br>      <span class="hljs-keyword">while</span> (arr[L] &lt; base) &#123;<br>        L++;<br>      &#125;<br>      <span class="hljs-keyword">while</span> (arr[R] &gt; base) &#123;<br>        R--;<br>      &#125;<br>      <span class="hljs-keyword">if</span> (L &lt;= R) &#123;<br>        [arr[L], arr[R]] = [arr[R], arr[L]];<br>        L++;<br>        R--;<br>      &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> L;<br>  &#125;<br>&#125;<br>quickSort([<span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">6</span>, <span class="hljs-number">2</span>, <span class="hljs-number">7</span>, <span class="hljs-number">5</span>, <span class="hljs-number">8</span>]);<br><span class="hljs-comment">//[(1, 2, 3, 4, 5, 6, 7, 8)];</span><br><span class="hljs-comment">//前k个大值</span><br>arr.slice(-k);<br><span class="hljs-comment">//第k大的值</span><br>arr[arr.length - k];<br></code></pre></div></td></tr></table></figure>
 
 <ul>
 <li>选择排序</li>
 </ul>
-<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-comment">//分割出来的索引位置，与k的索引位置比较</span>
-<span class="hljs-comment">//第k大的值，小到大排序后就是 [nums.length - k] 索引的位置</span>
-<span class="hljs-comment">//减少操作次数，不用完全排序一遍</span>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">findK</span>(<span class="hljs-params">nums, k</span>) </span>&#123;
-  <span class="hljs-keyword">return</span> quickSelect(nums, nums.length - k);
-&#125;
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">quickSelect</span>(<span class="hljs-params">arr, k</span>) </span>&#123;
-  <span class="hljs-keyword">return</span> quick(arr, <span class="hljs-number">0</span>, arr.length - <span class="hljs-number">1</span>, k);
-&#125;
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">quick</span>(<span class="hljs-params">arr, left, right, k</span>) </span>&#123;
-  <span class="hljs-keyword">let</span> index;
-  <span class="hljs-keyword">if</span> (left &lt; right) &#123;
-    index = partition(arr, left, right);
-    <span class="hljs-keyword">if</span> (k === index) &#123;
-      <span class="hljs-keyword">return</span> arr[index];
-    &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (k &lt; index) &#123;
-      <span class="hljs-keyword">return</span> quick(arr, left, index - <span class="hljs-number">1</span>, k);
-    &#125; <span class="hljs-keyword">else</span> &#123;
-      <span class="hljs-keyword">return</span> quick(arr, index + <span class="hljs-number">1</span>, right, k);
-    &#125;
-  &#125;
-  <span class="hljs-keyword">return</span> arr[left];
-&#125;
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">partition</span>(<span class="hljs-params">arr, left, right</span>) </span>&#123;
-  <span class="hljs-keyword">let</span> base = arr[<span class="hljs-built_in">Math</span>.floor(<span class="hljs-built_in">Math</span>.random() * (right - left + <span class="hljs-number">1</span>)) + left];
-  <span class="hljs-keyword">let</span> L = left,
-    R = right;
-  <span class="hljs-keyword">while</span> (L &lt; R) &#123;
-    <span class="hljs-keyword">while</span> (arr[L] &lt; base) &#123;
-      L++;
-    &#125;
-    <span class="hljs-keyword">while</span> (arr[R] &gt; base) &#123;
-      R--;
-    &#125;
-    <span class="hljs-keyword">if</span> (L &lt; R) [arr[L], arr[R]] = [arr[R], arr[L]];
-
-    <span class="hljs-keyword">if</span> (arr[L] === arr[R] &amp;&amp; L !== R) L++;
-  &#125;
-  <span class="hljs-keyword">return</span> L;
-&#125;</code></pre></div>
+<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">//分割出来的索引位置，与k的索引位置比较</span><br><span class="hljs-comment">//第k大的值，小到大排序后就是 [nums.length - k] 索引的位置</span><br><span class="hljs-comment">//减少操作次数，不用完全排序一遍</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">findK</span>(<span class="hljs-params">nums, k</span>) </span>&#123;<br>  <span class="hljs-keyword">return</span> quickSelect(nums, nums.length - k);<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">quickSelect</span>(<span class="hljs-params">arr, k</span>) </span>&#123;<br>  <span class="hljs-keyword">return</span> quick(arr, <span class="hljs-number">0</span>, arr.length - <span class="hljs-number">1</span>, k);<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">quick</span>(<span class="hljs-params">arr, left, right, k</span>) </span>&#123;<br>  <span class="hljs-keyword">let</span> index;<br>  <span class="hljs-keyword">if</span> (left &lt; right) &#123;<br>    index = partition(arr, left, right);<br>    <span class="hljs-keyword">if</span> (k === index) &#123;<br>      <span class="hljs-keyword">return</span> arr[index];<br>    &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (k &lt; index) &#123;<br>      <span class="hljs-keyword">return</span> quick(arr, left, index - <span class="hljs-number">1</span>, k);<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>      <span class="hljs-keyword">return</span> quick(arr, index + <span class="hljs-number">1</span>, right, k);<br>    &#125;<br>  &#125;<br>  <span class="hljs-keyword">return</span> arr[left];<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">partition</span>(<span class="hljs-params">arr, left, right</span>) </span>&#123;<br>  <span class="hljs-keyword">let</span> base = arr[<span class="hljs-built_in">Math</span>.floor(<span class="hljs-built_in">Math</span>.random() * (right - left + <span class="hljs-number">1</span>)) + left];<br>  <span class="hljs-keyword">let</span> L = left,<br>    R = right;<br>  <span class="hljs-keyword">while</span> (L &lt; R) &#123;<br>    <span class="hljs-keyword">while</span> (arr[L] &lt; base) &#123;<br>      L++;<br>    &#125;<br>    <span class="hljs-keyword">while</span> (arr[R] &gt; base) &#123;<br>      R--;<br>    &#125;<br>    <span class="hljs-keyword">if</span> (L &lt; R) [arr[L], arr[R]] = [arr[R], arr[L]];<br><br>    <span class="hljs-keyword">if</span> (arr[L] === arr[R] &amp;&amp; L !== R) L++;<br>  &#125;<br>  <span class="hljs-keyword">return</span> L;<br>&#125;<br></code></pre></div></td></tr></table></figure>
 
 <h2 id="出现最多-最少的-K-个元素"><a href="#出现最多-最少的-K-个元素" class="headerlink" title="出现最多/最少的 K 个元素"></a>出现最多/最少的 K 个元素</h2><ul>
 <li>傻瓜 map 映射一个 arr 进行排序</li>
 </ul>
-<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">showMost</span>(<span class="hljs-params">arr, k</span>) </span>&#123;
-  <span class="hljs-keyword">const</span> map = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Map</span>();
-  <span class="hljs-keyword">const</span> ret = [...new <span class="hljs-built_in">Set</span>(arr)];
-
-  arr.map(<span class="hljs-function">(<span class="hljs-params">num</span>) =&gt;</span> &#123;
-    <span class="hljs-keyword">if</span> (map.has(num)) &#123;
-      map.set(num, map.get(num) + <span class="hljs-number">1</span>);
-    &#125; <span class="hljs-keyword">else</span> &#123;
-      map.set(num, <span class="hljs-number">1</span>);
-    &#125;
-  &#125;);
-
-  ret.sort(<span class="hljs-function">(<span class="hljs-params">a, b</span>) =&gt;</span> map.get(b) - map.get(a));
-  <span class="hljs-keyword">return</span> ret.slice(<span class="hljs-number">0</span>, k);
-&#125;</code></pre></div>
+<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">showMost</span>(<span class="hljs-params">arr, k</span>) </span>&#123;<br>  <span class="hljs-keyword">const</span> map = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Map</span>();<br>  <span class="hljs-keyword">const</span> ret = [...new <span class="hljs-built_in">Set</span>(arr)];<br><br>  arr.map(<span class="hljs-function">(<span class="hljs-params">num</span>) =&gt;</span> &#123;<br>    <span class="hljs-keyword">if</span> (map.has(num)) &#123;<br>      map.set(num, map.get(num) + <span class="hljs-number">1</span>);<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>      map.set(num, <span class="hljs-number">1</span>);<br>    &#125;<br>  &#125;);<br><br>  ret.sort(<span class="hljs-function">(<span class="hljs-params">a, b</span>) =&gt;</span> map.get(b) - map.get(a));<br>  <span class="hljs-keyword">return</span> ret.slice(<span class="hljs-number">0</span>, k);<br>&#125;<br></code></pre></div></td></tr></table></figure>
 
 <ul>
 <li>map 映射堆排序</li>
 </ul>
-<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">showMost</span>(<span class="hljs-params">arr, k</span>) </span>&#123;
-  <span class="hljs-keyword">const</span> map = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Map</span>();
-  <span class="hljs-keyword">const</span> heap = [,];
-  arr.map(<span class="hljs-function">(<span class="hljs-params">num</span>) =&gt;</span> &#123;
-    <span class="hljs-keyword">if</span> (map.has(num)) &#123;
-      map.set(num, map.get(num) + <span class="hljs-number">1</span>);
-    &#125; <span class="hljs-keyword">else</span> &#123;
-      map.set(num, <span class="hljs-number">1</span>);
-    &#125;
-  &#125;);
-  <span class="hljs-keyword">if</span> (map.size &lt;= k) <span class="hljs-keyword">return</span> [...map.keys()];
-  <span class="hljs-comment">//k大于元素数，直接输出</span>
-  <span class="hljs-keyword">let</span> times = <span class="hljs-number">1</span>;
-  <span class="hljs-comment">//记数器</span>
-  <span class="hljs-comment">//小于k的部分直接建立堆，大于的部分开始与堆top比较</span>
-  map.forEach(<span class="hljs-function">(<span class="hljs-params">value, key</span>) =&gt;</span> &#123;
-    <span class="hljs-keyword">if</span> (times &lt;= k) &#123;
-      heap.push(key);
-      <span class="hljs-keyword">if</span> (times === k) &#123;
-        <span class="hljs-comment">//堆化</span>
-        buildHeap(heap, map, k);
-      &#125;
-    &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (map.get(heap[<span class="hljs-number">1</span>]) &lt; value) &#123;
-      <span class="hljs-comment">// 与小顶堆顶交换</span>
-      heap[<span class="hljs-number">1</span>] = key;
-      heapify(heap, map, k, <span class="hljs-number">1</span>);
-    &#125;
-    times++;
-  &#125;);
-  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">buildHeap</span>(<span class="hljs-params">heap, map, heapSize</span>) </span>&#123;
-    <span class="hljs-keyword">if</span> (k === <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span>;
-    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-built_in">Math</span>.floor(heapSize / <span class="hljs-number">2</span>); i &gt;= <span class="hljs-number">1</span>; i--) &#123;
-      heapify(heap, map, heapSize, i);
-    &#125;
-  &#125;
-  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">heapify</span>(<span class="hljs-params">heap, map, heapSize, i</span>) </span>&#123;
-    <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>) &#123;
-      <span class="hljs-keyword">let</span> minIndex = i;
-      <span class="hljs-keyword">if</span> (<span class="hljs-number">2</span> * i &lt;= heapSize &amp;&amp; map.get(heap[<span class="hljs-number">2</span> * i]) &lt; map.get(heap[minIndex]))
-        minIndex = <span class="hljs-number">2</span> * i;
-      <span class="hljs-keyword">if</span> (
-        <span class="hljs-number">2</span> * i + <span class="hljs-number">1</span> &lt;= heapSize &amp;&amp;
-        map.get(heap[<span class="hljs-number">2</span> * i + <span class="hljs-number">1</span>]) &lt; map.get(heap[minIndex])
-      )
-        minIndex = <span class="hljs-number">2</span> * i + <span class="hljs-number">1</span>;
-      <span class="hljs-keyword">if</span> (minIndex === i) <span class="hljs-keyword">break</span>;
-      swap(heap, minIndex, i);
-      i = minIndex;
-    &#125;
-  &#125;
-  heap.shift();
-  <span class="hljs-keyword">return</span> heap;
-&#125;
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">swap</span>(<span class="hljs-params">data, l, r</span>) </span>&#123;
-  <span class="hljs-keyword">let</span> temp = data[l];
-  data[l] = data[r];
-  data[r] = temp;
-&#125;</code></pre></div>
+<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">showMost</span>(<span class="hljs-params">arr, k</span>) </span>&#123;<br>  <span class="hljs-keyword">const</span> map = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Map</span>();<br>  <span class="hljs-keyword">const</span> heap = [,];<br>  arr.map(<span class="hljs-function">(<span class="hljs-params">num</span>) =&gt;</span> &#123;<br>    <span class="hljs-keyword">if</span> (map.has(num)) &#123;<br>      map.set(num, map.get(num) + <span class="hljs-number">1</span>);<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>      map.set(num, <span class="hljs-number">1</span>);<br>    &#125;<br>  &#125;);<br>  <span class="hljs-keyword">if</span> (map.size &lt;= k) <span class="hljs-keyword">return</span> [...map.keys()];<br>  <span class="hljs-comment">//k大于元素数，直接输出</span><br>  <span class="hljs-keyword">let</span> times = <span class="hljs-number">1</span>;<br>  <span class="hljs-comment">//记数器</span><br>  <span class="hljs-comment">//小于k的部分直接建立堆，大于的部分开始与堆top比较</span><br>  map.forEach(<span class="hljs-function">(<span class="hljs-params">value, key</span>) =&gt;</span> &#123;<br>    <span class="hljs-keyword">if</span> (times &lt;= k) &#123;<br>      heap.push(key);<br>      <span class="hljs-keyword">if</span> (times === k) &#123;<br>        <span class="hljs-comment">//堆化</span><br>        buildHeap(heap, map, k);<br>      &#125;<br>    &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (map.get(heap[<span class="hljs-number">1</span>]) &lt; value) &#123;<br>      <span class="hljs-comment">// 与小顶堆顶交换</span><br>      heap[<span class="hljs-number">1</span>] = key;<br>      heapify(heap, map, k, <span class="hljs-number">1</span>);<br>    &#125;<br>    times++;<br>  &#125;);<br>  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">buildHeap</span>(<span class="hljs-params">heap, map, heapSize</span>) </span>&#123;<br>    <span class="hljs-keyword">if</span> (k === <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-built_in">Math</span>.floor(heapSize / <span class="hljs-number">2</span>); i &gt;= <span class="hljs-number">1</span>; i--) &#123;<br>      heapify(heap, map, heapSize, i);<br>    &#125;<br>  &#125;<br>  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">heapify</span>(<span class="hljs-params">heap, map, heapSize, i</span>) </span>&#123;<br>    <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>) &#123;<br>      <span class="hljs-keyword">let</span> minIndex = i;<br>      <span class="hljs-keyword">if</span> (<span class="hljs-number">2</span> * i &lt;= heapSize &amp;&amp; map.get(heap[<span class="hljs-number">2</span> * i]) &lt; map.get(heap[minIndex]))<br>        minIndex = <span class="hljs-number">2</span> * i;<br>      <span class="hljs-keyword">if</span> (<br>        <span class="hljs-number">2</span> * i + <span class="hljs-number">1</span> &lt;= heapSize &amp;&amp;<br>        map.get(heap[<span class="hljs-number">2</span> * i + <span class="hljs-number">1</span>]) &lt; map.get(heap[minIndex])<br>      )<br>        minIndex = <span class="hljs-number">2</span> * i + <span class="hljs-number">1</span>;<br>      <span class="hljs-keyword">if</span> (minIndex === i) <span class="hljs-keyword">break</span>;<br>      swap(heap, minIndex, i);<br>      i = minIndex;<br>    &#125;<br>  &#125;<br>  heap.shift();<br>  <span class="hljs-keyword">return</span> heap;<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">swap</span>(<span class="hljs-params">data, l, r</span>) </span>&#123;<br>  <span class="hljs-keyword">let</span> temp = data[l];<br>  data[l] = data[r];<br>  data[r] = temp;<br>&#125;<br></code></pre></div></td></tr></table></figure>
 
 
 <ul>
-<li>桶排序<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">showMost</span>(<span class="hljs-params">arr,k</span>)</span>&#123;
-  <span class="hljs-keyword">const</span> map = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Map</span>()
-  arr.map(<span class="hljs-function">(<span class="hljs-params">num</span>) =&gt;</span> &#123;
-    <span class="hljs-keyword">if</span> (map.has(num)) &#123;
-      map.set(num, map.get(num) + <span class="hljs-number">1</span>);
-    &#125; <span class="hljs-keyword">else</span> &#123;
-      map.set(num, <span class="hljs-number">1</span>);
-    &#125;
-  &#125;);
-  <span class="hljs-keyword">if</span>(map.size&lt;=k) <span class="hljs-keyword">return</span> [...map.keys()]
-  <span class="hljs-keyword">return</span> buckerSort(map,k)
-&#125;
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">buckerSort</span>(<span class="hljs-params">map,k</span>)</span>&#123;
-  <span class="hljs-keyword">let</span> arr = []
-  <span class="hljs-keyword">let</span> res = []
-  map.forEach(<span class="hljs-function">(<span class="hljs-params">value,key</span>)=&gt;</span>&#123;
-    <span class="hljs-keyword">if</span>(!arr[value])&#123;
-      arr[value] = [key]
-    &#125;<span class="hljs-keyword">else</span>&#123;
-      arr[value].push(key)
-    &#125;
-  &#125;)
-
-  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = arr.length - <span class="hljs-number">1</span> ; i&gt;=<span class="hljs-number">0</span> &amp;&amp; res.length &lt; k ; i--)&#123;
-    <span class="hljs-keyword">if</span>(arr[i])&#123;
-      res.push(...arr[i])
-    &#125;
-  &#125;
-  <span class="hljs-keyword">return</span> res
-&#125;</code></pre></div></li>
+<li>桶排序<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">showMost</span>(<span class="hljs-params">arr,k</span>)</span>&#123;<br>  <span class="hljs-keyword">const</span> map = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Map</span>()<br>  arr.map(<span class="hljs-function">(<span class="hljs-params">num</span>) =&gt;</span> &#123;<br>    <span class="hljs-keyword">if</span> (map.has(num)) &#123;<br>      map.set(num, map.get(num) + <span class="hljs-number">1</span>);<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>      map.set(num, <span class="hljs-number">1</span>);<br>    &#125;<br>  &#125;);<br>  <span class="hljs-keyword">if</span>(map.size&lt;=k) <span class="hljs-keyword">return</span> [...map.keys()]<br>  <span class="hljs-keyword">return</span> buckerSort(map,k)<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">buckerSort</span>(<span class="hljs-params">map,k</span>)</span>&#123;<br>  <span class="hljs-keyword">let</span> arr = []<br>  <span class="hljs-keyword">let</span> res = []<br>  map.forEach(<span class="hljs-function">(<span class="hljs-params">value,key</span>)=&gt;</span>&#123;<br>    <span class="hljs-keyword">if</span>(!arr[value])&#123;<br>      arr[value] = [key]<br>    &#125;<span class="hljs-keyword">else</span>&#123;<br>      arr[value].push(key)<br>    &#125;<br>  &#125;)<br><br>  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = arr.length - <span class="hljs-number">1</span> ; i&gt;=<span class="hljs-number">0</span> &amp;&amp; res.length &lt; k ; i--)&#123;<br>    <span class="hljs-keyword">if</span>(arr[i])&#123;<br>      res.push(...arr[i])<br>    &#125;<br>  &#125;<br>  <span class="hljs-keyword">return</span> res<br>&#125;<br></code></pre></div></td></tr></table></figure></li>
 </ul>
 
             </div>
@@ -504,10 +301,14 @@ arr[arr.length - k];</code></pre></div>
                 
               </div>
               
-                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
               
               
-                <div class="post-prevnext row">
+                <div class="post-prevnext">
                   <article class="post-prev col-6">
                     
                     
@@ -533,6 +334,30 @@ arr[arr.length - k];</code></pre></div>
             </div>
 
             
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="twikoo"></div>
+  <script type="text/javascript">
+    Fluid.utils.lazyComments('comments', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/twikoo@1.3.0/dist/twikoo.all.min.js', function() {
+        twikoo.init({
+          el: '#twikoo',
+          envId: 'blog-1glh2chxcbf8757a',
+          region: 'ap-shanghai',
+          path: 'window.location.pathname',
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
           </article>
         </div>
       </div>
@@ -541,7 +366,7 @@ arr[arr.length - k];</code></pre></div>
       <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
         <div id="toc">
   <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
-  <div id="tocbot"></div>
+  <div class="toc-body" id="toc-body"></div>
 </div>
 
       </div>
@@ -553,16 +378,15 @@ arr[arr.length - k];</code></pre></div>
 
 
     
-  </main>
 
-  
-    <a id="scroll-top-button" href="#" role="button">
-      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
-    </a>
-  
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
 
-  
-    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
      aria-hidden="true">
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
@@ -583,21 +407,16 @@ arr[arr.length - k];</code></pre></div>
     </div>
   </div>
 </div>
-  
-
-  
-
-  
-
-  <footer class="mt-5">
-  <div class="text-center py-3">
-    <div>
-      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
-      <i class="iconfont icon-love"></i>
-      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
-        <span>Fluid</span></a>
-    </div>
     
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+  </div>
+  
   <div class="statistics">
     
     
@@ -623,30 +442,47 @@ arr[arr.length - k];</code></pre></div>
   </div>
 
 
-    
+  
   <!-- 备案信息 -->
   <div class="beian">
-    <a href="http://beian.miit.gov.cn/" target="_blank"
-       rel="nofollow noopener">粤ICP备2020115702号</a>
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        粤ICP备2020115702号
+      </a>
+    </span>
     
   </div>
 
 
-    
-  </div>
+  
 </footer>
 
-<!-- SCRIPTS -->
-<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
-<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
 <script  src="/js/debouncer.js" ></script>
-<script  src="/js/main.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
 
 <!-- Plugins -->
 
 
   
-    <script  src="/js/lazyload.js" ></script>
+    <script  src="/js/img-lazyload.js" ></script>
   
 
 
@@ -655,8 +491,19 @@ arr[arr.length - k];</code></pre></div>
 
 
 
-  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
-  <script  src="/js/clipboard-use.js" ></script>
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
 
 
 
@@ -665,95 +512,30 @@ arr[arr.length - k];</code></pre></div>
 
 
 
-
-  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
   <script>
-    $(document).ready(function () {
-      var boardCtn = $('#board-ctn');
-      var boardTop = boardCtn.offset().top;
-
-      tocbot.init({
-        tocSelector: '#tocbot',
-        contentSelector: '#post-body',
-        headingSelector: 'h1,h2,h3,h4,h5,h6',
-        linkClass: 'tocbot-link',
-        activeLinkClass: 'tocbot-active-link',
-        listClass: 'tocbot-list',
-        isCollapsedClass: 'tocbot-is-collapsed',
-        collapsibleClass: 'tocbot-is-collapsible',
-        collapseDepth: 0,
-        scrollSmooth: true,
-        headingsOffset: -boardTop
-      });
-      if ($('.toc-list-item').length > 0) {
-        $('#toc').css('visibility', 'visible');
-      }
-    });
-  </script>
-
-
-
-  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
-  <script>
-    var typed = new Typed('#subtitle', {
-      strings: [
-        '  ',
-        "topK问题&nbsp;",
-      ],
-      cursorChar: "_",
-      typeSpeed: 70,
-      loop: false,
-    });
-    typed.stop();
-    $(document).ready(function () {
-      $(".typed-cursor").addClass("h2");
-      typed.start();
-    });
-  </script>
-
-
-
-  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
-  <script>
-    anchors.options = {
-      placement: "right",
-      visible: "hover",
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
       
-    };
-    var el = "h1,h2,h3,h4,h5,h6".split(",");
-    var res = [];
-    for (item of el) {
-      res.push(".markdown-body > " + item)
-    }
-    anchors.add(res.join(", "))
+      typing(title)
+      
+    })(window, document);
   </script>
 
 
 
   <script  src="/js/local-search.js" ></script>
   <script>
-    var path = "/local-search.xml";
-    var inputArea = document.querySelector("#local-search-input");
-    inputArea.onclick = function () {
-      searchFunc(path, 'local-search-input', 'local-search-result');
-      this.onclick = null
-    }
-  </script>
-
-
-
-  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
-
-  <script>
-    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
-      function () {
-        var element = document.createElement('a');
-        $(element).attr('data-fancybox', 'images');
-        $(element).attr('href', $(this).attr('src'));
-        $(this).wrap(element);
-      }
-    );
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
   </script>
 
 
@@ -770,33 +552,8 @@ arr[arr.length - k];</code></pre></div>
 
 
 
-
-
-  
-    <!-- Baidu Analytics -->
-    <script defer>
-      var _hmt = _hmt || [];
-      (function () {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?048f7ae77dbb92c9d2c83ca3df99d02f";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-      })();
-    </script>
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-
-
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
 
 
 </body>

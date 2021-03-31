@@ -1,14 +1,14 @@
 
 
 <!DOCTYPE html>
-<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+<html lang="zh-CN" data-default-color-scheme=&#34;dark&#34;>
 
 
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.jpeg">
-  <link rel="icon" type="image/png" href="/img/avatar.jpeg">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
   <meta name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -17,28 +17,32 @@
   <meta name="description" content="">
   <meta name="author" content="tatekii">
   <meta name="keywords" content="">
+  
   <title>vuex - 不知名的笔记本</title>
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
   <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
   
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/tomorrow-night-eighties.min.css" />
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/atom-one-dark.min.css" />
     
   
 
   
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
 
 
 <!-- 主题依赖的图标库，不要自行修改 -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_pf9vaxs7x7b.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
 
 
 
@@ -50,17 +54,21 @@
 <!-- 自定义样式保持在最底部 -->
 
 
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","version":"1.8.9-a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":"#"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 5.4.0"></head>
 
 
 <body>
-  <header style="height: 30vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
-       href="/">&nbsp;<strong>Dr.🐎</strong>&nbsp;</a>
+       href="/">&nbsp;<strong>Dr🐎 Note</strong>&nbsp;</a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent"
@@ -92,6 +100,18 @@
               <a class="nav-link" href="/archives/">
                 <i class="iconfont icon-archive-fill"></i>
                 归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
               </a>
             </li>
           
@@ -137,13 +157,13 @@
   </div>
 </nav>
 
-    <div class="banner intro-2" id="background" parallax=true
+    <div class="banner" id="banner" parallax=true
          style="background: url('/img/default.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="container page-header text-center fade-in-up">
-            <span class="h2" id="subtitle">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="vuex">
               
             </span>
 
@@ -165,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      908 字
+      970 字
     </span>
   
 
@@ -175,12 +195,20 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      13
+      14
        分钟
     </span>
   
 
   
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
   
 </div>
 
@@ -197,32 +225,28 @@
     
       
 
-<div class="container-fluid">
-  <div class="row">
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
     <div class="d-none d-lg-block col-lg-2"></div>
-    <div class="col-lg-8 nopadding-md">
-      <div class="container nopadding-md" id="board-ctn">
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
         <div class="py-5" id="board">
-          <article class="post-content mx-auto" id="post">
+          <article class="post-content mx-auto">
             <!-- SEO header -->
             <h1 style="display: none">vuex</h1>
             
-            <div class="markdown-body" id="post-body">
+              <p class="note note-info">
+                
+                  本文最后更新于：2019年8月5日 中午
+                
+              </p>
+            
+            <div class="markdown-body">
               <h2 id="vue全局的状态管理器，每个应用唯一"><a href="#vue全局的状态管理器，每个应用唯一" class="headerlink" title="vue全局的状态管理器，每个应用唯一"></a>vue全局的状态管理器，每个应用唯一</h2><h2 id="State"><a href="#State" class="headerlink" title="State"></a><code>State</code></h2><ul>
 <li><p>子组件通过<code>computed</code>读取state，</p>
 </li>
 <li><p><code>mapState</code>辅助函数展开以混入计算属性中  </p>
-<div class="hljs"><pre><code class="hljs javascript">computed: &#123;
-  localComputed () &#123; <span class="hljs-comment">/* ... */</span> &#125;,
-  <span class="hljs-comment">// 使用对象展开运算符将此对象混入到外部对象中</span>
-  ...mapState(&#123;
-  <span class="hljs-comment">// ...</span>
-    <span class="hljs-string">'count'</span>
-    <span class="hljs-comment">// 映射 this.count 为 store.state.count</span>
-  &#125;)
-&#125;</code></pre></div>
-
-</li>
+<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript">computed: &#123;<br>  localComputed () &#123; <span class="hljs-comment">/* ... */</span> &#125;,<br>  <span class="hljs-comment">// 使用对象展开运算符将此对象混入到外部对象中</span><br>  ...mapState(&#123;<br>  <span class="hljs-comment">// ...</span><br>    <span class="hljs-string">&#x27;count&#x27;</span><br>    <span class="hljs-comment">// 映射 this.count 为 store.state.count</span><br>  &#125;)<br>&#125;<br></code></pre></div></td></tr></table></figure></li>
 </ul>
 <h2 id="getter"><a href="#getter" class="headerlink" title="getter"></a><code>getter</code></h2><ul>
 <li><p>相当于store的计算属性</p>
@@ -230,38 +254,9 @@
 <li><p>接受<code>state</code>作为其第一个参数</p>
 </li>
 <li><p>通过属性访问（被缓存，依赖改变才计算）</p>
-  <div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> store = <span class="hljs-keyword">new</span> Vuex.Store(&#123;
-  state: &#123;
-    todos: [&#123;
-        id: <span class="hljs-number">1</span>,
-        text: <span class="hljs-string">'...'</span>,
-        done: <span class="hljs-literal">true</span>
-      &#125;,
-      &#123;
-        id: <span class="hljs-number">2</span>,
-        text: <span class="hljs-string">'...'</span>,
-        done: <span class="hljs-literal">false</span>
-      &#125;
-    ]
-  &#125;,
-  getters: &#123;
-    doneTodos: <span class="hljs-function"><span class="hljs-params">state</span> =&gt;</span> &#123;
-      <span class="hljs-keyword">return</span> state.todos.filter(<span class="hljs-function"><span class="hljs-params">todo</span> =&gt;</span> todo.done)
-    &#125;
-  &#125;
-&#125;)
-
-store.getters.doneTodos <span class="hljs-comment">// -&gt; [&#123; id: 1, text: '...', done: true &#125;]</span></code></pre></div>
-</li>
+  <figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> store = <span class="hljs-keyword">new</span> Vuex.Store(&#123;<br>  state: &#123;<br>    todos: [&#123;<br>        id: <span class="hljs-number">1</span>,<br>        text: <span class="hljs-string">&#x27;...&#x27;</span>,<br>        done: <span class="hljs-literal">true</span><br>      &#125;,<br>      &#123;<br>        id: <span class="hljs-number">2</span>,<br>        text: <span class="hljs-string">&#x27;...&#x27;</span>,<br>        done: <span class="hljs-literal">false</span><br>      &#125;<br>    ]<br>  &#125;,<br>  getters: &#123;<br>    doneTodos: <span class="hljs-function"><span class="hljs-params">state</span> =&gt;</span> &#123;<br>      <span class="hljs-keyword">return</span> state.todos.filter(<span class="hljs-function"><span class="hljs-params">todo</span> =&gt;</span> todo.done)<br>    &#125;<br>  &#125;<br>&#125;)<br><br>store.getters.doneTodos <span class="hljs-comment">// -&gt; [&#123; id: 1, text: &#x27;...&#x27;, done: true &#125;]</span><br></code></pre></div></td></tr></table></figure></li>
 <li><p>通过方法访问（每次调用都计算,不缓存结果）</p>
-  <div class="hljs"><pre><code class="hljs javascript">getters: &#123;
-  <span class="hljs-comment">// ...</span>
-  getTodoById: <span class="hljs-function">(<span class="hljs-params">state</span>) =&gt;</span> <span class="hljs-function">(<span class="hljs-params">id</span>) =&gt;</span> &#123;
-    <span class="hljs-keyword">return</span> state.todos.find(<span class="hljs-function"><span class="hljs-params">todo</span> =&gt;</span> todo.id === id)
-  &#125;
-&#125;
-store.getters.getTodoById(<span class="hljs-number">2</span>) <span class="hljs-comment">// -&gt; &#123; id: 2, text: '...', done: false &#125;</span></code></pre></div>
-</li>
+  <figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript">getters: &#123;<br>  <span class="hljs-comment">// ...</span><br>  getTodoById: <span class="hljs-function">(<span class="hljs-params">state</span>) =&gt;</span> <span class="hljs-function">(<span class="hljs-params">id</span>) =&gt;</span> &#123;<br>    <span class="hljs-keyword">return</span> state.todos.find(<span class="hljs-function"><span class="hljs-params">todo</span> =&gt;</span> todo.id === id)<br>  &#125;<br>&#125;<br>store.getters.getTodoById(<span class="hljs-number">2</span>) <span class="hljs-comment">// -&gt; &#123; id: 2, text: &#x27;...&#x27;, done: false &#125;</span><br></code></pre></div></td></tr></table></figure></li>
 <li><p>组件中一样的展开<code>...mapGetters</code>到局部计算属性中</p>
 </li>
 </ul>
@@ -269,85 +264,30 @@ store.getters.getTodoById(<span class="hljs-number">2</span>) <span class="hljs-
 <li><p>更改<code>state</code>的唯一方法是提交<code>mutation</code></p>
 </li>
 <li><p>你不能直接调用一个 <code>mutation handler</code>。需要以相应的 <code>type</code> 调用 <code>store.commit</code> 方法</p>
-  <div class="hljs"><pre><code class="hljs javascript"><span class="hljs-comment">// 载荷风格</span>
-store.commit(<span class="hljs-string">'increment'</span>,&#123;
-  amount:<span class="hljs-number">10</span>
-&#125;)
-
-<span class="hljs-comment">// 对象风格的提交</span>
-store.commit(&#123;
-  type: <span class="hljs-string">'increment'</span>,
-  amount: <span class="hljs-number">10</span>
-&#125;)
-
-mutations: &#123;
-  increment(state, payload) &#123;
-    state.count += payload.amount
-  &#125;
-&#125;</code></pre></div>
-</li>
+  <figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// 载荷风格</span><br>store.commit(<span class="hljs-string">&#x27;increment&#x27;</span>,&#123;<br>  amount:<span class="hljs-number">10</span><br>&#125;)<br><br><span class="hljs-comment">// 对象风格的提交</span><br>store.commit(&#123;<br>  type: <span class="hljs-string">&#x27;increment&#x27;</span>,<br>  amount: <span class="hljs-number">10</span><br>&#125;)<br><br>mutations: &#123;<br>  <span class="hljs-function"><span class="hljs-title">increment</span>(<span class="hljs-params">state, payload</span>)</span> &#123;<br>    state.count += payload.amount<br>  &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure></li>
 <li><p><code>mutation</code>必须是同步函数,<code>mutation</code>中对<code>state</code>的修改立即完成</p>
 </li>
 <li><p>组件中一样的展开<code>...Mutations</code>到局部计算属性中</p>
 </li>
 </ul>
 <h2 id="Action"><a href="#Action" class="headerlink" title="Action"></a><code>Action</code></h2><ul>
-<li><p><code>Action</code> 函数接受一个与<code>store</code>实例具有相同方法和属性的 <code>context</code> 对象，不是 <code>store</code>实例本身</p>
+<li><p><code>Action</code> 函数接受一个与<code>store</code>实例具有相同方法和属性的 <code>context</code> 对象，不是 <code>store </code>实例本身</p>
 </li>
 <li><p><code>context.commit</code> 提交一个 <code>mutation</code>，或者通过 <code>context.state</code> 和 <code>context.getters</code> 来获取 <code>state</code> 和 <code>getters</code></p>
 </li>
 </ul>
-<div class="hljs"><pre><code class="hljs javascript">actions: &#123;
-    increment (context) &#123;
-      context.commit(<span class="hljs-string">'increment'</span>)
-    &#125;
-  &#125;
-
-<span class="hljs-comment">// 参数解构</span>
-actions: &#123;
-  increment (&#123; commit &#125;) &#123;
-    commit(<span class="hljs-string">'increment'</span>)
-  &#125;
-&#125;</code></pre></div>
+<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript">actions: &#123;<br>    increment (context) &#123;<br>      context.commit(<span class="hljs-string">&#x27;increment&#x27;</span>)<br>    &#125;<br>  &#125;<br><br><span class="hljs-comment">// 参数解构</span><br>actions: &#123;<br>  increment (&#123; commit &#125;) &#123;<br>    commit(<span class="hljs-string">&#x27;increment&#x27;</span>)<br>  &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
 
 <ul>
 <li><p><code>Action</code> 提交的是 <code>mutation</code>，而不是直接变更状态。</p>
 </li>
 <li><p><code>Action</code> 可以包含任意异步操作。</p>
-  <div class="hljs"><pre><code class="hljs javascript"><span class="hljs-comment">// 以载荷形式分发</span>
-store.dispatch(<span class="hljs-string">'incrementAsync'</span>, &#123;
-  amount: <span class="hljs-number">10</span>
-&#125;)
-
-<span class="hljs-comment">// 以对象形式分发</span>
-store.dispatch(&#123;
-  type: <span class="hljs-string">'incrementAsync'</span>,
-  amount: <span class="hljs-number">10</span>
-&#125;)</code></pre></div>
-</li>
+  <figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// 以载荷形式分发</span><br>store.dispatch(<span class="hljs-string">&#x27;incrementAsync&#x27;</span>, &#123;<br>  amount: <span class="hljs-number">10</span><br>&#125;)<br><br><span class="hljs-comment">// 以对象形式分发</span><br>store.dispatch(&#123;<br>  type: <span class="hljs-string">&#x27;incrementAsync&#x27;</span>,<br>  amount: <span class="hljs-number">10</span><br>&#125;)<br></code></pre></div></td></tr></table></figure></li>
 <li><p>组件中分发<code>...mapActions</code></p>
 </li>
 </ul>
 <h2 id="Module"><a href="#Module" class="headerlink" title="Module"></a><code>Module</code></h2><p>将 <code>store</code> 分割成模块（<code>module</code>）。每个模块拥有自己的<code>state、mutation、action、getter、</code>甚至是嵌套子模块</p>
-<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> moduleA = &#123;
-  state: &#123; ... &#125;,
-  mutations: &#123; ... &#125;,
-  actions: &#123; ... &#125;,
-  getters: &#123; ... &#125;
-&#125;
-
-<span class="hljs-keyword">const</span> moduleB = &#123;
-  state: &#123; ... &#125;,
-  mutations: &#123; ... &#125;,
-  actions: &#123; ... &#125;
-&#125;
-
-<span class="hljs-keyword">const</span> store = <span class="hljs-keyword">new</span> Vuex.Store(&#123;
-  modules: &#123;
-    a: moduleA,
-    b: moduleB
-  &#125;
-&#125;)</code></pre></div>
+<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> moduleA = &#123;<br>  state: &#123; ... &#125;,<br>  mutations: &#123; ... &#125;,<br>  actions: &#123; ... &#125;,<br>  getters: &#123; ... &#125;<br>&#125;<br><br><span class="hljs-keyword">const</span> moduleB = &#123;<br>  state: &#123; ... &#125;,<br>  mutations: &#123; ... &#125;,<br>  actions: &#123; ... &#125;<br>&#125;<br><br><span class="hljs-keyword">const</span> store = <span class="hljs-keyword">new</span> Vuex.Store(&#123;<br>  modules: &#123;<br>    a: moduleA,<br>    b: moduleB<br>  &#125;<br>&#125;)<br></code></pre></div></td></tr></table></figure>
 
 <ul>
 <li>内部的<code>mutation</code> 接收的<code>state</code>是<em>模块的局部状态对象</em></li>
@@ -358,54 +298,9 @@ store.dispatch(&#123;
 <li><code>namespaced:true</code></li>
 <li>命名空间中的方法只会访问本模块的内容</li>
 </ul>
-<h4 id="在带命名空间的模块内访问全局内容"><a href="#在带命名空间的模块内访问全局内容" class="headerlink" title="在带命名空间的模块内访问全局内容"></a>在带命名空间的模块内访问全局内容</h4><div class="hljs"><pre><code class="hljs javascript">modules: &#123;
-  foo: &#123;
-    namespaced: <span class="hljs-literal">true</span>,
+<h4 id="在带命名空间的模块内访问全局内容"><a href="#在带命名空间的模块内访问全局内容" class="headerlink" title="在带命名空间的模块内访问全局内容"></a>在带命名空间的模块内访问全局内容</h4><figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript">modules: &#123;<br>  foo: &#123;<br>    namespaced: <span class="hljs-literal">true</span>,<br><br>    getters: &#123;<br>      <span class="hljs-comment">// 在这个模块的 getter 中，`getters` 被局部化了</span><br>      <span class="hljs-comment">// 你可以使用 getter 的第四个参数来调用 `rootGetters`</span><br>      someGetter (state, getters, rootState, rootGetters) &#123;<br>        getters.someOtherGetter <span class="hljs-comment">// -&gt; &#x27;foo/someOtherGetter&#x27;</span><br>        rootGetters.someOtherGetter <span class="hljs-comment">// -&gt; &#x27;someOtherGetter&#x27;</span><br>      &#125;,<br>      someOtherGetter: <span class="hljs-function"><span class="hljs-params">state</span> =&gt;</span> &#123; ... &#125;<br>    &#125;,<br><br>    actions: &#123;<br>      <span class="hljs-comment">// 在这个模块中， dispatch 和 commit 也被局部化了</span><br>      <span class="hljs-comment">// 他们可以接受 `root` 属性以访问根 dispatch 或 commit</span><br>      someAction (&#123; dispatch, commit, getters, rootGetters &#125;) &#123;<br>        getters.someGetter <span class="hljs-comment">// -&gt; &#x27;foo/someGetter&#x27;</span><br>        rootGetters.someGetter <span class="hljs-comment">// -&gt; &#x27;someGetter&#x27;</span><br><br>        dispatch(<span class="hljs-string">&#x27;someOtherAction&#x27;</span>) <span class="hljs-comment">// -&gt; &#x27;foo/someOtherAction&#x27;</span><br>        dispatch(<span class="hljs-string">&#x27;someOtherAction&#x27;</span>, <span class="hljs-literal">null</span>, &#123; <span class="hljs-attr">root</span>: <span class="hljs-literal">true</span> &#125;) <span class="hljs-comment">// -&gt; &#x27;someOtherAction&#x27;</span><br><br>        commit(<span class="hljs-string">&#x27;someMutation&#x27;</span>) <span class="hljs-comment">// -&gt; &#x27;foo/someMutation&#x27;</span><br>        commit(<span class="hljs-string">&#x27;someMutation&#x27;</span>, <span class="hljs-literal">null</span>, &#123; <span class="hljs-attr">root</span>: <span class="hljs-literal">true</span> &#125;) <span class="hljs-comment">// -&gt; &#x27;someMutation&#x27;</span><br>      &#125;,<br>      someOtherAction (ctx, payload) &#123; ... &#125;<br>    &#125;<br>  &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
 
-    getters: &#123;
-      <span class="hljs-comment">// 在这个模块的 getter 中，`getters` 被局部化了</span>
-      <span class="hljs-comment">// 你可以使用 getter 的第四个参数来调用 `rootGetters`</span>
-      someGetter (state, getters, rootState, rootGetters) &#123;
-        getters.someOtherGetter <span class="hljs-comment">// -&gt; 'foo/someOtherGetter'</span>
-        rootGetters.someOtherGetter <span class="hljs-comment">// -&gt; 'someOtherGetter'</span>
-      &#125;,
-      someOtherGetter: <span class="hljs-function"><span class="hljs-params">state</span> =&gt;</span> &#123; ... &#125;
-    &#125;,
-
-    actions: &#123;
-      <span class="hljs-comment">// 在这个模块中， dispatch 和 commit 也被局部化了</span>
-      <span class="hljs-comment">// 他们可以接受 `root` 属性以访问根 dispatch 或 commit</span>
-      someAction (&#123; dispatch, commit, getters, rootGetters &#125;) &#123;
-        getters.someGetter <span class="hljs-comment">// -&gt; 'foo/someGetter'</span>
-        rootGetters.someGetter <span class="hljs-comment">// -&gt; 'someGetter'</span>
-
-        dispatch(<span class="hljs-string">'someOtherAction'</span>) <span class="hljs-comment">// -&gt; 'foo/someOtherAction'</span>
-        dispatch(<span class="hljs-string">'someOtherAction'</span>, <span class="hljs-literal">null</span>, &#123; <span class="hljs-attr">root</span>: <span class="hljs-literal">true</span> &#125;) <span class="hljs-comment">// -&gt; 'someOtherAction'</span>
-
-        commit(<span class="hljs-string">'someMutation'</span>) <span class="hljs-comment">// -&gt; 'foo/someMutation'</span>
-        commit(<span class="hljs-string">'someMutation'</span>, <span class="hljs-literal">null</span>, &#123; <span class="hljs-attr">root</span>: <span class="hljs-literal">true</span> &#125;) <span class="hljs-comment">// -&gt; 'someMutation'</span>
-      &#125;,
-      someOtherAction (ctx, payload) &#123; ... &#125;
-    &#125;
-  &#125;
-&#125;</code></pre></div>
-
-<h4 id="带命名空间的绑定函数"><a href="#带命名空间的绑定函数" class="headerlink" title="带命名空间的绑定函数"></a>带命名空间的绑定函数</h4><div class="hljs"><pre><code class="hljs javascript">methods: &#123;
-  ...mapActions([
-    <span class="hljs-string">'some/nested/module/foo'</span>, <span class="hljs-comment">// -&gt; this['some/nested/module/foo']()</span>
-    <span class="hljs-string">'some/nested/module/bar'</span> <span class="hljs-comment">// -&gt; this['some/nested/module/bar']()</span>
-  ])
-&#125;
-
----&gt;
-
-
-methods: &#123;
-  ...mapActions(<span class="hljs-string">'some/nested/module'</span>, [
-    <span class="hljs-string">'foo'</span>, <span class="hljs-comment">// -&gt; this.foo()</span>
-    <span class="hljs-string">'bar'</span> <span class="hljs-comment">// -&gt; this.bar()</span>
-  ])
-&#125;</code></pre></div>
+<h4 id="带命名空间的绑定函数"><a href="#带命名空间的绑定函数" class="headerlink" title="带命名空间的绑定函数"></a>带命名空间的绑定函数</h4><figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript">methods: &#123;<br>  ...mapActions([<br>    <span class="hljs-string">&#x27;some/nested/module/foo&#x27;</span>, <span class="hljs-comment">// -&gt; this[&#x27;some/nested/module/foo&#x27;]()</span><br>    <span class="hljs-string">&#x27;some/nested/module/bar&#x27;</span> <span class="hljs-comment">// -&gt; this[&#x27;some/nested/module/bar&#x27;]()</span><br>  ])<br>&#125;<br><br>---&gt;<br><br><br>methods: &#123;<br>  ...mapActions(<span class="hljs-string">&#x27;some/nested/module&#x27;</span>, [<br>    <span class="hljs-string">&#x27;foo&#x27;</span>, <span class="hljs-comment">// -&gt; this.foo()</span><br>    <span class="hljs-string">&#x27;bar&#x27;</span> <span class="hljs-comment">// -&gt; this.bar()</span><br>  ])<br>&#125;<br></code></pre></div></td></tr></table></figure>
 
 <h4 id="createNamespacedHelpers"><a href="#createNamespacedHelpers" class="headerlink" title="createNamespacedHelpers"></a>createNamespacedHelpers</h4><p>使用 <code>createNamespacedHelpers</code> 创建基于某个命名空间辅助函数。它返回一个对象，对象里有新的绑定在给定命名空间值上的组件绑定辅助函数</p>
 
@@ -426,10 +321,14 @@ methods: &#123;
                 
               </div>
               
-                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
               
               
-                <div class="post-prevnext row">
+                <div class="post-prevnext">
                   <article class="post-prev col-6">
                     
                     
@@ -455,6 +354,30 @@ methods: &#123;
             </div>
 
             
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="twikoo"></div>
+  <script type="text/javascript">
+    Fluid.utils.lazyComments('comments', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/twikoo@1.3.0/dist/twikoo.all.min.js', function() {
+        twikoo.init({
+          el: '#twikoo',
+          envId: 'blog-1glh2chxcbf8757a',
+          region: 'ap-shanghai',
+          path: 'window.location.pathname',
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
           </article>
         </div>
       </div>
@@ -463,7 +386,7 @@ methods: &#123;
       <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
         <div id="toc">
   <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
-  <div id="tocbot"></div>
+  <div class="toc-body" id="toc-body"></div>
 </div>
 
       </div>
@@ -475,16 +398,15 @@ methods: &#123;
 
 
     
-  </main>
 
-  
-    <a id="scroll-top-button" href="#" role="button">
-      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
-    </a>
-  
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
 
-  
-    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
      aria-hidden="true">
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
@@ -505,21 +427,16 @@ methods: &#123;
     </div>
   </div>
 </div>
-  
-
-  
-
-  
-
-  <footer class="mt-5">
-  <div class="text-center py-3">
-    <div>
-      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
-      <i class="iconfont icon-love"></i>
-      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
-        <span>Fluid</span></a>
-    </div>
     
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+  </div>
+  
   <div class="statistics">
     
     
@@ -545,30 +462,47 @@ methods: &#123;
   </div>
 
 
-    
+  
   <!-- 备案信息 -->
   <div class="beian">
-    <a href="http://beian.miit.gov.cn/" target="_blank"
-       rel="nofollow noopener">粤ICP备2020115702号</a>
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        粤ICP备2020115702号
+      </a>
+    </span>
     
   </div>
 
 
-    
-  </div>
+  
 </footer>
 
-<!-- SCRIPTS -->
-<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
-<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
 <script  src="/js/debouncer.js" ></script>
-<script  src="/js/main.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
 
 <!-- Plugins -->
 
 
   
-    <script  src="/js/lazyload.js" ></script>
+    <script  src="/js/img-lazyload.js" ></script>
   
 
 
@@ -577,8 +511,19 @@ methods: &#123;
 
 
 
-  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
-  <script  src="/js/clipboard-use.js" ></script>
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
 
 
 
@@ -587,95 +532,30 @@ methods: &#123;
 
 
 
-
-  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
   <script>
-    $(document).ready(function () {
-      var boardCtn = $('#board-ctn');
-      var boardTop = boardCtn.offset().top;
-
-      tocbot.init({
-        tocSelector: '#tocbot',
-        contentSelector: '#post-body',
-        headingSelector: 'h1,h2,h3,h4,h5,h6',
-        linkClass: 'tocbot-link',
-        activeLinkClass: 'tocbot-active-link',
-        listClass: 'tocbot-list',
-        isCollapsedClass: 'tocbot-is-collapsed',
-        collapsibleClass: 'tocbot-is-collapsible',
-        collapseDepth: 0,
-        scrollSmooth: true,
-        headingsOffset: -boardTop
-      });
-      if ($('.toc-list-item').length > 0) {
-        $('#toc').css('visibility', 'visible');
-      }
-    });
-  </script>
-
-
-
-  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
-  <script>
-    var typed = new Typed('#subtitle', {
-      strings: [
-        '  ',
-        "vuex&nbsp;",
-      ],
-      cursorChar: "_",
-      typeSpeed: 70,
-      loop: false,
-    });
-    typed.stop();
-    $(document).ready(function () {
-      $(".typed-cursor").addClass("h2");
-      typed.start();
-    });
-  </script>
-
-
-
-  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
-  <script>
-    anchors.options = {
-      placement: "right",
-      visible: "hover",
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
       
-    };
-    var el = "h1,h2,h3,h4,h5,h6".split(",");
-    var res = [];
-    for (item of el) {
-      res.push(".markdown-body > " + item)
-    }
-    anchors.add(res.join(", "))
+      typing(title)
+      
+    })(window, document);
   </script>
 
 
 
   <script  src="/js/local-search.js" ></script>
   <script>
-    var path = "/local-search.xml";
-    var inputArea = document.querySelector("#local-search-input");
-    inputArea.onclick = function () {
-      searchFunc(path, 'local-search-input', 'local-search-result');
-      this.onclick = null
-    }
-  </script>
-
-
-
-  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
-
-  <script>
-    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
-      function () {
-        var element = document.createElement('a');
-        $(element).attr('data-fancybox', 'images');
-        $(element).attr('href', $(this).attr('src'));
-        $(this).wrap(element);
-      }
-    );
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
   </script>
 
 
@@ -692,33 +572,8 @@ methods: &#123;
 
 
 
-
-
-  
-    <!-- Baidu Analytics -->
-    <script defer>
-      var _hmt = _hmt || [];
-      (function () {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?048f7ae77dbb92c9d2c83ca3df99d02f";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-      })();
-    </script>
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-
-
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
 
 
 </body>

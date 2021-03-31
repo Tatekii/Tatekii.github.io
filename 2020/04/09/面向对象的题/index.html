@@ -1,14 +1,14 @@
 
 
 <!DOCTYPE html>
-<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+<html lang="zh-CN" data-default-color-scheme=&#34;dark&#34;>
 
 
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.jpeg">
-  <link rel="icon" type="image/png" href="/img/avatar.jpeg">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
   <meta name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -17,28 +17,32 @@
   <meta name="description" content="">
   <meta name="author" content="tatekii">
   <meta name="keywords" content="">
+  
   <title>面向对象题 - 不知名的笔记本</title>
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
   <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
   
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/tomorrow-night-eighties.min.css" />
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/atom-one-dark.min.css" />
     
   
 
   
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
 
 
 <!-- 主题依赖的图标库，不要自行修改 -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_pf9vaxs7x7b.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
 
 
 
@@ -50,17 +54,21 @@
 <!-- 自定义样式保持在最底部 -->
 
 
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","version":"1.8.9-a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":"#"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 5.4.0"></head>
 
 
 <body>
-  <header style="height: 30vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
-       href="/">&nbsp;<strong>Dr.🐎</strong>&nbsp;</a>
+       href="/">&nbsp;<strong>Dr🐎 Note</strong>&nbsp;</a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent"
@@ -92,6 +100,18 @@
               <a class="nav-link" href="/archives/">
                 <i class="iconfont icon-archive-fill"></i>
                 归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
               </a>
             </li>
           
@@ -137,13 +157,13 @@
   </div>
 </nav>
 
-    <div class="banner intro-2" id="background" parallax=true
+    <div class="banner" id="banner" parallax=true
          style="background: url('/img/default.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="container page-header text-center fade-in-up">
-            <span class="h2" id="subtitle">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="面向对象题">
               
             </span>
 
@@ -165,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      727 字
+      755 字
     </span>
   
 
@@ -175,12 +195,20 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      11
+      12
        分钟
     </span>
   
 
   
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
   
 </div>
 
@@ -197,169 +225,36 @@
     
       
 
-<div class="container-fluid">
-  <div class="row">
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
     <div class="d-none d-lg-block col-lg-2"></div>
-    <div class="col-lg-8 nopadding-md">
-      <div class="container nopadding-md" id="board-ctn">
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
         <div class="py-5" id="board">
-          <article class="post-content mx-auto" id="post">
+          <article class="post-content mx-auto">
             <!-- SEO header -->
             <h1 style="display: none">面向对象题</h1>
             
-            <div class="markdown-body" id="post-body">
+              <p class="note note-info">
+                
+                  本文最后更新于：2020年9月7日 晚上
+                
+              </p>
+            
+            <div class="markdown-body">
               <ul>
 <li>打车时可以打专车或快车。任何车都有车牌号和名称。快车每公里1元，专车每公里2元。行程开始时，显示车辆信息。行程结束时，显示打车金额。行程距离为5公里。</li>
 </ul>
-<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Car</span></span>&#123;
-  <span class="hljs-keyword">constructor</span>(licence,name)&#123;
-    <span class="hljs-keyword">this</span>.licence = licence
-    <span class="hljs-keyword">this</span>.name = name
-  &#125;
-&#125;
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FastCar</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Car</span></span>&#123;
-  <span class="hljs-keyword">constructor</span>(licence,name)&#123;
-    <span class="hljs-keyword">super</span>(licence,name)
-    <span class="hljs-keyword">this</span>.price =<span class="hljs-number">1</span>
-  &#125;
-&#125;
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PrivateCar</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Car</span></span>&#123;
-  <span class="hljs-keyword">constructor</span>(licence,name)&#123;
-    <span class="hljs-keyword">super</span>(licence,name)
-    <span class="hljs-keyword">this</span>.price = <span class="hljs-number">2</span>
-  &#125;
-&#125;
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Order</span></span>&#123;
-  <span class="hljs-keyword">constructor</span>(car,distance)&#123;
-    <span class="hljs-keyword">this</span>.car = car
-    <span class="hljs-keyword">this</span>.distance = distance
-  &#125;
-  getIn()&#123;
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>.car.name);
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>.car.licence);
-  &#125;
-  getOff()&#123;
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>.car.price*<span class="hljs-keyword">this</span>.distance);
-  &#125;
-&#125;
-<span class="hljs-keyword">let</span> car1 = <span class="hljs-keyword">new</span> PrivateCar(<span class="hljs-string">'粤A8888888'</span>,<span class="hljs-string">'特斯拉'</span>)
-<span class="hljs-keyword">let</span> cost1 = <span class="hljs-keyword">new</span> Order(car1,<span class="hljs-number">5</span>).getOff()</code></pre></div>
+<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Car</span></span>&#123;<br>  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">licence,name</span>)</span>&#123;<br>    <span class="hljs-built_in">this</span>.licence = licence<br>    <span class="hljs-built_in">this</span>.name = name<br>  &#125;<br>&#125;<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FastCar</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Car</span></span>&#123;<br>  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">licence,name</span>)</span>&#123;<br>    <span class="hljs-built_in">super</span>(licence,name)<br>    <span class="hljs-built_in">this</span>.price =<span class="hljs-number">1</span><br>  &#125;<br>&#125;<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PrivateCar</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Car</span></span>&#123;<br>  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">licence,name</span>)</span>&#123;<br>    <span class="hljs-built_in">super</span>(licence,name)<br>    <span class="hljs-built_in">this</span>.price = <span class="hljs-number">2</span><br>  &#125;<br>&#125;<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Order</span></span>&#123;<br>  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">car,distance</span>)</span>&#123;<br>    <span class="hljs-built_in">this</span>.car = car<br>    <span class="hljs-built_in">this</span>.distance = distance<br>  &#125;<br>  <span class="hljs-function"><span class="hljs-title">getIn</span>(<span class="hljs-params"></span>)</span>&#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>.car.name);<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>.car.licence);<br>  &#125;<br>  <span class="hljs-function"><span class="hljs-title">getOff</span>(<span class="hljs-params"></span>)</span>&#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>.car.price*<span class="hljs-built_in">this</span>.distance);<br>  &#125;<br>&#125;<br><span class="hljs-keyword">let</span> car1 = <span class="hljs-keyword">new</span> PrivateCar(<span class="hljs-string">&#x27;粤A8888888&#x27;</span>,<span class="hljs-string">&#x27;特斯拉&#x27;</span>)<br><span class="hljs-keyword">let</span> cost1 = <span class="hljs-keyword">new</span> Order(car1,<span class="hljs-number">5</span>).getOff()<br></code></pre></div></td></tr></table></figure>
 
 
 <ul>
 <li>某停车场, 分三层, 每层100 车位,每个车位都能监控到车辆的进入和离开,车辆进入前,显示每层的空余车位数量,车辆进入时,摄像头可识别车牌号和进入时间,车辆出来时,出口显示屏显示车牌号和停车时长</li>
 </ul>
-<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Car</span></span>&#123;
-  <span class="hljs-keyword">constructor</span>(licence)&#123;
-    <span class="hljs-keyword">this</span>.licence = licence
-  &#125;
-&#125;
-<span class="hljs-comment">// 整个停车场</span>
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ParkingLot</span></span>&#123;
-  <span class="hljs-keyword">constructor</span>(floors)&#123;
-    <span class="hljs-comment">// floors:[[300],[300],[300]]</span>
-    <span class="hljs-keyword">this</span>.floors = floors
-    <span class="hljs-keyword">this</span>.dataBase = []
-  &#125;
-  showSpace()&#123;
-    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-keyword">this</span>.floors.length;i++)&#123;
-      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`第<span class="hljs-subst">$&#123;i+<span class="hljs-number">1</span>&#125;</span>层空闲车位(<span class="hljs-subst">$&#123;<span class="hljs-keyword">this</span>.floors[i].emptySpace()&#125;</span>)`</span>)
-    &#125;
-  &#125;
-  intoLot(car,floorIndex,lotIndex)&#123;
-    <span class="hljs-comment">//车牌，时间</span>
-    <span class="hljs-keyword">let</span> licence = car.licence
-    <span class="hljs-keyword">let</span> intoTime = <span class="hljs-built_in">Date</span>.now()
-    <span class="hljs-keyword">let</span> space = <span class="hljs-keyword">this</span>.floors[floorIndex].lot[lotIndex]
-    <span class="hljs-keyword">this</span>.dataBase[licence] = &#123;intoTime,floorIndex,lotIndex&#125;
-    space.checkIn()
-  &#125;
-  outLot(car)&#123;
-    <span class="hljs-keyword">let</span> outTime = <span class="hljs-built_in">Date</span>.now()
-    <span class="hljs-keyword">let</span> licence = car.licence
-    <span class="hljs-keyword">let</span> info = <span class="hljs-keyword">this</span>.dataBase[licence]
-    <span class="hljs-keyword">let</span> space = <span class="hljs-keyword">this</span>.floors[info.floorIndex].lot[info.lotIndex]
-    <span class="hljs-keyword">let</span> timeCount = <span class="hljs-built_in">parseInt</span>((outTime-info.intoTime)/<span class="hljs-number">36000000</span>)
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`停车时长<span class="hljs-subst">$&#123;timeCount&#125;</span>小时`</span>)
-    space.checkOut()
-  &#125;
-&#125;
-<span class="hljs-comment">// 车位,监视驶入离开</span>
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ParkingSpace</span></span>&#123;
-  <span class="hljs-keyword">constructor</span>()&#123;
-    <span class="hljs-keyword">this</span>.free = <span class="hljs-literal">true</span>
-  &#125;
-  checkIn()&#123;
-    <span class="hljs-keyword">this</span>.free = <span class="hljs-literal">false</span>
-  &#125;
-  checkOut()&#123;
-    <span class="hljs-keyword">this</span>.free = <span class="hljs-literal">true</span>
-  &#125;
-&#125;
-<span class="hljs-comment">// 层</span>
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ParkingFloor</span></span>&#123;
-  <span class="hljs-keyword">constructor</span>(floor,lot)&#123;
-    <span class="hljs-keyword">this</span>.floor = floor
-    <span class="hljs-keyword">this</span>.lot = lot
-  &#125;
-  emptySpace()&#123;
-    <span class="hljs-comment">//返回空闲车位</span>
-    <span class="hljs-keyword">let</span> freeLot = <span class="hljs-number">0</span>
-    <span class="hljs-keyword">this</span>.lot.forEach(<span class="hljs-function"><span class="hljs-params">item</span> =&gt;</span> &#123;
-      <span class="hljs-keyword">if</span>(item.free)&#123;
-        freeLot++
-      &#125;
-    &#125;);
-    <span class="hljs-keyword">return</span> freeLot
-  &#125;
-&#125;</code></pre></div>
+<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Car</span></span>&#123;<br>  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">licence</span>)</span>&#123;<br>    <span class="hljs-built_in">this</span>.licence = licence<br>  &#125;<br>&#125;<br><span class="hljs-comment">// 整个停车场</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ParkingLot</span></span>&#123;<br>  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">floors</span>)</span>&#123;<br>    <span class="hljs-comment">// floors:[[300],[300],[300]]</span><br>    <span class="hljs-built_in">this</span>.floors = floors<br>    <span class="hljs-built_in">this</span>.dataBase = []<br>  &#125;<br>  <span class="hljs-function"><span class="hljs-title">showSpace</span>(<span class="hljs-params"></span>)</span>&#123;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-built_in">this</span>.floors.length;i++)&#123;<br>      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`第<span class="hljs-subst">$&#123;i+<span class="hljs-number">1</span>&#125;</span>层空闲车位(<span class="hljs-subst">$&#123;<span class="hljs-built_in">this</span>.floors[i].emptySpace()&#125;</span>)`</span>)<br>    &#125;<br>  &#125;<br>  <span class="hljs-function"><span class="hljs-title">intoLot</span>(<span class="hljs-params">car,floorIndex,lotIndex</span>)</span>&#123;<br>    <span class="hljs-comment">//车牌，时间</span><br>    <span class="hljs-keyword">let</span> licence = car.licence<br>    <span class="hljs-keyword">let</span> intoTime = <span class="hljs-built_in">Date</span>.now()<br>    <span class="hljs-keyword">let</span> space = <span class="hljs-built_in">this</span>.floors[floorIndex].lot[lotIndex]<br>    <span class="hljs-built_in">this</span>.dataBase[licence] = &#123;intoTime,floorIndex,lotIndex&#125;<br>    space.checkIn()<br>  &#125;<br>  <span class="hljs-function"><span class="hljs-title">outLot</span>(<span class="hljs-params">car</span>)</span>&#123;<br>    <span class="hljs-keyword">let</span> outTime = <span class="hljs-built_in">Date</span>.now()<br>    <span class="hljs-keyword">let</span> licence = car.licence<br>    <span class="hljs-keyword">let</span> info = <span class="hljs-built_in">this</span>.dataBase[licence]<br>    <span class="hljs-keyword">let</span> space = <span class="hljs-built_in">this</span>.floors[info.floorIndex].lot[info.lotIndex]<br>    <span class="hljs-keyword">let</span> timeCount = <span class="hljs-built_in">parseInt</span>((outTime-info.intoTime)/<span class="hljs-number">36000000</span>)<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`停车时长<span class="hljs-subst">$&#123;timeCount&#125;</span>小时`</span>)<br>    space.checkOut()<br>  &#125;<br>&#125;<br><span class="hljs-comment">// 车位,监视驶入离开</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ParkingSpace</span></span>&#123;<br>  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"></span>)</span>&#123;<br>    <span class="hljs-built_in">this</span>.free = <span class="hljs-literal">true</span><br>  &#125;<br>  <span class="hljs-function"><span class="hljs-title">checkIn</span>(<span class="hljs-params"></span>)</span>&#123;<br>    <span class="hljs-built_in">this</span>.free = <span class="hljs-literal">false</span><br>  &#125;<br>  <span class="hljs-function"><span class="hljs-title">checkOut</span>(<span class="hljs-params"></span>)</span>&#123;<br>    <span class="hljs-built_in">this</span>.free = <span class="hljs-literal">true</span><br>  &#125;<br>&#125;<br><span class="hljs-comment">// 层</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ParkingFloor</span></span>&#123;<br>  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">floor,lot</span>)</span>&#123;<br>    <span class="hljs-built_in">this</span>.floor = floor<br>    <span class="hljs-built_in">this</span>.lot = lot<br>  &#125;<br>  <span class="hljs-function"><span class="hljs-title">emptySpace</span>(<span class="hljs-params"></span>)</span>&#123;<br>    <span class="hljs-comment">//返回空闲车位</span><br>    <span class="hljs-keyword">let</span> freeLot = <span class="hljs-number">0</span><br>    <span class="hljs-built_in">this</span>.lot.forEach(<span class="hljs-function"><span class="hljs-params">item</span> =&gt;</span> &#123;<br>      <span class="hljs-keyword">if</span>(item.free)&#123;<br>        freeLot++<br>      &#125;<br>    &#125;);<br>    <span class="hljs-keyword">return</span> freeLot<br>  &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
 
 <ul>
-<li>一副扑克牌有54张牌，其中52张是正牌，另2张是副牌（大王和小王）。<br>52张正牌又均分为13张一组，并以黑桃、红桃、草花、方块四种花色表示各组，每组花色的牌包括从1-10（1通常表示为A）以及J、Q、K标示的13张牌。<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> numbers = [<span class="hljs-string">'A'</span>, <span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>,<span class="hljs-number">7</span>,<span class="hljs-number">8</span>,<span class="hljs-number">9</span>,<span class="hljs-string">'J'</span>,<span class="hljs-string">'Q'</span>,<span class="hljs-string">'K'</span>]
-<span class="hljs-keyword">const</span> signs = [<span class="hljs-string">'♥️'</span>, <span class="hljs-string">'♦️'</span>, <span class="hljs-string">'♣️'</span>, <span class="hljs-string">'♠️'</span>]
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Poker</span> </span>&#123;
-  <span class="hljs-keyword">constructor</span>(signs,numbers) &#123;
-		<span class="hljs-keyword">this</span>.signs = signs
-		<span class="hljs-keyword">this</span>.numbers = numbers
-		<span class="hljs-keyword">this</span>.mounts = <span class="hljs-number">52</span>
-		<span class="hljs-keyword">this</span>.pokers = []
-	&#125;
-	initPokers()&#123;
-		<span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i =<span class="hljs-number">0</span>;i&lt;<span class="hljs-keyword">this</span>.signs.length;i++)&#123;
-			<span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> j = <span class="hljs-number">0</span>;j&lt;<span class="hljs-keyword">this</span>.numbers.length;j++)&#123;
-				<span class="hljs-keyword">this</span>.pokers.push(<span class="hljs-keyword">new</span> Card(<span class="hljs-keyword">this</span>.signs[i],<span class="hljs-keyword">this</span>.numbers[j]))
-			&#125;
-		&#125;
-		<span class="hljs-keyword">this</span>.pokers.push(<span class="hljs-keyword">new</span> Card(<span class="hljs-string">'BLACK'</span>,<span class="hljs-string">'GHOST'</span>))
-		<span class="hljs-keyword">this</span>.pokers.push(<span class="hljs-keyword">new</span> Card(<span class="hljs-string">'RED'</span>,<span class="hljs-string">'GHOST'</span>))
-	&#125;
-  shuffleCard() &#123;
-		<span class="hljs-comment">// let arr = this.pokers</span>
-		<span class="hljs-comment">// let len = arr.length</span>
-    <span class="hljs-comment">// let temp,i</span>
-    <span class="hljs-comment">// while(len)&#123;</span>
-    <span class="hljs-comment">//   i = Math.floor(Math.random()*len--)</span>
-    <span class="hljs-comment">//   temp = arr[i]</span>
-    <span class="hljs-comment">//   arr[i] = arr[len]</span>
-    <span class="hljs-comment">//   arr[len] = temp</span>
-    <span class="hljs-comment">// &#125;</span>
-    <span class="hljs-comment">// this.pokers = arr</span>
-    <span class="hljs-keyword">this</span>.pokers = <span class="hljs-keyword">this</span>.pokers.sort(<span class="hljs-function"><span class="hljs-params">()</span>=&gt;</span><span class="hljs-built_in">Math</span>.random()<span class="hljs-number">-0.5</span>)
-  &#125;
-&#125;
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Card</span> </span>&#123;
-  <span class="hljs-keyword">constructor</span>(sign, number) &#123;
-    <span class="hljs-keyword">this</span>.sign = sign;
-    <span class="hljs-keyword">this</span>.number = number;
-  &#125;
-&#125;
-
-<span class="hljs-keyword">let</span> game1 = <span class="hljs-keyword">new</span> Poker(signs,numbers)
-game1.initPokers()
-game1.shuffleCard()
-<span class="hljs-built_in">console</span>.log(game1.pokers);
-game1.shuffleCard()
-<span class="hljs-built_in">console</span>.log(game1.pokers);</code></pre></div></li>
+<li>一副扑克牌有54张牌，其中52张是正牌，另2张是副牌（大王和小王）。<br>52张正牌又均分为13张一组，并以黑桃、红桃、草花、方块四种花色表示各组，每组花色的牌包括从1-10（1通常表示为A）以及J、Q、K标示的13张牌。<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> numbers = [<span class="hljs-string">&#x27;A&#x27;</span>, <span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>,<span class="hljs-number">7</span>,<span class="hljs-number">8</span>,<span class="hljs-number">9</span>,<span class="hljs-string">&#x27;J&#x27;</span>,<span class="hljs-string">&#x27;Q&#x27;</span>,<span class="hljs-string">&#x27;K&#x27;</span>]<br><span class="hljs-keyword">const</span> signs = [<span class="hljs-string">&#x27;♥️&#x27;</span>, <span class="hljs-string">&#x27;♦️&#x27;</span>, <span class="hljs-string">&#x27;♣️&#x27;</span>, <span class="hljs-string">&#x27;♠️&#x27;</span>]<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Poker</span> </span>&#123;<br>  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">signs,numbers</span>)</span> &#123;<br>		<span class="hljs-built_in">this</span>.signs = signs<br>		<span class="hljs-built_in">this</span>.numbers = numbers<br>		<span class="hljs-built_in">this</span>.mounts = <span class="hljs-number">52</span><br>		<span class="hljs-built_in">this</span>.pokers = []<br>	&#125;<br>	<span class="hljs-function"><span class="hljs-title">initPokers</span>(<span class="hljs-params"></span>)</span>&#123;<br>		<span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i =<span class="hljs-number">0</span>;i&lt;<span class="hljs-built_in">this</span>.signs.length;i++)&#123;<br>			<span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> j = <span class="hljs-number">0</span>;j&lt;<span class="hljs-built_in">this</span>.numbers.length;j++)&#123;<br>				<span class="hljs-built_in">this</span>.pokers.push(<span class="hljs-keyword">new</span> Card(<span class="hljs-built_in">this</span>.signs[i],<span class="hljs-built_in">this</span>.numbers[j]))<br>			&#125;<br>		&#125;<br>		<span class="hljs-built_in">this</span>.pokers.push(<span class="hljs-keyword">new</span> Card(<span class="hljs-string">&#x27;BLACK&#x27;</span>,<span class="hljs-string">&#x27;GHOST&#x27;</span>))<br>		<span class="hljs-built_in">this</span>.pokers.push(<span class="hljs-keyword">new</span> Card(<span class="hljs-string">&#x27;RED&#x27;</span>,<span class="hljs-string">&#x27;GHOST&#x27;</span>))<br>	&#125;<br>  <span class="hljs-function"><span class="hljs-title">shuffleCard</span>(<span class="hljs-params"></span>)</span> &#123;<br>		<span class="hljs-comment">// let arr = this.pokers</span><br>		<span class="hljs-comment">// let len = arr.length</span><br>    <span class="hljs-comment">// let temp,i</span><br>    <span class="hljs-comment">// while(len)&#123;</span><br>    <span class="hljs-comment">//   i = Math.floor(Math.random()*len--)</span><br>    <span class="hljs-comment">//   temp = arr[i]</span><br>    <span class="hljs-comment">//   arr[i] = arr[len]</span><br>    <span class="hljs-comment">//   arr[len] = temp</span><br>    <span class="hljs-comment">// &#125;</span><br>    <span class="hljs-comment">// this.pokers = arr</span><br>    <span class="hljs-built_in">this</span>.pokers = <span class="hljs-built_in">this</span>.pokers.sort(<span class="hljs-function">()=&gt;</span><span class="hljs-built_in">Math</span>.random()-<span class="hljs-number">0.5</span>)<br>  &#125;<br>&#125;<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Card</span> </span>&#123;<br>  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">sign, number</span>)</span> &#123;<br>    <span class="hljs-built_in">this</span>.sign = sign;<br>    <span class="hljs-built_in">this</span>.number = number;<br>  &#125;<br>&#125;<br><br><span class="hljs-keyword">let</span> game1 = <span class="hljs-keyword">new</span> Poker(signs,numbers)<br>game1.initPokers()<br>game1.shuffleCard()<br><span class="hljs-built_in">console</span>.log(game1.pokers);<br>game1.shuffleCard()<br><span class="hljs-built_in">console</span>.log(game1.pokers);<br></code></pre></div></td></tr></table></figure></li>
 </ul>
 
             </div>
@@ -379,10 +274,14 @@ game1.shuffleCard()
                 
               </div>
               
-                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
               
               
-                <div class="post-prevnext row">
+                <div class="post-prevnext">
                   <article class="post-prev col-6">
                     
                     
@@ -408,6 +307,30 @@ game1.shuffleCard()
             </div>
 
             
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="twikoo"></div>
+  <script type="text/javascript">
+    Fluid.utils.lazyComments('comments', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/twikoo@1.3.0/dist/twikoo.all.min.js', function() {
+        twikoo.init({
+          el: '#twikoo',
+          envId: 'blog-1glh2chxcbf8757a',
+          region: 'ap-shanghai',
+          path: 'window.location.pathname',
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
           </article>
         </div>
       </div>
@@ -416,7 +339,7 @@ game1.shuffleCard()
       <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
         <div id="toc">
   <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
-  <div id="tocbot"></div>
+  <div class="toc-body" id="toc-body"></div>
 </div>
 
       </div>
@@ -428,16 +351,15 @@ game1.shuffleCard()
 
 
     
-  </main>
 
-  
-    <a id="scroll-top-button" href="#" role="button">
-      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
-    </a>
-  
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
 
-  
-    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
      aria-hidden="true">
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
@@ -458,21 +380,16 @@ game1.shuffleCard()
     </div>
   </div>
 </div>
-  
-
-  
-
-  
-
-  <footer class="mt-5">
-  <div class="text-center py-3">
-    <div>
-      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
-      <i class="iconfont icon-love"></i>
-      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
-        <span>Fluid</span></a>
-    </div>
     
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+  </div>
+  
   <div class="statistics">
     
     
@@ -498,30 +415,47 @@ game1.shuffleCard()
   </div>
 
 
-    
+  
   <!-- 备案信息 -->
   <div class="beian">
-    <a href="http://beian.miit.gov.cn/" target="_blank"
-       rel="nofollow noopener">粤ICP备2020115702号</a>
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        粤ICP备2020115702号
+      </a>
+    </span>
     
   </div>
 
 
-    
-  </div>
+  
 </footer>
 
-<!-- SCRIPTS -->
-<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
-<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
 <script  src="/js/debouncer.js" ></script>
-<script  src="/js/main.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
 
 <!-- Plugins -->
 
 
   
-    <script  src="/js/lazyload.js" ></script>
+    <script  src="/js/img-lazyload.js" ></script>
   
 
 
@@ -530,8 +464,19 @@ game1.shuffleCard()
 
 
 
-  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
-  <script  src="/js/clipboard-use.js" ></script>
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
 
 
 
@@ -540,95 +485,30 @@ game1.shuffleCard()
 
 
 
-
-  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
   <script>
-    $(document).ready(function () {
-      var boardCtn = $('#board-ctn');
-      var boardTop = boardCtn.offset().top;
-
-      tocbot.init({
-        tocSelector: '#tocbot',
-        contentSelector: '#post-body',
-        headingSelector: 'h1,h2,h3,h4,h5,h6',
-        linkClass: 'tocbot-link',
-        activeLinkClass: 'tocbot-active-link',
-        listClass: 'tocbot-list',
-        isCollapsedClass: 'tocbot-is-collapsed',
-        collapsibleClass: 'tocbot-is-collapsible',
-        collapseDepth: 0,
-        scrollSmooth: true,
-        headingsOffset: -boardTop
-      });
-      if ($('.toc-list-item').length > 0) {
-        $('#toc').css('visibility', 'visible');
-      }
-    });
-  </script>
-
-
-
-  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
-  <script>
-    var typed = new Typed('#subtitle', {
-      strings: [
-        '  ',
-        "面向对象题&nbsp;",
-      ],
-      cursorChar: "_",
-      typeSpeed: 70,
-      loop: false,
-    });
-    typed.stop();
-    $(document).ready(function () {
-      $(".typed-cursor").addClass("h2");
-      typed.start();
-    });
-  </script>
-
-
-
-  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
-  <script>
-    anchors.options = {
-      placement: "right",
-      visible: "hover",
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
       
-    };
-    var el = "h1,h2,h3,h4,h5,h6".split(",");
-    var res = [];
-    for (item of el) {
-      res.push(".markdown-body > " + item)
-    }
-    anchors.add(res.join(", "))
+      typing(title)
+      
+    })(window, document);
   </script>
 
 
 
   <script  src="/js/local-search.js" ></script>
   <script>
-    var path = "/local-search.xml";
-    var inputArea = document.querySelector("#local-search-input");
-    inputArea.onclick = function () {
-      searchFunc(path, 'local-search-input', 'local-search-result');
-      this.onclick = null
-    }
-  </script>
-
-
-
-  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
-
-  <script>
-    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
-      function () {
-        var element = document.createElement('a');
-        $(element).attr('data-fancybox', 'images');
-        $(element).attr('href', $(this).attr('src'));
-        $(this).wrap(element);
-      }
-    );
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
   </script>
 
 
@@ -645,33 +525,8 @@ game1.shuffleCard()
 
 
 
-
-
-  
-    <!-- Baidu Analytics -->
-    <script defer>
-      var _hmt = _hmt || [];
-      (function () {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?048f7ae77dbb92c9d2c83ca3df99d02f";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-      })();
-    </script>
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-
-
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
 
 
 </body>

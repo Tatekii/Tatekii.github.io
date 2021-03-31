@@ -1,14 +1,14 @@
 
 
 <!DOCTYPE html>
-<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+<html lang="zh-CN" data-default-color-scheme=&#34;dark&#34;>
 
 
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.jpeg">
-  <link rel="icon" type="image/png" href="/img/avatar.jpeg">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
   <meta name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -17,28 +17,32 @@
   <meta name="description" content="">
   <meta name="author" content="tatekii">
   <meta name="keywords" content="">
+  
   <title>diff算法 - 不知名的笔记本</title>
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
   <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
   
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/tomorrow-night-eighties.min.css" />
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/atom-one-dark.min.css" />
     
   
 
   
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
 
 
 <!-- 主题依赖的图标库，不要自行修改 -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_pf9vaxs7x7b.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
 
 
 
@@ -50,17 +54,21 @@
 <!-- 自定义样式保持在最底部 -->
 
 
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","version":"1.8.9-a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":"#"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 5.4.0"></head>
 
 
 <body>
-  <header style="height: 30vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
-       href="/">&nbsp;<strong>Dr.🐎</strong>&nbsp;</a>
+       href="/">&nbsp;<strong>Dr🐎 Note</strong>&nbsp;</a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent"
@@ -92,6 +100,18 @@
               <a class="nav-link" href="/archives/">
                 <i class="iconfont icon-archive-fill"></i>
                 归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
               </a>
             </li>
           
@@ -137,13 +157,13 @@
   </div>
 </nav>
 
-    <div class="banner intro-2" id="background" parallax=true
+    <div class="banner" id="banner" parallax=true
          style="background: url('/img/default.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="container page-header text-center fade-in-up">
-            <span class="h2" id="subtitle">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="diff算法">
               
             </span>
 
@@ -182,6 +202,14 @@
 
   
   
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
 </div>
 
             
@@ -197,17 +225,23 @@
     
       
 
-<div class="container-fluid">
-  <div class="row">
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
     <div class="d-none d-lg-block col-lg-2"></div>
-    <div class="col-lg-8 nopadding-md">
-      <div class="container nopadding-md" id="board-ctn">
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
         <div class="py-5" id="board">
-          <article class="post-content mx-auto" id="post">
+          <article class="post-content mx-auto">
             <!-- SEO header -->
             <h1 style="display: none">diff算法</h1>
             
-            <div class="markdown-body" id="post-body">
+              <p class="note note-info">
+                
+                  本文最后更新于：2021年3月24日 下午
+                
+              </p>
+            
+            <div class="markdown-body">
               <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>diff算法，包含渲染器如何对各种类型的vNode的属性，text，fragment进行patch更新，以及判断是patch vNode，还是新增还是删除</p>
 <h3 id="简单diff"><a href="#简单diff" class="headerlink" title="简单diff"></a>简单diff</h3><ul>
 <li>newNode.children.length = 0 =&gt; 删除oldNode.children</li>
@@ -240,95 +274,30 @@
 <li>匹配结束后旧children中还有未处理的节点，删除</li>
 </ul>
 <h3 id="vue3的inferno"><a href="#vue3的inferno" class="headerlink" title="vue3的inferno"></a>vue3的inferno</h3><ul>
-<li>文本diff-&gt;排除相同的前置和后置元素<div class="hljs"><pre><code class="hljs javascript">  a,b,c
-  | | |
-  -------
-  |   | |
-  a,e,b,c
-
-  <span class="hljs-string">``</span><span class="hljs-string">` </span>
-<span class="hljs-string">  - 分别从新旧节点的头和尾出发</span>
-<span class="hljs-string">  - 依次遍历到key值不一样时停止 </span>
-<span class="hljs-string">  - 这样匹配成功后剩下的部分就是需要新增/删除的vNode</span>
-<span class="hljs-string"></span>
-<span class="hljs-string">- 文本diff后，使用剩余新children的长度建立source索引数组</span>
-<span class="hljs-string">  `</span><span class="hljs-string">``</span>javascript
-  oldChildren = [b,c,d,f]
-  newChildren = [c,d,b,g]
-  source = [<span class="hljs-number">-1</span>,<span class="hljs-number">-1</span>,<span class="hljs-number">-1</span>,<span class="hljs-number">-1</span>]
-  <span class="hljs-comment">// 默认全为-1</span>
-  <span class="hljs-comment">// 如果在旧children中匹配到key，则把该位置的-1改为旧vNode的索引，并且patch该节点</span>
-  <span class="hljs-comment">// 比如</span>
-  source = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">0</span>,<span class="hljs-number">-1</span>]
-  <span class="hljs-string">``</span><span class="hljs-string">` </span>
-<span class="hljs-string"></span>
-<span class="hljs-string">- 使用最大索引算法判断节点是否需要移动</span>
-<span class="hljs-string">- 根据source求出最长递增子序列</span>
-<span class="hljs-string">  `</span><span class="hljs-string">``</span>javascript
-    LIS = [<span class="hljs-number">0</span>，<span class="hljs-number">1</span>]
-    <span class="hljs-comment">// LIS中存储的是source索引</span>
-    <span class="hljs-comment">// 表示新旧children中这几个节点的先后关系相同</span></code></pre></div></li>
-<li>根据LIS得出不进行移动的节点<div class="hljs"><pre><code class="hljs javascript">[c,d]</code></pre></div></li>
-<li>从LIS和新children尾处建立指针处理余下节点</li>
+<li><p>文本diff-&gt;排除相同的前置和后置元素</p>
+<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript">a,b,c<br>| | |<br>-------<br>|   | |<br>a,e,b,c<br><br></code></pre></div></td></tr></table></figure>
+<ul>
+<li>分别从新旧节点的头和尾出发</li>
+<li>依次遍历到key值不一样时停止 </li>
+<li>这样匹配成功后剩下的部分就是需要新增/删除的vNode</li>
+</ul>
+</li>
+<li><p>文本diff后，使用剩余新children的长度建立source索引数组</p>
+<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript">oldChildren = [b,c,d,f]<br>newChildren = [c,d,b,g]<br>source = [-<span class="hljs-number">1</span>,-<span class="hljs-number">1</span>,-<span class="hljs-number">1</span>,-<span class="hljs-number">1</span>]<br><span class="hljs-comment">// 默认全为-1</span><br><span class="hljs-comment">// 如果在旧children中匹配到key，则把该位置的-1改为旧vNode的索引，并且patch该节点</span><br><span class="hljs-comment">// 比如</span><br>source = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">0</span>,-<span class="hljs-number">1</span>]<br></code></pre></div></td></tr></table></figure></li>
+<li><p>使用最大索引算法判断节点是否需要移动</p>
+</li>
+<li><p>根据source求出最长递增子序列</p>
+<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript">LIS = [<span class="hljs-number">0</span>，<span class="hljs-number">1</span>]<br><span class="hljs-comment">// LIS中存储的是source索引</span><br><span class="hljs-comment">// 表示新旧children中这几个节点的先后关系相同</span><br></code></pre></div></td></tr></table></figure></li>
+<li><p>根据LIS得出不进行移动的节点</p>
+<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript">[c,d]<br></code></pre></div></td></tr></table></figure></li>
+<li><p>从LIS和新children尾处建立指针处理余下节点</p>
+</li>
 </ul>
 <h4 id="最长上升子序列"><a href="#最长上升子序列" class="headerlink" title="最长上升子序列"></a>最长上升子序列</h4><ul>
 <li>子序列：不要求连续</li>
 <li>字串：要求连续</li>
 </ul>
-<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-comment">// 动态规划</span>
-<span class="hljs-keyword">const</span> longestChildSequence = <span class="hljs-function"><span class="hljs-params">arr</span> =&gt;</span> &#123;
-  <span class="hljs-keyword">let</span> len = arr.length
-  <span class="hljs-keyword">if</span>(len &lt; <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span>
-  <span class="hljs-keyword">const</span> dp = <span class="hljs-built_in">Array</span>(len).fill(<span class="hljs-number">1</span>)
-  <span class="hljs-comment">// dp[i]代表原始数组该位置的最长子序列长度</span>
-  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span> ; i &lt; len ; i++)&#123;
-    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> j = <span class="hljs-number">0</span> ; j &lt; i ; j++)&#123;
-      <span class="hljs-comment">// j遍历之前遍历过的所有元素</span>
-      <span class="hljs-comment">// 可能存在大小不一的递增序列，使用max取得最大值</span>
-      <span class="hljs-keyword">if</span>(arr[i] &gt; arr [j])&#123;
-        dp[i] = <span class="hljs-built_in">Math</span>.max(dp[i],dp[j]+<span class="hljs-number">1</span>)
-        <span class="hljs-comment">// [1,2,3,4,1,2,5]</span>
-        <span class="hljs-comment">// 如果只使用dp[j]+1 ，dp[6]会在[1,2,5]中得出结果3</span>
-        <span class="hljs-comment">// 使用max比较之前更长的序列[1，2，3，4，5]得到5</span>
-
-      &#125;
-    &#125;
-  &#125;
-  <span class="hljs-keyword">return</span> <span class="hljs-built_in">Math</span>.max(...dp)
-&#125;
-
-<span class="hljs-comment">// 贪心+二分</span>
-<span class="hljs-keyword">const</span> longestChildSequence = <span class="hljs-function"><span class="hljs-params">arr</span> =&gt;</span> &#123;
-  <span class="hljs-keyword">let</span> len = arr.length
-  <span class="hljs-keyword">if</span>(len &lt; <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span>
-  <span class="hljs-keyword">const</span> res = [arr[<span class="hljs-number">0</span>]]
-  <span class="hljs-comment">//将arr中后续元素arr[i]与res末尾元素比较</span>
-  <span class="hljs-comment">//大于则push进res</span>
-  <span class="hljs-comment">//小于则查找res中第一个比arr[i]大的元素并替换</span>
-  <span class="hljs-comment">//由于存在替换，子序列值不一定正确，但长度是正确的</span>
-  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span> ; i&lt; len ;i++)&#123;
-    <span class="hljs-keyword">if</span>(arr[i]&gt;res[res.length<span class="hljs-number">-1</span>])&#123;
-      res.push(arr[i])
-    &#125;<span class="hljs-keyword">else</span>&#123;
-      <span class="hljs-comment">// res中左右指针的index</span>
-      <span class="hljs-comment">// 二分查找</span>
-      <span class="hljs-keyword">let</span> left = <span class="hljs-number">0</span>
-      <span class="hljs-keyword">let</span> right = res.length - <span class="hljs-number">1</span>
-      <span class="hljs-keyword">while</span>(left&lt;right)&#123;
-        <span class="hljs-keyword">let</span> mid = <span class="hljs-built_in">Math</span>.floor((left+right)/<span class="hljs-number">2</span>)
-        <span class="hljs-comment">// let mid = ((left+right)/2) | 0</span>
-        <span class="hljs-comment">// 浮点小数向下求整</span>
-        <span class="hljs-keyword">if</span>(arr[i]&gt;res[mid])&#123;
-          left = mid + <span class="hljs-number">1</span>
-        &#125;<span class="hljs-keyword">else</span>&#123;
-          right = mid
-        &#125;
-      &#125;
-      res[left] = arr[i]
-    &#125;
-  &#125;
-  <span class="hljs-keyword">return</span> res.length 
-&#125;</code></pre></div>
+<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// 动态规划</span><br><span class="hljs-keyword">const</span> longestChildSequence = <span class="hljs-function"><span class="hljs-params">arr</span> =&gt;</span> &#123;<br>  <span class="hljs-keyword">let</span> len = arr.length<br>  <span class="hljs-keyword">if</span>(len &lt; <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span><br>  <span class="hljs-keyword">const</span> dp = <span class="hljs-built_in">Array</span>(len).fill(<span class="hljs-number">1</span>)<br>  <span class="hljs-comment">// dp[i]代表原始数组该位置的最长子序列长度</span><br>  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span> ; i &lt; len ; i++)&#123;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> j = <span class="hljs-number">0</span> ; j &lt; i ; j++)&#123;<br>      <span class="hljs-comment">// j遍历之前遍历过的所有元素</span><br>      <span class="hljs-comment">// 可能存在大小不一的递增序列，使用max取得最大值</span><br>      <span class="hljs-keyword">if</span>(arr[i] &gt; arr [j])&#123;<br>        dp[i] = <span class="hljs-built_in">Math</span>.max(dp[i],dp[j]+<span class="hljs-number">1</span>)<br>        <span class="hljs-comment">// [1,2,3,4,1,2,5]</span><br>        <span class="hljs-comment">// 如果只使用dp[j]+1 ，dp[6]会在[1,2,5]中得出结果3</span><br>        <span class="hljs-comment">// 使用max比较之前更长的序列[1，2，3，4，5]得到5</span><br><br>      &#125;<br>    &#125;<br>  &#125;<br>  <span class="hljs-keyword">return</span> <span class="hljs-built_in">Math</span>.max(...dp)<br>&#125;<br><br><span class="hljs-comment">// 贪心+二分</span><br><span class="hljs-keyword">const</span> longestChildSequence = <span class="hljs-function"><span class="hljs-params">arr</span> =&gt;</span> &#123;<br>  <span class="hljs-keyword">let</span> len = arr.length<br>  <span class="hljs-keyword">if</span>(len &lt; <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span><br>  <span class="hljs-keyword">const</span> res = [arr[<span class="hljs-number">0</span>]]<br>  <span class="hljs-comment">//将arr中后续元素arr[i]与res末尾元素比较</span><br>  <span class="hljs-comment">//大于则push进res</span><br>  <span class="hljs-comment">//小于则查找res中第一个比arr[i]大的元素并替换</span><br>  <span class="hljs-comment">//由于存在替换，子序列值不一定正确，但长度是正确的</span><br>  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span> ; i&lt; len ;i++)&#123;<br>    <span class="hljs-keyword">if</span>(arr[i]&gt;res[res.length-<span class="hljs-number">1</span>])&#123;<br>      res.push(arr[i])<br>    &#125;<span class="hljs-keyword">else</span>&#123;<br>      <span class="hljs-comment">// res中左右指针的index</span><br>      <span class="hljs-comment">// 二分查找</span><br>      <span class="hljs-keyword">let</span> left = <span class="hljs-number">0</span><br>      <span class="hljs-keyword">let</span> right = res.length - <span class="hljs-number">1</span><br>      <span class="hljs-keyword">while</span>(left&lt;right)&#123;<br>        <span class="hljs-keyword">let</span> mid = <span class="hljs-built_in">Math</span>.floor((left+right)/<span class="hljs-number">2</span>)<br>        <span class="hljs-comment">// let mid = ((left+right)/2) | 0</span><br>        <span class="hljs-comment">// 浮点小数向下求整</span><br>        <span class="hljs-keyword">if</span>(arr[i]&gt;res[mid])&#123;<br>          left = mid + <span class="hljs-number">1</span><br>        &#125;<span class="hljs-keyword">else</span>&#123;<br>          right = mid<br>        &#125;<br>      &#125;<br>      res[left] = arr[i]<br>    &#125;<br>  &#125;<br>  <span class="hljs-keyword">return</span> res.length <br>&#125;<br></code></pre></div></td></tr></table></figure>
             </div>
             <hr>
             <div>
@@ -348,10 +317,14 @@
                 
               </div>
               
-                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
               
               
-                <div class="post-prevnext row">
+                <div class="post-prevnext">
                   <article class="post-prev col-6">
                     
                     
@@ -377,6 +350,30 @@
             </div>
 
             
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="twikoo"></div>
+  <script type="text/javascript">
+    Fluid.utils.lazyComments('comments', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/twikoo@1.3.0/dist/twikoo.all.min.js', function() {
+        twikoo.init({
+          el: '#twikoo',
+          envId: 'blog-1glh2chxcbf8757a',
+          region: 'ap-shanghai',
+          path: 'window.location.pathname',
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
           </article>
         </div>
       </div>
@@ -385,7 +382,7 @@
       <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
         <div id="toc">
   <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
-  <div id="tocbot"></div>
+  <div class="toc-body" id="toc-body"></div>
 </div>
 
       </div>
@@ -397,16 +394,15 @@
 
 
     
-  </main>
 
-  
-    <a id="scroll-top-button" href="#" role="button">
-      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
-    </a>
-  
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
 
-  
-    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
      aria-hidden="true">
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
@@ -427,21 +423,16 @@
     </div>
   </div>
 </div>
-  
-
-  
-
-  
-
-  <footer class="mt-5">
-  <div class="text-center py-3">
-    <div>
-      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
-      <i class="iconfont icon-love"></i>
-      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
-        <span>Fluid</span></a>
-    </div>
     
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+  </div>
+  
   <div class="statistics">
     
     
@@ -467,30 +458,47 @@
   </div>
 
 
-    
+  
   <!-- 备案信息 -->
   <div class="beian">
-    <a href="http://beian.miit.gov.cn/" target="_blank"
-       rel="nofollow noopener">粤ICP备2020115702号</a>
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        粤ICP备2020115702号
+      </a>
+    </span>
     
   </div>
 
 
-    
-  </div>
+  
 </footer>
 
-<!-- SCRIPTS -->
-<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
-<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
 <script  src="/js/debouncer.js" ></script>
-<script  src="/js/main.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
 
 <!-- Plugins -->
 
 
   
-    <script  src="/js/lazyload.js" ></script>
+    <script  src="/js/img-lazyload.js" ></script>
   
 
 
@@ -499,8 +507,19 @@
 
 
 
-  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
-  <script  src="/js/clipboard-use.js" ></script>
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
 
 
 
@@ -509,95 +528,30 @@
 
 
 
-
-  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
   <script>
-    $(document).ready(function () {
-      var boardCtn = $('#board-ctn');
-      var boardTop = boardCtn.offset().top;
-
-      tocbot.init({
-        tocSelector: '#tocbot',
-        contentSelector: '#post-body',
-        headingSelector: 'h1,h2,h3,h4,h5,h6',
-        linkClass: 'tocbot-link',
-        activeLinkClass: 'tocbot-active-link',
-        listClass: 'tocbot-list',
-        isCollapsedClass: 'tocbot-is-collapsed',
-        collapsibleClass: 'tocbot-is-collapsible',
-        collapseDepth: 0,
-        scrollSmooth: true,
-        headingsOffset: -boardTop
-      });
-      if ($('.toc-list-item').length > 0) {
-        $('#toc').css('visibility', 'visible');
-      }
-    });
-  </script>
-
-
-
-  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
-  <script>
-    var typed = new Typed('#subtitle', {
-      strings: [
-        '  ',
-        "diff算法&nbsp;",
-      ],
-      cursorChar: "_",
-      typeSpeed: 70,
-      loop: false,
-    });
-    typed.stop();
-    $(document).ready(function () {
-      $(".typed-cursor").addClass("h2");
-      typed.start();
-    });
-  </script>
-
-
-
-  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
-  <script>
-    anchors.options = {
-      placement: "right",
-      visible: "hover",
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
       
-    };
-    var el = "h1,h2,h3,h4,h5,h6".split(",");
-    var res = [];
-    for (item of el) {
-      res.push(".markdown-body > " + item)
-    }
-    anchors.add(res.join(", "))
+      typing(title)
+      
+    })(window, document);
   </script>
 
 
 
   <script  src="/js/local-search.js" ></script>
   <script>
-    var path = "/local-search.xml";
-    var inputArea = document.querySelector("#local-search-input");
-    inputArea.onclick = function () {
-      searchFunc(path, 'local-search-input', 'local-search-result');
-      this.onclick = null
-    }
-  </script>
-
-
-
-  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
-
-  <script>
-    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
-      function () {
-        var element = document.createElement('a');
-        $(element).attr('data-fancybox', 'images');
-        $(element).attr('href', $(this).attr('src'));
-        $(this).wrap(element);
-      }
-    );
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
   </script>
 
 
@@ -614,33 +568,8 @@
 
 
 
-
-
-  
-    <!-- Baidu Analytics -->
-    <script defer>
-      var _hmt = _hmt || [];
-      (function () {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?048f7ae77dbb92c9d2c83ca3df99d02f";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-      })();
-    </script>
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-
-
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
 
 
 </body>

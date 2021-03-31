@@ -1,14 +1,14 @@
 
 
 <!DOCTYPE html>
-<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+<html lang="zh-CN" data-default-color-scheme=&#34;dark&#34;>
 
 
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.jpeg">
-  <link rel="icon" type="image/png" href="/img/avatar.jpeg">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
   <meta name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -17,28 +17,32 @@
   <meta name="description" content="">
   <meta name="author" content="tatekii">
   <meta name="keywords" content="">
+  
   <title>堆及相关算法 - 不知名的笔记本</title>
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
   <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
   
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/tomorrow-night-eighties.min.css" />
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/atom-one-dark.min.css" />
     
   
 
   
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
 
 
 <!-- 主题依赖的图标库，不要自行修改 -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_pf9vaxs7x7b.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
 
 
 
@@ -50,17 +54,21 @@
 <!-- 自定义样式保持在最底部 -->
 
 
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","version":"1.8.9-a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":"#"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 5.4.0"></head>
 
 
 <body>
-  <header style="height: 30vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
-       href="/">&nbsp;<strong>Dr.🐎</strong>&nbsp;</a>
+       href="/">&nbsp;<strong>Dr🐎 Note</strong>&nbsp;</a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent"
@@ -92,6 +100,18 @@
               <a class="nav-link" href="/archives/">
                 <i class="iconfont icon-archive-fill"></i>
                 归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
               </a>
             </li>
           
@@ -137,13 +157,13 @@
   </div>
 </nav>
 
-    <div class="banner intro-2" id="background" parallax=true
+    <div class="banner" id="banner" parallax=true
          style="background: url('/img/default.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="container page-header text-center fade-in-up">
-            <span class="h2" id="subtitle">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="堆及相关算法">
               
             </span>
 
@@ -182,6 +202,14 @@
 
   
   
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
 </div>
 
             
@@ -197,21 +225,29 @@
     
       
 
-<div class="container-fluid">
-  <div class="row">
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
     <div class="d-none d-lg-block col-lg-2"></div>
-    <div class="col-lg-8 nopadding-md">
-      <div class="container nopadding-md" id="board-ctn">
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
         <div class="py-5" id="board">
-          <article class="post-content mx-auto" id="post">
+          <article class="post-content mx-auto">
             <!-- SEO header -->
             <h1 style="display: none">堆及相关算法</h1>
             
-            <div class="markdown-body" id="post-body">
+              <p class="note note-info">
+                
+                  本文最后更新于：2020年10月29日 下午
+                
+              </p>
+            
+            <div class="markdown-body">
               <h2 id="堆"><a href="#堆" class="headerlink" title="堆"></a>堆</h2><ul>
 <li><p>堆就是完全二叉树</p>
-<div class="hljs"><pre><code>完全二叉树：除了深度最深的一层外所有层节点数都满员
-深度：从根节点到该节点经历的节点个数</code></pre></div></li>
+<div class="hljs code-wrapper"><pre><code>完全二叉树：除了深度最深的一层外所有层节点数都满员
+深度：从根节点到该节点经历的节点个数
+</code></pre></div>
+</li>
 <li><p>每一个节点都比左右子节点大–&gt;最大堆，最大值在根节点</p>
 </li>
 <li><p>每一个节点都比左右子节点小–&gt;最小堆，最小值在根节点</p>
@@ -222,50 +258,12 @@
 <h3 id="建立堆"><a href="#建立堆" class="headerlink" title="建立堆"></a>建立堆</h3><ul>
 <li>将节点与父节点比较</li>
 </ul>
-<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-comment">//小顶堆</span>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">buildHeap</span>(<span class="hljs-params">items,heapSize</span>)</span>&#123;
-  <span class="hljs-keyword">while</span>(heapSize&lt;items.length - <span class="hljs-number">1</span>)&#123;
-  <span class="hljs-comment">// items 第一个是&lt;empty item&gt;</span>
-    heapSize++
-    heapify(items,heapSize)
-  &#125;
-&#125;
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">heapify</span>(<span class="hljs-params">items,i</span>)</span>&#123;
-  <span class="hljs-keyword">while</span>(<span class="hljs-built_in">Math</span>.floor(i/<span class="hljs-number">2</span>) &gt; <span class="hljs-number">0</span> &amp;&amp; items[i] &lt; items[<span class="hljs-built_in">Math</span>.floor(i/<span class="hljs-number">2</span>)])&#123;
-    [items[i],items[<span class="hljs-built_in">Math</span>.floor(i/<span class="hljs-number">2</span>)]] =  [items[<span class="hljs-built_in">Math</span>.floor(i/<span class="hljs-number">2</span>)],items[i]]
-    <span class="hljs-comment">// 交换位置</span>
-    i = <span class="hljs-built_in">Math</span>.floor(i/<span class="hljs-number">2</span>)
-  &#125; 
-&#125;</code></pre></div>
+<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">//小顶堆</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">buildHeap</span>(<span class="hljs-params">items,heapSize</span>)</span>&#123;<br>  <span class="hljs-keyword">while</span>(heapSize&lt;items.length - <span class="hljs-number">1</span>)&#123;<br>  <span class="hljs-comment">// items 第一个是&lt;empty item&gt;</span><br>    heapSize++<br>    heapify(items,heapSize)<br>  &#125;<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">heapify</span>(<span class="hljs-params">items,i</span>)</span>&#123;<br>  <span class="hljs-keyword">while</span>(<span class="hljs-built_in">Math</span>.floor(i/<span class="hljs-number">2</span>) &gt; <span class="hljs-number">0</span> &amp;&amp; items[i] &lt; items[<span class="hljs-built_in">Math</span>.floor(i/<span class="hljs-number">2</span>)])&#123;<br>    [items[i],items[<span class="hljs-built_in">Math</span>.floor(i/<span class="hljs-number">2</span>)]] =  [items[<span class="hljs-built_in">Math</span>.floor(i/<span class="hljs-number">2</span>)],items[i]]<br>    <span class="hljs-comment">// 交换位置</span><br>    i = <span class="hljs-built_in">Math</span>.floor(i/<span class="hljs-number">2</span>)<br>  &#125; <br>&#125;<br></code></pre></div></td></tr></table></figure>
 
 <ul>
 <li>将节点与子节点比较</li>
 </ul>
-<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-comment">//大顶堆</span>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">buildHeap</span>(<span class="hljs-params">items</span>)</span>&#123;
-  <span class="hljs-keyword">const</span> heapSize = items.length - <span class="hljs-number">1</span>  <span class="hljs-comment">// &lt;-- items.length - 1 !</span>
-  <span class="hljs-comment">// 最后叶子节点的索引值</span>
-  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-built_in">Math</span>.floor(heapSize/<span class="hljs-number">2</span>) ; i &gt;= <span class="hljs-number">1</span> ; i--)&#123; <span class="hljs-comment">// &lt;-i&gt;=1 !</span>
-    <span class="hljs-comment">// i 为最后一个非 叶子 节点的索引，i还有子节点</span>
-    heapify(items,heapSize,i)
-  &#125;
-&#125;
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">heapify</span>(<span class="hljs-params">items, heapSize, i</span>) </span>&#123;
-  <span class="hljs-comment">// 自上而下式堆化</span>
-  <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>) &#123;
-      <span class="hljs-keyword">var</span> maxIndex = i;
-      <span class="hljs-keyword">if</span>(<span class="hljs-number">2</span>*i &lt;= heapSize &amp;&amp; items[maxIndex] &lt; items[i*<span class="hljs-number">2</span>] ) &#123;
-        <span class="hljs-comment">// 这里的等号意味着万一这个节点是最后的节点呢</span>
-          maxIndex = i*<span class="hljs-number">2</span>;
-      &#125;
-      <span class="hljs-keyword">if</span>(<span class="hljs-number">2</span>*i+<span class="hljs-number">1</span> &lt;= heapSize &amp;&amp; items[maxIndex] &lt; items[i*<span class="hljs-number">2</span>+<span class="hljs-number">1</span>] ) &#123;
-          maxIndex = i*<span class="hljs-number">2</span>+<span class="hljs-number">1</span>;
-      &#125;
-      <span class="hljs-keyword">if</span> (maxIndex === i) <span class="hljs-keyword">break</span>;
-      [items[i],items[maxIndex]] = [items[maxIndex],items[i]]
-      i = maxIndex; 
-  &#125;
-&#125;</code></pre></div>
+<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">//大顶堆</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">buildHeap</span>(<span class="hljs-params">items</span>)</span>&#123;<br>  <span class="hljs-keyword">const</span> heapSize = items.length - <span class="hljs-number">1</span>  <span class="hljs-comment">// &lt;-- items.length - 1 !</span><br>  <span class="hljs-comment">// 最后叶子节点的索引值</span><br>  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-built_in">Math</span>.floor(heapSize/<span class="hljs-number">2</span>) ; i &gt;= <span class="hljs-number">1</span> ; i--)&#123; <span class="hljs-comment">// &lt;-i&gt;=1 !</span><br>    <span class="hljs-comment">// i 为最后一个非 叶子 节点的索引，i还有子节点</span><br>    heapify(items,heapSize,i)<br>  &#125;<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">heapify</span>(<span class="hljs-params">items, heapSize, i</span>) </span>&#123;<br>  <span class="hljs-comment">// 自上而下式堆化</span><br>  <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>) &#123;<br>      <span class="hljs-keyword">var</span> maxIndex = i;<br>      <span class="hljs-keyword">if</span>(<span class="hljs-number">2</span>*i &lt;= heapSize &amp;&amp; items[maxIndex] &lt; items[i*<span class="hljs-number">2</span>] ) &#123;<br>        <span class="hljs-comment">// 这里的等号意味着万一这个节点是最后的节点呢</span><br>          maxIndex = i*<span class="hljs-number">2</span>;<br>      &#125;<br>      <span class="hljs-keyword">if</span>(<span class="hljs-number">2</span>*i+<span class="hljs-number">1</span> &lt;= heapSize &amp;&amp; items[maxIndex] &lt; items[i*<span class="hljs-number">2</span>+<span class="hljs-number">1</span>] ) &#123;<br>          maxIndex = i*<span class="hljs-number">2</span>+<span class="hljs-number">1</span>;<br>      &#125;<br>      <span class="hljs-keyword">if</span> (maxIndex === i) <span class="hljs-keyword">break</span>;<br>      [items[i],items[maxIndex]] = [items[maxIndex],items[i]]<br>      i = maxIndex; <br>  &#125;<br>&#125;  <br></code></pre></div></td></tr></table></figure>
 
 
 <h3 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h3><ol>
@@ -275,85 +273,21 @@
 <li>一直堆化</li>
 <li>大顶堆得到升序 / 小顶堆得到降序排列</li>
 </ol>
-<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">heapSort</span>(<span class="hljs-params">arr</span>)</span>&#123;
-  <span class="hljs-comment">// 输入需要为[,]</span>
-  <span class="hljs-comment">// const heap = [,]</span>
-  <span class="hljs-comment">// let i = 0</span>
-  <span class="hljs-comment">// while(i&lt;arr.length)&#123;</span>
-  <span class="hljs-comment">//   heap.push(arr[i++])</span>
-  <span class="hljs-comment">// &#125;</span>
-
-  <span class="hljs-keyword">const</span> heapSize  =  arr.length - <span class="hljs-number">1</span>
-  buildHeap(arr,heapSize)
-  
-  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = heapSize ; i&gt;<span class="hljs-number">1</span> ;i--)&#123;
-    [arr[i],arr[<span class="hljs-number">1</span>]]=[arr[<span class="hljs-number">1</span>],arr[i]]
-    heapSize --
-    heapify(arr,heapSize,<span class="hljs-number">1</span>)
-  &#125;
-  <span class="hljs-keyword">return</span> arr
-&#125;</code></pre></div>
+<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">heapSort</span>(<span class="hljs-params">arr</span>)</span>&#123;<br>  <span class="hljs-comment">// 输入需要为[,]</span><br>  <span class="hljs-comment">// const heap = [,]</span><br>  <span class="hljs-comment">// let i = 0</span><br>  <span class="hljs-comment">// while(i&lt;arr.length)&#123;</span><br>  <span class="hljs-comment">//   heap.push(arr[i++])</span><br>  <span class="hljs-comment">// &#125;</span><br><br>  <span class="hljs-keyword">const</span> heapSize  =  arr.length - <span class="hljs-number">1</span><br>  buildHeap(arr,heapSize)<br>  <br>  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = heapSize ; i&gt;<span class="hljs-number">1</span> ;i--)&#123;<br>    [arr[i],arr[<span class="hljs-number">1</span>]]=[arr[<span class="hljs-number">1</span>],arr[i]]<br>    heapSize --<br>    heapify(arr,heapSize,<span class="hljs-number">1</span>)<br>  &#125;<br>  <span class="hljs-keyword">return</span> arr<br>&#125;<br></code></pre></div></td></tr></table></figure>
 
 
 <h3 id="topK问题"><a href="#topK问题" class="headerlink" title="topK问题"></a>topK问题</h3><p>求出前k个最大/最小值，或者出现次数最多/最少的k个值</p>
 <ul>
 <li>求大值，建立最小堆</li>
-<li>求小值，建立最大堆<div class="hljs"><pre><code class="hljs javascript">
-<span class="hljs-comment">// 比如求前k个最大值</span>
-<span class="hljs-comment">// 先用前k个数据建立小顶堆</span>
-<span class="hljs-comment">// 为什么求前k大建立小顶堆？？？</span>
-<span class="hljs-comment">// 如果建立大顶堆，交换堆顶后，堆顶依然是最大的，依次比较之后的数据只会改变堆顶而已，收集不了别的值</span>
-
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">topK</span>(<span class="hljs-params">data,k</span>)</span>&#123;
-  <span class="hljs-keyword">let</span> heap = [,],i = <span class="hljs-number">0</span>
-  <span class="hljs-keyword">while</span>(i&lt;k)&#123;
-    heap.push(data[i++])
-  &#125;
-  <span class="hljs-keyword">const</span> heapSize = k
-  buildHeap(heap,heapSize)
-
-  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> j = k ; j &lt;data.length ;j++)&#123;
-    <span class="hljs-comment">// 将余下的数据依次与堆顶比较</span>
-    <span class="hljs-comment">// 比小顶堆的堆顶大则交换</span>
-    <span class="hljs-keyword">if</span>(heap[<span class="hljs-number">1</span>] &lt; data[j])&#123;
-      heap[<span class="hljs-number">1</span>] = data[j]
-      heapify(heap,k,<span class="hljs-number">1</span>)
-    &#125;
-  &#125;
-
-  heap.shift()
-  <span class="hljs-keyword">return</span> heap
-&#125;
-
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">buildHeap</span>(<span class="hljs-params">items ,heapSize</span>)</span>&#123;
-  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-built_in">Math</span>.floor(heapSize/<span class="hljs-number">2</span>) ; i &gt;= <span class="hljs-number">1</span> ; i--)&#123;
-    heapify(items,heapSize,i)
-  &#125;
-&#125;
-
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">heapify</span>(<span class="hljs-params">items,heapSize,i</span>)</span>&#123;
-  <span class="hljs-keyword">while</span>(<span class="hljs-literal">true</span>)&#123;
-    <span class="hljs-keyword">let</span> minIndex = i
-    <span class="hljs-keyword">if</span>(<span class="hljs-number">2</span>*i &lt;= heapSize &amp;&amp; items[minIndex] &gt; items[i*<span class="hljs-number">2</span>] ) &#123;
-        <span class="hljs-comment">// 这里的等号意味着万一这个节点是最后的节点呢</span>
-        minIndex = i*<span class="hljs-number">2</span>;
-      &#125;
-      <span class="hljs-keyword">if</span>(<span class="hljs-number">2</span>*i+<span class="hljs-number">1</span> &lt;= heapSize &amp;&amp; items[minIndex] &gt; items[i*<span class="hljs-number">2</span>+<span class="hljs-number">1</span>] ) &#123;
-        minIndex = i*<span class="hljs-number">2</span>+<span class="hljs-number">1</span>;
-      &#125;
-      <span class="hljs-keyword">if</span> (minIndex === i) <span class="hljs-keyword">break</span>;
-      [items[i],items[minIndex]] = [items[minIndex],items[i]]
-      i = minIndex; 
-  &#125;
-&#125;</code></pre></div>
-
-</li>
+<li>求小值，建立最大堆<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><br><span class="hljs-comment">// 比如求前k个最大值</span><br><span class="hljs-comment">// 先用前k个数据建立小顶堆</span><br><span class="hljs-comment">// 为什么求前k大建立小顶堆？？？</span><br><span class="hljs-comment">// 如果建立大顶堆，交换堆顶后，堆顶依然是最大的，依次比较之后的数据只会改变堆顶而已，收集不了别的值</span><br><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">topK</span>(<span class="hljs-params">data,k</span>)</span>&#123;<br>  <span class="hljs-keyword">let</span> heap = [,],i = <span class="hljs-number">0</span><br>  <span class="hljs-keyword">while</span>(i&lt;k)&#123;<br>    heap.push(data[i++])<br>  &#125;<br>  <span class="hljs-keyword">const</span> heapSize = k<br>  buildHeap(heap,heapSize)<br><br>  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> j = k ; j &lt;data.length ;j++)&#123;<br>    <span class="hljs-comment">// 将余下的数据依次与堆顶比较</span><br>    <span class="hljs-comment">// 比小顶堆的堆顶大则交换</span><br>    <span class="hljs-keyword">if</span>(heap[<span class="hljs-number">1</span>] &lt; data[j])&#123;<br>      heap[<span class="hljs-number">1</span>] = data[j]<br>      heapify(heap,k,<span class="hljs-number">1</span>)<br>    &#125;<br>  &#125;<br><br>  heap.shift()<br>  <span class="hljs-keyword">return</span> heap<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">buildHeap</span>(<span class="hljs-params">items ,heapSize</span>)</span>&#123;<br>  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-built_in">Math</span>.floor(heapSize/<span class="hljs-number">2</span>) ; i &gt;= <span class="hljs-number">1</span> ; i--)&#123;<br>    heapify(items,heapSize,i)<br>  &#125;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">heapify</span>(<span class="hljs-params">items,heapSize,i</span>)</span>&#123;<br>  <span class="hljs-keyword">while</span>(<span class="hljs-literal">true</span>)&#123;<br>    <span class="hljs-keyword">let</span> minIndex = i<br>    <span class="hljs-keyword">if</span>(<span class="hljs-number">2</span>*i &lt;= heapSize &amp;&amp; items[minIndex] &gt; items[i*<span class="hljs-number">2</span>] ) &#123;<br>        <span class="hljs-comment">// 这里的等号意味着万一这个节点是最后的节点呢</span><br>        minIndex = i*<span class="hljs-number">2</span>;<br>      &#125;<br>      <span class="hljs-keyword">if</span>(<span class="hljs-number">2</span>*i+<span class="hljs-number">1</span> &lt;= heapSize &amp;&amp; items[minIndex] &gt; items[i*<span class="hljs-number">2</span>+<span class="hljs-number">1</span>] ) &#123;<br>        minIndex = i*<span class="hljs-number">2</span>+<span class="hljs-number">1</span>;<br>      &#125;<br>      <span class="hljs-keyword">if</span> (minIndex === i) <span class="hljs-keyword">break</span>;<br>      [items[i],items[minIndex]] = [items[minIndex],items[i]]<br>      i = minIndex; <br>  &#125;<br>&#125;<br><br><br><br><br></code></pre></div></td></tr></table></figure></li>
 </ul>
 <h3 id="中位数问题"><a href="#中位数问题" class="headerlink" title="中位数问题"></a>中位数问题</h3><p><code>n</code>个数据中的中位数</p>
-<div class="hljs"><pre><code>[1,2,3] =&gt; 2
-[1,2,3,4] =&gt; 2,3
-当 n % 2 !== 0 时，中位数为：arr[(n-1)/2]
-当 n % 2 === 0 时，中位数为：arr[n/2], arr[n/2 + 1]</code></pre></div><ul>
+<div class="hljs code-wrapper"><pre><code>  [1,2,3] =&gt; 2
+  [1,2,3,4] =&gt; 2,3
+  当 n % 2 !== 0 时，中位数为：arr[(n-1)/2]
+  当 n % 2 === 0 时，中位数为：arr[n/2], arr[n/2 + 1]
+</code></pre></div>
+<ul>
 <li><p>将前<code>n/2//偶数</code>||<code>（Math.floor(n/2)）+ 1//奇数</code>堆化为大顶堆，后<code>Math.floor(n/2)</code>堆化为小顶堆。</p>
 </li>
 <li><p>结果分别为两个堆顶<code>偶数</code>/前面的堆顶<code>奇数</code></p>
@@ -362,181 +296,13 @@
 <ul>
 <li>【升序】大于大顶堆的顶则加入小顶堆</li>
 <li>【降序】小于小顶堆则加入大顶堆</li>
-<li>加入后再次堆化，如果堆大小不满足分割中位数要求则继续调整</li>
+<li> 加入后再次堆化，如果堆大小不满足分割中位数要求则继续调整</li>
 </ul>
 </li>
 </ul>
-<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Median</span>(<span class="hljs-params"></span>)</span>&#123;
-  <span class="hljs-keyword">this</span>.maxHeap = <span class="hljs-keyword">new</span> MaxHeap()
-  <span class="hljs-keyword">this</span>.minHeap = <span class="hljs-keyword">new</span> MinHeap()
-&#125;
-Median.prototype.addNum = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">num</span>)</span>&#123;
-  <span class="hljs-keyword">if</span>(num &lt; <span class="hljs-keyword">this</span>.maxHeap.getTop() || !<span class="hljs-keyword">this</span>.maxHeap.getSize())&#123;
-    <span class="hljs-keyword">this</span>.maxHeap.insert(num)
-  &#125;<span class="hljs-keyword">else</span>&#123;
-    <span class="hljs-keyword">this</span>.minHeap.insert(num)
-  &#125;
+<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Median</span>(<span class="hljs-params"></span>)</span>&#123;<br>  <span class="hljs-built_in">this</span>.maxHeap = <span class="hljs-keyword">new</span> MaxHeap()<br>  <span class="hljs-built_in">this</span>.minHeap = <span class="hljs-keyword">new</span> MinHeap()<br>&#125;<br>Median.prototype.addNum = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">num</span>)</span>&#123;<br>  <span class="hljs-keyword">if</span>(num &lt; <span class="hljs-built_in">this</span>.maxHeap.getTop() || !<span class="hljs-built_in">this</span>.maxHeap.getSize())&#123;<br>    <span class="hljs-built_in">this</span>.maxHeap.insert(num)<br>  &#125;<span class="hljs-keyword">else</span>&#123;<br>    <span class="hljs-built_in">this</span>.minHeap.insert(num)<br>  &#125;<br><br>  <span class="hljs-keyword">if</span>(<span class="hljs-built_in">this</span>.maxHeap.getSize() - <span class="hljs-built_in">this</span>.minHeap.getSize() &gt; <span class="hljs-number">1</span>)&#123;<br>    <span class="hljs-comment">//奇数分布</span><br>    <span class="hljs-comment">//大顶堆size比小顶堆大1</span><br>    <span class="hljs-built_in">this</span>.minHeap.insert(<span class="hljs-built_in">this</span>.maxHeap.rmTop())<br>    <span class="hljs-comment">//不符合则大顶堆顶插入小顶堆</span><br>  &#125;<br>  <span class="hljs-keyword">if</span>(<span class="hljs-built_in">this</span>.minHeap.getSize() &gt; <span class="hljs-built_in">this</span>.maxHeap.getSize())&#123;<br>    <span class="hljs-built_in">this</span>.maxHeap.insert(<span class="hljs-built_in">this</span>.minHeap.rmTop())<br>    <span class="hljs-comment">// </span><br>  &#125;<br>&#125;<br>Median.prototype.getMedianNum = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>  <span class="hljs-comment">// return console.log(this.maxHeap.getSize());</span><br>  <span class="hljs-keyword">if</span>(<span class="hljs-built_in">this</span>.maxHeap.getSize() &amp;&amp; <span class="hljs-built_in">this</span>.maxHeap.getSize() === <span class="hljs-built_in">this</span>.minHeap.getSize())&#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-number">1</span>);<br>    <span class="hljs-keyword">return</span> (<span class="hljs-built_in">this</span>.maxHeap.getTop() + <span class="hljs-built_in">this</span>.minHeap.getTop())/<span class="hljs-number">2</span><br>  &#125;<br>  <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.maxHeap.getTop()<br>&#125;<br><br><span class="hljs-comment">// 大顶堆</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">MaxHeap</span>(<span class="hljs-params"></span>)</span>&#123;<br>  <span class="hljs-keyword">const</span> heap = [,]<br>  <span class="hljs-built_in">this</span>.getSize = <span class="hljs-function">() =&gt;</span> heap.length - <span class="hljs-number">1</span><br>  <span class="hljs-built_in">this</span>.getTop = <span class="hljs-function">() =&gt;</span> heap.length &gt; <span class="hljs-number">1</span> ? heap[<span class="hljs-number">1</span>] : <span class="hljs-literal">null</span><br>  <span class="hljs-built_in">this</span>.insert = <span class="hljs-function"><span class="hljs-params">num</span> =&gt;</span> &#123;<br>    <span class="hljs-comment">//插入式建堆</span><br>    heap.push(num)<br>    <span class="hljs-keyword">let</span> i = heap.length - <span class="hljs-number">1</span><br>    <span class="hljs-comment">// push 进去的索引</span><br>    <span class="hljs-keyword">while</span>(<span class="hljs-built_in">Math</span>.floor(i/<span class="hljs-number">2</span>)&gt;<span class="hljs-number">0</span> &amp;&amp; heap[i] &gt; heap[<span class="hljs-built_in">Math</span>.floor(i/<span class="hljs-number">2</span>)])&#123;<br>      <span class="hljs-comment">// 大顶堆，与父节点比较，大于则交换</span><br>      [heap[i],heap[<span class="hljs-built_in">Math</span>.floor(i/<span class="hljs-number">2</span>)]] = [heap[<span class="hljs-built_in">Math</span>.floor(i/<span class="hljs-number">2</span>)],heap[i]]<br>      i = <span class="hljs-built_in">Math</span>.floor(i/<span class="hljs-number">2</span>)<br>    &#125;<br>  &#125;<br>  <span class="hljs-built_in">this</span>.rmTop = <span class="hljs-function">() =&gt;</span> &#123;<br>    <span class="hljs-keyword">if</span>(!heap.length &gt; <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span><br>    <span class="hljs-keyword">if</span>(heap.length === <span class="hljs-number">2</span>) <span class="hljs-keyword">return</span> heap.pop()<br>    <span class="hljs-keyword">const</span> num = heap[<span class="hljs-number">1</span>]<br>    heap[<span class="hljs-number">1</span>] = heap.pop()<span class="hljs-comment">// 拿走了top值，并用末尾节点填充</span><br>    heapify(<span class="hljs-number">1</span>)<br>    <span class="hljs-keyword">return</span> num<br>  &#125;<br>  <span class="hljs-keyword">const</span> heapify = <span class="hljs-function"><span class="hljs-params">i</span> =&gt;</span> &#123;<br>    <span class="hljs-comment">// 堆化</span><br>    <span class="hljs-keyword">const</span> heapSize = heap.length - <span class="hljs-number">1</span><br>    <span class="hljs-keyword">while</span>(<span class="hljs-literal">true</span>)&#123;<br>      <span class="hljs-keyword">let</span> maxIndex = i<br>      <span class="hljs-keyword">if</span>(<span class="hljs-number">2</span>*<span class="hljs-number">1</span> &lt;= heapSize &amp;&amp; heap[<span class="hljs-number">2</span>*i] &gt; heap[i]) maxIndex = <span class="hljs-number">2</span>*i<br>      <span class="hljs-keyword">if</span>(<span class="hljs-number">2</span>*i+<span class="hljs-number">1</span> &lt;= heapSize &amp;&amp; heap[<span class="hljs-number">2</span>*i+<span class="hljs-number">1</span>] &gt; heap[maxIndex]) maxIndex = <span class="hljs-number">2</span>*i+<span class="hljs-number">1</span> <span class="hljs-comment">// !!!!!!</span><br>      <span class="hljs-keyword">if</span>(maxIndex === i) <span class="hljs-keyword">break</span><br>      [heap[i],heap[maxIndex]] = [heap[maxIndex],heap[i]]<br>      <span class="hljs-comment">// 重新赋值i开始下级循环</span><br>      i = maxIndex<br>    &#125;<br>  &#125;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">MinHeap</span>(<span class="hljs-params"></span>)</span>&#123;<br>  <span class="hljs-keyword">const</span> heap = [,]<br>  <span class="hljs-built_in">this</span>.getSize = <span class="hljs-function">() =&gt;</span> heap.length - <span class="hljs-number">1</span><br>  <span class="hljs-built_in">this</span>.getTop = <span class="hljs-function">() =&gt;</span> heap.length &gt; <span class="hljs-number">1</span> ? heap[<span class="hljs-number">1</span>] : <span class="hljs-literal">null</span><br>  <span class="hljs-built_in">this</span>.insert = <span class="hljs-function"><span class="hljs-params">num</span> =&gt;</span> &#123;<br>    heap.push(num)<br>    <span class="hljs-keyword">let</span> i = heap.length - <span class="hljs-number">1</span><br>    <span class="hljs-keyword">while</span>(<span class="hljs-built_in">Math</span>.floor(i/<span class="hljs-number">2</span>)&gt;<span class="hljs-number">0</span> &amp;&amp; heap[i] &lt; heap[<span class="hljs-built_in">Math</span>.floor(i/<span class="hljs-number">2</span>)])&#123;<br>      <span class="hljs-comment">// 小顶堆，与父节点比较，小于则交换</span><br>      [heap[i],heap[<span class="hljs-built_in">Math</span>.floor(i/<span class="hljs-number">2</span>)]] = [heap[<span class="hljs-built_in">Math</span>.floor(i/<span class="hljs-number">2</span>)],heap[i]]<br>      i = <span class="hljs-built_in">Math</span>.floor(i/<span class="hljs-number">2</span>)<br>    &#125;<br>  &#125;<br>  <span class="hljs-built_in">this</span>.rmTop = <span class="hljs-function">() =&gt;</span> &#123;<br>    <span class="hljs-keyword">if</span>(!heap.length&gt;<span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span><br>    <span class="hljs-keyword">if</span>(heap.length === <span class="hljs-number">2</span>) <span class="hljs-keyword">return</span> heap.pop()<br>    <span class="hljs-keyword">const</span> num = heap[<span class="hljs-number">1</span>]<br>    heap[<span class="hljs-number">1</span>] = heap.pop()<br>    heapify(<span class="hljs-number">1</span>)<br>    <span class="hljs-keyword">return</span> num<br>  &#125;<br>  heapify = <span class="hljs-function"><span class="hljs-params">i</span> =&gt;</span> &#123;<br>    <span class="hljs-keyword">const</span> heapSize = heap.length - <span class="hljs-number">1</span><br>    <span class="hljs-keyword">while</span>(<span class="hljs-literal">true</span>)&#123;<br>      <span class="hljs-keyword">let</span> minIndex = i<br>      <span class="hljs-keyword">if</span>(<span class="hljs-number">2</span>*<span class="hljs-number">1</span> &lt;= heapSize &amp;&amp; heap[<span class="hljs-number">2</span>*i] &lt; heap[i]) minIndex = <span class="hljs-number">2</span>*i<br>      <span class="hljs-keyword">if</span>(<span class="hljs-number">2</span>*i+<span class="hljs-number">1</span> &lt;= heapSize &amp;&amp; heap[<span class="hljs-number">2</span>*i+<span class="hljs-number">1</span>] &lt; heap[minIndex]) minIndex = <span class="hljs-number">2</span>*i+<span class="hljs-number">1</span><br>      <span class="hljs-keyword">if</span>(minIndex === i) <span class="hljs-keyword">break</span><br>      [heap[i],heap[minIndex]] = [heap[minIndex],heap[i]]<br>      <span class="hljs-comment">// 重新赋值i开始下级循环</span><br>      i = minIndex<br>    &#125;<br>  &#125;<br>&#125;<br><br><br><span class="hljs-comment">// 二分查找法</span><br><span class="hljs-keyword">const</span> MedianFinder = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>  <span class="hljs-built_in">this</span>.data = []<br>&#125;<br>MedianFinder.prototype.addMun = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">num</span>)</span>&#123;<br>  <span class="hljs-keyword">const</span> data = <span class="hljs-built_in">this</span>.data<br>  <span class="hljs-keyword">if</span>(data.length&lt;<span class="hljs-number">1</span>)&#123;<br>    data.push(num)<br>    <span class="hljs-keyword">return</span> <br>  &#125;<br>  <span class="hljs-keyword">let</span> L = <span class="hljs-number">0</span><br>  <span class="hljs-keyword">let</span> R = data.length - <span class="hljs-number">1</span><br>  <span class="hljs-keyword">while</span>(L&lt;=R)&#123;<br>    <span class="hljs-keyword">let</span> M = <span class="hljs-built_in">Math</span>.floor((L+R)/<span class="hljs-number">2</span>)<br>    <span class="hljs-keyword">if</span>(data[M]===num)&#123;<br>      data.splice(M,<span class="hljs-number">0</span>,num)<br>      <span class="hljs-keyword">return</span> <br>    &#125;<br>    <span class="hljs-keyword">if</span>(data[M]&lt;num)&#123;<br>      L ++<br>    &#125;<span class="hljs-keyword">else</span>&#123;<br>      R --<br>    &#125;<br>  &#125;<br>  data.splice(R+<span class="hljs-number">1</span>,<span class="hljs-number">0</span>,num)<br>&#125;<br>MedianFinder.prototype.findMedian = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-keyword">const</span> len = <span class="hljs-built_in">this</span>.data.length<br>  <span class="hljs-keyword">if</span>(!len) <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span><br>  <span class="hljs-keyword">const</span> mid = <span class="hljs-built_in">Math</span>.floor((len-<span class="hljs-number">1</span>)/<span class="hljs-number">2</span>)<br>  <span class="hljs-keyword">if</span>(len%<span class="hljs-number">2</span>===<span class="hljs-number">0</span>)&#123;<br>    <span class="hljs-keyword">return</span> (<span class="hljs-built_in">this</span>.data[mid]+ <span class="hljs-built_in">this</span>.data[mid+<span class="hljs-number">1</span>])/<span class="hljs-number">2</span><br>  &#125;<span class="hljs-keyword">else</span>&#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.data[mid]<br>  &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
 
-  <span class="hljs-keyword">if</span>(<span class="hljs-keyword">this</span>.maxHeap.getSize() - <span class="hljs-keyword">this</span>.minHeap.getSize() &gt; <span class="hljs-number">1</span>)&#123;
-    <span class="hljs-comment">//奇数分布</span>
-    <span class="hljs-comment">//大顶堆size比小顶堆大1</span>
-    <span class="hljs-keyword">this</span>.minHeap.insert(<span class="hljs-keyword">this</span>.maxHeap.rmTop())
-    <span class="hljs-comment">//不符合则大顶堆顶插入小顶堆</span>
-  &#125;
-  <span class="hljs-keyword">if</span>(<span class="hljs-keyword">this</span>.minHeap.getSize() &gt; <span class="hljs-keyword">this</span>.maxHeap.getSize())&#123;
-    <span class="hljs-keyword">this</span>.maxHeap.insert(<span class="hljs-keyword">this</span>.minHeap.rmTop())
-    <span class="hljs-comment">// </span>
-  &#125;
-&#125;
-Median.prototype.getMedianNum = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;
-  <span class="hljs-comment">// return console.log(this.maxHeap.getSize());</span>
-  <span class="hljs-keyword">if</span>(<span class="hljs-keyword">this</span>.maxHeap.getSize() &amp;&amp; <span class="hljs-keyword">this</span>.maxHeap.getSize() === <span class="hljs-keyword">this</span>.minHeap.getSize())&#123;
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-number">1</span>);
-    <span class="hljs-keyword">return</span> (<span class="hljs-keyword">this</span>.maxHeap.getTop() + <span class="hljs-keyword">this</span>.minHeap.getTop())/<span class="hljs-number">2</span>
-  &#125;
-  <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.maxHeap.getTop()
-&#125;
-
-<span class="hljs-comment">// 大顶堆</span>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">MaxHeap</span>(<span class="hljs-params"></span>)</span>&#123;
-  <span class="hljs-keyword">const</span> heap = [,]
-  <span class="hljs-keyword">this</span>.getSize = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> heap.length - <span class="hljs-number">1</span>
-  <span class="hljs-keyword">this</span>.getTop = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> heap.length &gt; <span class="hljs-number">1</span> ? heap[<span class="hljs-number">1</span>] : <span class="hljs-literal">null</span>
-  <span class="hljs-keyword">this</span>.insert = <span class="hljs-function"><span class="hljs-params">num</span> =&gt;</span> &#123;
-    <span class="hljs-comment">//插入式建堆</span>
-    heap.push(num)
-    <span class="hljs-keyword">let</span> i = heap.length - <span class="hljs-number">1</span>
-    <span class="hljs-comment">// push 进去的索引</span>
-    <span class="hljs-keyword">while</span>(<span class="hljs-built_in">Math</span>.floor(i/<span class="hljs-number">2</span>)&gt;<span class="hljs-number">0</span> &amp;&amp; heap[i] &gt; heap[<span class="hljs-built_in">Math</span>.floor(i/<span class="hljs-number">2</span>)])&#123;
-      <span class="hljs-comment">// 大顶堆，与父节点比较，大于则交换</span>
-      [heap[i],heap[<span class="hljs-built_in">Math</span>.floor(i/<span class="hljs-number">2</span>)]] = [heap[<span class="hljs-built_in">Math</span>.floor(i/<span class="hljs-number">2</span>)],heap[i]]
-      i = <span class="hljs-built_in">Math</span>.floor(i/<span class="hljs-number">2</span>)
-    &#125;
-  &#125;
-  <span class="hljs-keyword">this</span>.rmTop = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> &#123;
-    <span class="hljs-keyword">if</span>(!heap.length &gt; <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>
-    <span class="hljs-keyword">if</span>(heap.length === <span class="hljs-number">2</span>) <span class="hljs-keyword">return</span> heap.pop()
-    <span class="hljs-keyword">const</span> num = heap[<span class="hljs-number">1</span>]
-    heap[<span class="hljs-number">1</span>] = heap.pop()<span class="hljs-comment">// 拿走了top值，并用末尾节点填充</span>
-    heapify(<span class="hljs-number">1</span>)
-    <span class="hljs-keyword">return</span> num
-  &#125;
-  <span class="hljs-keyword">const</span> heapify = <span class="hljs-function"><span class="hljs-params">i</span> =&gt;</span> &#123;
-    <span class="hljs-comment">// 堆化</span>
-    <span class="hljs-keyword">const</span> heapSize = heap.length - <span class="hljs-number">1</span>
-    <span class="hljs-keyword">while</span>(<span class="hljs-literal">true</span>)&#123;
-      <span class="hljs-keyword">let</span> maxIndex = i
-      <span class="hljs-keyword">if</span>(<span class="hljs-number">2</span>*<span class="hljs-number">1</span> &lt;= heapSize &amp;&amp; heap[<span class="hljs-number">2</span>*i] &gt; heap[i]) maxIndex = <span class="hljs-number">2</span>*i
-      <span class="hljs-keyword">if</span>(<span class="hljs-number">2</span>*i+<span class="hljs-number">1</span> &lt;= heapSize &amp;&amp; heap[<span class="hljs-number">2</span>*i+<span class="hljs-number">1</span>] &gt; heap[maxIndex]) maxIndex = <span class="hljs-number">2</span>*i+<span class="hljs-number">1</span> <span class="hljs-comment">// !!!!!!</span>
-      <span class="hljs-keyword">if</span>(maxIndex === i) <span class="hljs-keyword">break</span>
-      [heap[i],heap[maxIndex]] = [heap[maxIndex],heap[i]]
-      <span class="hljs-comment">// 重新赋值i开始下级循环</span>
-      i = maxIndex
-    &#125;
-  &#125;
-&#125;
-
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">MinHeap</span>(<span class="hljs-params"></span>)</span>&#123;
-  <span class="hljs-keyword">const</span> heap = [,]
-  <span class="hljs-keyword">this</span>.getSize = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> heap.length - <span class="hljs-number">1</span>
-  <span class="hljs-keyword">this</span>.getTop = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> heap.length &gt; <span class="hljs-number">1</span> ? heap[<span class="hljs-number">1</span>] : <span class="hljs-literal">null</span>
-  <span class="hljs-keyword">this</span>.insert = <span class="hljs-function"><span class="hljs-params">num</span> =&gt;</span> &#123;
-    heap.push(num)
-    <span class="hljs-keyword">let</span> i = heap.length - <span class="hljs-number">1</span>
-    <span class="hljs-keyword">while</span>(<span class="hljs-built_in">Math</span>.floor(i/<span class="hljs-number">2</span>)&gt;<span class="hljs-number">0</span> &amp;&amp; heap[i] &lt; heap[<span class="hljs-built_in">Math</span>.floor(i/<span class="hljs-number">2</span>)])&#123;
-      <span class="hljs-comment">// 小顶堆，与父节点比较，小于则交换</span>
-      [heap[i],heap[<span class="hljs-built_in">Math</span>.floor(i/<span class="hljs-number">2</span>)]] = [heap[<span class="hljs-built_in">Math</span>.floor(i/<span class="hljs-number">2</span>)],heap[i]]
-      i = <span class="hljs-built_in">Math</span>.floor(i/<span class="hljs-number">2</span>)
-    &#125;
-  &#125;
-  <span class="hljs-keyword">this</span>.rmTop = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> &#123;
-    <span class="hljs-keyword">if</span>(!heap.length&gt;<span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>
-    <span class="hljs-keyword">if</span>(heap.length === <span class="hljs-number">2</span>) <span class="hljs-keyword">return</span> heap.pop()
-    <span class="hljs-keyword">const</span> num = heap[<span class="hljs-number">1</span>]
-    heap[<span class="hljs-number">1</span>] = heap.pop()
-    heapify(<span class="hljs-number">1</span>)
-    <span class="hljs-keyword">return</span> num
-  &#125;
-  heapify = <span class="hljs-function"><span class="hljs-params">i</span> =&gt;</span> &#123;
-    <span class="hljs-keyword">const</span> heapSize = heap.length - <span class="hljs-number">1</span>
-    <span class="hljs-keyword">while</span>(<span class="hljs-literal">true</span>)&#123;
-      <span class="hljs-keyword">let</span> minIndex = i
-      <span class="hljs-keyword">if</span>(<span class="hljs-number">2</span>*<span class="hljs-number">1</span> &lt;= heapSize &amp;&amp; heap[<span class="hljs-number">2</span>*i] &lt; heap[i]) minIndex = <span class="hljs-number">2</span>*i
-      <span class="hljs-keyword">if</span>(<span class="hljs-number">2</span>*i+<span class="hljs-number">1</span> &lt;= heapSize &amp;&amp; heap[<span class="hljs-number">2</span>*i+<span class="hljs-number">1</span>] &lt; heap[minIndex]) minIndex = <span class="hljs-number">2</span>*i+<span class="hljs-number">1</span>
-      <span class="hljs-keyword">if</span>(minIndex === i) <span class="hljs-keyword">break</span>
-      [heap[i],heap[minIndex]] = [heap[minIndex],heap[i]]
-      <span class="hljs-comment">// 重新赋值i开始下级循环</span>
-      i = minIndex
-    &#125;
-  &#125;
-&#125;
-
-
-<span class="hljs-comment">// 二分查找法</span>
-<span class="hljs-keyword">const</span> MedianFinder = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;
-  <span class="hljs-keyword">this</span>.data = []
-&#125;
-MedianFinder.prototype.addMun = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">num</span>)</span>&#123;
-  <span class="hljs-keyword">const</span> data = <span class="hljs-keyword">this</span>.data
-  <span class="hljs-keyword">if</span>(data.length&lt;<span class="hljs-number">1</span>)&#123;
-    data.push(num)
-    <span class="hljs-keyword">return</span> 
-  &#125;
-  <span class="hljs-keyword">let</span> L = <span class="hljs-number">0</span>
-  <span class="hljs-keyword">let</span> R = data.length - <span class="hljs-number">1</span>
-  <span class="hljs-keyword">while</span>(L&lt;=R)&#123;
-    <span class="hljs-keyword">let</span> M = <span class="hljs-built_in">Math</span>.floor((L+R)/<span class="hljs-number">2</span>)
-    <span class="hljs-keyword">if</span>(data[M]===num)&#123;
-      data.splice(M,<span class="hljs-number">0</span>,num)
-      <span class="hljs-keyword">return</span> 
-    &#125;
-    <span class="hljs-keyword">if</span>(data[M]&lt;num)&#123;
-      L ++
-    &#125;<span class="hljs-keyword">else</span>&#123;
-      R --
-    &#125;
-  &#125;
-  data.splice(R+<span class="hljs-number">1</span>,<span class="hljs-number">0</span>,num)
-&#125;
-MedianFinder.prototype.findMedian = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;
-  <span class="hljs-keyword">const</span> len = <span class="hljs-keyword">this</span>.data.length
-  <span class="hljs-keyword">if</span>(!len) <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>
-  <span class="hljs-keyword">const</span> mid = <span class="hljs-built_in">Math</span>.floor((len<span class="hljs-number">-1</span>)/<span class="hljs-number">2</span>)
-  <span class="hljs-keyword">if</span>(len%<span class="hljs-number">2</span>===<span class="hljs-number">0</span>)&#123;
-    <span class="hljs-keyword">return</span> (<span class="hljs-keyword">this</span>.data[mid]+ <span class="hljs-keyword">this</span>.data[mid+<span class="hljs-number">1</span>])/<span class="hljs-number">2</span>
-  &#125;<span class="hljs-keyword">else</span>&#123;
-    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.data[mid]
-  &#125;
-&#125;</code></pre></div>
-
-<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-comment">// 二分查找元素</span>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">binaryFind</span>(<span class="hljs-params">arr,target,s=<span class="hljs-number">0</span>,e=arr.length<span class="hljs-number">-1</span></span>)</span>&#123;
-  <span class="hljs-keyword">const</span> i  = <span class="hljs-built_in">Math</span>.floor((s+e)/<span class="hljs-number">2</span>)
-  <span class="hljs-keyword">if</span>(arr[i]===target)&#123;
-    <span class="hljs-keyword">return</span> i
-  &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(arr[i]&gt;target)&#123;
-    <span class="hljs-keyword">return</span> binaryFind(arr,target,s,i<span class="hljs-number">-1</span>)
-  &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(arr[i]&lt;target)&#123;
-    <span class="hljs-keyword">return</span> binaryFind(arr,target,i+<span class="hljs-number">1</span>,e)
-  &#125;
-  <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>
-&#125;
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">binaryFind2</span>(<span class="hljs-params">arr,target</span>)</span>&#123;
-  <span class="hljs-keyword">let</span> s = <span class="hljs-number">0</span>,e = arr.length<span class="hljs-number">-1</span>,mid
-  <span class="hljs-keyword">while</span>(s&lt;=e)&#123;
-    mid = <span class="hljs-built_in">Math</span>.floor((s+e)/<span class="hljs-number">2</span>)
-    <span class="hljs-keyword">if</span>(arr[mid] === target)&#123;
-      <span class="hljs-keyword">return</span> mid
-    &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(arr[mid] &gt; target)&#123;
-      e = mid - <span class="hljs-number">1</span> 
-    &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(arr[mid] &lt; target)&#123;
-      s = mid + <span class="hljs-number">1</span>
-    &#125;
-  &#125;
-  <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>
-&#125;
-<span class="hljs-keyword">let</span> arr = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>,<span class="hljs-number">7</span>,<span class="hljs-number">8</span>,<span class="hljs-number">9</span>]
-<span class="hljs-built_in">console</span>.log(binaryFind2(arr,<span class="hljs-number">9</span>));</code></pre></div>
+<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// 二分查找元素</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">binaryFind</span>(<span class="hljs-params">arr,target,s=<span class="hljs-number">0</span>,e=arr.length-<span class="hljs-number">1</span></span>)</span>&#123;<br>  <span class="hljs-keyword">const</span> i  = <span class="hljs-built_in">Math</span>.floor((s+e)/<span class="hljs-number">2</span>)<br>  <span class="hljs-keyword">if</span>(arr[i]===target)&#123;<br>    <span class="hljs-keyword">return</span> i<br>  &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(arr[i]&gt;target)&#123;<br>    <span class="hljs-keyword">return</span> binaryFind(arr,target,s,i-<span class="hljs-number">1</span>)<br>  &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(arr[i]&lt;target)&#123;<br>    <span class="hljs-keyword">return</span> binaryFind(arr,target,i+<span class="hljs-number">1</span>,e)<br>  &#125;<br>  <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span><br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">binaryFind2</span>(<span class="hljs-params">arr,target</span>)</span>&#123;<br>  <span class="hljs-keyword">let</span> s = <span class="hljs-number">0</span>,e = arr.length-<span class="hljs-number">1</span>,mid<br>  <span class="hljs-keyword">while</span>(s&lt;=e)&#123;<br>    mid = <span class="hljs-built_in">Math</span>.floor((s+e)/<span class="hljs-number">2</span>)<br>    <span class="hljs-keyword">if</span>(arr[mid] === target)&#123;<br>      <span class="hljs-keyword">return</span> mid<br>    &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(arr[mid] &gt; target)&#123;<br>      e = mid - <span class="hljs-number">1</span> <br>    &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(arr[mid] &lt; target)&#123;<br>      s = mid + <span class="hljs-number">1</span><br>    &#125;<br>  &#125;<br>  <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span><br>&#125;<br><span class="hljs-keyword">let</span> arr = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>,<span class="hljs-number">7</span>,<span class="hljs-number">8</span>,<span class="hljs-number">9</span>]<br><span class="hljs-built_in">console</span>.log(binaryFind2(arr,<span class="hljs-number">9</span>));<br></code></pre></div></td></tr></table></figure>
             </div>
             <hr>
             <div>
@@ -554,10 +320,14 @@ MedianFinder.prototype.findMedian = <span class="hljs-function"><span class="hlj
                 
               </div>
               
-                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
               
               
-                <div class="post-prevnext row">
+                <div class="post-prevnext">
                   <article class="post-prev col-6">
                     
                     
@@ -583,6 +353,30 @@ MedianFinder.prototype.findMedian = <span class="hljs-function"><span class="hlj
             </div>
 
             
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="twikoo"></div>
+  <script type="text/javascript">
+    Fluid.utils.lazyComments('comments', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/twikoo@1.3.0/dist/twikoo.all.min.js', function() {
+        twikoo.init({
+          el: '#twikoo',
+          envId: 'blog-1glh2chxcbf8757a',
+          region: 'ap-shanghai',
+          path: 'window.location.pathname',
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
           </article>
         </div>
       </div>
@@ -591,7 +385,7 @@ MedianFinder.prototype.findMedian = <span class="hljs-function"><span class="hlj
       <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
         <div id="toc">
   <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
-  <div id="tocbot"></div>
+  <div class="toc-body" id="toc-body"></div>
 </div>
 
       </div>
@@ -603,16 +397,15 @@ MedianFinder.prototype.findMedian = <span class="hljs-function"><span class="hlj
 
 
     
-  </main>
 
-  
-    <a id="scroll-top-button" href="#" role="button">
-      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
-    </a>
-  
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
 
-  
-    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
      aria-hidden="true">
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
@@ -633,21 +426,16 @@ MedianFinder.prototype.findMedian = <span class="hljs-function"><span class="hlj
     </div>
   </div>
 </div>
-  
-
-  
-
-  
-
-  <footer class="mt-5">
-  <div class="text-center py-3">
-    <div>
-      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
-      <i class="iconfont icon-love"></i>
-      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
-        <span>Fluid</span></a>
-    </div>
     
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+  </div>
+  
   <div class="statistics">
     
     
@@ -673,30 +461,47 @@ MedianFinder.prototype.findMedian = <span class="hljs-function"><span class="hlj
   </div>
 
 
-    
+  
   <!-- 备案信息 -->
   <div class="beian">
-    <a href="http://beian.miit.gov.cn/" target="_blank"
-       rel="nofollow noopener">粤ICP备2020115702号</a>
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        粤ICP备2020115702号
+      </a>
+    </span>
     
   </div>
 
 
-    
-  </div>
+  
 </footer>
 
-<!-- SCRIPTS -->
-<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
-<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
 <script  src="/js/debouncer.js" ></script>
-<script  src="/js/main.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
 
 <!-- Plugins -->
 
 
   
-    <script  src="/js/lazyload.js" ></script>
+    <script  src="/js/img-lazyload.js" ></script>
   
 
 
@@ -705,8 +510,19 @@ MedianFinder.prototype.findMedian = <span class="hljs-function"><span class="hlj
 
 
 
-  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
-  <script  src="/js/clipboard-use.js" ></script>
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
 
 
 
@@ -715,95 +531,30 @@ MedianFinder.prototype.findMedian = <span class="hljs-function"><span class="hlj
 
 
 
-
-  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
   <script>
-    $(document).ready(function () {
-      var boardCtn = $('#board-ctn');
-      var boardTop = boardCtn.offset().top;
-
-      tocbot.init({
-        tocSelector: '#tocbot',
-        contentSelector: '#post-body',
-        headingSelector: 'h1,h2,h3,h4,h5,h6',
-        linkClass: 'tocbot-link',
-        activeLinkClass: 'tocbot-active-link',
-        listClass: 'tocbot-list',
-        isCollapsedClass: 'tocbot-is-collapsed',
-        collapsibleClass: 'tocbot-is-collapsible',
-        collapseDepth: 0,
-        scrollSmooth: true,
-        headingsOffset: -boardTop
-      });
-      if ($('.toc-list-item').length > 0) {
-        $('#toc').css('visibility', 'visible');
-      }
-    });
-  </script>
-
-
-
-  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
-  <script>
-    var typed = new Typed('#subtitle', {
-      strings: [
-        '  ',
-        "堆及相关算法&nbsp;",
-      ],
-      cursorChar: "_",
-      typeSpeed: 70,
-      loop: false,
-    });
-    typed.stop();
-    $(document).ready(function () {
-      $(".typed-cursor").addClass("h2");
-      typed.start();
-    });
-  </script>
-
-
-
-  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
-  <script>
-    anchors.options = {
-      placement: "right",
-      visible: "hover",
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
       
-    };
-    var el = "h1,h2,h3,h4,h5,h6".split(",");
-    var res = [];
-    for (item of el) {
-      res.push(".markdown-body > " + item)
-    }
-    anchors.add(res.join(", "))
+      typing(title)
+      
+    })(window, document);
   </script>
 
 
 
   <script  src="/js/local-search.js" ></script>
   <script>
-    var path = "/local-search.xml";
-    var inputArea = document.querySelector("#local-search-input");
-    inputArea.onclick = function () {
-      searchFunc(path, 'local-search-input', 'local-search-result');
-      this.onclick = null
-    }
-  </script>
-
-
-
-  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
-
-  <script>
-    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
-      function () {
-        var element = document.createElement('a');
-        $(element).attr('data-fancybox', 'images');
-        $(element).attr('href', $(this).attr('src'));
-        $(this).wrap(element);
-      }
-    );
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
   </script>
 
 
@@ -820,33 +571,8 @@ MedianFinder.prototype.findMedian = <span class="hljs-function"><span class="hlj
 
 
 
-
-
-  
-    <!-- Baidu Analytics -->
-    <script defer>
-      var _hmt = _hmt || [];
-      (function () {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?048f7ae77dbb92c9d2c83ca3df99d02f";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-      })();
-    </script>
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-
-
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
 
 
 </body>

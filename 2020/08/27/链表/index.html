@@ -1,14 +1,14 @@
 
 
 <!DOCTYPE html>
-<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+<html lang="zh-CN" data-default-color-scheme=&#34;dark&#34;>
 
 
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.jpeg">
-  <link rel="icon" type="image/png" href="/img/avatar.jpeg">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
   <meta name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -17,28 +17,32 @@
   <meta name="description" content="">
   <meta name="author" content="tatekii">
   <meta name="keywords" content="">
+  
   <title>链表 - 不知名的笔记本</title>
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
   <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
   
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/tomorrow-night-eighties.min.css" />
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/atom-one-dark.min.css" />
     
   
 
   
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
 
 
 <!-- 主题依赖的图标库，不要自行修改 -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_pf9vaxs7x7b.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
 
 
 
@@ -50,17 +54,21 @@
 <!-- 自定义样式保持在最底部 -->
 
 
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","version":"1.8.9-a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":"#"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 5.4.0"></head>
 
 
 <body>
-  <header style="height: 30vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
-       href="/">&nbsp;<strong>Dr.🐎</strong>&nbsp;</a>
+       href="/">&nbsp;<strong>Dr🐎 Note</strong>&nbsp;</a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent"
@@ -92,6 +100,18 @@
               <a class="nav-link" href="/archives/">
                 <i class="iconfont icon-archive-fill"></i>
                 归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
               </a>
             </li>
           
@@ -137,13 +157,13 @@
   </div>
 </nav>
 
-    <div class="banner intro-2" id="background" parallax=true
+    <div class="banner" id="banner" parallax=true
          style="background: url('/img/default.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="container page-header text-center fade-in-up">
-            <span class="h2" id="subtitle">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="链表">
               
             </span>
 
@@ -182,6 +202,14 @@
 
   
   
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
 </div>
 
             
@@ -197,17 +225,23 @@
     
       
 
-<div class="container-fluid">
-  <div class="row">
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
     <div class="d-none d-lg-block col-lg-2"></div>
-    <div class="col-lg-8 nopadding-md">
-      <div class="container nopadding-md" id="board-ctn">
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
         <div class="py-5" id="board">
-          <article class="post-content mx-auto" id="post">
+          <article class="post-content mx-auto">
             <!-- SEO header -->
             <h1 style="display: none">链表</h1>
             
-            <div class="markdown-body" id="post-body">
+              <p class="note note-info">
+                
+                  本文最后更新于：2020年9月17日 上午
+                
+              </p>
+            
+            <div class="markdown-body">
               <h2 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h2><ul>
 <li>数组需要申请连续的内存空间，链表可以使用“零散的”内存空间</li>
 <li>插入/删除时间复杂度<code>O(1)</code></li>
@@ -234,197 +268,7 @@
 <p><code>headNode.prev = tailNode</code><br><code>tailNode.next = headNode</code></p>
 </li>
 </ul>
-<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><div class="hljs"><pre><code class="hljs javascript"><span class="hljs-comment">// 单向链表</span>
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">linkedList</span> </span>&#123;
-  <span class="hljs-keyword">constructor</span>() &#123;
-    <span class="hljs-keyword">this</span>.head = <span class="hljs-literal">null</span>;
-    <span class="hljs-keyword">this</span>.length = <span class="hljs-number">0</span>;
-  &#125;
-  <span class="hljs-comment">// 追加</span>
-  append(element) &#123;
-    <span class="hljs-keyword">const</span> n = <span class="hljs-keyword">new</span> Node(element);
-    <span class="hljs-keyword">let</span> cur = <span class="hljs-keyword">this</span>.head;
-    <span class="hljs-keyword">if</span> (!<span class="hljs-keyword">this</span>.head) &#123;
-      <span class="hljs-keyword">this</span>.head = n;
-    &#125; <span class="hljs-keyword">else</span> &#123;
-      <span class="hljs-keyword">while</span> (cur.next) &#123;
-        cur = cur.next;
-      &#125;
-      cur.next = n;
-      <span class="hljs-keyword">this</span>.length++;
-    &#125;
-  &#125;
-  <span class="hljs-comment">// 查找</span>
-  search(element) &#123;
-    <span class="hljs-keyword">let</span> cur = <span class="hljs-keyword">this</span>.head;
-    <span class="hljs-keyword">if</span> (!cur) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
-    <span class="hljs-keyword">while</span> (cur) &#123;
-      <span class="hljs-keyword">if</span> (cur.element === element) &#123;
-        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
-      &#125;
-      cur = cur.next;
-    &#125;
-    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
-  &#125;
-  <span class="hljs-comment">// 插入</span>
-  <span class="hljs-comment">// position之前插入新node</span>
-  insert(position, element) &#123;
-    <span class="hljs-keyword">if</span> (position &gt;= <span class="hljs-number">0</span> &amp;&amp; position &lt;= <span class="hljs-keyword">this</span>.length) &#123;
-      <span class="hljs-keyword">let</span> n = <span class="hljs-keyword">new</span> Node(element);
-      <span class="hljs-keyword">if</span> (position === <span class="hljs-number">0</span>) &#123;
-        n.next = <span class="hljs-keyword">this</span>.head;
-        <span class="hljs-keyword">this</span>.head = n;
-      &#125; <span class="hljs-keyword">else</span> &#123;
-        <span class="hljs-keyword">let</span> cur = <span class="hljs-keyword">this</span>.head,pre
-        <span class="hljs-keyword">let</span> index = <span class="hljs-number">0</span>;
-        <span class="hljs-keyword">while</span> (index &lt; position) &#123;
-          pre = cur;
-          cur = cur.next;
-          index++;
-        &#125;
-        pre.next = n;
-        n.next = cur;
-      &#125;
-      <span class="hljs-keyword">this</span>.length++;
-    &#125; <span class="hljs-keyword">else</span> &#123;
-      <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
-    &#125;
-  &#125;
-  <span class="hljs-comment">// 删除</span>
-  remove(element) &#123;
-    <span class="hljs-keyword">let</span> cur = <span class="hljs-keyword">this</span>.head,
-      pre = <span class="hljs-keyword">this</span>.head
-    <span class="hljs-keyword">if</span> (!<span class="hljs-keyword">this</span>.head) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
-    <span class="hljs-keyword">while</span> (cur) &#123;
-      <span class="hljs-keyword">if</span> (cur.element === element) &#123;
-        cur = cur.next;
-        pre.next = cur;
-        <span class="hljs-keyword">this</span>.length -- 
-      &#125;
-      pre = cur
-      cur = cur.next;
-    &#125;
-  &#125;
-&#125;
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Node</span> </span>&#123;
-  <span class="hljs-keyword">constructor</span>(element) &#123;
-    <span class="hljs-keyword">this</span>.element = element;
-    <span class="hljs-keyword">this</span>.next = <span class="hljs-literal">null</span>;
-  &#125;
-&#125;
-
-
-<span class="hljs-comment">// 双向链表</span>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">DubLinkedList</span>(<span class="hljs-params">params</span>) </span>&#123;
-  <span class="hljs-keyword">const</span> Node = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">element</span>) </span>&#123;
-    <span class="hljs-keyword">this</span>.prev = <span class="hljs-literal">null</span>;
-    <span class="hljs-keyword">this</span>.next = <span class="hljs-literal">null</span>;
-    <span class="hljs-keyword">this</span>.element = element;
-  &#125;;
-  <span class="hljs-keyword">this</span>.head = <span class="hljs-literal">null</span>;
-  <span class="hljs-keyword">this</span>.tail = <span class="hljs-literal">null</span>;
-  <span class="hljs-keyword">this</span>.length = <span class="hljs-number">0</span>;
-
-  <span class="hljs-keyword">this</span>.append = <span class="hljs-function">(<span class="hljs-params">element</span>) =&gt;</span> &#123;
-    <span class="hljs-keyword">let</span> newNode = <span class="hljs-keyword">new</span> Node(element);
-    <span class="hljs-keyword">let</span> cur = <span class="hljs-keyword">this</span>.head;
-    <span class="hljs-keyword">if</span> (!cur) &#123;
-      <span class="hljs-keyword">this</span>.head = newNode;
-      <span class="hljs-keyword">this</span>.tail = newNode;
-    &#125; <span class="hljs-keyword">else</span> &#123;
-      <span class="hljs-keyword">while</span> (cur.next) &#123;
-        cur = cur.next;
-      &#125;
-      cur.next = newNode
-      newNode.prev = cur
-      <span class="hljs-keyword">this</span>.tail = newNode
-    &#125;
-    <span class="hljs-keyword">this</span>.length++;
-  &#125;
-
-  <span class="hljs-keyword">this</span>.insert = <span class="hljs-function">(<span class="hljs-params">position,element</span>) =&gt;</span> &#123;
-    <span class="hljs-keyword">if</span>(position&gt;=<span class="hljs-number">0</span> &amp;&amp; position &lt;=<span class="hljs-keyword">this</span>.length)&#123;
-      <span class="hljs-keyword">let</span> newNode = <span class="hljs-keyword">new</span> Node(element)
-      <span class="hljs-keyword">let</span> cur = <span class="hljs-keyword">this</span>.head,pre
-      <span class="hljs-keyword">let</span> index = <span class="hljs-number">0</span>
-
-      <span class="hljs-keyword">if</span>(position===<span class="hljs-number">0</span>)&#123;
-        <span class="hljs-comment">//头</span>
-        <span class="hljs-keyword">if</span>(!cur)&#123;
-          <span class="hljs-keyword">this</span>.head = newNode;
-          <span class="hljs-keyword">this</span>.tail = newNode;
-        &#125;<span class="hljs-keyword">else</span>&#123;
-          newNode.next = <span class="hljs-keyword">this</span>.head
-          cur.prev = newNode
-          <span class="hljs-keyword">this</span>.head = newNode
-        &#125;
-      &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(position===<span class="hljs-keyword">this</span>.length)&#123;
-        <span class="hljs-comment">//尾巴</span>
-        cur = <span class="hljs-keyword">this</span>.tail
-        cur.prev = newNode
-        newNode.next = cur
-        <span class="hljs-keyword">this</span>.tail = newNode
-      &#125;<span class="hljs-keyword">else</span>&#123;
-        <span class="hljs-keyword">while</span>(index&lt;position)&#123;
-          pre = cur
-          cur = cur.next
-          index++
-        &#125;
-        cur.prev = newNode
-        pre.next = newNode
-        newNode.next = cur
-        newNode.prev = pre
-      &#125;
-      <span class="hljs-keyword">this</span>.length ++
-    &#125;<span class="hljs-keyword">else</span>&#123;
-      <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
-    &#125;
-  &#125;
-  <span class="hljs-keyword">this</span>.remove = <span class="hljs-function"><span class="hljs-params">position</span> =&gt;</span> &#123;
-    <span class="hljs-keyword">if</span>(position&gt;=<span class="hljs-number">0</span> &amp;&amp; position&lt;<span class="hljs-keyword">this</span>.length &amp;&amp; <span class="hljs-keyword">this</span>.length&gt;<span class="hljs-number">0</span>)&#123;
-      <span class="hljs-keyword">let</span> cur = <span class="hljs-keyword">this</span>.head,pre,index = <span class="hljs-number">0</span>
-      <span class="hljs-keyword">if</span>(position===<span class="hljs-number">0</span>)&#123;
-        <span class="hljs-keyword">if</span>(<span class="hljs-keyword">this</span>.length === <span class="hljs-number">1</span>)&#123;
-          <span class="hljs-keyword">this</span>.head = <span class="hljs-literal">null</span>
-          <span class="hljs-keyword">this</span>.tail = <span class="hljs-literal">null</span>
-        &#125;<span class="hljs-keyword">else</span>&#123;
-          cur = cur.next
-          cur.prev = <span class="hljs-literal">null</span>
-          <span class="hljs-keyword">this</span>.head = cur
-        &#125;
-      &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(position===<span class="hljs-keyword">this</span>.length<span class="hljs-number">-1</span>)&#123;
-        cur = <span class="hljs-keyword">this</span>.tail
-        pre = cur.prev
-        pre.next = <span class="hljs-literal">null</span>
-        <span class="hljs-keyword">this</span>.tail = pre
-      &#125;<span class="hljs-keyword">else</span>&#123;
-        <span class="hljs-keyword">while</span>(index&lt;position)&#123;
-          pre = cur
-          cur = cur.next
-          index ++
-        &#125;
-        cur = cur.next
-        pre.next = cur
-        cur.prev = pre
-      &#125;
-      <span class="hljs-keyword">this</span>.length --
-      <span class="hljs-keyword">return</span> cur.element
-    &#125;<span class="hljs-keyword">else</span>&#123;
-      <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>
-    &#125;
-  &#125;
-  <span class="hljs-keyword">this</span>.search = <span class="hljs-function"><span class="hljs-params">element</span> =&gt;</span>&#123;
-    <span class="hljs-keyword">if</span>(!<span class="hljs-keyword">this</span>.head) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
-    <span class="hljs-keyword">let</span> cur = <span class="hljs-keyword">this</span>.head
-    <span class="hljs-keyword">while</span>(cur)&#123;
-      <span class="hljs-keyword">if</span>(cur.element === element)&#123;
-        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>
-      &#125;
-      cur = cur.next
-    &#125;
-    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
-  &#125;
-&#125;</code></pre></div>
+<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// 单向链表</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">linkedList</span> </span>&#123;<br>  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"></span>)</span> &#123;<br>    <span class="hljs-built_in">this</span>.head = <span class="hljs-literal">null</span>;<br>    <span class="hljs-built_in">this</span>.length = <span class="hljs-number">0</span>;<br>  &#125;<br>  <span class="hljs-comment">// 追加</span><br>  <span class="hljs-function"><span class="hljs-title">append</span>(<span class="hljs-params">element</span>)</span> &#123;<br>    <span class="hljs-keyword">const</span> n = <span class="hljs-keyword">new</span> Node(element);<br>    <span class="hljs-keyword">let</span> cur = <span class="hljs-built_in">this</span>.head;<br>    <span class="hljs-keyword">if</span> (!<span class="hljs-built_in">this</span>.head) &#123;<br>      <span class="hljs-built_in">this</span>.head = n;<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>      <span class="hljs-keyword">while</span> (cur.next) &#123;<br>        cur = cur.next;<br>      &#125;<br>      cur.next = n;<br>      <span class="hljs-built_in">this</span>.length++;<br>    &#125;<br>  &#125;<br>  <span class="hljs-comment">// 查找</span><br>  <span class="hljs-function"><span class="hljs-title">search</span>(<span class="hljs-params">element</span>)</span> &#123;<br>    <span class="hljs-keyword">let</span> cur = <span class="hljs-built_in">this</span>.head;<br>    <span class="hljs-keyword">if</span> (!cur) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>    <span class="hljs-keyword">while</span> (cur) &#123;<br>      <span class="hljs-keyword">if</span> (cur.element === element) &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>      &#125;<br>      cur = cur.next;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>  &#125;<br>  <span class="hljs-comment">// 插入</span><br>  <span class="hljs-comment">// position之前插入新node</span><br>  <span class="hljs-function"><span class="hljs-title">insert</span>(<span class="hljs-params">position, element</span>)</span> &#123;<br>    <span class="hljs-keyword">if</span> (position &gt;= <span class="hljs-number">0</span> &amp;&amp; position &lt;= <span class="hljs-built_in">this</span>.length) &#123;<br>      <span class="hljs-keyword">let</span> n = <span class="hljs-keyword">new</span> Node(element);<br>      <span class="hljs-keyword">if</span> (position === <span class="hljs-number">0</span>) &#123;<br>        n.next = <span class="hljs-built_in">this</span>.head;<br>        <span class="hljs-built_in">this</span>.head = n;<br>      &#125; <span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-keyword">let</span> cur = <span class="hljs-built_in">this</span>.head,pre<br>        <span class="hljs-keyword">let</span> index = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">while</span> (index &lt; position) &#123;<br>          pre = cur;<br>          cur = cur.next;<br>          index++;<br>        &#125;<br>        pre.next = n;<br>        n.next = cur;<br>      &#125;<br>      <span class="hljs-built_in">this</span>.length++;<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>      <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>    &#125;<br>  &#125;<br>  <span class="hljs-comment">// 删除</span><br>  <span class="hljs-function"><span class="hljs-title">remove</span>(<span class="hljs-params">element</span>)</span> &#123;<br>    <span class="hljs-keyword">let</span> cur = <span class="hljs-built_in">this</span>.head,<br>      pre = <span class="hljs-built_in">this</span>.head<br>    <span class="hljs-keyword">if</span> (!<span class="hljs-built_in">this</span>.head) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span><br>    <span class="hljs-keyword">while</span> (cur) &#123;<br>      <span class="hljs-keyword">if</span> (cur.element === element) &#123;<br>        cur = cur.next;<br>        pre.next = cur;<br>        <span class="hljs-built_in">this</span>.length -- <br>      &#125;<br>      pre = cur<br>      cur = cur.next;<br>    &#125;<br>  &#125;<br>&#125;<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Node</span> </span>&#123;<br>  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">element</span>)</span> &#123;<br>    <span class="hljs-built_in">this</span>.element = element;<br>    <span class="hljs-built_in">this</span>.next = <span class="hljs-literal">null</span>;<br>  &#125;<br>&#125;<br><br><br><span class="hljs-comment">// 双向链表</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">DubLinkedList</span>(<span class="hljs-params">params</span>) </span>&#123;<br>  <span class="hljs-keyword">const</span> Node = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">element</span>) </span>&#123;<br>    <span class="hljs-built_in">this</span>.prev = <span class="hljs-literal">null</span>;<br>    <span class="hljs-built_in">this</span>.next = <span class="hljs-literal">null</span>;<br>    <span class="hljs-built_in">this</span>.element = element;<br>  &#125;;<br>  <span class="hljs-built_in">this</span>.head = <span class="hljs-literal">null</span>;<br>  <span class="hljs-built_in">this</span>.tail = <span class="hljs-literal">null</span>;<br>  <span class="hljs-built_in">this</span>.length = <span class="hljs-number">0</span>;<br><br>  <span class="hljs-built_in">this</span>.append = <span class="hljs-function">(<span class="hljs-params">element</span>) =&gt;</span> &#123;<br>    <span class="hljs-keyword">let</span> newNode = <span class="hljs-keyword">new</span> Node(element);<br>    <span class="hljs-keyword">let</span> cur = <span class="hljs-built_in">this</span>.head;<br>    <span class="hljs-keyword">if</span> (!cur) &#123;<br>      <span class="hljs-built_in">this</span>.head = newNode;<br>      <span class="hljs-built_in">this</span>.tail = newNode;<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>      <span class="hljs-keyword">while</span> (cur.next) &#123;<br>        cur = cur.next;<br>      &#125;<br>      cur.next = newNode<br>      newNode.prev = cur<br>      <span class="hljs-built_in">this</span>.tail = newNode<br>    &#125;<br>    <span class="hljs-built_in">this</span>.length++;<br>  &#125;<br><br>  <span class="hljs-built_in">this</span>.insert = <span class="hljs-function">(<span class="hljs-params">position,element</span>) =&gt;</span> &#123;<br>    <span class="hljs-keyword">if</span>(position&gt;=<span class="hljs-number">0</span> &amp;&amp; position &lt;=<span class="hljs-built_in">this</span>.length)&#123;<br>      <span class="hljs-keyword">let</span> newNode = <span class="hljs-keyword">new</span> Node(element)<br>      <span class="hljs-keyword">let</span> cur = <span class="hljs-built_in">this</span>.head,pre<br>      <span class="hljs-keyword">let</span> index = <span class="hljs-number">0</span><br><br>      <span class="hljs-keyword">if</span>(position===<span class="hljs-number">0</span>)&#123;<br>        <span class="hljs-comment">//头</span><br>        <span class="hljs-keyword">if</span>(!cur)&#123;<br>          <span class="hljs-built_in">this</span>.head = newNode;<br>          <span class="hljs-built_in">this</span>.tail = newNode;<br>        &#125;<span class="hljs-keyword">else</span>&#123;<br>          newNode.next = <span class="hljs-built_in">this</span>.head<br>          cur.prev = newNode<br>          <span class="hljs-built_in">this</span>.head = newNode<br>        &#125;<br>      &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(position===<span class="hljs-built_in">this</span>.length)&#123;<br>        <span class="hljs-comment">//尾巴</span><br>        cur = <span class="hljs-built_in">this</span>.tail<br>        cur.prev = newNode<br>        newNode.next = cur<br>        <span class="hljs-built_in">this</span>.tail = newNode<br>      &#125;<span class="hljs-keyword">else</span>&#123;<br>        <span class="hljs-keyword">while</span>(index&lt;position)&#123;<br>          pre = cur<br>          cur = cur.next<br>          index++<br>        &#125;<br>        cur.prev = newNode<br>        pre.next = newNode<br>        newNode.next = cur<br>        newNode.prev = pre<br>      &#125;<br>      <span class="hljs-built_in">this</span>.length ++<br>    &#125;<span class="hljs-keyword">else</span>&#123;<br>      <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span><br>    &#125;<br>  &#125;<br>  <span class="hljs-built_in">this</span>.remove = <span class="hljs-function"><span class="hljs-params">position</span> =&gt;</span> &#123;<br>    <span class="hljs-keyword">if</span>(position&gt;=<span class="hljs-number">0</span> &amp;&amp; position&lt;<span class="hljs-built_in">this</span>.length &amp;&amp; <span class="hljs-built_in">this</span>.length&gt;<span class="hljs-number">0</span>)&#123;<br>      <span class="hljs-keyword">let</span> cur = <span class="hljs-built_in">this</span>.head,pre,index = <span class="hljs-number">0</span><br>      <span class="hljs-keyword">if</span>(position===<span class="hljs-number">0</span>)&#123;<br>        <span class="hljs-keyword">if</span>(<span class="hljs-built_in">this</span>.length === <span class="hljs-number">1</span>)&#123;<br>          <span class="hljs-built_in">this</span>.head = <span class="hljs-literal">null</span><br>          <span class="hljs-built_in">this</span>.tail = <span class="hljs-literal">null</span><br>        &#125;<span class="hljs-keyword">else</span>&#123;<br>          cur = cur.next<br>          cur.prev = <span class="hljs-literal">null</span><br>          <span class="hljs-built_in">this</span>.head = cur<br>        &#125;<br>      &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(position===<span class="hljs-built_in">this</span>.length-<span class="hljs-number">1</span>)&#123;<br>        cur = <span class="hljs-built_in">this</span>.tail<br>        pre = cur.prev<br>        pre.next = <span class="hljs-literal">null</span><br>        <span class="hljs-built_in">this</span>.tail = pre<br>      &#125;<span class="hljs-keyword">else</span>&#123;<br>        <span class="hljs-keyword">while</span>(index&lt;position)&#123;<br>          pre = cur<br>          cur = cur.next<br>          index ++<br>        &#125;<br>        cur = cur.next<br>        pre.next = cur<br>        cur.prev = pre<br>      &#125;<br>      <span class="hljs-built_in">this</span>.length --<br>      <span class="hljs-keyword">return</span> cur.element<br>    &#125;<span class="hljs-keyword">else</span>&#123;<br>      <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span><br>    &#125;<br>  &#125;<br>  <span class="hljs-built_in">this</span>.search = <span class="hljs-function"><span class="hljs-params">element</span> =&gt;</span>&#123;<br>    <span class="hljs-keyword">if</span>(!<span class="hljs-built_in">this</span>.head) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span><br>    <span class="hljs-keyword">let</span> cur = <span class="hljs-built_in">this</span>.head<br>    <span class="hljs-keyword">while</span>(cur)&#123;<br>      <span class="hljs-keyword">if</span>(cur.element === element)&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span><br>      &#125;<br>      cur = cur.next<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span><br>  &#125;<br>&#125;<br><br></code></pre></div></td></tr></table></figure>
 <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><h3 id="注意边界情况"><a href="#注意边界情况" class="headerlink" title="注意边界情况"></a>注意边界情况</h3><ul>
 <li>链表为空</li>
 <li>链表只有一个结点</li>
@@ -433,198 +277,21 @@
 </ul>
 <h3 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h3><ul>
 <li><p>单链表反转</p>
-<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">reverseLinkedList</span>(<span class="hljs-params">head</span>)</span>&#123;
-  <span class="hljs-keyword">if</span>(!head) <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>
-  <span class="hljs-keyword">if</span>(!head.next) <span class="hljs-keyword">return</span> head
-  <span class="hljs-keyword">let</span> cur = head
-  <span class="hljs-keyword">let</span> pre = <span class="hljs-literal">null</span>
-  <span class="hljs-keyword">let</span> nex = head.next
-  <span class="hljs-keyword">while</span>(nex)&#123;
-    <span class="hljs-comment">// 当指针没到尾部时</span>
-    <span class="hljs-comment">//</span>
-    cur.next = pre <span class="hljs-comment">// 反转指针</span>
-    <span class="hljs-comment">//</span>
-    pre = cur
-    cur = nex
-    nex = cur.next
-  &#125;
-&#125;</code></pre></div></li>
+<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">reverseLinkedList</span>(<span class="hljs-params">head</span>)</span>&#123;<br>  <span class="hljs-keyword">if</span>(!head) <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span><br>  <span class="hljs-keyword">if</span>(!head.next) <span class="hljs-keyword">return</span> head<br>  <span class="hljs-keyword">let</span> cur = head<br>  <span class="hljs-keyword">let</span> pre = <span class="hljs-literal">null</span><br>  <span class="hljs-keyword">let</span> nex = head.next<br>  <span class="hljs-keyword">while</span>(nex)&#123;<br>    <span class="hljs-comment">// 当指针没到尾部时</span><br>    <span class="hljs-comment">//</span><br>    cur.next = pre <span class="hljs-comment">// 反转指针</span><br>    <span class="hljs-comment">//</span><br>    pre = cur<br>    cur = nex<br>    nex = cur.next<br>  &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure></li>
 <li><p>检测链表是否循环</p>
-<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-comment">//</span>
-<span class="hljs-built_in">JSON</span>.stringify() <span class="hljs-comment">//不能序列化循环链表</span>
-
-<span class="hljs-comment">//标记</span>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isLoop</span>(<span class="hljs-params">head</span>)</span>&#123;
-  <span class="hljs-keyword">if</span>(!head) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
-  <span class="hljs-keyword">let</span> cur = head
-  <span class="hljs-keyword">while</span>(cur)&#123;
-    <span class="hljs-keyword">if</span>(cur.flag) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>
-    cur.flag = <span class="hljs-literal">true</span>
-    cur = cur.next
-  &#125;
-  <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
-&#125;
-
-<span class="hljs-comment">// 快慢指针</span>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isLoop2</span>(<span class="hljs-params">head</span>)</span>&#123;
-  <span class="hljs-keyword">if</span>(!head || !head.next) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
-  <span class="hljs-keyword">let</span> fast = head.next.next
-  <span class="hljs-keyword">let</span> slow = head.next
-  <span class="hljs-keyword">while</span>(slow!==fast)&#123;
-    <span class="hljs-keyword">if</span>(!fast || !fast.next)&#123;
-      <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
-    &#125;
-    fast = fast.next.next
-    slow = slow.next
-  &#125;
-  <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>
-&#125;</code></pre></div>
-</li>
+<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">//</span><br><span class="hljs-built_in">JSON</span>.stringify() <span class="hljs-comment">//不能序列化循环链表</span><br><br><span class="hljs-comment">//标记</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isLoop</span>(<span class="hljs-params">head</span>)</span>&#123;<br>  <span class="hljs-keyword">if</span>(!head) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span><br>  <span class="hljs-keyword">let</span> cur = head<br>  <span class="hljs-keyword">while</span>(cur)&#123;<br>    <span class="hljs-keyword">if</span>(cur.flag) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span><br>    cur.flag = <span class="hljs-literal">true</span><br>    cur = cur.next<br>  &#125;<br>  <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span><br>&#125;<br><br><span class="hljs-comment">// 快慢指针</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isLoop2</span>(<span class="hljs-params">head</span>)</span>&#123;<br>  <span class="hljs-keyword">if</span>(!head || !head.next) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span><br>  <span class="hljs-keyword">let</span> fast = head.next.next<br>  <span class="hljs-keyword">let</span> slow = head.next<br>  <span class="hljs-keyword">while</span>(slow!==fast)&#123;<br>    <span class="hljs-keyword">if</span>(!fast || !fast.next)&#123;<br>      <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span><br>    &#125;<br>    fast = fast.next.next<br>    slow = slow.next<br>  &#125;<br>  <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span><br>&#125;<br></code></pre></div></td></tr></table></figure></li>
 <li><p>合并两个有序链表</p>
-<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">mergeLinkedList</span>(<span class="hljs-params">head1,head2</span>)</span>&#123;
-  <span class="hljs-keyword">if</span>(!head1.value) <span class="hljs-keyword">return</span> head2
-  <span class="hljs-keyword">if</span>(!head2.value) <span class="hljs-keyword">return</span> head1
-  <span class="hljs-keyword">if</span>(head1.value&lt;=head2.value)&#123;
-    head1.next = mergeLinkedList(head1.next,head2)
-    <span class="hljs-keyword">return</span> head1
-  &#125;<span class="hljs-keyword">else</span>&#123;
-    head2.next = mergeLinkedList(head2.next,head1)
-    <span class="hljs-keyword">return</span> head2
-  &#125;
-&#125;</code></pre></div>
-
-
-</li>
+<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">mergeLinkedList</span>(<span class="hljs-params">head1,head2</span>)</span>&#123;<br>  <span class="hljs-keyword">if</span>(!head1.value) <span class="hljs-keyword">return</span> head2<br>  <span class="hljs-keyword">if</span>(!head2.value) <span class="hljs-keyword">return</span> head1<br>  <span class="hljs-keyword">if</span>(head1.value&lt;=head2.value)&#123;<br>    head1.next = mergeLinkedList(head1.next,head2)<br>    <span class="hljs-keyword">return</span> head1<br>  &#125;<span class="hljs-keyword">else</span>&#123;<br>    head2.next = mergeLinkedList(head2.next,head1)<br>    <span class="hljs-keyword">return</span> head2<br>  &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure></li>
 </ul>
 <ul>
 <li><p>实现LRU缓存淘汰策略</p>
-<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Node</span>(<span class="hljs-params">value</span>)</span>&#123;
-  <span class="hljs-keyword">this</span>.value = value
-  <span class="hljs-keyword">this</span>.next = <span class="hljs-literal">null</span>
-&#125;
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">LRULinkedList</span>(<span class="hljs-params">maxSize</span>)</span>&#123;
-  <span class="hljs-keyword">this</span>.maxSize = maxSize
-  <span class="hljs-keyword">this</span>.head = <span class="hljs-literal">null</span>
-  <span class="hljs-keyword">this</span>.curSize = <span class="hljs-number">0</span>
-
-  <span class="hljs-keyword">this</span>.visit = <span class="hljs-function"><span class="hljs-params">value</span> =&gt;</span> &#123;
-    <span class="hljs-keyword">const</span> n = <span class="hljs-keyword">new</span> Node(value)
-    <span class="hljs-keyword">let</span> cur = <span class="hljs-keyword">this</span>.head,pre = <span class="hljs-keyword">this</span>.head
-    <span class="hljs-keyword">let</span> preCatch,curCatch
-    <span class="hljs-keyword">if</span>(!cur)&#123;
-      <span class="hljs-keyword">this</span>.head = n
-      <span class="hljs-keyword">this</span>.curSize = <span class="hljs-number">1</span>
-      <span class="hljs-keyword">return</span> 
-    &#125;
-    <span class="hljs-keyword">if</span>(cur.value===value) <span class="hljs-keyword">return</span> 
-    <span class="hljs-keyword">while</span>(cur)&#123;
-      <span class="hljs-keyword">if</span>(cur.value === value)&#123;
-          <span class="hljs-comment">// 找到了</span>
-          <span class="hljs-comment">// 从原来位置删除并作为头</span>
-          pre.next = cur.next
-          cur.next = <span class="hljs-keyword">this</span>.head
-          <span class="hljs-keyword">return</span>
-      &#125;
-      preCatch = pre
-      curCatch = cur
-      pre = cur
-      cur = cur.next
-    &#125;
-    <span class="hljs-comment">// 没找到</span>
-    <span class="hljs-keyword">if</span>(<span class="hljs-keyword">this</span>.curSize&lt;maxSize)&#123;
-      <span class="hljs-comment">// 插入头部</span>
-      n.next = <span class="hljs-keyword">this</span>.head
-      <span class="hljs-keyword">this</span>.head = n
-      <span class="hljs-keyword">this</span>.curSize ++
-    &#125;<span class="hljs-keyword">else</span>&#123;
-      <span class="hljs-comment">// 删除尾部结点</span>
-      <span class="hljs-comment">// 插入头部</span>
-      preCatch.next = <span class="hljs-literal">null</span>
-      curCatch.next = <span class="hljs-keyword">this</span>.head
-      <span class="hljs-keyword">this</span>.head = curCatch
-    &#125;
-  &#125;
-&#125;</code></pre></div></li>
+<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Node</span>(<span class="hljs-params">value</span>)</span>&#123;<br>  <span class="hljs-built_in">this</span>.value = value<br>  <span class="hljs-built_in">this</span>.next = <span class="hljs-literal">null</span><br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">LRULinkedList</span>(<span class="hljs-params">maxSize</span>)</span>&#123;<br>  <span class="hljs-built_in">this</span>.maxSize = maxSize<br>  <span class="hljs-built_in">this</span>.head = <span class="hljs-literal">null</span><br>  <span class="hljs-built_in">this</span>.curSize = <span class="hljs-number">0</span><br><br>  <span class="hljs-built_in">this</span>.visit = <span class="hljs-function"><span class="hljs-params">value</span> =&gt;</span> &#123;<br>    <span class="hljs-keyword">const</span> n = <span class="hljs-keyword">new</span> Node(value)<br>    <span class="hljs-keyword">let</span> cur = <span class="hljs-built_in">this</span>.head,pre = <span class="hljs-built_in">this</span>.head<br>    <span class="hljs-keyword">let</span> preCatch,curCatch<br>    <span class="hljs-keyword">if</span>(!cur)&#123;<br>      <span class="hljs-built_in">this</span>.head = n<br>      <span class="hljs-built_in">this</span>.curSize = <span class="hljs-number">1</span><br>      <span class="hljs-keyword">return</span> <br>    &#125;<br>    <span class="hljs-keyword">if</span>(cur.value===value) <span class="hljs-keyword">return</span> <br>    <span class="hljs-keyword">while</span>(cur)&#123;<br>      <span class="hljs-keyword">if</span>(cur.value === value)&#123;<br>          <span class="hljs-comment">// 找到了</span><br>          <span class="hljs-comment">// 从原来位置删除并作为头</span><br>          pre.next = cur.next<br>          cur.next = <span class="hljs-built_in">this</span>.head<br>          <span class="hljs-keyword">return</span><br>      &#125;<br>      preCatch = pre<br>      curCatch = cur<br>      pre = cur<br>      cur = cur.next<br>    &#125;<br>    <span class="hljs-comment">// 没找到</span><br>    <span class="hljs-keyword">if</span>(<span class="hljs-built_in">this</span>.curSize&lt;maxSize)&#123;<br>      <span class="hljs-comment">// 插入头部</span><br>      n.next = <span class="hljs-built_in">this</span>.head<br>      <span class="hljs-built_in">this</span>.head = n<br>      <span class="hljs-built_in">this</span>.curSize ++<br>    &#125;<span class="hljs-keyword">else</span>&#123;<br>      <span class="hljs-comment">// 删除尾部结点</span><br>      <span class="hljs-comment">// 插入头部</span><br>      preCatch.next = <span class="hljs-literal">null</span><br>      curCatch.next = <span class="hljs-built_in">this</span>.head<br>      <span class="hljs-built_in">this</span>.head = curCatch<br>    &#125;<br>  &#125;<br>&#125;<br><br></code></pre></div></td></tr></table></figure></li>
 <li><p>字符串回文检查，字符串存储在有序链表中，怎么判断</p>
-<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-comment">// 单向链表</span>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">reverseStrCheck</span>(<span class="hljs-params">head</span>)</span>&#123;
-  <span class="hljs-keyword">if</span>(!head) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
-  <span class="hljs-keyword">if</span>(!head.next) <span class="hljs-keyword">return</span> head
-
-  <span class="hljs-keyword">let</span> fast = head
-  <span class="hljs-keyword">let</span> slow = head
-  <span class="hljs-keyword">let</span> pre = head
-
-  <span class="hljs-comment">// 快慢指针找出中位置</span>
-  <span class="hljs-comment">// 慢指针边移动边改变指针方向</span>
-  <span class="hljs-comment">// fast指针到头后，中位值同时正反向移动判断值是否相等</span>
-
-
-  <span class="hljs-comment">// <span class="hljs-doctag">TODO:</span></span>
-  
-  <span class="hljs-comment">// 缓存住当前的cur.next</span>
-  <span class="hljs-comment">// 变换指针方向后将cur直接赋值为缓存</span>
-
-
-  <span class="hljs-keyword">while</span>(slow)&#123;
-    pre = slow
-    slow = slow.next
-
-    fast = fast.next.next &amp;&amp; fast.next ? fast.next.next : fast.next
-    <span class="hljs-keyword">if</span>(!fast)&#123;
-      <span class="hljs-comment">//到头</span>
-      <span class="hljs-comment">//开始反向移动</span>
-
-    &#125;
-  &#125;
-  <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
-&#125;</code></pre></div>
-</li>
+<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// 单向链表</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">reverseStrCheck</span>(<span class="hljs-params">head</span>)</span>&#123;<br>  <span class="hljs-keyword">if</span>(!head) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span><br>  <span class="hljs-keyword">if</span>(!head.next) <span class="hljs-keyword">return</span> head<br><br>  <span class="hljs-keyword">let</span> fast = head<br>  <span class="hljs-keyword">let</span> slow = head<br>  <span class="hljs-keyword">let</span> pre = head<br><br>  <span class="hljs-comment">// 快慢指针找出中位置</span><br>  <span class="hljs-comment">// 慢指针边移动边改变指针方向</span><br>  <span class="hljs-comment">// fast指针到头后，中位值同时正反向移动判断值是否相等</span><br><br><br>  <span class="hljs-comment">// <span class="hljs-doctag">TODO:</span></span><br>  <br>  <span class="hljs-comment">// 缓存住当前的cur.next</span><br>  <span class="hljs-comment">// 变换指针方向后将cur直接赋值为缓存</span><br><br><br>  <span class="hljs-keyword">while</span>(slow)&#123;<br>    pre = slow<br>    slow = slow.next<br><br>    fast = fast.next.next &amp;&amp; fast.next ? fast.next.next : fast.next<br>    <span class="hljs-keyword">if</span>(!fast)&#123;<br>      <span class="hljs-comment">//到头</span><br>      <span class="hljs-comment">//开始反向移动</span><br><br>    &#125;<br>  &#125;<br>  <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span><br>&#125;<br></code></pre></div></td></tr></table></figure></li>
 <li><p>合并两个有序链表</p>
-<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-comment">// 1-&gt;2-&gt;4,1-&gt;3-&gt;4</span>
-<span class="hljs-comment">// 1-&gt;1-&gt;2-&gt;3-&gt;4-&gt;4</span>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">mergeLinkedList</span>(<span class="hljs-params">l1,l2</span>)</span>&#123;
-  <span class="hljs-keyword">if</span>(l1===<span class="hljs-literal">null</span>)&#123;
-    <span class="hljs-keyword">return</span> l2
-  &#125;
-  <span class="hljs-keyword">if</span>(l2===<span class="hljs-literal">null</span>)&#123;
-    <span class="hljs-keyword">return</span> l1
-  &#125;
-  <span class="hljs-keyword">if</span>(l1.value&lt;=l2.value)&#123;
-    l1.next = mergeLinkedList(l1.next,l2)
-    <span class="hljs-keyword">return</span> l1
-  &#125;<span class="hljs-keyword">else</span>&#123;
-    l2.next = mergeLinkedList(l2.next,l1)
-    <span class="hljs-keyword">return</span> l2
-  &#125;
-&#125;</code></pre></div>
-</li>
+<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// 1-&gt;2-&gt;4,1-&gt;3-&gt;4</span><br><span class="hljs-comment">// 1-&gt;1-&gt;2-&gt;3-&gt;4-&gt;4</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">mergeLinkedList</span>(<span class="hljs-params">l1,l2</span>)</span>&#123;<br>  <span class="hljs-keyword">if</span>(l1===<span class="hljs-literal">null</span>)&#123;<br>    <span class="hljs-keyword">return</span> l2<br>  &#125;<br>  <span class="hljs-keyword">if</span>(l2===<span class="hljs-literal">null</span>)&#123;<br>    <span class="hljs-keyword">return</span> l1<br>  &#125;<br>  <span class="hljs-keyword">if</span>(l1.value&lt;=l2.value)&#123;<br>    l1.next = mergeLinkedList(l1.next,l2)<br>    <span class="hljs-keyword">return</span> l1<br>  &#125;<span class="hljs-keyword">else</span>&#123;<br>    l2.next = mergeLinkedList(l2.next,l1)<br>    <span class="hljs-keyword">return</span> l2<br>  &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure></li>
 <li><p>查找两个链表的公共起始点</p>
-<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">commonPrefix</span>(<span class="hljs-params">headA,headB</span>)</span>&#123;
-  <span class="hljs-keyword">if</span>(!headA || !headB) <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>
-  <span class="hljs-keyword">while</span>(headA)&#123;
-    headA.flag = <span class="hljs-literal">true</span>
-    headA = headA.next
-  &#125;
-  <span class="hljs-keyword">while</span>(headB)&#123;
-    <span class="hljs-keyword">if</span>(headB.flag) <span class="hljs-keyword">return</span> headB
-    headB.flag =<span class="hljs-literal">true</span>
-    headB = headB.next
-  &#125;
-  <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>
-&#125;
-
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">commonPrefix2</span>(<span class="hljs-params">headA,headB</span>)</span>&#123;
-  <span class="hljs-keyword">if</span>(!headA || !headB) <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>
-  <span class="hljs-keyword">let</span> n1 = headA
-  <span class="hljs-keyword">let</span> n2 = headB
-  <span class="hljs-keyword">while</span>(n1 || n2)&#123;
-    <span class="hljs-keyword">if</span>(n1===n2) <span class="hljs-keyword">return</span> n1
-    n1 = n1 === <span class="hljs-literal">null</span> ? headB : n1.next
-    n2 = n2 === <span class="hljs-literal">null</span> ? headA : n2.next
-  &#125;
-  <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>
-&#125;</code></pre></div></li>
+<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">commonPrefix</span>(<span class="hljs-params">headA,headB</span>)</span>&#123;<br>  <span class="hljs-keyword">if</span>(!headA || !headB) <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span><br>  <span class="hljs-keyword">while</span>(headA)&#123;<br>    headA.flag = <span class="hljs-literal">true</span><br>    headA = headA.next<br>  &#125;<br>  <span class="hljs-keyword">while</span>(headB)&#123;<br>    <span class="hljs-keyword">if</span>(headB.flag) <span class="hljs-keyword">return</span> headB<br>    headB.flag =<span class="hljs-literal">true</span><br>    headB = headB.next<br>  &#125;<br>  <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span><br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">commonPrefix2</span>(<span class="hljs-params">headA,headB</span>)</span>&#123;<br>  <span class="hljs-keyword">if</span>(!headA || !headB) <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span><br>  <span class="hljs-keyword">let</span> n1 = headA<br>  <span class="hljs-keyword">let</span> n2 = headB<br>  <span class="hljs-keyword">while</span>(n1 || n2)&#123;<br>    <span class="hljs-keyword">if</span>(n1===n2) <span class="hljs-keyword">return</span> n1<br>    n1 = n1 === <span class="hljs-literal">null</span> ? headB : n1.next<br>    n2 = n2 === <span class="hljs-literal">null</span> ? headA : n2.next<br>  &#125;<br>  <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span><br>&#125;<br><br><br></code></pre></div></td></tr></table></figure></li>
 </ul>
 
             </div>
@@ -648,10 +315,14 @@
                 
               </div>
               
-                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
               
               
-                <div class="post-prevnext row">
+                <div class="post-prevnext">
                   <article class="post-prev col-6">
                     
                     
@@ -677,6 +348,30 @@
             </div>
 
             
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="twikoo"></div>
+  <script type="text/javascript">
+    Fluid.utils.lazyComments('comments', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/twikoo@1.3.0/dist/twikoo.all.min.js', function() {
+        twikoo.init({
+          el: '#twikoo',
+          envId: 'blog-1glh2chxcbf8757a',
+          region: 'ap-shanghai',
+          path: 'window.location.pathname',
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
           </article>
         </div>
       </div>
@@ -685,7 +380,7 @@
       <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
         <div id="toc">
   <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
-  <div id="tocbot"></div>
+  <div class="toc-body" id="toc-body"></div>
 </div>
 
       </div>
@@ -697,16 +392,15 @@
 
 
     
-  </main>
 
-  
-    <a id="scroll-top-button" href="#" role="button">
-      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
-    </a>
-  
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
 
-  
-    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
      aria-hidden="true">
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
@@ -727,21 +421,16 @@
     </div>
   </div>
 </div>
-  
-
-  
-
-  
-
-  <footer class="mt-5">
-  <div class="text-center py-3">
-    <div>
-      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
-      <i class="iconfont icon-love"></i>
-      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
-        <span>Fluid</span></a>
-    </div>
     
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+  </div>
+  
   <div class="statistics">
     
     
@@ -767,30 +456,47 @@
   </div>
 
 
-    
+  
   <!-- 备案信息 -->
   <div class="beian">
-    <a href="http://beian.miit.gov.cn/" target="_blank"
-       rel="nofollow noopener">粤ICP备2020115702号</a>
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        粤ICP备2020115702号
+      </a>
+    </span>
     
   </div>
 
 
-    
-  </div>
+  
 </footer>
 
-<!-- SCRIPTS -->
-<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
-<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
 <script  src="/js/debouncer.js" ></script>
-<script  src="/js/main.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
 
 <!-- Plugins -->
 
 
   
-    <script  src="/js/lazyload.js" ></script>
+    <script  src="/js/img-lazyload.js" ></script>
   
 
 
@@ -799,8 +505,19 @@
 
 
 
-  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
-  <script  src="/js/clipboard-use.js" ></script>
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
 
 
 
@@ -809,95 +526,30 @@
 
 
 
-
-  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
   <script>
-    $(document).ready(function () {
-      var boardCtn = $('#board-ctn');
-      var boardTop = boardCtn.offset().top;
-
-      tocbot.init({
-        tocSelector: '#tocbot',
-        contentSelector: '#post-body',
-        headingSelector: 'h1,h2,h3,h4,h5,h6',
-        linkClass: 'tocbot-link',
-        activeLinkClass: 'tocbot-active-link',
-        listClass: 'tocbot-list',
-        isCollapsedClass: 'tocbot-is-collapsed',
-        collapsibleClass: 'tocbot-is-collapsible',
-        collapseDepth: 0,
-        scrollSmooth: true,
-        headingsOffset: -boardTop
-      });
-      if ($('.toc-list-item').length > 0) {
-        $('#toc').css('visibility', 'visible');
-      }
-    });
-  </script>
-
-
-
-  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
-  <script>
-    var typed = new Typed('#subtitle', {
-      strings: [
-        '  ',
-        "链表&nbsp;",
-      ],
-      cursorChar: "_",
-      typeSpeed: 70,
-      loop: false,
-    });
-    typed.stop();
-    $(document).ready(function () {
-      $(".typed-cursor").addClass("h2");
-      typed.start();
-    });
-  </script>
-
-
-
-  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
-  <script>
-    anchors.options = {
-      placement: "right",
-      visible: "hover",
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
       
-    };
-    var el = "h1,h2,h3,h4,h5,h6".split(",");
-    var res = [];
-    for (item of el) {
-      res.push(".markdown-body > " + item)
-    }
-    anchors.add(res.join(", "))
+      typing(title)
+      
+    })(window, document);
   </script>
 
 
 
   <script  src="/js/local-search.js" ></script>
   <script>
-    var path = "/local-search.xml";
-    var inputArea = document.querySelector("#local-search-input");
-    inputArea.onclick = function () {
-      searchFunc(path, 'local-search-input', 'local-search-result');
-      this.onclick = null
-    }
-  </script>
-
-
-
-  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
-
-  <script>
-    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
-      function () {
-        var element = document.createElement('a');
-        $(element).attr('data-fancybox', 'images');
-        $(element).attr('href', $(this).attr('src'));
-        $(this).wrap(element);
-      }
-    );
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
   </script>
 
 
@@ -914,33 +566,8 @@
 
 
 
-
-
-  
-    <!-- Baidu Analytics -->
-    <script defer>
-      var _hmt = _hmt || [];
-      (function () {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?048f7ae77dbb92c9d2c83ca3df99d02f";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-      })();
-    </script>
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-
-
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
 
 
 </body>

@@ -1,14 +1,14 @@
 
 
 <!DOCTYPE html>
-<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+<html lang="zh-CN" data-default-color-scheme=&#34;dark&#34;>
 
 
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.jpeg">
-  <link rel="icon" type="image/png" href="/img/avatar.jpeg">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
   <meta name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -17,15 +17,16 @@
   <meta name="description" content="">
   <meta name="author" content="tatekii">
   <meta name="keywords" content="">
+  
   <title>不知名的笔记本</title>
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
 
 
 <!-- 主题依赖的图标库，不要自行修改 -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_pf9vaxs7x7b.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
 
 
 
@@ -37,17 +38,21 @@
 <!-- 自定义样式保持在最底部 -->
 
 
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","version":"1.8.9-a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":"#"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 5.4.0"></head>
 
 
 <body>
-  <header style="height: 30vh;">
+  <header style="height: 100vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
-       href="/">&nbsp;<strong>Dr.🐎</strong>&nbsp;</a>
+       href="/">&nbsp;<strong>Dr🐎 Note</strong>&nbsp;</a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent"
@@ -79,6 +84,18 @@
               <a class="nav-link" href="/archives/">
                 <i class="iconfont icon-archive-fill"></i>
                 归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
               </a>
             </li>
           
@@ -124,19 +141,23 @@
   </div>
 </nav>
 
-    <div class="banner intro-2" id="background" parallax=true
+    <div class="banner" id="banner" parallax=true
          style="background: url('/img/default.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="container page-header text-center fade-in-up">
-            <span class="h2" id="subtitle">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="">
               
             </span>
 
             
           </div>
 
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
           
         </div>
       </div>
@@ -145,9 +166,9 @@
 
   <main>
     
-      <div class="container nopadding-md">
+      <div class="container nopadding-x-md">
         <div class="py-5" id="board"
-          >
+          style=margin-top:0>
           
           <div class="container">
             <div class="row">
@@ -160,6 +181,7 @@
     
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
+        
         <a href="/2020/09/03/require.context%E4%BD%BF%E7%94%A8/">require.context()</a>
       </h1>
 
@@ -171,15 +193,7 @@
           
           
 自动化注册组件
-// global.js
-import Vue from 'vue'
-import upperFirst from 'lodash/upperFirst'
-import camelCase from 'lodash/camelCase'
-
-const requireComponent = require.context(
-  // 其组件目录的相对路径
-  // 全局注册的目录
-
+12345678910111213141516171819202122232425262728293031323334353637383940414243// global.jsimport Vue from &#x27;vue&#x27;import upperFirst from &#x27;lodash/upperFirst&#x27;import camelCase fr
         </a>
       </p>
 
@@ -212,6 +226,7 @@ const requireComponent = require.context(
     
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
+        
         <a href="/2020/08/31/%E5%A0%86/">堆及相关算法</a>
       </h1>
 
@@ -225,6 +240,8 @@ const requireComponent = require.context(
 堆就是完全二叉树
 完全二叉树：除了深度最深的一层外所有层节点数都满员
 深度：从根节点到该节点经历的节点个数
+
+
 每一个节点都比左右子节点大–&gt;最大堆，最大值在根节点
 
 每一个节点都比左右子节点小–&gt;最小堆，最小值在根节点
@@ -235,9 +252,7 @@ const requireComponent = require.context(
 建立堆
 将节点与父节点比较
 
-//小顶堆
-function buildHeap(items,heapSize)&#123;
-  w
+123456789101112131415//小顶堆function buildHeap(ite
         </a>
       </p>
 
@@ -270,6 +285,7 @@ function buildHeap(items,heapSize)&#123;
     
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
+        
         <a href="/2020/08/28/%E4%BA%8C%E5%8F%89%E6%A0%91/">二叉树</a>
       </h1>
 
@@ -299,8 +315,7 @@ function buildHeap(items,heapSize)&#123;
 满二叉树
 完全二叉树
 
-二叉树遍历function BinaryTree() &#123;
-  const Node = fun
+二叉树遍历12345678function BinaryTree() &#123;  const Nod
         </a>
       </p>
 
@@ -333,7 +348,8 @@ function buildHeap(items,heapSize)&#123;
     
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
-        <a href="/2020/08/27/%E6%A0%88%E7%BB%93%E6%9E%84%E7%AE%97%E6%B3%95%E9%A2%98/">栈结构算法题</a>
+        
+        <a href="/2020/08/27/%E6%A0%88%E7%BB%93%E6%9E%84%E7%AE%97%E6%B3%95%E9%A2%98/">栈算法题</a>
       </h1>
 
       <p class="index-excerpt">
@@ -342,26 +358,9 @@ function buildHeap(items,heapSize)&#123;
           
             
           
-          
-title: 栈算法题tags:
-
-面试
-javascript
-算法
-
-
-栈结构，先进后出
+          栈结构，先进后出
 最小栈
-
-
-function MinStack()&#123;
-  this.stack = []
-  this.min = null
-&#125;
-
-MinStack.prototype.push = item =&gt; &#123;
-  if(!this.stack.length)&#123;
-  
+12345678910111213141516171819202122232425262728293031function MinStack()&#123;  this.stack = []  this.min = null&#125;MinStack.prototype.push = item =&gt; &#123;  if(!this.stack.length)&#
         </a>
       </p>
 
@@ -376,6 +375,17 @@ MinStack.prototype.push = item =&gt; &#123;
         
         
         
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
+            
+              <a href="/tags/javascript/">javascript</a>
+            
+              <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
+            
+          </div>
+        
       </div>
     </article>
   </div>
@@ -385,6 +395,7 @@ MinStack.prototype.push = item =&gt; &#123;
     
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
+        
         <a href="/2020/08/27/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95%E9%A2%98/">操作字符串算法题</a>
       </h1>
 
@@ -396,13 +407,7 @@ MinStack.prototype.push = item =&gt; &#123;
           
           
 寻找最长公公前缀
-// 输入: ["flower","flow","flight"]
-// 输出: "fl"
-
-function commonPrefix(...strs)&#123;
-  if(!strs.length || strs.length===0) return ""
-  let ref = strs[0]
-  for(let i = 1;i&lt;strs.length;i++)&
+12345678910111213141516// 输入: [&quot;flower&quot;,&quot;flow&quot;,&quot;flight&quot;]// 输出: &quot;fl&quot;function commonPrefix(...strs)&#123;  if(!strs.length || strs.length===0) return &q
         </a>
       </p>
 
@@ -437,6 +442,7 @@ function commonPrefix(...strs)&#123;
     
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
+        
         <a href="/2020/08/27/%E9%93%BE%E8%A1%A8/">链表</a>
       </h1>
 
@@ -502,6 +508,7 @@ tailNode.next = null
     
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
+        
         <a href="/2020/08/17/js%E7%89%87%E6%AE%B5/">待整理的js片段</a>
       </h1>
 
@@ -514,12 +521,7 @@ tailNode.next = null
           
 字母的所有组合
 
-const anagrams = str =&gt; &#123;
-  if(str.length&lt;=2) return str.length===2 ? [str , str[1] + str[0]] :str
-
-  // 这里使用reduce的第三个参数index，正在处理的元素
-  // 如果提供了initialValue，则起始索引号为0，否则从索引1起始。
-  
+123456789101112131415161718192021222324252627282930const anagrams = str =&gt; &#123;  if(str.length&lt;=2) return str.length===2 ? [str , str[1] + str[0]] :str  // 这里使用reduce的第三个参数index，正在处理
         </a>
       </p>
 
@@ -552,6 +554,7 @@ const anagrams = str =&gt; &#123;
     
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
+        
         <a href="/2020/08/02/%E5%88%B7%E5%88%B7%E7%AE%97%E6%B3%95/">其他算法题</a>
       </h1>
 
@@ -562,14 +565,7 @@ const anagrams = str =&gt; &#123;
             
           
           
-两数之合function twoSum(arr,target)&#123;
-  let res = []
-  let map = new Map()
-  // 使用数值-&gt;索引建立map
-  // 每次循环计算得出当前差值
-  // 在map中查找这个差值既能得出索引
-  for(let i = 0 ; i&lt;arr.length;i++)&#123;
-    let k = targ
+两数之合123456789101112131415function twoSum(arr,target)&#123;  let res = []  let map = new Map()  // 使用数值-&gt;索引建立map  // 每次循环计算得出当前差值  // 在map中查找这个差值既能得出索引  for(let i = 0 ; i&lt;arr.length;i++)&#123;  
         </a>
       </p>
 
@@ -604,6 +600,7 @@ const anagrams = str =&gt; &#123;
     
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
+        
         <a href="/2020/04/09/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E9%A2%98/">面向对象题</a>
       </h1>
 
@@ -616,13 +613,7 @@ const anagrams = str =&gt; &#123;
           
 打车时可以打专车或快车。任何车都有车牌号和名称。快车每公里1元，专车每公里2元。行程开始时，显示车辆信息。行程结束时，显示打车金额。行程距离为5公里。
 
-class Car&#123;
-  constructor(licence,name)&#123;
-    this.licence = licence
-    this.name = name
-  &#125;
-&#125;
-class Fa
+123456789101112131415161718192021222324252627282930313233class Car&#123;  constructor(licence,name)&#123;    this.licence 
         </a>
       </p>
 
@@ -655,6 +646,7 @@ class Fa
     
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
+        
         <a href="/2020/03/27/%E5%8E%9F%E7%94%9Fjs/">原生js与jq</a>
       </h1>
 
@@ -704,15 +696,9 @@ js 是一门函数优先的轻量级解释型语言，基于原型编程的动�
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/3/"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/#board">3</a><a class="page-number" href="/page/4/#board">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/#board">8</a><a class="extend next" rel="next" href="/page/3/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
-  
-  <script>
-    for (ele of document.getElementById("pagination").getElementsByTagName("a")) {
-      ele.href += '#board';
-    }
-  </script>
 
 
 
@@ -722,16 +708,15 @@ js 是一门函数优先的轻量级解释型语言，基于原型编程的动�
         </div>
       </div>
     
-  </main>
 
-  
-    <a id="scroll-top-button" href="#" role="button">
-      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
-    </a>
-  
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
 
-  
-    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
      aria-hidden="true">
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
@@ -752,21 +737,16 @@ js 是一门函数优先的轻量级解释型语言，基于原型编程的动�
     </div>
   </div>
 </div>
-  
-
-  
-
-  
-
-  <footer class="mt-5">
-  <div class="text-center py-3">
-    <div>
-      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
-      <i class="iconfont icon-love"></i>
-      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
-        <span>Fluid</span></a>
-    </div>
     
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+  </div>
+  
   <div class="statistics">
     
     
@@ -792,30 +772,47 @@ js 是一门函数优先的轻量级解释型语言，基于原型编程的动�
   </div>
 
 
-    
+  
   <!-- 备案信息 -->
   <div class="beian">
-    <a href="http://beian.miit.gov.cn/" target="_blank"
-       rel="nofollow noopener">粤ICP备2020115702号</a>
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        粤ICP备2020115702号
+      </a>
+    </span>
     
   </div>
 
 
-    
-  </div>
+  
 </footer>
 
-<!-- SCRIPTS -->
-<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
-<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
 <script  src="/js/debouncer.js" ></script>
-<script  src="/js/main.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
 
 <!-- Plugins -->
 
 
   
-    <script  src="/js/lazyload.js" ></script>
+    <script  src="/js/img-lazyload.js" ></script>
   
 
 
@@ -824,8 +821,13 @@ js 是一门函数优先的轻量级解释型语言，基于原型编程的动�
 
 
 
-  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
-  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
 
 
 
@@ -834,39 +836,57 @@ js 是一门函数优先的轻量级解释型语言，基于原型编程的动�
 
 
 
-
-
-
-  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
   <script>
-    var typed = new Typed('#subtitle', {
-      strings: [
-        '  ',
-        "在线笔记本罢了&nbsp;",
-      ],
-      cursorChar: "_",
-      typeSpeed: 70,
-      loop: false,
-    });
-    typed.stop();
-    $(document).ready(function () {
-      $(".typed-cursor").addClass("h2");
-      typed.start();
-    });
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      $.ajax({
+        type: 'GET',
+        url: 'https://api.eatrice.top/movies',
+        headers: {},
+        dataType: 'json',
+        success: function (result) {
+          var text;
+          if (result) {
+            var keys = 'Content'.split('.')
+            if (result instanceof Array) {
+              result = result[0]
+            }
+            for (const k of keys) {
+              var value = result[k]
+              if (typeof value === 'string') {
+                text = value
+                break
+              } else if (value instanceof Object) {
+                result = value
+              }
+            }
+          }
+          text ? typing(text) : typing(title);
+        },
+        error: function () {
+          typing(title)
+        }
+      })
+      
+    })(window, document);
   </script>
-
-
 
 
 
   <script  src="/js/local-search.js" ></script>
   <script>
-    var path = "/local-search.xml";
-    var inputArea = document.querySelector("#local-search-input");
-    inputArea.onclick = function () {
-      searchFunc(path, 'local-search-input', 'local-search-result');
-      this.onclick = null
-    }
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
   </script>
 
 
@@ -883,35 +903,8 @@ js 是一门函数优先的轻量级解释型语言，基于原型编程的动�
 
 
 
-
-
-
-
-  
-    <!-- Baidu Analytics -->
-    <script defer>
-      var _hmt = _hmt || [];
-      (function () {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?048f7ae77dbb92c9d2c83ca3df99d02f";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-      })();
-    </script>
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-
-
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
 
 
 </body>
