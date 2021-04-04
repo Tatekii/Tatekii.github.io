@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      863 字
+      938 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      10
+      11
        分钟
     </span>
   
@@ -237,7 +237,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年3月22日 下午
+                  本文最后更新于：2021年4月4日 下午
                 
               </p>
             
@@ -255,17 +255,25 @@
 <li>script<code>async</code></li>
 </ol>
 </li>
-<li><p> script/script async/script defer的区别</p>
+<li><p>script/script async/script defer的区别</p>
+<ul>
+<li>普通的<code>script</code>，html解析暂停，立即下载和执行这个脚本</li>
+<li><code>&lt;script async&gt;</code>，html解析和该脚本的加载同时进行，下载完后执行脚本时暂停html解析</li>
+<li><code>&lt;script defer&gt;</code>，html解析和该脚本的加载同时进行，脚本在页面解析完成后才执行</li>
+</ul>
+<p>  <img src="../images/script.png" srcset="/img/loading.gif" lazyload alt="script"></p>
 </li>
 </ul>
-<div class="hljs code-wrapper"><pre><code>- 普通的`script`，html解析暂停，立即下载和执行这个脚本
-- `&lt;script async&gt;`，html解析和该脚本的加载同时进行，下载完后执行脚本时暂停html解析
-- `&lt;script defer&gt;`，html解析和该脚本的加载同时进行，脚本在页面解析完成后才执行
-
-![script](../images/script.png)
-</code></pre></div>
-<h2 id="利用浏览器缓存"><a href="#利用浏览器缓存" class="headerlink" title="利用浏览器缓存"></a>利用浏览器缓存</h2><p><a href="ref%EF%BC%9A%E5%BC%BA%E7%BC%93%E5%AD%98%E5%92%8C%E5%8D%8F%E5%95%86%E7%BC%93%E5%AD%98">https://www.jianshu.com/p/fb59c770160c</a></p>
-<h2 id="使用CDN加速资源"><a href="#使用CDN加速资源" class="headerlink" title="使用CDN加速资源"></a>使用CDN加速资源</h2><p>CDN的全称是<code>Content Delivery Network</code>，即内容分发网络。CDN是构建在网络之上的内容分发网络，依靠部署在各地的边缘服务器，通过中心平台的负载均衡、内容分发、调度等功能模块，使用户就近获取所需内容，降低网络拥塞，提高用户访问响应速度和命中率</p>
+<ul>
+<li><p><code>link</code>和<code>@import</code>和<code>src</code></p>
+<ol>
+<li><code>src</code>指向外部资源的位置，该资源会被嵌入src所在位置，浏览器会在此处暂停其他资源的下载</li>
+<li><code>link</code>引入css，icon，定义RSS等。与页面加载同时进行。</li>
+<li><code>@import</code>只能引入样式表。页面加载完后才下载。可能会有兼容问题<h2 id="利用浏览器缓存"><a href="#利用浏览器缓存" class="headerlink" title="利用浏览器缓存"></a>利用浏览器缓存</h2><h2 id="使用CDN加速资源"><a href="#使用CDN加速资源" class="headerlink" title="使用CDN加速资源"></a>使用CDN加速资源</h2></li>
+</ol>
+</li>
+</ul>
+<p>CDN的全称是<code>Content Delivery Network</code>，即内容分发网络。CDN是构建在网络之上的内容分发网络，依靠部署在各地的边缘服务器，通过中心平台的负载均衡、内容分发、调度等功能模块，使用户就近获取所需内容，降低网络拥塞，提高用户访问响应速度和命中率</p>
 <h2 id="预解析DNS"><a href="#预解析DNS" class="headerlink" title="预解析DNS"></a>预解析DNS</h2><p><code>DNS Prefetch</code> 是一种DNS 预解析技术，当浏览网页时，浏览器会在加载网页时对网页中的域名进行解析缓存，这样在单击当前网页中的连接时就无需进行DNS的解析，减少用户等待时间，提高用户体验。</p>
 <ol>
 <li><p>http中浏览器会对a标签自动开启dns预解析</p>

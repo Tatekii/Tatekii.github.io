@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      2.3k 字
+      2.4k 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      33
+      35
        分钟
     </span>
   
@@ -237,7 +237,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年3月28日 上午
+                  本文最后更新于：2021年4月1日 下午
                 
               </p>
             
@@ -623,7 +623,36 @@ p.then(<span class="hljs-built_in">console</span>.log).catch(<span class="hljs-b
     func.apply(<span class="hljs-literal">null</span>, args);
   &#125;);</code></pre></div>
 
-<h2 id="async-await"><a href="#async-await" class="headerlink" title="async/await"></a>async/await</h2>
+<h2 id="async-await"><a href="#async-await" class="headerlink" title="async/await"></a>async/await</h2><p>async/await本质上是generator函数的语法糖</p>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span>&lt;<span class="hljs-title">name</span>&gt;?&lt;<span class="hljs-title">arguments</span>&gt;&lt;<span class="hljs-title">body</span>&gt;</span>
+<span class="hljs-function">---&gt;</span>
+<span class="hljs-function"><span class="hljs-function"><span class="hljs-keyword">function</span>&lt;<span class="hljs-title">name</span>&gt;?&lt;<span class="hljs-title">arguments</span>&gt;</span>&#123;</span>
+<span class="hljs-function">  <span class="hljs-title">return</span> <span class="hljs-title">spawn</span>(<span class="hljs-params"><span class="hljs-keyword">function</span>*()&lt;body&gt;</span>)</span>
+<span class="hljs-function">&#125;</span>
+<span class="hljs-function"></span>
+<span class="hljs-function"><span class="hljs-title">generator</span>函数自执行器</span>
+<span class="hljs-function"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">spawn</span>(<span class="hljs-params">genF</span>)</span>&#123;</span>
+<span class="hljs-function">  <span class="hljs-title">return</span> <span class="hljs-title">new</span> <span class="hljs-title">Promise</span>(<span class="hljs-params">(resolve,reject)=&gt;&#123;</span></span>
+<span class="hljs-function"><span class="hljs-params">    <span class="hljs-keyword">const</span> gen = genF()</span></span>
+<span class="hljs-function"><span class="hljs-params">    <span class="hljs-keyword">function</span> step(nextF)&#123;</span></span>
+<span class="hljs-function"><span class="hljs-params">      <span class="hljs-keyword">let</span> next</span></span>
+<span class="hljs-function"><span class="hljs-params">      <span class="hljs-keyword">try</span>&#123;</span></span>
+<span class="hljs-function"><span class="hljs-params">        next = nextF()</span></span>
+<span class="hljs-function"><span class="hljs-params">      &#125;<span class="hljs-keyword">catch</span>(err)&#123;</span></span>
+<span class="hljs-function"><span class="hljs-params">        reject(err)</span></span>
+<span class="hljs-function"><span class="hljs-params">      &#125;</span></span>
+<span class="hljs-function"><span class="hljs-params">      <span class="hljs-keyword">if</span>(next.done)&#123;</span></span>
+<span class="hljs-function"><span class="hljs-params">        <span class="hljs-keyword">return</span> resolve(next.value)</span></span>
+<span class="hljs-function"><span class="hljs-params">      &#125;</span></span>
+<span class="hljs-function"><span class="hljs-params">      <span class="hljs-built_in">Promise</span>.resolve(next.value).then(v=&gt;&#123;</span></span>
+<span class="hljs-function"><span class="hljs-params">        step(()=&gt;gen.next(v))</span></span>
+<span class="hljs-function"><span class="hljs-params">      &#125;,e=&gt;&#123;</span></span>
+<span class="hljs-function"><span class="hljs-params">        step(()=&gt;gen.<span class="hljs-keyword">throw</span>(e))</span></span>
+<span class="hljs-function"><span class="hljs-params">      &#125;)</span></span>
+<span class="hljs-function"><span class="hljs-params">    &#125;</span></span>
+<span class="hljs-function"><span class="hljs-params">    step(()=&gt;gen.next(<span class="hljs-literal">undefined</span>))</span></span>
+<span class="hljs-function"><span class="hljs-params">  &#125;</span>)</span>
+<span class="hljs-function">&#125;</span></code></pre></div>
             </div>
             <hr>
             <div>

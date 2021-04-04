@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      643 字
+      524 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      8
+      7
        分钟
     </span>
   
@@ -237,7 +237,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年3月19日 晚上
+                  本文最后更新于：2021年4月4日 晚上
                 
               </p>
             
@@ -332,53 +332,23 @@ text-overflow: ellipsis；
   &#125;
 &#125;</code></pre></div></li>
 </ul>
-<h2 id="盒模型"><a href="#盒模型" class="headerlink" title="盒模型"></a>盒模型</h2><ul>
-<li>IE模型<ul>
-<li><code>width = content + padding + border</code></li>
-<li>IE8以下没有<code>&lt;!DOCTYPE html&gt;</code>会触发</li>
-<li><code>box-sizing:border-box</code></li>
-</ul>
+<h2 id="水平垂直居中"><a href="#水平垂直居中" class="headerlink" title="水平垂直居中"></a>水平垂直居中</h2><ol>
+<li>50%绝对定位+负边距<blockquote>
+<p>负边距偏移值是相对居中盒子尺寸计算</p>
+</blockquote>
 </li>
-<li>标准盒模型<ul>
-<li><code>width = content</code></li>
-<li><code>box-sizing:content-box</code></li>
-</ul>
+<li>50%绝对定位+50%translate负偏移<blockquote>
+<p>translate偏移值是相对居中盒子尺寸计算</p>
+</blockquote>
 </li>
-</ul>
-<ul>
-<li><p><code>absolute</code>与<code>relative</code></p>
-<p>  <code>absolute</code>需要寻找最近的非<code>static</code>祖先元素作为参考锚点，可以是 <code>relative, absolute, fixed</code>，一直往上到 <code>body</code> 元素。</p>
+<li>绝对定位+上下左右0+margin:auto</li>
+<li>flex+justify content+align items<blockquote>
+<p>主轴 侧轴居中</p>
+</blockquote>
 </li>
-<li><p><code>link</code>和<code>@import</code>和<code>src</code></p>
-<ol>
-<li><code>src</code>指向外部资源的位置，该资源会被嵌入src所在位置，浏览器会在此处暂停其他资源的下载</li>
-<li><code>link</code>引入css，icon，定义RSS等。与页面加载同时进行。</li>
-<li><code>@import</code>只能引入样式表。页面加载完后才下载。可能会有兼容问题</li>
-</ol>
-</li>
-</ul>
-<ol>
-<li><p>移动端适配</p>
-<ol>
-<li><p>DPR概念，设备像素比例</p>
-</li>
-<li><p>flexible+rem</p>
-</li>
-<li><p>vh,vw</p>
-</li>
-<li><p>微信的rpx</p>
-</li>
-<li><p>异型屏幕的安全区域</p>
-</li>
-<li><p>加载图片</p>
-<ol>
-<li>SVG</li>
-<li>background-image：image-set(‘/)</li>
-<li><code>&lt;img src=&quot;source.jpg&quot; srcset=&quot;source_2x.jpg 2x, source_3x.jpg 3x&quot;&gt;</code></li>
-<li>js修改</li>
-</ol>
-</li>
-</ol>
+<li>table-cell+vertical-align+margin:auto<blockquote>
+<p>vertical-align 只在table-cell和行内元素生效</p>
+</blockquote>
 </li>
 </ol>
 
