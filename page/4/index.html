@@ -182,6 +182,58 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/2019/07/14/vuex/">vuex</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2019/07/14/vuex/">
+          
+          
+            
+          
+          vue全局的状态管理器，每个应用唯一State
+子组件通过computed读取state，
+
+mapState辅助函数展开以混入计算属性中  
+computed: &#123;
+  localComputed () &#123; /* ... */ &#125;,
+  // 使用对象展开运算符将此对象混入到外部对象中
+  ...mapState(&#123;
+  // ...
+    &#x27;
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2019-07-14 11:53" pubdate>
+              2019-07-14
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/javascript/">javascript</a>
+            
+              <a href="/tags/vue/">vue</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/2019/07/13/js%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">javascript常见设计模式</a>
       </h1>
 
@@ -329,31 +381,23 @@ Promise 对象有以下两个特点
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2019/07/10/%E6%95%B0%E7%BB%84%E7%9A%84%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/">操作数组的常用方法</a>
+        <a href="/2019/07/10/%E6%95%B0%E7%BB%84%E6%96%B9%E6%B3%95/">数组方法</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2019/07/10/%E6%95%B0%E7%BB%84%E7%9A%84%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/">
+        <a href="/2019/07/10/%E6%95%B0%E7%BB%84%E6%96%B9%E6%B3%95/">
           
           
             
           
-          变异方法（改变原数组）
-pop()删除最后一个元素
-
-shift()删除第一个元素
-
-push()添加元素至末尾
-
-unshift()添加元素至首位
-
-splice(start,delCount,new1,new2...)往数组索引为start位置删除delCont个元素，并从该位置加入new新元素
-
-sort()排序
-
-reverse()倒序,返回新数组
-
-copyWithin(target,s
+          创建数组// 字面量
+let arr = []
+let arr = [1,2,3,4]
+// 构造函数
+let arr = new Array()
+let arr = new Array(/传入数组代表数组长度/)
+let arr = new Array(&#x27;item1&#x27;,&#x27;item2&#x27;/传入元素/)
+let arr = Array(10)/省略new操作符/
         </a>
       </p>
 
@@ -622,61 +666,6 @@ ECMAScript规范中对词法环境的描述如下：词法环境是用来定义 
               <a href="/tags/css/">css</a>
             
               <a href="/tags/webapp/">webapp</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2019/07/03/%E5%AE%9E%E7%8E%B0sleep()/">实现一个sleep()函数</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2019/07/03/%E5%AE%9E%E7%8E%B0sleep()/">
-          
-          
-            
-          
-          sleep()
-执行挂起，延迟执行函数
-
-实现while循环funciton sleep(delay) &#123;
-  let start = new Date().getTime()
-  while(new Date().getTime() - start &lt; delay) &#123;
-    continue
-  &#125;
-&#125;
-sleep(3000)
-console.l
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2019-07-03 17:13" pubdate>
-              2019-07-03
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
-            
-              <a href="/tags/javascript/">javascript</a>
-            
-              <a href="/tags/es6/">es6</a>
             
           </div>
         
