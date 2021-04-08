@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      411 字
+      414 字
     </span>
   
 
@@ -237,7 +237,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年3月22日 上午
+                  本文最后更新于：2021年4月7日 下午
                 
               </p>
             
@@ -245,7 +245,7 @@
               <h2 id="Ajax"><a href="#Ajax" class="headerlink" title="Ajax"></a><code>Ajax</code></h2><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// example</span>
 <span class="hljs-keyword">const</span> request = <span class="hljs-function">(<span class="hljs-params">method,url,<span class="hljs-keyword">async</span>=<span class="hljs-literal">true</span>,data</span>) =&gt;</span> &#123;
   <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve,reject</span>)=&gt;</span>&#123;
-    <span class="hljs-keyword">const</span> xhr = XMLHttpRequest()
+    <span class="hljs-keyword">const</span> xhr = <span class="hljs-keyword">new</span> XMLHttpRequest()
     xhr.onreadystateChange = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;
       <span class="hljs-keyword">if</span>(<span class="hljs-built_in">this</span>.readyState !== <span class="hljs-number">4</span>)<span class="hljs-keyword">return</span>
       <span class="hljs-keyword">if</span>(<span class="hljs-built_in">this</span>.status === <span class="hljs-number">200</span>)&#123;
@@ -255,7 +255,7 @@
       &#125;
     &#125;
     xhr.onerror = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;
-      reject(<span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-built_in">this</span>.))
+      reject(<span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">&#x27;error&#x27;</span>))
     &#125;
     xhr.responseType = <span class="hljs-string">&#x27;json&#x27;</span>
     xhr.setRequestHeader(<span class="hljs-string">&quot;Accept&quot;</span>, <span class="hljs-string">&quot;application/json&quot;</span>)

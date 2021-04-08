@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.2k 字
+      1.3k 字
     </span>
   
 
@@ -237,7 +237,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年4月5日 下午
+                  本文最后更新于：2021年4月7日 中午
                 
               </p>
             
@@ -360,7 +360,11 @@ arr = &#123;
     init.push(cur);
   &#125;
   <span class="hljs-keyword">return</span> init;
-&#125;, []);</code></pre></div>
+&#125;, []);
+<span class="hljs-comment">// 4</span>
+<span class="hljs-keyword">let</span> uni4 = arr.filter(<span class="hljs-function">(<span class="hljs-params">item,index</span>)=&gt;</span>&#123;
+  <span class="hljs-keyword">return</span> arr.indexOf(item) === index
+&#125;)</code></pre></div>
 
 <h2 id="计算数组中元素出现的次数"><a href="#计算数组中元素出现的次数" class="headerlink" title="计算数组中元素出现的次数"></a>计算数组中元素出现的次数</h2><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> arr = [<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">4</span>, <span class="hljs-number">4</span>, <span class="hljs-number">4</span>];
 <span class="hljs-comment">//reduce</span>

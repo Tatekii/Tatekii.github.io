@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      28
+      27
        分钟
     </span>
   
@@ -237,7 +237,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年3月31日 晚上
+                  本文最后更新于：2021年4月7日 上午
                 
               </p>
             
@@ -330,7 +330,7 @@ add(<span class="hljs-number">1</span>)(<span class="hljs-number">2</span>)(<spa
 <ul>
 <li>作用域：js 中的作用域是函数级的，变量在它声明的函数体以及函数体内嵌套的任意函数体内有定义</li>
 <li>作用域链：js 执行时创建的执行上下文含有外部词法环境的引用，可以通过这个引用获取外部词法环境的变量、声明等，这些引用串联起来一直指向全局的词法环境，形成了作用域链。</li>
-<li>闭包：从内部函数访问外部函数作用域</li>
+<li>闭包：函数体和其词法环境共同组成闭包。</li>
 <li>JavaScript 中，函数在每次创建时生成闭包</li>
 </ul>
 <div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++) &#123;
@@ -354,8 +354,6 @@ add(<span class="hljs-number">1</span>)(<span class="hljs-number">2</span>)(<spa
 &#125;;
 <span class="hljs-comment">//720</span>
 
-<span class="hljs-comment">// 数组扁平化</span>
-[[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>], <span class="hljs-number">2345</span>, [<span class="hljs-number">12</span>, <span class="hljs-number">3</span>]].reduce(<span class="hljs-function">(<span class="hljs-params">x, y</span>) =&gt;</span> x.concat(y));
 
 <span class="hljs-comment">// 计算出现次数</span>
 <span class="hljs-keyword">const</span> showCount = <span class="hljs-function">(<span class="hljs-params">data</span>) =&gt;</span> &#123;

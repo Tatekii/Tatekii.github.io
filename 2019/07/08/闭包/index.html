@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.2k 字
+      1k 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      13
+      11
        分钟
     </span>
   
@@ -237,22 +237,23 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年3月31日 中午
+                  本文最后更新于：2021年4月7日 中午
                 
               </p>
             
             <div class="markdown-body">
               <h2 id="闭包的定义"><a href="#闭包的定义" class="headerlink" title="闭包的定义"></a>闭包的定义</h2><ul>
-<li>函数与对其周围状态（即词法环境）的引用共同构成 <em>闭包（closure）</em> 。也就是说，闭包可以让你从内部函数访问外部函数作用域。在 JavaScript，函数在每次创建时生成闭包。<blockquote>
+<li><p>函数与对其词法环境的引用共同构成 <em>闭包（closure）</em> 。</p>
+<blockquote>
 <p>ECMAScript规范中对词法环境的描述如下：词法环境是用来定义 基于词法嵌套结构的ECMAScript代码内的标识符与变量值和函数值之间的关联关系 的一种规范类型。一个词法环境由环境记录（Environment Record）和一个可能为null的对外部词法环境的引用（outer）组成。</p>
 </blockquote>
 </li>
-<li>闭包中，即使内部函数在执行前被外部函数返回，任然可以访问原词法环境。这个环境包含了这个闭包创建时所能访问的所有局部变量。</li>
+<li><p>js的词法作用域为静态作用域，在书写完成后函数词法环境就被确定，与调用位置无关</p>
+</li>
+<li><p>闭包函数会保持对外部词法环境的引用，使外部变量常驻内存不可回收</p>
+</li>
 </ul>
-<p>在 js 中变量的作用域属于函数作用域, 在函数执行完后,作用域就会被清理,内存也会随之被回收,但是由于闭包可访问上级作用域,即使上级函数执行完, 作用域也不会随之销毁</p>
-<h2 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h2><p>闭包作用：可以引用外部函数的变量或者参数 使该变量或者参数常驻内存 避免被垃圾回收机制所回收</p>
-<p>总结：某个函数在定义时的词法作用域之外的地方被调用，闭包可以使该函数访问定义时的词法作用域</p>
-<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addCounter</span>(<span class="hljs-params"></span>) </span>&#123;
+<h2 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h2><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addCounter</span>(<span class="hljs-params"></span>) </span>&#123;
   <span class="hljs-keyword">let</span> counter = <span class="hljs-number">0</span>; <span class="hljs-comment">// 执行结束后不会被清除</span>
   <span class="hljs-keyword">const</span> myFunction = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;
     counter = counter + <span class="hljs-number">1</span>; <span class="hljs-comment">// myFunction函数可以读取add函数内部的变量</span>

@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      938 字
+      1.1k 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      11
+      14
        分钟
     </span>
   
@@ -237,7 +237,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年4月4日 下午
+                  本文最后更新于：2021年4月6日 晚上
                 
               </p>
             
@@ -247,7 +247,32 @@
 <li><code>htm-minifier</code></li>
 <li><code>uglifyjs2</code></li>
 </ul>
-<h2 id="图片懒加载"><a href="#图片懒加载" class="headerlink" title="图片懒加载"></a>图片懒加载</h2><h2 id="非核心代码异步加载"><a href="#非核心代码异步加载" class="headerlink" title="非核心代码异步加载"></a>非核心代码异步加载</h2><ul>
+<h2 id="图片懒加载"><a href="#图片懒加载" class="headerlink" title="图片懒加载"></a>图片懒加载</h2><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> imgList = [...document.querySelectAll(<span class="hljs-string">&#x27;img&#x27;</span>)]
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">lazyLoad</span>(<span class="hljs-params">imgList</span>)</span>&#123;
+  <span class="hljs-keyword">let</span> count = <span class="hljs-number">0</span>
+  <span class="hljs-keyword">const</span> len = imgList.length
+  <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;
+    <span class="hljs-keyword">let</span> doneList = []
+    imgList.forEach(<span class="hljs-function">(<span class="hljs-params">img,index</span>)=&gt;</span>&#123;
+      <span class="hljs-keyword">const</span> react = img.getBoundingClientRect()
+      <span class="hljs-comment">// Element.getBoundingClientRect() 方法返回元素的大小及其相对于视口的位置</span>
+      <span class="hljs-comment">// 返回值是一个 DOMRect 对象，这个对象是由该元素的 getClientRects() 方法返回的一组矩形的集合，就是该元素的 CSS 边框大小。返回的结果是包含完整元素的最小矩形，并且拥有left, top, right, bottom, x, y, width, 和 height这几个以像素为单位的只读属性用于描述整个边框。</span>
+      <span class="hljs-keyword">if</span>(react.top&lt;<span class="hljs-built_in">window</span>.innerHeight)&#123;
+        img.src = img.dataset.src
+        doneList.push(index)
+        count++
+        <span class="hljs-keyword">if</span>(count === len)&#123;
+          <span class="hljs-built_in">document</span>.removeEventListener(<span class="hljs-string">&#x27;scroll&#x27;</span>,lazyLoad)
+        &#125;
+      &#125;
+    &#125;)
+    imgList = imgList.filter(<span class="hljs-function">(<span class="hljs-params">img,index</span>)=&gt;</span>!doneList.includes(i))
+  &#125;
+&#125;
+<span class="hljs-built_in">document</span>.addEventListener(<span class="hljs-string">&#x27;scroll&#x27;</span>,debounce(lazyLoad))
+<span class="hljs-comment">// 加上节流</span></code></pre></div>
+
+<h2 id="非核心代码异步加载"><a href="#非核心代码异步加载" class="headerlink" title="非核心代码异步加载"></a>非核心代码异步加载</h2><ul>
 <li><p>异步加载的方式</p>
 <ol>
 <li>动态创建script标签，window.onload加入页面</li>

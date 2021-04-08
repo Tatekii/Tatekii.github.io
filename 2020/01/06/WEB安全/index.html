@@ -237,7 +237,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年3月31日 晚上
+                  本文最后更新于：2021年4月8日 上午
                 
               </p>
             
@@ -280,35 +280,39 @@ B.src = B.src + <span class="hljs-string">&quot;#&quot;</span> + <span class="hl
 data = <span class="hljs-built_in">window</span>.location.hash; <span class="hljs-comment">//  &lt;-  pageB就获取到了hash值</span>
 &#125;;</code></pre></div></li>
 <li><p><code>jsonp</code></p>
-<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">jsonp</span>(<span class="hljs-params">&#123; url, params, callback &#125;</span>) </span>&#123;
-    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> &#123;
-        <span class="hljs-comment">// 动态创建script标签</span>
-        <span class="hljs-comment">// 带有src的标签不受同源策略影响</span>
-        <span class="hljs-keyword">let</span> script = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">&quot;script&quot;</span>);
-        <span class="hljs-comment">// 回调被执行则删除jsonp的script</span>
-        <span class="hljs-built_in">window</span>[callback] = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">data</span>) </span>&#123;
-        <span class="hljs-comment">//全局注册`window[jsonpCallback]</span>
-          resolve(data);
-          <span class="hljs-built_in">document</span>.body.removeChild(script);
-        &#125;;
-        <span class="hljs-comment">// src中加入参数并发出请求</span>
-        params = &#123; ...params, callback &#125;;
-        <span class="hljs-keyword">let</span> attrs = [];
-        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> key <span class="hljs-keyword">in</span> params) &#123;
-          attrs.push(<span class="hljs-string">`<span class="hljs-subst">$&#123;key&#125;</span>=<span class="hljs-subst">$&#123;params[key]&#125;</span>`</span>);
-        &#125;
-        script.src = <span class="hljs-string">`<span class="hljs-subst">$&#123;url&#125;</span>?<span class="hljs-subst">$&#123;attrs.join(<span class="hljs-string">&quot;&amp;&quot;</span>)&#125;</span>`</span>;
-        <span class="hljs-built_in">document</span>.body.appendChild(script);
-    &#125;);
-&#125;
-<span class="hljs-comment">// 发送</span>
+</li>
+</ul>
+  <div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">jsonp</span>(<span class="hljs-params">&#123; url, params, callback &#125;</span>) </span>&#123;
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">formatParams</span>(<span class="hljs-params"></span>)</span>&#123;
+    <span class="hljs-keyword">const</span> attrs = []
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> [key,value] <span class="hljs-keyword">of</span> <span class="hljs-built_in">Object</span>.entries(params))&#123;
+      attrs.push(<span class="hljs-string">`<span class="hljs-subst">$&#123;key&#125;</span>=<span class="hljs-subst">$&#123;value&#125;</span>`</span>)
+    &#125;
+    attrs.push(<span class="hljs-string">`callback=<span class="hljs-subst">$&#123;callback&#125;</span>`</span>)
+    <span class="hljs-keyword">return</span> attrs.join(<span class="hljs-string">&#x27;&amp;)</span>
+<span class="hljs-string">  &#125;</span>
+<span class="hljs-string">  return new Promise((resolve,reject)=&gt;&#123;</span>
+<span class="hljs-string">    const script = document.createElement(&#x27;</span>script<span class="hljs-string">&#x27;)</span>
+<span class="hljs-string">    script.src = url+&#x27;</span>?<span class="hljs-string">&#x27;+formatParams()</span>
+<span class="hljs-string">    try&#123;</span>
+<span class="hljs-string">      window[callback] = function(data)&#123;</span>
+<span class="hljs-string">        resolve(data)</span>
+<span class="hljs-string">        document.removeChild(script)</span>
+<span class="hljs-string">      &#125;</span>
+<span class="hljs-string">    &#125;catch(err)&#123;</span>
+<span class="hljs-string">      reject(err)</span>
+<span class="hljs-string">    &#125;</span>
+<span class="hljs-string">  &#125;)</span>
+<span class="hljs-string">&#125;</span></code></pre></div>
+  <div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">// 发送</span>
 jsonp(&#123;
 url: <span class="hljs-string">&quot;http://localhost:3000/jsptest&quot;</span>,
 params: &#123; <span class="hljs-attr">msg</span>: <span class="hljs-string">&quot;jsptestmessage&quot;</span> &#125;,
 callback: <span class="hljs-string">&quot;jsonpCallback&quot;</span>
 &#125;).then(<span class="hljs-function"><span class="hljs-params">data</span> =&gt;</span> &#123;
 <span class="hljs-comment">//处理data</span>
-    &#125;);</code></pre></div></li>
+    &#125;);</code></pre></div>
+<ul>
 <li><p><code>imgPing</code><strong>添加img标签src中放入get请求</strong></p>
 <div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> img = <span class="hljs-keyword">new</span> Image();
 img.onload = img.onerror = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;

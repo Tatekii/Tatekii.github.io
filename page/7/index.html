@@ -472,17 +472,10 @@ css,html,js压缩合并
 htm-minifier
 uglifyjs2
 
-图片懒加载非核心代码异步加载
-异步加载的方式
-
-动态创建script标签，window.onload加入页面
-scriptdefer
-scriptasync
-
-
-script/script async/script defer的区别
-
-普通的script，html解析暂停，立即下载和执行
+图片懒加载const imgList = [...document.querySelectAll(&#x27;img&#x27;)]
+function lazyLoad(imgList)&#123;
+  let count = 0
+  const len = imgList.length
         </a>
       </p>
 
@@ -624,8 +617,8 @@ function bubbleSort(arr) &#123;
           Ajax// example
 const request = (method,url,async=true,data) =&gt; &#123;
   return new Promise((resolve,reject)=&gt;&#123;
-    const xhr = XMLHttpRequest()
-    xhr.onreadystateChange = function()&#123;
+    const xhr = new XMLHttpRequest()
+    xhr.onreadystateChange = function()&#
         </a>
       </p>
 

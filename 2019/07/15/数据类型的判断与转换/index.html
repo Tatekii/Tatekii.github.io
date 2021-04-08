@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      38
+      39
        分钟
     </span>
   
@@ -237,7 +237,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年3月19日 晚上
+                  本文最后更新于：2021年4月6日 上午
                 
               </p>
             
@@ -580,7 +580,15 @@
 <span class="hljs-built_in">Object</span>.is(-<span class="hljs-number">0</span>, -<span class="hljs-number">0</span>); <span class="hljs-comment">// true</span>
 <span class="hljs-built_in">Object</span>.is(<span class="hljs-literal">NaN</span>, <span class="hljs-number">0</span>); <span class="hljs-comment">// false</span>
 <span class="hljs-built_in">Object</span>.is(<span class="hljs-literal">NaN</span>, <span class="hljs-number">0</span> / <span class="hljs-number">0</span>); <span class="hljs-comment">// true</span></code></pre></div>
-
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">_Object</span>.<span class="hljs-title">is</span>(<span class="hljs-params">x,y</span>)</span>&#123;
+  <span class="hljs-keyword">if</span>(!<span class="hljs-built_in">Object</span>.is)&#123;
+    <span class="hljs-keyword">if</span>(x===y)&#123;
+      <span class="hljs-keyword">return</span> x!==<span class="hljs-number">0</span> || <span class="hljs-number">1</span>/x === <span class="hljs-number">1</span>/y
+    &#125;<span class="hljs-keyword">else</span>&#123;
+      <span class="hljs-keyword">return</span> x!==x &amp;&amp; y!== y
+    &#125;
+  &#125;
+&#125;</code></pre></div>
             </div>
             <hr>
             <div>
