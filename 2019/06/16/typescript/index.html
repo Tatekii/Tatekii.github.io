@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.8k 字
+      1.9k 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      24
+      26
        分钟
     </span>
   
@@ -237,7 +237,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2020年9月8日 上午
+                  本文最后更新于：2021年4月8日 晚上
                 
               </p>
             
@@ -372,8 +372,10 @@ type NameOrResolver = Name | NameResolver;
 &#125;</code></pre></div></li>
 </ul>
 <h3 id="对象的类型-接口-interfaces"><a href="#对象的类型-接口-interfaces" class="headerlink" title="对象的类型-接口/interfaces"></a>对象的类型-接口/interfaces</h3><ul>
-<li>在面向对象语言中，接口（Interfaces）是一个很重要的概念，它是对行为的抽象，而具体如何行动需要由类（classes）去实现（implement）。</li>
-<li>TypeScript 中的接口是一个非常灵活的概念，除了可用于对类的一部分行为进行抽象以外，也常用于对「对象的形状（Shape）」进行描述。<div class="hljs code-wrapper"><pre><code class="hljs javascript">interface Person &#123;
+<li><p>在面向对象语言中，接口（Interfaces）是一个很重要的概念，它是对行为的抽象，而具体如何行动需要由类（classes）去实现（implement）。</p>
+</li>
+<li><p>TypeScript 中的接口是一个非常灵活的概念，除了可用于对类的一部分行为进行抽象以外，也常用于对「对象的形状（Shape）」进行描述。</p>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript">interface Person &#123;
 name: string;
 age: number;
 &#125;
@@ -381,7 +383,8 @@ age: number;
 name: <span class="hljs-string">&#x27;xiaoming&#x27;</span>,
 age: <span class="hljs-number">66</span>
 &#125;</code></pre></div></li>
-<li>赋值时，变量的形状必须和接口的形状保持一致，属性不多也不少<ul>
+<li><p>赋值时，变量的形状必须和接口的形状保持一致，属性不多也不少</p>
+<ul>
 <li>可选属性<div class="hljs code-wrapper"><pre><code class="hljs javascript">age?: number;
 <span class="hljs-comment">//age可有可无</span></code></pre></div></li>
 <li>任意属性<br>一旦定义了任意属性，那么确定属性和可选属性的类型都必须是它的类型的子集<div class="hljs code-wrapper"><pre><code class="hljs javascript">interface Person &#123;
@@ -423,7 +426,40 @@ tom.id = <span class="hljs-number">9527</span>;
 </li>
 </ul>
 </li>
-</ul>
+<li><p>type 和 interface的区别</p>
+<div class="hljs code-wrapper"><pre><code class="hljs typescript"><span class="hljs-keyword">type</span> Name = <span class="hljs-built_in">string</span>
+<span class="hljs-comment">// 类型别名</span>
+<span class="hljs-keyword">interface</span> Human1&#123;
+  name:<span class="hljs-built_in">string</span>
+&#125;
+<span class="hljs-keyword">interface</span> Human2&#123;
+  age:<span class="hljs-built_in">number</span>
+&#125;
+<span class="hljs-keyword">type</span> Person = Human1 | Human2
+<span class="hljs-comment">// 联合类型</span>
+<span class="hljs-keyword">type</span> PersonArr = [Human1,Human2]
+<span class="hljs-comment">// 定义具体位置的类型</span>
+
+
+<span class="hljs-keyword">interface</span> User &#123;
+  name: <span class="hljs-built_in">string</span>
+  age: <span class="hljs-built_in">number</span>
+&#125;
+
+<span class="hljs-keyword">interface</span> User &#123;
+  sex: <span class="hljs-built_in">string</span>
+&#125;
+
+<span class="hljs-comment">/*</span>
+<span class="hljs-comment">User 接口为 &#123;</span>
+<span class="hljs-comment">  name: string</span>
+<span class="hljs-comment">  age: number</span>
+<span class="hljs-comment">  sex: string </span>
+<span class="hljs-comment">&#125;</span>
+<span class="hljs-comment">*/</span>
+<span class="hljs-comment">// 两个同名interface声明会合并</span>
+
+</code></pre></div>
 <h3 id="函数的类型"><a href="#函数的类型" class="headerlink" title="函数的类型"></a>函数的类型</h3><ul>
 <li><p>函数声明</p>
 <div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sum</span>(<span class="hljs-params">x: number, y: number</span>): <span class="hljs-title">number</span> </span>&#123;
@@ -473,6 +509,8 @@ firstName: string, lastName?: string
     <span class="hljs-keyword">return</span> x.split(<span class="hljs-string">&#x27;&#x27;</span>).reverse().join(<span class="hljs-string">&#x27;&#x27;</span>);
   &#125;
 &#125;</code></pre></div></li>
+</ul>
+</li>
 </ul>
 <h3 id="类型断言"><a href="#类型断言" class="headerlink" title="类型断言"></a>类型断言</h3><ul>
 <li>在不确定类型的时候就访问方法或者属性会报错</li>

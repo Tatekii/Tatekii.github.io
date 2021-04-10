@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      440 字
+      423 字
     </span>
   
 
@@ -237,7 +237,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2020年9月29日 下午
+                  本文最后更新于：2021年4月9日 下午
                 
               </p>
             
@@ -248,31 +248,25 @@
 
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">MinStack</span>(<span class="hljs-params"></span>)</span>&#123;
   <span class="hljs-built_in">this</span>.stack = []
-  <span class="hljs-built_in">this</span>.min = <span class="hljs-literal">null</span>
+  <span class="hljs-built_in">this</span>.min = [<span class="hljs-literal">Infinity</span>]
 &#125;
 
-MinStack.prototype.push = <span class="hljs-function"><span class="hljs-params">item</span> =&gt;</span> &#123;
-  <span class="hljs-keyword">if</span>(!<span class="hljs-built_in">this</span>.stack.length)&#123;
-    <span class="hljs-built_in">this</span>.min = item
-  &#125;<span class="hljs-keyword">else</span>&#123;
-    <span class="hljs-built_in">this</span>.min = <span class="hljs-built_in">Math</span>.min(<span class="hljs-built_in">this</span>.min,item)
-  &#125;
+MinStack.prototype.push = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">item</span>)</span>&#123;
   <span class="hljs-built_in">this</span>.stack.push(item)
+  <span class="hljs-built_in">this</span>.min.push(<span class="hljs-built_in">Math</span>.min(<span class="hljs-built_in">this</span>.min[<span class="hljs-built_in">this</span>.min.length-<span class="hljs-number">1</span>],item))
 &#125;
 
-MinStack.prototype.pop = <span class="hljs-function">() =&gt;</span> &#123;
-  <span class="hljs-keyword">const</span> item  = <span class="hljs-built_in">this</span>.stack.pop()
-  <span class="hljs-built_in">this</span>.min = <span class="hljs-built_in">Math</span>.min(...this.stack)
-  <span class="hljs-keyword">return</span> item
+MinStack.prototype.pop = <span class="hljs-function"><span class="hljs-keyword">function</span></span>&#123;
+  <span class="hljs-built_in">this</span>.stack.pop()
+  <span class="hljs-built_in">this</span>.min.pop()
 &#125;
 
-MinStack.prototype.top = <span class="hljs-function">() =&gt;</span> &#123;
-  <span class="hljs-keyword">if</span>(!<span class="hljs-built_in">this</span>.stack.length) <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>
+MinStack.prototype.top = <span class="hljs-function"><span class="hljs-keyword">function</span></span>&#123;
   <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.stack[<span class="hljs-built_in">this</span>.stack.length-<span class="hljs-number">1</span>]
 &#125;
 
-MinStack.prototype.getMin = <span class="hljs-function">() =&gt;</span> &#123;
-  <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.min
+MinStack.prototype.min = <span class="hljs-function"><span class="hljs-keyword">function</span></span>&#123;
+  <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.min[<span class="hljs-built_in">this</span>.min.length-<span class="hljs-number">1</span>]
 &#125;
 </code></pre></div></li>
 <li><p>判断括号是否闭合</p>
@@ -322,27 +316,28 @@ MinStack.prototype.getMin = <span class="hljs-function">() =&gt;</span> &#123;
 <ul>
 <li>滑动窗口最大值<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// k 为窗口大小</span>
 <span class="hljs-comment">// window存储数组索引</span>
-<span class="hljs-comment">// 每次循环判断窗口长度</span>
-<span class="hljs-comment">// 每次循环将arr[i]与窗口内值比较</span>
-<span class="hljs-comment">// 保证最大值索引在窗口最左边</span>
-<span class="hljs-comment">// 依次移动窗口，输出索引到res数组</span>
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">maxInSlideWin</span>(<span class="hljs-params">arr,k</span>)</span>&#123;
   <span class="hljs-keyword">let</span> res = []
   <span class="hljs-keyword">let</span> <span class="hljs-built_in">window</span> = []
   <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span> ; i &lt; arr.length ; i++)&#123;
     <span class="hljs-keyword">if</span>(i-<span class="hljs-built_in">window</span>[<span class="hljs-number">0</span>]&gt;=k)&#123;
+      <span class="hljs-comment">// 窗口大小超过限制</span>
       <span class="hljs-built_in">window</span>.shift()
     &#125;
     <span class="hljs-keyword">while</span>(arr[<span class="hljs-built_in">window</span>[<span class="hljs-built_in">window</span>.length-<span class="hljs-number">1</span>]]&lt;=arr[i])&#123;
+      <span class="hljs-comment">// 用指针位置的值与窗口索引值比较</span>
+      <span class="hljs-comment">// 循环删除比指针小的值索引</span>
       <span class="hljs-built_in">window</span>.pop()
     &#125;
     <span class="hljs-built_in">window</span>.push(i)
     <span class="hljs-keyword">if</span>(i&gt;=k-<span class="hljs-number">1</span>)&#123;
       res.push(arr[<span class="hljs-built_in">window</span>[<span class="hljs-number">0</span>]])
+      <span class="hljs-comment">// 保证窗口内最左值=边索引为最大值</span>
     &#125;
   &#125;
   <span class="hljs-keyword">return</span> res
-&#125;</code></pre></div></li>
+&#125;
+</code></pre></div></li>
 </ul>
 
             </div>

@@ -525,14 +525,12 @@ function buildHeap(items,heapSize)&#123;
 
 function MinStack()&#123;
   this.stack = []
-  this.min = null
+  this.min = [Infinity]
 &#125;
 
-MinStack.prototype.push = item =&gt; &#123;
-  if(!this.stack.length)&#123;
-    this.min = item
-  &#125;else&#123;
- 
+MinStack.prototype.push = function(item)&#123;
+  this.stack.push(item)
+  this.min.push(Math.min(this.min[this
         </a>
       </p>
 

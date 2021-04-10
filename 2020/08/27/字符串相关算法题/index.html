@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      529 字
+      800 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      8
+      12
        分钟
     </span>
   
@@ -237,7 +237,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2020年11月5日 晚上
+                  本文最后更新于：2021年4月9日 晚上
                 
               </p>
             
@@ -291,8 +291,8 @@
   <span class="hljs-keyword">let</span> left = <span class="hljs-number">0</span>
   <span class="hljs-keyword">let</span> right = str.length-<span class="hljs-number">1</span>
   <span class="hljs-keyword">let</span> word = <span class="hljs-string">&#x27;&#x27;</span>
-  <span class="hljs-keyword">while</span>(str.charAt(str)===<span class="hljs-string">&#x27; &#x27;</span>) left++
-  <span class="hljs-keyword">while</span>(str.charAt(str)===<span class="hljs-string">&#x27; &#x27;</span>) right--
+  <span class="hljs-keyword">while</span>(str.charAt(left)===<span class="hljs-string">&#x27; &#x27;</span>) left++
+  <span class="hljs-keyword">while</span>(str.charAt(right)===<span class="hljs-string">&#x27; &#x27;</span>) right--
   <span class="hljs-comment">// 去除头尾多余空格</span>
   <span class="hljs-keyword">while</span>(left&lt;=right)&#123;
     <span class="hljs-keyword">let</span> char = str.charAt(left)
@@ -315,43 +315,100 @@
   <span class="hljs-keyword">let</span> s = str.toLowerCase().replace(<span class="hljs-regexp">/[\W_]/g</span>,<span class="hljs-string">&#x27;&#x27;</span>)
   <span class="hljs-comment">// 格式掉不是字母的别的玩意</span>
   <span class="hljs-comment">// | `\W`   | 匹配任意不是字母，数字，下划线 |</span>
-  <span class="hljs-comment">// `[]` 字符串用中括号括起来，表示匹配其中的任一字符，相当于或的意思</span>
+  <span class="hljs-comment">// `[]` 字符串用中括号括起来，表示匹配其中的任一字符</span>
   <span class="hljs-keyword">return</span> s === s.split(<span class="hljs-string">&#x27;&#x27;</span>).reverse().join(<span class="hljs-string">&#x27;&#x27;</span>)
 &#125;</code></pre></div>
 
 <ul>
-<li>计算最长不重复字符串</li>
+<li>最长不重复子串长度</li>
 </ul>
-<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">longestStr</span>(<span class="hljs-params">str</span>)</span>&#123;
-  <span class="hljs-keyword">let</span> map = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Map</span>(),maxLength = <span class="hljs-number">0</span>
-  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; j = <span class="hljs-number">0</span>;j&lt;str.length;j++)&#123;
-    <span class="hljs-keyword">if</span>(map.has(str[j]))&#123;
-      i = <span class="hljs-built_in">Math</span>.max(map.get(str[j])+<span class="hljs-number">1</span>,i)
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">longest1</span>(<span class="hljs-params">str</span>) </span>&#123;
+  <span class="hljs-keyword">const</span> <span class="hljs-built_in">window</span> = [];
+  <span class="hljs-comment">// 滑动窗口</span>
+  <span class="hljs-keyword">let</span> maxLen = <span class="hljs-number">0</span>;
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; str.length; i++) &#123;
+    <span class="hljs-keyword">const</span> index = <span class="hljs-built_in">window</span>.indexOf(str[i]);
+    <span class="hljs-keyword">if</span> (index !== -<span class="hljs-number">1</span>) &#123;
+      <span class="hljs-built_in">window</span>.splice(<span class="hljs-number">0</span>, index + <span class="hljs-number">1</span>);
+      <span class="hljs-comment">// 有重复值时缩小窗口</span>
     &#125;
-    maxLength = <span class="hljs-built_in">Math</span>.max(j-i+<span class="hljs-number">1</span>,maxLength)
-    map.set(str[j],j)
+    <span class="hljs-built_in">window</span>.push(str[i])
+    <span class="hljs-comment">// 无重复扩大窗口</span>
+    maxLen = <span class="hljs-built_in">Math</span>.max(maxLen, <span class="hljs-built_in">window</span>.length);
   &#125;
-  <span class="hljs-keyword">return</span> maxLength
+  <span class="hljs-keyword">return</span> maxLen;
 &#125;
 
 
-
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">longestStr2</span>(<span class="hljs-params">str</span>)</span>&#123;
-  <span class="hljs-keyword">let</span> arr = [],maxLen = <span class="hljs-number">0</span>
-  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span> ; i&lt;str.length;i++)&#123;
-    <span class="hljs-keyword">let</span> index = arr.indexOf(str[i])
-    <span class="hljs-keyword">if</span>(index!==-<span class="hljs-number">1</span>)&#123;
-      arr.splice(<span class="hljs-number">0</span>,index+<span class="hljs-number">1</span>)
-      <span class="hljs-comment">// splice() 方法向/从数组中添加/删除项目,然后返回被删除的项目</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">longest2</span>(<span class="hljs-params">str</span>)</span>&#123;
+  <span class="hljs-keyword">const</span> map = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Map</span>()
+  <span class="hljs-keyword">let</span> maxLen = <span class="hljs-number">0</span>
+  <span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>
+  <span class="hljs-comment">// i 位置右侧字符无重复</span>
+  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> j =<span class="hljs-number">0</span>;j&lt;str.length;j++)&#123;
+    <span class="hljs-keyword">if</span>(map.has(str[j]))&#123;
+      i = <span class="hljs-built_in">Math</span>.max(map.get(str[j])+<span class="hljs-number">1</span>,i)
+      <span class="hljs-comment">// 以不同字符为基准标定i位置时取最大值</span>
     &#125;
-    arr.push(str[i])
-    maxLen = <span class="hljs-built_in">Math</span>.max(maxLen,arr.length)
-
-    <span class="hljs-comment">// 取最大值！！</span>
-    <span class="hljs-comment">// 最长的字符串不一定从头就开始出现</span>
+    map.set(str[j],j)
+    maxLen = <span class="hljs-built_in">Math</span>.max((j-i)+<span class="hljs-number">1</span>,maxLen)
   &#125;
-  <span class="hljs-keyword">return</span> maxLen
 &#125;</code></pre></div>
+
+<ul>
+<li><p>计算二进制数中1的个数</p>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// n 为32位二进制数</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">hammingWeight1</span>(<span class="hljs-params">n</span>)</span>&#123;
+  <span class="hljs-keyword">const</span> numStr = n.toString(<span class="hljs-number">2</span>).toString()
+  <span class="hljs-comment">// 呈现字符串或数组</span>
+  <span class="hljs-comment">//const numStr = n.toString(2).split(&#x27;’)</span>
+  <span class="hljs-comment">// 然后就是遍历判断</span>
+  <span class="hljs-keyword">let</span> showTimes = <span class="hljs-number">0</span>
+  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i =<span class="hljs-number">0</span>;i&lt;numStr.length;i++)&#123;
+    <span class="hljs-keyword">if</span>(i===<span class="hljs-string">&#x27;1&#x27;</span>)&#123;
+      showTimes++
+    &#125;
+  &#125;
+  <span class="hljs-keyword">return</span> showTimes
+&#125;
+
+
+<span class="hljs-comment">// 位运算</span>
+<span class="hljs-comment">// &gt;&gt;&gt; 无符号向右移</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">hammingWeight2</span>(<span class="hljs-params">n</span>)</span>&#123;
+  <span class="hljs-keyword">let</span> showTimes = <span class="hljs-number">0</span>
+  <span class="hljs-keyword">while</span>(n!=<span class="hljs-number">0</span>)&#123;
+<span class="hljs-comment">// 若n&amp;1=0 ，则 n 二进制 最右一位 为 0 ；</span>
+<span class="hljs-comment">// 若n&amp;1=1 ，则 n 二进制 最右一位 为 1 。</span>
+    showTimes += n&amp;<span class="hljs-number">1</span>
+    n&gt;&gt;&gt;=<span class="hljs-number">1</span>
+  &#125;
+  <span class="hljs-keyword">return</span> showTimes
+&#125;
+
+<span class="hljs-comment">// 整体n &amp;</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">hammingWeight3</span>(<span class="hljs-params">n</span>)</span>&#123;
+  <span class="hljs-keyword">let</span> showTimes = <span class="hljs-number">0</span>
+  <span class="hljs-keyword">while</span>(n!=<span class="hljs-number">0</span>)&#123;
+    showTimes ++ 
+    n  = n &amp; (n-<span class="hljs-number">1</span>)
+    <span class="hljs-comment">// 二进制 - 中</span>
+    <span class="hljs-comment">// n-1 相当 于n把最右边的1变为0,其后面的0变为1</span>
+    <span class="hljs-comment">// n与n-1进行与运算,1&amp;1=1,即只改变了最右边第一个1</span>
+    <span class="hljs-comment">// 0001000</span>
+    <span class="hljs-comment">// 0000111</span>
+    <span class="hljs-comment">// 0000000</span>
+    <span class="hljs-comment">// 循环删除右边的1</span>
+  &#125;
+  <span class="hljs-keyword">return</span> showTimes
+&#125;</code></pre></div></li>
+<li><p>请实现一个函数用来判断字符串是否表示数值（包括整数和小数）</p>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">numberCheck</span>(<span class="hljs-params">s</span>)</span>&#123;
+  <span class="hljs-keyword">if</span>(<span class="hljs-regexp">/^\s$/</span>.test(s)) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
+  <span class="hljs-keyword">return</span> <span class="hljs-built_in">Number</span>(s).toString() !== <span class="hljs-string">&#x27;NaN&#x27;</span>
+&#125;</code></pre></div></li>
+</ul>
+
             </div>
             <hr>
             <div>

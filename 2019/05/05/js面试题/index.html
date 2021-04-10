@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      4.7k 字
+      4.9k 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      82
+      84
        分钟
     </span>
   
@@ -237,7 +237,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年4月7日 晚上
+                  本文最后更新于：2021年4月8日 晚上
                 
               </p>
             
@@ -377,7 +377,29 @@
   <span class="hljs-keyword">const</span> res = func.apply(instance, args);
   <span class="hljs-keyword">return</span> isComplexType(res) ? res : instance;
 &#125;;</code></pre></div>
-
+<ul>
+<li>实现一个Object.create<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> <span class="hljs-built_in">Object</span>._create = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">proto,propertyObj</span>)</span>&#123;
+  <span class="hljs-comment">// propertyObj</span>
+  <span class="hljs-comment">// 要定义其可枚举属性或修改的属性描述符的对象</span>
+  <span class="hljs-keyword">if</span>(<span class="hljs-keyword">typeof</span> proto !== <span class="hljs-string">&#x27;function&#x27;</span> || <span class="hljs-keyword">typeof</span> proto !== <span class="hljs-string">&#x27;object&#x27;</span>)&#123;
+    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">TypeError</span>(proto+<span class="hljs-string">&#x27;should be an object&#x27;</span>)
+  &#125;
+  <span class="hljs-keyword">if</span>(propertyObj &amp;&amp; (<span class="hljs-keyword">typeof</span> propertyObj === <span class="hljs-literal">null</span> || <span class="hljs-keyword">typeof</span> propertyObj !== <span class="hljs-string">&#x27;object&#x27;</span>))&#123;
+    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">TypeError</span>(<span class="hljs-string">&#x27;cant convert null to object&#x27;</span>)
+  &#125;
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Fn</span>(<span class="hljs-params"></span>)</span>&#123;&#125;
+  Fn.prototype = proto
+  <span class="hljs-keyword">const</span> newObj = <span class="hljs-keyword">new</span> Fn()
+  <span class="hljs-keyword">if</span>(propertyObj !== <span class="hljs-literal">undefined</span>)&#123;
+    <span class="hljs-built_in">Object</span>.definedProperty(newObj,propertyObj)
+  &#125;
+  <span class="hljs-keyword">if</span>(proto === <span class="hljs-literal">null</span>)&#123;
+    newObj.__proto__ = <span class="hljs-literal">null</span>
+  &#125;
+  <span class="hljs-keyword">return</span> newObj
+&#125;)
+</code></pre></div></li>
+</ul>
 <ul>
 <li>手写防抖/节流</li>
 </ul>
@@ -1087,7 +1109,7 @@ Avenger.prototype.constructor = Avenger
 <div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> isComplexType = <span class="hljs-function">(<span class="hljs-params">obj</span>) =&gt;</span>
   (<span class="hljs-keyword">typeof</span> obj === <span class="hljs-string">&quot;object&quot;</span> || <span class="hljs-keyword">typeof</span> obj === <span class="hljs-string">&quot;function&quot;</span>) &amp;&amp; obj !== <span class="hljs-literal">null</span>;
 <span class="hljs-keyword">const</span> selfAssign = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">target, ...source</span>) </span>&#123;
-  <span class="hljs-keyword">if</span> (!target) <span class="hljs-keyword">throw</span> <span class="hljs-string">&quot;target err&quot;</span>;
+  <span class="hljs-keyword">if</span> (!target) <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">&#x27;need assign target&#x27;</span>);
   <span class="hljs-keyword">return</span> source.reduce(<span class="hljs-function">(<span class="hljs-params">acc, cur</span>) =&gt;</span> &#123;
     <span class="hljs-keyword">if</span> (cur == <span class="hljs-literal">null</span>) <span class="hljs-keyword">return</span> acc;
     <span class="hljs-keyword">if</span> (!isComplexType(acc)) acc = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Object</span>(acc);

@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.6k 字
+      1.8k 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      25
+      29
        分钟
     </span>
   
@@ -237,7 +237,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年4月5日 晚上
+                  本文最后更新于：2021年4月10日 下午
                 
               </p>
             
@@ -557,6 +557,52 @@ RandomizedSet.prototype.getRandom = <span class="hljs-function"><span class="hlj
       i++
     &#125;
   &#125;
+&#125;</code></pre></div></li>
+<li><p>数字的次方（不使用内置库pow</p>
+</li>
+</ol>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript">
+<span class="hljs-comment">// 如果指数n是偶数，x^n = x^(n/2) * x^(n/2)</span>
+<span class="hljs-comment">// 如果指数n是奇数，x^n = x * x^(n/2) * x^(n/2)</span>
+
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">myPow</span>(<span class="hljs-params">x,n</span>)</span>&#123;
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">_pow</span>(<span class="hljs-params">base,ex</span>)</span>&#123;
+    <span class="hljs-keyword">if</span>(ex===<span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>
+    <span class="hljs-keyword">if</span>(ex===<span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> base
+
+    <span class="hljs-keyword">const</span> splitPow = _pow(base,<span class="hljs-built_in">Math</span>.floor(ex/<span class="hljs-number">2</span>))
+    <span class="hljs-keyword">return</span> ex%<span class="hljs-number">2</span> ? base*splitPow*splitPow : splitPow*splitPow
+  &#125;
+  <span class="hljs-keyword">const</span> res = _pow(x,<span class="hljs-built_in">Math</span>.abs(n))
+  <span class="hljs-keyword">return</span> n&lt;<span class="hljs-number">0</span> ? <span class="hljs-number">1</span>/res : res 
+&#125;</code></pre></div>
+
+<ol>
+<li>输出1到最大的n位数<div class="hljs code-wrapper"><pre><code class="hljs javascript">  <span class="hljs-comment">/**</span>
+<span class="hljs-comment">  / <span class="hljs-doctag">@params </span>n=1 一位数，最大9，输出123456789</span>
+<span class="hljs-comment">  / <span class="hljs-doctag">@params </span>n=2 两位数呀 最大99</span>
+<span class="hljs-comment">  */</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">printNumbers1</span>(<span class="hljs-params">n</span>)</span>&#123;
+  <span class="hljs-comment">//组合字符串</span>
+  <span class="hljs-keyword">let</span> str = <span class="hljs-string">&#x27;&#x27;</span>
+  <span class="hljs-keyword">while</span>(n&gt;<span class="hljs-number">0</span>)&#123;
+    str+=<span class="hljs-string">&#x27;9&#x27;</span>
+    n--
+  &#125;
+  str = <span class="hljs-built_in">Number</span>(str)
+  <span class="hljs-keyword">const</span> res = []
+  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">1</span>;i&lt;=str;i++)&#123;
+    res.push(i)
+  &#125;
+  <span class="hljs-keyword">return</span> res
+&#125;
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">printNumbers1</span>(<span class="hljs-params">n</span>)</span>&#123;
+  <span class="hljs-comment">//最大值就是 10^n-1......</span>
+  <span class="hljs-keyword">const</span> max = <span class="hljs-number">10</span> ** n -<span class="hljs-number">1</span>
+  <span class="hljs-keyword">const</span> res = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>(max).fill(<span class="hljs-number">1</span>)
+  <span class="hljs-keyword">return</span> res.map(<span class="hljs-function">(<span class="hljs-params">v,i</span>)=&gt;</span>v+i)
 &#125;</code></pre></div></li>
 </ol>
 
