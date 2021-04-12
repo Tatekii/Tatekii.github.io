@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.8k 字
+      2k 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      29
+      32
        分钟
     </span>
   
@@ -237,7 +237,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年4月10日 下午
+                  本文最后更新于：2021年4月12日 晚上
                 
               </p>
             
@@ -603,6 +603,60 @@ RandomizedSet.prototype.getRandom = <span class="hljs-function"><span class="hlj
   <span class="hljs-keyword">const</span> max = <span class="hljs-number">10</span> ** n -<span class="hljs-number">1</span>
   <span class="hljs-keyword">const</span> res = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>(max).fill(<span class="hljs-number">1</span>)
   <span class="hljs-keyword">return</span> res.map(<span class="hljs-function">(<span class="hljs-params">v,i</span>)=&gt;</span>v+i)
+&#125;</code></pre></div></li>
+</ol>
+<ol>
+<li>和为s的所有正数序列<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">/**</span>
+<span class="hljs-comment"> *  15</span>
+<span class="hljs-comment"> * [1,2,3,4,5] [4,5,6] [7,8]</span>
+<span class="hljs-comment">*/</span> 
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">findContinuousSequence</span>(<span class="hljs-params">target</span>)</span>&#123;
+  <span class="hljs-comment">// 直接用滑动窗口套</span>
+  <span class="hljs-keyword">let</span> l = <span class="hljs-number">1</span>
+  <span class="hljs-keyword">let</span> r = <span class="hljs-number">2</span>
+  <span class="hljs-keyword">let</span> sum = <span class="hljs-number">3</span>
+  <span class="hljs-keyword">const</span> res = []
+  <span class="hljs-keyword">while</span>(l&lt;r)&#123;
+    <span class="hljs-keyword">if</span>(sum===target)&#123;
+      <span class="hljs-keyword">const</span> ret = []
+      <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = j;i&lt;=r;i++)&#123;
+        ret.push(i)
+      &#125;
+      sum-=l
+      l++
+    &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(sum &gt; target)&#123;
+      sum -= l
+      l++
+    &#125;<span class="hljs-keyword">else</span>&#123;
+      r++
+      sum+=r
+    &#125;
+  &#125;
+  <span class="hljs-keyword">return</span> res
+&#125;
+
+<span class="hljs-comment">// 滑动窗口的另外一种实现</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">findContinuousSequence</span>(<span class="hljs-params">target</span>)</span>&#123;
+  <span class="hljs-keyword">const</span> max = target%<span class="hljs-number">2</span>===<span class="hljs-number">0</span>?target/<span class="hljs-number">2</span>:<span class="hljs-built_in">Math</span>.floor(target/<span class="hljs-number">2</span>)+<span class="hljs-number">1</span>
+  <span class="hljs-comment">// max右边都不可能满足</span>
+  <span class="hljs-comment">// t = 9</span>
+  <span class="hljs-comment">// max = 1，2，3，4，5，6[x]，7[x]，8[x]</span>
+  <span class="hljs-keyword">const</span> <span class="hljs-built_in">window</span> = []
+  <span class="hljs-keyword">const</span> res = []
+  <span class="hljs-keyword">let</span> sum = <span class="hljs-number">0</span>
+  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">1</span>;i &lt;= max ;i++)&#123;
+    <span class="hljs-built_in">window</span>.push(i)
+    sum += i
+    <span class="hljs-keyword">while</span>(sum &gt; target)&#123;
+      sum-=<span class="hljs-built_in">window</span>[<span class="hljs-number">0</span>]
+      <span class="hljs-built_in">window</span>.shift()
+    &#125;
+    <span class="hljs-keyword">if</span>(sum===target)&#123;
+      <span class="hljs-built_in">window</span>.length&gt;<span class="hljs-number">1</span> &amp;&amp; res.push([...window])
+      <span class="hljs-comment">// push window的浅拷贝</span>
+    &#125;
+  &#125;
+  <span class="hljs-keyword">return</span> res
 &#125;</code></pre></div></li>
 </ol>
 
