@@ -18,7 +18,7 @@
   <meta name="author" content="tatekii">
   <meta name="keywords" content="">
   
-  <title>其他算法题 - 不知名的笔记本</title>
+  <title>算法题 - 不知名的笔记本</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
@@ -163,7 +163,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="其他算法题">
+            <span class="h2" id="subtitle" title="算法题">
               
             </span>
 
@@ -233,11 +233,11 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">其他算法题</h1>
+            <h1 style="display: none">算法题</h1>
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年4月12日 晚上
+                  本文最后更新于：2021年4月13日 凌晨
                 
               </p>
             
@@ -259,7 +259,7 @@
   <span class="hljs-keyword">return</span> res.length === <span class="hljs-number">1</span> ? res[<span class="hljs-number">0</span>] : res
 &#125;</code></pre></div></li>
 </ol>
-<ol>
+<ol start="2">
 <li><p>三数之合</p>
  <div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">threeSum</span>(<span class="hljs-params">arr,target</span>)</span>&#123;
   <span class="hljs-keyword">let</span> res = []
@@ -422,7 +422,7 @@ RandomizedSet.prototype.getRandom = <span class="hljs-function"><span class="hlj
   <span class="hljs-keyword">return</span> [...this.data][index]
 &#125;</code></pre></div></li>
 </ol>
-<ol>
+<ol start="6">
 <li>合并两个有序数组 <div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// arr1 = [1,2,5]  m=3</span>
 <span class="hljs-comment">// arr2 = [2,3,4]  n=3</span>
 
@@ -444,12 +444,12 @@ RandomizedSet.prototype.getRandom = <span class="hljs-function"><span class="hlj
 
 </code></pre></div></li>
 </ol>
-<ol>
+<ol start="7">
 <li>计算两个数组的交集 <div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">intersection</span>(<span class="hljs-params">arr1,arr2</span>)</span>&#123;
   <span class="hljs-keyword">return</span> [...new <span class="hljs-built_in">Set</span>(arr1.filter(<span class="hljs-function"><span class="hljs-params">item</span>=&gt;</span>arr2.includes(item)))]
 &#125;</code></pre></div></li>
 </ol>
-<ol>
+<ol start="8">
 <li><p>计算多个数组的交集</p>
  <div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">intersection</span>(<span class="hljs-params">...arrs</span>)</span>&#123;
   <span class="hljs-keyword">if</span>(arrs.length===<span class="hljs-number">0</span>)<span class="hljs-keyword">return</span> []
@@ -471,9 +471,9 @@ RandomizedSet.prototype.getRandom = <span class="hljs-function"><span class="hlj
   ,[]&#125;
 &#125;</code></pre></div></li>
 </ol>
-<ol>
+<ol start="10">
 <li><p>大数相加(可以输出字符串)</p>
- <div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">bigAdd</span>(<span class="hljs-params">x, y</span>) </span>&#123;
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">bigAdd</span>(<span class="hljs-params">x, y</span>) </span>&#123;
   <span class="hljs-keyword">if</span>(x===<span class="hljs-string">&#x27;0&#x27;</span>)<span class="hljs-keyword">return</span> y
   <span class="hljs-keyword">if</span>(y===<span class="hljs-string">&#x27;0&#x27;</span>)<span class="hljs-keyword">return</span> x
   <span class="hljs-keyword">let</span> num1;
@@ -497,7 +497,7 @@ RandomizedSet.prototype.getRandom = <span class="hljs-function"><span class="hlj
   <span class="hljs-keyword">return</span> carry ? carry + res : res
 &#125;</code></pre></div></li>
 <li><p>大数相乘(可以输出字符串)</p>
- <div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">bigMulti</span>(<span class="hljs-params">x,y</span>)</span>&#123;
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">bigMulti</span>(<span class="hljs-params">x,y</span>)</span>&#123;
   <span class="hljs-keyword">if</span>(x===<span class="hljs-string">&#x27;0&#x27;</span> || y===<span class="hljs-string">&#x27;0&#x27;</span>) <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;0&#x27;</span>
   <span class="hljs-keyword">if</span>(x===<span class="hljs-string">&#x27;1&#x27;</span>)<span class="hljs-keyword">return</span> y
   <span class="hljs-keyword">if</span>(y===<span class="hljs-string">&#x27;1&#x27;</span>)<span class="hljs-keyword">return</span> x
@@ -524,7 +524,7 @@ RandomizedSet.prototype.getRandom = <span class="hljs-function"><span class="hlj
   <span class="hljs-keyword">return</span> res
 &#125;</code></pre></div></li>
 <li><p>保留精度加法</p>
- <div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> fixAdd = <span class="hljs-function">(<span class="hljs-params">x,y</span>)=&gt;</span>&#123;
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> fixAdd = <span class="hljs-function">(<span class="hljs-params">x,y</span>)=&gt;</span>&#123;
   <span class="hljs-keyword">const</span>  len1 = x.split(<span class="hljs-string">&#x27;.&#x27;</span>)[<span class="hljs-number">1</span>].length
   <span class="hljs-keyword">const</span>  len2 = y.split(<span class="hljs-string">&#x27;.&#x27;</span>)[<span class="hljs-number">1</span>].length
   <span class="hljs-keyword">const</span>  maxLen = len1&gt;=len2 ? len1 :len2
@@ -532,7 +532,7 @@ RandomizedSet.prototype.getRandom = <span class="hljs-function"><span class="hlj
   <span class="hljs-keyword">return</span> (x * times + y * times) / times;
 &#125;</code></pre></div></li>
 <li><p>满9加1</p>
- <div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">add1</span>(<span class="hljs-params">num</span>)</span>&#123;
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">add1</span>(<span class="hljs-params">num</span>)</span>&#123;
   <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> dig = num.length - <span class="hljs-number">1</span>;dig&gt;=<span class="hljs-number">0</span>;dig--)&#123;
     <span class="hljs-keyword">if</span>(num[dig]===<span class="hljs-number">9</span>)&#123;
       num[dig]=<span class="hljs-number">0</span>
@@ -545,7 +545,7 @@ RandomizedSet.prototype.getRandom = <span class="hljs-function"><span class="hlj
   <span class="hljs-keyword">return</span> num
 &#125;</code></pre></div></li>
 <li><p>将数组中的0全部移动到最后且非0部分保持原顺序</p>
- <div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">move0</span>(<span class="hljs-params">num</span>)</span>&#123;
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">move0</span>(<span class="hljs-params">num</span>)</span>&#123;
   <span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>
   <span class="hljs-keyword">let</span> j = <span class="hljs-number">0</span>
   <span class="hljs-keyword">while</span>(i&lt;num.length)&#123;
@@ -669,7 +669,11 @@ RandomizedSet.prototype.getRandom = <span class="hljs-function"><span class="hlj
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/1-%E9%9D%A2%E8%AF%95-1-javascript-1-%E7%AE%97%E6%B3%95/">1. 面试 1. javascript 1. 算法</a>
+                      <a class="hover-with-bg" href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
+                    
+                      <a class="hover-with-bg" href="/tags/javascript/">javascript</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
                     
                   </div>
                 

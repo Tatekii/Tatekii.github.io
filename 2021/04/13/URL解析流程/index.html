@@ -18,7 +18,7 @@
   <meta name="author" content="tatekii">
   <meta name="keywords" content="">
   
-  <title>Intersection Observer API - 不知名的笔记本</title>
+  <title>地址中输入URL回车后发生了什么 - 不知名的笔记本</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
@@ -163,7 +163,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="Intersection Observer API">
+            <span class="h2" id="subtitle" title="地址中输入URL回车后发生了什么">
               
             </span>
 
@@ -173,8 +173,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2019-07-17 14:25" pubdate>
-        2019年7月17日 下午
+      <time datetime="2021-04-13 00:16" pubdate>
+        2021年4月13日 凌晨
       </time>
     </span>
   
@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      763 字
+      1.2k 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      8
+      14
        分钟
     </span>
   
@@ -233,57 +233,145 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Intersection Observer API</h1>
+            <h1 style="display: none">地址中输入URL回车后发生了什么</h1>
             
               <p class="note note-info">
                 
-                  本文最后更新于：2019年7月17日 下午
+                  本文最后更新于：2021年4月13日 凌晨
                 
               </p>
             
             <div class="markdown-body">
-              <p><a href="MDN">https://developer.mozilla.org/zh-CN/docs/Web/API/Intersection_Observer_API</a><br>一直以来，检测元素的可视状态或者两个元素的相对可视状态都不是件容易事，毕竟大部分解决办法并非完全可靠，也极易拖慢整个网站的性能。然而，随着网页发展，对上述检测的需求也随之增加了。多种情况下都需要用到元素交集变化的信息，比如：</p>
+              <ol>
+<li><p>分析请求资源</p>
 <ul>
-<li>当页面滚动时，懒加载图片或其他内容。</li>
-<li>实现“可无限滚动”网站，也就是当用户滚动网页时直接加载更多内容，无需翻页。</li>
-<li>为计算广告收益，检测其广告元素的曝光情况。</li>
-<li>根据用户是否已滚动到相应区域来灵活开始执行任务或动画。</li>
+<li><p>chrome资源分类</p>
+</li>
+<li><p>安全策略检查 </p>
+<p>  网页安全政策（Content Security Policy，缩写 CSP）   是由浏览器提供的一种白名单制度。开发者通过配置，来告诉浏   览器各类外部资源的加载和执行限制，来提高网页的安全性。一种最常用的应用就是通过限制非信任域名脚本的加载来预防XSS攻击。</p>
+<p>  可以通过两种方式来配置CSP：</p>
+<ol>
+<li>HTTP请求头的<code>Content-Security-Policy</code></li>
+<li><code>meta</code>标签<div class="hljs code-wrapper"><pre><code class="hljs javascript">&lt;meta http-equiv=<span class="hljs-string">&quot;Content-Security-Policy&quot;</span> content=<span class="hljs-string">&quot;script-src &#x27;self&#x27;; style-src nos.netease.com kaola.com;&quot;</span>&gt;</code></pre></div></li>
+</ol>
+</li>
+<li><p>资源优先级计算</p>
+<ol>
+<li><code>html,font,css</code></li>
+<li><code>preload</code></li>
+<li><code>img,pic,video</code></li>
+<li><code>prefetch</code></li>
+</ol>
+</li>
+<li><p>顺序调整</p>
+<ol>
+<li>同步XHR请求优先级调整到最高</li>
+<li>图片根据是否出现在可视区域</li>
+<li><code>async/defer</code>的<code>script</code>标签请求优先级降低<blockquote>
+<p>async 异步加载js，加载完后运行js并暂停页面解析</p>
+</blockquote>
+</li>
+</ol>
+<blockquote>
+<p>defer 异步加载js，页面解析完时运行</p>
+</blockquote>
+</li>
 </ul>
-<p>过去，交集检测通常需要涉及到事件监听，以及对每个目标元素执行<code>Element.getBoundingClientRect()</code> 方法以获取所需信息。可是这些代码都在主线程上运行，所以任何一点都可能造成性能问题。当网页遍布这些代码时就显得比较丑陋了。</p>
-<h2 id="Intersection-Observer-API"><a href="#Intersection-Observer-API" class="headerlink" title="Intersection Observer API"></a><code>Intersection Observer API</code></h2><ul>
-<li><p><code>Intersection Observer API</code> 允许你配置一个回调函数，每当目标(<code>target</code>)元素与设备视窗或者其他指定元素发生交集的时候执行。</p>
 </li>
-<li><p>设备视窗或者其他元素我们称它为根元素或根(<code>root</code>)。通常，您需要关注文档最接近的可滚动祖先元素的交集更改，如果元素不是可滚动元素的后代，则默认为设备视窗。如果要观察相对于根(<code>root</code>)元素的交集，请指定根(<code>root</code>)元素为<code>null</code>。</p>
+</ol>
+<div class="hljs code-wrapper"><pre><code>- 按照调整后的顺序请求资源
+</code></pre></div>
+<ol>
+<li><p>DNS解析</p>
+<ul>
+<li>查找本地DNS缓存</li>
+<li>查找HOST文件</li>
+<li>请求本地DNS服务器</li>
+<li>查询本地DNS服务器缓存</li>
+<li>本地服务器询向根域名服务器请求</li>
+</ul>
 </li>
-<li><p><code>target element</code> 和 <code>root</code>的相交程度我们用<code>intersection ratio</code>来描述，它的取值在0.0和1.0之间。</p>
+<li><p>对应IP，端口建立TCP连接，发送HTTP请求</p>
+<ul>
+<li>TCP三次握手  <div class="hljs code-wrapper"><pre><code class="hljs javascript">client:SYN_Send-[ISN(c)]-&gt; server 
+<span class="hljs-comment">// 半连接队列</span>
+client &lt;-[ISN(s)+ACK[ISN(c)+<span class="hljs-number">1</span>]]- server:REVD
+client =[ACK[ISN(s)+<span class="hljs-number">1</span>]][请求]-&gt; server</code></pre></div></li>
+<li>四次挥手断开TCP  <div class="hljs code-wrapper"><pre><code class="hljs javascript">client -[FIN_1]-&gt; server</code></pre></div></li>
+</ul>
+</li>
+<li><p>应用缓存策略</p>
+<ul>
+<li>强缓存</li>
+<li>协商缓存</li>
+</ul>
+</li>
+<li><p>服务器响应请求返回资源，html，js，css</p>
+</li>
+<li><p>处理html标记，生成DOM树，所有标签都会包含在内</p>
+<ul>
+<li>解析完一个节点的所有子元素才会解析他的兄弟元素</li>
+<li>构建过程中遇到js则执行js，暂停构建</li>
+</ul>
+</li>
+<li><p>处理css标记（不管是内外联），生成CSSOM树</p>
+<ul>
+<li>构建过程中遇到js，js要等待CSSOM构建完才会执行</li>
+<li>由于CSSOM负责存储渲染信息，浏览器必须保证在合成渲染树之前，CSSOM是完整的，这种完备是指所有的CSS（内联、内部和外部）都已经下载完，并解析完，只有CSSOM和DOM的解析完全结束，浏览器才会进入下一步的渲染，这就是传说中的CSS阻塞渲染。</li>
+</ul>
+</li>
+</ol>
+<ol>
+<li><p>合成Render树，只包含DOM树中的可见元素(忽略像<code>display：none/&lt;header&gt;</code>)，并找到与其匹配的CSSOM规则并应用</p>
+</li>
+<li><p>【layout】浏览器依据Render树和设备屏幕信息<em>重排</em>一次，计算出每个节点的尺寸和在屏幕上的位置</p>
+</li>
+<li><p>【paint】绘制Render树像素信息</p>
+</li>
+<li><p>GPU合成各图层【composite】并显示在屏幕上</p>
+</li>
+</ol>
+<h3 id="独立渲染层"><a href="#独立渲染层" class="headerlink" title="独立渲染层"></a>独立渲染层</h3><ul>
+<li><p><code>will-change</code>属性</p>
+</li>
+<li><p><code>video</code>标签</p>
+</li>
+<li><p><code>canvas</code></p>
+</li>
+<li><p><code>WebGl</code></p>
+</li>
+<li><p><code>CSS3</code> 3D变换</p>
+</li>
+<li><p><code>CSS3</code> filter滤镜</p>
+</li>
+<li><p><code>z-index</code>大于兄弟元素</p>
+</li>
+<li><p><code>opacity</code></p>
+</li>
+<li><p>将原先的浏览器使用CPU绘制位图来实现的动画效果转为让GPU使用图层合成（composite）来实现，如果两张图层内部没有发生改变，浏览器就不再进行布局和绘制，直接使用GPU的缓存来绘制每个图层，GPU只负责将各个图层合成来实现动画，这就可以充分利用GPU的资源和优势，减轻CPU的负载，可以使动画更流畅。</p>
 </li>
 </ul>
-<h2 id="option"><a href="#option" class="headerlink" title="option"></a><code>option</code></h2><ul>
-<li><p><code>root</code></p>
-<p>指定根(root)元素，用于检查目标的可见性。必须是目标元素的父级元素。如果未指定或者为null，则默认为浏览器视窗。</p>
-</li>
-<li><p><code>rootMargin</code></p>
-<p>root元素的外边距。类似于css中的 margin 属性</p>
-</li>
-<li><p><code>threshold</code></p>
-<p><code>target</code>元素和<code>root</code>元素<em>相交程度</em>达到该值的时候<code>IntersectionObserver</code>注册的回调函数将会被执行。</p>
-<p>如果你只是想要探测当target元素的在root元素中的可见性超过50%的时候，你可以指定该属性值为0.5。如果你想要target元素在root元素的可见程度每多25%就执行一次回调，那么你可以指定一个数组[0, 0.25, 0.5, 0.75, 1]。默认值是0(意味着只要有一个target像素出现在root元素中，回调函数将会被执行)。该值为1.0含义是当target完全出现在root元素中时候 回调才会被执行。</p>
-</li>
+<h3 id="重排"><a href="#重排" class="headerlink" title="重排"></a>重排</h3><ul>
+<li>从 <code>&lt;html&gt;标签</code> 开始递归往下，依次计算所有的节点几何尺寸和位置</li>
+<li>有些情况下，比如修改了元素的样式，浏览器并不会立刻reflow，而是会把这样的操作积攒一批，然后做一次 处理，这又叫异步 reflow 或增量异步 reflow。但是在有些情况下，比如resize 窗口，改变了页面默认的字体等。对于这些操作，浏览器会马上进行 reflow。</li>
+<li>除了渲染树的直接变化，当获取一些属性时，浏览器为取得 正确的值也会触发重排。这样就使得浏览器的优化失效了。</li>
+<li>这些属性包括：<code>offsetTop、offsetLeft、 offsetWidth、offsetHeight、scrollTop、scrollLeft、scrollWidth、scrollHeight、 clientTop、clientLeft、clientWidth、clientHeight、getComputedStyle() (currentStyle in IE)。</code></li>
 </ul>
-<h2 id="IntersectionObserverEntry"><a href="#IntersectionObserverEntry" class="headerlink" title="IntersectionObserverEntry"></a><code>IntersectionObserverEntry</code></h2><p>只要目标满足为IntersectionObserver指定的阈值，就会调用回调。回调接收 IntersectionObserverEntry对象和观察者的列表：</p>
-<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> callback = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">entries, observer</span>) </span>&#123; 
-  entries.forEach(<span class="hljs-function"><span class="hljs-params">entry</span> =&gt;</span> &#123;
-    <span class="hljs-comment">// Each entry describes an intersection change for one observed</span>
-    target element:
-      entry.boundingClientRect
-      entry.intersectionRatio
-      entry.intersectionRect
-      entry.isIntersecting
-      entry.rootBounds
-      entry.target
-      entry.time
-  &#125;);
-&#125;;</code></pre></div>
+<h3 id="重绘"><a href="#重绘" class="headerlink" title="重绘"></a>重绘</h3><p>改变某个元素的背景色、文字颜色、边框颜色等等不影响它周围或内部布局的属性时，屏幕的一部分要重画，但是元素的几何尺寸没有变。</p>
+<h3 id="优化性能"><a href="#优化性能" class="headerlink" title="优化性能"></a>优化性能</h3><blockquote>
+<p>GPU硬件加速就是把会触发重排重绘的元素提升到独立渲染层</p>
+</blockquote>
+<ol>
+<li>DOM style修改用css class代替</li>
+<li><code>display:none</code>后修改,只有隐藏和显示两次重排</li>
+<li>操作<code>Document Fragment</code>对象,<code>Document Fragment</code>是脱离真实DOM树结构的</li>
+<li><code>opacity</code>代替<code>visibility</code></li>
+<li>需要多次重排的元素使其脱离文档流<code>position:fixed/absolute</code></li>
+<li>缓存需要读取的DOM属性，而不是读写写在一起<code>div.style.left = div.offsetLeft + 10 + &quot;px&quot;;</code></li>
+<li>使用<code>transform</code>动画代替设置<code>left，right</code></li>
+<li>避免table布局</li>
+<li>虚拟DOM</li>
+</ol>
 
             </div>
             <hr>
@@ -294,9 +382,7 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/javascript/">javascript</a>
-                    
-                      <a class="hover-with-bg" href="/tags/dom/">dom</a>
+                      <a class="hover-with-bg" href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
                     
                   </div>
                 
@@ -313,9 +399,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2019/09/05/%E8%BE%93%E5%85%A5URL%E5%9B%9E%E8%BD%A6%E5%8F%91%E7%94%9F%E4%BA%86%E4%BB%80%E4%B9%88/">
+                      <a href="/2021/04/13/js%E4%B8%AD%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">地址中输入URL回车发生了什么</span>
+                        <span class="hidden-mobile">js数据类型的判断与转换</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -323,8 +409,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2019/07/15/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%88%A4%E6%96%AD%E4%B8%8E%E8%BD%AC%E6%8D%A2/">
-                        <span class="hidden-mobile">数据类型的判断与转换</span>
+                      <a href="/2021/04/06/%E8%A7%A3%E6%9E%90URL%E5%8F%82%E6%95%B0/">
+                        <span class="hidden-mobile">解析URL参数</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

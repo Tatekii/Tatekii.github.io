@@ -182,261 +182,6 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2019/07/03/%E5%AE%9E%E7%8E%B0sleep()/">实现一个sleep()函数</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2019/07/03/%E5%AE%9E%E7%8E%B0sleep()/">
-          
-          
-            
-          
-          sleep()
-执行挂起，延迟执行函数
-
-实现while循环funciton sleep(delay) &#123;
-  let start = new Date().getTime()
-  while(new Date().getTime() - start &lt; delay) &#123;
-    continue
-  &#125;
-&#125;
-sleep(3000)
-console.l
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2019-07-03 17:13" pubdate>
-              2019-07-03
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
-            
-              <a href="/tags/javascript/">javascript</a>
-            
-              <a href="/tags/es6/">es6</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2019/07/03/css%E9%80%89%E6%8B%A9%E5%99%A8/">css选择器</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2019/07/03/css%E9%80%89%E6%8B%A9%E5%99%A8/">
-          
-          
-            
-          
-          优先级!important&gt;行内样式&gt;id选择器&gt;类选择器&gt;标签选择器&gt;通配符&gt;继承
-属性选择器
-E[attribute] 表示存在attr属性即可
-div[class]
-
-E[attr=val] 表示属性值完全等于val
-div[class=mydemo]
-
-E[attr|=val] 表示属性值中以val值开始，val不是字符而是完整单词
-div[class|
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2019-07-03 10:38" pubdate>
-              2019-07-03
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
-            
-              <a href="/tags/css/">css</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2019/06/18/koa/">Koa</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2019/06/18/koa/">
-          
-          
-            
-          
-          中间件机制app.use(async(ctx,next)=&gt;&#123;
-  ctx.body = &#x27;hello koa!&#x27;
-  next()
-  ctx.body += &#x27;onion back step2&#x27;
-&#125;)
-app.use(async(ctx,next)=&gt;&#123;
-  ctx.body += &#x27;onion bac
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2019-06-18 16:56" pubdate>
-              2019-06-18
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/node/">node</a>
-            
-              <a href="/tags/Koa/">Koa</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2019/06/16/typescript/">TypeScript</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2019/06/16/typescript/">
-          
-          
-            
-          
-          TypeScript is a typed superset of JavaScript that compiles to plain JavaScript. ts是js的超集，相比js添加了可选的静态类型和基于类的面向对象编程数据类型
-string(字符串)
-number(数字)
-boolean(布尔)
-array(数组)
-tuple(元祖)
-enum(枚举)
-any(任意)
-null
-unde
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2019-06-16 11:15" pubdate>
-              2019-06-16
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/javascript/">javascript</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2019/06/15/XML/">XML</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2019/06/15/XML/">
-          
-          
-            
-          
-          什么是 XMLXML 指可扩展标记语言（EXtensible Markup Language）XML 是一种标记语言，很类似 HTMLXML 的设计宗旨是传输数据，而非显示数据，本身是不作为的XML 标签没有被预定义。您需要自行定义标签。XML 被设计为具有自我描述性。XML 是 W3C 的推荐标准
-一句话区别
-XML 被设计用来传输和存储数据。
-HTML 被设计用来显示数据。
-
-语法规则
-标签必
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2019-06-15 10:06" pubdate>
-              2019-06-15
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
-            
-              <a href="/tags/html/">html</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
         <a href="/2019/06/05/html,xhtml,xml/">html,xhtml,xml</a>
       </h1>
 
@@ -466,6 +211,218 @@ XML  (Extensib
             <i class="iconfont icon-tags"></i>
             
               <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/11/30/%E6%89%93%E5%8C%85%E4%BC%98%E5%8C%96/">vuecli打包优化踩坑</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/11/30/%E6%89%93%E5%8C%85%E4%BC%98%E5%8C%96/">
+          
+          
+            
+          
+          按需引入
+elementui官网配置方法不适用
+vuecli中babel配置文件为babel.config.js
+安装babel-plugin-component
+配置babel.config.js
+
+module.exports = &#123;
+  presets: [
+    &#x27;@vue/cli-plugin-babel/preset&#x27;
+  ],
+  plugins: [
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-11-30 12:05" pubdate>
+              2020-11-30
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/vue/">vue</a>
+            
+              <a href="/tags/webpack/">webpack</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2019/04/28/virtual%20dom/">virtual dom虚拟DOM</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2019/04/28/virtual%20dom/">
+          
+          
+            
+          
+          虚拟DOM
+使用js模拟出来的DOM对象
+DOM变化的对比，放在js层来做
+目的：提高重绘性能
+
+js模拟&lt;div class=&quot;&quot;container&gt;
+  &lt;ul id=&quot;list&quot;&gt;
+    &lt;li class=&quot;class&quot;&gt;item1&lt;/li&gt;
+    &lt;li class=&q
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2019-04-28 17:30" pubdate>
+              2019-04-28
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
+            
+              <a href="/tags/javascript/">javascript</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/11/20/node%E4%B8%8B%E7%9A%84%E6%89%B9%E9%87%8F%E6%98%A0%E5%B0%84/">node下单文件模块批量映射到处</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/11/20/node%E4%B8%8B%E7%9A%84%E6%89%B9%E9%87%8F%E6%98%A0%E5%B0%84/">
+          
+          
+            
+          
+          
+
+以koa为例
+
+controllers写成单文件
+
+使用index.js批量映射
+//index.js
+const _ = require(&#x27;lodash&#x27;)
+const fs = require(&#x27;fs&#x27;)
+const path = require(&#x27;path&#x27;)
+
+/**
+ * 映射文件夹下的文件为模块
+ */
+const map
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-11-20 13:20" pubdate>
+              2020-11-20
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/javascript/">javascript</a>
+            
+              <a href="/tags/node/">node</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/11/16/vue3_reactive/">简单实现vue3的响应式模块</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/11/16/vue3_reactive/">
+          
+          
+            
+          
+          // monkeyVersionReactivity.js猴版响应式框架
+const targetMap = new WeakMap();
+const effectStack = [];
+const isObject = obj =&gt; obj !== null &amp;&amp; typeof obj === &quot;object&quot;;
+
+const baseHandler =
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-11-16 20:49" pubdate>
+              2020-11-16
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
+            
+              <a href="/tags/javascript/">javascript</a>
+            
+              <a href="/tags/vue/">vue</a>
             
           </div>
         
@@ -534,22 +491,23 @@ $emit和prop
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2019/05/24/tcp%E6%8F%A1%E6%89%8B/">tcp握手</a>
+        <a href="/2020/09/03/require.context%E4%BD%BF%E7%94%A8/">require.context()</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2019/05/24/tcp%E6%8F%A1%E6%89%8B/">
+        <a href="/2020/09/03/require.context%E4%BD%BF%E7%94%A8/">
           
           
             
           
-          ref：关于三次握手与四次挥手面试官想考我们什么？
-三次握手
-为了确保通信双方收发能力正常
-指定自己的初始化序列号，为后面的可靠传送做准备
-过程：
-第一次握手：客户端给服务端发一个 SYN 报文，并指明客户端的初始化序列号 ISN(c)。此时客户端处于 SYN_Send 状态。
-第二次握手：服务器收到客户端的 SYN 报文之后，会以自己的 SYN 报文作为应答，并且也是指定了自己的初始化序列号 I
+          
+自动化注册组件
+// global.js
+import Vue from &#x27;vue&#x27;
+import upperFirst from &#x27;lodash/upperFirst&#x27;
+import camelCase from &#x27;lodash/camelCase&#x27;
+
+const requireComponent = require.context(
         </a>
       </p>
 
@@ -557,8 +515,8 @@ $emit和prop
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2019-05-24 10:54" pubdate>
-              2019-05-24
+            <time datetime="2020-09-03 21:19" pubdate>
+              2020-09-03
             </time>
           </div>
         
@@ -567,9 +525,9 @@ $emit和prop
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
+              <a href="/tags/javascript/">javascript</a>
             
-              <a href="/tags/html/">html</a>
+              <a href="/tags/vue/">vue</a>
             
           </div>
         
@@ -583,22 +541,34 @@ $emit和prop
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2019/05/21/EventLoop%E9%A2%98/">EventLoop题目</a>
+        <a href="/2020/08/31/%E5%A0%86/">堆及相关算法</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2019/05/21/EventLoop%E9%A2%98/">
+        <a href="/2020/08/31/%E5%A0%86/">
           
           
             
           
-          https://juejin.im/post/59e85eebf265da430d571f89https://juejin.im/post/5c9a43175188252d876e5903
+          堆
+堆就是完全二叉树
+完全二叉树：除了深度最深的一层外所有层节点数都满员
+深度：从根节点到该节点经历的节点个数
 
-setTimeout(function()&#123;
-    console.log(&#x27;定时器开始啦&#x27;)
-&#125;);
 
-new Promise(function(resolve)&
+每一个节点都比左右子节点大–&gt;最大堆，最大值在根节点
+
+每一个节点都比左右子节点小–&gt;最小堆，最小值在根节点
+
+完全二叉树可以使用数组来存储
+
+
+建立堆
+将节点与父节点比较
+
+//小顶堆
+function buildHeap(items,heapSize)&#123;
+ 
         </a>
       </p>
 
@@ -606,8 +576,64 @@ new Promise(function(resolve)&
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2019-05-21 15:32" pubdate>
-              2019-05-21
+            <time datetime="2020-08-31 14:22" pubdate>
+              2020-08-31
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/javascript/">javascript</a>
+            
+              <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/09/24/topK/">topK问题</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/09/24/topK/">
+          
+          
+            
+          
+          最大/小的 K 个数，第 K 个最大/最小值
+数组完全排序
+
+data = data.sort((a, b) =&gt; b - a);
+//前k个大值
+let res1 = data.slice(0, k);
+//第k大的值
+let res2 = data[k - 1];
+
+
+局部冒泡
+
+function bubbleSort(arr, k) &#123;
+  for (let i = 0; i
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-09-24 16:35" pubdate>
+              2020-09-24
             </time>
           </div>
         
@@ -620,6 +646,8 @@ new Promise(function(resolve)&
             
               <a href="/tags/javascript/">javascript</a>
             
+              <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
+            
           </div>
         
       </div>
@@ -632,21 +660,30 @@ new Promise(function(resolve)&
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2019/05/21/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">正则表达式</a>
+        <a href="/2019/04/14/http%E5%8D%8F%E8%AE%AE/">HTTP协议</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2019/05/21/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
+        <a href="/2019/04/14/http%E5%8D%8F%E8%AE%AE/">
           
           
             
           
-          // 黑马课件
-正则表达式
-了解正则表达式基本语法
-能够使用JavaScript的正则对象
+          HTTP（HyperText Transfer Protocol，超文本传输协议
+HTTP 是基于 TCP/IP 协议的应用层协议，用于客户端和服务器之间的通信链路层，网络层，传输层，应用层
 
-正则表达式简介什么是正则表达式正则表达式：用于匹配规律规则的表达式，正则表达式最初是科学家对人类神经系统的工作原理的早期研究，现在在编程语言中有广泛的应用。正则表通常被用来检索、替换那些符合某个模式(规则)的文本。正则表达式是对字符串操作的一种逻辑公式，就是用事先定义好的一些特定字符、及这些特定字符的组合
+HTTP 报文组成部分
+请求报文
+
+请求行 Request Method,Request URI,Request Version
+请求头 包含若干属性，key:value 值
+空行
+请求体
+
+
+响应报文
+
+
         </a>
       </p>
 
@@ -654,8 +691,8 @@ new Promise(function(resolve)&
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2019-05-21 14:34" pubdate>
-              2019-05-21
+            <time datetime="2019-04-14 14:45" pubdate>
+              2019-04-14
             </time>
           </div>
         
@@ -665,6 +702,8 @@ new Promise(function(resolve)&
             <i class="iconfont icon-tags"></i>
             
               <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
+            
+              <a href="/tags/http/">http</a>
             
           </div>
         
@@ -676,7 +715,7 @@ new Promise(function(resolve)&
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/4/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/#board">3</a><a class="page-number" href="/page/4/#board">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/#board">6</a><a class="page-number" href="/page/7/#board">7</a><a class="page-number" href="/page/8/#board">8</a><a class="extend next" rel="next" href="/page/6/#board"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/page/4/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/#board">3</a><a class="page-number" href="/page/4/#board">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/#board">6</a><a class="page-number" href="/page/7/#board">7</a><a class="extend next" rel="next" href="/page/6/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
 

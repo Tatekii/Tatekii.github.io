@@ -182,24 +182,23 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/08/02/%E5%88%B7%E5%88%B7%E7%AE%97%E6%B3%95/">其他算法题</a>
+        <a href="/2021/04/06/%E8%A7%A3%E6%9E%90URL%E5%8F%82%E6%95%B0/">解析URL参数</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/08/02/%E5%88%B7%E5%88%B7%E7%AE%97%E6%B3%95/">
+        <a href="/2021/04/06/%E8%A7%A3%E6%9E%90URL%E5%8F%82%E6%95%B0/">
           
           
             
           
           
-两数之合 function twoSum(arr,target)&#123;
-  let res = []
-  let map = new Map()
-  // 使用数值-&gt;索引建立map
-  // 每次循环计算得出当前差值
-  // 在map中查找这个差值既能得出索引
-  for(let i = 0 ; i&lt;arr.length;i++)&#123;
-    let k = tar
+正则解析
+ const rule = /([^?=&amp;]+)=([^&amp;]*)/g
+&lt;!-- (匹配非[?=&amp;]且出现多次的字符) --&gt;
+&lt;!-- = --&gt;
+&lt;!-- (匹配出现0次或多次的非[&amp;]的字符) --&gt;
+function parseURL(url)&#123;
+  return url.match(rule).red
         </a>
       </p>
 
@@ -207,8 +206,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2020-08-02 11:22" pubdate>
-              2020-08-02
+            <time datetime="2021-04-06 16:40" pubdate>
+              2021-04-06
             </time>
           </div>
         
@@ -217,7 +216,7 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/1-%E9%9D%A2%E8%AF%95-1-javascript-1-%E7%AE%97%E6%B3%95/">1. 面试 1. javascript 1. 算法</a>
+              <a href="/tags/javascript/">javascript</a>
             
           </div>
         
@@ -231,25 +230,24 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/04/09/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E9%A2%98/">面向对象题</a>
+        <a href="/2020/08/17/js%E7%89%87%E6%AE%B5/">待整理的js片段</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/04/09/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E9%A2%98/">
+        <a href="/2020/08/17/js%E7%89%87%E6%AE%B5/">
           
           
             
           
           
-打车时可以打专车或快车。任何车都有车牌号和名称。快车每公里1元，专车每公里2元。行程开始时，显示车辆信息。行程结束时，显示打车金额。行程距离为5公里。
+字母的所有组合
 
-class Car&#123;
-  constructor(licence,name)&#123;
-    this.licence = licence
-    this.name = name
-  &#125;
-&#125;
-class Fa
+const anagrams = str =&gt; &#123;
+  if(str.length&lt;=2) return str.length===2 ? [str , str[1] + str[0]] :str
+
+  // 这里使用reduce的第三个参数index，正在处理的元素
+  // 如果提供了initialValue，则起始索引号为0，否则从索引1起始。
+  
         </a>
       </p>
 
@@ -257,8 +255,8 @@ class Fa
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2020-04-09 13:03" pubdate>
-              2020-04-09
+            <time datetime="2020-08-17 16:07" pubdate>
+              2020-08-17
             </time>
           </div>
         
@@ -283,24 +281,27 @@ class Fa
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/03/27/%E5%8E%9F%E7%94%9Fjs/">原生js与jq</a>
+        <a href="/2021/04/06/%E6%89%B9%E9%87%8F%E6%98%A0%E5%B0%84%E6%A8%A1%E5%9D%97/">文件夹内批量映射为模块</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/03/27/%E5%8E%9F%E7%94%9Fjs/">
+        <a href="/2021/04/06/%E6%89%B9%E9%87%8F%E6%98%A0%E5%B0%84%E6%A8%A1%E5%9D%97/">
           
           
             
           
-          
-javascript
-js 是一门函数优先的轻量级解释型语言，基于原型编程的动态脚本语言
+          方法./controllers中
 
-函数是一等公民（变量提升，函数可以作为函数的参数，返回值，可以赋值给变量，【函数式编程的条件】
-面向对象编程
-弱类型语言（变量的类型在运行时会变化，强类型语言的变量类型编译时就确定且不会改变
-基于原型（区别于基于类[类和实例]，js 中万物皆为[对象]
-基于原型的语言具有所谓原型对象（prototypic
+controllerA.js
+controllerB.js
+controllerC.js
+./controllers/index.js
+
+const _ = require(&#x27;lodash&#x27;)
+const fs = require(&#x27;fs&#x27;)
+const path = require(&#x27;path&#x27;)
+
+
         </a>
       </p>
 
@@ -308,8 +309,8 @@ js 是一门函数优先的轻量级解释型语言，基于原型编程的动�
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2020-03-27 14:00" pubdate>
-              2020-03-27
+            <time datetime="2021-04-06 09:38" pubdate>
+              2021-04-06
             </time>
           </div>
         
@@ -318,9 +319,9 @@ js 是一门函数优先的轻量级解释型语言，基于原型编程的动�
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
+              <a href="/tags/javascript/">javascript</a>
             
-              <a href="/tags/js/">js</a>
+              <a href="/tags/node/">node</a>
             
           </div>
         
@@ -406,18 +407,33 @@ vertical-align:top
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/02/04/%E6%8E%A7%E5%88%B6%E5%8F%B0%E4%B8%80%E7%9B%B4%E6%8A%A5%E9%94%99sockjs-node/">控制台一直打印http://xxx/sockjs-node/info?t=xxx</a>
+        <a href="/2019/04/25/flex%E5%B8%83%E5%B1%80/">flex布局</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/02/04/%E6%8E%A7%E5%88%B6%E5%8F%B0%E4%B8%80%E7%9B%B4%E6%8A%A5%E9%94%99sockjs-node/">
+        <a href="/2019/04/25/flex%E5%B8%83%E5%B1%80/">
           
           
             
           
-          sockjs-node是一个JavaScript库，提供跨浏览器JavaScript的API，创建了一个低延迟，全双工的浏览器和web服务器之间通信通道。如果你的项目没有用到sockjs,vuecli3 运行npm run serve 之后network里面一直调用一个接口:http://localhost:8080/sockjs-node/info?t=1556418283950
-解决方案：
-开
+          ref:阮一峰的网络日志
+容器的属性
+flex-direction 主轴的方向
+flex-direction: 
+
+row(默认住) | row-reverse 横向排列
+column | column-reverse纵向排列
+
+
+flex-wrap 排列不下时的换行处理
+flex-wrap:
+
+nowrap不换行
+wrap换行
+wrap-reverse逆序换行
+
+
+flex-flow(上述两种的
         </a>
       </p>
 
@@ -425,8 +441,8 @@ vertical-align:top
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2020-02-04 18:52" pubdate>
-              2020-02-04
+            <time datetime="2019-04-25 21:43" pubdate>
+              2019-04-25
             </time>
           </div>
         
@@ -434,10 +450,126 @@ vertical-align:top
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
+            
+              <a href="/tags/css/">css</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/04/04/div%E9%AB%98%E5%BA%A6%E4%B8%BA%E9%AB%98%E5%BA%A6%E4%B8%80%E5%8D%8A/">div高度为高度一半</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/04/04/div%E9%AB%98%E5%BA%A6%E4%B8%BA%E9%AB%98%E5%BA%A6%E4%B8%80%E5%8D%8A/">
+          
+          
+            
+          
+          知识点position属性
+static
+正常流，默认值
+top, right, bottom, left 和 z-index 属性无效。
+
+
+relative
+相对正常流偏移
+原位置有预留空间
+
+
+absolute
+移出正常文档流
+相对于最近的非 static 定位祖先元素偏移
+不为元素预留空间
+
+
+fixed
+移出正常文档流
+相对于屏幕视口（viewport）的位置来指定元素位置
+不为元素预留
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-04-04 11:13" pubdate>
+              2021-04-04
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
+            
+              <a href="/tags/css/">css</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2019/04/28/ES6/">ES6</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2019/04/28/ES6/">
+          
+          
+            
+          
+          模块化
+语法
+
+export / export
+// 这是 Node 中向外暴露成员的形式：
+// module.exports = &#123;&#125;
+
+// ES6中导入模块，使用 import 模块名称 from &#x27;模块标识符&#x27; import &#x27;表示路径&#x27;
+// 在 ES6 中，使用 export default 和 export 向外暴露成员：
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2019-04-28 14:34" pubdate>
+              2019-04-28
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
             
               <a href="/tags/javascript/">javascript</a>
             
-              <a href="/tags/webpack/">webpack</a>
+              <a href="/tags/ES6/">ES6</a>
             
           </div>
         
@@ -451,25 +583,22 @@ vertical-align:top
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/01/06/WEB%E5%AE%89%E5%85%A8/">web安全</a>
+        <a href="/2019/05/24/tcp%E6%8F%A1%E6%89%8B/">tcp握手</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/01/06/WEB%E5%AE%89%E5%85%A8/">
+        <a href="/2019/05/24/tcp%E6%8F%A1%E6%89%8B/">
           
           
             
           
-          同源策略定义
-两个URl !同协议 !同域名 !同端口
-同源策略限制了同一个源加载的脚本和文档如何与其他源的资源进行交互，包括js脚本，缓存的读取，cookie，ajax等
-三种标签不受同源限制script link img
-
-跨域的方法
-代理服务器-nginx,devServer等
-
-更改页面的源document.domain
-&#x27;someWebSite.com/dir1/pageA.h
+          ref：关于三次握手与四次挥手面试官想考我们什么？
+三次握手
+为了确保通信双方收发能力正常
+指定自己的初始化序列号，为后面的可靠传送做准备
+过程：
+第一次握手：客户端给服务端发一个 SYN 报文，并指明客户端的初始化序列号 ISN(c)。此时客户端处于 SYN_Send 状态。
+第二次握手：服务器收到客户端的 SYN 报文之后，会以自己的 SYN 报文作为应答，并且也是指定了自己的初始化序列号 I
         </a>
       </p>
 
@@ -477,8 +606,8 @@ vertical-align:top
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2020-01-06 09:25" pubdate>
-              2020-01-06
+            <time datetime="2019-05-24 10:54" pubdate>
+              2019-05-24
             </time>
           </div>
         
@@ -489,6 +618,8 @@ vertical-align:top
             
               <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
             
+              <a href="/tags/html/">html</a>
+            
           </div>
         
       </div>
@@ -501,19 +632,31 @@ vertical-align:top
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2019/12/01/h5bp%E5%88%B7%E9%A2%98/">h5pb刷题</a>
+        <a href="/2019/05/20/git%E5%88%86%E5%B8%83%E5%BC%8F%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/">git分布式版本控制</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2019/12/01/h5bp%E5%88%B7%E9%A2%98/">
+        <a href="/2019/05/20/git%E5%88%86%E5%B8%83%E5%BC%8F%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/">
           
           
             
           
-          githubHTML/CSS
-img标签的srcset属性
- srcset 的值是一个字符串，用来定义一个或多个图像候选地址，以,分割，每个候选地址将在特定条件下得以使用。候选地址包含图片 URL 和一个可选的宽度描述符和像素密度描述符，该候选地址用来在特定条件下替代原始地址成为 src  的属性。
- &lt;img src=&quot;/files/16797/clock-demo-200px.
+          ref:liaoxuefeng
+
+创建与合并分支
+
+
+查看分支：git branch
+
+创建分支：git branch &lt;name&gt;
+
+切换分支：git checkout &lt;name&gt;
+
+创建+切换分支：git checkout -b &lt;name&gt;
+
+合并某分支到当前分支：git merge &lt;name&gt;
+
+删除分支：git branch -d &l
         </a>
       </p>
 
@@ -521,8 +664,8 @@ img标签的srcset属性
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2019-12-01 12:39" pubdate>
-              2019-12-01
+            <time datetime="2019-05-20 22:54" pubdate>
+              2019-05-20
             </time>
           </div>
         
@@ -533,6 +676,8 @@ img标签的srcset属性
             
               <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
             
+              <a href="/tags/git/">git</a>
+            
           </div>
         
       </div>
@@ -545,25 +690,21 @@ img标签的srcset属性
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2019/09/05/%E8%BE%93%E5%85%A5URL%E5%9B%9E%E8%BD%A6%E5%8F%91%E7%94%9F%E4%BA%86%E4%BB%80%E4%B9%88/">地址中输入URL回车发生了什么</a>
+        <a href="/2019/04/23/JS%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6/">js运行机制</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2019/09/05/%E8%BE%93%E5%85%A5URL%E5%9B%9E%E8%BD%A6%E5%8F%91%E7%94%9F%E4%BA%86%E4%BB%80%E4%B9%88/">
+        <a href="/2019/04/23/JS%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6/">
           
           
             
           
-          
-分析请求资源
+          ref:javascript 运行机制 EventLoop
+JS的单线程JavaScript的单线程，与它的用途有关。作为浏览器脚本语言，JavaScript的主要用途是与用户互动，以及操作DOM。这决定了它只能是单线程，否则会带来很复杂的同步问题。
+EventLoop
+概括：主线程不断从任务队列读取任务进入执行栈执行的循环过程
 
-chrome资源分类
-
-安全策略检查 
-  网页安全政策（Content Security Policy，缩写 CSP）   是由浏览器提供的一种白名单制度。开发者通过配置，来告诉浏   览器各类外部资源的加载和执行限制，来提高网页的安全性。一种最常用的应用就是通过限制非信任域名脚本的加载来预防XSS攻击。
-  可以通过两种方式来配置CSP：
-
-HTTP请求头的Content-S
+因为 js 是单线程运行的，在代码执行的时候，通过将不同函数的执行
         </a>
       </p>
 
@@ -571,8 +712,8 @@ HTTP请求头的Content-S
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2019-09-05 11:22" pubdate>
-              2019-09-05
+            <time datetime="2019-04-23 10:58" pubdate>
+              2019-04-23
             </time>
           </div>
         
@@ -582,102 +723,6 @@ HTTP请求头的Content-S
             <i class="iconfont icon-tags"></i>
             
               <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2019/07/17/Intersection%20Observer%20API/">Intersection Observer API</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2019/07/17/Intersection%20Observer%20API/">
-          
-          
-            
-          
-          https://developer.mozilla.org/zh-CN/docs/Web/API/Intersection_Observer_API一直以来，检测元素的可视状态或者两个元素的相对可视状态都不是件容易事，毕竟大部分解决办法并非完全可靠，也极易拖慢整个网站的性能。然而，随着网页发展，对上述检测的需求也随之增加了。多种情况下都需要用到元素交集变化的信息，比如：
-
-当页面滚动时，懒加载图片
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2019-07-17 14:25" pubdate>
-              2019-07-17
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/javascript/">javascript</a>
-            
-              <a href="/tags/dom/">dom</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2019/07/15/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%88%A4%E6%96%AD%E4%B8%8E%E8%BD%AC%E6%8D%A2/">数据类型的判断与转换</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2019/07/15/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%88%A4%E6%96%AD%E4%B8%8E%E8%BD%AC%E6%8D%A2/">
-          
-          
-            
-          
-          ECAMScript 中不能自定义数据类型，只能为下列 7 种简单数据类型（原始类型）
-String
-
-Number
-
-特殊的NaNtypeof NaN === &#x27;number&#x27;
-唯一一个自相反的值
-NaN !== NaN
-
-
-Boolean
-
-在条件判断时，除了 undefined， null， false， NaN， &#39;&#39;， 0， -0，其他所有值都转为 t
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2019-07-15 13:41" pubdate>
-              2019-07-15
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
             
               <a href="/tags/javascript/">javascript</a>
             
@@ -691,7 +736,7 @@ Boolean
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/2/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/#board">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/#board">4</a><a class="page-number" href="/page/5/#board">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/#board">8</a><a class="extend next" rel="next" href="/page/4/#board"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/page/2/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/#board">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/#board">4</a><a class="page-number" href="/page/5/#board">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/#board">7</a><a class="extend next" rel="next" href="/page/4/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
 

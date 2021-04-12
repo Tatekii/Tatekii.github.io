@@ -182,25 +182,21 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2019/07/14/vuex/">vuex</a>
+        <a href="/2020/09/17/cookie%E5%92%8Csession/">cookie</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2019/07/14/vuex/">
+        <a href="/2020/09/17/cookie%E5%92%8Csession/">
           
           
             
           
-          vue全局的状态管理器，每个应用唯一State
-子组件通过computed读取state，
+          概念
+广义上的Session：由于HTTP协议是无状态的协议，所以服务端需要用某种机制来标示和跟踪具体用户，这就是Session(会话)概念
 
-mapState辅助函数展开以混入计算属性中  
-computed: &#123;
-  localComputed () &#123; /* ... */ &#125;,
-  // 使用对象展开运算符将此对象混入到外部对象中
-  ...mapState(&#123;
-  // ...
-    &#x27;
+狭义上的Session：服务端保存的一个数据结构，用来跟踪用户的状态，这个数据可以保存在集群、数据库、文件中
+
+目前大多数应用使用cookie来实现Session跟踪，http cookie是服务器发送到用户浏览器并保存在本地的一小块数据，它会在浏览器下次
         </a>
       </p>
 
@@ -208,8 +204,53 @@ computed: &#123;
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2019-07-14 11:53" pubdate>
-              2019-07-14
+            <time datetime="2020-09-17 15:23" pubdate>
+              2020-09-17
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/11/25/diff%E7%AE%97%E6%B3%95/">diff算法</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/11/25/diff%E7%AE%97%E6%B3%95/">
+          
+          
+            
+          
+          概念diff算法，包含渲染器如何对各种类型的vNode的属性，text，fragment进行patch更新，以及判断是patch vNode，还是新增还是删除
+简单diff
+newNode.children.length = 0 =&gt; 删除oldNode.children
+oldNode.children = 0 =&gt; 新增newNode.children
+添加全部子节点/删除全部子节
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-11-25 12:59" pubdate>
+              2020-11-25
             </time>
           </div>
         
@@ -219,6 +260,57 @@ computed: &#123;
             <i class="iconfont icon-tags"></i>
             
               <a href="/tags/javascript/">javascript</a>
+            
+              <a href="/tags/vue/">vue</a>
+            
+              <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2019/05/11/vue%E7%9A%84%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86/">vue响应式原理</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2019/05/11/vue%E7%9A%84%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86/">
+          
+          
+            
+          
+          Observer()// 数据劫持的实现
+function observe(obj) &#123;
+  if (!obj || typeof obj !== &#x27;object&#x27;) return
+  Object.keys(obj).forEach(key =&gt; &#123;
+    defineReactive(obj, key, obj[key])
+  &#125;)
+&
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2019-05-11 17:31" pubdate>
+              2019-05-11
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
             
               <a href="/tags/vue/">vue</a>
             
@@ -234,25 +326,28 @@ computed: &#123;
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2019/07/13/js%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">javascript常见设计模式</a>
+        <a href="/2019/05/20/%E5%89%8D%E7%AB%AF%E6%A8%A1%E5%9D%97%E5%8C%96/">前端模块化</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2019/07/13/js%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
+        <a href="/2019/05/20/%E5%89%8D%E7%AB%AF%E6%A8%A1%E5%9D%97%E5%8C%96/">
           
           
             
           
-          设计模式的定义：在面向对象软件设计过程中针对特定问题的简洁而优雅的解决方案。工厂模式
-设计思想：将 new 操作单独封装，只对外提供相应接口
+          模块化开发的思想模块化的开发方式可以提高代码复用率，方便进行代码的管理。通常一个文件就是一个模块，有自己的作用域，只向外暴露特定的变量和函数。
+模块化的好处
+命名冲突
+文件依赖
+代码复用
 
-作用：隐藏创建实例的复杂度，将构造函数和创建者分离
+CommonJS (Node.js)
+代码同步加载，服务器不用考虑速度
 
-举例：jQ的选择器
-class User&#123;
-  constructor(name=&#x27;&#x27;,age=0)&#123;
-    this.name = name
-    this
+代码可以多次加载，但是运行结果会被缓存
+
+require(&#39;xxx&#39;)加载模块
+module.exports(全局变量或
         </a>
       </p>
 
@@ -260,8 +355,8 @@ class User&#123;
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2019-07-13 16:53" pubdate>
-              2019-07-13
+            <time datetime="2019-05-20 13:41" pubdate>
+              2019-05-20
             </time>
           </div>
         
@@ -286,18 +381,30 @@ class User&#123;
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2019/07/12/OSI%E6%A8%A1%E5%9E%8B%E4%B8%8ETCPIP%E6%A8%A1%E5%9E%8B/">网络分层模型</a>
+        <a href="/2020/09/17/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98%E7%AD%96%E7%95%A5/">浏览器缓存策略</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2019/07/12/OSI%E6%A8%A1%E5%9E%8B%E4%B8%8ETCPIP%E6%A8%A1%E5%9E%8B/">
+        <a href="/2020/09/17/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98%E7%AD%96%E7%95%A5/">
           
           
             
           
-          OSI 参考模型OSI参考模型（OSI/RM）的全称是开放系统互连参考模型（Open System Interconnection Reference Model，OSI/RM），它是由国际标准化组织（International Standard Organization，ISO）提出的一个网络系统互连模型。
+          强缓存
+ 浏览器直接验证本地资源看是否过期，如果没过期直接使用本地缓存，并返回200
+ 验证两种字段Expires
 
-在这个 OSI 七层模型中，每一层都为其上一层提供服务、并为其上一层提供一个访问接口或
+
+http 1.0
+时间戳格式Expires: Wed, 22 Oct 2018 08:41:00 GMT
+使用本地时间验证，与服务器时间之间的误差或者本地时间的修改都后会造成缓存失效
+
+Cache-control
+http 1.1
+
+可选参数：
+
+max-age,s-maxage
         </a>
       </p>
 
@@ -305,8 +412,8 @@ class User&#123;
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2019-07-12 10:01" pubdate>
-              2019-07-12
+            <time datetime="2020-09-17 10:20" pubdate>
+              2020-09-17
             </time>
           </div>
         
@@ -315,7 +422,7 @@ class User&#123;
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/http/">http</a>
+              <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
             
           </div>
         
@@ -329,25 +436,23 @@ class User&#123;
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2019/07/11/promise/">Promise</a>
+        <a href="/2019/04/22/js%E9%9D%A2%E8%AF%95/">js面试题</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2019/07/11/promise/">
+        <a href="/2019/04/22/js%E9%9D%A2%E8%AF%95/">
           
           
             
           
-          promisePromise 对象用于处理异步操作，它表示一个尚未完成且预计在未来完成的异步操作。
-特性
-解决回调地狱
-统一的 API 接口处理异步任务
-链式调用
-返回值穿透
-错误冒泡
-
-Promise 对象有以下两个特点
-对象的状态不受外界影响。Promise 对象代表一个异步操作，有三种状态：pending（进行中）、fulfilled（已成功）和rejected（已失败）。只有异步操作的结果
+          排序算法
+&lt;冒泡排序&gt; O(n^2)
+function bubbleSort(arr) &#123;
+  const len = arr.length;
+  if (len &lt; 2) return;
+  for (i = 0; i &lt; len - 1; i++) &#123;
+    let flag = false;
+    for (j = 0; j &lt; len 
         </a>
       </p>
 
@@ -355,8 +460,8 @@ Promise 对象有以下两个特点
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2019-07-11 12:23" pubdate>
-              2019-07-11
+            <time datetime="2019-04-22 08:02" pubdate>
+              2019-04-22
             </time>
           </div>
         
@@ -365,55 +470,7 @@ Promise 对象有以下两个特点
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/javascript/">javascript</a>
-            
-              <a href="/tags/es6/">es6</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2019/07/10/%E6%95%B0%E7%BB%84%E6%96%B9%E6%B3%95/">数组方法</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2019/07/10/%E6%95%B0%E7%BB%84%E6%96%B9%E6%B3%95/">
-          
-          
-            
-          
-          创建数组// 字面量
-let arr = []
-let arr = [1,2,3,4]
-// 构造函数
-let arr = new Array()
-let arr = new Array(/传入数组代表数组长度/)
-let arr = new Array(&#x27;item1&#x27;,&#x27;item2&#x27;/传入元素/)
-let arr = Array(10)/省略new操作符/
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2019-07-10 11:26" pubdate>
-              2019-07-10
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
+              <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
             
               <a href="/tags/javascript/">javascript</a>
             
@@ -429,19 +486,22 @@ let arr = Array(10)/省略new操作符/
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2019/07/10/for...of/">for...of</a>
+        <a href="/2019/04/15/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">面向对象</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2019/07/10/for...of/">
+        <a href="/2019/04/15/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">
           
           
             
           
-          数组数组原生具备iterator接口（即默认部署了Symbol.iterator属性），for…of循环本质上就是调用这个接口产生的遍历器
-for…of循环可以代替数组实例的forEach方法const arr = [&#x27;red&#x27;, &#x27;green&#x27;, &#x27;blue&#x27;];
+          设计思想面向对象的设计思想是从自然界中来的，因为在自然界中就存在类（Class）和实例（Instance）的概念。
 
-arr.forEach(function (element, inde
+Class 是一种抽象概念，比如我们定义的 Class——Student ，是指学生这个概念，
+
+而实例（Instance）则是一个个具体的 Student ，比如， Michael 和 Bob 是两个具体的 Student 。
+
+面向过程就是分析出解决问题所需要的步骤，然后用函数
         </a>
       </p>
 
@@ -449,8 +509,8 @@ arr.forEach(function (element, inde
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2019-07-10 10:43" pubdate>
-              2019-07-10
+            <time datetime="2019-04-15 21:31" pubdate>
+              2019-04-15
             </time>
           </div>
         
@@ -459,61 +519,7 @@ arr.forEach(function (element, inde
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/javascript/">javascript</a>
-            
-              <a href="/tags/es6/">es6</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2019/07/09/js%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6/">垃圾回收机制</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2019/07/09/js%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6/">
-          
-          
-            
-          
-          javascript具有自动垃圾收集机制执行环境会负责管理代码执行过程中使用的内存\
-
-垃圾收集器是周期性运行的，触发垃圾收集的阈值是动态设定的
-
-方法标记清除
-最主流的垃圾收集算法
-离开作用域，没有被引用的值被标记为可以回收。在垃圾收集期间被删除
-
-引用计数
-跟踪记录被引用的次数
-次数为0的值所占的内存会被下次垃圾收集回收
-
-循环引用objA.obj = objB
-objB.obj = objA
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2019-07-09 15:44" pubdate>
-              2019-07-09
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
+              <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
             
               <a href="/tags/javascript/">javascript</a>
             
@@ -529,22 +535,25 @@ objB.obj = objA
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2019/07/08/%E9%97%AD%E5%8C%85/">闭包</a>
+        <a href="/2019/07/03/css%E9%80%89%E6%8B%A9%E5%99%A8/">css选择器</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2019/07/08/%E9%97%AD%E5%8C%85/">
+        <a href="/2019/07/03/css%E9%80%89%E6%8B%A9%E5%99%A8/">
           
           
             
           
-          闭包的定义
-函数与对其词法环境的引用共同构成 闭包（closure） 。
+          优先级!important&gt;行内样式&gt;id选择器&gt;类选择器&gt;标签选择器&gt;通配符&gt;继承
+属性选择器
+E[attribute] 表示存在attr属性即可
+div[class]
 
-ECMAScript规范中对词法环境的描述如下：词法环境是用来定义 基于词法嵌套结构的ECMAScript代码内的标识符与变量值和函数值之间的关联关系 的一种规范类型。一个词法环境由环境记录（Environment Record）和一个可能为null的对外部词法环境的引用（outer）组成。
+E[attr=val] 表示属性值完全等于val
+div[class=mydemo]
 
-
-js的词法作用域为静态作用
+E[attr|=val] 表示属性值中以val值开始，val不是字符而是完整单词
+div[class|
         </a>
       </p>
 
@@ -552,8 +561,8 @@ js的词法作用域为静态作用
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2019-07-08 18:19" pubdate>
-              2019-07-08
+            <time datetime="2019-07-03 10:38" pubdate>
+              2019-07-03
             </time>
           </div>
         
@@ -562,114 +571,113 @@ js的词法作用域为静态作用
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/javascript/">javascript</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2019/07/04/compose%E5%87%BD%E6%95%B0/">compose函数</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2019/07/04/compose%E5%87%BD%E6%95%B0/">
-          
-          
-            
-          
-          特性
-接受函数参数，返回函数
-作为参数的函数自右向左依次执行
-第一个函数接受参数
-其他函数的参数是上一个函数的执行结果
-执行到最后return出一个函数才算执行结束
-
-实现lodashvar flow = function(funcs) &#123;
-    var length = funcs.length
-    var index = length
-    while (index--) &
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2019-07-04 17:00" pubdate>
-              2019-07-04
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/javascript/">javascript</a>
-            
-              <a href="/tags/%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/">函数式编程</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2019/07/04/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%80%82%E9%85%8D/">移动端适配</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2019/07/04/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%80%82%E9%85%8D/">
-          
-          
-            
-          
-          设备像素比 dpr
-物理像素即设备上真实的物理像素单元
-逻辑像素 = css像素，软件使用的直觉上的尺寸大小，是抽象概念
-苹果提出视网膜屏幕之前移动设备都是直接使用物理像素来进行展示
-即1个逻辑像素1个物理像素显示
-
-
-
-
-高分辨率屏幕出现后，UI元素（例如 按钮）在低密度屏幕上看起来较大，在高密度屏幕上看起来较小。这些 密度相关的大小变化可能给应用布局和易用性带来问题
-
-设备独立像素（又称设备无
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2019-07-04 11:08" pubdate>
-              2019-07-04
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
+              <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
             
               <a href="/tags/css/">css</a>
             
-              <a href="/tags/webapp/">webapp</a>
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/09/07/vue3%E9%A2%84%E7%83%AD/">vue3预热</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/09/07/vue3%E9%A2%84%E7%83%AD/">
+          
+          
+            
+          
+          VUE冲冲冲代替defineProperty的Proxyvue2.X存在的缺陷
+无法检测对象中 property 的添加或移除
+
+通过下标操作数组，例如：vm.items[indexOfItem] = newValue （性能考虑放弃）
+
+修改数组的长度时，例如：vm.items.length = newLength
+
+变通
+// Object新增元素
+Vue.set(object, proper
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-09-07 11:46" pubdate>
+              2020-09-07
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/javascript/">javascript</a>
+            
+              <a href="/tags/vue/">vue</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/01/27/axios/">axios</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/01/27/axios/">
+          
+          
+            
+          
+          拦截器
+拦截器中可以修改config和response
+axios.interceptors.request.use(
+  (config) =&gt; &#123;
+    &lt;!-- 加入参数 --&gt;
+    config.params = &#123;a:666&#125;
+    return config
+  &#125;,
+  (err) =&gt; &#123;
+    r
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-01-27 09:45" pubdate>
+              2021-01-27
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
+            
+              <a href="/tags/javascript/">javascript</a>
             
           </div>
         
@@ -681,7 +689,7 @@ js的词法作用域为静态作用
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/3/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/#board">2</a><a class="page-number" href="/page/3/#board">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/#board">5</a><a class="page-number" href="/page/6/#board">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/#board">8</a><a class="extend next" rel="next" href="/page/5/#board"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/page/3/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/#board">2</a><a class="page-number" href="/page/3/#board">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/#board">5</a><a class="page-number" href="/page/6/#board">6</a><a class="page-number" href="/page/7/#board">7</a><a class="extend next" rel="next" href="/page/5/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
 

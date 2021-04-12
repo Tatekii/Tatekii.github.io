@@ -18,7 +18,7 @@
   <meta name="author" content="tatekii">
   <meta name="keywords" content="">
   
-  <title>for...of - 不知名的笔记本</title>
+  <title>网络分层模型 - 不知名的笔记本</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
@@ -163,7 +163,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="for...of">
+            <span class="h2" id="subtitle" title="网络分层模型">
               
             </span>
 
@@ -173,8 +173,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2019-07-10 10:43" pubdate>
-        2019年7月10日 上午
+      <time datetime="2021-04-13 00:21" pubdate>
+        2021年4月13日 凌晨
       </time>
     </span>
   
@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      559 字
+      1.4k 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      9
+      15
        分钟
     </span>
   
@@ -233,124 +233,142 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">for...of</h1>
+            <h1 style="display: none">网络分层模型</h1>
             
               <p class="note note-info">
                 
-                  本文最后更新于：2019年7月10日 上午
+                  本文最后更新于：2021年4月13日 凌晨
                 
               </p>
             
             <div class="markdown-body">
-              <h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><p>数组原生具备iterator接口（即默认部署了Symbol.iterator属性），for…of循环本质上就是调用这个接口产生的遍历器</p>
-<h3 id="for…of循环可以代替数组实例的forEach方法"><a href="#for…of循环可以代替数组实例的forEach方法" class="headerlink" title="for…of循环可以代替数组实例的forEach方法"></a>for…of循环可以代替数组实例的forEach方法</h3><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> arr = [<span class="hljs-string">&#x27;red&#x27;</span>, <span class="hljs-string">&#x27;green&#x27;</span>, <span class="hljs-string">&#x27;blue&#x27;</span>];
-
-arr.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">element, index</span>) </span>&#123;
-  <span class="hljs-built_in">console</span>.log(element); <span class="hljs-comment">// red green blue</span>
-  <span class="hljs-built_in">console</span>.log(index);   <span class="hljs-comment">// 0 1 2</span>
-&#125;);</code></pre></div>
-
-<h3 id="for…in循环读取键名，for…of循环读取键值"><a href="#for…in循环读取键名，for…of循环读取键值" class="headerlink" title="for…in循环读取键名，for…of循环读取键值"></a>for…in循环读取键名，for…of循环读取键值</h3><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> arr = [<span class="hljs-string">&#x27;a&#x27;</span>, <span class="hljs-string">&#x27;b&#x27;</span>, <span class="hljs-string">&#x27;c&#x27;</span>, <span class="hljs-string">&#x27;d&#x27;</span>];
-
-<span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> a <span class="hljs-keyword">in</span> arr) &#123;
-  <span class="hljs-built_in">console</span>.log(a); <span class="hljs-comment">// 0 1 2 3</span>
-&#125;
-
-<span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> a <span class="hljs-keyword">of</span> arr) &#123;
-  <span class="hljs-built_in">console</span>.log(a); <span class="hljs-comment">// a b c d</span>
-&#125;</code></pre></div>
-
-<h3 id="for…of循环调用遍历器接口，数组的遍历器接口只返回具有数字索引的属性"><a href="#for…of循环调用遍历器接口，数组的遍历器接口只返回具有数字索引的属性" class="headerlink" title="for…of循环调用遍历器接口，数组的遍历器接口只返回具有数字索引的属性"></a>for…of循环调用遍历器接口，数组的遍历器接口只返回具有数字索引的属性</h3><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> arr = [<span class="hljs-number">3</span>, <span class="hljs-number">5</span>, <span class="hljs-number">7</span>];
-arr.foo = <span class="hljs-string">&#x27;hello&#x27;</span>;
-
-<span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i <span class="hljs-keyword">in</span> arr) &#123;
-  <span class="hljs-built_in">console</span>.log(i); <span class="hljs-comment">// &quot;0&quot;, &quot;1&quot;, &quot;2&quot;, &quot;foo&quot;</span>
-&#125;
-
-<span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i <span class="hljs-keyword">of</span> arr) &#123;
-  <span class="hljs-built_in">console</span>.log(i); <span class="hljs-comment">//  &quot;3&quot;, &quot;5&quot;, &quot;7&quot;</span>
-&#125;
-
-<span class="hljs-comment">// 上面代码中，for...of循环不会返回数组arr的foo属性。</span></code></pre></div>
-
-<h3 id="如果要通过for-of循环获取数组的索引，可以借助数组实例的entries方法和keys方法"><a href="#如果要通过for-of循环获取数组的索引，可以借助数组实例的entries方法和keys方法" class="headerlink" title="如果要通过for...of循环获取数组的索引，可以借助数组实例的entries方法和keys方法"></a>如果要通过<code>for...of</code>循环获取数组的索引，可以借助数组实例的<code>entries</code>方法和<code>keys</code>方法</h3><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> arr = [<span class="hljs-string">&#x27;a&#x27;</span>, <span class="hljs-string">&#x27;b&#x27;</span>, <span class="hljs-string">&#x27;c&#x27;</span>];
-<span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> pair <span class="hljs-keyword">of</span> arr) &#123;
-  <span class="hljs-built_in">console</span>.log(pair);
-&#125;
-<span class="hljs-comment">// a</span>
-<span class="hljs-comment">// b</span>
-<span class="hljs-comment">// c</span>
-<span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> pair <span class="hljs-keyword">of</span> arr.entries()) &#123;
-  <span class="hljs-built_in">console</span>.log(pair);
-&#125;
-<span class="hljs-comment">// [0, &#x27;a&#x27;]</span>
-<span class="hljs-comment">// [1, &#x27;b&#x27;]</span>
-<span class="hljs-comment">// [2, &#x27;c&#x27;]</span>
-
-<span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> pair <span class="hljs-keyword">of</span> arr.keys()) &#123;
-  <span class="hljs-built_in">console</span>.log(pair);
-&#125;
-<span class="hljs-comment">// 0</span>
-<span class="hljs-comment">// 1</span>
-<span class="hljs-comment">// 2</span></code></pre></div>
-
-<h2 id="set和map"><a href="#set和map" class="headerlink" title="set和map"></a>set和map</h2><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> engines = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Set</span>([<span class="hljs-string">&quot;Gecko&quot;</span>, <span class="hljs-string">&quot;Trident&quot;</span>, <span class="hljs-string">&quot;Webkit&quot;</span>, <span class="hljs-string">&quot;Webkit&quot;</span>]);
-<span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> e <span class="hljs-keyword">of</span> engines) &#123;
-  <span class="hljs-built_in">console</span>.log(e);
-&#125;
-<span class="hljs-comment">// Gecko</span>
-<span class="hljs-comment">// Trident</span>
-<span class="hljs-comment">// Webkit</span>
-
-<span class="hljs-keyword">var</span> es6 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Map</span>();
-es6.set(<span class="hljs-string">&quot;edition&quot;</span>, <span class="hljs-number">6</span>);
-es6.set(<span class="hljs-string">&quot;committee&quot;</span>, <span class="hljs-string">&quot;TC39&quot;</span>);
-es6.set(<span class="hljs-string">&quot;standard&quot;</span>, <span class="hljs-string">&quot;ECMA-262&quot;</span>);
-<span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> [name, value] <span class="hljs-keyword">of</span> es6) &#123;
-  <span class="hljs-built_in">console</span>.log(name + <span class="hljs-string">&quot;: &quot;</span> + value);  <span class="xml">&lt;-----按照添加的顺序</span>
-<span class="xml">&#125;</span>
-<span class="xml">// edition: 6</span>
-<span class="xml">// committee: TC39</span>
-<span class="xml">// standard: ECMA-262</span></code></pre></div>
-
-<h2 id="类数组的对象"><a href="#类数组的对象" class="headerlink" title="类数组的对象"></a>类数组的对象</h2><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// 字符串</span>
-<span class="hljs-keyword">let</span> str = <span class="hljs-string">&quot;hello&quot;</span>;
-
-<span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> s <span class="hljs-keyword">of</span> str) &#123;
-  <span class="hljs-built_in">console</span>.log(s); <span class="hljs-comment">// h e l l o</span>
-&#125;
-
-<span class="hljs-comment">// DOM NodeList对象</span>
-<span class="hljs-keyword">let</span> paras = <span class="hljs-built_in">document</span>.querySelectorAll(<span class="hljs-string">&quot;p&quot;</span>);
-
-<span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> p <span class="hljs-keyword">of</span> paras) &#123;
-  p.classList.add(<span class="hljs-string">&quot;test&quot;</span>);
-&#125;
-
-<span class="hljs-comment">// arguments对象</span>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">printArgs</span>(<span class="hljs-params"></span>) </span>&#123;
-  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> x <span class="hljs-keyword">of</span> <span class="hljs-built_in">arguments</span>) &#123;
-    <span class="hljs-built_in">console</span>.log(x);
-  &#125;
-&#125;
-printArgs(<span class="hljs-string">&#x27;a&#x27;</span>, <span class="hljs-string">&#x27;b&#x27;</span>);
-<span class="hljs-comment">// &#x27;a&#x27;</span>
-<span class="hljs-comment">// &#x27;b&#x27;</span></code></pre></div>
-
-<h3 id="使用Array-from-将类数组对象转为数组"><a href="#使用Array-from-将类数组对象转为数组" class="headerlink" title="使用Array.from()将类数组对象转为数组"></a>使用Array.from()将类数组对象转为数组</h3><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> arrayLike = &#123; <span class="hljs-attr">length</span>: <span class="hljs-number">2</span>, <span class="hljs-number">0</span>: <span class="hljs-string">&#x27;a&#x27;</span>, <span class="hljs-number">1</span>: <span class="hljs-string">&#x27;b&#x27;</span> &#125;;
-
-<span class="hljs-comment">// 报错</span>
-<span class="hljs-comment">// for (let x of arrayLike) &#123;</span>
-<span class="hljs-comment">//   console.log(x);</span>
-<span class="hljs-comment">// &#125;</span>
-
-<span class="hljs-comment">// 正确</span>
-<span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> x <span class="hljs-keyword">of</span> <span class="hljs-built_in">Array</span>.from(arrayLike)) &#123;
-  <span class="hljs-built_in">console</span>.log(x);
-&#125;
-<span class="hljs-comment">// a</span>
-<span class="hljs-comment">// b</span></code></pre></div>
-
+              <h2 id="OSI-参考模型"><a href="#OSI-参考模型" class="headerlink" title="OSI 参考模型"></a>OSI 参考模型</h2><p><code>OSI参考模型（OSI/RM）</code>的全称是开放系统互连参考模型<code>（Open System Interconnection Reference Model，OSI/RM）</code>，它是由国际标准化组织（International Standard Organization，ISO）提出的一个网络系统互连模型。</p>
+<ul>
+<li><p>在这个 OSI 七层模型中，每一层都为其上一层提供服务、并为其上一层提供一个访问接口或界面。</p>
+</li>
+<li><p>不同主机之间的相同层次称为<strong>对等层</strong>。如主机 A 中的表示层和主机 B 中的表示层互为对等层、主机 A 中的会话层和主机 B 中的会话层互为对等层等。</p>
+</li>
+<li><p>对等层之间互相通信需要遵守一定的规则，如通信的内容、通信的方式，我们将其称为<strong>协议</strong>（Protocol）。</p>
+</li>
+<li><p>我们将某个主机上运行的某种协议的集合称为<strong>协议栈</strong>。主机正是利用这个协议栈来接收和发送数据的。</p>
+</li>
+<li><p>OSI 参考模型通过将协议栈划分为不同的层次，可以简化问题的分析、处理过程以及网络系统设计的复杂性。</p>
+</li>
+</ul>
+<h3 id="OSI-参考模型中各层的作用"><a href="#OSI-参考模型中各层的作用" class="headerlink" title="OSI 参考模型中各层的作用"></a>OSI 参考模型中各层的作用</h3><ul>
+<li><p>物理层<code>Physical Layer</code></p>
+<ul>
+<li>利用传输介质为数据链路层提供物理连接，实现比特流的透明传输</li>
+<li><strong>透明传输</strong>不关心传输的细节</li>
+<li>数据的单位称为比特<code>bit</code></li>
+</ul>
+</li>
+<li><p>数据链路层<code>Data Link Layer</code></p>
+<ul>
+<li>物理地址寻址、数据的成帧、流量控制、数据的检错、重发等。</li>
+<li>数据的单位称为帧<code>frame</code></li>
+</ul>
+</li>
+<li><p>网络层<code>Network Layer</code></p>
+<ul>
+<li>数据链路层的数据在这一层被转换为数据包，然后通过路径选择、分段组合、顺序、进/出路由等控制，将信息从一个网络设备传送到另一个网络设备。</li>
+<li>数据的单位称为数据包<code>packet</code></li>
+<li><code>IP</code>协议</li>
+</ul>
+</li>
+<li><p>传输层<code>Transport Layer</code></p>
+<ul>
+<li>向用户提供可靠的“面向连接”和不可靠的“面向无连接”的数据传输服务、差错控制和流量控制。</li>
+<li>数据的单位称为数据段<code>segment</code></li>
+<li><code>TCP</code>协议,<code>UDP</code>协议</li>
+</ul>
+</li>
+<li><p>会话层<code>Session Layer</code></p>
+<ul>
+<li>用户应用程序和网络之间的接口</li>
+<li>向两个实体的表示层提供建立和使用连接的方法。将不同实体之间的表示层的连接称为会话</li>
+<li>组织和协调两个会话进程之间的通信，并对数据交换进行管理。</li>
+</ul>
+</li>
+<li><p>表示层<code>Presentation Layer</code></p>
+<ul>
+<li>处理用户信息的表示问题，如编码、数据格式转换和加密解密</li>
+</ul>
+</li>
+<li><p>应用层<code>Application Layer</code></p>
+<ul>
+<li><p>为计算机用户，以及各种应用程序和网络之间提供访问网络服务的接口。</p>
+</li>
+<li><p><code>HTTP</code>（Hyper text transfer protocol）、<code>FTP</code>（file transfer protocol）、<code>SMTP</code>（simple mail transfer rotocol）、<code>POP3</code>（post office protocol 3）、<code>IMAP4</code>（Internet mail access protocol）</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="TCP-IP-分层模型"><a href="#TCP-IP-分层模型" class="headerlink" title="TCP/IP 分层模型"></a>TCP/IP 分层模型</h2><ul>
+<li><p>TCP/IP 分层模型（TCP/IP Layening Model）被称作因特网分层模型(Internet Layering Model)、因特网参考模型(Internet Reference Model)</p>
+</li>
+<li><p>OSI 参考模型的概念划分清晰，但过于复杂，层次过多，划分意义不大但增加了复杂性。</p>
+</li>
+<li><p>OSI 是一个理论上的网络通信模型，而 TCP/IP 则是实际运行的网络协议</p>
+</li>
+</ul>
+<h3 id="TCP-IP-中各层的作用"><a href="#TCP-IP-中各层的作用" class="headerlink" title="TCP/IP 中各层的作用"></a>TCP/IP 中各层的作用</h3><ul>
+<li><p>链路层</p>
+<blockquote>
+<p>对应着 OSI/RM 的数据链路层和物理层</p>
+</blockquote>
+<blockquote>
+<p>用来处理连接网络的硬件部分，包括控制操作系统、硬件的设备驱动、NIC（Network Interface Card，网络适配器，即网卡），及光纤等物理可见部分（还包括连接器等一切传输媒介）。硬件上的范畴均在链路层的作用范围之内。</p>
+</blockquote>
+<ul>
+<li><code>ARP</code>（Address Resolution Protocol，地址解析协议）</li>
+<li><code>RARP</code>（Reverse Address Resolution Protocol，逆地址解析协议）</li>
+</ul>
+</li>
+<li><p>网络层</p>
+<blockquote>
+<p>规定了数据通过怎样的传输路线到达对方计算机传送给对方，如</p>
+</blockquote>
+<ul>
+<li><p><code>IP</code> 协议（Internet Protocol，网际协议）</p>
+</li>
+<li><p><code>ICMP</code> 协议（Internet Control Message Protocol，网际控制报文协议）</p>
+</li>
+<li><p><code>IGMP</code> 协议（Internet Group Management Protocol，网际组管理协议）</p>
+</li>
+</ul>
+</li>
+<li><p>传输层</p>
+<blockquote>
+<p>传输层对接上层应用层，提供处于网络连接中两台计算机之间的数据传输所使用的协议。</p>
+</blockquote>
+<ul>
+<li><p><code>TCP</code>协议是全双工的，即发送数据和接收数据是同步进行的，就好像我们打电话一样，说话的同时也能听见。TCP 协议在建立和断开连接时有三次握手和四次挥手，因此在传输的过程中更稳定可靠但同时就没 UDP 那么高效了。</p>
+</li>
+<li><p><code>UDP</code>协议是面向无连接的，也就是说在正式传递数据之前不需要先建立连接。UDP 协议不保证有序且不丢失的传递到对端，也就是说不够稳定，但也正因如此，UDP 协议比 TCP 更加高效和轻便。</p>
+</li>
+</ul>
+</li>
+<li><p>应用层</p>
+<blockquote>
+<p>大体上对应着 OSl/RM 模型的应用层、表示层和会话层</p>
+</blockquote>
+<blockquote>
+<p>为用户及各种应用程序提供访问网络的接口</p>
+</blockquote>
+<ul>
+<li><p><code>FTP</code>（File Transfer Protocol，文件传输协议）,</p>
+</li>
+<li><p><code>DNS</code>（Domain Name System，域名系统）,</p>
+</li>
+<li><p><code>HTTP</code>（Hyper Text Transfer Protocol，超文本传输协议）,</p>
+</li>
+<li><p><code>SMTP</code>（Simple Mail Transfer Protocol，简单邮件传输协议）</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="发送端在层与层之间传输数据时，每经过一层时会被打上一个该层所属的首部信息。反之，接收端在层与层之间传输数据时，每经过一层时会把对应的首部信息去除。"><a href="#发送端在层与层之间传输数据时，每经过一层时会被打上一个该层所属的首部信息。反之，接收端在层与层之间传输数据时，每经过一层时会把对应的首部信息去除。" class="headerlink" title="发送端在层与层之间传输数据时，每经过一层时会被打上一个该层所属的首部信息。反之，接收端在层与层之间传输数据时，每经过一层时会把对应的首部信息去除。"></a>发送端在层与层之间传输数据时，每经过一层时会被打上一个该层所属的首部信息。反之，接收端在层与层之间传输数据时，每经过一层时会把对应的首部信息去除。</h3>
             </div>
             <hr>
             <div>
@@ -360,9 +378,7 @@ printArgs(<span class="hljs-string">&#x27;a&#x27;</span>, <span class="hljs-stri
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/javascript/">javascript</a>
-                    
-                      <a class="hover-with-bg" href="/tags/es6/">es6</a>
+                      <a class="hover-with-bg" href="/tags/http/">http</a>
                     
                   </div>
                 
@@ -379,9 +395,9 @@ printArgs(<span class="hljs-string">&#x27;a&#x27;</span>, <span class="hljs-stri
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2019/07/10/%E6%95%B0%E7%BB%84%E6%96%B9%E6%B3%95/">
+                      <a href="/2021/04/13/Promise/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">数组方法</span>
+                        <span class="hidden-mobile">Promise</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -389,8 +405,8 @@ printArgs(<span class="hljs-string">&#x27;a&#x27;</span>, <span class="hljs-stri
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2019/07/09/js%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6/">
-                        <span class="hidden-mobile">垃圾回收机制</span>
+                      <a href="/2021/04/13/js%E4%B8%AD%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/">
+                        <span class="hidden-mobile">js数据类型的判断与转换</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
