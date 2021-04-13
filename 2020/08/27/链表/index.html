@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.6k 字
+      1.8k 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      28
+      31
        分钟
     </span>
   
@@ -237,7 +237,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年4月12日 下午
+                  本文最后更新于：2021年4月14日 凌晨
                 
               </p>
             
@@ -567,40 +567,33 @@
   &#125;
 &#125;
 </code></pre></div></li>
-<li><p>字符串回文检查，字符串存储在有序链表中，怎么判断</p>
-<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// 单向链表</span>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">reverseStrCheck</span>(<span class="hljs-params">head</span>)</span>&#123;
-  <span class="hljs-keyword">if</span>(!head) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
-  <span class="hljs-keyword">if</span>(!head.next) <span class="hljs-keyword">return</span> head
-
-  <span class="hljs-keyword">let</span> fast = head
+<li><p>回文链表</p>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// 快慢指针找出中点</span>
+<span class="hljs-comment">// 一半的链表与另一半链表组成的栈对比</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isPalindrome</span>(<span class="hljs-params">head</span>)</span>&#123;
+  <span class="hljs-keyword">if</span>(!head || !head.next) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>
+  <span class="hljs-keyword">const</span> stack = []
   <span class="hljs-keyword">let</span> slow = head
-  <span class="hljs-keyword">let</span> pre = head
-
-  <span class="hljs-comment">// 快慢指针找出中位置</span>
-  <span class="hljs-comment">// 慢指针边移动边改变指针方向</span>
-  <span class="hljs-comment">// fast指针到头后，中位值同时正反向移动判断值是否相等</span>
-
-
-  <span class="hljs-comment">// <span class="hljs-doctag">TODO:</span></span>
-  
-  <span class="hljs-comment">// 缓存住当前的cur.next</span>
-  <span class="hljs-comment">// 变换指针方向后将cur直接赋值为缓存</span>
-
-
-  <span class="hljs-keyword">while</span>(slow)&#123;
-    pre = slow
+  <span class="hljs-keyword">let</span> fast = head
+  <span class="hljs-keyword">while</span>(fast &amp;&amp; fast.next &amp;&amp; fast.next.next)&#123;
     slow = slow.next
-
-    fast = fast.next.next &amp;&amp; fast.next ? fast.next.next : fast.next
-    <span class="hljs-keyword">if</span>(!fast)&#123;
-      <span class="hljs-comment">//到头</span>
-      <span class="hljs-comment">//开始反向移动</span>
-
-    &#125;
+    fast = fast.next.next
   &#125;
-  <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
-&#125;</code></pre></div></li>
+  <span class="hljs-keyword">let</span> mid  = slow
+  <span class="hljs-keyword">while</span> (mid.next) &#123;
+    stack.push(mid.next)
+    mid = mid.next
+  &#125;
+  <span class="hljs-keyword">while</span>(stack.length&gt;<span class="hljs-number">0</span>)&#123;
+    <span class="hljs-keyword">if</span>(head.val !== stack.pop().val) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
+    head = head.next
+  &#125;
+  <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>
+&#125;
+<span class="hljs-comment">// 或者将链表转数组，对撞指针</span>
+
+<span class="hljs-comment">// 另一种是到到中点后反转链表，不使用辅助栈</span>
+</code></pre></div></li>
 <li><p>合并两个有序链表</p>
 <div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// 1-&gt;2-&gt;4,1-&gt;3-&gt;4</span>
 <span class="hljs-comment">// 1-&gt;1-&gt;2-&gt;3-&gt;4-&gt;4</span>
@@ -659,10 +652,12 @@
 
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">commonPrefix2</span>(<span class="hljs-params">headA,headB</span>)</span>&#123;
   <span class="hljs-keyword">if</span>(!headA || !headB) <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>
+  <span class="hljs-comment">// 连个链表同时移动指针</span>
   <span class="hljs-keyword">let</span> n1 = headA
   <span class="hljs-keyword">let</span> n2 = headB
   <span class="hljs-keyword">while</span>(n1 || n2)&#123;
     <span class="hljs-keyword">if</span>(n1===n2) <span class="hljs-keyword">return</span> n1
+    <span class="hljs-comment">//指针到头后跳到对面的开头</span>
     n1 = n1 === <span class="hljs-literal">null</span> ? headB : n1.next
     n2 = n2 === <span class="hljs-literal">null</span> ? headA : n2.next
   &#125;
@@ -712,8 +707,56 @@
   &#125;
   <span class="hljs-keyword">return</span> slow
 &#125;</code></pre></div></li>
+<li><p>字符串中第一个不重复字符</p>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">//map</span>
+<span class="hljs-comment">//循环两次</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">firstUniqChar</span>(<span class="hljs-params">s</span>)</span>&#123;
+  <span class="hljs-keyword">if</span>(!s) <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27; &#x27;</span>
+  <span class="hljs-keyword">const</span> map = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Map</span>()
+  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> [i,v] <span class="hljs-keyword">of</span> <span class="hljs-built_in">Array</span>.from(s).entries())&#123;
+    <span class="hljs-keyword">if</span>(map.has(v))&#123;
+      map.set(v,-<span class="hljs-number">1</span>)
+    &#125;<span class="hljs-keyword">else</span>&#123;
+      map.set(v,i)
+    &#125;
+  &#125;
+  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> key <span class="hljs-keyword">of</span> map.keys())&#123;
+    <span class="hljs-keyword">if</span>(map.get(key)!==-<span class="hljs-number">1</span>)&#123;
+      <span class="hljs-keyword">return</span> key
+    &#125;
+  &#125;
+  <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27; &#x27;</span>
+&#125;
+<span class="hljs-comment">//</span>
+...
+indexOf===lastIndexOf
+...
+</code></pre></div></li>
+<li><p>字符串能否构成回文</p>
+</li>
 </ul>
+<p>字符顺序修改后能否回文<br>相当于非回文字符最多只有一个</p>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">canPermutePalindrome</span>(<span class="hljs-params">s</span>)</span>&#123;
+  <span class="hljs-comment">// map // object都行</span>
 
+&#125;
+<span class="hljs-keyword">var</span> canPermutePalindrome = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">s</span>) </span>&#123;
+  <span class="hljs-keyword">const</span> obj = &#123;&#125;
+  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span> ; i&lt;s.length ;i++)&#123;
+    <span class="hljs-keyword">const</span> str = s[i]
+    <span class="hljs-built_in">console</span>.log(str);
+    <span class="hljs-keyword">if</span>(obj[str])&#123;
+      <span class="hljs-built_in">console</span>.log(<span class="hljs-number">6</span>);
+      <span class="hljs-keyword">delete</span> obj[str]
+    &#125;<span class="hljs-keyword">else</span>&#123;
+      <span class="hljs-comment">// 使用object时，上面的if(obj[str])会和这里冲突</span>
+      <span class="hljs-comment">// 刚好设置obj[str] = 0</span>
+      <span class="hljs-comment">// if判断不成立</span>
+      obj[str] = <span class="hljs-number">1</span>
+    &#125;
+  &#125;
+  <span class="hljs-keyword">return</span> <span class="hljs-built_in">Object</span>.keys(obj).length &lt;= <span class="hljs-number">1</span>
+&#125;;</code></pre></div>
             </div>
             <hr>
             <div>

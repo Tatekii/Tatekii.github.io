@@ -277,55 +277,6 @@ oldNode.children = 0 =&gt; 新增newNode.children
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2019/05/11/vue%E7%9A%84%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86/">vue响应式原理</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2019/05/11/vue%E7%9A%84%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86/">
-          
-          
-            
-          
-          Observer()// 数据劫持的实现
-function observe(obj) &#123;
-  if (!obj || typeof obj !== &#x27;object&#x27;) return
-  Object.keys(obj).forEach(key =&gt; &#123;
-    defineReactive(obj, key, obj[key])
-  &#125;)
-&
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2019-05-11 17:31" pubdate>
-              2019-05-11
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
-            
-              <a href="/tags/vue/">vue</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
         <a href="/2020/09/17/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98%E7%AD%96%E7%95%A5/">浏览器缓存策略</a>
       </h1>
 
@@ -696,6 +647,58 @@ function bubbleSort(arr, k) &#123;
             <i class="iconfont icon-tags"></i>
             
               <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
+            
+              <a href="/tags/javascript/">javascript</a>
+            
+              <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/09/29/%E9%98%9F%E5%88%97/">队列算法题</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/09/29/%E9%98%9F%E5%88%97/">
+          
+          
+            
+          
+          队列结构，先进先出
+用数组实现-顺序队列
+function ArrayQueue(len)&#123;
+  this.items = new Array(len)
+  this.n = len
+  this.head = 0
+  this.tail = 0
+&#125;
+ArrayQueue.prototype.enqueue = function(item)&#123;
+  if(this.ta
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-09-29 14:32" pubdate>
+              2020-09-29
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
             
               <a href="/tags/javascript/">javascript</a>
             
