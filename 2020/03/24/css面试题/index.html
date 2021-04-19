@@ -18,7 +18,7 @@
   <meta name="author" content="tatekii">
   <meta name="keywords" content="">
   
-  <title>css面试题 - 不知名的笔记本</title>
+  <title>CSS面试题 - 不知名的笔记本</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
@@ -163,7 +163,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="css面试题">
+            <span class="h2" id="subtitle" title="CSS面试题">
               
             </span>
 
@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      524 字
+      1.4k 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      7
+      21
        分钟
     </span>
   
@@ -233,16 +233,25 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">css面试题</h1>
+            <h1 style="display: none">CSS面试题</h1>
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年4月4日 晚上
+                  本文最后更新于：2021年4月16日 凌晨
                 
               </p>
             
             <div class="markdown-body">
-              <h2 id="浏览器兼容"><a href="#浏览器兼容" class="headerlink" title="浏览器兼容"></a>浏览器兼容</h2><ul>
+              <h2 id="CSS3-新特性"><a href="#CSS3-新特性" class="headerlink" title="CSS3 新特性"></a>CSS3 新特性</h2><ul>
+<li>边框属性<code>border-radius</code>，<code>box-shadow</code>，<code>border-image</code></li>
+<li>背景控制<code>background-size,background-origin</code></li>
+<li>文字效果和自动换行<code>text-shadow,word-wrap</code></li>
+<li>自定义字体<code>@font-face</code></li>
+<li>2d/3d 变换，过渡和动画</li>
+<li>多栏布局column</li>
+<li>盒模型属性<code>box-sizing</code></li>
+<li>弹性盒子<code>flex</code></li>
+<li>更强大的多媒体查询<h2 id="浏览器兼容"><a href="#浏览器兼容" class="headerlink" title="浏览器兼容"></a>浏览器兼容</h2></li>
 <li>IE<ul>
 <li>双边距 <ul>
 <li><code>display:inline</code></li>
@@ -267,19 +276,44 @@
 </ul>
 </li>
 </ul>
-<h2 id="三角形2，椭圆"><a href="#三角形2，椭圆" class="headerlink" title="三角形2，椭圆"></a>三角形2，椭圆</h2><ul>
-<li>不同边border之间45度拼接<div class="hljs code-wrapper"><pre><code class="hljs css"><span class="hljs-selector-tag">div</span>&#123;
+<h2 id="position-跟-display、margin-collapse、overflow、float-这些特性相互叠加后会怎样"><a href="#position-跟-display、margin-collapse、overflow、float-这些特性相互叠加后会怎样" class="headerlink" title="position 跟 display、margin collapse、overflow、float 这些特性相互叠加后会怎样"></a>position 跟 display、margin collapse、overflow、float 这些特性相互叠加后会怎样</h2><ul>
+<li>如果元素的 display 为 none，那么元素不被渲染，position，float 不起作用；</li>
+<li>如果元素拥有 position:absolute;或 position:fixed;属性，那么元素将为绝对定位，float 不起作用。</li>
+<li>如果元素 float 属性不是 none，元素会脱离文档流，根据 float 属性值来显示。</li>
+<li>有浮动、绝对定位，inline-block 属性的元素，margin 不会和垂直方向上的其他元素 margin 折叠。</li>
+</ul>
+<h2 id="画三角形"><a href="#画三角形" class="headerlink" title="画三角形"></a>画三角形</h2><ul>
+<li>不同边border之间45度拼接<div class="hljs code-wrapper"><pre><code class="hljs CSS"><span class="hljs-selector-tag">div</span>&#123;
   <span class="hljs-attribute">width</span>:<span class="hljs-number">0</span>;
   <span class="hljs-attribute">height</span>:<span class="hljs-number">0</span>;
   <span class="hljs-attribute">border-top</span>:<span class="hljs-number">50px</span> red solid;
   <span class="hljs-attribute">border-left</span>:<span class="hljs-number">50px</span> $(背景色) solid;
   <span class="hljs-attribute">border-right</span>: <span class="hljs-number">50px</span> $(背景色) solid;
 &#125;</code></pre></div></li>
-<li>border-radius属性</li>
 </ul>
-<h2 id="文本"><a href="#文本" class="headerlink" title="文本"></a>文本</h2><ul>
+<h2 id="画椭圆"><a href="#画椭圆" class="headerlink" title="画椭圆"></a>画椭圆</h2><p><code>border-radius属性</code></p>
+<ul>
+<li>boder-radius 是简写属性<ul>
+<li>border-top-left-radius</li>
+<li>border-top-right-radius</li>
+<li>border-bottom-right-radius</li>
+<li>border-botom-left-radius</li>
+<li>top 左右，bottom 右左，顺时针</li>
+<li>/ 用来分隔水平方向和垂直方向<div class="hljs code-wrapper"><pre><code class="hljs CSS"><span class="hljs-comment">/* 绘制半椭圆 */</span>
+<span class="hljs-selector-tag">div</span>&#123;
+ <span class="hljs-attribute">width</span>: <span class="hljs-number">100px</span>;
+ <span class="hljs-attribute">height</span>: <span class="hljs-number">0</span>;
+ <span class="hljs-attribute">border-style</span>: solid;
+ <span class="hljs-attribute">border-color</span>: <span class="hljs-number">#f00</span>;
+ <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">50%</span>/<span class="hljs-number">100%</span> <span class="hljs-number">100%</span> <span class="hljs-number">0</span> <span class="hljs-number">0</span>；
+ /* 水平方向上四个角的半径都为<span class="hljs-number">50%</span> /  垂直方向 左右上半径为<span class="hljs-number">100%</span>，左右下为<span class="hljs-number">0</span>*/
+&#125;</code></pre></div></li>
+</ul>
+</li>
+</ul>
+<h2 id="文本溢出"><a href="#文本溢出" class="headerlink" title="文本溢出"></a>文本溢出</h2><ul>
 <li><p>单行文本居中，多行文本左对齐</p>
-<div class="hljs code-wrapper"><pre><code class="hljs css"><span class="hljs-selector-tag">div</span>&#123;
+<div class="hljs code-wrapper"><pre><code class="hljs CSS"><span class="hljs-selector-tag">div</span>&#123;
   <span class="hljs-attribute">text-align</span>:center
 &#125;
 <span class="hljs-selector-tag">p</span>&#123;
@@ -287,18 +321,18 @@
   <span class="hljs-attribute">text-align</span><span class="hljs-selector-pseudo">:left</span>
 &#125;</code></pre></div></li>
 <li><p>多行文本省略号</p>
-<div class="hljs code-wrapper"><pre><code class="hljs css"><span class="hljs-selector-tag">p</span>:after&#123;
+<div class="hljs code-wrapper"><pre><code class="hljs CSS"><span class="hljs-selector-tag">p</span>:after&#123;
   content:<span class="hljs-string">&#x27;...&#x27;</span>
 &#125;</code></pre></div></li>
 <li><p>单行文本溢出省略</p>
-<div class="hljs code-wrapper"><pre><code class="hljs css"><span class="hljs-attribute">overflow</span>: hidden；
+<div class="hljs code-wrapper"><pre><code class="hljs CSS"><span class="hljs-attribute">overflow</span>: hidden；
 /* （文字长度超出限定宽度，则隐藏超出的内容） */
 white-space: nowrap；
 /* （设置文字在一行显示，不能换行） */
 text-overflow: ellipsis；
 /* （规定当文本溢出时，显示省略符号来代表被修剪的文本） */</code></pre></div></li>
 <li><p>多行文本溢出</p>
-<div class="hljs code-wrapper"><pre><code class="hljs css">-webkit-line-clamp: <span class="hljs-number">2</span>；
+<div class="hljs code-wrapper"><pre><code class="hljs CSS">-webkit-line-clamp: <span class="hljs-number">2</span>；
 /* （用来限制在一个块元素显示的文本的行数，<span class="hljs-number">2</span> 表示最多显示 <span class="hljs-number">2</span> 行。为了实现该效果，它需要组合其他的 WebKit 属性） */
 display: -webkit-box；
 /* （和 <span class="hljs-number">1</span> 结合使用，将对象作为弹性伸缩盒子模型显示 ） */
@@ -311,7 +345,7 @@ text-overflow: ellipsis；
 </ul>
 <h2 id="dpr-1px边框"><a href="#dpr-1px边框" class="headerlink" title="dpr 1px边框"></a>dpr 1px边框</h2><ul>
 <li><code>@media</code>配合<code>transform:scale()</code></li>
-<li>查询设备dpr等比缩放px大小<div class="hljs code-wrapper"><pre><code class="hljs css">.<span class="hljs-number">1px</span>_border:before&#123;
+<li>查询设备dpr等比缩放px大小<div class="hljs code-wrapper"><pre><code class="hljs CSS">.<span class="hljs-number">1px</span>_border:before&#123;
   content:<span class="hljs-string">&#x27;&#x27;</span>;
   <span class="hljs-attribute">position</span>:absolute;
   <span class="hljs-attribute">top</span>:<span class="hljs-number">0</span>;
@@ -332,24 +366,175 @@ text-overflow: ellipsis；
   &#125;
 &#125;</code></pre></div></li>
 </ul>
-<h2 id="水平垂直居中"><a href="#水平垂直居中" class="headerlink" title="水平垂直居中"></a>水平垂直居中</h2><ol>
-<li>50%绝对定位+负边距<blockquote>
-<p>负边距偏移值是相对居中盒子尺寸计算</p>
-</blockquote>
-</li>
-<li>50%绝对定位+50%translate负偏移<blockquote>
-<p>translate偏移值是相对居中盒子尺寸计算</p>
-</blockquote>
-</li>
-<li>绝对定位+上下左右0+margin:auto</li>
-<li>flex+justify content+align items<blockquote>
-<p>主轴 侧轴居中</p>
-</blockquote>
-</li>
-<li>table-cell+vertical-align+margin:auto<blockquote>
-<p>vertical-align 只在table-cell和行内元素生效</p>
-</blockquote>
-</li>
+<h2 id="垂直居中div"><a href="#垂直居中div" class="headerlink" title="垂直居中div"></a>垂直居中div</h2><ul>
+<li>绝对定位+上下左右0+margin 0</li>
+<li>绝对定位+负margin</li>
+<li>绝对定位+负translate</li>
+<li>flex+justify-content+align-items</li>
+<li>table-cell+vertical-align</li>
+<li>table+table-cell</li>
+</ul>
+<h2 id="三栏布局"><a href="#三栏布局" class="headerlink" title="三栏布局"></a>三栏布局</h2><div class="hljs code-wrapper"><pre><code>左右固定，中自适应
+</code></pre></div>
+<ol>
+<li>绝对定位</li>
+<li>左右浮动【自适应元素要放在最后】 <div class="hljs code-wrapper"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;utf-8&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span>
+          * &#123;
+<span class="css">            <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;</span>
+<span class="css">            <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span>;</span>
+          &#125;
+<span class="css">          <span class="hljs-selector-tag">body</span> &#123;</span>
+<span class="css">            <span class="hljs-attribute">min-width</span>: <span class="hljs-number">550px</span>;</span>
+          &#125;
+          .container &#123;
+<span class="css">            <span class="hljs-attribute">overflow</span>: hidden;</span>
+          &#125;
+          .column &#123;
+<span class="css">            <span class="hljs-attribute">min-height</span>: <span class="hljs-number">100px</span>;</span>
+          &#125;
+          .left &#123;
+<span class="css">            <span class="hljs-attribute">float</span><span class="hljs-selector-pseudo">:left</span>;</span>
+<span class="css">            <span class="hljs-attribute">width</span>: <span class="hljs-number">200px</span>;</span>
+<span class="css">            <span class="hljs-attribute">background</span>: <span class="hljs-number">#ffbbff</span>;</span>
+          &#125;
+          .center &#123;
+<span class="css">            <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;</span>
+<span class="css">            <span class="hljs-attribute">background</span>: <span class="hljs-number">#bfefff</span>;</span>
+          &#125;
+          .right &#123;
+<span class="css">            <span class="hljs-attribute">float</span><span class="hljs-selector-pseudo">:right</span>;</span>
+<span class="css">            <span class="hljs-attribute">width</span>: <span class="hljs-number">150px</span>;</span>
+<span class="css">            <span class="hljs-attribute">background</span>: <span class="hljs-number">#eeee00</span>;</span>
+          &#125;
+          /*左右浮动至左右并处于同一行
+          *未浮动的center内容会被浮动元素环绕
+          */
+    <span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;container&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;column left&quot;</span>&gt;</span>left<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;column right&quot;</span>&gt;</span>right<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;column center&quot;</span>&gt;</span>center<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></code></pre></div></li>
+<li>全部左浮，-margin移到上一行【自适应元素放在最前】 <div class="hljs code-wrapper"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;utf-8&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span>
+      * &#123;
+<span class="css">        <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;</span>
+<span class="css">        <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span>;</span>
+      &#125;
+<span class="css">      <span class="hljs-selector-tag">body</span> &#123;</span>
+<span class="css">        <span class="hljs-attribute">min-width</span>: <span class="hljs-number">550px</span>;</span>
+      &#125;
+      .container &#123;
+<span class="css">        <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span> <span class="hljs-number">150px</span> <span class="hljs-number">0</span> <span class="hljs-number">200px</span>;</span>
+<span class="css">        <span class="hljs-attribute">overflow</span>: hidden;</span>
+      &#125;
+      .column &#123;
+<span class="css">        <span class="hljs-attribute">position</span>: relative;</span>
+        /**
+<span class="css">        *设置定位，元素需要手动移动至<span class="hljs-attribute">padding</span>空隙中</span>
+        */
+<span class="css">        <span class="hljs-attribute">float</span>: left;</span>
+<span class="css">        <span class="hljs-attribute">min-height</span>: <span class="hljs-number">100px</span>;</span>
+      &#125;
+      .left &#123;
+<span class="css">        <span class="hljs-attribute">right</span>: <span class="hljs-number">200px</span>;</span>
+<span class="css">        <span class="hljs-attribute">margin-left</span>: -<span class="hljs-number">100%</span>;</span>
+<span class="css">        <span class="hljs-attribute">width</span>: <span class="hljs-number">200px</span>;</span>
+<span class="css">        <span class="hljs-attribute">background</span>: <span class="hljs-number">#ffbbff</span>;</span>
+      &#125;
+      .center &#123;
+<span class="css">        <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;</span>
+<span class="css">        <span class="hljs-attribute">background</span>: <span class="hljs-number">#bfefff</span>;</span>
+      &#125;
+      .right &#123;
+<span class="css">        <span class="hljs-attribute">left</span>: <span class="hljs-number">150px</span>;</span>
+<span class="css">        <span class="hljs-attribute">margin-left</span>: -<span class="hljs-number">150px</span>;</span>
+<span class="css">        <span class="hljs-attribute">width</span>: <span class="hljs-number">150px</span>;</span>
+<span class="css">        <span class="hljs-attribute">background</span>: <span class="hljs-number">#eeee00</span>;</span>
+      &#125;
+    <span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;container&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;column center&quot;</span>&gt;</span>center<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;column left&quot;</span>&gt;</span>left<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;column right&quot;</span>&gt;</span>right<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></code></pre></div></li>
+<li>全部左浮，center元素需要撑开center-wrapper【自适应元素放在最前】<div class="hljs code-wrapper"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span>
+ <span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+   <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+     <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;utf-8&quot;</span> /&gt;</span>
+     <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+     <span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span>
+       * &#123;
+<span class="css">         <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;</span>
+<span class="css">         <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span>;</span>
+       &#125;
+<span class="css">       <span class="hljs-selector-tag">body</span> &#123;</span>
+<span class="css">         <span class="hljs-attribute">min-width</span>: <span class="hljs-number">550px</span>;</span>
+       &#125;
+       .container &#123;
+<span class="css">         <span class="hljs-attribute">overflow</span>: hidden;</span>
+       &#125;
+       .column &#123;
+<span class="css">         <span class="hljs-attribute">float</span>: left;</span>
+<span class="css">         <span class="hljs-attribute">min-height</span>: <span class="hljs-number">100px</span>;</span>
+       &#125;
+       .left &#123;
+<span class="css">         <span class="hljs-attribute">margin-left</span>: -<span class="hljs-number">100%</span>;</span>
+<span class="css">         <span class="hljs-attribute">width</span>: <span class="hljs-number">200px</span>;</span>
+<span class="css">         <span class="hljs-attribute">background</span>: <span class="hljs-number">#ffbbff</span>;</span>
+       &#125;
+       .center-wrapper &#123;
+<span class="css">         <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;</span>
+       &#125;
+       .center &#123;
+<span class="css">         <span class="hljs-attribute">width</span>:<span class="hljs-number">100%</span>;</span>
+<span class="css">         <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span> <span class="hljs-number">150px</span> <span class="hljs-number">0</span> <span class="hljs-number">200px</span>;</span>
+<span class="css">         <span class="hljs-attribute">background</span>: <span class="hljs-number">#bfefff</span>;</span>
+<span class="css">         <span class="hljs-attribute">min-height</span>: <span class="hljs-number">100px</span>;</span>
+       &#125;
+       .right &#123;
+<span class="css">         <span class="hljs-attribute">margin-left</span>: -<span class="hljs-number">150px</span>;</span>
+<span class="css">         <span class="hljs-attribute">width</span>: <span class="hljs-number">150px</span>;</span>
+<span class="css">         <span class="hljs-attribute">background</span>: <span class="hljs-number">#eeee00</span>;</span>
+       &#125;
+       /**
+       *3，4方法类似
+<span class="css">       * -<span class="hljs-number">100%</span>的<span class="hljs-attribute">margin-left</span>将元素移到上行最左</span>
+<span class="css">       * -自身宽度<span class="hljs-attribute">margin-left</span>将元素移到上行最右</span>
+<span class="css">       * 并通过给center加<span class="hljs-attribute">padding</span></span>
+       */
+     <span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+   <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+   <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+     <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;container&quot;</span>&gt;</span>
+       <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;column center-wrapper&quot;</span>&gt;</span>
+         <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;center&quot;</span>&gt;</span>center<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+       <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+       <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;column left&quot;</span>&gt;</span>left<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+       <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;column right&quot;</span>&gt;</span>right<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+   <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+ <span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></code></pre></div></li>
+<li>flex</li>
+<li>grid</li>
+<li>table-cell</li>
 </ol>
 
             </div>
@@ -363,7 +548,7 @@ text-overflow: ellipsis；
                     
                       <a class="hover-with-bg" href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
                     
-                      <a class="hover-with-bg" href="/tags/css/">css</a>
+                      <a class="hover-with-bg" href="/tags/CSS/">CSS</a>
                     
                   </div>
                 
@@ -382,7 +567,7 @@ text-overflow: ellipsis；
                     
                       <a href="/2020/03/27/%E5%8E%9F%E7%94%9Fjs/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">原生js与jq</span>
+                        <span class="hidden-mobile">原生js</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     

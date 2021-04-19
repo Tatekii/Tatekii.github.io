@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.8k 字
+      1.7k 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      29
+      26
        分钟
     </span>
   
@@ -237,7 +237,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2020年10月29日 下午
+                  本文最后更新于：2021年4月19日 晚上
                 
               </p>
             
@@ -341,10 +341,7 @@
 <span class="hljs-comment">// 如果建立大顶堆，交换堆顶后，堆顶依然是最大的，依次比较之后的数据只会改变堆顶而已，收集不了别的值</span>
 
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">topK</span>(<span class="hljs-params">data,k</span>)</span>&#123;
-  <span class="hljs-keyword">let</span> heap = [,],i = <span class="hljs-number">0</span>
-  <span class="hljs-keyword">while</span>(i&lt;k)&#123;
-    heap.push(data[i++])
-  &#125;
+  <span class="hljs-keyword">let</span> heap = [,...data]
   <span class="hljs-keyword">const</span> heapSize = k
   buildHeap(heap,heapSize)
 
@@ -476,6 +473,8 @@ Median.prototype.getMedianNum = <span class="hljs-function"><span class="hljs-ke
   &#125;
 &#125;
 
+
+<span class="hljs-comment">// 小顶堆</span>
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">MinHeap</span>(<span class="hljs-params"></span>)</span>&#123;
   <span class="hljs-keyword">const</span> heap = [,]
   <span class="hljs-built_in">this</span>.getSize = <span class="hljs-function">() =&gt;</span> heap.length - <span class="hljs-number">1</span>
@@ -497,7 +496,7 @@ Median.prototype.getMedianNum = <span class="hljs-function"><span class="hljs-ke
     heapify(<span class="hljs-number">1</span>)
     <span class="hljs-keyword">return</span> num
   &#125;
-  heapify = <span class="hljs-function"><span class="hljs-params">i</span> =&gt;</span> &#123;
+  <span class="hljs-keyword">const</span> heapify = <span class="hljs-function"><span class="hljs-params">i</span> =&gt;</span> &#123;
     <span class="hljs-keyword">const</span> heapSize = heap.length - <span class="hljs-number">1</span>
     <span class="hljs-keyword">while</span>(<span class="hljs-literal">true</span>)&#123;
       <span class="hljs-keyword">let</span> minIndex = i
@@ -548,35 +547,6 @@ MedianFinder.prototype.findMedian = <span class="hljs-function"><span class="hlj
     <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.data[mid]
   &#125;
 &#125;</code></pre></div>
-
-<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// 二分查找元素</span>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">binaryFind</span>(<span class="hljs-params">arr,target,s=<span class="hljs-number">0</span>,e=arr.length-<span class="hljs-number">1</span></span>)</span>&#123;
-  <span class="hljs-keyword">const</span> i  = <span class="hljs-built_in">Math</span>.floor((s+e)/<span class="hljs-number">2</span>)
-  <span class="hljs-keyword">if</span>(arr[i]===target)&#123;
-    <span class="hljs-keyword">return</span> i
-  &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(arr[i]&gt;target)&#123;
-    <span class="hljs-keyword">return</span> binaryFind(arr,target,s,i-<span class="hljs-number">1</span>)
-  &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(arr[i]&lt;target)&#123;
-    <span class="hljs-keyword">return</span> binaryFind(arr,target,i+<span class="hljs-number">1</span>,e)
-  &#125;
-  <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>
-&#125;
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">binaryFind2</span>(<span class="hljs-params">arr,target</span>)</span>&#123;
-  <span class="hljs-keyword">let</span> s = <span class="hljs-number">0</span>,e = arr.length-<span class="hljs-number">1</span>,mid
-  <span class="hljs-keyword">while</span>(s&lt;=e)&#123;
-    mid = <span class="hljs-built_in">Math</span>.floor((s+e)/<span class="hljs-number">2</span>)
-    <span class="hljs-keyword">if</span>(arr[mid] === target)&#123;
-      <span class="hljs-keyword">return</span> mid
-    &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(arr[mid] &gt; target)&#123;
-      e = mid - <span class="hljs-number">1</span> 
-    &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(arr[mid] &lt; target)&#123;
-      s = mid + <span class="hljs-number">1</span>
-    &#125;
-  &#125;
-  <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>
-&#125;
-<span class="hljs-keyword">let</span> arr = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>,<span class="hljs-number">7</span>,<span class="hljs-number">8</span>,<span class="hljs-number">9</span>]
-<span class="hljs-built_in">console</span>.log(binaryFind2(arr,<span class="hljs-number">9</span>));</code></pre></div>
             </div>
             <hr>
             <div>

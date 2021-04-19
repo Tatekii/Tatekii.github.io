@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.4k 字
+      1.1k 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      15
+      12
        分钟
     </span>
   
@@ -237,12 +237,12 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年4月13日 凌晨
+                  本文最后更新于：2021年4月19日 上午
                 
               </p>
             
             <div class="markdown-body">
-              <h2 id="OSI-参考模型"><a href="#OSI-参考模型" class="headerlink" title="OSI 参考模型"></a>OSI 参考模型</h2><p><code>OSI参考模型（OSI/RM）</code>的全称是开放系统互连参考模型<code>（Open System Interconnection Reference Model，OSI/RM）</code>，它是由国际标准化组织（International Standard Organization，ISO）提出的一个网络系统互连模型。</p>
+              <h1 id="OSI-参考模型"><a href="#OSI-参考模型" class="headerlink" title="OSI 参考模型"></a>OSI 参考模型</h1><p><code>OSI参考模型（OSI/RM）</code>的全称是开放系统互连参考模型<code>（Open System Interconnection Reference Model，OSI/RM）</code>，它是由国际标准化组织（International Standard Organization，ISO）提出的一个网络系统互连模型。</p>
 <ul>
 <li><p>在这个 OSI 七层模型中，每一层都为其上一层提供服务、并为其上一层提供一个访问接口或界面。</p>
 </li>
@@ -255,56 +255,39 @@
 <li><p>OSI 参考模型通过将协议栈划分为不同的层次，可以简化问题的分析、处理过程以及网络系统设计的复杂性。</p>
 </li>
 </ul>
-<h3 id="OSI-参考模型中各层的作用"><a href="#OSI-参考模型中各层的作用" class="headerlink" title="OSI 参考模型中各层的作用"></a>OSI 参考模型中各层的作用</h3><ul>
-<li><p>物理层<code>Physical Layer</code></p>
-<ul>
+<h2 id="OSI-参考模型中各层的作用"><a href="#OSI-参考模型中各层的作用" class="headerlink" title="OSI 参考模型中各层的作用"></a>OSI 参考模型中各层的作用</h2><h3 id="物理层Physical-Layer"><a href="#物理层Physical-Layer" class="headerlink" title="物理层Physical Layer"></a>物理层<code>Physical Layer</code></h3><ul>
 <li>利用传输介质为数据链路层提供物理连接，实现比特流的透明传输</li>
-<li><strong>透明传输</strong>不关心传输的细节</li>
 <li>数据的单位称为比特<code>bit</code></li>
 </ul>
-</li>
-<li><p>数据链路层<code>Data Link Layer</code></p>
-<ul>
+<h3 id="数据链路层Data-Link-Layer"><a href="#数据链路层Data-Link-Layer" class="headerlink" title="数据链路层Data Link Layer"></a>数据链路层<code>Data Link Layer</code></h3><ul>
 <li>物理地址寻址、数据的成帧、流量控制、数据的检错、重发等。</li>
 <li>数据的单位称为帧<code>frame</code></li>
 </ul>
-</li>
-<li><p>网络层<code>Network Layer</code></p>
-<ul>
-<li>数据链路层的数据在这一层被转换为数据包，然后通过路径选择、分段组合、顺序、进/出路由等控制，将信息从一个网络设备传送到另一个网络设备。</li>
+<h3 id="网络层Network-Layer"><a href="#网络层Network-Layer" class="headerlink" title="网络层Network Layer"></a>网络层<code>Network Layer</code></h3><ul>
+<li>数据链路层的数据在这一层被转换为数据包，然后通过路径选择、分段组合、顺序、进/出路由等控制，传送到另一个网络设备。</li>
 <li>数据的单位称为数据包<code>packet</code></li>
 <li><code>IP</code>协议</li>
 </ul>
-</li>
-<li><p>传输层<code>Transport Layer</code></p>
-<ul>
-<li>向用户提供可靠的“面向连接”和不可靠的“面向无连接”的数据传输服务、差错控制和流量控制。</li>
+<h3 id="传输层Transport-Layer"><a href="#传输层Transport-Layer" class="headerlink" title="传输层Transport Layer"></a>传输层<code>Transport Layer</code></h3><ul>
+<li>提供端对端之间的数据传输服务</li>
 <li>数据的单位称为数据段<code>segment</code></li>
-<li><code>TCP</code>协议,<code>UDP</code>协议</li>
+<li><code>TCP</code>,<code>UDP</code></li>
 </ul>
-</li>
-<li><p>会话层<code>Session Layer</code></p>
-<ul>
-<li>用户应用程序和网络之间的接口</li>
+<h3 id="会话层Session-Layer"><a href="#会话层Session-Layer" class="headerlink" title="会话层Session Layer"></a>会话层<code>Session Layer</code></h3><ul>
 <li>向两个实体的表示层提供建立和使用连接的方法。将不同实体之间的表示层的连接称为会话</li>
-<li>组织和协调两个会话进程之间的通信，并对数据交换进行管理。</li>
+<li>组织和协调两个会话进程之间的通信</li>
 </ul>
-</li>
-<li><p>表示层<code>Presentation Layer</code></p>
-<ul>
-<li>处理用户信息的表示问题，如编码、数据格式转换和加密解密</li>
+<h3 id="表示层Presentation-Layer"><a href="#表示层Presentation-Layer" class="headerlink" title="表示层Presentation Layer"></a>表示层<code>Presentation Layer</code></h3><ul>
+<li>处理数据编码、数据格式转换和加密解密</li>
 </ul>
-</li>
-<li><p>应用层<code>Application Layer</code></p>
-<ul>
+<h3 id="应用层Application-Layer"><a href="#应用层Application-Layer" class="headerlink" title="应用层Application Layer"></a>应用层<code>Application Layer</code></h3><ul>
 <li><p>为计算机用户，以及各种应用程序和网络之间提供访问网络服务的接口。</p>
 </li>
-<li><p><code>HTTP</code>（Hyper text transfer protocol）、<code>FTP</code>（file transfer protocol）、<code>SMTP</code>（simple mail transfer rotocol）、<code>POP3</code>（post office protocol 3）、<code>IMAP4</code>（Internet mail access protocol）</p>
+<li><p><code>HTTP</code>、<code>FTP</code>、<code>SMTP</code>、<code>POP3</code>、<code>IMAP4</code></p>
 </li>
 </ul>
-</li>
-</ul>
-<h2 id="TCP-IP-分层模型"><a href="#TCP-IP-分层模型" class="headerlink" title="TCP/IP 分层模型"></a>TCP/IP 分层模型</h2><ul>
+<hr>
+<h1 id="TCP-IP-分层模型"><a href="#TCP-IP-分层模型" class="headerlink" title="TCP/IP 分层模型"></a>TCP/IP 分层模型</h1><ul>
 <li><p>TCP/IP 分层模型（TCP/IP Layening Model）被称作因特网分层模型(Internet Layering Model)、因特网参考模型(Internet Reference Model)</p>
 </li>
 <li><p>OSI 参考模型的概念划分清晰，但过于复杂，层次过多，划分意义不大但增加了复杂性。</p>
@@ -312,22 +295,18 @@
 <li><p>OSI 是一个理论上的网络通信模型，而 TCP/IP 则是实际运行的网络协议</p>
 </li>
 </ul>
-<h3 id="TCP-IP-中各层的作用"><a href="#TCP-IP-中各层的作用" class="headerlink" title="TCP/IP 中各层的作用"></a>TCP/IP 中各层的作用</h3><ul>
-<li><p>链路层</p>
-<blockquote>
+<h2 id="TCP-IP-中各层的作用"><a href="#TCP-IP-中各层的作用" class="headerlink" title="TCP/IP 中各层的作用"></a>TCP/IP 中各层的作用</h2><h3 id="链路层"><a href="#链路层" class="headerlink" title="链路层"></a>链路层</h3><blockquote>
 <p>对应着 OSI/RM 的数据链路层和物理层</p>
 </blockquote>
 <blockquote>
-<p>用来处理连接网络的硬件部分，包括控制操作系统、硬件的设备驱动、NIC（Network Interface Card，网络适配器，即网卡），及光纤等物理可见部分（还包括连接器等一切传输媒介）。硬件上的范畴均在链路层的作用范围之内。</p>
+<p>用来处理连接网络的硬件部分</p>
 </blockquote>
 <ul>
 <li><code>ARP</code>（Address Resolution Protocol，地址解析协议）</li>
 <li><code>RARP</code>（Reverse Address Resolution Protocol，逆地址解析协议）</li>
 </ul>
-</li>
-<li><p>网络层</p>
-<blockquote>
-<p>规定了数据通过怎样的传输路线到达对方计算机传送给对方，如</p>
+<h3 id="网络层"><a href="#网络层" class="headerlink" title="网络层"></a>网络层</h3><blockquote>
+<p>规定了数据通过怎样的传输路线到达对方计算机传送给对方</p>
 </blockquote>
 <ul>
 <li><p><code>IP</code> 协议（Internet Protocol，网际协议）</p>
@@ -337,20 +316,16 @@
 <li><p><code>IGMP</code> 协议（Internet Group Management Protocol，网际组管理协议）</p>
 </li>
 </ul>
-</li>
-<li><p>传输层</p>
-<blockquote>
-<p>传输层对接上层应用层，提供处于网络连接中两台计算机之间的数据传输所使用的协议。</p>
+<h3 id="传输层"><a href="#传输层" class="headerlink" title="传输层"></a>传输层</h3><blockquote>
+<p>传输层对接上层应用层，提供处于网络连接中端对端的数据传输所使用的协议</p>
 </blockquote>
 <ul>
-<li><p><code>TCP</code>协议是全双工的，即发送数据和接收数据是同步进行的，就好像我们打电话一样，说话的同时也能听见。TCP 协议在建立和断开连接时有三次握手和四次挥手，因此在传输的过程中更稳定可靠但同时就没 UDP 那么高效了。</p>
+<li><p><code>TCP</code>(传输控制)协议是全双工的，即发送数据和接收数据是同步进行的，就好像我们打电话一样，说话的同时也能听见。TCP 协议在建立和断开连接时有三次握手和四次挥手，因此在传输的过程中更稳定可靠但同时就没 UDP 那么高效了。</p>
 </li>
-<li><p><code>UDP</code>协议是面向无连接的，也就是说在正式传递数据之前不需要先建立连接。UDP 协议不保证有序且不丢失的传递到对端，也就是说不够稳定，但也正因如此，UDP 协议比 TCP 更加高效和轻便。</p>
+<li><p><code>UDP</code>协议是面向无连接的，也就是说在正式传递数据之前不需要先建立连接。UDP 协议不保证数据有序且不丢失的传递到对端，也就是说不够稳定，但也正因如此，UDP 协议比 TCP 更加高效和轻便。</p>
 </li>
 </ul>
-</li>
-<li><p>应用层</p>
-<blockquote>
+<h3 id="应用层"><a href="#应用层" class="headerlink" title="应用层"></a>应用层</h3><blockquote>
 <p>大体上对应着 OSl/RM 模型的应用层、表示层和会话层</p>
 </blockquote>
 <blockquote>
@@ -366,9 +341,7 @@
 <li><p><code>SMTP</code>（Simple Mail Transfer Protocol，简单邮件传输协议）</p>
 </li>
 </ul>
-</li>
-</ul>
-<h3 id="发送端在层与层之间传输数据时，每经过一层时会被打上一个该层所属的首部信息。反之，接收端在层与层之间传输数据时，每经过一层时会把对应的首部信息去除。"><a href="#发送端在层与层之间传输数据时，每经过一层时会被打上一个该层所属的首部信息。反之，接收端在层与层之间传输数据时，每经过一层时会把对应的首部信息去除。" class="headerlink" title="发送端在层与层之间传输数据时，每经过一层时会被打上一个该层所属的首部信息。反之，接收端在层与层之间传输数据时，每经过一层时会把对应的首部信息去除。"></a>发送端在层与层之间传输数据时，每经过一层时会被打上一个该层所属的首部信息。反之，接收端在层与层之间传输数据时，每经过一层时会把对应的首部信息去除。</h3>
+
             </div>
             <hr>
             <div>

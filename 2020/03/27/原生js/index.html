@@ -18,7 +18,7 @@
   <meta name="author" content="tatekii">
   <meta name="keywords" content="">
   
-  <title>原生js与jq - 不知名的笔记本</title>
+  <title>原生js - 不知名的笔记本</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
@@ -163,7 +163,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="原生js与jq">
+            <span class="h2" id="subtitle" title="原生js">
               
             </span>
 
@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      2k 字
+      1.9k 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      27
+      26
        分钟
     </span>
   
@@ -233,11 +233,11 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">原生js与jq</h1>
+            <h1 style="display: none">原生js</h1>
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年4月7日 上午
+                  本文最后更新于：2021年4月17日 晚上
                 
               </p>
             
@@ -307,25 +307,8 @@ element.addEventListener();
 <li>严格模式下的 eval()函数有作用域</li>
 </ul>
 </li>
-<li><p>柯里化</p>
-<p>把同时接受多个参数的函数改造成接受首个参数并返回接受余下参数的函数</p>
-<ol>
-<li>参数复用</li>
-<li>提前确定 — isType 方法</li>
-<li>延迟执行 — bind 方法</li>
-</ol>
-<div class="hljs code-wrapper"><pre><code class="hljs javascript">add(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>);
-add(<span class="hljs-number">1</span>)(<span class="hljs-number">2</span>)(<span class="hljs-number">4</span>);
-<span class="hljs-keyword">const</span> add = <span class="hljs-function">(<span class="hljs-params">a, b</span>) =&gt;</span> a + b;
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sum</span>(<span class="hljs-params"></span>) </span>&#123;
-  <span class="hljs-keyword">let</span> cur = [...arguments].reduce(add);
-  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">nextAdd</span>(<span class="hljs-params"></span>) </span>&#123;
-    cur += [...arguments].reduce(add);
-    <span class="hljs-keyword">return</span> nextAdd;
-  &#125;
-  nextAdd.toString = <span class="hljs-function">() =&gt;</span> cur;
-  <span class="hljs-keyword">return</span> nextAdd;
-&#125;</code></pre></div></li>
+</ul>
+<ul>
 <li><p>作用域/作用域链/闭包</p>
 <ul>
 <li>作用域：js 中的作用域是函数级的，变量在它声明的函数体以及函数体内嵌套的任意函数体内有定义</li>
@@ -625,7 +608,7 @@ event.fire(<span class="hljs-string">&#x27;sleep&#x27;</span>);
                     
                     
                       <a href="/2020/03/24/css%E9%9D%A2%E8%AF%95%E9%A2%98/">
-                        <span class="hidden-mobile">css面试题</span>
+                        <span class="hidden-mobile">CSS面试题</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

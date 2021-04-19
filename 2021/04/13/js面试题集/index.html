@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      6.2k 字
+      4.9k 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      107
+      86
        分钟
     </span>
   
@@ -237,7 +237,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年4月14日 凌晨
+                  本文最后更新于：2021年4月19日 下午
                 
               </p>
             
@@ -357,9 +357,9 @@
   &#125;
   <span class="hljs-keyword">const</span> obj = <span class="hljs-built_in">Object</span>.create(func.prototype);
   <span class="hljs-comment">//Object.create(proto)等效于</span>
-  <span class="hljs-comment">//let O = function()&#123;&#125;</span>
-  <span class="hljs-comment">//O.prototype = proto</span>
-  <span class="hljs-comment">//return new O()</span>
+  <span class="hljs-comment">//let O = &#123;&#125;</span>
+  <span class="hljs-comment">//O.__proto__ = proto</span>
+  <span class="hljs-comment">//return O</span>
 
   <span class="hljs-keyword">const</span> res = func.apply(obj, args);
   <span class="hljs-keyword">if</span> (res !== <span class="hljs-literal">null</span> &amp;&amp; (<span class="hljs-keyword">typeof</span> res === <span class="hljs-string">&quot;function&quot;</span> || <span class="hljs-keyword">typeof</span> res === <span class="hljs-string">&quot;object&quot;</span>)) &#123;
@@ -369,7 +369,7 @@
   &#125;
 &#125;
 <span class="hljs-comment">//or</span>
-<span class="hljs-keyword">const</span> isComplexType = <span class="hljs-function">(<span class="hljs-params">obj</span>) =&gt;</span>
+<span class="hljs-keyword">const</span> isComplexType = <span class="hljs-function">(<span class="hljs-params">func</span>) =&gt;</span>
   (<span class="hljs-keyword">typeof</span> obj === <span class="hljs-string">&quot;object&quot;</span> || <span class="hljs-keyword">typeof</span> obj === <span class="hljs-string">&quot;function&quot;</span>) &amp;&amp; obj !== <span class="hljs-literal">null</span>;
 <span class="hljs-keyword">const</span> _new = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">func, ...args</span>) </span>&#123;
   <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> func !== <span class="hljs-string">&quot;function&quot;</span>) <span class="hljs-keyword">throw</span> <span class="hljs-string">&quot;err&quot;</span>;
@@ -466,122 +466,6 @@
 <span class="hljs-keyword">const</span> f1 = throttle(<span class="hljs-function">()=&gt;</span><span class="hljs-built_in">console</span>.log(<span class="hljs-number">1</span>),<span class="hljs-number">3000</span>,<span class="hljs-literal">false</span>)
 <span class="hljs-built_in">setInterval</span>(f1, <span class="hljs-number">1000</span>);
 </code></pre></div>
-
-<ul>
-<li>修改数组</li>
-</ul>
-<div class="hljs code-wrapper"><pre><code class="hljs javascript">splice(index,howmany,item1,.....,itemX)
-<span class="hljs-keyword">var</span> fruits = [<span class="hljs-string">&quot;Banana&quot;</span>, <span class="hljs-string">&quot;Orange&quot;</span>, <span class="hljs-string">&quot;Apple&quot;</span>, <span class="hljs-string">&quot;Mango&quot;</span>]
-<span class="hljs-comment">// 必须传入一个参数，即splice(index)</span>
-<span class="hljs-comment">// howmany不传则从该位置到结尾删除所有元素</span>
-<span class="hljs-comment">// 第三个参数是要添加进的新元素</span>
-<span class="hljs-comment">// 返回值是删除的元素组成的新数组</span>
-<span class="hljs-built_in">console</span>.log(fruits.splice(<span class="hljs-number">0</span>))
-<span class="hljs-comment">//[&quot;Banana&quot;, &quot;Orange&quot;, &quot;Apple&quot;, &quot;Mango&quot;]</span>
-<span class="hljs-built_in">console</span>.log(fruits)
-<span class="hljs-comment">//[]</span>
-<span class="hljs-built_in">console</span>.log(fruits.splice(<span class="hljs-number">1</span>))
-<span class="hljs-comment">//[&quot;Orange&quot;, &quot;Apple&quot;, &quot;Mango&quot;]</span>
-<span class="hljs-built_in">console</span>.log(fruits)
-<span class="hljs-comment">//[&quot;Banana&quot;]</span>
-
-<span class="hljs-built_in">console</span>.log(fruits.splice(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>))
-<span class="hljs-comment">//[&quot;Orange&quot;, &quot;Apple&quot;]</span>
-<span class="hljs-comment">///--&gt;</span>
-<span class="hljs-built_in">console</span>.log(fruits.splice(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-string">&#x27;xiba&#x27;</span>,<span class="hljs-string">&#x27;qinjia&#x27;</span>))
-<span class="hljs-comment">//[&quot;Orange&quot;, &quot;Apple&quot;]</span>
-<span class="hljs-built_in">console</span>.log(fruits)
-<span class="hljs-comment">//[&quot;Banana&quot;, &quot;xiba&quot;, &quot;qinjia&quot;, &quot;Mango&quot;]</span>
-
-sort()
-<span class="hljs-comment">// 数组排序，可传入排序顺序（函数）</span>
-<span class="hljs-keyword">var</span> nums = [<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">53</span>,<span class="hljs-number">46</span>,<span class="hljs-number">73</span>,<span class="hljs-number">9</span>,<span class="hljs-number">11</span>,<span class="hljs-number">22</span>,<span class="hljs-number">1</span>]
-<span class="hljs-built_in">console</span>.log(fruits.sort())
-<span class="hljs-comment">//[&quot;Apple&quot;, &quot;Banana&quot;, &quot;Mango&quot;, &quot;Orange&quot;]</span>
-<span class="hljs-built_in">console</span>.log(nums.sort(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">a,b</span>)</span>&#123;
-  <span class="hljs-keyword">return</span> b-a
-&#125;))
-<span class="hljs-comment">//[73, 53, 46, 22, 11, 9, 3, 2, 1]</span>
-
-pop()
-<span class="hljs-comment">//删除最后一个元素</span>
-<span class="hljs-built_in">console</span>.log(nums.pop())
-<span class="hljs-comment">// 1</span>
-<span class="hljs-built_in">console</span>.log(fruits.pop())
-<span class="hljs-comment">// Mango</span>
-
-shift()
-<span class="hljs-comment">//删除第一个元素并返回</span>
-
-push(item...)
-<span class="hljs-comment">// 向数组末尾添加元素</span>
-<span class="hljs-comment">// 返回新数组的长度</span>
-<span class="hljs-built_in">console</span>.log(nums.push(<span class="hljs-number">666</span>,<span class="hljs-number">999</span>))
-<span class="hljs-comment">//11</span>
-
-unshift(item...)
-<span class="hljs-comment">// 向数组的开头添加元素</span>
-<span class="hljs-comment">// 返回新数组的长度</span>
-<span class="hljs-built_in">console</span>.log(nums.unshift(<span class="hljs-number">666</span>,<span class="hljs-number">999</span>))
-<span class="hljs-comment">//11</span>
-
-reverse()
-<span class="hljs-comment">// 颠倒顺序</span>
-<span class="hljs-comment">// 返回新数组</span>
-
-copyWithin()
-<span class="hljs-comment">// 复制成员到指定位置</span>
-nums.copyWithin(<span class="hljs-number">3</span>,<span class="hljs-number">0</span>,<span class="hljs-number">2</span>)
-<span class="hljs-built_in">console</span>.log(nums)
-<span class="hljs-comment">// 将index3的位置开始两个元素复制为index0开始的两个元素</span>
-<span class="hljs-comment">// [2, 3, 53, 2, 3, 9, 11, 22, 1]</span>
-
-fill(value,start,end)
-<span class="hljs-comment">// 填充的元素，填充开始位置，填充结束位置（不填充该元素）</span>
-<span class="hljs-comment">// 填充数组</span>
-nums.fill(<span class="hljs-number">666</span>,<span class="hljs-number">0</span>,<span class="hljs-number">2</span>)
-<span class="hljs-built_in">console</span>.log(nums)
-<span class="hljs-comment">// [666, 666, 53, 46, 73, 9, 11, 22, 1]</span>
-</code></pre></div>
-
-<ul>
-<li>操作数组</li>
-</ul>
-<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> nums = [<span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">53</span>, <span class="hljs-number">46</span>, <span class="hljs-number">73</span>, <span class="hljs-number">9</span>, <span class="hljs-number">11</span>, <span class="hljs-number">22</span>, <span class="hljs-number">1</span>, <span class="hljs-number">9</span>];
-<span class="hljs-keyword">var</span> fruits = [<span class="hljs-string">&quot;Banana&quot;</span>, <span class="hljs-string">&quot;Orange&quot;</span>, <span class="hljs-string">&quot;Apple&quot;</span>, <span class="hljs-string">&quot;Mango&quot;</span>];
-
-slice(begin, end);
-<span class="hljs-comment">// 潜拷贝,传入索引值</span>
-<span class="hljs-comment">// begin开始包括自己，索引end自身是不拷贝的</span>
-<span class="hljs-built_in">console</span>.log(nums.slice(<span class="hljs-number">1</span>, <span class="hljs-number">5</span>));
-<span class="hljs-comment">//[3, 53, 46, 73]</span>
-
-join(<span class="hljs-string">&quot;str&quot;</span>);
-<span class="hljs-comment">// 指定分隔符连成字符串</span>
-<span class="hljs-built_in">console</span>.log(fruits.join());
-<span class="hljs-comment">//Banana,Orange,Apple,Mango 默认为逗号</span>
-<span class="hljs-built_in">console</span>.log(fruits.join(<span class="hljs-string">&quot;-&quot;</span>));
-<span class="hljs-comment">//Banana-Orange-Apple-Mango</span>
-
-concat();
-<span class="hljs-comment">//合并数组</span>
-<span class="hljs-built_in">console</span>.log(nums.concat(fruits));
-<span class="hljs-comment">// [2, 3, 53, 46, 73, 9, 11, 22, 1, &quot;Banana&quot;, &quot;Orange&quot;, &quot;Apple&quot;, &quot;Mango&quot;]</span>
-
-indexOf() / lastIndexOf();
-<span class="hljs-comment">// 一个从前往后找，一个倒着找(索引可是只有正的</span>
-<span class="hljs-comment">// 传入serachElement和fromIndex（查找起始位置</span>
-<span class="hljs-built_in">console</span>.log(nums.indexOf(<span class="hljs-number">9</span>)); <span class="hljs-comment">// 5</span>
-<span class="hljs-built_in">console</span>.log(nums.indexOf(<span class="hljs-number">9</span>, <span class="hljs-number">5</span>)); <span class="hljs-comment">// 5</span>
-<span class="hljs-built_in">console</span>.log(nums.indexOf(<span class="hljs-number">9</span>, <span class="hljs-number">6</span>)); <span class="hljs-comment">// 9</span>
-<span class="hljs-built_in">console</span>.log(nums.lastIndexOf(<span class="hljs-number">9</span>, <span class="hljs-number">8</span>)); <span class="hljs-comment">// 5</span>
-
-includes();
-<span class="hljs-comment">// 是否包含某元素</span>
-<span class="hljs-comment">// 返回布尔值</span>
-<span class="hljs-built_in">console</span>.log(nums.includes(<span class="hljs-number">2</span>)); <span class="hljs-comment">// true</span>
-<span class="hljs-built_in">console</span>.log(nums.includes(<span class="hljs-number">2</span>, <span class="hljs-number">1</span>)); <span class="hljs-comment">// false</span></code></pre></div>
-
 <ul>
 <li>计算数组中元素出现的次数</li>
 </ul>
@@ -722,20 +606,22 @@ a.age = <span class="hljs-number">2</span>;
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">deepClone</span>(<span class="hljs-params">source, map = <span class="hljs-keyword">new</span> <span class="hljs-built_in">WeakMap</span>()</span>) </span>&#123;
   <span class="hljs-comment">//WeakMap 避免循环引用爆栈</span>
   <span class="hljs-comment">// obj.o1 = obj  // boom</span>
-  <span class="hljs-keyword">if</span> (!isObject(source)) <span class="hljs-keyword">return</span> source;
+  <span class="hljs-keyword">if</span> (!isObject(source)) <span class="hljs-keyword">return</span> source
   <span class="hljs-keyword">if</span> (map.has(source)) <span class="hljs-keyword">return</span> map.get(source);
+
   <span class="hljs-keyword">const</span> _constructor = source.constructor;
-  <span class="hljs-keyword">if</span> (<span class="hljs-regexp">/^(RegExp|Date)&amp;/i</span>.text(_constructor.name))
-    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> _constructor(source);
+  <span class="hljs-keyword">if</span>(<span class="hljs-regexp">/RegExp|Date/</span>.test(_constructor))&#123;
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> _constructor(source)
+  &#125;
   <span class="hljs-comment">// 正则和日期</span>
-  <span class="hljs-keyword">const</span> newObj =
-    _constructor === <span class="hljs-built_in">Array</span> ? source.concat() : <span class="hljs-built_in">Object</span>.assign(&#123;&#125;, source);
+  <span class="hljs-keyword">const</span> _new_ =
+    _constructor === <span class="hljs-built_in">Array</span> ? [] : &#123;&#125;
   map.set(source, newObj);
   <span class="hljs-built_in">Reflect</span>.ownKeys(source).forEach(<span class="hljs-function">(<span class="hljs-params">key</span>) =&gt;</span> &#123;
     <span class="hljs-comment">// Reflect.ownKeys 方法返回一个由目标对象自身的属性键组成的数组。它的返回值等同于Object.getOwnPropertyNames(target).concat(Object.getOwnPropertySymbols(target))。</span>
     newObj[key] = deepClone(source[key], map);
   &#125;);
-  <span class="hljs-keyword">return</span> newObj;
+  <span class="hljs-keyword">return</span> _new;
 &#125;
 
 <span class="hljs-comment">//////////test////////////////</span>
@@ -1410,9 +1296,9 @@ getName();
     <span class="hljs-comment">// 控制器</span>
   &#125;
   <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">interval</span>(<span class="hljs-params"></span>)</span>&#123;
-    <span class="hljs-keyword">if</span>(!<span class="hljs-title">constructor</span>.<span class="hljs-title">stop</span>)&#123;
+    <span class="hljs-keyword">if</span>(!controller.stop)&#123;
       fn.apply(<span class="hljs-built_in">this</span>,args)
-      <span class="hljs-built_in">setTimeout</span>(interval)
+      <span class="hljs-built_in">setTimeout</span>(interval,timeout)
     &#125;
   &#125;
   <span class="hljs-built_in">setTimeout</span>(interval,timeout)
@@ -1442,14 +1328,15 @@ getName();
 
 
 <ul>
-<li><p>Ajax</p>
+<li>Ajax</li>
+</ul>
 <div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> request = <span class="hljs-function">(<span class="hljs-params">method,url,<span class="hljs-keyword">async</span>=<span class="hljs-literal">true</span>,data</span>) =&gt;</span> &#123;
   <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve,reject</span>)=&gt;</span>&#123;
     <span class="hljs-keyword">const</span> xhr = <span class="hljs-keyword">new</span> XMLHttpRequest()
-    xhr.onreadystateChange = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;
+    xhr.onreadystatechange = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;
       <span class="hljs-keyword">if</span>(<span class="hljs-built_in">this</span>.readyState !== <span class="hljs-number">4</span>)<span class="hljs-keyword">return</span>
       <span class="hljs-keyword">if</span>(<span class="hljs-built_in">this</span>.status === <span class="hljs-number">200</span>)&#123;
-        resolve(<span class="hljs-built_in">this</span>.response)
+        resolve(<span class="hljs-built_in">JSON</span>.parse(<span class="hljs-built_in">this</span>.response))
       &#125;<span class="hljs-keyword">else</span>&#123;
         reject(<span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-built_in">this</span>.statusText))
       &#125;
@@ -1460,196 +1347,17 @@ getName();
     xhr.responseType = <span class="hljs-string">&#x27;json&#x27;</span>
     xhr.setRequestHeader(<span class="hljs-string">&quot;Accept&quot;</span>, <span class="hljs-string">&quot;application/json&quot;</span>)
     <span class="hljs-keyword">if</span>(method===<span class="hljs-string">&#x27;GET&#x27;</span>)&#123;
-      xhr.open(<span class="hljs-string">&quot;GET&quot;</span>,URl+<span class="hljs-string">&#x27;?&#x27;</span>+data,<span class="hljs-literal">true</span>)
+      xhr.open(<span class="hljs-string">&quot;GET&quot;</span>,url+<span class="hljs-string">&#x27;?&#x27;</span>+data,<span class="hljs-literal">true</span>)
       xhr.send()
-    &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(method === <span class="hljs-string">&quot; POST&quot;</span>)&#123;
+    &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(method === <span class="hljs-string">&quot;POST&quot;</span>)&#123;
       xhr.setRequestHeader(<span class="hljs-string">&quot;Content-type&quot;</span>,<span class="hljs-string">&quot;application/x-www-form-urlencode&quot;</span>)
+      xhr.open(<span class="hljs-string">&#x27;POST&#x27;</span>,url)
       xhr.send(<span class="hljs-built_in">encodeURIComponent</span>(data))
     &#125;
   &#125;)
-&#125;
-<span class="hljs-comment">//GET</span></code></pre></div></li>
-<li><p>&lt;冒泡排序&gt; O(n^2)</p>
-</li>
-</ul>
-<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">bubbleSort</span>(<span class="hljs-params">arr</span>) </span>&#123;
-  <span class="hljs-keyword">const</span> len = arr.length;
-  <span class="hljs-keyword">if</span> (len &lt; <span class="hljs-number">2</span>) <span class="hljs-keyword">return</span>;
-  <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; len - <span class="hljs-number">1</span>; i++) &#123;
-    <span class="hljs-keyword">let</span> flag = <span class="hljs-literal">false</span>;
-    <span class="hljs-keyword">for</span> (j = <span class="hljs-number">0</span>; j &lt; len - <span class="hljs-number">1</span> - i; j++) &#123;
-      <span class="hljs-keyword">if</span> (arr[j] &gt; arr[j + <span class="hljs-number">1</span>]) &#123;
-        [arr[j], arr[j + <span class="hljs-number">1</span>]] = [arr[j + <span class="hljs-number">1</span>], arr[j]];
-        flag = <span class="hljs-literal">true</span>;
-      &#125;
-    &#125;
-    <span class="hljs-keyword">if</span> (!flag) <span class="hljs-keyword">break</span>;
-  &#125;
-  <span class="hljs-keyword">return</span> arr;
-&#125;
-<span class="hljs-comment">// 例如从小到大排序</span>
-<span class="hljs-comment">// 每次循环结束都将把该次循环范围内的最大值移动到最右边</span></code></pre></div>
-
-<ul>
-<li>&lt;插入排序&gt; O(n^2)</li>
-</ul>
-<div class="hljs code-wrapper"><pre><code class="hljs javascript">
-<span class="hljs-keyword">const</span> insertionSort = <span class="hljs-function">(<span class="hljs-params">arr</span>) =&gt;</span> &#123;
-  <span class="hljs-keyword">const</span> len = arr.length;
-  <span class="hljs-keyword">if</span>(n&lt;<span class="hljs-number">2</span>) <span class="hljs-keyword">return</span>
-  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">1</span> ; i&lt; len i++)&#123;
-    <span class="hljs-keyword">let</span> temp = arr[i]
-    <span class="hljs-keyword">let</span> j = i - <span class="hljs-number">1</span>
-    <span class="hljs-comment">// i左边理解为有序数组，已经排序过的</span>
-    <span class="hljs-comment">// 取出arr[i]插入到i之前数组中</span>
-    <span class="hljs-keyword">while</span>(j&gt;=<span class="hljs-number">0</span> &amp;&amp; arr[j] &gt; temp)&#123;
-      <span class="hljs-comment">// 找出合理位置</span>
-      <span class="hljs-comment">// 数组整体后移</span>
-      arr[j+<span class="hljs-number">1</span>] = arr[j]
-      j--
-    &#125;
-    <span class="hljs-comment">// 之前结束循环后j-1了</span>
-    <span class="hljs-comment">// 这里加上</span>
-    arr[j+<span class="hljs-number">1</span>] = temp
-  &#125;
-  <span class="hljs-keyword">return</span> arr
-&#125;
-</code></pre></div>
-
-<ul>
-<li>&lt;希尔排序&gt; 动态定义了区间的选择排序 O(n log^2 n)</li>
-</ul>
- <div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">shellSort</span>(<span class="hljs-params">arr, gap = <span class="hljs-number">3</span></span>) </span>&#123;
-  <span class="hljs-keyword">const</span> len = arr.length;
-  <span class="hljs-keyword">let</span> n = <span class="hljs-number">1</span>;
-  <span class="hljs-keyword">while</span> (n &lt; len / gap) &#123;
-    n = n * gap + <span class="hljs-number">1</span>;
-  &#125;
-  <span class="hljs-keyword">for</span> (; n &gt; <span class="hljs-number">0</span>; n = <span class="hljs-built_in">Math</span>.floor(n / gap)) &#123;
-    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = n; i &lt; len; i++) &#123;
-      <span class="hljs-keyword">let</span> temp = arr[i];
-      <span class="hljs-keyword">let</span> j = i - n;
-      <span class="hljs-keyword">while</span> (j &gt;= <span class="hljs-number">0</span> &amp;&amp; arr[j] &gt; temp) &#123;
-        arr[j + n] = arr[j];
-        j -= n;
-      &#125;
-      arr[j + n] = temp;
-    &#125;
-  &#125;
-  <span class="hljs-keyword">return</span> arr;
-&#125;
-
-<span class="hljs-comment">// 使用位运算得到动态区间</span>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">shellSort2</span>(<span class="hljs-params">arr</span>) </span>&#123;
-  <span class="hljs-keyword">let</span> len = arr.length;
-  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> gap = len &gt;&gt; <span class="hljs-number">1</span>; gap &gt; <span class="hljs-number">0</span>; gap &gt;&gt;= <span class="hljs-number">1</span>) &#123;
-    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = gap; i &lt; len; i++) &#123;
-      <span class="hljs-keyword">let</span> j;
-      <span class="hljs-keyword">let</span> temp = arr[i];
-      <span class="hljs-keyword">for</span> (j = i - gap; j &gt;= <span class="hljs-number">0</span> &amp;&amp; arr[j] &gt; temp; j -= gap) &#123;
-        arr[j + gap] = arr[j];
-      &#125;
-      arr[j + <span class="hljs-number">1</span>] = temp;
-    &#125;
-  &#125;
-  <span class="hljs-keyword">return</span> arr
 &#125;</code></pre></div>
 
-<ul>
-<li>&lt;选择排序&gt; O(n^2)</li>
-</ul>
-<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">selectionSort</span>(<span class="hljs-params">arr</span>) </span>&#123;
-  <span class="hljs-keyword">var</span> len = arr.length;
-  <span class="hljs-keyword">var</span> minIndex;
-  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; len - <span class="hljs-number">1</span>; i++) &#123;
-    minIndex = i;
-    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> j = i + <span class="hljs-number">1</span>; j &lt; len; j++) &#123;
-      <span class="hljs-keyword">if</span> (arr[j] &lt; arr[minIndex]) &#123;
-        <span class="hljs-comment">// 寻找最小的数</span>
-        minIndex = j; <span class="hljs-comment">// 将最小数的索引保存</span>
-      &#125;
-    &#125;
-    [arr[i], arr[minIndex]] = [arr[minIndex], arr[i]];
-  &#125;
-  <span class="hljs-keyword">return</span> arr;
-&#125;</code></pre></div>
 
-<ul>
-<li>&lt;快速排序&gt; 时间复杂度 平均 O(n log n) 最坏 O(n^2)</li>
-</ul>
-<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> quickSort = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">arr</span>) </span>&#123;
-  <span class="hljs-keyword">if</span> (arr.length &lt; <span class="hljs-number">2</span>) &#123;
-    <span class="hljs-keyword">return</span> arr;
-  &#125; <span class="hljs-comment">//一直排序到区间内只有一个数</span>
-  <span class="hljs-keyword">var</span> pivotIndex = <span class="hljs-built_in">Math</span>.floor(arr.length / <span class="hljs-number">2</span>); <span class="hljs-comment">//基准位置（可任意选取）</span>
-  <span class="hljs-keyword">var</span> pivot = arr.splice(pivotIndex, <span class="hljs-number">1</span>)[<span class="hljs-number">0</span>]; <span class="hljs-comment">//找出基准数并把它从原数组删除</span>
-  <span class="hljs-comment">// splice()</span>
-  <span class="hljs-comment">// arrayObject.splice(index,howmany,item1,.....,itemX)</span>
-  <span class="hljs-comment">// splice() 方法可删除从 index 处开始的零个或多个元素，并且用参数列表中声明的一个或多个值来替换那些被删除的元素。</span>
-  <span class="hljs-comment">// 如果从 arrayObject 中删除了元素，则返回的是含有被删除的元素的数组。</span>
-  <span class="hljs-keyword">var</span> left = [];
-  <span class="hljs-keyword">var</span> right = [];
-  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; arr.length; i++) &#123;
-    <span class="hljs-keyword">if</span> (arr[i] &lt; pivot) &#123;
-      left.push(arr[i]);
-    &#125; <span class="hljs-keyword">else</span> &#123;
-      right.push(arr[i]);
-    &#125;
-  &#125;
-  <span class="hljs-keyword">return</span> [...quickSort(left), pivot, ...quickSort(right)]; <span class="hljs-comment">//链接左数组、基准数构成的数组、右数组</span>
-  <span class="hljs-comment">// concat() 方法将一个或多个字符串与原字符串连接合并，形成一个新的字符串并返回。</span>
-&#125;;
-<span class="hljs-keyword">var</span> arr = [<span class="hljs-number">1</span>, <span class="hljs-number">22</span>, <span class="hljs-number">5235</span>, <span class="hljs-number">6</span>, <span class="hljs-number">3</span>, <span class="hljs-number">21</span>, <span class="hljs-number">90</span>];
-<span class="hljs-built_in">console</span>.log(quickSort(arr)); <span class="hljs-comment">//(7) [1, 3, 6, 21, 22, 90, 5235]</span>
-
-<span class="hljs-comment">// 三路块排</span>
-<span class="hljs-comment">// 小于pivot，等于 pivot 和大于 pivot</span>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">quickSort3</span>(<span class="hljs-params">arr</span>) </span>&#123;
-  <span class="hljs-keyword">const</span> len = arr.length;
-  <span class="hljs-keyword">if</span> (len &lt; <span class="hljs-number">2</span>) &#123;
-    <span class="hljs-keyword">return</span> arr;
-  &#125;
-  <span class="hljs-keyword">let</span> left = [],
-    center = [],
-    right = [],
-    pivot = arr[<span class="hljs-number">0</span>];
-  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; len; i++) &#123;
-    <span class="hljs-keyword">if</span> (arr[i] &lt; pivot) &#123;
-      left.push(arr[i]);
-    &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (arr[i] === pivot) &#123;
-      center.push(arr[i]);
-    &#125; <span class="hljs-keyword">else</span> &#123;
-      right.push(arr[i]);
-    &#125;
-  &#125;
-  <span class="hljs-keyword">return</span> [...quickSort3(left), ...center, ...quickSort3(right)];
-&#125;</code></pre></div>
-
-<ul>
-<li>&lt;希尔排序&gt; 平均 O(n log^2 n) 最坏 O(n^2)</li>
-</ul>
-<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">shellSort</span>(<span class="hljs-params">arr, gap</span>) </span>&#123;
-  <span class="hljs-comment">//gap为设置的间隔，原始的插入排序相当于gap为1</span>
-  <span class="hljs-keyword">const</span> len = arr.length;
-  <span class="hljs-keyword">let</span> n = <span class="hljs-number">1</span>,
-    temp,
-    j;
-  <span class="hljs-keyword">while</span> (n &lt; len / gap) &#123;
-    n = n * gap + <span class="hljs-number">1</span>;
-  &#125;
-  <span class="hljs-keyword">for</span> (n; n &gt; <span class="hljs-number">0</span>; n = <span class="hljs-built_in">Math</span>.floor(n / gap)) &#123;
-    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = n; i &lt; len; i++) &#123;
-      temp = arr[i];
-      j = i - n;
-      <span class="hljs-keyword">while</span> (j &gt;= <span class="hljs-number">0</span> &amp;&amp; arr[j] &gt; temp) &#123;
-        arr[j + n] = arr[j];
-        j -= n;
-      &#125;
-      arr[j + n] = temp;
-    &#125;
-  &#125;
-  <span class="hljs-keyword">return</span> arr;
-&#125;</code></pre></div>
 <ul>
 <li>数组随机排序</li>
 </ul>
@@ -1721,7 +1429,78 @@ arr.sort(<span class="hljs-function"><span class="hljs-keyword">function</span> 
 (<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;
     <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">arguments</span>[<span class="hljs-number">0</span>]+<span class="hljs-built_in">arguments</span>[<span class="hljs-number">1</span>]);
 &#125;(<span class="hljs-number">5</span>,<span class="hljs-number">6</span>));</code></pre></div>
+<ul>
+<li><p>实现一个sleep函数</p>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// 1 promise</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sleep</span>(<span class="hljs-params">delay</span>)</span>&#123;
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-params">resolve</span>=&gt;</span>&#123;
+    <span class="hljs-built_in">setTimeout</span>(resolve,delay)
+  &#125;)
+&#125;
 
+<span class="hljs-comment">// 2 async</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">async</span> <span class="hljs-title">sleep</span>(<span class="hljs-params">delay</span>)</span>&#123;
+  <span class="hljs-keyword">await</span> delay(delay)
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">delay</span>(<span class="hljs-params">delay</span>) </span>&#123;
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-params">resolve</span>=&gt;</span><span class="hljs-built_in">setTimeout</span>(resolve,delay))
+&#125;</code></pre></div></li>
+<li><p>数组的全排列</p>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">permute</span>(<span class="hljs-params">arr</span>)</span>&#123;
+  <span class="hljs-keyword">const</span> res = []
+  <span class="hljs-comment">// 回溯算法</span>
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">recursion</span>(<span class="hljs-params">path,set</span>)</span>&#123;
+    <span class="hljs-keyword">if</span>(path.length===arr.length)&#123;
+      <span class="hljs-keyword">return</span> res.push(path.concat())
+    &#125;
+    <span class="hljs-comment">// 使用path记录回溯的路径</span>
+    <span class="hljs-comment">// [1,2,3,4]</span>
+    <span class="hljs-comment">// path[1,2]，set[1,2]</span>
+    <span class="hljs-comment">// 1,2,已经用过</span>
+    <span class="hljs-comment">// 分别遍历3，4</span>
+    <span class="hljs-comment">// 添加[1,2,3,4],[1,2,4,3]进结果</span>
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> num <span class="hljs-keyword">of</span> arr)&#123;
+      <span class="hljs-keyword">if</span>(set.has(num)) <span class="hljs-keyword">continue</span>
+      path.push(num)
+      set.add(num)
+      recursion(path,set)
+      path.pop()
+      set.delete(num)
+    &#125;
+  &#125;
+  recursion([],<span class="hljs-keyword">new</span> <span class="hljs-built_in">Set</span>())
+  <span class="hljs-keyword">return</span> res
+&#125;</code></pre></div></li>
+<li><p>二分查找元素</p>
+</li>
+</ul>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">binaryFind</span>(<span class="hljs-params">arr,target,s=<span class="hljs-number">0</span>,e=arr.length-<span class="hljs-number">1</span></span>)</span>&#123;
+  <span class="hljs-keyword">const</span> i  = <span class="hljs-built_in">Math</span>.floor((s+e)/<span class="hljs-number">2</span>)
+  <span class="hljs-keyword">if</span>(arr[i]===target)&#123;
+    <span class="hljs-keyword">return</span> i
+  &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(arr[i]&gt;target)&#123;
+    <span class="hljs-keyword">return</span> binaryFind(arr,target,s,i-<span class="hljs-number">1</span>)
+  &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(arr[i]&lt;target)&#123;
+    <span class="hljs-keyword">return</span> binaryFind(arr,target,i+<span class="hljs-number">1</span>,e)
+  &#125;
+  <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">binaryFind2</span>(<span class="hljs-params">arr,target</span>)</span>&#123;
+  <span class="hljs-keyword">let</span> s = <span class="hljs-number">0</span>,e = arr.length-<span class="hljs-number">1</span>,mid
+  <span class="hljs-keyword">while</span>(s&lt;=e)&#123;
+    mid = <span class="hljs-built_in">Math</span>.floor((s+e)/<span class="hljs-number">2</span>)
+    <span class="hljs-keyword">if</span>(arr[mid] === target)&#123;
+      <span class="hljs-keyword">return</span> mid
+    &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(arr[mid] &gt; target)&#123;
+      e = mid - <span class="hljs-number">1</span> 
+    &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(arr[mid] &lt; target)&#123;
+      s = mid + <span class="hljs-number">1</span>
+    &#125;
+  &#125;
+  <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>
+&#125;
+<span class="hljs-keyword">let</span> arr = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>,<span class="hljs-number">7</span>,<span class="hljs-number">8</span>,<span class="hljs-number">9</span>]
+<span class="hljs-built_in">console</span>.log(binaryFind2(arr,<span class="hljs-number">9</span>));</code></pre></div>
             </div>
             <hr>
             <div>

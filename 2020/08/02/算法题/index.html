@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      2.6k 字
+      3k 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      42
+      48
        分钟
     </span>
   
@@ -237,7 +237,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年4月13日 晚上
+                  本文最后更新于：2021年4月19日 晚上
                 
               </p>
             
@@ -691,7 +691,7 @@ RandomizedSet.prototype.getRandom = <span class="hljs-function"><span class="hlj
     <span class="hljs-keyword">if</span>(vote===<span class="hljs-number">0</span>)&#123;
       mid = num
     &#125;
-    vote += i===mid ? <span class="hljs-number">1</span> : -<span class="hljs-number">1</span>
+    vote += num===mid ? <span class="hljs-number">1</span> : -<span class="hljs-number">1</span>
   &#125;
   <span class="hljs-keyword">return</span> mid
 &#125;</code></pre></div></li>
@@ -738,7 +738,8 @@ RandomizedSet.prototype.getRandom = <span class="hljs-function"><span class="hlj
 &#125;</code></pre></div>
 
 <ul>
-<li>将数组中的奇数移动到前，偶数移动到后<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">exchange</span>(<span class="hljs-params">nums</span>)</span>&#123;
+<li><p>将数组中的奇数移动到前，偶数移动到后</p>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">exchange</span>(<span class="hljs-params">nums</span>)</span>&#123;
   <span class="hljs-comment">// 对撞指针</span>
   <span class="hljs-comment">// 分别寻找符合条件的数</span>
   <span class="hljs-keyword">let</span> l = <span class="hljs-number">0</span> ,r = nums.length -<span class="hljs-number">1</span>
@@ -762,6 +763,85 @@ RandomizedSet.prototype.getRandom = <span class="hljs-function"><span class="hlj
     fast++
   &#125;
   <span class="hljs-keyword">return</span> nums
+&#125;</code></pre></div></li>
+<li><p>实现前缀树prefixTree</p>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">PrefixTree</span>(<span class="hljs-params"></span>)</span>&#123;
+  <span class="hljs-built_in">this</span>.tree = &#123;&#125;
+&#125;
+PrefixTree.prototype.insert = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">word</span>)</span>&#123;
+  <span class="hljs-comment">// 依次将单词的每个字母向tree对象中递归添加属性</span>
+  <span class="hljs-comment">// msy= &gt;</span>
+  <span class="hljs-comment">// &#123;m:&#123;s:&#123;y:&#123;isEnd:true&#125;&#125;&#125;&#125;</span>
+  <span class="hljs-keyword">let</span> node = <span class="hljs-built_in">this</span>.tree
+  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> n <span class="hljs-keyword">of</span> word)&#123;
+    <span class="hljs-keyword">if</span>(!node[n]) node[n] = &#123;&#125;
+    node = node[n]
+  &#125;
+  node.isEnd = <span class="hljs-literal">true</span>
+&#125;
+PrefixTree.prototype.loop = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">word</span>)</span>&#123;
+  <span class="hljs-keyword">let</span> node = <span class="hljs-built_in">this</span>.tree
+  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> n <span class="hljs-keyword">of</span> word)&#123;
+    <span class="hljs-keyword">if</span>(!node[n]) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
+    node = node[n]
+  &#125;
+  <span class="hljs-keyword">return</span> node
+&#125;
+PrefixTree.prototype.search = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">word</span>)</span>&#123;
+  <span class="hljs-keyword">const</span> ret = <span class="hljs-built_in">this</span>.loop(word)
+  <span class="hljs-keyword">return</span> ret!==<span class="hljs-literal">undefined</span> &amp;&amp; ret.isEnd === <span class="hljs-literal">true</span>
+&#125;
+PrefixTree.prototype.startWith = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">prefix</span>)</span>&#123;
+  <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.loop(prefix)
+&#125;</code></pre></div></li>
+<li><p>青蛙跳台阶</p>
+</li>
+</ul>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">numWays</span>(<span class="hljs-params">n</span>)</span>&#123;
+  <span class="hljs-keyword">if</span>(n===<span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>
+  <span class="hljs-keyword">if</span>(n&lt;=<span class="hljs-number">2</span>) <span class="hljs-keyword">return</span> n
+  <span class="hljs-keyword">let</span> res = <span class="hljs-number">0</span>
+  <span class="hljs-keyword">let</span> i = <span class="hljs-number">2</span>
+  <span class="hljs-comment">// 两个台阶时</span>
+  <span class="hljs-keyword">let</span> cur = <span class="hljs-number">2</span>
+  <span class="hljs-comment">// 两种跳法</span>
+  <span class="hljs-keyword">let</span> pre = <span class="hljs-number">1</span>
+  <span class="hljs-comment">// 少一个台阶的跳法</span>
+  <span class="hljs-keyword">while</span>(i++ &lt; n)&#123;
+    <span class="hljs-comment">// 从n=3时迭代推导</span>
+    res = cur + pre
+    pre = cur
+    cur = res
+  &#125;
+  <span class="hljs-keyword">return</span> res
+&#125;
+
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">numWays</span>(<span class="hljs-params">n</span>)</span>&#123;
+  <span class="hljs-comment">// 斐波那契数列</span>
+  <span class="hljs-keyword">const</span> arr = [<span class="hljs-number">0</span>,<span class="hljs-number">1</span>]
+  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">2</span> ;i &lt;= n ;i++)&#123;
+    arr[i] = arr[i-<span class="hljs-number">1</span>] + arr[i-<span class="hljs-number">2</span>]
+  &#125;
+  <span class="hljs-keyword">return</span> arr[i]
+&#125;</code></pre></div>
+
+<ul>
+<li>连续子数组的和的最大值<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">maxSubArray</span>(<span class="hljs-params">nums</span>)</span>&#123;
+  <span class="hljs-comment">// 用dp记录该位置作为子数组末尾的累加值</span>
+  <span class="hljs-comment">// [nums[0],nums[1]],dp[1] = num[0] + num[1]</span>
+  <span class="hljs-comment">// dp[2] = dp[1] + nums[2]</span>
+  <span class="hljs-comment">// 同时判断前一dp的值正负</span>
+  <span class="hljs-comment">// 前一个dp为正则 当前dp = 前dp + 当前nums</span>
+  <span class="hljs-comment">// 如果为负直接丢弃</span>
+  <span class="hljs-keyword">if</span>(nums.length&lt;<span class="hljs-number">2</span>) <span class="hljs-keyword">return</span> nums[<span class="hljs-number">0</span>]
+  <span class="hljs-keyword">let</span> max = nums[<span class="hljs-number">0</span>]
+  <span class="hljs-keyword">let</span> dpi = nums[<span class="hljs-number">0</span>]
+  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">1</span> ; i &lt; nums.length ;i++)&#123;
+    dpi = dpi &gt; <span class="hljs-number">0</span> ? dpi + nums[i] : nums[i]
+    max = <span class="hljs-built_in">Math</span>.max(max,dpi)
+  &#125;
+  <span class="hljs-keyword">return</span> max
 &#125;</code></pre></div></li>
 </ul>
 

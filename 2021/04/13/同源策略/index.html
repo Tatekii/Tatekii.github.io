@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.6k 字
+      1.5k 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      21
+      19
        分钟
     </span>
   
@@ -237,7 +237,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年4月13日 凌晨
+                  本文最后更新于：2021年4月19日 上午
                 
               </p>
             
@@ -323,29 +323,8 @@ img.src = <span class="hljs-string">&quot;http://xxx.xxx.com/query?key=value&quo
 <li><p><code>CORS</code>跨域资源共享（详见下文）</p>
 </li>
 <li><p><code>websocket</code>协议</p>
-<ul>
-<li><p>使用<code>websocket</code>协议,需要转协议</p>
-<ol>
-<li>客户端请求</li>
-</ol>
-<div class="hljs code-wrapper"><pre><code class="hljs avrasm"><span class="hljs-symbol">Connection:</span> Upgrade
-<span class="hljs-symbol">Upgrade:</span> websocket</code></pre></div>
-
-<ol start="2">
-<li>服务端响应协议升级</li>
-</ol>
-<div class="hljs code-wrapper"><pre><code class="hljs apache"><span class="hljs-attribute">HTTP</span>/<span class="hljs-number">1</span>.<span class="hljs-number">1</span> <span class="hljs-number">101</span> Switching Protocols</code></pre></div></li>
-<li><p>构造函数就要传入<code>绝对URL</code></p>
 </li>
-<li><p>全双工，双向通信</p>
-</li>
-<li><p>服务端推送</p>
-</li>
-<li><p>基于 TCP 传输协议，并复用 HTTP 的握手通道</p>
-</li>
-</ul>
-</li>
-<li><p><code>Fetch</code>新API</p>
+<li><p><code>Fetch</code>API</p>
 <div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">postData</span>(<span class="hljs-params">url, data</span>) </span>&#123;
 <span class="hljs-comment">// Default options are marked with *</span>
   <span class="hljs-keyword">return</span> fetch(url, &#123;
@@ -363,9 +342,7 @@ img.src = <span class="hljs-string">&quot;http://xxx.xxx.com/query?key=value&quo
       &#125;).then(<span class="hljs-function"><span class="hljs-params">response</span> =&gt;</span> response.json()); <span class="hljs-comment">// parses response to JSON</span>
   &#125;</code></pre></div></li>
 </ul>
-<h3 id="CORS跨域"><a href="#CORS跨域" class="headerlink" title="CORS跨域"></a><code>CORS</code>跨域</h3><p><a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2016/04/cors.html">跨域资源共享 CORS 详解 - 阮一峰</a></p>
-<p>跨源资源共享标准通过新增一系列 HTTP 头，让服务器能声明那些来源可以通过浏览器访问该服务器上的各类资源</p>
-<h4 id="！简单请求"><a href="#！简单请求" class="headerlink" title="！简单请求"></a>！简单请求</h4><ul>
+<h3 id="CORS跨域"><a href="#CORS跨域" class="headerlink" title="CORS跨域"></a><code>CORS</code>跨域</h3><h4 id="！简单请求"><a href="#！简单请求" class="headerlink" title="！简单请求"></a>！简单请求</h4><ul>
 <li>方法<code>post get head</code>,</li>
 <li><code>Content-Type</code>：只限于三个值<code>application/x-www-form-urlencoded</code>、<code>multipart/form-data</code>、<code>text/plain</code></li>
 </ul>
@@ -400,6 +377,9 @@ xhr.withCredentials = <span class="hljs-literal">true</span>;  <span class="xml"
 <li><code>Access-Control-Allow-Credentials</code>与简单请求相同</li>
 </ul>
 <h2 id="XSS跨域脚本攻击"><a href="#XSS跨域脚本攻击" class="headerlink" title="XSS跨域脚本攻击"></a>XSS跨域脚本攻击</h2><p><code>Cross-site scripting</code></p>
+<blockquote>
+<p>浏览器渲染过程中执行了预期外的恶意代码，使非法脚本在用户页面内运行</p>
+</blockquote>
 <ul>
 <li><p>存储型XSS</p>
 <p>  input, textarea等）中写入恶意脚本上传到服务器，其他人下载带有该脚本的html页面至浏览器时脚本运行</p>
@@ -418,10 +398,9 @@ xhr.withCredentials = <span class="hljs-literal">true</span>;  <span class="xml"
 </ul>
 <h3 id="防范XSS"><a href="#防范XSS" class="headerlink" title="防范XSS"></a>防范XSS</h3><ul>
 <li>设置cookie  <code>httponly</code></li>
-<li>校验用户输入</li>
-<li>过滤用户上传的DOM事件和script，iframe，style标签</li>
-<li>对用户输入内容html编码</li>
-<li>使用CSP<code>Content Security Policy</code>,服务端加入http首部或meta标签,限制该页面可以获取哪些资源和资源的来源</li>
+<li>校验用户输入和URL参数进行过滤</li>
+<li>对发送至用户的内容进行转码，避免浏览器执行</li>
+<li>使用内容安全策略CSP<code>Content Security Policy</code>,限制该页面可以获取的资源和来源</li>
 <li>! <code>jsonp</code>如何防止xss<ol>
 <li>前后端约定jsonp请求的js的回调函数名</li>
 <li>服务器端指定返回的数据格式为json</li>

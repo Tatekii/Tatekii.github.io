@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      14
+      12
        分钟
     </span>
   
@@ -237,7 +237,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年4月13日 凌晨
+                  本文最后更新于：2021年4月15日 下午
                 
               </p>
             
@@ -289,16 +289,7 @@
 <p>  <img src="../images/script.png" srcset="/img/loading.gif" lazyload alt="script"></p>
 </li>
 </ul>
-<ul>
-<li><p><code>link</code>和<code>@import</code>和<code>src</code></p>
-<ol>
-<li><code>src</code>指向外部资源的位置，该资源会被嵌入src所在位置，浏览器会在此处暂停其他资源的下载</li>
-<li><code>link</code>引入css，icon，定义RSS等。与页面加载同时进行。</li>
-<li><code>@import</code>只能引入样式表。页面加载完后才下载。可能会有兼容问题<h2 id="利用浏览器缓存"><a href="#利用浏览器缓存" class="headerlink" title="利用浏览器缓存"></a>利用浏览器缓存</h2><h2 id="使用CDN加速资源"><a href="#使用CDN加速资源" class="headerlink" title="使用CDN加速资源"></a>使用CDN加速资源</h2></li>
-</ol>
-</li>
-</ul>
-<p>CDN的全称是<code>Content Delivery Network</code>，即内容分发网络。CDN是构建在网络之上的内容分发网络，依靠部署在各地的边缘服务器，通过中心平台的负载均衡、内容分发、调度等功能模块，使用户就近获取所需内容，降低网络拥塞，提高用户访问响应速度和命中率</p>
+<h2 id="利用浏览器缓存"><a href="#利用浏览器缓存" class="headerlink" title="利用浏览器缓存"></a>利用浏览器缓存</h2><h2 id="使用CDN加速资源"><a href="#使用CDN加速资源" class="headerlink" title="使用CDN加速资源"></a>使用CDN加速资源</h2><p>CDN的全称是<code>Content Delivery Network</code>，即内容分发网络。CDN是构建在网络之上的内容分发网络，依靠部署在各地的边缘服务器，通过中心平台的负载均衡、内容分发、调度等功能模块，使用户就近获取所需内容，降低网络拥塞，提高用户访问响应速度和命中率</p>
 <h2 id="预解析DNS"><a href="#预解析DNS" class="headerlink" title="预解析DNS"></a>预解析DNS</h2><p><code>DNS Prefetch</code> 是一种DNS 预解析技术，当浏览网页时，浏览器会在加载网页时对网页中的域名进行解析缓存，这样在单击当前网页中的连接时就无需进行DNS的解析，减少用户等待时间，提高用户体验。</p>
 <ol>
 <li><p>http中浏览器会对a标签自动开启dns预解析</p>
@@ -318,9 +309,7 @@
 <li><code>SSR:server side render</code></li>
 <li><code>prerender-spa-plugin</code>不适用于个性化的，内容变化大，多路由的页面<br>可以用来优化单页应用</li>
 </ul>
-<h2 id="前端涉及的数据存储"><a href="#前端涉及的数据存储" class="headerlink" title="前端涉及的数据存储"></a>前端涉及的数据存储</h2><ul>
-<li><p><code>LocalStorage</code></p>
-<ul>
+<h2 id="前端涉及的数据存储"><a href="#前端涉及的数据存储" class="headerlink" title="前端涉及的数据存储"></a>前端涉及的数据存储</h2><h3 id="LocalStorage-web-storage"><a href="#LocalStorage-web-storage" class="headerlink" title="LocalStorage[web storage]"></a><code>LocalStorage</code>[web storage]</h3><ul>
 <li><p>不会过期</p>
 </li>
 <li><p>数据大小5MB</p>
@@ -332,18 +321,16 @@
 <li><p>只能为<code>string</code>类型,注意需要<code>JSON</code>转换</p>
 </li>
 </ul>
-</li>
-<li><p>SessionStorage</p>
-<ul>
+<h3 id="SessionStorage-web-storage"><a href="#SessionStorage-web-storage" class="headerlink" title="SessionStorage[web storage]"></a><code>SessionStorage</code>[web storage]</h3><ul>
 <li><p>窗口/标签页关闭时清理</p>
+</li>
+<li><p>不跨窗口共享</p>
 </li>
 <li><p>数据大小5MB</p>
 </li>
 </ul>
-</li>
-<li><p>Cookie</p>
-<ul>
-<li><p>由服务器设置过期时间</p>
+<h3 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a><code>Cookie</code></h3><ul>
+<li><p>手动设置过期时间，否则浏览器关闭失效</p>
 </li>
 <li><p>数据大小 4KB</p>
 </li>
@@ -351,10 +338,38 @@
 </li>
 <li><p>有路径概念，可以限制不同路径下的 cookie 互相是访问不到的</p>
 </li>
+<li><p>某些浏览器对单网站cookie数目有限制(不超过20个)</p>
+</li>
+<li><p>cookie字段</p>
+<ul>
+<li><p><code>name</code></p>
+</li>
+<li><p><code>value</code></p>
+</li>
+<li><p><code>domain</code>　        可以访问此cookie的域，默认为该请求源的域</p>
+</li>
+<li><p><code>path</code>　        　 可以访问此cookie的页面路径</p>
+</li>
+<li><p><code>expires/Max-Age</code> 过期时间，如没设置则与会话时效相同（关闭浏览器窗口失效）</p>
+</li>
+<li><p><code>httponly</code>　      只能传输不能查看</p>
+</li>
+<li><p><code>secure</code>          只使用HTTPS传输</p>
+</li>
+<li><p><code>sameSite = </code></p>
+<ul>
+<li><code>Strict</code>  跨域时不允许带上任何cookie</li>
+<li><code>Lax</code>  只有三种情况可以带上cookie[a连接,get提交的表单,预加载link]<blockquote>
+<p>现代浏览器会将没有声明 SameSite 值的 cookie 默认设置为Lax</p>
+</blockquote>
+</li>
+<li><code>None</code> 需配合<code>secure</code>使用用 <code>Set-Cookie: widget_session=xxxxx; SameSite=None; Secure</code></li>
 </ul>
 </li>
-<li><p>IndexDB</p>
-<ul>
+</ul>
+</li>
+</ul>
+<h2 id="IndexedDB"><a href="#IndexedDB" class="headerlink" title="IndexedDB"></a><code>IndexedDB</code></h2><ul>
 <li><p>除非被清理否则一直存在</p>
 </li>
 <li><p>数据大小无限制</p>
@@ -362,44 +377,6 @@
 <li><p>IndexedDB是浏览器提供的本地数据库，它可以被网页脚本创建和操作。IndexedDB  允许储存大量数据，提供查找接口，还能建立索引。</p>
 </li>
 </ul>
-</li>
-</ul>
-<h2 id="浏览器多个标签页之间的通信"><a href="#浏览器多个标签页之间的通信" class="headerlink" title="浏览器多个标签页之间的通信"></a>浏览器多个标签页之间的通信</h2><h3 id="使用localStorage"><a href="#使用localStorage" class="headerlink" title="使用localStorage"></a>使用localStorage</h3><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// &lt;!-- 标签页1： --&gt; </span>
-    $(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;
-        $(<span class="hljs-string">&quot;#btn&quot;</span>).click(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;
-           <span class="hljs-keyword">var</span> name=$(<span class="hljs-string">&quot;#name&quot;</span>).val();
-            <span class="hljs-built_in">localStorage</span>.setItem(<span class="hljs-string">&quot;name&quot;</span>, name); <span class="hljs-comment">//存储需要的信息 </span>
-        &#125;);
-   &#125;);
-
-<span class="hljs-comment">// &lt;!-- 标签页2： --&gt;</span>
-
-$(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;
-    <span class="hljs-built_in">window</span>.addEventListener(<span class="hljs-string">&quot;storage&quot;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">event</span>)</span>&#123;
-	   <span class="hljs-built_in">console</span>.log(event.key + <span class="hljs-string">&quot;=&quot;</span> + event.newValue);
-    &#125;);     <span class="hljs-comment">//使用storage事件监听添加、修改、删除的动作  </span>
-&#125;);</code></pre></div>
-
-<h3 id="使用cookie"><a href="#使用cookie" class="headerlink" title="使用cookie"></a>使用cookie</h3><p>将要传递的信息存储在cookie中，定时读取cookie</p>
-<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// 标签页1：</span>
-
-$(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;    
-    $(<span class="hljs-string">&quot;#btn&quot;</span>).click(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;    
-        <span class="hljs-keyword">var</span> name=$(<span class="hljs-string">&quot;#name&quot;</span>).val();    
-        <span class="hljs-built_in">document</span>.cookie=<span class="hljs-string">&quot;name=&quot;</span>+name;    
-    &#125;);    
-&#125;);
-<span class="hljs-comment">// 标签页2：</span>
-
- $(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;   
-	<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getCookie</span>(<span class="hljs-params">key</span>) </span>&#123;    
-	   <span class="hljs-keyword">return</span> <span class="hljs-built_in">JSON</span>.parse(<span class="hljs-string">&quot;&#123;\&quot;&quot;</span> + <span class="hljs-built_in">document</span>.cookie.replace(<span class="hljs-regexp">/;\s+/gim</span>,<span class="hljs-string">&quot;\&quot;,\&quot;&quot;</span>).replace(<span class="hljs-regexp">/=/gim</span>, <span class="hljs-string">&quot;\&quot;:\&quot;&quot;</span>) + <span class="hljs-string">&quot;\&quot;&#125;&quot;</span>)[key];    
-	&#125;     
-	<span class="hljs-built_in">setInterval</span>(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;    
-	   <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;name=&quot;</span> + getCookie(<span class="hljs-string">&quot;name&quot;</span>));    
-	&#125;, <span class="hljs-number">10000</span>);    
-&#125;);
-</code></pre></div>
 
             </div>
             <hr>
@@ -427,9 +404,9 @@ $(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span c
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/04/13/htmlcss%E9%A2%98%E7%9B%AE/">
+                      <a href="/2021/04/13/html%E9%9D%A2%E8%AF%95%E9%A2%98/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">htmlcss面试题集</span>
+                        <span class="hidden-mobile">HTML面试题</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     

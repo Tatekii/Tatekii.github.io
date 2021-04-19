@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.2k 字
+      950 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      20
+      17
        分钟
     </span>
   
@@ -237,20 +237,14 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2020年10月29日 下午
+                  本文最后更新于：2021年4月19日 晚上
                 
               </p>
             
             <div class="markdown-body">
-              <h2 id="最大-小的-K-个数，第-K-个最大-最小值"><a href="#最大-小的-K-个数，第-K-个最大-最小值" class="headerlink" title="最大/小的 K 个数，第 K 个最大/最小值"></a>最大/小的 K 个数，第 K 个最大/最小值</h2><ul>
-<li>数组完全排序</li>
-</ul>
-<div class="hljs code-wrapper"><pre><code class="hljs javascript">data = data.sort(<span class="hljs-function">(<span class="hljs-params">a, b</span>) =&gt;</span> b - a);
-<span class="hljs-comment">//前k个大值</span>
-<span class="hljs-keyword">let</span> res1 = data.slice(<span class="hljs-number">0</span>, k);
-<span class="hljs-comment">//第k大的值</span>
-<span class="hljs-keyword">let</span> res2 = data[k - <span class="hljs-number">1</span>];</code></pre></div>
-
+              <h2 id="最大-小的-K-个数，第-K-个最大-最小值"><a href="#最大-小的-K-个数，第-K-个最大-最小值" class="headerlink" title="最大/小的 K 个数，第 K 个最大/最小值"></a>最大/小的 K 个数，第 K 个最大/最小值</h2><blockquote>
+<p>不使用全排序</p>
+</blockquote>
 <ul>
 <li>局部冒泡</li>
 </ul>
@@ -267,6 +261,7 @@
     <span class="hljs-keyword">if</span> (!flag) <span class="hljs-keyword">break</span>;
   &#125;
 &#125;
+<span class="hljs-comment">// K相当于冒泡次数</span>
 <span class="hljs-comment">//前k个小值</span>
 data.slice(<span class="hljs-number">0</span>, k);
 <span class="hljs-comment">//第k小的值</span>
@@ -311,57 +306,9 @@ data[k - <span class="hljs-number">1</span>];</code></pre></div>
     i = minIndex
   &#125;</code></pre></div>
 
-<ul>
-<li>快速排序</li>
-</ul>
-<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// 随机选取基准，数组分成基准左右两部分</span>
-<span class="hljs-comment">// 将比基准大的移动基准右边，比基准小的移动到基准左边</span>
-<span class="hljs-comment">// 递归分割排序</span>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">quickSort</span>(<span class="hljs-params">arr</span>) </span>&#123;
-  quick(arr, <span class="hljs-number">0</span>, arr.length - <span class="hljs-number">1</span>);
-  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">quick</span>(<span class="hljs-params">arr, left, right</span>) </span>&#123;
-    <span class="hljs-keyword">let</span> index;
-    <span class="hljs-keyword">if</span> (left &lt; right) &#123;
-      <span class="hljs-comment">//</span>
-      index = partition(arr, left, right);
-      <span class="hljs-comment">// 分离一次</span>
-      <span class="hljs-keyword">if</span> (left &lt; index - <span class="hljs-number">1</span>) &#123;
-        quick(arr, left, index - <span class="hljs-number">1</span>);
-      &#125;
-      <span class="hljs-keyword">if</span> (index &lt; right) &#123;
-        quick(arr, index, right);
-      &#125;
-    &#125;
-  &#125;
-  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">partition</span>(<span class="hljs-params">arr, left, right</span>) </span>&#123;
-    <span class="hljs-keyword">const</span> base = arr[<span class="hljs-built_in">Math</span>.floor(<span class="hljs-built_in">Math</span>.random() * (right - left + <span class="hljs-number">1</span>)) + left];
-    <span class="hljs-keyword">let</span> L = left,
-      R = right;
-    <span class="hljs-keyword">while</span> (L &lt;= R) &#123;
-      <span class="hljs-keyword">while</span> (arr[L] &lt; base) &#123;
-        L++;
-      &#125;
-      <span class="hljs-keyword">while</span> (arr[R] &gt; base) &#123;
-        R--;
-      &#125;
-      <span class="hljs-keyword">if</span> (L &lt;= R) &#123;
-        [arr[L], arr[R]] = [arr[R], arr[L]];
-        L++;
-        R--;
-      &#125;
-    &#125;
-    <span class="hljs-keyword">return</span> L;
-  &#125;
-&#125;
-quickSort([<span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">6</span>, <span class="hljs-number">2</span>, <span class="hljs-number">7</span>, <span class="hljs-number">5</span>, <span class="hljs-number">8</span>]);
-<span class="hljs-comment">//[(1, 2, 3, 4, 5, 6, 7, 8)];</span>
-<span class="hljs-comment">//前k个大值</span>
-arr.slice(-k);
-<span class="hljs-comment">//第k大的值</span>
-arr[arr.length - k];</code></pre></div>
 
 <ul>
-<li>选择排序</li>
+<li>快速排序</li>
 </ul>
 <div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">//分割出来的索引位置，与k的索引位置比较</span>
 <span class="hljs-comment">//第k大的值，小到大排序后就是 [nums.length - k] 索引的位置</span>
@@ -559,8 +506,8 @@ arr[arr.length - k];</code></pre></div>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2020/09/17/cookie%E5%92%8Csession/">
-                        <span class="hidden-mobile">cookie</span>
+                      <a href="/2020/09/17/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98%E7%AD%96%E7%95%A5/">
+                        <span class="hidden-mobile">浏览器缓存策略</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

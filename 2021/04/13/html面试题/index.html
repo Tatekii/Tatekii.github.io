@@ -18,7 +18,7 @@
   <meta name="author" content="tatekii">
   <meta name="keywords" content="">
   
-  <title>htmlcss面试题集 - 不知名的笔记本</title>
+  <title>HTML面试题 - 不知名的笔记本</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
@@ -163,7 +163,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="htmlcss面试题集">
+            <span class="h2" id="subtitle" title="HTML面试题">
               
             </span>
 
@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      3.2k 字
+      1.9k 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      39
+      22
        分钟
     </span>
   
@@ -233,120 +233,82 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">htmlcss面试题集</h1>
+            <h1 style="display: none">HTML面试题</h1>
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年4月13日 凌晨
+                  本文最后更新于：2021年4月16日 下午
                 
               </p>
             
             <div class="markdown-body">
-              <h3 id="web-标准"><a href="#web-标准" class="headerlink" title="web 标准"></a>web 标准</h3><blockquote>
-<p>w3c（万维网联盟）创建于 1994 年，是 Web 技术领域最具权威和影响力的国际中立性技术标准机构。</p>
-</blockquote>
-<ul>
-<li><p>W3C 标准被称为 W3C 推荐标准（W3C Recommendations），W3C 最重要的工作是发展 web 规范，也就是描述 web 通信协议（比如 HTML 和 XML）和其他构建模块的“推荐标准”。</p>
+              <h2 id="HTML5-新特性"><a href="#HTML5-新特性" class="headerlink" title="HTML5 新特性"></a>HTML5 新特性</h2><h3 id="移除"><a href="#移除" class="headerlink" title="移除"></a>移除</h3><ul>
+<li><p>纯表现的元素：basefont，big，center，font, s，strike，tt，u；</p>
 </li>
-<li><p>网页主要由三部分组成：结构（Structure）、表现（Presentation）和行为（Behavior）。对应的标准也分三方面：结构化标准语言主要包括 XHTML 和 XML，表现标准语言主要包括 CSS，行为标准主要包括对象模型（如 W3C DOM）、ECMAScript 等。这些标准大部分由万维网联盟（外语缩写：W3C）起草和发布，也有一些是其他标准组织制订的标准，比如 ECMA（European Computer Manufacturers Association）的 ECMAScript 标准。</p>
+<li><p>对可用性产生负面影响的元素：frame，frameset，noframes；</p>
 </li>
 </ul>
-<h4 id="Web-标准的优点"><a href="#Web-标准的优点" class="headerlink" title="Web 标准的优点"></a>Web 标准的优点</h4><p>● 文件下载与页面显示速度更快。<br>● 内容能被更多的用户所访问（包括失明、视弱、色盲等残障人士）。<br>● 内容能被更广泛的设备所访问（包括屏幕阅读机、手持设备、搜索机器人、打印机、电冰箱等等）。<br>● 用户能够通过样式选择定制自己的表现界面。<br>● 所有页面都能提供适于打印的版本。<br>● 更少的代码和组件，容易维护。<br>● 带宽要求降低（代码更简洁），成本降低。举个例子：当 ESPN.com 使用 CSS 改版后，每天节约超过两兆字节（terabytes）的带宽。<br>● 更容易被搜寻引擎搜索到。<br>● 提高网站易用性。</p>
-<h3 id="html5-哪些标签可以做-SEO-优化"><a href="#html5-哪些标签可以做-SEO-优化" class="headerlink" title="html5 哪些标签可以做 SEO 优化"></a>html5 哪些标签可以做 SEO 优化</h3><p><code>title、meta、header、footer、nav、article、aside</code></p>
-<h3 id="meta标签的作用"><a href="#meta标签的作用" class="headerlink" title="meta标签的作用"></a>meta标签的作用</h3><ul>
-<li>keyword seo优化 </li>
-<li>viewreport 多端适配，缩放</li>
-<li>charset 字符编码</li>
-<li>模拟http请求<code>http-equiv=&quot;expires&quot;</code></li>
-</ul>
-<h3 id="处理-html5-的兼容"><a href="#处理-html5-的兼容" class="headerlink" title="处理 html5 的兼容"></a>处理 html5 的兼容</h3><p>IE8/IE7/IE6 支持通过 document.createElement 方法产生的标签，可以利用这一特性让这些浏览器支持 HTML5 新标签，浏览器支持新标签后，还需要添加默认的样式。</p>
-<p>也可以直接使用成熟的框架，如 html5shim：<br><code>&lt;script&gt; src=&quot;http://html5shim.googlecode.com/svn/trunk/html5.js&quot;&lt;/script&gt;</code></p>
-<h3 id="html5-新特性"><a href="#html5-新特性" class="headerlink" title="html5 新特性"></a>html5 新特性</h3><h4 id="移除"><a href="#移除" class="headerlink" title="移除"></a>移除</h4><p>纯表现的元素：basefont，big，center，font, s，strike，tt，u；</p>
-<p>对可用性产生负面影响的元素：frame，frameset，noframes；</p>
-<h4 id="新增"><a href="#新增" class="headerlink" title="新增"></a>新增</h4><ul>
+<h3 id="新增"><a href="#新增" class="headerlink" title="新增"></a>新增</h3><ul>
 <li><p>拖拽释放(Drag and drop) API </p>
 </li>
 <li><p><code>canvas</code> 画布和内联 <code>svg</code></p>
 </li>
 <li><p><code>audio/video</code> 音视频元素</p>
 </li>
-<li><p><code>localStorage``sessionStorage</code></p>
-</li>
 <li><p>语意化更好的标签，比如<code>header,nav,section,article,footer,aside</code></p>
 </li>
 <li><p>新的表单元素：<code>datalist，keygen，output</code>,表单自动完成</p>
 </li>
-<li><p>新的表单输入类型<code>email,url,number,range,Date pickers (date, month, week, time, datetime, datetime-local),search,color</code></p>
+<li><p>新的表单输入类型type<code>email,url,number,range,Date pickers (date, month, week, time, datetime, datetime-local),search,color</code></p>
 </li>
-<li><p>web 应用程序离线缓存</p>
+<li><p><code>manifest</code>web应用离线缓存</p>
 </li>
-<li><p>地理定位Geolocation API</p>
+<li><p>地理定位<code>Geolocation</code> API</p>
 </li>
-<li><p>webworker，websocket</p>
+<li><p><code>webworker</code></p>
+</li>
+<li><p><code>websocket</code></p>
+</li>
+<li><p>webstorage<code>localStorage sessionStorage</code></p>
 </li>
 </ul>
-<h3 id="HTML5-的离线存储"><a href="#HTML5-的离线存储" class="headerlink" title="HTML5 的离线存储"></a>HTML5 的离线存储</h3><p>在用户没有联网时，可以正常访问站点或应用；在联网的情况下，更新用户机器上的缓存文件。</p>
+<h3 id="HTML5-哪些标签可以做-SEO-优化"><a href="#HTML5-哪些标签可以做-SEO-优化" class="headerlink" title="HTML5 哪些标签可以做 SEO 优化"></a>HTML5 哪些标签可以做 SEO 优化</h3><p><code>title、meta、header、footer、nav、article、aside</code></p>
+<h3 id="meta标签的作用"><a href="#meta标签的作用" class="headerlink" title="meta标签的作用"></a>meta标签的作用</h3><ul>
+<li><p>keyword seo优化 </p>
+</li>
+<li><p>viewreport 多端适配，缩放</p>
+</li>
+<li><p>dns预解析</p>
+</li>
+<li><p>csp内容安全策略</p>
+</li>
+<li><p>charset 字符编码</p>
+<h3 id="link和-import和src"><a href="#link和-import和src" class="headerlink" title="link和@import和src"></a><code>link</code>和<code>@import</code>和<code>src</code></h3></li>
+<li><p><code>src</code>指向外部资源的位置，该资源会被嵌入src所在位置，浏览器会在此处暂停其他资源的下载</p>
+</li>
+<li><p><code>link</code>引入css，icon，定义RSS等。与页面加载同时进行。</p>
+</li>
+<li><p><code>@import</code>只能引入样式表。页面加载完后才下载。可能会有兼容问题</p>
+</li>
+<li><p>同样引入css，link权重较高</p>
+<h3 id="HTML5-的离线存储"><a href="#HTML5-的离线存储" class="headerlink" title="HTML5 的离线存储"></a>HTML5 的离线存储</h3></li>
+</ul>
+<p>在用户没有联网时，可以正常访问站点或应用；在联网的情况下，更新用户机器上的缓存文件。</p>
 <p>如何使用：<br>1、页面头部加入一个 manifest 的属性<br>2、在 cache.manifest 文件的编写离线存储的资源<br>3、在离线状态下，操作 window.applicationCache 进行需求实现</p>
 <h4 id="浏览器是如何对-HTML5-的离线存储资源进行管理和加载的"><a href="#浏览器是如何对-HTML5-的离线存储资源进行管理和加载的" class="headerlink" title="浏览器是如何对 HTML5 的离线存储资源进行管理和加载的"></a>浏览器是如何对 HTML5 的离线存储资源进行管理和加载的</h4><ul>
-<li><p>在线的情况下，浏览器发现 html 头部有 manifest 属性，它会请求 manifest 文件，如果是第一次访问 app，浏览器会根据 manifest 文件的内容下载相应的资源并且进行离线存储。</p>
+<li><p>在线的情况下，浏览器发现 HTML 头部有 manifest 属性，它会请求 manifest 文件，如果是第一次访问 app，浏览器会根据 manifest 文件的内容下载相应的资源并且进行离线存储。</p>
 </li>
 <li><p>如果已经访问过 app，并且资源已经离线存储，浏览器会使用离线的资源加载页面，然后浏览器会对比新的 manifest 文件，如果文件没有发生改变，就不做任何操作，否则就会重新下载文件中的资源并进行离线存储。</p>
 </li>
 <li><p>离线的情况下，浏览器直接使用离线存储的资源。</p>
 </li>
 </ul>
-<h3 id="css3-新特性"><a href="#css3-新特性" class="headerlink" title="css3 新特性"></a>css3 新特性</h3><ul>
-<li>边框属性<code>border-radius</code>，<code>box-shadow</code>，<code>border-image</code></li>
-<li>背景控制<code>background-size,background-origin</code></li>
-<li>文字阴影和自动换行<code>text-shadow,word-wrap</code></li>
-<li>自定义字体<code>@font-face</code></li>
-<li>2d/3d 转换，过渡和动画</li>
-<li>多栏布局</li>
-<li>盒模型属性<code>box-sizing</code></li>
-<li>弹性盒子<code>flex</code></li>
-<li>更强大的多媒体查询</li>
-</ul>
-<h3 id="position-跟-display、margin-collapse、overflow、float-这些特性相互叠加后会怎样"><a href="#position-跟-display、margin-collapse、overflow、float-这些特性相互叠加后会怎样" class="headerlink" title="position 跟 display、margin collapse、overflow、float 这些特性相互叠加后会怎样"></a>position 跟 display、margin collapse、overflow、float 这些特性相互叠加后会怎样</h3><ul>
-<li>如果元素的 display 为 none，那么元素不被渲染，position，float 不起作用；</li>
-<li>如果元素拥有 position:absolute;或 position:fixed;属性，那么元素将为绝对定位，float 不起作用。</li>
-<li>如果元素 float 属性不是 none，元素会脱离文档流，根据 float 属性值来显示。</li>
-<li>有浮动、绝对定位，inline-block 属性的元素，margin 不会和垂直方向上的其他元素 margin 折叠。</li>
-</ul>
-<h3 id="css-实现简单的幻灯片效果"><a href="#css-实现简单的幻灯片效果" class="headerlink" title="css 实现简单的幻灯片效果"></a>css 实现简单的幻灯片效果</h3><p><a target="_blank" rel="noopener" href="https://www.runoob.com/css3/css3-animations.html">css3 动画菜鸟教程</a></p>
-<div class="hljs code-wrapper"><pre><code class="hljs css"><span class="hljs-selector-tag">div</span> &#123;
-  <span class="hljs-attribute">animation-name</span>: Myani;
-  <span class="hljs-attribute">animation-duration</span>: <span class="hljs-number">5s</span>;
-  <span class="hljs-attribute">animation-timing-function</span>: linear;
-  <span class="hljs-attribute">animation-delay</span>: <span class="hljs-number">2s</span>;
-  <span class="hljs-attribute">animation-iteration-count</span>: infinite;
-  <span class="hljs-attribute">animation-direction</span>: alternate;
-  <span class="hljs-attribute">animation-play-state</span>: running;
-  <span class="hljs-comment">/* Firefox: */</span>
-  -moz-
-  <span class="hljs-comment">/* Safari 和 Chrome: */</span>
-  -webkit-
-  <span class="hljs-comment">/* Opera: */</span>
-  -o-
-&#125;
-
-<span class="hljs-keyword">@keyframe</span> Myani &#123;
-  &lt; !-- 从什么变到什么 --&gt;<span class="hljs-selector-tag">from</span> &#123;&#125;
-
-  <span class="hljs-selector-tag">to</span> &#123;&#125;
-
-  //or
-  百分比
-&#125;</code></pre></div>
-
-<h3 id="src-和-href-的区别"><a href="#src-和-href-的区别" class="headerlink" title="src 和 href 的区别"></a>src 和 href 的区别</h3><p><code>src</code>是指向外部资源的位置，指向的内容会嵌入到文档中当前标签所在的位置，在请求 src 资源时会将其指向的资源下载并应用到文档内，如 js 脚本，img 图片和 frame 等元素。<strong>当浏览器解析到该元素时，会暂停其他资源的下载和处理，直到将该资源加载、编译、执行完毕，所以一般 js 脚本会放在底部而不是头部。</strong></p>
-<p><code>href</code>是指网络资源所在位置，建立和当前元素（锚点）或当前文档（链接）之间的链接，用于超链接。</p>
-<h3 id="样式重置"><a href="#样式重置" class="headerlink" title="样式重置"></a>样式重置</h3><p>HTML 中绝大部分标签元素在网页显示中都有一个默认属性值，通常为了避免重复定义元素样式，需要进行重置默认样式，让众多浏览器的效果达到一致</p>
 <h3 id="严格模式和混杂模式"><a href="#严格模式和混杂模式" class="headerlink" title="严格模式和混杂模式"></a>严格模式和混杂模式</h3><ul>
 <li>严格模式的排版和 JS 运作模式是 以该浏览器支持的最高标准运行。</li>
 <li>混杂模式中，页面以宽松的向后兼容的方式显示。模拟老式浏览器的行为以 防止站点无法工作</li>
 </ul>
 <h3 id="超链接访问过后-hover-样式就不出现了"><a href="#超链接访问过后-hover-样式就不出现了" class="headerlink" title="超链接访问过后 hover 样式就不出现了"></a>超链接访问过后 hover 样式就不出现了</h3><p>被点击访问过的超链接样式不在具有 hover 和 active 了解决方法是改变 CSS 属性排列顺序: <code>L-V-H-A</code></p>
-<div class="hljs code-wrapper"><pre><code class="hljs css"><span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:link</span> &#123;
+<div class="hljs code-wrapper"><pre><code class="hljs CSS"><span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:link</span> &#123;
 &#125;
 <span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:visited</span> &#123;
 &#125;
@@ -355,45 +317,8 @@
 <span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:active</span> &#123;
 &#125;</code></pre></div>
 
-
-<div class="hljs code-wrapper"><pre><code><pre><code class="hljs css">    <span class="hljs-selector-tag">span</span>&#123;
-  <span class="hljs-attribute">position</span>: absolute;
-  <span class="hljs-attribute">top</span>: <span class="hljs-number">100px</span>;
-  <span class="hljs-attribute">left</span>: <span class="hljs-number">100px</span>;
-  <span class="hljs-attribute">width</span>: <span class="hljs-number">0</span>;
-  <span class="hljs-attribute">height</span>: <span class="hljs-number">0</span>;
-  <span class="hljs-attribute">border-top</span>:<span class="hljs-number">50px</span> red solid;
-  <span class="hljs-attribute">border-left</span>:<span class="hljs-number">50px</span> white solid;
-  <span class="hljs-attribute">border-right</span>: <span class="hljs-number">50px</span> white solid;
-  &lt;!-- 一样粗的边框在边角会以<span class="hljs-number">45</span>度分割 --&gt;
-&#125;</code></pre></div>
-</code></pre>
-<h3 id="画圆和椭圆"><a href="#画圆和椭圆" class="headerlink" title="画圆和椭圆"></a>画圆和椭圆</h3><ul>
-<li><code>border-radius属性</code></li>
-<li>boder-radius 是简写属性<ul>
-<li>border-top-left-radius</li>
-<li>border-top-right-radius</li>
-<li>border-bottom-right-radius</li>
-<li>border-botom-left-radius</li>
-<li>top 左右，bottom 右左，顺时针</li>
-<li>还可以分别设置水平和垂直方向的半径，用 “/“隔开</li>
-</ul>
-</li>
-<li>```css<!--半椭圆-->width: 100px;
-height: 0;<br>border-style: solid;<br>border-color: #f00;<br>border-radius: 50%/100% 100% 0 0 <!-- 水平部分半径/垂直部分半径 -->;<div class="hljs code-wrapper"><pre><code class="hljs xml">
-- `canvcas`
-  ```html
-  <span class="hljs-tag">&lt;<span class="hljs-name">canvas</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;context&quot;</span>&gt;</span> <span class="hljs-tag">&lt;/<span class="hljs-name">canvas</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span>
-<span class="javascript">    <span class="hljs-keyword">let</span> c = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">&quot;context&quot;</span>);</span>
-<span class="javascript">    <span class="hljs-keyword">let</span> ctx = c.getContext(<span class="hljs-string">&quot;2d&quot;</span>);</span>
-<span class="javascript">    ctx.strokeStyle = <span class="hljs-string">&quot;red&quot;</span>;</span>
-<span class="javascript">    ctx.arc(<span class="hljs-number">0</span>, <span class="hljs-number">10</span>, <span class="hljs-number">100</span>, <span class="hljs-number">0</span>, <span class="hljs-number">2</span> * <span class="hljs-built_in">Math</span>.PI);</span>
-    ctx.stroke();
-  <span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre></div></li>
-</ul>
 <h2 id="盒模型"><a href="#盒模型" class="headerlink" title="盒模型"></a>盒模型</h2><blockquote>
-<p>概念<br>html 文档中的每个元素都被描绘成矩形盒子，这些矩形盒子通过一个模型来描述其占用空间，这个模型称为盒模型。盒模型通过四个边界来描述：<code>margin</code>（外边距），<code>border</code>（边框），<code>padding</code>（内边距），<code>content</code>（内容区域</p>
+<p>概念<br>HTML 文档中的每个元素都使用一个矩形盒子来描述其占用空间，这个模型称为盒模型。盒模型包含四个区域：<code>margin</code>（外边距），<code>border</code>（边框），<code>padding</code>（内边距），<code>content</code>（内容区域</p>
 </blockquote>
 <h3 id="行内元素和块级元素"><a href="#行内元素和块级元素" class="headerlink" title="行内元素和块级元素"></a>行内元素和块级元素</h3><h4 id="行内元素"><a href="#行内元素" class="headerlink" title="行内元素"></a>行内元素</h4><p><code>display inline</code></p>
 <ol>
@@ -459,10 +384,10 @@ div &#123;
 <li>识别宽高</li>
 <li>左向右排列</li>
 </ol>
-<h3 id="解析一下优雅降级和渐进增强"><a href="#解析一下优雅降级和渐进增强" class="headerlink" title="解析一下优雅降级和渐进增强"></a>解析一下优雅降级和渐进增强</h3><p>_优雅降级_：Web 站点在所有新式浏览器中都能正常工作，如果用户使用的是旧式浏览器，则代码会针对旧版本的 IE 进行降级处理，使之在旧式浏览器上以某种形式降级体验而不至于完全不能使用。</p>
+<h3 id="优雅降级和渐进增强"><a href="#优雅降级和渐进增强" class="headerlink" title="优雅降级和渐进增强"></a>优雅降级和渐进增强</h3><p>_优雅降级_：Web 站点在所有新式浏览器中都能正常工作，如果用户使用的是旧式浏览器，则代码会针对旧版本的 IE 进行降级处理，使之在旧式浏览器上以某种形式降级体验而不至于完全不能使用。</p>
 <p>_渐进增强_：从被所有浏览器支持的基本功能开始，逐步地添加那些只有新版本浏览器才支持的功能，向页面增加不影响基础浏览器的额外样式和功能。当浏览器支持时，它们会自定地呈现出来并发挥作用。</p>
 <h3 id="常见空-VOID-元素"><a href="#常见空-VOID-元素" class="headerlink" title="常见空 VOID 元素"></a>常见空 VOID 元素</h3><p><code>br、hr、img、input、link、meta</code></p>
-<h3 id="window-onload-和-DOMContentLoaded-的区别"><a href="#window-onload-和-DOMContentLoaded-的区别" class="headerlink" title="window.onload 和 DOMContentLoaded 的区别"></a>window.onload 和 DOMContentLoaded 的区别</h3><p><code>window.onload</code>页面的全部资源加载完<br><code>DOMContentLoaded</code>纯html加载完</p>
+<h3 id="window-onload-和-DOMContentLoaded-的区别"><a href="#window-onload-和-DOMContentLoaded-的区别" class="headerlink" title="window.onload 和 DOMContentLoaded 的区别"></a>window.onload 和 DOMContentLoaded 的区别</h3><p><code>window.onload</code>页面的全部资源加载完<br><code>DOMContentLoaded</code>纯HTML加载完</p>
 <h3 id="visibilityState-有哪些用途"><a href="#visibilityState-有哪些用途" class="headerlink" title="visibilityState 有哪些用途"></a>visibilityState 有哪些用途</h3><p>通过<code>visibilityState</code>的值检测页面当前是否可见，以及打开页面的时间等<br>在页面被切换到其他后台进程的时候，自动暂停音乐或视频的播放</p>
 <h3 id="标准模型和-IE-模型"><a href="#标准模型和-IE-模型" class="headerlink" title="标准模型和 IE 模型"></a>标准模型和 IE 模型</h3><ul>
 <li>通过[box-sizing]设置</li>
@@ -475,28 +400,30 @@ div &#123;
 <span class="hljs-comment">// 只支持ie</span>
 <span class="hljs-number">3.</span> <span class="hljs-built_in">window</span>.getComputedStyle(ele).width/height
 <span class="hljs-comment">// content</span>
-<span class="hljs-number">5.</span> ele.offsetWidth/offsetHeight
+<span class="hljs-number">5.</span> offsetHeight【可视区域】
 <span class="hljs-comment">// content+padding+border+滚动条</span>
-<span class="hljs-number">6.</span> ele.clientWidth/clientHeight
-<span class="hljs-comment">// content+padding 不含滚动条</span>
-<span class="hljs-number">7.</span> ele.scrollTop/ele.scrollLeft
-<span class="hljs-comment">// 滚动像素数</span></code></pre></div>
+<span class="hljs-number">6.</span> clientHeight【可视区域】
+<span class="hljs-comment">// content+padding-滚动条</span>
+<span class="hljs-number">7.</span> scrollHeight
+<span class="hljs-comment">// 包含滚动出可视区域的内容</span>
+<span class="hljs-number">9.</span> scrollTop
+<span class="hljs-comment">// 滚动像素数</span>
+
+<span class="hljs-comment">// 滚动到底</span>
+&gt; ele.scrollHeight - ele.scrollTop === ele.clientHeight</code></pre></div>
 
 <h3 id="边距重叠"><a href="#边距重叠" class="headerlink" title="边距重叠"></a>边距重叠</h3><p>两个或多个块级盒子的!!垂直!!相邻边界会重合，它们的边界宽度是相邻边界宽度中的最大值。<br>特别注意内容为空的盒子。</p>
-<h2 id="BFC-Block-Formatting-Context-块级格式化上下文"><a href="#BFC-Block-Formatting-Context-块级格式化上下文" class="headerlink" title="BFC/Block Formatting Context 块级格式化上下文"></a>BFC/Block Formatting Context 块级格式化上下文</h2><ul>
-<li>三种文档流，常规/浮动（环绕常规流）/绝对定位（脱离常规流）</li>
-<li>BFC就是常规流中一个决定块级盒子布局及浮动相互影响的一个区域<ul>
-<li>内部盒子竖着排列</li>
-<li>子元素不会超过包含他的块边界</li>
-<li>浮动子元素参与BFC高度计算</li>
-<li>BFC区域不会与浮动区域重叠</li>
-<li>子元素的左边缘会与BFC的左边缘重合</li>
-</ul>
+<h2 id="BFC"><a href="#BFC" class="headerlink" title="BFC"></a>BFC</h2><p>Block Formatting Context 块级格式化上下文,是常规流式布局中一个决定块级盒子布局及浮动相互影响的一个区域，拥有与普通盒模型不同的特性。</p>
+<h3 id="BFC特性"><a href="#BFC特性" class="headerlink" title="BFC特性"></a>BFC特性</h3><ul>
+<li><p>BFC内盒子竖向排列</p>
 </li>
-</ul>
-<p>下列方式会创建BFC：</p>
-<ul>
-<li>根元素<code>html</code></li>
+<li><p>BFC内盒子之间会发生margin合并</p>
+</li>
+<li><p>BFC内浮动元素参与高度计算（高度塌陷）</p>
+</li>
+<li><p>BFC内盒子不会超出BFC边界（浮动覆盖）</p>
+<h3 id="下列方式会创建BFC："><a href="#下列方式会创建BFC：" class="headerlink" title="下列方式会创建BFC："></a>下列方式会创建BFC：</h3><ul>
+<li>根元素<code>HTML</code></li>
 <li>浮动元素（元素的 <code>float</code> 不是 <code>none</code>）</li>
 <li>定位元素（元素的 <code>position</code> 为 <code>absolute</code> 或 <code>fixed</code></li>
 <li><code>overflow</code> 值不为 <code>visible</code> 的块元素</li>
@@ -504,10 +431,15 @@ div &#123;
 <li>行内块元素（元素的 <code>display</code> 为 <code>inline-block</code></li>
 <li>弹性元素（<code>display</code> 为 <code>flex</code> 或 <code>inline-flex</code> 元素的直接子元素）</li>
 <li>网格元素（<code>display</code> 为 <code>grid</code> 或 <code>inline-grid</code> 元素的直接子元素）</li>
-<li>表格有关（<code>display</code> 为 <code>table-xx?</code>）</li>
+<li>表格有关（<code>display</code> 为 <code>table``table-row``table-row-group``table-header-group``table-footer-group</code>）</li>
+</ul>
+</li>
 </ul>
 <p>[MDN] <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Block_formatting_context">https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Block_formatting_context</a> “块格式化上下文”</p>
-<h2 id="清除浮动"><a href="#清除浮动" class="headerlink" title="清除浮动"></a>清除浮动</h2><h3 id="用父元素伪类清除浮动"><a href="#用父元素伪类清除浮动" class="headerlink" title="用父元素伪类清除浮动"></a>用父元素伪类清除浮动</h3><div class="hljs code-wrapper"><pre><code class="hljs css"><span class="hljs-comment">/* 通用 */</span>
+<h3 id="清除浮动"><a href="#清除浮动" class="headerlink" title="清除浮动"></a>清除浮动</h3><ul>
+<li>用父元素伪类清除浮动</li>
+</ul>
+<div class="hljs code-wrapper"><pre><code class="hljs CSS"><span class="hljs-comment">/* 通用 */</span>
 <span class="hljs-selector-class">.clearfather</span>:after &#123;
   content: <span class="hljs-string">&quot;&quot;</span>;
   <span class="hljs-attribute">clear</span>: both;
@@ -520,21 +452,17 @@ div &#123;
   *zoom: <span class="hljs-number">1</span>; <span class="hljs-comment">/* ie6/7 */</span>
 &#125;</code></pre></div>
 
-<h3 id="最后面加入一个空-div-清除浮动"><a href="#最后面加入一个空-div-清除浮动" class="headerlink" title="最后面加入一个空 div 清除浮动"></a>最后面加入一个空 div 清除浮动</h3><div class="hljs code-wrapper"><pre><code class="hljs css"><span class="hljs-selector-class">.clearfloat</span> &#123;
+<ul>
+<li>空 div 清除浮动</li>
+</ul>
+<div class="hljs code-wrapper"><pre><code class="hljs CSS"><span class="hljs-selector-class">.clearfloat</span> &#123;
   <span class="hljs-attribute">clear</span>: both;
 &#125;</code></pre></div>
 
-<h3 id="父元素-BFC"><a href="#父元素-BFC" class="headerlink" title="父元素 BFC"></a>父元素 BFC</h3><p>设置能触发 BFC 的属性均可<br>【同上】</p>
 <ul>
-<li>overflow**<em>不为 visible</em>**==&gt;hidden,auto，scroll 都行</li>
-<li>设置 float 值不为 none</li>
-<li>display = inline-block,flex,inline-flex</li>
-<li>display = table-cell，table-caption</li>
-<li>设置 position**<em>不为默认 static</em>**==&gt;absolute,fixed 都行<ul>
-<li>MDN 安利了<code>display: flow-root</code></li>
+<li>父元素 BFC</li>
 </ul>
-</li>
-</ul>
+<p>设置能触发 BFC 的属性均可</p>
 <h3 id="页面导入样式时，使用-link-和-import-有什么区别"><a href="#页面导入样式时，使用-link-和-import-有什么区别" class="headerlink" title="页面导入样式时，使用 link 和@import 有什么区别"></a>页面导入样式时，使用 link 和@import 有什么区别</h3><ul>
 <li><p>link 是 XHTML 标签，除了加载 CSS 外，还可以定义 RSS 等其他事务；@import 属于 CSS 范畴，只能加载 CSS。</p>
 </li>
@@ -545,25 +473,6 @@ div &#123;
 <li><p>link 支持使用 Javascript 控制 DOM 去改变样式；而@import 不支持。</p>
 </li>
 </ul>
-<h3 id="css-动画开启-gpu-加速"><a href="#css-动画开启-gpu-加速" class="headerlink" title="css 动画开启 gpu 加速"></a>css 动画开启 gpu 加速</h3><h4 id="用-CSS3-动画替代-JS-模拟动画的好处"><a href="#用-CSS3-动画替代-JS-模拟动画的好处" class="headerlink" title="用 CSS3 动画替代 JS 模拟动画的好处"></a>用 CSS3 动画替代 JS 模拟动画的好处</h4><ul>
-<li><p>不占用 JS 主线程；</p>
-</li>
-<li><p>可以利用硬件加速；</p>
-</li>
-<li><p>浏览器可对动画做优化（元素不可见时不动画减少对 FPS 影响</p>
-</li>
-</ul>
-<h4 id="使用-GPU-渲染元素"><a href="#使用-GPU-渲染元素" class="headerlink" title="使用 GPU 渲染元素"></a>使用 GPU 渲染元素</h4><p>并不是所有的 CSS 属性都能触发 GPU 的硬件加速，实际上只有少数属性可以，比如下面的这些：</p>
-<ul>
-<li><code>transform</code></li>
-<li><code>opacity</code></li>
-<li><code>filter</code></li>
-</ul>
-<blockquote>
-<p>不会触发重绘</p>
-</blockquote>
-<h4 id="强制使用-GPU-渲染"><a href="#强制使用-GPU-渲染" class="headerlink" title="强制使用 GPU 渲染"></a>强制使用 GPU 渲染</h4><p>为了避免 2D transform 动画在开始和结束时发生的 repaint 操作，我们可以硬编码一些样式来解决这个问题：<br>.example1 {<br>transform: translateZ(0);<br>}</p>
-<p>.example2 {<br>transform: rotateZ(360deg);<br>}</p>
 
             </div>
             <hr>
@@ -576,9 +485,7 @@ div &#123;
                     
                       <a class="hover-with-bg" href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
                     
-                      <a class="hover-with-bg" href="/tags/css/">css</a>
-                    
-                      <a class="hover-with-bg" href="/tags/html/">html</a>
+                      <a class="hover-with-bg" href="/tags/HTML/">HTML</a>
                     
                   </div>
                 

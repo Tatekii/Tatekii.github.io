@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      2.6k 字
+      2.7k 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      28
+      30
        分钟
     </span>
   
@@ -237,7 +237,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年4月13日 凌晨
+                  本文最后更新于：2021年4月19日 中午
                 
               </p>
             
@@ -294,7 +294,10 @@
 <li><p>连接</p>
 <ul>
 <li><code>Connection</code>:keep-alive / close / upgrade</li>
-<li><code>Referer</code>请求发起URL</li>
+<li><code>Referer</code>请求发起URL<blockquote>
+<p>这个单词是错的</p>
+</blockquote>
+</li>
 <li><code>Host</code>服务器域名</li>
 <li><code>Upgrade</code>:websocket<h4 id="HTTP-的响应状态码"><a href="#HTTP-的响应状态码" class="headerlink" title="HTTP 的响应状态码"></a>HTTP 的响应状态码</h4></li>
 </ul>
@@ -307,22 +310,27 @@
 <p><code>5xx 处理发生错误，责任在服务端</code></p>
 <h4 id="常见-code"><a href="#常见-code" class="headerlink" title="常见 code"></a>常见 code</h4><ul>
 <li>100 继续发送</li>
-<li>101 协议升级到请求中upgrade定义的协议</li>
+<li>101 协议升级</li>
 <li>200 OK</li>
-<li>206 完成了带 Range 的 GET 请求</li>
+<li>206 处理了部分请求</li>
+<li></li>
 <li>301 永久性重定向，资源已经分配了新的 URl</li>
 <li>302 临时重定向</li>
-<li>303 表示资源存在着另一个 URL，应使用 GET 方法获取资源（对于 301/302/303 响应，几乎所有浏览器都会删除报文主体并自动用 GET 重新请求）</li>
-<li>304 继续使用本地的缓存资源，</li>
+<li>303 表示资源存在着另一个 URL，应使用 GET 方法获取资源<blockquote>
+<p>对于 301/302/303 响应，几乎所有浏览器都会删除报文主体并自动用 GET 重新请求</p>
+</blockquote>
+</li>
+<li>304 资源未修改</li>
+<li></li>
 <li>400 Bad Request请求报文语法错误</li>
-<li>401 Unauthorized需要有通过 HTTP 认证的认证信息</li>
+<li>401 Unauthorized需要认证</li>
 <li>403 Forbidden禁止访问</li>
 <li>404 Not Found</li>
-<li>405 请求方法不能被用于请求相关资源</li>
+<li>405 不允许该请求方法</li>
 <li>408 请求超时</li>
-<li>500 Internal Server Error</li>
-<li>502 bad gateway从上游服务器接受到无效响应</li>
-<li>503 Server Unavailable请求未完成，服务器临时过载</li>
+<li>500 服务器错误</li>
+<li>503 服务器过载</li>
+<li>505 不支持该版本HTTP协议</li>
 </ul>
 <h2 id="HTTP-发展"><a href="#HTTP-发展" class="headerlink" title="HTTP 发展"></a>HTTP 发展</h2><h3 id="HTTP1-0"><a href="#HTTP1-0" class="headerlink" title="HTTP1.0"></a>HTTP1.0</h3><ul>
 <li><p>串行连接：每次通信完后断开TCP通道，每个新请求都需要建立新的连接</p>
@@ -426,14 +434,18 @@
 <li>切换网络时的连接保持（快速重启会话）</li>
 <li>加密传输</li>
 </ul>
-<h2 id="HTTPS"><a href="#HTTPS" class="headerlink" title="HTTPS"></a>HTTPS</h2><p>HTTPS 是运行在 SSL/TLS 上的 HTTP，HTTPS 先和 SSL/TLS 通信，再由 SSL/TLS 与 TCP 通信</p>
-<p>HTTPS 的主要功能都由 SSL/TLS 提供，包括</p>
-<ul>
+<h2 id="HTTPS"><a href="#HTTPS" class="headerlink" title="HTTPS"></a>HTTPS</h2><h3 id="TLS-SSl"><a href="#TLS-SSl" class="headerlink" title="TLS/SSl"></a>TLS/SSl</h3><ul>
+<li><p>传输层安全性协议（英语：Transport Layer Security，缩写作TLS），及其前身安全套接层（Secure Sockets Layer，缩写作SSL）是一种安全协议，目的是为互联网通信提供安全及数据完整性保障。</p>
+</li>
+<li><p>TLS协议的特点是与应用层协议（HTTP，FTP）无耦合，应用层协议能透明运行在TLS协议上层（HTTP与TCP之间）</p>
+</li>
+</ul>
+<h3 id="主要功能"><a href="#主要功能" class="headerlink" title="主要功能"></a>主要功能</h3><ul>
 <li>非对称加密+对称加密</li>
 </ul>
 <p>发送密文的一方使用对方的公钥进行加密处理“对称的密钥”，然后对方用自己的私钥解密拿到“对称的密钥”，这样可以确保交换的密钥是安全的前提下，使用对称加密方式进行通信</p>
 <ul>
-<li>校验数字签名（数字证书</li>
+<li>数字证书</li>
 </ul>
 <p>向 CA 申请得到合法证书（证书包含以下信息：申请者公钥、申请者的组织信息和个人信息、签发机构 CA 的信息、有效时间、证书序列号等信息的明文<br>）并得到由 CA 私钥加密的<code>签名</code>-&gt;客户端请求时服务器返回证书-&gt;客户端读取证书，使用对应的 CA 密钥解密<code>签名</code>，对比证书的信息摘要，一致则说明合法。</p>
 <p>同时客户端还会验证证书的域名信息，有效时间，是不是受信任的证书颁发机构。</p>
@@ -485,6 +497,21 @@
 <blockquote>
 <p>也可缩短为三次挥手，上述二三步骤合并，服务器同时回复ACK和FIN</p>
 </blockquote>
+<h2 id="Websocket"><a href="#Websocket" class="headerlink" title="Websocket"></a>Websocket</h2><ul>
+<li>websocket的出现解决了传统http请求只能由客户端发起的缺陷</li>
+<li>http无法得知服务器连续的状态变化，只能靠轮询</li>
+<li>构造函数就要传入<code>绝对URL</code></li>
+<li>全双工，双向通信</li>
+<li>服务端推送</li>
+<li>持久连接</li>
+<li>基于 TCP 传输，复用 HTTP 的握手通道</li>
+<li>转协议<ol>
+<li>客户端请求<div class="hljs code-wrapper"><pre><code class="hljs avrasm"><span class="hljs-symbol">Connection:</span> Upgrade
+<span class="hljs-symbol">Upgrade:</span> websocket</code></pre></div></li>
+<li>服务端响应协议升级<div class="hljs code-wrapper"><pre><code class="hljs apache"><span class="hljs-attribute">HTTP</span>/<span class="hljs-number">1</span>.<span class="hljs-number">1</span> <span class="hljs-number">101</span> Switching Protocols</code></pre></div></li>
+</ol>
+</li>
+</ul>
 
             </div>
             <hr>

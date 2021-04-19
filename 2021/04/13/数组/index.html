@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.3k 字
+      2.4k 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      18
+      38
        分钟
     </span>
   
@@ -237,7 +237,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年4月13日 凌晨
+                  本文最后更新于：2021年4月19日 晚上
                 
               </p>
             
@@ -263,10 +263,7 @@
 <li><code>unshift()</code>添加元素至首位</li>
 <li><code>splice(start,delCount,new1,new2...)</code>往数组索引为 start 位置删除 delCont 个元素，并从该位置加入 new 新元素</li>
 <li><code>sort()</code>排序</li>
-<li><code>reverse()</code>倒序,返回新数组<blockquote>
-<p>es6</p>
-</blockquote>
-</li>
+<li><code>reverse()</code>倒序,返回新数组<br>es6</li>
 <li><code>copyWithin(target,start,end)</code>拷贝数组中索引从 start 到 end（end）的元素添加至 target</li>
 <li><code>fill(value,start,end)</code>将数组中索引 start 到 end（不含）的位置填充为 value 元素</li>
 </ul>
@@ -278,12 +275,10 @@
 <li><code>includes()</code>查找是否包含元素返回Boolean,可传入起始位置</li>
 <li><code>...</code>展开运算符</li>
 </ul>
-<h3 id="遍历数组"><a href="#遍历数组" class="headerlink" title="遍历数组"></a>遍历数组</h3><blockquote>
-<p>遍历数组的方法回调mapFn包含自动传入的参数(currentValue,currentIndex,thisArr)</p>
-</blockquote>
+<h3 id="遍历数组"><a href="#遍历数组" class="headerlink" title="遍历数组"></a>遍历数组</h3><p>  遍历数组的方法回调mapFn包含自动传入的参数(currentValue,currentIndex,thisArr)</p>
 <div class="hljs code-wrapper"><pre><code class="hljs javascript">解释了[<span class="hljs-string">&#x27;1&#x27;</span>,<span class="hljs-string">&#x27;2&#x27;</span>,<span class="hljs-string">&#x27;3&#x27;</span>].map(<span class="hljs-built_in">parseInt</span>)
-=&gt; <span class="hljs-built_in">parseInt</span>(<span class="hljs-string">&#x27;1&#x27;</span>,<span class="hljs-number">0</span>),<span class="hljs-built_in">parseInt</span>(<span class="hljs-string">&#x27;2&#x27;</span>,<span class="hljs-number">1</span>),<span class="hljs-built_in">parseInt</span>(<span class="hljs-string">&#x27;3&#x27;</span>,<span class="hljs-number">2</span>)
-=&gt; <span class="hljs-number">1</span>,<span class="hljs-literal">NaN</span>,<span class="hljs-literal">NaN</span></code></pre></div>
+=  <span class="hljs-built_in">parseInt</span>(<span class="hljs-string">&#x27;1&#x27;</span>,<span class="hljs-number">0</span>),<span class="hljs-built_in">parseInt</span>(<span class="hljs-string">&#x27;2&#x27;</span>,<span class="hljs-number">1</span>),<span class="hljs-built_in">parseInt</span>(<span class="hljs-string">&#x27;3&#x27;</span>,<span class="hljs-number">2</span>)
+=  <span class="hljs-number">1</span>,<span class="hljs-literal">NaN</span>,<span class="hljs-literal">NaN</span></code></pre></div>
 <ul>
 <li><p><code>map()</code>创建一个新数组，其结果是该数组中的每个元素都调用一个提供的函数后返回的结果</p>
 </li>
@@ -329,10 +324,7 @@
 <h2 id="判断数组"><a href="#判断数组" class="headerlink" title="判断数组"></a>判断数组</h2><ol>
 <li><code>arr.constructor===Array</code></li>
 <li><code>arr instanceof Array</code></li>
-<li><code>Array.prototype.isPrototypeOf(arr)</code><blockquote>
-<p>查找原型的方法，如果手动更改对象的原型也可欺骗过检测</p>
-</blockquote>
-</li>
+<li><code>Array.prototype.isPrototypeOf(arr)</code><br>  查找原型的方法，如果手动更改对象的原型也可欺骗过检测</li>
 </ol>
 <div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> arr = [];
 <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">Array</span>.prototype.isPrototypeOf(arr));
@@ -355,20 +347,20 @@ arr = &#123;
 <span class="hljs-comment">// 2</span>
 <span class="hljs-keyword">let</span> uni2 = [...new <span class="hljs-built_in">Set</span>(arr)];
 <span class="hljs-comment">// 3</span>
-<span class="hljs-keyword">let</span> uni3 = arr.sort().reduce(<span class="hljs-function">(<span class="hljs-params">init, cur</span>) =&gt;</span> &#123;
+<span class="hljs-keyword">let</span> uni3 = arr.sort().reduce((init, cur) =  &#123;
   <span class="hljs-keyword">if</span> (init.length === <span class="hljs-number">0</span> || init[init.length - <span class="hljs-number">1</span>] !== cur) &#123;
     init.push(cur);
   &#125;
   <span class="hljs-keyword">return</span> init;
 &#125;, []);
 <span class="hljs-comment">// 4</span>
-<span class="hljs-keyword">let</span> uni4 = arr.filter(<span class="hljs-function">(<span class="hljs-params">item,index</span>)=&gt;</span>&#123;
+<span class="hljs-keyword">let</span> uni4 = arr.filter((item,index)= &#123;
   <span class="hljs-keyword">return</span> arr.indexOf(item) === index
 &#125;)</code></pre></div>
 
 <h2 id="计算数组中元素出现的次数"><a href="#计算数组中元素出现的次数" class="headerlink" title="计算数组中元素出现的次数"></a>计算数组中元素出现的次数</h2><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> arr = [<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">4</span>, <span class="hljs-number">4</span>, <span class="hljs-number">4</span>];
 <span class="hljs-comment">//reduce</span>
-<span class="hljs-keyword">let</span> countArr = arr.reduce(<span class="hljs-function">(<span class="hljs-params">obj, i</span>) =&gt;</span> &#123;
+<span class="hljs-keyword">let</span> countArr = arr.reduce((obj, i) =  &#123;
   <span class="hljs-keyword">if</span> (i <span class="hljs-keyword">in</span> obj) &#123;
     obj[i]++;
   &#125; <span class="hljs-keyword">else</span> &#123;
@@ -398,7 +390,7 @@ arr = &#123;
 ];
 
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">groupBy</span>(<span class="hljs-params">objArr, prop</span>) </span>&#123;
-  <span class="hljs-keyword">return</span> objArr.reduce(<span class="hljs-function">(<span class="hljs-params">acc, obj</span>) =&gt;</span> &#123;
+  <span class="hljs-keyword">return</span> objArr.reduce((acc, obj) =  &#123;
     <span class="hljs-keyword">let</span> key = obj[prop];
     <span class="hljs-keyword">if</span> (!acc[key]) &#123;
       acc[key] = [];
@@ -412,7 +404,7 @@ arr = &#123;
 
 <h2 id="扁平化数组"><a href="#扁平化数组" class="headerlink" title="扁平化数组"></a>扁平化数组</h2><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// 1 reduce</span>
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">flat1</span>(<span class="hljs-params">arr</span>) </span>&#123;
-  <span class="hljs-keyword">return</span> arr.reduce(<span class="hljs-function">(<span class="hljs-params">res, item</span>) =&gt;</span> &#123;
+  <span class="hljs-keyword">return</span> arr.reduce((res, item) =  &#123;
     <span class="hljs-keyword">return</span> res.concat(<span class="hljs-built_in">Array</span>.isArray(item) ? flat1(item) : item);
   &#125;, []);
 &#125;
@@ -426,7 +418,7 @@ arr = &#123;
 &#125;
 <span class="hljs-comment">// 3 展开运算符</span>
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">flat3</span>(<span class="hljs-params">arr</span>) </span>&#123;
-  <span class="hljs-keyword">while</span> (arr.some(<span class="hljs-function">(<span class="hljs-params">item</span>) =&gt;</span> <span class="hljs-built_in">Array</span>.isArray(item))) &#123;
+  <span class="hljs-keyword">while</span> (arr.some((item) =  <span class="hljs-built_in">Array</span>.isArray(item))) &#123;
     arr = [].concat(...arr);
   &#125;
   <span class="hljs-keyword">return</span> arr;
@@ -436,18 +428,238 @@ arr = &#123;
   <span class="hljs-keyword">return</span> arr
     .toString()
     .split(<span class="hljs-string">&quot;,&quot;</span>)
-    .map(<span class="hljs-function">(<span class="hljs-params">item</span>) =&gt;</span> <span class="hljs-built_in">Number</span>(item));
+    .map((item) =  <span class="hljs-built_in">Number</span>(item));
 &#125;
 <span class="hljs-comment">// 5 join</span>
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">flat5</span>(<span class="hljs-params">arr</span>) </span>&#123;
   <span class="hljs-keyword">return</span> arr
     .join(<span class="hljs-string">&quot;,&quot;</span>)
     .split(<span class="hljs-string">&quot;,&quot;</span>)
-    .map(<span class="hljs-function">(<span class="hljs-params">item</span>) =&gt;</span> <span class="hljs-built_in">Number</span>(item));
+    .map((item) =  <span class="hljs-built_in">Number</span>(item));
 &#125;
 <span class="hljs-comment">// 6 flat()</span>
 flat(<span class="hljs-literal">Infinity</span>);</code></pre></div>
+<h2 id="数组排序"><a href="#数组排序" class="headerlink" title="数组排序"></a>数组排序</h2><h3 id="V8中的sort"><a href="#V8中的sort" class="headerlink" title="V8中的sort()"></a>V8中的sort()</h3><ul>
+<li>7.0之前 arr.length =10【插入排序】， 10【快速排序】</li>
+<li>7.0之后 【timesort】 <h3 id="手写排序方法"><a href="#手写排序方法" class="headerlink" title="手写排序方法"></a>手写排序方法</h3><h4 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h4><blockquote>
+<p>O(n^2)</p>
+</blockquote>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">bubbleSort</span>(<span class="hljs-params">arr</span>) </span>&#123;
+  <span class="hljs-keyword">const</span> len = arr.length;
+  <span class="hljs-keyword">if</span> (len &lt; <span class="hljs-number">2</span>) <span class="hljs-keyword">return</span> arr
+  <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; len-<span class="hljs-number">1</span> ; i++) &#123;
+    <span class="hljs-keyword">let</span> flag = <span class="hljs-literal">false</span>; <span class="hljs-comment">// 提前退出标识</span>
+    <span class="hljs-keyword">for</span> (j = <span class="hljs-number">0</span>; j &lt; len - <span class="hljs-number">1</span> - i; j++) &#123;
+      <span class="hljs-keyword">if</span> (arr[j]   arr[j + <span class="hljs-number">1</span>]) &#123;
+        [arr[j], arr[j + <span class="hljs-number">1</span>]] = [arr[j + <span class="hljs-number">1</span>], arr[j]];
+        flag = <span class="hljs-literal">true</span>;
+      &#125;
+    &#125;
+    <span class="hljs-keyword">if</span> (!flag) <span class="hljs-keyword">break</span>;
+  &#125;
+  <span class="hljs-keyword">return</span> arr;
+&#125;</code></pre></div></li>
+</ul>
+<h4 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h4><blockquote>
+<p>O(n^2)</p>
+</blockquote>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">insertSort1</span>(<span class="hljs-params">arr</span>)</span>&#123;
+  <span class="hljs-keyword">const</span> len = arr.length
+  <span class="hljs-keyword">if</span>(len &lt; <span class="hljs-number">2</span>) <span class="hljs-keyword">return</span> arr
+  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">1</span> ;i&lt;len ;i++)&#123;
+    <span class="hljs-keyword">const</span> temp = arr[i]
+    <span class="hljs-keyword">let</span> j = i
+    <span class="hljs-keyword">if</span>(arr[j-<span class="hljs-number">1</span>]&gt;temp)&#123;
+      <span class="hljs-keyword">while</span>(arr[j-<span class="hljs-number">1</span>]&gt;temp &amp;&amp; j&gt;<span class="hljs-number">0</span>)&#123;
+        arr[j] = arr[j-<span class="hljs-number">1</span>]
+        j--
+      &#125;
+    &#125;
+    <span class="hljs-comment">// 将元素插入正确位置</span>
+    arr[j] = temp
+  &#125;
+  <span class="hljs-keyword">return</span> arr
+&#125;
+<span class="hljs-comment">// 交换[低效率]</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">insertSort2</span>(<span class="hljs-params">arr</span>)</span>&#123;
+  <span class="hljs-keyword">const</span> len = arr.length
+  <span class="hljs-keyword">if</span>(len &lt; <span class="hljs-number">2</span>) <span class="hljs-keyword">return</span> arr
+  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">1</span> ;i &lt; len ;i++)&#123;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> j = i ;j &gt; <span class="hljs-number">0</span> &amp;&amp; arr[j] &gt;arr[j-<span class="hljs-number">1</span>];j--)&#123;
+      <span class="hljs-comment">// 依次移动i指针</span>
+      <span class="hljs-comment">// 循环比较将i位置顺序插入到i的左边</span>
+      <span class="hljs-comment">// 依次往前冒泡到合理位置</span>
+      [arr[j],arr[j-<span class="hljs-number">1</span>]] = [arr[j-<span class="hljs-number">1</span>],arr[j]]
+    &#125;
+  &#125;
+  <span class="hljs-keyword">return</span> arr
+&#125;
+</code></pre></div>
+<h4 id="希尔排序"><a href="#希尔排序" class="headerlink" title="希尔排序"></a>希尔排序</h4><blockquote>
+<p>平均O(n log 2n) 最坏O(n^2)</p>
+</blockquote>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// 希尔排序相当于有间隔得进行插入排序</span>
+<span class="hljs-comment">// 移动</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">shellSort1</span>(<span class="hljs-params">arr</span>)</span>&#123;
+  <span class="hljs-keyword">const</span> len = arr.length
+  <span class="hljs-keyword">if</span>(len&lt;<span class="hljs-number">2</span>) <span class="hljs-keyword">return</span> arr
+  <span class="hljs-keyword">let</span> gap = <span class="hljs-built_in">Math</span>.floor(len/<span class="hljs-number">2</span>)
+  <span class="hljs-keyword">for</span>(;gap&gt;<span class="hljs-number">0</span>;gap = <span class="hljs-built_in">Math</span>.floor(gap/<span class="hljs-number">2</span>))&#123;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = gap;i&lt;len;i++)&#123;
+      <span class="hljs-keyword">const</span> temp = arr[i]
+      <span class="hljs-keyword">let</span> j = i
+      <span class="hljs-keyword">if</span>(arr[j-gap]&gt;temp)&#123;
+        <span class="hljs-keyword">while</span>(arr[j-gap]&gt;temp &amp;&amp; j-gap&gt;=<span class="hljs-number">0</span>)&#123;
+          arr[j] = arr[j-gap]
+          j-=gap
+        &#125;
+      &#125;
+      arr[j] = temp
+    &#125;
+  &#125;
+  <span class="hljs-keyword">return</span> arr
+&#125;
+<span class="hljs-comment">// 交换[低效率]</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">shellSort2</span>(<span class="hljs-params">arr</span>)</span>&#123;
+  <span class="hljs-keyword">const</span> len = arr.length
+  <span class="hljs-keyword">const</span> gap = <span class="hljs-built_in">Math</span>.floor(len/<span class="hljs-number">2</span>)
+  <span class="hljs-keyword">for</span>(;gap&gt;<span class="hljs-number">0</span>;gap = <span class="hljs-built_in">Math</span>.floor(gap/<span class="hljs-number">2</span>))&#123;
+    <span class="hljs-comment">// 不断缩小间隔的长度</span>
+    <span class="hljs-comment">// 最终会为1</span>
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = gap ; i&lt;len ;i++)&#123;
+      <span class="hljs-comment">// i指针</span>
+      <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> j = i;j-gap&gt;=<span class="hljs-number">0</span> &amp;&amp; arr[j-gap] &gt; arr[j];j-=gap)&#123;
+        <span class="hljs-comment">// 比较指针左边与指针位置相距gap的元素</span>
+        <span class="hljs-comment">// 冒泡到该位置</span>
+        [arr[j],arr[j-gap]] = [arr[j-gap],arr[j]]
+      &#125;
+    &#125;
+  &#125;
+  <span class="hljs-keyword">return</span> arr
+&#125;</code></pre></div>
+<h4 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h4><blockquote>
+<p>时间O(n^2)</p>
+</blockquote>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">selectionSort</span>(<span class="hljs-params">arr</span>) </span>&#123;
+  <span class="hljs-keyword">var</span> len = arr.length;
+  <span class="hljs-keyword">var</span> minIndex;
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; len - <span class="hljs-number">1</span>; i++) &#123;
+    minIndex = i;
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> j = i + <span class="hljs-number">1</span>; j &lt; len; j++) &#123;
+      <span class="hljs-keyword">if</span> (arr[j] &lt; arr[minIndex]) &#123;
+        <span class="hljs-comment">// 寻找i右边最小的数</span>
+        minIndex = j; <span class="hljs-comment">// 将最小数的索引保存</span>
+      &#125;
+    &#125;
+    [arr[i], arr[minIndex]] = [arr[minIndex], arr[i]];
+  &#125;
+  <span class="hljs-keyword">return</span> arr;
+&#125;</code></pre></div>
 
+<h4 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h4><blockquote>
+<p>平均 O(n log n)</p>
+</blockquote>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> quickSort = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">arr</span>) </span>&#123;
+  <span class="hljs-keyword">if</span> (arr.length &lt; <span class="hljs-number">2</span>) &#123;
+    <span class="hljs-keyword">return</span> arr;
+  &#125; <span class="hljs-comment">//一直排序到区间内只有一个数</span>
+  <span class="hljs-keyword">var</span> pivotIndex = <span class="hljs-built_in">Math</span>.floor(arr.length / <span class="hljs-number">2</span>); <span class="hljs-comment">//基准位置（可任意选取）</span>
+  <span class="hljs-keyword">var</span> pivot = arr.splice(pivotIndex, <span class="hljs-number">1</span>)[<span class="hljs-number">0</span>]; <span class="hljs-comment">//找出基准数并把它从原数组删除</span>
+  <span class="hljs-keyword">var</span> left = [];  <span class="hljs-comment">// 空间复杂度O(n)</span>
+  <span class="hljs-keyword">var</span> right = [];
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; arr.length; i++) &#123;
+    <span class="hljs-keyword">if</span> (arr[i] &lt; pivot) &#123;
+      left.push(arr[i]);
+    &#125; <span class="hljs-keyword">else</span> &#123;
+      right.push(arr[i]);
+    &#125;
+  &#125;
+  <span class="hljs-keyword">return</span> [...quickSort(left), pivot, ...quickSort(right)]; 
+
+
+<span class="hljs-comment">// 不使用额外空间</span>
+  <span class="hljs-comment">// 随机选取基准，数组分成基准左右两部分</span>
+  <span class="hljs-comment">// 将比基准大的移动基准右边，比基准小的移动到基准左边</span>
+  <span class="hljs-comment">// 递归分割排序</span>
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">quickSort</span>(<span class="hljs-params">arr</span>) </span>&#123;
+    quick(arr, <span class="hljs-number">0</span>, arr.length - <span class="hljs-number">1</span>);
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">quick</span>(<span class="hljs-params">arr, left, right</span>) </span>&#123;
+      <span class="hljs-keyword">if</span>(left&gt;=right) <span class="hljs-keyword">return</span> 
+        <span class="hljs-keyword">const</span> index = partition(arr, left, right);
+        <span class="hljs-comment">// 选出一个随机值，并把它移动到正确位置</span>
+        <span class="hljs-comment">// 根据该位置切割递归</span>
+        <span class="hljs-keyword">if</span> (left &lt; index - <span class="hljs-number">1</span>) &#123;
+          <span class="hljs-comment">//排序左边</span>
+          quick(arr, left, index - <span class="hljs-number">1</span>);
+        &#125;
+        <span class="hljs-keyword">if</span> (index &lt; right) &#123;
+          <span class="hljs-comment">// 排序右边</span>
+          quick(arr, index+<span class="hljs-number">1</span>, right);
+        &#125;
+    &#125;
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">partition</span>(<span class="hljs-params">arr, left, right</span>) </span>&#123;
+      <span class="hljs-keyword">const</span> base = arr[<span class="hljs-built_in">Math</span>.floor(<span class="hljs-built_in">Math</span>.random() * (right - left + <span class="hljs-number">1</span>)) + left];
+      <span class="hljs-comment">// 随机选</span>
+      <span class="hljs-keyword">let</span> L = left,
+        R = right;
+        <span class="hljs-comment">// 左右指针</span>
+      <span class="hljs-keyword">while</span> (L &lt; R) &#123;
+        <span class="hljs-keyword">while</span> (arr[L] &lt; base) &#123;
+          L++;
+          <span class="hljs-comment">// 左指针向右查找比基准大</span>
+        &#125;
+        <span class="hljs-keyword">while</span> (arr[R] &gt; base) &#123;
+          R--;
+          <span class="hljs-comment">//右指针向左查找比基准小</span>
+        &#125;
+        <span class="hljs-keyword">if</span> (L &lt; R) &#123;
+          [arr[L], arr[R]] = [arr[R], arr[L]];
+          <span class="hljs-comment">//交换位置</span>
+        &#125;
+        <span class="hljs-keyword">if</span>(arr[L]===arr[R] &amp;&amp; L!==R)&#123;
+          <span class="hljs-comment">//重复元素</span>
+          L++
+        &#125;
+      &#125;
+      <span class="hljs-comment">//最后输出两个指针相遇位置</span>
+      <span class="hljs-comment">//返回这个位置</span>
+      <span class="hljs-keyword">return</span> L;
+    &#125;
+    <span class="hljs-keyword">return</span> arr
+  &#125;
+  quickSort([<span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">6</span>, <span class="hljs-number">2</span>, <span class="hljs-number">7</span>, <span class="hljs-number">5</span>, <span class="hljs-number">8</span>]);
+  <span class="hljs-comment">//[(1, 2, 3, 4, 5, 6, 7, 8)];</span>
+</code></pre></div>
+<h4 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h4><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// 建立大顶堆</span>
+<span class="hljs-comment">// 依次将末尾元素与heap[1]交换位置并调整堆，同时缩小堆的大小（排除最后的大数）</span>
+<span class="hljs-comment">// heap[2]和heap[1]交换完成后就是升序排序</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">heapSort</span>(<span class="hljs-params">arr</span>)</span>&#123;
+  <span class="hljs-keyword">const</span> heap = [,...arr]
+  <span class="hljs-keyword">let</span> heapSize = arr.length
+  buildHeap(heap,heapSize)
+  <span class="hljs-comment">// 开始交换头尾</span>
+  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> k = heapSize;k&gt;<span class="hljs-number">1</span>;k--)&#123;
+    [heap[k],heap[<span class="hljs-number">1</span>]] = [heap[<span class="hljs-number">1</span>],heap[k]]
+    heapify(heap,--heapSize,<span class="hljs-number">1</span>)
+  &#125;
+  heap.shift()
+
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">buildHeap</span>(<span class="hljs-params">heap,size</span>)</span>&#123;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-built_in">Math</span>.floor(size/<span class="hljs-number">2</span>);i&gt;=<span class="hljs-number">1</span>;i--)&#123;
+      heapify(heap,size,i)
+    &#125;
+  &#125;
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">heapify</span>(<span class="hljs-params">heap,heapSize,i</span>)</span>&#123;
+    <span class="hljs-keyword">while</span>(<span class="hljs-literal">true</span>)&#123;
+      <span class="hljs-keyword">let</span> maxIndex = i
+      <span class="hljs-keyword">if</span>(<span class="hljs-number">2</span>*i &lt;= heapSize &amp;&amp; heap[<span class="hljs-number">2</span>*i] &gt; heap[i]) maxIndex = <span class="hljs-number">2</span> * i 
+      <span class="hljs-keyword">if</span>(<span class="hljs-number">2</span>*i+<span class="hljs-number">1</span> &lt;=heapSize &amp;&amp; heap[<span class="hljs-number">2</span>*i+<span class="hljs-number">1</span>] &gt; heap[maxIndex]) maxIndex = <span class="hljs-number">2</span> * i +<span class="hljs-number">1</span>
+      <span class="hljs-keyword">if</span>(maxIndex === i) <span class="hljs-keyword">break</span>
+      [heap[maxIndex],heap[i]] = [heap[i],heap[maxIndex]]
+      i = maxIndex
+    &#125;
+  &#125;
+&#125;</code></pre></div>
             </div>
             <hr>
             <div>

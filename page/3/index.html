@@ -182,18 +182,24 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/04/13/%E7%BD%91%E7%BB%9C%E5%88%86%E5%B1%82%E6%A8%A1%E5%9E%8B/">网络分层模型</a>
+        <a href="/2020/08/17/js%E7%89%87%E6%AE%B5/">待整理的js片段</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2021/04/13/%E7%BD%91%E7%BB%9C%E5%88%86%E5%B1%82%E6%A8%A1%E5%9E%8B/">
+        <a href="/2020/08/17/js%E7%89%87%E6%AE%B5/">
           
           
             
           
-          OSI 参考模型OSI参考模型（OSI/RM）的全称是开放系统互连参考模型（Open System Interconnection Reference Model，OSI/RM），它是由国际标准化组织（International Standard Organization，ISO）提出的一个网络系统互连模型。
+          
+字母的所有组合
 
-在这个 OSI 七层模型中，每一层都为其上一层提供服务、并为其上一层提供一个访问接口或
+const anagrams = str =&gt; &#123;
+  if(str.length&lt;=2) return str.length===2 ? [str , str[1] + str[0]] :str
+
+  // 这里使用reduce的第三个参数index，正在处理的元素
+  // 如果提供了initialValue，则起始索引号为0，否则从索引1起始。
+  
         </a>
       </p>
 
@@ -201,7 +207,62 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2021-04-13 00:21" pubdate>
+            <time datetime="2020-08-17 16:07" pubdate>
+              2020-08-17
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
+            
+              <a href="/tags/javascript/">javascript</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/04/13/vue%E7%BB%84%E4%BB%B6%E9%80%9A%E4%BF%A1/">vue组件之间通信方式</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/04/13/vue%E7%BB%84%E4%BB%B6%E9%80%9A%E4%BF%A1/">
+          
+          
+            
+          
+          ref和$refs
+ref挂载在普通HTML组件上访问它得到DOM
+
+ref挂载在VUE组件上访问它得到组件实例
+
+
+&lt;base-input ref=&quot;usernameInput&quot;&gt;&lt;base-input&gt;
+this.$refs.usernameInput
+
+$emit和prop
+子组件props接收父组件传递的数据
+动态数据加冒号:
+子组件可对收到的p
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-04-13 01:08" pubdate>
               2021-04-13
             </time>
           </div>
@@ -211,7 +272,325 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/http/">http</a>
+              <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
+            
+              <a href="/tags/vue/">vue</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/04/13/js%E6%A8%A1%E5%9D%97%E5%8C%96/">js模块化</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/04/13/js%E6%A8%A1%E5%9D%97%E5%8C%96/">
+          
+          
+            
+          
+          模块化开发的思想模块化的开发方式可以提高代码复用率，方便进行代码的管理。通常一个文件就是一个模块，有自己的作用域，只向外暴露特定的变量和函数。
+模块化的好处
+命名冲突
+文件依赖
+代码复用
+
+CommonJS (Node.js)
+代码同步加载，服务器不用考虑速度
+
+代码可以多次加载，但是运行结果会被缓存
+
+require(&#39;xxx&#39;)加载模块
+module.exports(全局变量或
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-04-13 01:01" pubdate>
+              2021-04-13
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
+            
+              <a href="/tags/javascript/">javascript</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/04/13/js%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF/">js运行机制</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/04/13/js%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF/">
+          
+          
+            
+          
+          ref:javascript 运行机制 EventLoop
+JS的单线程JavaScript的单线程，与它的用途有关。作为浏览器脚本语言，JavaScript的主要用途是与用户互动，以及操作DOM。这决定了它只能是单线程，否则会带来很复杂的同步问题。
+EventLoop
+概括：主线程不断从任务队列读取任务进入执行栈执行的循环过程
+
+因为 js 是单线程运行的，在代码执行的时候，通过将不同函数的执行
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-04-13 00:40" pubdate>
+              2021-04-13
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
+            
+              <a href="/tags/javascript/">javascript</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/09/07/vue3%E9%A2%84%E7%83%AD/">vue3预热</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/09/07/vue3%E9%A2%84%E7%83%AD/">
+          
+          
+            
+          
+          VUE冲冲冲代替defineProperty的Proxyvue2.X存在的缺陷
+无法检测对象中 property 的添加或移除
+
+通过下标操作数组，例如：vm.items[indexOfItem] = newValue （性能考虑放弃）
+
+修改数组的长度时，例如：vm.items.length = newLength
+
+变通
+// Object新增元素
+Vue.set(object, proper
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-09-07 11:46" pubdate>
+              2020-09-07
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/javascript/">javascript</a>
+            
+              <a href="/tags/vue/">vue</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/04/13/flex/">flex布局</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/04/13/flex/">
+          
+          
+            
+          
+          ref:阮一峰的网络日志
+容器的属性
+flex-direction 主轴的方向
+flex-direction: 
+
+row(默认住) | row-reverse 横向排列
+column | column-reverse纵向排列
+
+
+flex-wrap 排列不下时的换行处理
+flex-wrap:
+
+nowrap不换行
+wrap换行
+wrap-reverse逆序换行
+
+
+flex-flow(上述两种的
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-04-13 00:44" pubdate>
+              2021-04-13
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
+            
+              <a href="/tags/css/">css</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/04/13/js%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">面向对象</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/04/13/js%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">
+          
+          
+            
+          
+          面向对象的设计思想面向对象的设计思想是从自然界中来的，因为在自然界中就存在类（Class）和实例（Instance）的概念。
+
+Class 是一种抽象概念，比如我们定义的 Class——Student ，是指学生这个概念，
+
+而实例（Instance）则是一个个具体的 Student ，比如， Michael 和 Bob 是两个具体的 Student 。
+
+面向过程就是分析出解决问题所需要的步骤，
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-04-13 00:35" pubdate>
+              2021-04-13
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
+            
+              <a href="/tags/javascript/">javascript</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/04/13/mvcmvpmvvm/">MVC/MVP/MVVM</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/04/13/mvcmvpmvvm/">
+          
+          
+            
+          
+          MVC/MVP/MVVM
+MVCModel-View-Controller
+View-&gt;Controller-&gt;Model
+^                     |
+|                     |
+|                     v
+&lt;---------------------&lt;
+
+
+View 传送指令到 Controller ；
+
+Con
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-04-13 00:27" pubdate>
+              2021-04-13
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
             
           </div>
         
@@ -278,56 +657,6 @@ Boolean
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/04/13/URL%E8%A7%A3%E6%9E%90%E6%B5%81%E7%A8%8B/">地址中输入URL回车后发生了什么</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/04/13/URL%E8%A7%A3%E6%9E%90%E6%B5%81%E7%A8%8B/">
-          
-          
-            
-          
-          
-分析请求资源
-
-chrome资源分类
-
-安全策略检查 
-  网页安全政策（Content Security Policy，缩写 CSP）   是由浏览器提供的一种白名单制度。开发者通过配置，来告诉浏   览器各类外部资源的加载和执行限制，来提高网页的安全性。一种最常用的应用就是通过限制非信任域名脚本的加载来预防XSS攻击。
-  可以通过两种方式来配置CSP：
-
-HTTP请求头的Content-S
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-04-13 00:16" pubdate>
-              2021-04-13
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
         <a href="/2020/08/27/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95%E9%A2%98/">操作字符串算法题</a>
       </h1>
 
@@ -374,355 +703,11 @@ function commonPrefix(...strs)&#123;
     </article>
   </div>
 
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2020/08/27/%E6%A0%88%E7%BB%93%E6%9E%84%E7%AE%97%E6%B3%95%E9%A2%98/">栈算法题</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2020/08/27/%E6%A0%88%E7%BB%93%E6%9E%84%E7%AE%97%E6%B3%95%E9%A2%98/">
-          
-          
-            
-          
-          栈结构，先进后出
-最小栈
-
-
-function MinStack()&#123;
-  this.stack = []
-  this.min = [Infinity]
-&#125;
-
-MinStack.prototype.push = function(item)&#123;
-  this.stack.push(item)
-  this.min.push(Math.min(this.min[this
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-08-27 17:58" pubdate>
-              2020-08-27
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
-            
-              <a href="/tags/javascript/">javascript</a>
-            
-              <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2020/03/27/%E5%8E%9F%E7%94%9Fjs/">原生js与jq</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2020/03/27/%E5%8E%9F%E7%94%9Fjs/">
-          
-          
-            
-          
-          
-javascript
-js 是一门函数优先的轻量级解释型语言，基于原型编程的动态脚本语言
-
-函数是一等公民（变量提升，函数可以作为函数的参数，返回值，可以赋值给变量，【函数式编程的条件】
-面向对象编程
-弱类型语言（变量的类型在运行时会变化，强类型语言的变量类型编译时就确定且不会改变
-基于原型（区别于基于类[类和实例]，js 中万物皆为[对象]
-基于原型的语言具有所谓原型对象（prototypic
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-03-27 14:00" pubdate>
-              2020-03-27
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
-            
-              <a href="/tags/js/">js</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/04/06/%E8%A7%A3%E6%9E%90URL%E5%8F%82%E6%95%B0/">解析URL参数</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/04/06/%E8%A7%A3%E6%9E%90URL%E5%8F%82%E6%95%B0/">
-          
-          
-            
-          
-          
-正则解析
- const rule = /([^?=&amp;]+)=([^&amp;]*)/g
-&lt;!-- (匹配非[?=&amp;]且出现多次的字符) --&gt;
-&lt;!-- = --&gt;
-&lt;!-- (匹配出现0次或多次的非[&amp;]的字符) --&gt;
-function parseURL(url)&#123;
-  return url.match(rule).red
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-04-06 16:40" pubdate>
-              2021-04-06
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/javascript/">javascript</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/04/06/%E6%89%B9%E9%87%8F%E6%98%A0%E5%B0%84%E6%A8%A1%E5%9D%97/">文件夹内批量映射为模块</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/04/06/%E6%89%B9%E9%87%8F%E6%98%A0%E5%B0%84%E6%A8%A1%E5%9D%97/">
-          
-          
-            
-          
-          方法./controllers中
-
-controllerA.js
-controllerB.js
-controllerC.js
-./controllers/index.js
-
-const _ = require(&#x27;lodash&#x27;)
-const fs = require(&#x27;fs&#x27;)
-const path = require(&#x27;path&#x27;)
-
-
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-04-06 09:38" pubdate>
-              2021-04-06
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/javascript/">javascript</a>
-            
-              <a href="/tags/node/">node</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2020/03/24/css%E9%9D%A2%E8%AF%95%E9%A2%98/">css面试题</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2020/03/24/css%E9%9D%A2%E8%AF%95%E9%A2%98/">
-          
-          
-            
-          
-          浏览器兼容
-IE
-双边距 
-display:inline
-
-
-默认高度16px
-font-size:0
-overflow:hidden
-
-
-超链接内img会有边框
-border:0 
-
-
-
-
-
-
-3px bug
-display:block
-vertical-align:top
-
-
-
-三角形2，椭圆
-不同边border之间45度拼接div&#123;
-  width:0;
-  height:0;
- 
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-03-24 11:00" pubdate>
-              2020-03-24
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
-            
-              <a href="/tags/css/">css</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/04/04/div%E9%AB%98%E5%BA%A6%E4%B8%BA%E9%AB%98%E5%BA%A6%E4%B8%80%E5%8D%8A/">div高度为高度一半</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/04/04/div%E9%AB%98%E5%BA%A6%E4%B8%BA%E9%AB%98%E5%BA%A6%E4%B8%80%E5%8D%8A/">
-          
-          
-            
-          
-          知识点position属性
-static
-正常流，默认值
-top, right, bottom, left 和 z-index 属性无效。
-
-
-relative
-相对正常流偏移
-原位置有预留空间
-
-
-absolute
-移出正常文档流
-相对于最近的非 static 定位祖先元素偏移
-不为元素预留空间
-
-
-fixed
-移出正常文档流
-相对于屏幕视口（viewport）的位置来指定元素位置
-不为元素预留
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-04-04 11:13" pubdate>
-              2021-04-04
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
-            
-              <a href="/tags/css/">css</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
 
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/2/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/#board">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/#board">4</a><a class="page-number" href="/page/5/#board">5</a><a class="extend next" rel="next" href="/page/4/#board"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/page/2/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/#board">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/#board">4</a><a class="extend next" rel="next" href="/page/4/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
 

@@ -237,7 +237,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年4月4日 下午
+                  本文最后更新于：2021年4月15日 晚上
                 
               </p>
             
@@ -298,7 +298,6 @@
 <span class="hljs-selector-class">.outer-wrapper</span>&#123;
   <span class="hljs-attribute">height</span>:<span class="hljs-number">100%</span>;
   <span class="hljs-attribute">width</span>:<span class="hljs-number">100%</span>;
-  <span class="hljs-attribute">margin</span>:<span class="hljs-number">0</span> auto;
   <span class="hljs-attribute">display</span>:flex;
   <span class="hljs-comment">/* flex默认行排列，所以这里设置侧轴对齐 */</span>
   <span class="hljs-attribute">align-items</span>:center
@@ -307,6 +306,7 @@
 <span class="hljs-selector-class">.inner-wrapper</span>&#123;
   <span class="hljs-attribute">position</span>:relative;
   <span class="hljs-attribute">width</span>:<span class="hljs-number">100%</span>;
+  <span class="hljs-attribute">height</span>:<span class="hljs-number">0</span>;
   <span class="hljs-attribute">padding-bottom</span>:<span class="hljs-number">50%</span>;
   <span class="hljs-comment">/* padding,margin值的百分比是相较于父元素width */</span>
 &#125;
@@ -326,6 +326,7 @@
   <span class="hljs-attribute">position</span>:relative;
   <span class="hljs-attribute">padding-top</span>:<span class="hljs-number">50%</span>;
   <span class="hljs-attribute">width</span>:<span class="hljs-number">50%</span>;
+  <span class="hljs-comment">/* 同样相较于包含块的尺寸百分比 */</span>
 &#125;
 <span class="hljs-selector-class">.div</span>&#123;
   <span class="hljs-attribute">position</span>:absolute;
@@ -334,7 +335,6 @@
   <span class="hljs-comment">/* 偏移到wrapper位置 */</span>
   <span class="hljs-attribute">width</span>:<span class="hljs-number">100%</span>;
   <span class="hljs-attribute">height</span>:<span class="hljs-number">100%</span>;
-  <span class="hljs-comment">/* 同样相较于包含块的尺寸百分比 */</span>
 &#125;
 
 
@@ -348,7 +348,7 @@
   <span class="hljs-comment">/* flex/grid/table */</span>
   <span class="hljs-attribute">display</span>:flow-root
 &#125;
-<span class="hljs-selector-class">.div</span>&#123;
+<span class="hljs-selector-class">.div</span><span class="hljs-selector-pseudo">::after</span>&#123;
   <span class="hljs-attribute">content</span>:<span class="hljs-string">&#x27;&#x27;</span>;
   <span class="hljs-attribute">margin-top</span>:<span class="hljs-number">100%</span>;
   <span class="hljs-attribute">display</span>:block
