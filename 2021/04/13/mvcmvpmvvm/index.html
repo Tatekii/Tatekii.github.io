@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      635 字
+      215 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      7
+      2
        分钟
     </span>
   
@@ -237,59 +237,50 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年4月13日 凌晨
+                  本文最后更新于：2021年4月20日 晚上
                 
               </p>
             
             <div class="markdown-body">
-              <h2 id="MVC-MVP-MVVM"><a href="#MVC-MVP-MVVM" class="headerlink" title="MVC/MVP/MVVM"></a>MVC/MVP/MVVM</h2><ul>
-<li><p>MVC<code>Model-View-Controller</code></p>
-<div class="hljs code-wrapper"><pre><code class="hljs js">View-&gt;Controller-&gt;Model
+              <h3 id="MVCModel-View-Controller"><a href="#MVCModel-View-Controller" class="headerlink" title="MVCModel-View-Controller"></a>MVC<code>Model-View-Controller</code></h3><div class="hljs code-wrapper"><pre><code class="hljs js">View-&gt;Controller-&gt;Model
 ^                     |
-|                     |
 |                     v
 &lt;---------------------&lt;</code></pre></div>
 
 <ol>
-<li><p>View 传送指令到 Controller ；</p>
+<li><p>单向通信</p>
 </li>
-<li><p>Controller 完成业务逻辑后，操作 Model 改变数据 ；</p>
+<li><p><code>Controller</code>只起到路由作用，业务逻辑都在<code>View</code>中</p>
 </li>
-<li><p>Model通知 View用新数据更新，用户得到反馈。</p>
+<li><p>UI交互<code>View</code> 传送指令到 <code>Controller</code> ；</p>
+</li>
+<li><p><code>Controller</code> 完成业务逻辑后，操作 <code>Model</code> 改变数据 ；</p>
+</li>
+<li><p>Model通知 <code>View</code>更新，用户得到反馈。</p>
 </li>
 </ol>
-<p><em>在MVC中，View会直接从Model中读取数据。</em></p>
-<p><em>Model不依赖于View，但是 View是依赖于Model</em></p>
-</li>
-<li><p>MVP<code>Model-View-Presenter</code></p>
-<div class="hljs code-wrapper"><pre><code class="hljs javascript">View &lt;--&gt; Presenter &lt;==&gt; Model</code></pre></div>
+<h3 id="MVPModel-View-Presenter"><a href="#MVPModel-View-Presenter" class="headerlink" title="MVPModel-View-Presenter"></a>MVP<code>Model-View-Presenter</code></h3><div class="hljs code-wrapper"><pre><code class="hljs javascript">
+View &lt;--&gt; Presenter &lt;==&gt; Model
+</code></pre></div>
 <ol>
-<li><p>M、V、P之间双向通信。</p>
+<li><p>双向通信</p>
 </li>
-<li><p>View 与 Model 不通信，都通过 Presenter 传递。Presenter完全把Model和View进行了分离，主要的程序逻辑在Presenter里实现。</p>
+<li><p><code>View</code> 与 <code>Model</code> 之间不通信，通过 <code>Presenter</code>解偶</p>
 </li>
-<li><p>View 非常薄，不部署任何业务逻辑，称为”被动视图”（Passive View），即没有任何主动性，而 Presenter非常厚，所有逻辑都部署在那里。</p>
+<li><p>主要的程序逻辑在<code>Presenter</code>中</p>
+</li>
+<li><p><code>View</code> 非常薄，不部署任何业务逻辑</p>
 </li>
 <li><p><em>Presenter与具体的View是没有直接关联的</em>，而是通过定义好的接口进行交互，从而使得在变更View时候可以保持Presenter的不变，这样就可以重用。</p>
 </li>
 </ol>
-</li>
-<li><p>MVVM<code>Model-View-ViewModel</code></p>
-<div class="hljs code-wrapper"><pre><code class="hljs javascript">View &lt;==&gt; ViewModel &lt;==&gt; Model</code></pre></div>
-<ul>
-<li><code>Model</code> 层: 对应数据层的域模型，它主要做域模型的同步。通过 Ajax/fetch 等 API 完成客户端和服务端业务 Model 的同步。在层间关系里，它主要用于抽象出 ViewModel 中视图的 Model</li>
-<li><code>View</code> 层: 作为视图模板存在，在 MVVM 里，整个 View 是一个动态模板。除了定义结构、布局外，它展示的是 ViewModel 层的数据和状态。View 层不负责处理状态，View 层做的是数据绑定、 指令的声明、 事件绑定的声明。</li>
-<li><code>ViewModel</code>和<code>View</code>视图双向绑定，在业务处理中只关心数据的流转，而无需直接和页面打交道</li>
-</ul>
-<p><em>mvvm模式将Presener改名为View Model，基本上与MVP模式完全一致，唯一的区别是，它采用双向绑定(data-binding): View的 变动，自动反映在View Model，反之亦然。这样开发者就不用处理接收事件和View更新的工作，框架已经帮你做好了。</em></p>
-<p>使用MVVM模式有几大好处：</p>
-<div class="hljs code-wrapper"><pre><code>1. 低耦合。View可以独立于Model变化和修改，一个ViewModel可以绑定到不同的View上，当View变化的时候Model可以不变，当Model变化的时候View也可以不变。　　
-2. 可重用性。可以把一些视图的逻辑放在ViewModel里面，让很多View重用这段视图逻辑。　　
-3. 独立开发。开发人员可以专注与业务逻辑和数据的开发(ViewModel)。设计人员可以专注于界面(View)的设计。　　
-4. 可测试性。可以针对ViewModel来对界面(View)进行测试
+<h3 id="MVVMModel-View-ViewModel"><a href="#MVVMModel-View-ViewModel" class="headerlink" title="MVVMModel-View-ViewModel"></a>MVVM<code>Model-View-ViewModel</code></h3><div class="hljs code-wrapper"><pre><code class="hljs javascript">
+View &lt;==&gt; ViewModel &lt;==&gt; Model
 </code></pre></div>
-</li>
-</ul>
+
+<blockquote>
+<p>mvvm模式将Presener改名为View Model，基本上与MVP模式一致，由框架代替开发者完成事件收集和view更新的工作</p>
+</blockquote>
 
             </div>
             <hr>

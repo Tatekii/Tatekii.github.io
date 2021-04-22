@@ -18,7 +18,7 @@
   <meta name="author" content="tatekii">
   <meta name="keywords" content="">
   
-  <title>操作字符串算法题 - 不知名的笔记本</title>
+  <title>vue的diff算法 - 不知名的笔记本</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
@@ -163,7 +163,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="操作字符串算法题">
+            <span class="h2" id="subtitle" title="vue的diff算法">
               
             </span>
 
@@ -173,8 +173,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2020-08-27 17:56" pubdate>
-        2020年8月27日 下午
+      <time datetime="2020-11-25 12:59" pubdate>
+        2020年11月25日 下午
       </time>
     </span>
   
@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      800 字
+      1.2k 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      12
+      15
        分钟
     </span>
   
@@ -233,182 +233,180 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">操作字符串算法题</h1>
+            <h1 style="display: none">vue的diff算法</h1>
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年4月9日 晚上
+                  本文最后更新于：2021年4月22日 下午
                 
               </p>
             
             <div class="markdown-body">
-              <ul>
-<li><p>寻找最长公公前缀</p>
-<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// 输入: [&quot;flower&quot;,&quot;flow&quot;,&quot;flight&quot;]</span>
-<span class="hljs-comment">// 输出: &quot;fl&quot;</span>
+              <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><ul>
+<li>diff算法，包含渲染器如何对各种类型的vNode的属性，text，fragment进行patch更新，以及判断是patch vNode，还是新增还是删除</li>
+<li>同级比较</li>
+</ul>
+<h3 id="基础的diff"><a href="#基础的diff" class="headerlink" title="基础的diff"></a>基础的diff</h3><ul>
+<li>新节点没有子节点-&gt;删除久的</li>
+<li>新节点只有一个子节点-&gt;删除旧的并添加新的</li>
+</ul>
+<h3 id="核心diff"><a href="#核心diff" class="headerlink" title="核心diff"></a>核心diff</h3><ul>
+<li>新旧节点都有多个子节点</li>
+</ul>
+<h4 id="没有key"><a href="#没有key" class="headerlink" title="没有key"></a>没有key</h4><ul>
+<li>就地更新<h4 id="key的作用"><a href="#key的作用" class="headerlink" title="key的作用"></a>key的作用</h4></li>
+<li>vNode中的唯一标识符</li>
+<li>用于保存新旧vNode的映射关系</li>
+<li>找到可复用的vNode</li>
+<li>用移动节点达到更新目的⭐️</li>
+</ul>
+<h4 id="React-最大索引值k"><a href="#React-最大索引值k" class="headerlink" title="React 最大索引值k"></a>React 最大索引值k</h4><ul>
+<li>两次循环，遍历新node去旧node中寻找新vnode位置</li>
+<li>如果索引呈现递增趋势<div class="hljs code-wrapper"><pre><code class="hljs javascript">old: key1 key2 key3
+<span class="hljs-keyword">new</span>: key1 key2 key3</code></pre></div>
+（newA-&gt;oldA=&gt;0,newB-&gt;oldB=&gt;1,newC-&gt;oldC=&gt;2）则说明新旧 children 中节点顺序相同，不需要移动操作。相反的，如果在寻找的过程中遇到的索引值不呈现递增趋势，则说明需要移动操作</li>
+<li>如果匹配过程中递增规律被打破</li>
+</ul>
+  <div class="hljs code-wrapper"><pre><code class="hljs javascript">old: key2 key3 key1
+<span class="hljs-keyword">new</span>: key1 key2 key3
+k = <span class="hljs-number">2</span> 之前的所有节点都需要移动</code></pre></div>
+<p>  <code>k</code>为在旧 children 中所遇到的最大索引值，则后续匹配的索引小于这个值意味着都需要移动</p>
+<h3 id="Vue-双端比较-snabbdom"><a href="#Vue-双端比较-snabbdom" class="headerlink" title="Vue 双端比较 snabbdom"></a>Vue 双端比较 snabbdom</h3><div class="hljs code-wrapper"><pre><code class="hljs javascript">
+(oStart)               [oEnd]
+ oldA   oldB   oldC    oldD
 
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">commonPrefix</span>(<span class="hljs-params">...strs</span>)</span>&#123;
-  <span class="hljs-keyword">if</span>(!strs.length || strs.length===<span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&quot;</span>
-  <span class="hljs-keyword">let</span> ref = strs[<span class="hljs-number">0</span>]
-  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">1</span>;i&lt;strs.length;i++)&#123;
-    <span class="hljs-keyword">let</span> j = <span class="hljs-number">0</span>
-    <span class="hljs-keyword">for</span>(;j&lt;ref.length &amp;&amp; j&lt;strs[i].length;j++)&#123;
-      <span class="hljs-keyword">if</span>(ref.chartAt(j)!==strs[i].chartAt(j)) <span class="hljs-keyword">break</span>
-    &#125;
-    ref = ref.subString(<span class="hljs-number">0</span>,j)
-  &#125;
-  <span class="hljs-keyword">return</span> ref
-&#125;
+ newB   newC   newD    newA
+(nStart)               [nEnd]
+
+<span class="hljs-comment">// oStart与nEnd匹配上了key，将oldA的DOM移动到新dom最后</span>
+      (oStart)        [oEnd]
+ oldA   oldB   oldC    oldD
+ ｜
+  ----------------------&gt;
+                        ｜
+ newB   newC   newD    newA
+(nStart)      [nEnd]</code></pre></div>
+<ul>
+<li>vue同时从新旧children的两端开始比较</li>
+<li>四个指针，分别查找是否key相同</li>
+<li>匹配到了相同的key，则将真实dom移动,同时四个指针对撞移动</li>
+<li>如果第一轮四次匹配不上，则遍历旧node寻找<code>nStart</code></li>
+<li>if 找到将其真实DOM移动到<code>oStart</code>之前，并在原vnode位置置空undefined，后序比较会跳过他</li>
+<li>else 找不到则添加新增新元素<code>nStart</code>到<code>oStart</code>之前</li>
+<li>匹配结束后<code>oEnd&lt;oStart</code>,新增<code>nStart到nEnd</code>新元素到<code>oStart</code>之前</li>
+<li>匹配结束后<code>nStart&gt;nEnd</code>,删除<code>oStart到oEnd</code>之间元素</li>
+</ul>
+<h3 id="Vue3的inferno"><a href="#Vue3的inferno" class="headerlink" title="Vue3的inferno"></a>Vue3的inferno</h3><ul>
+<li><p>排除相同的前置和后置元素</p>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript">[j]   [preEnd]
+ |       |
+ a   b   c
+ |       |
+--------------
+ |           |
+ a   e   b   c
+ |           |   
+[j]       [nextEnd]
+
+[j][preEnd]
+ |   |
+ a   b   c
+ |   |
+----------------
+ |         |
+ a  【e】   b   c
+ |         |   
+[j]     [nextEnd]
+</code></pre></div>
+<ul>
+<li>分别从新旧节点的头和尾出发</li>
+<li>依次遍历到key值不一样时停止 </li>
+<li>这样匹配成功后剩下的部分就是需要新增/删除的vNode</li>
+</ul>
+</li>
+<li><p>使用剩余新children的长度建立source索引数组</p>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript">oldChildren = [b,c,d,f]
+newChildren = [c,d,b,g]  
+<span class="hljs-comment">// 默认全为-1</span>
+source = [-<span class="hljs-number">1</span>,-<span class="hljs-number">1</span>,-<span class="hljs-number">1</span>,-<span class="hljs-number">1</span>]
+<span class="hljs-comment">//为新vnode建立key，index索引表</span>
+keyIndex = &#123;<span class="hljs-attr">c</span>:<span class="hljs-number">0</span>,<span class="hljs-attr">d</span>:<span class="hljs-number">1</span>,<span class="hljs-attr">b</span>:<span class="hljs-number">2</span>,<span class="hljs-attr">g</span>:<span class="hljs-number">3</span>&#125;
+<span class="hljs-comment">// 遍历旧children中key去keyIndex中查找，有这个key则把该位置的-1改为旧vNode的索引，并且patch该节点  </span>
+source = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">0</span>,-<span class="hljs-number">1</span>]
 </code></pre></div></li>
-<li><p>连字符转为驼峰</p>
-<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">hump</span>(<span class="hljs-params">str</span>)</span>&#123;
-  <span class="hljs-keyword">return</span> str.replace(<span class="hljs-regexp">/-\w/g</span>,$<span class="hljs-number">1</span>=&gt;&#123;
-    <span class="hljs-keyword">return</span> $<span class="hljs-number">1.</span>slice(<span class="hljs-number">1</span>).toUpperCase()
-  &#125;)
-&#125;
-</code></pre></div></li>
+<li><p>判断是否需要移动</p>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript">source = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">0</span>,-<span class="hljs-number">1</span>]
+<span class="hljs-comment">//source中，最大索引为2，2之后有小于2的索引，说明需要移动</span></code></pre></div></li>
+<li><p>根据source数组求出最长递增子序列</p>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript">LIS = [<span class="hljs-number">0</span>，<span class="hljs-number">1</span>]
+<span class="hljs-comment">// LIS中存储的是source索引</span>
+<span class="hljs-comment">// 表示新旧children中这几个节点递增</span></code></pre></div></li>
+<li><p>根据LIS得出不进行移动的节点</p>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript">newChildren[LIS] = [c,d]</code></pre></div></li>
+<li><p>从LIS和新children尾处建立指针处理余下节点</p>
+</li>
 </ul>
+<blockquote>
+<p>最长上升子序列</p>
+</blockquote>
 <ul>
-<li>将字符串改为首字母大写<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">//-i-hate -_you_</span>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Upper</span>(<span class="hljs-params">str</span>)</span>&#123;
-  <span class="hljs-keyword">let</span> rule = <span class="hljs-regexp">/\b_?(\w)/g</span>
-  <span class="hljs-keyword">return</span> str.replace(rule,($<span class="hljs-number">1</span>=&gt;&#123;
-    <span class="hljs-keyword">return</span> $<span class="hljs-number">1.</span>toUpperCase()
-  &#125;))
-&#125;</code></pre></div></li>
+<li>子序列：不要求连续</li>
+<li>字串：要求连续</li>
 </ul>
-<ul>
-<li>反转句子<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">//  正则</span>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">reverseWords</span>(<span class="hljs-params">str</span>)</span>&#123;
-  <span class="hljs-keyword">return</span> str.trim().replace(<span class="hljs-regexp">/\s+/g</span>,<span class="hljs-string">&#x27; &#x27;</span>).split(<span class="hljs-string">&#x27; &#x27;</span>).reverse().join(<span class="hljs-string">&#x27; &#x27;</span>)
-  <span class="hljs-comment">// \s \s是指空白,包括空格、换行、tab缩进等所有的空白</span>
-  <span class="hljs-comment">// 去除单词之间多余的空白</span>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// 动态规划</span>
+<span class="hljs-keyword">const</span> longestChildSequence = <span class="hljs-function"><span class="hljs-params">arr</span> =&gt;</span> &#123;
+  <span class="hljs-keyword">let</span> len = arr.length
+  <span class="hljs-keyword">if</span>(len &lt; <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span>
+  <span class="hljs-keyword">const</span> dp = <span class="hljs-built_in">Array</span>(len).fill(<span class="hljs-number">1</span>)
+  <span class="hljs-comment">// dp[i]代表原始数组该位置的最长子序列长度</span>
+  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">1</span> ; i &lt; len ; i++)&#123;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> j = <span class="hljs-number">0</span> ; j &lt; i ; j++)&#123;
+      <span class="hljs-comment">// j遍历之前遍历过的所有元素</span>
+      <span class="hljs-comment">// 可能存在大小不一的递增序列，使用max取得最大值</span>
+      <span class="hljs-keyword">if</span>(arr[i] &gt; arr [j])&#123;
+        dp[i] = <span class="hljs-built_in">Math</span>.max(dp[i],dp[j]+<span class="hljs-number">1</span>)
+        <span class="hljs-comment">// [1,2,3,4,1,2,5]</span>
+        <span class="hljs-comment">// 如果只使用dp[j]+1 ，dp[6]会在[1,2,5]中得出结果3</span>
+        <span class="hljs-comment">// 使用max比较之前更长的序列[1，2，3，4，5]得到5</span>
+
+      &#125;
+    &#125;
+  &#125;
+  <span class="hljs-keyword">return</span> <span class="hljs-built_in">Math</span>.max(...dp)
 &#125;
 
-<span class="hljs-comment">//</span>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">reverseWords</span>(<span class="hljs-params">str</span>)</span>&#123;
-  <span class="hljs-keyword">let</span> arr = []
-  <span class="hljs-keyword">let</span> left = <span class="hljs-number">0</span>
-  <span class="hljs-keyword">let</span> right = str.length-<span class="hljs-number">1</span>
-  <span class="hljs-keyword">let</span> word = <span class="hljs-string">&#x27;&#x27;</span>
-  <span class="hljs-keyword">while</span>(str.charAt(left)===<span class="hljs-string">&#x27; &#x27;</span>) left++
-  <span class="hljs-keyword">while</span>(str.charAt(right)===<span class="hljs-string">&#x27; &#x27;</span>) right--
-  <span class="hljs-comment">// 去除头尾多余空格</span>
-  <span class="hljs-keyword">while</span>(left&lt;=right)&#123;
-    <span class="hljs-keyword">let</span> char = str.charAt(left)
-    <span class="hljs-keyword">if</span>(char===<span class="hljs-string">&#x27; &#x27;</span> &amp;&amp; word)&#123;
-      arr.unshift(word)
-      word = <span class="hljs-string">&#x27;&#x27;</span>
-    &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(char!== <span class="hljs-string">&#x27; &#x27;</span>)&#123;
-      word += char
+<span class="hljs-comment">// 贪心+二分</span>
+<span class="hljs-keyword">const</span> longestChildSequence = <span class="hljs-function"><span class="hljs-params">arr</span> =&gt;</span> &#123;
+  <span class="hljs-keyword">let</span> len = arr.length
+  <span class="hljs-keyword">if</span>(len &lt; <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span>
+  <span class="hljs-keyword">const</span> res = [arr[<span class="hljs-number">0</span>]]
+  <span class="hljs-comment">//将arr中后续元素arr[i]与res末尾元素比较</span>
+  <span class="hljs-comment">//大于则push进res</span>
+  <span class="hljs-comment">//小于则查找res中第一个比arr[i]大的元素并替换</span>
+  <span class="hljs-comment">//由于存在替换，子序列值不一定正确，但长度是正确的</span>
+  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span> ; i&lt; len ;i++)&#123;
+    <span class="hljs-keyword">if</span>(arr[i]&gt;res[res.length-<span class="hljs-number">1</span>])&#123;
+      res.push(arr[i])
+    &#125;<span class="hljs-keyword">else</span>&#123;
+      <span class="hljs-comment">// res中左右指针的index</span>
+      <span class="hljs-comment">// 二分查找</span>
+      <span class="hljs-keyword">let</span> left = <span class="hljs-number">0</span>
+      <span class="hljs-keyword">let</span> right = res.length - <span class="hljs-number">1</span>
+      <span class="hljs-keyword">while</span>(left&lt;right)&#123;
+        <span class="hljs-keyword">let</span> mid = <span class="hljs-built_in">Math</span>.floor((left+right)/<span class="hljs-number">2</span>)
+        <span class="hljs-comment">// let mid = ((left+right)/2) | 0</span>
+        <span class="hljs-comment">// 浮点小数向下求整</span>
+        <span class="hljs-keyword">if</span>(arr[i]&gt;res[mid])&#123;
+          left = mid + <span class="hljs-number">1</span>
+        &#125;<span class="hljs-keyword">else</span>&#123;
+          right = mid
+        &#125;
+      &#125;
+      res[left] = arr[i]
     &#125;
-    left ++
   &#125;
-  arr.unshift(word)
-  <span class="hljs-keyword">return</span> arr.join(<span class="hljs-string">&#x27; &#x27;</span>)
-&#125;</code></pre></div></li>
-</ul>
-<ul>
-<li>检查回文</li>
-</ul>
-<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">reverseCheck</span>(<span class="hljs-params">str</span>)</span>&#123;
-  <span class="hljs-keyword">let</span> s = str.toLowerCase().replace(<span class="hljs-regexp">/[\W_]/g</span>,<span class="hljs-string">&#x27;&#x27;</span>)
-  <span class="hljs-comment">// 格式掉不是字母的别的玩意</span>
-  <span class="hljs-comment">// | `\W`   | 匹配任意不是字母，数字，下划线 |</span>
-  <span class="hljs-comment">// `[]` 字符串用中括号括起来，表示匹配其中的任一字符</span>
-  <span class="hljs-keyword">return</span> s === s.split(<span class="hljs-string">&#x27;&#x27;</span>).reverse().join(<span class="hljs-string">&#x27;&#x27;</span>)
+  <span class="hljs-keyword">return</span> res.length 
 &#125;</code></pre></div>
-
-<ul>
-<li>最长不重复子串长度</li>
-</ul>
-<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">longest1</span>(<span class="hljs-params">str</span>) </span>&#123;
-  <span class="hljs-keyword">const</span> <span class="hljs-built_in">window</span> = [];
-  <span class="hljs-comment">// 滑动窗口</span>
-  <span class="hljs-keyword">let</span> maxLen = <span class="hljs-number">0</span>;
-  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; str.length; i++) &#123;
-    <span class="hljs-keyword">const</span> index = <span class="hljs-built_in">window</span>.indexOf(str[i]);
-    <span class="hljs-keyword">if</span> (index !== -<span class="hljs-number">1</span>) &#123;
-      <span class="hljs-built_in">window</span>.splice(<span class="hljs-number">0</span>, index + <span class="hljs-number">1</span>);
-      <span class="hljs-comment">// 有重复值时缩小窗口</span>
-    &#125;
-    <span class="hljs-built_in">window</span>.push(str[i])
-    <span class="hljs-comment">// 无重复扩大窗口</span>
-    maxLen = <span class="hljs-built_in">Math</span>.max(maxLen, <span class="hljs-built_in">window</span>.length);
-  &#125;
-  <span class="hljs-keyword">return</span> maxLen;
-&#125;
-
-
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">longest2</span>(<span class="hljs-params">str</span>)</span>&#123;
-  <span class="hljs-keyword">const</span> map = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Map</span>()
-  <span class="hljs-keyword">let</span> maxLen = <span class="hljs-number">0</span>
-  <span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>
-  <span class="hljs-comment">// i 位置右侧字符无重复</span>
-  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> j =<span class="hljs-number">0</span>;j&lt;str.length;j++)&#123;
-    <span class="hljs-keyword">if</span>(map.has(str[j]))&#123;
-      i = <span class="hljs-built_in">Math</span>.max(map.get(str[j])+<span class="hljs-number">1</span>,i)
-      <span class="hljs-comment">// 以不同字符为基准标定i位置时取最大值</span>
-    &#125;
-    map.set(str[j],j)
-    maxLen = <span class="hljs-built_in">Math</span>.max((j-i)+<span class="hljs-number">1</span>,maxLen)
-  &#125;
-&#125;</code></pre></div>
-
-<ul>
-<li><p>计算二进制数中1的个数</p>
-<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// n 为32位二进制数</span>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">hammingWeight1</span>(<span class="hljs-params">n</span>)</span>&#123;
-  <span class="hljs-keyword">const</span> numStr = n.toString(<span class="hljs-number">2</span>).toString()
-  <span class="hljs-comment">// 呈现字符串或数组</span>
-  <span class="hljs-comment">//const numStr = n.toString(2).split(&#x27;’)</span>
-  <span class="hljs-comment">// 然后就是遍历判断</span>
-  <span class="hljs-keyword">let</span> showTimes = <span class="hljs-number">0</span>
-  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i =<span class="hljs-number">0</span>;i&lt;numStr.length;i++)&#123;
-    <span class="hljs-keyword">if</span>(i===<span class="hljs-string">&#x27;1&#x27;</span>)&#123;
-      showTimes++
-    &#125;
-  &#125;
-  <span class="hljs-keyword">return</span> showTimes
-&#125;
-
-
-<span class="hljs-comment">// 位运算</span>
-<span class="hljs-comment">// &gt;&gt;&gt; 无符号向右移</span>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">hammingWeight2</span>(<span class="hljs-params">n</span>)</span>&#123;
-  <span class="hljs-keyword">let</span> showTimes = <span class="hljs-number">0</span>
-  <span class="hljs-keyword">while</span>(n!=<span class="hljs-number">0</span>)&#123;
-<span class="hljs-comment">// 若n&amp;1=0 ，则 n 二进制 最右一位 为 0 ；</span>
-<span class="hljs-comment">// 若n&amp;1=1 ，则 n 二进制 最右一位 为 1 。</span>
-    showTimes += n&amp;<span class="hljs-number">1</span>
-    n&gt;&gt;&gt;=<span class="hljs-number">1</span>
-  &#125;
-  <span class="hljs-keyword">return</span> showTimes
-&#125;
-
-<span class="hljs-comment">// 整体n &amp;</span>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">hammingWeight3</span>(<span class="hljs-params">n</span>)</span>&#123;
-  <span class="hljs-keyword">let</span> showTimes = <span class="hljs-number">0</span>
-  <span class="hljs-keyword">while</span>(n!=<span class="hljs-number">0</span>)&#123;
-    showTimes ++ 
-    n  = n &amp; (n-<span class="hljs-number">1</span>)
-    <span class="hljs-comment">// 二进制 - 中</span>
-    <span class="hljs-comment">// n-1 相当 于n把最右边的1变为0,其后面的0变为1</span>
-    <span class="hljs-comment">// n与n-1进行与运算,1&amp;1=1,即只改变了最右边第一个1</span>
-    <span class="hljs-comment">// 0001000</span>
-    <span class="hljs-comment">// 0000111</span>
-    <span class="hljs-comment">// 0000000</span>
-    <span class="hljs-comment">// 循环删除右边的1</span>
-  &#125;
-  <span class="hljs-keyword">return</span> showTimes
-&#125;</code></pre></div></li>
-<li><p>请实现一个函数用来判断字符串是否表示数值（包括整数和小数）</p>
-<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">numberCheck</span>(<span class="hljs-params">s</span>)</span>&#123;
-  <span class="hljs-keyword">if</span>(<span class="hljs-regexp">/^\s$/</span>.test(s)) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
-  <span class="hljs-keyword">return</span> <span class="hljs-built_in">Number</span>(s).toString() !== <span class="hljs-string">&#x27;NaN&#x27;</span>
-&#125;</code></pre></div></li>
-</ul>
-
             </div>
             <hr>
             <div>
@@ -420,7 +418,7 @@
                     
                       <a class="hover-with-bg" href="/tags/javascript/">javascript</a>
                     
-                      <a class="hover-with-bg" href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
+                      <a class="hover-with-bg" href="/tags/vue/">vue</a>
                     
                       <a class="hover-with-bg" href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
                     
@@ -439,9 +437,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2020/08/27/%E6%A0%88%E7%BB%93%E6%9E%84%E7%AE%97%E6%B3%95%E9%A2%98/">
+                      <a href="/2020/11/30/%E6%89%93%E5%8C%85%E4%BC%98%E5%8C%96/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">栈算法题</span>
+                        <span class="hidden-mobile">打包优化</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -449,8 +447,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2020/08/27/%E9%93%BE%E8%A1%A8/">
-                        <span class="hidden-mobile">链表</span>
+                      <a href="/2020/11/20/node%E4%B8%8B%E7%9A%84%E6%89%B9%E9%87%8F%E6%98%A0%E5%B0%84/">
+                        <span class="hidden-mobile">node下单文件模块批量映射到处</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

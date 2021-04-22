@@ -237,7 +237,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年4月19日 晚上
+                  本文最后更新于：2021年4月20日 下午
                 
               </p>
             
@@ -284,7 +284,7 @@
   arr = arr.sort(<span class="hljs-function">(<span class="hljs-params">a,b</span>)=&gt;</span>a-b)
   <span class="hljs-comment">// 按大小排序</span>
   <span class="hljs-comment">// 开始循环</span>
-  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span> ; i&lt; len-<span class="hljs-number">1</span>;i++)&#123;
+  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span> ; i&lt; len;i++)&#123;
     <span class="hljs-keyword">if</span>(arr[i]&gt;=target) <span class="hljs-keyword">break</span>
     <span class="hljs-comment">// 第一个值就大于target后面不用想了</span>
 
@@ -298,12 +298,14 @@
     <span class="hljs-keyword">while</span>(second&lt;third)&#123;
       <span class="hljs-keyword">const</span> sum = arr[first]+arr[second]+arr[third]
       <span class="hljs-keyword">if</span>(sum===target)&#123;
-        res.push([arr[first],arr[second++],arr[third--]])
+        res.push([arr[first],arr[second],arr[third]])
+        second++
+        third--
         <span class="hljs-comment">// 移动一次指针再跳过重复项</span>
         <span class="hljs-keyword">while</span>(arr[second]===arr[second-<span class="hljs-number">1</span>])&#123;
           second ++
         &#125;
-        <span class="hljs-keyword">while</span>(arr[third]===arr[third1+<span class="hljs-number">1</span>])&#123;
+        <span class="hljs-keyword">while</span>(arr[third]===arr[third+<span class="hljs-number">1</span>])&#123;
           third --
         &#125;
       &#125;
@@ -854,9 +856,9 @@ PrefixTree.prototype.startWith = <span class="hljs-function"><span class="hljs-k
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
-                    
                       <a class="hover-with-bg" href="/tags/javascript/">javascript</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
                     
                       <a class="hover-with-bg" href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
                     

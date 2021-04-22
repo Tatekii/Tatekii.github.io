@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      22
+      23
        分钟
     </span>
   
@@ -237,7 +237,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年4月16日 下午
+                  本文最后更新于：2021年4月21日 中午
                 
               </p>
             
@@ -249,7 +249,7 @@
 </li>
 </ul>
 <h3 id="新增"><a href="#新增" class="headerlink" title="新增"></a>新增</h3><ul>
-<li><p>拖拽释放(Drag and drop) API </p>
+<li><p>拖拽API </p>
 </li>
 <li><p><code>canvas</code> 画布和内联 <code>svg</code></p>
 </li>
@@ -257,41 +257,38 @@
 </li>
 <li><p>语意化更好的标签，比如<code>header,nav,section,article,footer,aside</code></p>
 </li>
-<li><p>新的表单元素：<code>datalist，keygen，output</code>,表单自动完成</p>
+<li><p>表单校验API</p>
 </li>
-<li><p>新的表单输入类型type<code>email,url,number,range,Date pickers (date, month, week, time, datetime, datetime-local),search,color</code></p>
+<li><p>增强了<code>input</code>类型:<code>color,date,url,time,tel,range</code></p>
+</li>
+<li><p>新的表单元素:<code>datalist,progress,meter</code></p>
 </li>
 <li><p><code>manifest</code>web应用离线缓存</p>
 </li>
 <li><p>地理定位<code>Geolocation</code> API</p>
 </li>
-<li><p><code>webworker</code></p>
+<li><p><code>webworker</code>将JS计算交给后台线程</p>
 </li>
-<li><p><code>websocket</code></p>
+<li><p><code>websocket</code>全双工的支持服务端推送的持久化连接协议</p>
 </li>
-<li><p>webstorage<code>localStorage sessionStorage</code></p>
+<li><p>webStorage：<code>localStorage sessionStorage</code></p>
+</li>
+<li><p><code>history</code></p>
 </li>
 </ul>
 <h3 id="HTML5-哪些标签可以做-SEO-优化"><a href="#HTML5-哪些标签可以做-SEO-优化" class="headerlink" title="HTML5 哪些标签可以做 SEO 优化"></a>HTML5 哪些标签可以做 SEO 优化</h3><p><code>title、meta、header、footer、nav、article、aside</code></p>
 <h3 id="meta标签的作用"><a href="#meta标签的作用" class="headerlink" title="meta标签的作用"></a>meta标签的作用</h3><ul>
-<li><p>keyword seo优化 </p>
-</li>
-<li><p>viewreport 多端适配，缩放</p>
-</li>
-<li><p>dns预解析</p>
-</li>
-<li><p>csp内容安全策略</p>
-</li>
-<li><p>charset 字符编码</p>
-<h3 id="link和-import和src"><a href="#link和-import和src" class="headerlink" title="link和@import和src"></a><code>link</code>和<code>@import</code>和<code>src</code></h3></li>
-<li><p><code>src</code>指向外部资源的位置，该资源会被嵌入src所在位置，浏览器会在此处暂停其他资源的下载</p>
-</li>
-<li><p><code>link</code>引入css，icon，定义RSS等。与页面加载同时进行。</p>
-</li>
-<li><p><code>@import</code>只能引入样式表。页面加载完后才下载。可能会有兼容问题</p>
-</li>
-<li><p>同样引入css，link权重较高</p>
-<h3 id="HTML5-的离线存储"><a href="#HTML5-的离线存储" class="headerlink" title="HTML5 的离线存储"></a>HTML5 的离线存储</h3></li>
+<li>charset 字符编码</li>
+<li>关键词seo优化 </li>
+<li>适用与移动设备的viewport scale页面缩放</li>
+<li>dns预解析</li>
+<li>csp内容安全策略</li>
+</ul>
+<h3 id="link和-import和src"><a href="#link和-import和src" class="headerlink" title="link和@import和src"></a><code>link</code>和<code>@import</code>和<code>src</code></h3><ul>
+<li><code>src</code>指向外部资源的位置，该资源会被嵌入src所在位置，浏览器会在此处暂停其他资源的下载</li>
+<li><code>link</code>引入css，icon，定义RSS等。与页面加载同时进行。</li>
+<li><code>@import</code>只能引入样式表。页面加载完后才下载。可能会有兼容问题</li>
+<li>同样引入css，link权重较高<h3 id="HTML5-的离线存储"><a href="#HTML5-的离线存储" class="headerlink" title="HTML5 的离线存储"></a>HTML5 的离线存储</h3></li>
 </ul>
 <p>在用户没有联网时，可以正常访问站点或应用；在联网的情况下，更新用户机器上的缓存文件。</p>
 <p>如何使用：<br>1、页面头部加入一个 manifest 的属性<br>2、在 cache.manifest 文件的编写离线存储的资源<br>3、在离线状态下，操作 window.applicationCache 进行需求实现</p>

@@ -18,7 +18,7 @@
   <meta name="author" content="tatekii">
   <meta name="keywords" content="">
   
-  <title>vue3预热 - 不知名的笔记本</title>
+  <title>前端涉及到的数据存储 - 不知名的笔记本</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
@@ -163,7 +163,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="vue3预热">
+            <span class="h2" id="subtitle" title="前端涉及到的数据存储">
               
             </span>
 
@@ -173,8 +173,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2020-09-07 11:46" pubdate>
-        2020年9月7日 中午
+      <time datetime="2021-04-20 18:06" pubdate>
+        2021年4月20日 晚上
       </time>
     </span>
   
@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      918 字
+      365 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      13
+      4
        分钟
     </span>
   
@@ -233,203 +233,84 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">vue3预热</h1>
+            <h1 style="display: none">前端涉及到的数据存储</h1>
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年4月13日 凌晨
+                  本文最后更新于：2021年4月22日 下午
                 
               </p>
             
             <div class="markdown-body">
-              <h1 id="VUE冲冲冲"><a href="#VUE冲冲冲" class="headerlink" title="VUE冲冲冲"></a>VUE冲冲冲</h1><h2 id="代替defineProperty的Proxy"><a href="#代替defineProperty的Proxy" class="headerlink" title="代替defineProperty的Proxy"></a>代替defineProperty的Proxy</h2><h3 id="vue2-X存在的缺陷"><a href="#vue2-X存在的缺陷" class="headerlink" title="vue2.X存在的缺陷"></a>vue2.X存在的缺陷</h3><ul>
-<li><p>无法检测对象中 <code>property</code> 的添加或移除</p>
+              <h3 id="LocalStorage-h5-web-storage"><a href="#LocalStorage-h5-web-storage" class="headerlink" title="LocalStorage[h5 web storage]"></a><code>LocalStorage</code>[h5 web storage]</h3><ul>
+<li><p>不会过期</p>
 </li>
-<li><p>通过下标操作数组，例如：<code>vm.items[indexOfItem] = newValue （性能考虑放弃）</code></p>
+<li><p>数据大小5MB</p>
 </li>
-<li><p>修改数组的长度时，例如：<code>vm.items.length = newLength</code></p>
+<li><p>浏览器中共享</p>
 </li>
-<li><p>变通</p>
-<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// Object新增元素</span>
-Vue.set(object, propertyName, value)
-<span class="hljs-comment">// or</span>
-<span class="hljs-built_in">this</span>.$set(<span class="hljs-built_in">this</span>.someObject,<span class="hljs-string">&#x27;b&#x27;</span>,<span class="hljs-number">2</span>)
-
-
-<span class="hljs-comment">// 下标修改数组</span>
-Vue.set(vm.array1, indexOfItem, newValue)
-<span class="hljs-comment">// or</span>
-<span class="hljs-built_in">this</span>.$set(<span class="hljs-built_in">this</span>.array1, indexOfItem, newValue)
-<span class="hljs-comment">// or</span>
-<span class="hljs-built_in">this</span>.array1.splice(indexOfItem, <span class="hljs-number">1</span>, newValue)
-
-
-<span class="hljs-comment">// 修改数组长度</span>
-<span class="hljs-built_in">this</span>.array1.splice(newLength)</code></pre></div></li>
-<li><p>包裹数组部分方法以支持响应式</p>
-<div class="hljs code-wrapper"><pre><code class="hljs javascript">pop()
-push()
-shift()
-unshift()
-splice()
-sort()
-reverse()</code></pre></div>
-<h3 id="defineProperty"><a href="#defineProperty" class="headerlink" title="defineProperty"></a><code>defineProperty</code></h3></li>
+<li><p>同源共享同一份<code>localStorage</code></p>
+</li>
+<li><p>只能为<code>string</code>类型,注意需要<code>JSON</code>转换</p>
+</li>
 </ul>
-<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-built_in">Object</span>.defineProperty(obj<span class="hljs-comment">/* 对象*/</span>, prop<span class="hljs-comment">/* 属性*/</span>, descriptor<span class="hljs-comment">/*描述符*/</span>)&#123;
-  <span class="hljs-comment">//对象里目前存在的属性描述符有两种主要形式：数据描述符和存取描述符。</span>
-  <span class="hljs-comment">//数据描述符是一个具有值的属性，该值可以是可写的，也可以是不可写的。</span>
-  <span class="hljs-comment">//存取描述符是由 getter 函数和 setter 函数所描述的属性。</span>
-  <span class="hljs-comment">//一个描述符只能是这两者其中之一；不能同时是两者。</span>
-
-  configurable: <span class="hljs-literal">true</span>,
-  <span class="hljs-comment">//configurable 特性表示对象的属性是否可以被删除，以及除 value 和 writable 特性外的其他特性是否可以被修改。</span>
-  enumerable: <span class="hljs-literal">true</span>,
-  <span class="hljs-comment">//enumerable 定义了对象的属性是否可以在 for...in 循环和 Object.keys() 中被枚举。</span>
-  value: <span class="hljs-literal">true</span>,
-  writable: <span class="hljs-literal">true</span>,
-  <span class="hljs-comment">//当 writable 属性设置为 false 时，该属性被称为“不可写的”。它不能被重新赋值。</span>
-  <span class="hljs-comment">//</span>
-  <span class="hljs-comment">// 或者</span>
-  <span class="hljs-comment">//</span>
-  <span class="hljs-function"><span class="hljs-title">get</span>(<span class="hljs-params"></span>)</span> &#123; ... &#125;,
-  <span class="hljs-function"><span class="hljs-title">set</span>(<span class="hljs-params">newValue</span>)</span> &#123; ... &#125;,
-  enumerable : <span class="hljs-literal">true</span>,
-  configurable : <span class="hljs-literal">true</span>
-&#125;</code></pre></div>
-<h4 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h4><ol>
-<li>兼容<code>IE9</code></li>
-<li>劫持了对象上的<code>属性</code></li>
-<li>数据结构越复杂初始性能会越差,需要递归遍历绑定<code>defineProperty</code></li>
-<li>为保持响应式还需要为新增数据再次绑定<code>defineProperty</code></li>
-<li>原数据的修改即可触发拦截器</li>
-</ol>
-<h3 id="proxy"><a href="#proxy" class="headerlink" title="proxy"></a><code>proxy</code></h3><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> p = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Proxy</span>(target, handler)
-handler.getPrototypeOf()
-<span class="hljs-comment">//Object.getPrototypeOf 方法的捕捉器。</span>
-handler.setPrototypeOf()
-<span class="hljs-comment">//Object.setPrototypeOf 方法的捕捉器。</span>
-handler.isExtensible()
-<span class="hljs-comment">//Object.isExtensible 方法的捕捉器。</span>
-handler.preventExtensions()
-<span class="hljs-comment">//Object.preventExtensions 方法的捕捉器。</span>
-handler.getOwnPropertyDescriptor()
-<span class="hljs-comment">//Object.getOwnPropertyDescriptor 方法的捕捉器。</span>
-handler.defineProperty()
-<span class="hljs-comment">//Object.defineProperty 方法的捕捉器。</span>
-handler.has()
-<span class="hljs-comment">//in 操作符的捕捉器。</span>
-handler.get()
-<span class="hljs-comment">//属性读取操作的捕捉器。</span>
-handler.set()
-<span class="hljs-comment">//属性设置操作的捕捉器。</span>
-handler.deleteProperty()
-<span class="hljs-comment">//delete 操作符的捕捉器。</span>
-handler.ownKeys()
-<span class="hljs-comment">//Object.getOwnPropertyNames 方法和 Object.getOwnPropertySymbols 方法的捕捉器。</span>
-handler.apply()
-<span class="hljs-comment">//函数调用操作的捕捉器。</span>
-handler.construct()
-<span class="hljs-comment">//new 操作符的捕捉器。</span>
-</code></pre></div>
-<ol>
-<li>不兼容<code>IE</code></li>
-<li>劫持<code>整个对象</code>，无需对对象本体的变化作出修改</li>
-<li>拦截器响应的是<code>proxy</code>生成的代理对象，原数据的修改将不会触发拦截器</li>
-<li>拦截器种类繁多</li>
-</ol>
-<h2 id="简单实现reactive"><a href="#简单实现reactive" class="headerlink" title="简单实现reactive"></a>简单实现reactive</h2><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// monkeyVersionReactivity.js猴版响应式框架</span>
-<span class="hljs-keyword">const</span> targetMap = <span class="hljs-keyword">new</span> <span class="hljs-built_in">WeakMap</span>();
-<span class="hljs-keyword">const</span> effectStack = [];
-<span class="hljs-keyword">const</span> isObject = <span class="hljs-function"><span class="hljs-params">obj</span> =&gt;</span> obj !== <span class="hljs-literal">null</span> &amp;&amp; <span class="hljs-keyword">typeof</span> obj === <span class="hljs-string">&quot;object&quot;</span>;
-
-<span class="hljs-keyword">const</span> baseHandler = &#123;
-  <span class="hljs-function"><span class="hljs-title">get</span>(<span class="hljs-params">target, key</span>)</span> &#123;
-    <span class="hljs-keyword">const</span> ret = <span class="hljs-built_in">Reflect</span>.get(target, key);
-    track(target, key);
-    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> ret === <span class="hljs-string">&quot;object&quot;</span>) &#123;
-      <span class="hljs-keyword">return</span> reactive(ret);
-    &#125;
-    <span class="hljs-keyword">return</span> ret;
-  &#125;,
-  <span class="hljs-function"><span class="hljs-title">set</span>(<span class="hljs-params">target, key, val</span>)</span> &#123;
-    <span class="hljs-built_in">Reflect</span>.set(target, key, val);
-    trigger(target, key, val);
-  &#125;,
-&#125;;
-
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">track</span>(<span class="hljs-params">target, key</span>) </span>&#123;
-  <span class="hljs-keyword">let</span> activeEffect = effectStack[effectStack.length - <span class="hljs-number">1</span>];
-  <span class="hljs-keyword">if</span> (!activeEffect) <span class="hljs-keyword">return</span>;
-  <span class="hljs-keyword">let</span> depsMap = targetMap.get(target);
-  <span class="hljs-keyword">if</span> (!depsMap) &#123;
-    targetMap.set(target, (depsMap = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Map</span>()));
-  &#125;
-  <span class="hljs-keyword">let</span> dep = depsMap.get(key);
-  <span class="hljs-keyword">if</span> (!dep) &#123;
-    depsMap.set(key, (dep = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Set</span>()));
-  &#125;
-  <span class="hljs-keyword">if</span> (!dep.has(activeEffect)) &#123;
-    dep.add(activeEffect);
-    <span class="hljs-comment">// TODO</span>
-    activeEffect.deps.push(dep);
-  &#125;
-&#125;
-
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">trigger</span>(<span class="hljs-params">target, key, val</span>) </span>&#123;
-  <span class="hljs-keyword">const</span> depsMap = targetMap.get(target);
-  <span class="hljs-keyword">if</span> (!depsMap) &#123;
-    <span class="hljs-comment">// never been tracked</span>
-    <span class="hljs-keyword">return</span>;
-  &#125;
-  <span class="hljs-keyword">const</span> effects = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Set</span>();
-  <span class="hljs-keyword">if</span> (key) &#123;
-    <span class="hljs-keyword">const</span> dep = depsMap.get(key);
-    dep.forEach(<span class="hljs-function">(<span class="hljs-params">effect</span>) =&gt;</span> &#123;
-      effects.add(effect);
-    &#125;);
-  &#125;
-  effects.forEach(<span class="hljs-function">(<span class="hljs-params">ef</span>) =&gt;</span> ef());
-&#125;
-
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createReactiveEffect</span>(<span class="hljs-params">fn,options</span>)</span>&#123;
-  <span class="hljs-keyword">const</span> effect = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">reactiveEffect</span>(<span class="hljs-params"></span>)</span>&#123;
-      <span class="hljs-keyword">try</span> &#123;
-        effectStack.push(effect)
-        <span class="hljs-keyword">return</span> fn()
-      &#125; <span class="hljs-keyword">finally</span> &#123;
-        effectStack.pop()
-      &#125;
-  &#125;
-  effect.deps = []
-  effect.options = options
-  <span class="hljs-keyword">return</span> effect
-&#125;
-
-<span class="hljs-comment">// ---------</span>
-
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">reactive</span>(<span class="hljs-params">target</span>) </span>&#123;
-  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Proxy</span>(target, baseHandler);
-&#125;
-
-
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">effect</span>(<span class="hljs-params">fn, options=&#123;&#125;</span>) </span>&#123;
-  <span class="hljs-keyword">const</span> effect = createReactiveEffect(fn, options);
-  <span class="hljs-keyword">if</span> (!options.lazy) &#123;
-    effect();
-  &#125;
-  <span class="hljs-keyword">return</span> effect;
-&#125;
-
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">computed</span>(<span class="hljs-params">fn</span>)</span>&#123;
-  <span class="hljs-keyword">const</span> runner = effect(fn,&#123;<span class="hljs-attr">computed</span>:<span class="hljs-literal">true</span>,<span class="hljs-attr">lazy</span>:<span class="hljs-literal">true</span>&#125;)
-  <span class="hljs-keyword">return</span> &#123;
-    effect:runner,
-    <span class="hljs-keyword">get</span> <span class="hljs-title">val</span>()&#123;
-      <span class="hljs-keyword">return</span> runner()
-    &#125;
-  &#125;
-&#125;</code></pre></div>
+<h3 id="SessionStorage-h5-web-storage"><a href="#SessionStorage-h5-web-storage" class="headerlink" title="SessionStorage[h5 web storage]"></a><code>SessionStorage</code>[h5 web storage]</h3><ul>
+<li><p>窗口/标签页关闭时清理</p>
+</li>
+<li><p>不跨窗口共享</p>
+</li>
+<li><p>数据大小5MB</p>
+</li>
+</ul>
+<h3 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a><code>Cookie</code></h3><ul>
+<li><p>手动设置过期时间，否则浏览器关闭失效</p>
+</li>
+<li><p>数据大小 4KB</p>
+</li>
+<li><p>参与每次http请求</p>
+</li>
+<li><p>有路径概念，可以限制不同路径下的 cookie 互相是访问不到的</p>
+</li>
+<li><p>某些浏览器对单网站cookie数目有限制(不超过20个)</p>
+</li>
+<li><p>cookie字段</p>
+<ul>
+<li><p><code>name</code></p>
+</li>
+<li><p><code>value</code></p>
+</li>
+<li><p><code>domain</code>　        可以访问此cookie的域，默认为该请求源的域</p>
+</li>
+<li><p><code>path</code>　        　 可以访问此cookie的页面路径</p>
+</li>
+<li><p><code>expires/Max-Age</code> 过期时间，如没设置则与会话时效相同（关闭浏览器窗口失效）</p>
+</li>
+<li><p><code>httponly</code>　      只能传输不能查看</p>
+</li>
+<li><p><code>secure</code>          只使用HTTPS传输</p>
+</li>
+<li><p><code>sameSite = </code></p>
+<ul>
+<li><code>Strict</code>  跨域时不允许带上任何cookie</li>
+<li><code>Lax</code>  只有三种情况可以带上cookie[a连接,get提交的表单,预加载link]<blockquote>
+<p>现代浏览器会将没有声明 SameSite 值的 cookie 默认设置为Lax</p>
+</blockquote>
+</li>
+<li><code>None</code> 需配合<code>secure</code>使用用 <code>Set-Cookie: widget_session=xxxxx; SameSite=None; Secure</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="IndexedDB"><a href="#IndexedDB" class="headerlink" title="IndexedDB"></a><code>IndexedDB</code></h3><ul>
+<li><p>除非被清理否则一直存在</p>
+</li>
+<li><p>数据大小无限制</p>
+</li>
+<li><p>IndexedDB是浏览器提供的本地数据库，它可以被网页脚本创建和操作。IndexedDB  允许储存大量数据，提供查找接口，还能建立索引。</p>
+</li>
+</ul>
+<h2 id="manifest"><a href="#manifest" class="headerlink" title="manifest"></a><code>manifest</code></h2><p>web应用离线缓存</p>
 
             </div>
             <hr>
@@ -440,9 +321,7 @@ handler.construct()
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/javascript/">javascript</a>
-                    
-                      <a class="hover-with-bg" href="/tags/vue/">vue</a>
+                      <a class="hover-with-bg" href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
                     
                   </div>
                 
@@ -459,18 +338,12 @@ handler.construct()
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2020/09/17/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98%E7%AD%96%E7%95%A5/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">浏览器缓存策略</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2020/09/03/require.context%E4%BD%BF%E7%94%A8/">
-                        <span class="hidden-mobile">require.context()</span>
+                      <a href="/2021/04/20/vue%E6%8B%BE%E9%81%97/">
+                        <span class="hidden-mobile">vue拾遗</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

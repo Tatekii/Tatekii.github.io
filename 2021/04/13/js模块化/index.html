@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      746 字
+      718 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      9
+      8
        分钟
     </span>
   
@@ -237,30 +237,41 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年4月13日 凌晨
+                  本文最后更新于：2021年4月20日 晚上
                 
               </p>
             
             <div class="markdown-body">
-              <h2 id="模块化开发的思想"><a href="#模块化开发的思想" class="headerlink" title="模块化开发的思想"></a>模块化开发的思想</h2><p>模块化的开发方式可以提高代码复用率，方便进行代码的管理。通常一个文件就是一个模块，有自己的作用域，只向外暴露特定的变量和函数。</p>
+              <blockquote>
+<p>模块化的演进过程</p>
+</blockquote>
+<ol>
+<li>文件划分</li>
+<li>命名空间 (将每个模块暴露在全局对象</li>
+<li>IIFE 立即执行函数 </li>
+</ol>
+<h2 id="模块化开发的思想"><a href="#模块化开发的思想" class="headerlink" title="模块化开发的思想"></a>模块化开发的思想</h2><p>模块化的开发方式可以提高代码复用率，方便进行代码的管理。通常一个文件就是一个模块，有自己的作用域，只向外暴露特定的变量和函数。</p>
 <h3 id="模块化的好处"><a href="#模块化的好处" class="headerlink" title="模块化的好处"></a>模块化的好处</h3><ul>
 <li>命名冲突</li>
 <li>文件依赖</li>
 <li>代码复用</li>
+<li>不污染全局空间</li>
 </ul>
 <h3 id="CommonJS-Node-js"><a href="#CommonJS-Node-js" class="headerlink" title="CommonJS (Node.js)"></a>CommonJS (Node.js)</h3><ul>
-<li><p>代码同步加载，服务器不用考虑速度</p>
+<li><p>运行在服务端`</p>
+</li>
+<li><p>代码同步加载</p>
 </li>
 <li><p>代码可以多次加载，但是运行结果会被缓存</p>
-<ul>
-<li><code>require(&#39;xxx&#39;)</code>加载模块</li>
-<li><code>module.exports</code>(全局变量或方法)和<code>exports</code>定义对外的接口</li>
-</ul>
+</li>
+<li><p><code>require(&#39;xxx&#39;)</code>加载模块</p>
+</li>
+<li><p><code>module.exports=&#123;&#125;</code>(全局变量或方法)或<code>exports</code>定义对外的接口</p>
 </li>
 </ul>
 <h3 id="AMD-require-js"><a href="#AMD-require-js" class="headerlink" title="AMD (require.js)"></a>AMD (require.js)</h3><ul>
 <li><code>Async Module Definition</code></li>
-<li>代码异步加载，模块的加载不影响后续函数运行</li>
+<li>代码异步加载</li>
 <li>依赖前置，在定义模块的时候就要声明其依赖的模块</li>
 <li>执行顺序不一定和代码中顺序相同，而是谁先下载完执行谁  <div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// AMD</span>
 define([<span class="hljs-string">&quot;./a&quot;</span>, <span class="hljs-string">&quot;./b&quot;</span>], <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">a, b</span>) </span>&#123;
@@ -329,9 +340,9 @@ modules.exports xxx
 <span class="hljs-comment">// ES6</span>
 <span class="hljs-comment">// 编译时加载</span>
 <span class="hljs-keyword">import</span> &#123; stat, exists, readFile &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;fs&#x27;</span>;
-<span class="hljs-comment">//上面代码的实质是从fs模块加载 3 个方法，其他方法不加载</span>
-<span class="hljs-comment">//这种加载称为“编译时加载”或者静态加载，即 ES6 可以在编译时就完成模块加载，效率要比 CommonJS 模块的加载方式高。</span>
+<span class="hljs-comment">//编译时就完成模块加载，（确定了指针</span>
 <span class="hljs-comment">//当然，这也导致了没法引用 ES6 模块本身，因为它不是对象</span>
+
 <span class="hljs-built_in">exports</span> <span class="hljs-keyword">default</span> xxx
 <span class="hljs-comment">// ES6 MODULES输出的是值的引用，运行时才到指定模块中取值</span></code></pre></div>
 
@@ -344,9 +355,9 @@ modules.exports xxx
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
-                    
                       <a class="hover-with-bg" href="/tags/javascript/">javascript</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
                     
                   </div>
                 
