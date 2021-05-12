@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      23
+      22
        分钟
     </span>
   
@@ -237,15 +237,15 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年4月21日 中午
+                  本文最后更新于：2021年5月12日 下午
                 
               </p>
             
             <div class="markdown-body">
               <h2 id="HTML5-新特性"><a href="#HTML5-新特性" class="headerlink" title="HTML5 新特性"></a>HTML5 新特性</h2><h3 id="移除"><a href="#移除" class="headerlink" title="移除"></a>移除</h3><ul>
-<li><p>纯表现的元素：basefont，big，center，font, s，strike，tt，u；</p>
+<li><p>纯表现的元素/可以用css实现的元素：<code>basefont</code>，<code>big</code>，<code>center</code>，<code>font</code>, <code>s</code>，<code>strike</code></p>
 </li>
-<li><p>对可用性产生负面影响的元素：frame，frameset，noframes；</p>
+<li><p>对可用性产生负面影响的元素：<code>frame</code>，<code>frameset</code>，<code>noframes</code>；</p>
 </li>
 </ul>
 <h3 id="新增"><a href="#新增" class="headerlink" title="新增"></a>新增</h3><ul>
@@ -391,24 +391,20 @@ div &#123;
 <li>标准模型[content-box]的宽和高只计算 content 部分</li>
 <li>ie 模型[border-box]的宽高包括 padding 和 border</li>
 </ul>
-<h3 id="获取-DOM-元素的-style"><a href="#获取-DOM-元素的-style" class="headerlink" title="获取 DOM 元素的 style"></a>获取 DOM 元素的 style</h3><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-number">1.</span> dom.style.width/height
-<span class="hljs-comment">// content 只能获取内联样式</span>
-<span class="hljs-number">2.</span> dom.currentStyle.width/height
-<span class="hljs-comment">// 只支持ie</span>
-<span class="hljs-number">3.</span> <span class="hljs-built_in">window</span>.getComputedStyle(ele).width/height
-<span class="hljs-comment">// content</span>
-<span class="hljs-number">5.</span> offsetHeight【可视区域】
-<span class="hljs-comment">// content+padding+border+滚动条</span>
-<span class="hljs-number">6.</span> clientHeight【可视区域】
-<span class="hljs-comment">// content+padding-滚动条</span>
-<span class="hljs-number">7.</span> scrollHeight
-<span class="hljs-comment">// 包含滚动出可视区域的内容</span>
-<span class="hljs-number">9.</span> scrollTop
-<span class="hljs-comment">// 滚动像素数</span>
-
-<span class="hljs-comment">// 滚动到底</span>
-&gt; ele.scrollHeight - ele.scrollTop === ele.clientHeight</code></pre></div>
-
+<h3 id="获取-DOM-元素的-style"><a href="#获取-DOM-元素的-style" class="headerlink" title="获取 DOM 元素的 style"></a>获取 DOM 元素的 style</h3><ol>
+<li><code>dom.style.width/height</code>content 只能获取内联样式</li>
+<li><code>dom.currentStyle.width/height</code>// 只支持ie</li>
+<li><code>window.getComputedStyle(ele).width/height</code></li>
+<li><code>offsetHeight</code>// content+padding+border + 滚动条</li>
+<li><code>offsetTop//Left</code>//相较于offsetParent的偏移 margin+position</li>
+<li><code>clientHeight</code>// content+padding - 滚动条</li>
+<li><code>scrollHeight</code>// 没有滚动条时等于clientHeight</li>
+<li><code>scrollTop</code>// 滚动像素数</li>
+</ol>
+<p>// 滚动到底</p>
+<blockquote>
+<p>ele.scrollHeight - ele.scrollTop === ele.clientHeight</p>
+</blockquote>
 <h3 id="边距重叠"><a href="#边距重叠" class="headerlink" title="边距重叠"></a>边距重叠</h3><p>两个或多个块级盒子的!!垂直!!相邻边界会重合，它们的边界宽度是相邻边界宽度中的最大值。<br>特别注意内容为空的盒子。</p>
 <h2 id="BFC"><a href="#BFC" class="headerlink" title="BFC"></a>BFC</h2><p>Block Formatting Context 块级格式化上下文,是常规流式布局中一个决定块级盒子布局及浮动相互影响的一个区域，拥有与普通盒模型不同的特性。</p>
 <h3 id="BFC特性"><a href="#BFC特性" class="headerlink" title="BFC特性"></a>BFC特性</h3><ul>

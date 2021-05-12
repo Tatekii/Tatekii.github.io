@@ -182,37 +182,19 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/04/20/vue%E6%8B%BE%E9%81%97/">vue拾遗</a>
+        <a href="/2021/05/11/node%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86%E7%82%B9/">node相关知识点</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2021/04/20/vue%E6%8B%BE%E9%81%97/">
+        <a href="/2021/05/11/node%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86%E7%82%B9/">
           
           
             
           
-          生命周期
-beforeCreate
-
-创建新的vue实例，初始化生命周期
-
-created
-
-数据响应式绑定，初始化 props、data、methods、watch、computed 等属性
-
-beforeMount
-
-render函数首次执行，还未挂载到真实DOM
-
-mounted
-
-执行渲染函数，挂载DOM
-
-activated [keep-alive]
-
-进入keepAlive组件
-
-de
+          
+引用模块的目录分析
+在当前目录下查找package.json(CommonJS包规范定义的包描述文件)，通过JSON.parse()解析出包描述对象，从中取出main属性指定的文件名进行定位。如果文件缺少扩展名，将会进入扩展名分析的步骤。 　　
+而如果main属性制定的文件名错误，或者压根没有package.json文件，Node会将index当做默认文件名，然后依次查找index.js、ind
         </a>
       </p>
 
@@ -220,8 +202,8 @@ de
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2021-04-20 16:59" pubdate>
-              2021-04-20
+            <time datetime="2021-05-11 09:07" pubdate>
+              2021-05-11
             </time>
           </div>
         
@@ -230,9 +212,9 @@ de
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
+              <a href="/tags/javascript/">javascript</a>
             
-              <a href="/tags/vue/">vue</a>
+              <a href="/tags/node/">node</a>
             
           </div>
         
@@ -246,27 +228,30 @@ de
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/04/13/js%E9%97%AD%E5%8C%85/">闭包</a>
+        <a href="/2021/04/13/HTTP/">HTTP协议</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2021/04/13/js%E9%97%AD%E5%8C%85/">
+        <a href="/2021/04/13/HTTP/">
           
           
             
           
-          闭包的定义
-函数与其词法环境共同构成 闭包（closure） 。
+          HTTP（HyperText Transfer Protocol，超文本传输协议
+HTTP 是基于 TCP/IP 协议的应用层协议，用于客户端和服务器之间的通信链路层，网络层，传输层，应用层
 
-词法环境 = 代码内变量标识符与变量值和函数值之间的关联关系（环境记录）+ 外部词法环境的引用
+HTTP 报文组成部分
+请求报文
 
-js的词法作用域为静态作用域，在书写完成后函数词法环境就被确定，与调用位置无关
+请求行 Request Method,Request URI,Request Version
+请求头 包含若干属性，key:value 值
+空行
+请求体
 
-闭包函数会保持对外部词法环境的引用，使外部变量常驻内存不可回收
+
+响应报文
 
 
-效果function addCounter() &#123;
-  let count
         </a>
       </p>
 
@@ -274,7 +259,7 @@ js的词法作用域为静态作用域，在书写完成后函数词法环境就
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2021-04-13 01:04" pubdate>
+            <time datetime="2021-04-13 00:36" pubdate>
               2021-04-13
             </time>
           </div>
@@ -284,338 +269,9 @@ js的词法作用域为静态作用域，在书写完成后函数词法环境就
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/javascript/">javascript</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2020/03/27/%E5%8E%9F%E7%94%9Fjs/">原生js</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2020/03/27/%E5%8E%9F%E7%94%9Fjs/">
-          
-          
-            
-          
-          
-javascript
-js 是一门函数优先的轻量级解释型语言，基于原型编程的动态脚本语言
-
-函数是一等公民（变量提升，函数可以作为函数的参数，返回值，可以赋值给变量，【函数式编程的条件】
-面向对象编程
-弱类型语言（变量的类型在运行时会变化，强类型语言的变量类型编译时就确定且不会改变
-基于原型（区别于基于类[类和实例]，js 中万物皆为[对象]
-基于原型的语言具有所谓原型对象（prototypic
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-03-27 14:00" pubdate>
-              2020-03-27
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
+              <a href="/tags/http/">http</a>
             
               <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
-            
-              <a href="/tags/js/">js</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2020/11/30/%E6%89%93%E5%8C%85%E4%BC%98%E5%8C%96/">打包优化</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2020/11/30/%E6%89%93%E5%8C%85%E4%BC%98%E5%8C%96/">
-          
-          
-            
-          
-          Webpack
-静态模块打包工具
-高效处理开发过程中的各种类型资源
-管理模块依赖，输出优化后的静态文件
-
-概念
-Entry  加载入口资源，分析其依赖关系并建立依赖图
-Loader webpack自己只能处理js文件，loader提供了处理其他文件类型的能力
-css预处理器
-babel转译
-
-
-Plugin 打包过程中不同阶段可使用插件执行特定操作，为webpack增加不同功能
-devserver
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-11-30 12:05" pubdate>
-              2020-11-30
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
-            
-              <a href="/tags/webpack/">webpack</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/04/13/%E9%A1%B5%E9%9D%A2%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">页面性能优化</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/04/13/%E9%A1%B5%E9%9D%A2%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">
-          
-          
-            
-          
-          图片懒加载const imgList = [...document.querySelectAll(&#x27;img&#x27;)]
-function lazyLoad(imgList)&#123;
-  let count = 0
-  const len = imgList.length
-  return function()&#123;
-    let doneList = []
-    img
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-04-13 00:41" pubdate>
-              2021-04-13
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/04/20/%E5%89%8D%E7%AB%AF%E5%AD%98%E5%82%A8/">前端涉及到的数据存储</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/04/20/%E5%89%8D%E7%AB%AF%E5%AD%98%E5%82%A8/">
-          
-          
-            
-          
-          LocalStorage[h5 web storage]
-不会过期
-
-数据大小5MB
-
-浏览器中共享
-
-同源共享同一份localStorage
-
-只能为string类型,注意需要JSON转换
-
-
-SessionStorage[h5 web storage]
-窗口/标签页关闭时清理
-
-不跨窗口共享
-
-数据大小5MB
-
-
-Cookie
-手动设置过期时间，否则浏览器关闭失效
-
-数据大小 4KB
-
-参与每
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-04-20 18:06" pubdate>
-              2021-04-20
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2020/09/07/vue3/">vue3proxy</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2020/09/07/vue3/">
-          
-          
-            
-          
-          VUE冲冲冲代替defineProperty的Proxyvue2.X存在的缺陷
-无法检测对象中 property 的添加或移除
-
-通过下标操作数组，例如：vm.items[indexOfItem] = newValue （性能考虑放弃）
-
-修改数组的长度时，例如：vm.items.length = newLength
-
-变通
-// Object新增元素
-Vue.set(object, proper
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-09-07 11:46" pubdate>
-              2020-09-07
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/javascript/">javascript</a>
-            
-              <a href="/tags/vue/">vue</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2020/11/25/vue_diff%E7%AE%97%E6%B3%95/">vue的diff算法</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2020/11/25/vue_diff%E7%AE%97%E6%B3%95/">
-          
-          
-            
-          
-          概念
-diff算法，包含渲染器如何对各种类型的vNode的属性，text，fragment进行patch更新，以及判断是patch vNode，还是新增还是删除
-同级比较
-
-基础的diff
-新节点没有子节点-&gt;删除久的
-新节点只有一个子节点-&gt;删除旧的并添加新的
-
-核心diff
-新旧节点都有多个子节点
-
-没有key
-就地更新key的作用
-vNode中的唯一标识符
-用于保存新旧vNode
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-11-25 12:59" pubdate>
-              2020-11-25
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/javascript/">javascript</a>
-            
-              <a href="/tags/vue/">vue</a>
-            
-              <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
             
           </div>
         
@@ -639,7 +295,7 @@ vNode中的唯一标识符
             
           
           HTML5 新特性移除
-纯表现的元素：basefont，big，center，font, s，strike，tt，u；
+纯表现的元素/可以用css实现的元素：basefont，big，center，font, s，strike
 
 对可用性产生负面影响的元素：frame，frameset，noframes；
 
@@ -651,7 +307,7 @@ canvas 画布和内联 svg
 
 audio/video 音视频元素
 
-语意化更好的标签，比如header,nav,section,article,footer,aside
+语意化更好的标签，比如header,nav,section,article,footer
         </a>
       </p>
 
@@ -685,24 +341,28 @@ audio/video 音视频元素
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/03/24/css%E9%9D%A2%E8%AF%95%E9%A2%98/">CSS面试题</a>
+        <a href="/2021/04/13/js%E4%B8%AD%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/">js数据类型的判断与转换</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/03/24/css%E9%9D%A2%E8%AF%95%E9%A2%98/">
+        <a href="/2021/04/13/js%E4%B8%AD%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/">
           
           
             
           
-          CSS3 新特性
-边框属性border-radius，box-shadow，border-image
-背景控制background-size,background-origin
-文字效果和自动换行text-shadow,word-wrap
-自定义字体@font-face
-2d/3d 变换，过渡和动画transition``animation
-多栏布局column
-盒模型属性box-sizing
-弹
+          ECAMScript 中不能自定义数据类型，只能为下列 7 种简单数据类型（原始类型）
+String
+
+Number
+
+特殊的NaNtypeof NaN === &#x27;number&#x27;
+唯一一个自相反的值
+NaN !== NaN
+
+
+Boolean
+
+在条件判断时，除了 undefined， null， false， NaN， &#39;&#39;， 0， -0，其他所有值都转为 t
         </a>
       </p>
 
@@ -710,8 +370,58 @@ audio/video 音视频元素
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2020-03-24 11:00" pubdate>
-              2020-03-24
+            <time datetime="2021-04-13 00:19" pubdate>
+              2021-04-13
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/javascript/">javascript</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/08/02/%E7%AE%97%E6%B3%95%E9%A2%98/">算法题</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/08/02/%E7%AE%97%E6%B3%95%E9%A2%98/">
+          
+          
+            
+          
+          
+两数之合
+  function twoSum(arr,target)&#123;
+  let res = []
+  let map = new Map()
+  // 使用数值-&gt;索引建立map
+  // 每次循环计算得出当前差值
+  // 在map中查找这个差值既能得出索引
+  for(let i = 0 ; i&lt;arr.length;i++)&#123;
+    let k = t
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-08-02 11:22" pubdate>
+              2020-08-02
             </time>
           </div>
         
@@ -722,7 +432,285 @@ audio/video 音视频元素
             
               <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
             
-              <a href="/tags/CSS/">CSS</a>
+              <a href="/tags/javascript/">javascript</a>
+            
+              <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/04/13/es6%E6%96%B0%E7%89%B9%E6%80%A7/">es6新特性</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/04/13/es6%E6%96%B0%E7%89%B9%E6%80%A7/">
+          
+          
+            
+          
+          let / const
+都用于声明变量
+不存在变量提升，暂时性死区
+不能重复声明
+快级作用域
+
+let
+可以重新赋值const
+声明时需赋值
+只读不可改变（对于复杂变量，可以修改变量内容，变量内存地址未改变）
+
+变量的解构赋值
+只有可遍历（具备遍历器[Symbol.Iterator]）的数据结构才能解构赋值用途
+遍历数据
+交换变量
+提取对象中的数据
+函数参数默认值
+指定模块
+
+字符串，数值，函数，
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-04-13 00:45" pubdate>
+              2021-04-13
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
+            
+              <a href="/tags/javascript/">javascript</a>
+            
+              <a href="/tags/ES6/">ES6</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/04/13/URL%E8%A7%A3%E6%9E%90%E6%B5%81%E7%A8%8B/">地址中输入URL回车后发生了什么</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/04/13/URL%E8%A7%A3%E6%9E%90%E6%B5%81%E7%A8%8B/">
+          
+          
+            
+          
+          步骤分析请求资源
+不同浏览器对资源优先级分类
+安全策略检查 
+
+
+网页安全政策（Content Security Policy，缩写 CSP）   是由浏览器提供的一种白名单制度。发者通过配置，来告诉浏   览器各类外部资源的加载和执行限制，来提高网页的安全性。一种最常用应用就是通过限制非信任域名脚本的加载来预防XSS攻击。
+
+可以通过两种方式来配置CSP：
+
+HTTP请求头的Content-Se
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-04-13 00:16" pubdate>
+              2021-04-13
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/08/27/%E6%A0%88%E7%BB%93%E6%9E%84%E7%AE%97%E6%B3%95%E9%A2%98/">栈算法题</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/08/27/%E6%A0%88%E7%BB%93%E6%9E%84%E7%AE%97%E6%B3%95%E9%A2%98/">
+          
+          
+            
+          
+          栈结构，先进后出
+最小栈
+
+
+function MinStack()&#123;
+  this.stack = []
+  this.min = [Infinity]
+&#125;
+
+MinStack.prototype.push = function(item)&#123;
+  this.stack.push(item)
+  this.min.push(Math.min(this.min[this
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-08-27 17:58" pubdate>
+              2020-08-27
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
+            
+              <a href="/tags/javascript/">javascript</a>
+            
+              <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/08/27/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95%E9%A2%98/">操作字符串算法题</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/08/27/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95%E9%A2%98/">
+          
+          
+            
+          
+          
+寻找最长公公前缀
+// 输入: [&quot;flower&quot;,&quot;flow&quot;,&quot;flight&quot;]
+// 输出: &quot;fl&quot;
+
+function commonPrefix(...strs)&#123;
+  if(!strs.length || strs.length===0) return &quot;&quot;
+  let re
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-08-27 17:56" pubdate>
+              2020-08-27
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
+            
+              <a href="/tags/javascript/">javascript</a>
+            
+              <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/04/13/js%E9%9D%A2%E8%AF%95%E9%A2%98%E9%9B%86/">js面试题集</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/04/13/js%E9%9D%A2%E8%AF%95%E9%A2%98%E9%9B%86/">
+          
+          
+            
+          
+          
+向 setTimeout 传参
+
+function func1(name) &#123;
+  return function () &#123;
+    alert(name + &quot;最帅&quot;);
+  &#125;;
+&#125;
+var n1 = func1(&quot;刘德华&quot;);
+setTimeout(n1, 1000);
+//使用setTimeout第三个参数
+
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-04-13 00:40" pubdate>
+              2021-04-13
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
+            
+              <a href="/tags/javascript/">javascript</a>
             
           </div>
         

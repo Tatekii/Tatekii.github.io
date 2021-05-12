@@ -182,116 +182,6 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/04/13/js%E9%9D%A2%E8%AF%95%E9%A2%98%E9%9B%86/">js面试题集</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/04/13/js%E9%9D%A2%E8%AF%95%E9%A2%98%E9%9B%86/">
-          
-          
-            
-          
-          
-向 setTimeout 传参
-
-function func1(name) &#123;
-  return function () &#123;
-    alert(name + &quot;最帅&quot;);
-  &#125;;
-&#125;
-var n1 = func1(&quot;刘德华&quot;);
-setTimeout(n1, 1000);
-//使用setTimeout第三个参数
-
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-04-13 00:40" pubdate>
-              2021-04-13
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/javascript/">javascript</a>
-            
-              <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2020/08/27/%E6%A0%88%E7%BB%93%E6%9E%84%E7%AE%97%E6%B3%95%E9%A2%98/">栈算法题</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2020/08/27/%E6%A0%88%E7%BB%93%E6%9E%84%E7%AE%97%E6%B3%95%E9%A2%98/">
-          
-          
-            
-          
-          栈结构，先进后出
-最小栈
-
-
-function MinStack()&#123;
-  this.stack = []
-  this.min = [Infinity]
-&#125;
-
-MinStack.prototype.push = function(item)&#123;
-  this.stack.push(item)
-  this.min.push(Math.min(this.min[this
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-08-27 17:58" pubdate>
-              2020-08-27
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/javascript/">javascript</a>
-            
-              <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
-            
-              <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
         <a href="/2021/04/13/js%E6%A8%A1%E5%9D%97%E5%8C%96/">js模块化</a>
       </h1>
 
@@ -339,169 +229,58 @@ CommonJS (Node.js)
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/javascript/">javascript</a>
-            
               <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/04/13/mvcmvpmvvm/">MVC/MVP/MVVM</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/04/13/mvcmvpmvvm/">
-          
-          
-            
-          
-          MVCModel-View-ControllerView-&gt;Controller-&gt;Model
-^                     |
-|                     v
-&lt;---------------------&lt;
-
-
-单向通信
-
-Controller只起到路由作用，业务逻辑都在View中
-
-UI交互View 传送指令到 Controller ；
-
-
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-04-13 00:27" pubdate>
-              2021-04-13
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/04/13/vue%E7%BB%84%E4%BB%B6%E9%80%9A%E4%BF%A1/">vue组件之间通信方式</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/04/13/vue%E7%BB%84%E4%BB%B6%E9%80%9A%E4%BF%A1/">
-          
-          
-            
-          
-          ref和$refs
-ref挂载在普通HTML组件上访问它得到DOM
-
-ref挂载在VUE组件上访问它得到组件实例
-
-
-&lt;base-input ref=&quot;usernameInput&quot;&gt;&lt;base-input&gt;
-this.$refs.usernameInput
-
-$emit和prop
-子组件props接收父组件传递的数据
-动态数据加冒号:
-子组件可对收到的p
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-04-13 01:08" pubdate>
-              2021-04-13
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
-            
-              <a href="/tags/vue/">vue</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2020/08/02/%E7%AE%97%E6%B3%95%E9%A2%98/">算法题</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2020/08/02/%E7%AE%97%E6%B3%95%E9%A2%98/">
-          
-          
-            
-          
-          
-两数之合
-  function twoSum(arr,target)&#123;
-  let res = []
-  let map = new Map()
-  // 使用数值-&gt;索引建立map
-  // 每次循环计算得出当前差值
-  // 在map中查找这个差值既能得出索引
-  for(let i = 0 ; i&lt;arr.length;i++)&#123;
-    let k = t
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-08-02 11:22" pubdate>
-              2020-08-02
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
             
               <a href="/tags/javascript/">javascript</a>
             
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/09/24/topK/">topK问题</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/09/24/topK/">
+          
+          
+            
+          
+          最大/小的 K 个数，第 K 个最大/最小值
+局部冒泡！！输出结果无序
+function bubbleSort(arr, k) &#123;
+  for (let i = 0; i &lt; k; i++) &#123;
+    let flag = false;
+    // 冒泡执行k次
+    for (let j = arr.length - 1; j &gt; 0 + i; j--) &
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-09-24 16:35" pubdate>
+              2020-09-24
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
               <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
+            
+              <a href="/tags/javascript/">javascript</a>
             
               <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
             
@@ -565,34 +344,25 @@ let arr = Array(10)/省略new操作符/
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/08/31/%E5%A0%86/">堆及相关算法</a>
+        <a href="/2021/04/13/Promise/">Promise</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/08/31/%E5%A0%86/">
+        <a href="/2021/04/13/Promise/">
           
           
             
           
-          堆
-堆就是完全二叉树
-完全二叉树：除了深度最深的一层外所有层节点数都满员
-深度：从根节点到该节点经历的节点个数
+          promisePromise 对象用于处理异步操作，它表示一个尚未完成且预计在未来完成的异步操作。
+特性
+解决回调地狱
+统一的 API 接口处理异步任务
+链式调用
+返回值穿透
+错误冒泡
 
-
-每一个节点都比左右子节点大–&gt;最大堆，最大值在根节点
-
-每一个节点都比左右子节点小–&gt;最小堆，最小值在根节点
-
-完全二叉树可以使用数组来存储
-
-
-建立堆
-将节点与父节点比较
-
-//小顶堆
-function buildHeap(items,heapSize)&#123;
- 
+Promise 对象有以下两个特点
+对象的状态不受外界影响。Promise 对象代表一个异步操作，有三种状态：pending（进行中）、fulfilled（已成功）和rejected（已失败）。只有异步操作的结果
         </a>
       </p>
 
@@ -600,8 +370,8 @@ function buildHeap(items,heapSize)&#123;
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2020-08-31 14:22" pubdate>
-              2020-08-31
+            <time datetime="2021-04-13 00:22" pubdate>
+              2021-04-13
             </time>
           </div>
         
@@ -610,9 +380,9 @@ function buildHeap(items,heapSize)&#123;
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/javascript/">javascript</a>
+              <a href="/tags/es6/">es6</a>
             
-              <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
+              <a href="/tags/javascript/">javascript</a>
             
           </div>
         
@@ -626,26 +396,21 @@ function buildHeap(items,heapSize)&#123;
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/09/24/topK/">topK问题</a>
+        <a href="/2021/04/13/js%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF/">js运行机制</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/09/24/topK/">
+        <a href="/2021/04/13/js%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF/">
           
           
             
           
-          最大/小的 K 个数，第 K 个最大/最小值
-不使用全排序
+          ref:javascript 运行机制 EventLoop
+JS的单线程JavaScript的单线程，与它的用途有关。作为浏览器脚本语言，JavaScript的主要用途是与用户互动，以及操作DOM。这决定了它只能是单线程，否则会带来很复杂的同步问题。
+EventLoop
+概括：主线程不断从任务队列读取任务进入执行栈执行的循环过程
 
-
-局部冒泡
-
-function bubbleSort(arr, k) &#123;
-  for (let i = 0; i &lt; k; i++) &#123;
-    let flag = false;
-    // 冒泡执行k次
-    for (let j = arr.length - 1; j &gt; 0 + i; j--)
+因为 js 是单线程运行的，在代码执行的时候，通过将不同函数的执行
         </a>
       </p>
 
@@ -653,66 +418,7 @@ function bubbleSort(arr, k) &#123;
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2020-09-24 16:35" pubdate>
-              2020-09-24
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/javascript/">javascript</a>
-            
-              <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
-            
-              <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/04/13/HTTP/">HTTP协议</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/04/13/HTTP/">
-          
-          
-            
-          
-          HTTP（HyperText Transfer Protocol，超文本传输协议
-HTTP 是基于 TCP/IP 协议的应用层协议，用于客户端和服务器之间的通信链路层，网络层，传输层，应用层
-
-HTTP 报文组成部分
-请求报文
-
-请求行 Request Method,Request URI,Request Version
-请求头 包含若干属性，key:value 值
-空行
-请求体
-
-
-响应报文
-
-
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-04-13 00:36" pubdate>
+            <time datetime="2021-04-13 00:40" pubdate>
               2021-04-13
             </time>
           </div>
@@ -724,7 +430,263 @@ HTTP 报文组成部分
             
               <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
             
-              <a href="/tags/http/">http</a>
+              <a href="/tags/javascript/">javascript</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/04/26/%E8%99%9A%E6%8B%9F%E5%88%97%E8%A1%A8%E7%9A%84%E7%AE%80%E5%8D%95%E5%AE%9E%E7%8E%B0/">虚拟列表的简单实现</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/04/26/%E8%99%9A%E6%8B%9F%E5%88%97%E8%A1%A8%E7%9A%84%E7%AE%80%E5%8D%95%E5%AE%9E%E7%8E%B0/">
+          
+          
+            
+          
+          
+ref:[https://mp.weixin.qq.com/s/8uttkBw-dwYXsybKePQ3nA]
+
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot; /&gt;
+    &lt;meta http-equiv=&qu
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-04-26 13:52" pubdate>
+              2021-04-26
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/javascript/">javascript</a>
+            
+              <a href="/tags/vue/">vue</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/04/20/vue%E6%8B%BE%E9%81%97/">vue拾遗</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/04/20/vue%E6%8B%BE%E9%81%97/">
+          
+          
+            
+          
+          生命周期initLifecycle(vm);//初始化生命周期,处理parent,children,$refs,root
+initEvents(vm);//初始化事件，父组件监听的
+initRender(vm);//绑定createElement方法，绑定$attrs,$listeners
+callHook(vm, &#x27;⭐️beforeCreate&#x27;);
+initInjectio
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-04-20 16:59" pubdate>
+              2021-04-20
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
+            
+              <a href="/tags/vue/">vue</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/04/13/js%E9%97%AD%E5%8C%85/">闭包</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/04/13/js%E9%97%AD%E5%8C%85/">
+          
+          
+            
+          
+          闭包的定义
+函数与其词法环境共同构成 闭包（closure） 。
+
+词法环境 = 代码内变量标识符与变量值和函数值之间的关联关系（环境记录）+ 外部词法环境的引用
+
+js的词法作用域为静态作用域，在书写完成后函数词法环境就被确定，与调用位置无关
+
+闭包函数会保持对外部词法环境的引用，使外部变量常驻内存不可回收
+
+
+效果function addCounter() &#123;
+  let count
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-04-13 01:04" pubdate>
+              2021-04-13
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/javascript/">javascript</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/03/27/%E5%8E%9F%E7%94%9Fjs/">原生js</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/03/27/%E5%8E%9F%E7%94%9Fjs/">
+          
+          
+            
+          
+          
+javascript
+js 是一门函数优先的轻量级解释型语言，基于原型编程的动态脚本语言
+
+函数是一等公民（变量提升，函数可以作为函数的参数，返回值，可以赋值给变量，【函数式编程的条件】
+面向对象编程
+弱类型语言（变量的类型在运行时会变化，强类型语言的变量类型编译时就确定且不会改变
+基于原型（区别于基于类[类和实例]，js 中万物皆为[对象]
+基于原型的语言具有所谓原型对象（prototypic
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-03-27 14:00" pubdate>
+              2020-03-27
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
+            
+              <a href="/tags/js/">js</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/11/30/%E6%89%93%E5%8C%85%E4%BC%98%E5%8C%96/">打包优化</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/11/30/%E6%89%93%E5%8C%85%E4%BC%98%E5%8C%96/">
+          
+          
+            
+          
+          Webpack
+静态模块打包工具
+高效处理开发过程中的各种类型资源
+管理模块依赖，输出优化后的静态文件
+
+概念
+Entry  加载入口资源，分析其依赖关系并建立依赖图
+Loader webpack自己只能处理js文件，loader提供了处理其他文件类型的能力
+css预处理器
+babel转译
+
+
+Plugin 打包过程中不同阶段可使用插件执行特定操作，为webpack增加不同功能
+devserver
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-11-30 12:05" pubdate>
+              2020-11-30
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
+            
+              <a href="/tags/webpack/">webpack</a>
             
           </div>
         

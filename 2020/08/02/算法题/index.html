@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      3k 字
+      3.2k 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      48
+      51
        分钟
     </span>
   
@@ -237,7 +237,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年4月20日 下午
+                  本文最后更新于：2021年5月10日 下午
                 
               </p>
             
@@ -443,17 +443,18 @@ RandomizedSet.prototype.getRandom = <span class="hljs-function"><span class="hlj
 <ul>
 <li>合并两个有序数组  <div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// arr1 = [1,2,5]  m=3</span>
 <span class="hljs-comment">// arr2 = [2,3,4]  n=3</span>
+<span class="hljs-comment">// 假设arr1能装下arr2</span>
 
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">mergeArr</span>(<span class="hljs-params">arr1,m,arr2,n</span>)</span>&#123;
   <span class="hljs-keyword">let</span> index1 = m-<span class="hljs-number">1</span>
   <span class="hljs-keyword">let</span> index2 = n-<span class="hljs-number">1</span>
   <span class="hljs-keyword">let</span> index = m+n-<span class="hljs-number">1</span>
 
-  <span class="hljs-keyword">while</span>(index2&gt;=<span class="hljs-number">0</span>)&#123;
-    <span class="hljs-keyword">if</span>(index1&lt;<span class="hljs-number">0</span>)&#123;
-      arr1[index] = arr2[index2]
-      index --
-      index2 --
+  <span class="hljs-keyword">while</span>(index&gt;=<span class="hljs-number">0</span>)&#123;
+    <span class="hljs-keyword">if</span>(index2&lt;<span class="hljs-number">0</span>)&#123;
+      <span class="hljs-comment">// arr2耗尽</span>
+      <span class="hljs-comment">// 剩下保持arr1的值</span>
+      arr1[index--] = arr2[index2--]
       <span class="hljs-keyword">continue</span>
     &#125;
     arr1[index--] = arr1[index1]&gt;=arr2[index2]?arr1[index1--]:arr2[index2--]
@@ -530,8 +531,7 @@ RandomizedSet.prototype.getRandom = <span class="hljs-function"><span class="hlj
       mulit = num1*num2
       cur = mulit + pos[i+j+<span class="hljs-number">1</span>]
       pos[i+j+<span class="hljs-number">1</span>] = cur % <span class="hljs-number">10</span>
-      pos[i+j] += cur / <span class="hljs-number">10</span> | <span class="hljs-number">0</span>
-      <span class="hljs-comment">// 单个的 ｜ 使用二进制比较左右两个数字</span>
+      pos[i+j] += cur / <span class="hljs-number">10</span> | <span class="hljs-number">0</span> <span class="hljs-comment">// 取10位以上部分</span>
     &#125;
   &#125;
   <span class="hljs-keyword">let</span> res = pos.join(<span class="hljs-string">&#x27;&#x27;</span>)
@@ -829,7 +829,8 @@ PrefixTree.prototype.startWith = <span class="hljs-function"><span class="hljs-k
 &#125;</code></pre></div>
 
 <ul>
-<li>连续子数组的和的最大值<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">maxSubArray</span>(<span class="hljs-params">nums</span>)</span>&#123;
+<li><p>连续子数组的和的最大值</p>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">maxSubArray</span>(<span class="hljs-params">nums</span>)</span>&#123;
   <span class="hljs-comment">// 用dp记录该位置作为子数组末尾的累加值</span>
   <span class="hljs-comment">// [nums[0],nums[1]],dp[1] = num[0] + num[1]</span>
   <span class="hljs-comment">// dp[2] = dp[1] + nums[2]</span>
@@ -845,6 +846,29 @@ PrefixTree.prototype.startWith = <span class="hljs-function"><span class="hljs-k
   &#125;
   <span class="hljs-keyword">return</span> max
 &#125;</code></pre></div></li>
+<li><p>反转嵌套数组</p>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// 已知数组 a=[1,[2,[3,[4,null]]]], 实现数组 b=[4,[3,[2,[1,null]]]] ，考虑n级嵌套的情况</span>
+<span class="hljs-keyword">const</span> a = [<span class="hljs-number">1</span>, [<span class="hljs-number">2</span>, [<span class="hljs-number">3</span>, [<span class="hljs-number">4</span>, <span class="hljs-literal">null</span>]]]];
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">reverseArray</span>(<span class="hljs-params">arr</span>) </span>&#123;
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">reverse</span>(<span class="hljs-params">arr,temp</span>)</span>&#123;
+    <span class="hljs-comment">// arr = [1,[2,[3,[4,null]]]]</span>
+    <span class="hljs-comment">// arr = [1,[2,[3,[4,null]]]][1] = [2,[3,[4,null]]]</span>
+    <span class="hljs-comment">// arr = [1,[2,[3,[4,null]]]][1][1] = [3,[4,null]]</span>
+    <span class="hljs-comment">// arr = [1,[2,[3,[4,null]]]][1][1][1] = [4,null]</span>
+    <span class="hljs-keyword">if</span>(arr[<span class="hljs-number">1</span>]===<span class="hljs-literal">null</span>)&#123;
+      <span class="hljs-keyword">return</span> [arr[<span class="hljs-number">0</span>],temp]
+      <span class="hljs-comment">// return </span>
+    &#125;
+    temp = temp ? [arr[<span class="hljs-number">0</span>],temp] : [arr[<span class="hljs-number">0</span>],<span class="hljs-literal">null</span>]
+<span class="hljs-comment">// temp = [1,null]</span>
+<span class="hljs-comment">// temp = [2,[1,null]]</span>
+<span class="hljs-comment">// temp = [3,[2,[1,null]]]</span>
+    <span class="hljs-keyword">return</span> reverse(arr[<span class="hljs-number">1</span>],temp) <span class="hljs-comment">// 递归进嵌套</span>
+  &#125;
+  <span class="hljs-keyword">return</span> reverse(arr,<span class="hljs-literal">null</span>)
+&#125;
+<span class="hljs-built_in">console</span>.log(reverseArray(a));
+</code></pre></div></li>
 </ul>
 
             </div>
@@ -856,9 +880,9 @@ PrefixTree.prototype.startWith = <span class="hljs-function"><span class="hljs-k
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/javascript/">javascript</a>
-                    
                       <a class="hover-with-bg" href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
+                    
+                      <a class="hover-with-bg" href="/tags/javascript/">javascript</a>
                     
                       <a class="hover-with-bg" href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
                     

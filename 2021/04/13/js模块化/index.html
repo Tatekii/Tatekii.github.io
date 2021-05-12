@@ -237,7 +237,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年4月20日 晚上
+                  本文最后更新于：2021年5月2日 晚上
                 
               </p>
             
@@ -275,11 +275,11 @@
 <li>依赖前置，在定义模块的时候就要声明其依赖的模块</li>
 <li>执行顺序不一定和代码中顺序相同，而是谁先下载完执行谁  <div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// AMD</span>
 define([<span class="hljs-string">&quot;./a&quot;</span>, <span class="hljs-string">&quot;./b&quot;</span>], <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">a, b</span>) </span>&#123;
-<span class="hljs-comment">// ...</span>
-a.doSomething();
-<span class="hljs-comment">// ...</span>
-b.doSomething();
-<span class="hljs-comment">// ...可能b比a先do了</span>
+    <span class="hljs-comment">// ...</span>
+    a.doSomething();
+    <span class="hljs-comment">// ...</span>
+    b.doSomething();
+    <span class="hljs-comment">// ...可能b比a先do了</span>
 &#125;);</code></pre></div></li>
 </ul>
 <h3 id="CMD-sea-js"><a href="#CMD-sea-js" class="headerlink" title="CMD (sea.js)"></a>CMD (sea.js)</h3><ul>
@@ -288,11 +288,11 @@ b.doSomething();
 <li> 依赖可以就近书写</li>
 <li>依赖全部加载完才按顺序执行  <div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// CMD</span>
 define(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"><span class="hljs-built_in">require</span>, <span class="hljs-built_in">exports</span>, <span class="hljs-built_in">module</span></span>) </span>&#123;
-<span class="hljs-keyword">var</span> a = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;./a&quot;</span>);
-a.doSomething();
-<span class="hljs-comment">//...</span>
-<span class="hljs-keyword">var</span> b = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;./b&quot;</span>); 
-b.doSomething();
+    <span class="hljs-keyword">var</span> a = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;./a&quot;</span>);
+    a.doSomething();
+    <span class="hljs-comment">//...</span>
+    <span class="hljs-keyword">var</span> b = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;./b&quot;</span>); 
+    b.doSomething();
 <span class="hljs-comment">// ...</span>
 &#125;);</code></pre></div></li>
 </ul>
@@ -355,9 +355,9 @@ modules.exports xxx
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/javascript/">javascript</a>
-                    
                       <a class="hover-with-bg" href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
+                    
+                      <a class="hover-with-bg" href="/tags/javascript/">javascript</a>
                     
                   </div>
                 
