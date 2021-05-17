@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.2k 字
+      1.7k 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      15
+      24
        分钟
     </span>
   
@@ -237,7 +237,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年4月22日 下午
+                  本文最后更新于：2021年5月17日 上午
                 
               </p>
             
@@ -287,16 +287,118 @@ k = <span class="hljs-number">2</span> 之前的所有节点都需要移动</cod
  newB   newC   newD    newA
 (nStart)      [nEnd]</code></pre></div>
 <ul>
-<li>vue同时从新旧children的两端开始比较</li>
-<li>四个指针，分别查找是否key相同</li>
-<li>匹配到了相同的key，则将真实dom移动,同时四个指针对撞移动</li>
-<li>如果第一轮四次匹配不上，则遍历旧node寻找<code>nStart</code></li>
-<li>if 找到将其真实DOM移动到<code>oStart</code>之前，并在原vnode位置置空undefined，后序比较会跳过他</li>
-<li>else 找不到则添加新增新元素<code>nStart</code>到<code>oStart</code>之前</li>
-<li>匹配结束后<code>oEnd&lt;oStart</code>,新增<code>nStart到nEnd</code>新元素到<code>oStart</code>之前</li>
-<li>匹配结束后<code>nStart&gt;nEnd</code>,删除<code>oStart到oEnd</code>之间元素</li>
-</ul>
-<h3 id="Vue3的inferno"><a href="#Vue3的inferno" class="headerlink" title="Vue3的inferno"></a>Vue3的inferno</h3><ul>
+<li><p>vue同时从新旧children的两端开始比较</p>
+</li>
+<li><p>四个指针，分别查找是否key相同</p>
+</li>
+<li><p>匹配到了相同的key，则将真实dom移动,同时四个指针对撞移动</p>
+</li>
+<li><p>如果第一轮四次匹配不上，则遍历旧node寻找<code>nStart</code></p>
+</li>
+<li><p>if 找到将其真实DOM移动到<code>oStart</code>之前，并在原vnode位置置空undefined，后序比较会跳过他</p>
+</li>
+<li><p>else 找不到则添加新增新元素<code>nStart</code>到<code>oStart</code>之前</p>
+</li>
+<li><p>匹配结束后<code>oEnd&lt;oStart</code>,新增<code>nStart到nEnd</code>新元素到<code>oStart</code>之前</p>
+</li>
+<li><p>匹配结束后<code>nStart&gt;nEnd</code>,删除<code>oStart到oEnd</code>之间元素</p>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isUndef</span> (<span class="hljs-params">v</span>) </span>&#123;
+  <span class="hljs-keyword">return</span> v === <span class="hljs-literal">undefined</span> || v === <span class="hljs-literal">null</span>
+&#125;
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isDef</span> (<span class="hljs-params">v</span>) </span>&#123;
+  <span class="hljs-keyword">return</span> v !== <span class="hljs-literal">undefined</span> &amp;&amp; v !== <span class="hljs-literal">null</span>
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sameVnode</span> (<span class="hljs-params">a, b</span>) </span>&#123;
+  <span class="hljs-keyword">return</span> (
+    a.key === b.key &amp;&amp; (
+      (
+        a.tag === b.tag &amp;&amp;
+        a.isComment === b.isComment &amp;&amp;
+        isDef(a.data) === isDef(b.data) &amp;&amp;
+        !childrenIgnored(a) &amp;&amp; !childrenIgnored(b) &amp;&amp;
+        sameInputType(a, b)
+      ) || (
+        isTrue(a.isAsyncPlaceholder) &amp;&amp;
+        a.asyncFactory === b.asyncFactory &amp;&amp;
+        isUndef(b.asyncFactory.error)
+      )
+    )
+  )
+&#125;
+
+
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">updateChildren</span> (<span class="hljs-params">parentElm, oldCh, newCh, insertedVnodeQueue, removeOnly</span>) </span>&#123;
+    <span class="hljs-keyword">let</span> oldStartIdx = <span class="hljs-number">0</span>
+    <span class="hljs-keyword">let</span> newStartIdx = <span class="hljs-number">0</span>
+    <span class="hljs-keyword">let</span> oldEndIdx = oldCh.length - <span class="hljs-number">1</span>
+    <span class="hljs-keyword">let</span> oldStartVnode = oldCh[<span class="hljs-number">0</span>]
+    <span class="hljs-keyword">let</span> oldEndVnode = oldCh[oldEndIdx]
+    <span class="hljs-keyword">let</span> newEndIdx = newCh.length - <span class="hljs-number">1</span>
+    <span class="hljs-keyword">let</span> newStartVnode = newCh[<span class="hljs-number">0</span>]
+    <span class="hljs-keyword">let</span> newEndVnode = newCh[newEndIdx]
+    <span class="hljs-keyword">let</span> oldKeyToIdx, idxInOld, vnodeToMove, refElm
+
+    <span class="hljs-keyword">while</span> (oldStartIdx &lt;= oldEndIdx &amp;&amp; newStartIdx &lt;= newEndIdx) &#123;
+      <span class="hljs-keyword">if</span> (isUndef(oldStartVnode)) &#123;
+        oldStartVnode = oldCh[++oldStartIdx] <span class="hljs-comment">// Vnode has been moved left</span>
+      &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (isUndef(oldEndVnode)) &#123;
+        oldEndVnode = oldCh[--oldEndIdx]
+      &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (sameVnode(oldStartVnode, newStartVnode)) &#123;
+        patchVnode(oldStartVnode, newStartVnode, insertedVnodeQueue, newCh, newStartIdx)
+        oldStartVnode = oldCh[++oldStartIdx]
+        newStartVnode = newCh[++newStartIdx]
+      &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (sameVnode(oldEndVnode, newEndVnode)) &#123;
+        patchVnode(oldEndVnode, newEndVnode, insertedVnodeQueue, newCh, newEndIdx)
+        oldEndVnode = oldCh[--oldEndIdx]
+        newEndVnode = newCh[--newEndIdx]
+      &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (sameVnode(oldStartVnode, newEndVnode)) &#123; <span class="hljs-comment">// Vnode moved right</span>
+      <span class="hljs-comment">// 说明oldStartVnode节点更新后要移动去末尾位置</span>
+        patchVnode(oldStartVnode, newEndVnode, insertedVnodeQueue, newCh, newEndIdx)
+        canMove &amp;&amp; nodeOps.insertBefore(parentElm, oldStartVnode.elm, nodeOps.nextSibling(oldEndVnode.elm))
+        oldStartVnode = oldCh[++oldStartIdx]
+        newEndVnode = newCh[--newEndIdx]
+      &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (sameVnode(oldEndVnode, newStartVnode)) &#123; <span class="hljs-comment">// Vnode moved left</span>
+      <span class="hljs-comment">// 说明oldEndVnode节点更新后要移动到最前方</span>
+        patchVnode(oldEndVnode, newStartVnode, insertedVnodeQueue, newCh, newStartIdx)
+        canMove &amp;&amp; nodeOps.insertBefore(parentElm, oldEndVnode.elm, oldStartVnode.elm)
+        oldEndVnode = oldCh[--oldEndIdx]
+        newStartVnode = newCh[++newStartIdx]
+      &#125; <span class="hljs-keyword">else</span> &#123;
+        <span class="hljs-keyword">if</span> (isUndef(oldKeyToIdx)) oldKeyToIdx = createKeyToOldIdx(oldCh, oldStartIdx, oldEndIdx)
+        <span class="hljs-comment">// oldKeyToIndex是旧节点的key2index映射map</span>
+        idxInOld = isDef(newStartVnode.key)
+          ? oldKeyToIdx[newStartVnode.key]
+          : findIdxInOld(newStartVnode, oldCh, oldStartIdx, oldEndIdx)
+          <span class="hljs-comment">// 去旧节点中寻找newStartVnode</span>
+        <span class="hljs-keyword">if</span> (isUndef(idxInOld)) &#123; <span class="hljs-comment">// 找不到则新增newStartVnode元素到oldStart之前</span>
+          createElm(newStartVnode, insertedVnodeQueue, parentElm, oldStartVnode.elm, <span class="hljs-literal">false</span>, newCh, newStartIdx)
+        &#125; <span class="hljs-keyword">else</span> &#123;
+          <span class="hljs-comment">// 找得到则进行移动</span>
+          vnodeToMove = oldCh[idxInOld]
+          <span class="hljs-keyword">if</span> (sameVnode(vnodeToMove, newStartVnode)) &#123;
+            patchVnode(vnodeToMove, newStartVnode, insertedVnodeQueue, newCh, newStartIdx)
+            oldCh[idxInOld] = <span class="hljs-literal">undefined</span>
+            <span class="hljs-comment">// 将旧节点中匹配到的位置置空，以后的查找会跳过</span>
+            canMove &amp;&amp; nodeOps.insertBefore(parentElm, vnodeToMove.elm, oldStartVnode.elm)
+            <span class="hljs-comment">// 匹配到的节点移动到oldStart之前</span>
+          &#125; <span class="hljs-keyword">else</span> &#123;
+            <span class="hljs-comment">// key相同但不是同一种元素</span>
+            createElm(newStartVnode, insertedVnodeQueue, parentElm, oldStartVnode.elm, <span class="hljs-literal">false</span>, newCh, newStartIdx)
+          &#125;
+        &#125;
+        newStartVnode = newCh[++newStartIdx]
+      &#125;
+    &#125;
+    <span class="hljs-comment">// 跳出匹配后</span>
+    <span class="hljs-keyword">if</span> (oldStartIdx &gt; oldEndIdx) &#123;
+      refElm = isUndef(newCh[newEndIdx + <span class="hljs-number">1</span>]) ? <span class="hljs-literal">null</span> : newCh[newEndIdx + <span class="hljs-number">1</span>].elm
+      addVnodes(parentElm, refElm, newCh, newStartIdx, newEndIdx, insertedVnodeQueue)
+    &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (newStartIdx &gt; newEndIdx) &#123;
+      removeVnodes(parentElm, oldCh, oldStartIdx, oldEndIdx)
+    &#125;
+  &#125;</code></pre></div>
+<h3 id="Vue3的inferno"><a href="#Vue3的inferno" class="headerlink" title="Vue3的inferno"></a>Vue3的inferno</h3></li>
 <li><p>排除相同的前置和后置元素</p>
 <div class="hljs code-wrapper"><pre><code class="hljs javascript">[j]   [preEnd]
  |       |
