@@ -237,7 +237,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年5月10日 下午
+                  本文最后更新于：2021年5月18日 中午
                 
               </p>
             
@@ -656,7 +656,7 @@ RandomizedSet.prototype.getRandom = <span class="hljs-function"><span class="hlj
 
 <span class="hljs-comment">// 滑动窗口的另外一种实现</span>
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">findContinuousSequence</span>(<span class="hljs-params">target</span>)</span>&#123;
-  <span class="hljs-keyword">const</span> max = target%<span class="hljs-number">2</span>===<span class="hljs-number">0</span>?target/<span class="hljs-number">2</span>:<span class="hljs-built_in">Math</span>.floor(target/<span class="hljs-number">2</span>)+<span class="hljs-number">1</span>
+  <span class="hljs-keyword">const</span> max = target%<span class="hljs-number">2</span>===<span class="hljs-number">0</span>?target/<span class="hljs-number">2</span>:<span class="hljs-built_in">Math</span>.round(target/<span class="hljs-number">2</span>)
   <span class="hljs-comment">// max右边都不可能满足</span>
   <span class="hljs-comment">// t = 9</span>
   <span class="hljs-comment">// max = 1，2，3，4，5，6[x]，7[x]，8[x]</span>
@@ -667,11 +667,12 @@ RandomizedSet.prototype.getRandom = <span class="hljs-function"><span class="hlj
     <span class="hljs-built_in">window</span>.push(i)
     sum += i
     <span class="hljs-keyword">while</span>(sum &gt; target)&#123;
-      sum-=<span class="hljs-built_in">window</span>[<span class="hljs-number">0</span>]
-      <span class="hljs-built_in">window</span>.shift()
+      sum-=<span class="hljs-built_in">window</span>.shift()
     &#125;
     <span class="hljs-keyword">if</span>(sum===target)&#123;
       <span class="hljs-built_in">window</span>.length&gt;<span class="hljs-number">1</span> &amp;&amp; res.push([...window])
+      <span class="hljs-comment">//<span class="hljs-doctag">FIXME:</span></span>
+      <span class="hljs-comment">// 注意！！</span>
       <span class="hljs-comment">// push window的浅拷贝</span>
     &#125;
   &#125;
@@ -686,11 +687,11 @@ RandomizedSet.prototype.getRandom = <span class="hljs-function"><span class="hlj
 
 <span class="hljs-comment">// 投票记数</span>
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">majorityElement</span>(<span class="hljs-params">nums</span>)</span>&#123;
-  <span class="hljs-keyword">let</span> vote = <span class="hljs-number">0</span>
+  <span class="hljs-keyword">let</span> vote = <span class="hljs-number">1</span>
   <span class="hljs-comment">// 前后元素相同投票加1，不同减1，票数抵消则计算后面的元素</span>
   <span class="hljs-keyword">let</span> mid = nums[<span class="hljs-number">0</span>]
   <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> num <span class="hljs-keyword">of</span> nums)&#123;
-    <span class="hljs-keyword">if</span>(vote===<span class="hljs-number">0</span>)&#123;
+    <span class="hljs-keyword">if</span>(vote===<span class="hljs-number">1</span>)&#123;
       mid = num
     &#125;
     vote += num===mid ? <span class="hljs-number">1</span> : -<span class="hljs-number">1</span>

@@ -182,6 +182,58 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/2021/04/13/js%E9%97%AD%E5%8C%85/">闭包</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/04/13/js%E9%97%AD%E5%8C%85/">
+          
+          
+            
+          
+          闭包的定义
+函数与其词法环境共同构成 闭包（closure） 。
+
+词法环境 = 代码内变量标识符与变量值和函数值之间的关联关系（环境记录）+ 外部词法环境的引用
+
+js的词法作用域为静态作用域，在书写完成后函数词法环境就被确定，与调用位置无关
+
+闭包函数会保持对外部词法环境的引用，使外部变量常驻内存不可回收
+
+
+效果function addCounter() &#123;
+  let count
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-04-13 01:04" pubdate>
+              2021-04-13
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/javascript/">javascript</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/2020/03/27/%E5%8E%9F%E7%94%9Fjs/">原生js</a>
       </h1>
 
@@ -661,56 +713,6 @@ function buildHeap(items,heapSize)&#123;
               <a href="/tags/javascript/">javascript</a>
             
               <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/04/13/%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5/">web安全</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/04/13/%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5/">
-          
-          
-            
-          
-          同源策略定义
-两个URl !同协议 !同域名 !同端口
-同源策略限制了同一个源加载的脚本和文档如何与其他源的资源进行交互，包括js脚本，缓存的读取，cookie，ajax等
-三种标签不受同源限制script link img
-
-跨域的方法
-代理服务器-nginx,devServer等
-
-更改页面的源document.domain
-&#x27;someWebSite.com/dir1/pageA.h
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-04-13 01:09" pubdate>
-              2021-04-13
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
             
           </div>
         

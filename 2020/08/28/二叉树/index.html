@@ -237,7 +237,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年4月14日 上午
+                  本文最后更新于：2021年5月18日 中午
                 
               </p>
             
@@ -435,12 +435,11 @@
 <li>二叉树的最近公共祖先</li>
 </ul>
 <div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">lowestCommonAncestor</span>(<span class="hljs-params">root, p, q</span>) </span>&#123;
-  <span class="hljs-keyword">if</span> (!root || root.val === p || root.val === q) <span class="hljs-keyword">return</span> root;
+  <span class="hljs-keyword">if</span> (!root) <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>
+  <span class="hljs-keyword">if</span>(root === p || root === q) <span class="hljs-keyword">return</span> root
   <span class="hljs-keyword">const</span> l = lowerCommonAncestor(root.left, p, q);
   <span class="hljs-keyword">const</span> r = lowerCommonAncestor(root.right, p, q);
-  <span class="hljs-keyword">if</span>(!l) <span class="hljs-keyword">return</span> r
-  <span class="hljs-keyword">if</span>(!r) <span class="hljs-keyword">return</span> l
-  <span class="hljs-keyword">return</span> root
+  l &amp;&amp; r ? root : l || r
 &#125;
 </code></pre></div>
 
@@ -468,7 +467,6 @@
       root = root.left
     &#125;
   &#125;
-
   <span class="hljs-keyword">return</span> root;
 &#125;</code></pre></div>
 <ul>

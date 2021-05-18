@@ -182,23 +182,25 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/08/27/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95%E9%A2%98/">操作字符串算法题</a>
+        <a href="/2021/04/13/URL%E8%A7%A3%E6%9E%90%E6%B5%81%E7%A8%8B/">地址中输入URL回车后发生了什么</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/08/27/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95%E9%A2%98/">
+        <a href="/2021/04/13/URL%E8%A7%A3%E6%9E%90%E6%B5%81%E7%A8%8B/">
           
           
             
           
-          
-寻找最长公公前缀
-// 输入: [&quot;flower&quot;,&quot;flow&quot;,&quot;flight&quot;]
-// 输出: &quot;fl&quot;
+          步骤分析请求资源
+不同浏览器对资源优先级分类
+安全策略检查 
 
-function commonPrefix(...strs)&#123;
-  if(!strs.length || strs.length===0) return &quot;&quot;
-  let re
+
+网页安全政策（Content Security Policy，缩写 CSP）   是由浏览器提供的一种白名单制度。发者通过配置，来告诉浏   览器各类外部资源的加载和执行限制，来提高网页的安全性。一种最常用应用就是通过限制非信任域名脚本的加载来预防XSS攻击。
+
+可以通过两种方式来配置CSP：
+
+HTTP请求头的Content-Se
         </a>
       </p>
 
@@ -206,7 +208,59 @@ function commonPrefix(...strs)&#123;
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2020-08-27 17:56" pubdate>
+            <time datetime="2021-04-13 00:16" pubdate>
+              2021-04-13
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/08/27/%E6%A0%88%E7%BB%93%E6%9E%84%E7%AE%97%E6%B3%95%E9%A2%98/">栈算法题</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/08/27/%E6%A0%88%E7%BB%93%E6%9E%84%E7%AE%97%E6%B3%95%E9%A2%98/">
+          
+          
+            
+          
+          栈结构，先进后出
+最小栈
+
+
+function MinStack()&#123;
+  this.stack = []
+  this.min = [Infinity]
+&#125;
+
+MinStack.prototype.push = function(item)&#123;
+  this.stack.push(item)
+  this.min.push(Math.min(this.min[this
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-08-27 17:58" pubdate>
               2020-08-27
             </time>
           </div>
@@ -634,58 +688,6 @@ initInjectio
               <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
             
               <a href="/tags/vue/">vue</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/04/13/js%E9%97%AD%E5%8C%85/">闭包</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/04/13/js%E9%97%AD%E5%8C%85/">
-          
-          
-            
-          
-          闭包的定义
-函数与其词法环境共同构成 闭包（closure） 。
-
-词法环境 = 代码内变量标识符与变量值和函数值之间的关联关系（环境记录）+ 外部词法环境的引用
-
-js的词法作用域为静态作用域，在书写完成后函数词法环境就被确定，与调用位置无关
-
-闭包函数会保持对外部词法环境的引用，使外部变量常驻内存不可回收
-
-
-效果function addCounter() &#123;
-  let count
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-04-13 01:04" pubdate>
-              2021-04-13
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/javascript/">javascript</a>
             
           </div>
         

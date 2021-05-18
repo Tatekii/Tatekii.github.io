@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      843 字
+      833 字
     </span>
   
 
@@ -237,7 +237,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年5月3日 晚上
+                  本文最后更新于：2021年5月18日 上午
                 
               </p>
             
@@ -379,9 +379,9 @@
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">hammingWeight2</span>(<span class="hljs-params">n</span>)</span>&#123;
   <span class="hljs-keyword">let</span> showTimes = <span class="hljs-number">0</span>
   <span class="hljs-keyword">while</span>(n!=<span class="hljs-number">0</span>)&#123;
-<span class="hljs-comment">// 若n&amp;1=0 ，则 n 二进制 最右一位 为 0 ；</span>
-<span class="hljs-comment">// 若n&amp;1=1 ，则 n 二进制 最右一位 为 1 。</span>
     showTimes += n&amp;<span class="hljs-number">1</span>
+    <span class="hljs-comment">// 与1 &amp;运算，1的二进制为1</span>
+    <span class="hljs-comment">// &amp;只有左右都为1时输出1</span>
     n&gt;&gt;&gt;=<span class="hljs-number">1</span>
   &#125;
   <span class="hljs-keyword">return</span> showTimes
