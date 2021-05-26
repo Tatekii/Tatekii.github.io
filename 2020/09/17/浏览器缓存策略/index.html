@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      796 字
+      933 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      9
+      10
        分钟
     </span>
   
@@ -237,13 +237,13 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年4月15日 凌晨
+                  本文最后更新于：2021年5月23日 晚上
                 
               </p>
             
             <div class="markdown-body">
               <h2 id="强缓存"><a href="#强缓存" class="headerlink" title="强缓存"></a>强缓存</h2><ul>
-<li> 浏览器直接验证本地资源看是否过期，如果没过期直接使用本地缓存，并返回<code>200</code></li>
+<li> 浏览器直接验证本地资源看是否过期，如果没过期直接使用本地缓存，并返回<code>200</code>和显示(<code>from memory cache)</code></li>
 <li> 验证两种字段<h3 id="Expires"><a href="#Expires" class="headerlink" title="Expires"></a><code>Expires</code></h3></li>
 </ul>
 <ol>
@@ -256,42 +256,45 @@
 </li>
 <li><p>可选参数：</p>
 <ul>
+<li><code>public</code>,<code>private</code><ul>
+<li><code>public</code> 表示该资源可以被所有客户端和代理服务器缓存</li>
+<li><code>private</code> 表示该资源仅能客户端缓存[<em>默认值</em>]</li>
+</ul>
+</li>
 <li><code>max-age</code><ul>
 <li>单位为毫秒，表示多长时间后过期</li>
 <li>可设置为 <strong>0</strong> 立即请求新资源</li>
 </ul>
 </li>
-<li><code>public</code>,<code>private</code><ul>
-<li><code>public</code> 表示该资源可以被所有客户端和代理服务器缓存</li>
-<li><code>private</code> 表示该资源仅能客户端缓存[<em>默认值</em>]</li>
-<li>当设置了 <code>s-maxage</code> 的时候表示允许代理服务器缓存，相当于 <code>public</code></li>
-</ul>
-</li>
+<li><code>s-maxage</code> 会在<code>public</code>字段生效时覆盖<code>Expires</code>和<code>max-age</code> </li>
 <li><code>no-cache</code>,<code>no-store</code><ul>
 <li><code>no-cache</code> 会缓存资源，但要协商缓存验证</li>
 <li><code>no-store</code> 不缓存</li>
-<li>两个字段存在时忽略<code>max-age</code>长度和<code>Expire</code>时间戳</li>
 </ul>
 </li>
+<li><code>max-age=0 || no-cache</code>会进入协商缓存</li>
 </ul>
 </li>
 </ol>
-<h3 id="Pragma"><a href="#Pragma" class="headerlink" title="Pragma"></a><code>Pragma</code></h3><p><code>Pragma = no-cache</code>与<code>Cache-Control: no-cache</code>效果一致</p>
-<h3 id="优先级"><a href="#优先级" class="headerlink" title="优先级"></a>优先级</h3><p><code>pragma -&gt; cache-control -&gt; expires</code></p>
+<h3 id="Pragma"><a href="#Pragma" class="headerlink" title="Pragma"></a><code>Pragma</code></h3><ol>
+<li>只为了兼容http1.0</li>
+<li><code>Pragma = no-cache</code>与<code>Cache-Control: no-cache</code>效果一致</li>
+</ol>
+<h3 id="优先级"><a href="#优先级" class="headerlink" title="优先级"></a>优先级</h3><p><code>Cache-Control -&gt; Expires</code></p>
 <h2 id="协商缓存"><a href="#协商缓存" class="headerlink" title="协商缓存"></a>协商缓存</h2><ul>
 <li>浏览器携带缓存标识向服务器发起请求，询问服务器缓存有效性</li>
 <li>协商缓存生效，返回<code>304</code>和<code>Not Modified</code></li>
 <li>协商缓存失效，返回<code>200</code>和请求结果<h3 id="Last-modified-If-Modified-Since"><a href="#Last-modified-If-Modified-Since" class="headerlink" title="Last-modified + If-Modified-Since"></a><code>Last-modified + If-Modified-Since</code></h3></li>
 </ul>
 <ol>
-<li><p>服务器返回资源的同时在<code>response header</code>中添加 <code>Last-Modified</code>，值是这个资源在服务器上的最后修改时间<br> <code>Last-Modified: Fri, 22 Jul 2016 01:47:00 GMT</code></p>
+<li><p>服务器返回资源的同时在<code>response header</code>中添加 <code>Last-Modified</code>字段，值是该资源在服务器上的最后修改时间<br> <code>Last-Modified: Fri, 22 Jul 2016 01:47:00 GMT</code></p>
 </li>
 <li><p>再次请求该资源时，浏览器检测到资源中存在 <code>Last-Modified</code>字段，则会将这个时间戳作为<code>If-Modified-Since</code>的值加入请求头中发送给服务器</p>
 </li>
 <li><p>服务器根据自身资源的修改时间和来自请求的时间戳判断资源是否更新，返回相对应的结果</p>
 </li>
 </ol>
-<h4 id="优劣"><a href="#优劣" class="headerlink" title="@优劣"></a>@优劣</h4><ul>
+<h4 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h4><ul>
 <li>本地打开缓存文件，即使没有对文件进行修改，但还是会造成 <code>Last-Modified</code> 被修改</li>
 <li><code>Last-Modified</code> 只能以秒计时，如果在不可感知的时间内修改完成文件，则不能体现被修改过</li>
 </ul>
@@ -300,12 +303,18 @@
 <li>浏览器请求时将资源自带的标识作为<code>If-None-Match</code>的值加入请求头中发送给服务器</li>
 <li>服务器根据同一资源标识是否一致返回相应结果</li>
 </ol>
+<blockquote>
+<p>ETag:\W   弱验证，新旧资源不需要逐字节一一对应新旧资源的比较会使用较为宽松的算法</p>
+</blockquote>
+<blockquote>
+<p>If-Match  条件请求，在请求方法为 GET 和 HEAD 的情况下，服务器仅在请求的资源匹配该ETag值时才会返回资源。而对于 PUT 或其他非安全方法来说，只有在满足条件的情况下才可以将数据上传。例如:Range请求 or 避免更新丢失（用户上传覆盖其他用户提交的更新）</p>
+</blockquote>
 <h2 id="缓存策略"><a href="#缓存策略" class="headerlink" title="缓存策略"></a>缓存策略</h2><ol>
 <li><p>先判断<code>Cache-Control</code>，在<code>Cache-Control</code>的<code>max-age</code>之内，直接返回<code>200 from cache</code>；</p>
 </li>
 <li><p>没有<code>Cache-Control</code>再判断<code>Expires</code>，在<code>Expires</code>之内，直接返回<code>200 from cache</code></p>
 </li>
-<li><p><code>Cache-Control=no-cache</code>或者不符合<code>Expires</code>，浏览器向服务器发送请求</p>
+<li><p><code>Cache-Control=no-cache/no-store</code>或者不符合<code>Expires</code>，浏览器向服务器发送请求</p>
 </li>
 <li><p> 服务器判断<code>If-Modified-Since</code>和<code>If-None-Match</code>，两者同时出现时会忽略<code>If-Modified-Since</code>，有效则返回<code>304</code>，失效则返回新资源。</p>
 </li>

@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      365 字
+      517 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      4
+      5
        分钟
     </span>
   
@@ -237,7 +237,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年4月22日 下午
+                  本文最后更新于：2021年5月25日 下午
                 
               </p>
             
@@ -247,29 +247,25 @@
 </li>
 <li><p>数据大小5MB</p>
 </li>
-<li><p>浏览器中共享</p>
-</li>
 <li><p>同源共享同一份<code>localStorage</code></p>
 </li>
 <li><p>只能为<code>string</code>类型,注意需要<code>JSON</code>转换</p>
 </li>
 </ul>
 <h3 id="SessionStorage-h5-web-storage"><a href="#SessionStorage-h5-web-storage" class="headerlink" title="SessionStorage[h5 web storage]"></a><code>SessionStorage</code>[h5 web storage]</h3><ul>
-<li><p>窗口/标签页关闭时清理</p>
-</li>
-<li><p>不跨窗口共享</p>
+<li><p>页面会话期间可用（即只要浏览器处于打开状态，包括页面重新加载和恢复）</p>
 </li>
 <li><p>数据大小5MB</p>
 </li>
-</ul>
-<h3 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a><code>Cookie</code></h3><ul>
+<li><p>不跨窗口共享,就算同一url的多个tab<code>sessionStorage</code>各自独立</p>
+<h3 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a><code>Cookie</code></h3></li>
 <li><p>手动设置过期时间，否则浏览器关闭失效</p>
 </li>
 <li><p>数据大小 4KB</p>
 </li>
 <li><p>参与每次http请求</p>
 </li>
-<li><p>有路径概念，可以限制不同路径下的 cookie 互相是访问不到的</p>
+<li><p>有路径概念，可以限制不同路径下的 cookie 互相是访问</p>
 </li>
 <li><p>某些浏览器对单网站cookie数目有限制(不超过20个)</p>
 </li>
@@ -307,10 +303,11 @@
 </li>
 <li><p>数据大小无限制</p>
 </li>
-<li><p>IndexedDB是浏览器提供的本地数据库，它可以被网页脚本创建和操作。IndexedDB  允许储存大量数据，提供查找接口，还能建立索引。</p>
+<li><p>IndexedDB 是一个基于 JavaScript 的面向对象数据库，相比webStorage提供存储大量结构化数据的能力</p>
 </li>
 </ul>
-<h2 id="manifest"><a href="#manifest" class="headerlink" title="manifest"></a><code>manifest</code></h2><p>web应用离线缓存</p>
+<h2 id="manifest"><a href="#manifest" class="headerlink" title="manifest"></a><code>manifest</code></h2><p><code>manifest.json</code>在一个JSON文本文件中提供有关应用程序的信息（如名称，作者，图标和描述）。manifest 的目的是将Web应用程序安装到设备的主屏幕，为用户提供更快的访问和更丰富的体验。</p>
+<p>Web应用程序清单是被称为<code>渐进式Web应用程序(PWA)</code>的Web技术集合的一部分, 它们是可以安装到设备的主屏幕的网络应用程序，而不需要用户通过应用商店，伴随着其他功能, 比如离线可用和接收推送通知。</p>
 
             </div>
             <hr>

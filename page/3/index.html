@@ -182,6 +182,326 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/2021/04/13/URL%E8%A7%A3%E6%9E%90%E6%B5%81%E7%A8%8B/">地址中输入URL回车后发生了什么</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/04/13/URL%E8%A7%A3%E6%9E%90%E6%B5%81%E7%A8%8B/">
+          
+          
+            
+          
+          步骤分析请求资源
+不同浏览器对资源优先级分类
+安全策略检查 
+
+
+网页安全政策（Content Security Policy，缩写 CSP）   是由浏览器提供的一种白名单制度。发者通过配置，来告诉浏   览器各类外部资源的加载和执行限制，来提高网页的安全性。一种最常用应用就是通过限制非信任域名脚本的加载来预防XSS攻击。
+
+可以通过两种方式来配置CSP：
+
+HTTP请求头的Content-Se
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-04-13 00:16" pubdate>
+              2021-04-13
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/08/27/%E6%A0%88%E7%BB%93%E6%9E%84%E7%AE%97%E6%B3%95%E9%A2%98/">栈算法题</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/08/27/%E6%A0%88%E7%BB%93%E6%9E%84%E7%AE%97%E6%B3%95%E9%A2%98/">
+          
+          
+            
+          
+          栈结构，先进后出
+最小栈
+
+
+function MinStack()&#123;
+  this.stack = []
+  this.min = [Infinity]
+&#125;
+
+MinStack.prototype.push = function(item)&#123;
+  this.stack.push(item)
+  this.min.push(Math.min(this.min[this
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-08-27 17:58" pubdate>
+              2020-08-27
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
+            
+              <a href="/tags/javascript/">javascript</a>
+            
+              <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/04/13/js%E9%9D%A2%E8%AF%95%E9%A2%98%E9%9B%86/">js面试题集</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/04/13/js%E9%9D%A2%E8%AF%95%E9%A2%98%E9%9B%86/">
+          
+          
+            
+          
+          
+向 setTimeout 传参
+
+function func1(name) &#123;
+  return function () &#123;
+    alert(name + &quot;最帅&quot;);
+  &#125;;
+&#125;
+var n1 = func1(&quot;刘德华&quot;);
+setTimeout(n1, 1000);
+//使用setTimeout第三个参数
+
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-04-13 00:40" pubdate>
+              2021-04-13
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
+            
+              <a href="/tags/javascript/">javascript</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/04/13/js%E6%A8%A1%E5%9D%97%E5%8C%96/">js模块化</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/04/13/js%E6%A8%A1%E5%9D%97%E5%8C%96/">
+          
+          
+            
+          
+          
+模块化的演进过程
+
+
+文件划分
+命名空间 (将每个模块暴露在全局对象
+IIFE 立即执行函数 
+
+模块化开发的思想模块化的开发方式可以提高代码复用率，方便进行代码的管理。通常一个文件就是一个模块，有自己的作用域，只向外暴露特定的变量和函数。
+模块化的好处
+命名冲突
+文件依赖
+代码复用
+不污染全局空间
+
+CommonJS (Node.js)
+运行在服务端`
+
+代码同步加载
+
+代码可以多次加载，但是
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-04-13 01:01" pubdate>
+              2021-04-13
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
+            
+              <a href="/tags/javascript/">javascript</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/04/26/%E8%99%9A%E6%8B%9F%E5%88%97%E8%A1%A8%E7%9A%84%E7%AE%80%E5%8D%95%E5%AE%9E%E7%8E%B0/">虚拟列表的简单实现</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/04/26/%E8%99%9A%E6%8B%9F%E5%88%97%E8%A1%A8%E7%9A%84%E7%AE%80%E5%8D%95%E5%AE%9E%E7%8E%B0/">
+          
+          
+            
+          
+          
+ref:[https://mp.weixin.qq.com/s/8uttkBw-dwYXsybKePQ3nA]
+
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot; /&gt;
+    &lt;meta http-equiv=&qu
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-04-26 13:52" pubdate>
+              2021-04-26
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/javascript/">javascript</a>
+            
+              <a href="/tags/vue/">vue</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/04/20/vue%E6%8B%BE%E9%81%97/">vue拾遗</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/04/20/vue%E6%8B%BE%E9%81%97/">
+          
+          
+            
+          
+          生命周期initLifecycle(vm);//初始化生命周期,处理parent,children,$refs,root
+initEvents(vm);//初始化事件，父组件监听的
+initRender(vm);//绑定createElement方法，绑定$attrs,$listeners
+callHook(vm, &#x27;⭐️beforeCreate&#x27;);
+initInjectio
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-04-20 16:59" pubdate>
+              2021-04-20
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
+            
+              <a href="/tags/vue/">vue</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/2021/04/13/js%E9%97%AD%E5%8C%85/">闭包</a>
       </h1>
 
@@ -221,57 +541,6 @@ js的词法作用域为静态作用域，在书写完成后函数词法环境就
             <i class="iconfont icon-tags"></i>
             
               <a href="/tags/javascript/">javascript</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2020/03/27/%E5%8E%9F%E7%94%9Fjs/">原生js</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2020/03/27/%E5%8E%9F%E7%94%9Fjs/">
-          
-          
-            
-          
-          
-javascript
-js 是一门函数优先的轻量级解释型语言，基于原型编程的动态脚本语言
-
-函数是一等公民（变量提升，函数可以作为函数的参数，返回值，可以赋值给变量，【函数式编程的条件】
-面向对象编程
-弱类型语言（变量的类型在运行时会变化，强类型语言的变量类型编译时就确定且不会改变
-基于原型（区别于基于类[类和实例]，js 中万物皆为[对象]
-基于原型的语言具有所谓原型对象（prototypic
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-03-27 14:00" pubdate>
-              2020-03-27
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
-            
-              <a href="/tags/js/">js</a>
             
           </div>
         
@@ -388,72 +657,6 @@ function lazyLoad(imgList)&#123;
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/04/20/%E5%89%8D%E7%AB%AF%E5%AD%98%E5%82%A8/">前端涉及到的数据存储</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/04/20/%E5%89%8D%E7%AB%AF%E5%AD%98%E5%82%A8/">
-          
-          
-            
-          
-          LocalStorage[h5 web storage]
-不会过期
-
-数据大小5MB
-
-浏览器中共享
-
-同源共享同一份localStorage
-
-只能为string类型,注意需要JSON转换
-
-
-SessionStorage[h5 web storage]
-窗口/标签页关闭时清理
-
-不跨窗口共享
-
-数据大小5MB
-
-
-Cookie
-手动设置过期时间，否则浏览器关闭失效
-
-数据大小 4KB
-
-参与每
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-04-20 18:06" pubdate>
-              2021-04-20
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
         <a href="/2020/09/07/vue3/">vue3proxy</a>
       </h1>
 
@@ -493,226 +696,6 @@ Vue.set(object, proper
               <a href="/tags/javascript/">javascript</a>
             
               <a href="/tags/vue/">vue</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2020/03/24/css%E9%9D%A2%E8%AF%95%E9%A2%98/">CSS面试题</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2020/03/24/css%E9%9D%A2%E8%AF%95%E9%A2%98/">
-          
-          
-            
-          
-          CSS3 新特性
-边框属性border-radius，box-shadow，border-image
-背景控制background-size,background-origin
-文字效果和自动换行text-shadow,word-wrap
-自定义字体@font-face
-2d/3d 变换，过渡和动画transition``animation
-多栏布局column
-盒模型属性box-sizing
-弹
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-03-24 11:00" pubdate>
-              2020-03-24
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
-            
-              <a href="/tags/CSS/">CSS</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/04/13/mvcmvpmvvm/">MVC/MVP/MVVM</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/04/13/mvcmvpmvvm/">
-          
-          
-            
-          
-          MVCModel-View-ControllerView-&gt;Controller-&gt;Model
-^                     |
-|                     v
-&lt;---------------------&lt;
-
-
-单向通信
-
-Controller只起到路由作用，业务逻辑都在View中
-
-UI交互View 传送指令到 Controller ；
-
-
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-04-13 00:27" pubdate>
-              2021-04-13
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/04/13/vue%E7%BB%84%E4%BB%B6%E9%80%9A%E4%BF%A1/">vue组件之间通信方式</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/04/13/vue%E7%BB%84%E4%BB%B6%E9%80%9A%E4%BF%A1/">
-          
-          
-            
-          
-          ref和$refs
-ref挂载在普通HTML组件上访问它得到DOM
-
-ref挂载在VUE组件上访问它得到组件实例
-
-
-&lt;base-input ref=&quot;usernameInput&quot;&gt;&lt;base-input&gt;
-this.$refs.usernameInput
-
-$emit和prop
-子组件props接收父组件传递的数据
-动态数据加冒号:
-子组件可对收到的p
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-04-13 01:08" pubdate>
-              2021-04-13
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
-            
-              <a href="/tags/vue/">vue</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2020/08/31/%E5%A0%86/">堆及相关算法</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2020/08/31/%E5%A0%86/">
-          
-          
-            
-          
-          堆
-堆就是完全二叉树
-完全二叉树：除了深度最深的一层外所有层节点数都满员
-深度：从根节点到该节点经历的节点个数
-
-
-每一个节点都比左右子节点大–&gt;最大堆，最大值在根节点
-
-每一个节点都比左右子节点小–&gt;最小堆，最小值在根节点
-
-完全二叉树可以使用数组来存储
-
-
-建立堆
-将节点与父节点比较
-
-//小顶堆
-function buildHeap(items,heapSize)&#123;
- 
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-08-31 14:22" pubdate>
-              2020-08-31
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/javascript/">javascript</a>
-            
-              <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
             
           </div>
         

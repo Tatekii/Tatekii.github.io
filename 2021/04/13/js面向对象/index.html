@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.6k 字
+      1.8k 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      19
+      21
        分钟
     </span>
   
@@ -237,7 +237,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年4月13日 凌晨
+                  本文最后更新于：2021年5月23日 下午
                 
               </p>
             
@@ -248,14 +248,13 @@
 </li>
 <li><p>而实例（Instance）则是一个个具体的 Student ，比如， Michael 和 Bob 是两个具体的 Student 。</p>
 </li>
-<li><p>面向过程就是分析出解决问题所需要的步骤，然后用函数把这些步骤一步一步实现，使用的时候一个一个依次调用就可以了。</p>
+<li><p>面向过程就是分析出解决问题所需要的步骤，然后用函数把这些步骤一步一步实现。</p>
 </li>
 <li><p>面向对象是把构成问题事务分解成各个对象，建立对象的目的不是为了完成一个步骤，而是为了描叙某个事物在整个解决问题的步骤中的行为。</p>
 </li>
 </ul>
 <h2 id="面向对象三要素"><a href="#面向对象三要素" class="headerlink" title="面向对象三要素"></a>面向对象三要素</h2><p><a target="_blank" rel="noopener" href="https://github.com/CyC2018/CS-Notes/blob/master/notes/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E6%80%9D%E6%83%B3.md#%E5%B0%81%E8%A3%85">ref:https://github.com/CyC2018</a></p>
 <h3 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h3><p>利用抽象数据类型将数据和基于数据的操作封装在一起，使其构成一个不可分割的独立实体。数据被保护在抽象数据类型的内部，尽可能地隐藏内部的细节，只保留一些对外接口使之与外部发生联系。用户无需知道对象内部的细节，但可以通过对象对外提供的接口来访问该对象。</p>
-<p>优点：</p>
 <ul>
 <li>减少耦合：可以独立地开发、测试、优化、使用、理解和修改</li>
 <li>减轻维护的负担：可以更容易被程序员理解，并且在调试的时候可以不影响其他模块</li>
@@ -292,48 +291,30 @@ public <span class="hljs-class"><span class="hljs-keyword">class</span> <span cl
 <ul>
 <li><p>继承应该遵循里氏替换原则，子类对象必须能够替换掉父类对象。</p>
 </li>
-<li><p>Cat 可以当做 Animal 来使用，也就是说可以使用 Animal 引用 Cat 对象。父类引用指向子类对象称为 向上转型 。</p>
+<li><p>提高代码的复用性，继承是多态的前提。</p>
 </li>
 </ul>
-<p><code>Animal animal = new Cat();</code></p>
-<h3 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h3><p>多态分为编译时多态和运行时多态：</p>
+<h3 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h3><p>父类或接口定义的引用变量可以指向子类或实例对象，即多种不同状态</p>
 <ul>
-<li><p>编译时多态主要指方法的重载</p>
-</li>
-<li><p>运行时多态指程序中定义的对象引用所指向的具体类型在运行期间才确定<br>运行时多态有三个条件：</p>
-<ol>
-<li><p>继承</p>
-</li>
-<li><p>覆盖（重写）</p>
-</li>
-<li><p>向上转型</p>
-</li>
-</ol>
-  <div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">//  下面的代码中，乐器类（Instrument）有两个子类：Wind 和 Percussion，它们都覆盖了父类的 play() 方法，并且在 main() 方法中使用父类 Instrument 来引用 Wind 和 Percussion 对象。在 Instrument 引用调用 play() 方法时，会执行实际引用对象所在类的 play() 方法，而不是 Instrument 类的方法。</span>
-
+<li>提高了程序的扩展性</li>
+</ul>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">//  下面的代码中，乐器类（Instrument）有两个子类：Wind 和 Percussion，它们都覆盖了父类的 pla() 方法，并且在 main() 方法中使用父类 Instrument 来引用 Wind 和 Percussion 对象。在Instrument 引用调用 play() 方法时，会执行实际引用对象所在类的 play() 方法，而不是 Instrument 的方法。</span>
 public <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Instrument</span> </span>&#123;
-
     public <span class="hljs-keyword">void</span> <span class="hljs-function"><span class="hljs-title">play</span>(<span class="hljs-params"></span>)</span> &#123;
         System.out.println(<span class="hljs-string">&quot;Instument is playing...&quot;</span>);
     &#125;
 &#125;
-
 public <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Wind</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Instrument</span> </span>&#123;
-
     public <span class="hljs-keyword">void</span> <span class="hljs-function"><span class="hljs-title">play</span>(<span class="hljs-params"></span>)</span> &#123;
         System.out.println(<span class="hljs-string">&quot;Wind is playing...&quot;</span>);
     &#125;
 &#125;
-
 public <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Percussion</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Instrument</span> </span>&#123;
-
     public <span class="hljs-keyword">void</span> <span class="hljs-function"><span class="hljs-title">play</span>(<span class="hljs-params"></span>)</span> &#123;
         System.out.println(<span class="hljs-string">&quot;Percussion is playing...&quot;</span>);
     &#125;
 &#125;
-
 public <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Music</span> </span>&#123;
-
     public <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-function"><span class="hljs-title">main</span>(<span class="hljs-params"><span class="hljs-built_in">String</span>[] args</span>)</span> &#123;
         List&lt;Instrument&gt; instruments = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();
         instruments.add(<span class="hljs-keyword">new</span> Wind());
@@ -343,63 +324,88 @@ public <span class="hljs-class"><span class="hljs-keyword">class</span> <span cl
         &#125;
     &#125;
 &#125;</code></pre></div>
-<h2 id="原型链"><a href="#原型链" class="headerlink" title="原型链"></a>原型链</h2></li>
-</ul>
-<ol>
-<li><code>JavaScript</code> 常被描述为一种基于原型的语言 (prototype-based language),每个对象拥有一个原型对象，对象以其原型为模板创建新对象、并从原型继承方法和属性。而这个原型对象也可能拥有原型，并从中继承方法和属性，一层一层、以此类推。这种关系常被称为<code>原型链 (prototype chain)</code>，它解释了为何一个对象会拥有定义在其他对象中的属性和方法。</li>
-</ol>
-<ol>
-<li><p>特殊的<code>Object</code>和<code>Function</code></p>
- <div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// 函数对象都是由Function函数生成的,则</span>
-<span class="hljs-built_in">Object</span>._proto_ === <span class="hljs-built_in">Function</span>.prototype
 
-<span class="hljs-comment">//特例</span>
-
-<span class="hljs-built_in">Function</span>.__proto__ ===  <span class="hljs-built_in">Function</span>.prototype
-ƒ () &#123; [native code] &#125;</code></pre></div></li>
-<li><p>原形链的终点</p>
- <div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">typeof</span> <span class="hljs-built_in">Object</span>.prototye === <span class="hljs-string">&#x27;object&#x27;</span>
-<span class="hljs-comment">// 说明他是一个object类型的对象，如果他是由Object函数生成的，</span>
-<span class="hljs-comment">// 为了让原型链有终点。Javascript规定，</span>
-<span class="hljs-built_in">Object</span>.prototype.__proto__ === <span class="hljs-literal">null</span>
-<span class="hljs-comment">// 对于Function</span>
-<span class="hljs-built_in">Function</span>.prototype.__proto__ === <span class="hljs-built_in">Object</span>.prototype
-<span class="hljs-built_in">Object</span>.prototype.__proto__ === <span class="hljs-literal">null</span></code></pre></div></li>
-<li><p>只有函数才有<code>prototype</code></p>
- <div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f1</span>(<span class="hljs-params"></span>)</span>&#123;&#125;
-f1.__proto__ === <span class="hljs-built_in">Function</span>.prototype <span class="hljs-comment">// f1直接由Function构造而来</span>
-</code></pre></div></li>
-<li><p>在传统的’面向对象‘中，首先定义“类”，此后创建对象实例时，类中定义的所有属性和方法都被复制到新实例中。在 JavaScript 中并不如此复制，而是在对象实例和它的构造器之间建立一个链接（它是__proto__属性，是从构造函数的prototype属性派生的），之后通过上溯原型链，在构造器中找到这些属性和方法。</p>
+<h2 id="六大基本原则："><a href="#六大基本原则：" class="headerlink" title="六大基本原则："></a>六大基本原则：</h2><ul>
+<li><p><code>Single Responsibility Principle：单一职责原则</code></p>
+<p>  一个类应该只有一个发生变化的原因，只负责一项职责</p>
 </li>
-</ol>
-<div class="hljs code-wrapper"><pre><code>![proto](../images/proto.png)
-</code></pre></div>
-<ul>
-<li><p>当 js 在查找某属性时，对象本体上没有该属性则会访问对象的<code>__proto__</code>进行查找(即在该函数构造函数的<code>prototype</code>中查找)，还是没有则继续递归访问<code>__proto__</code>,一直到<code>Object</code>，【【【<code>Object.prototype</code>没有<code>__proto__</code>属性】】】，继续访问则返回<code>null</code>,这样一条由<code>__proto__</code>把所有对象链接起来的线成为原型链</p>
+<li><p><code>Open Closed Principle：开闭原则</code></p>
+<p>  对修改封闭，对拓展开放</p>
+</li>
+<li><p><code>Liskov Substitution Principle：里氏替换原则</code></p>
+<p>  子类能完全替代父类</p>
+</li>
+<li><p><code>Law of Demeter：迪米特法则</code></p>
+<p>  功能模块之间尽量减少相互作用，保持相互独立</p>
+</li>
+<li><p><code>Interface Segregation Principle：接口隔离原则</code></p>
+<p>  用多个借口将功能解耦</p>
+</li>
+<li><p><code>Dependence Inversion Principle：依赖倒置原则</code></p>
+<p>  高层模块不应该依赖低层模块，二者都应该依赖其抽象，对抽象接口进行编程</p>
+</li>
+</ul>
+<h2 id="原型"><a href="#原型" class="headerlink" title="原型"></a>原型</h2><p><code>JavaScript</code> 常被描述为一种基于原型的语言 (prototype-based language)</p>
+<p>每个对象拥有一个原型对象，对象以其原型为模板创建新对象、并从原型继承方法和属性。</p>
+<h2 id="原型链"><a href="#原型链" class="headerlink" title="原型链"></a>原型链</h2><p>而这个原型对象也可能拥有原型，并从中继承方法和属性，一层一层指向更外层的原型。这种关系常被称为<code>原型链 (prototype chain)</code>，它解释了为何一个对象会拥有定义在其他对象中的属性和方法。</p>
+<p>在传统的’面向对象‘中，首先定义“类”，此后创建对象实例时，类中定义的所有属性和方法都被  <strong>【 复制 】</strong>  到新实例中。</p>
+<p>在 JavaScript 中并不如此复制，而是在对象实例和它的构造器之间建立一个链接【通过隐式原型<code>__proto__</code>访问】，之后通过上溯原型链，在构造器中找到这些属性和方法。</p>
+<p><img src="../images/proto.png" srcset="/img/loading.gif" lazyload alt="proto"></p>
+<p>当 js 在查找某属性时，对象本体上没有该属性则会访问对象的<code>__proto__</code>进行查找(即在该函数构造函数的<code>prototype</code>中查找)，还是没有则继续递归访问<code>__proto__</code>,一直到<code>Object</code>，【【【<code>Object.prototype</code>没有<code>__proto__</code>属性】】】，继续访问则返回<code>null</code>,这样一条由<code>__proto__</code>把所有对象链接起来的线成为原型链</p>
 <div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f1</span>(<span class="hljs-params"></span>)</span>&#123;&#125;
-
 <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">Function</span>.prototype)
 ƒ () &#123; [native code] &#125;
-
 <span class="hljs-built_in">console</span>.log(f1.__proto__)
 ƒ () &#123; [native code] &#125;
-
 <span class="hljs-comment">//    !!!!!!!!!</span>
 <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">Function</span>.prototype.__proto__ == f1.__proto__.__proto__)
 <span class="hljs-literal">true</span>
-
 <span class="hljs-comment">// 实例继承自构造函数</span>
 <span class="hljs-comment">// 函数继承自Function对象</span>
 <span class="hljs-comment">// Function继承自Object对象</span>
-
 <span class="hljs-comment">// 非函数对象</span>
 <span class="hljs-keyword">const</span> o1 = &#123;&#125;
-
 o1.__proto__
-<span class="hljs-comment">// &#123;constructor: ƒ, __defineGetter__: ƒ, __defineSetter__: ƒ, hasOwnProperty: ƒ, __lookupGetter__: ƒ, …&#125;</span>
+<span class="hljs-comment">// &#123;constructor: ƒ, __defineGetter__: ƒ, __defineSetter__: ƒ, hasOwnProperty: ƒ,__lookupGetter__: ƒ, …&#125;</span>
 o1.__proto__ === <span class="hljs-built_in">Object</span>.prototype
 <span class="hljs-comment">// true</span>
-o1.__proto__.__proto__ = <span class="hljs-literal">null</span></code></pre></div></li>
+o1.__proto__.__proto__ = <span class="hljs-literal">null</span></code></pre></div>
+
+<h3 id="特殊的Object和Function"><a href="#特殊的Object和Function" class="headerlink" title="特殊的Object和Function"></a>特殊的<code>Object</code>和<code>Function</code></h3><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">typeof</span> <span class="hljs-built_in">Function</span>.prototype === <span class="hljs-string">&quot;function&quot;</span>
+<span class="hljs-comment">// 说明Function的原型还是一个Function</span>
+<span class="hljs-built_in">Function</span>.__proto__ ===  <span class="hljs-built_in">Function</span>.prototype<span class="hljs-comment">// ƒ () &#123; [native code] &#125;</span>
+
+
+<span class="hljs-keyword">typeof</span> <span class="hljs-built_in">Function</span>.prototype.__proto__ <span class="hljs-comment">//&quot;object&quot;</span>
+<span class="hljs-comment">// 说明Function的原型的构造器原型是Object</span>
+<span class="hljs-built_in">Function</span>.prototype.__proto__ === <span class="hljs-built_in">Object</span>.prototype
+
+
+<span class="hljs-comment">// js中函数对象都是由Function函数生成的,可以得出</span>
+<span class="hljs-built_in">Object</span>._proto_ === <span class="hljs-built_in">Function</span>.prototype <span class="hljs-comment">// ƒ () &#123; [native code] &#125;</span></code></pre></div>
+
+<h3 id="原形链的终点"><a href="#原形链的终点" class="headerlink" title="原形链的终点"></a>原形链的终点</h3><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">typeof</span> <span class="hljs-built_in">Object</span>.prototye === <span class="hljs-string">&#x27;object&#x27;</span>
+<span class="hljs-comment">// 意味着Object的原型是也是一个Object对象，那将会出现死循环 </span>
+<span class="hljs-built_in">Object</span>.prototype.__proto__ === <span class="hljs-built_in">Object</span>.prototype
+
+
+<span class="hljs-comment">// 为了让原型链有终点。Javascript规定，</span>
+<span class="hljs-built_in">Object</span>.prototype.__proto__ === <span class="hljs-literal">null</span></code></pre></div>
+
+<h3 id="只有函数才有prototype"><a href="#只有函数才有prototype" class="headerlink" title="只有函数才有prototype"></a>只有函数才有<code>prototype</code></h3><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f1</span>(<span class="hljs-params"></span>)</span>&#123;&#125;
+f1.__proto__ === <span class="hljs-built_in">Function</span>.prototype <span class="hljs-comment">// f1直接由Function构造而来</span>
+
+<span class="hljs-keyword">const</span> obj1 = &#123;&#125;
+obj1.prototype <span class="hljs-comment">// undefined</span></code></pre></div>
+
+<h3 id="相关方法"><a href="#相关方法" class="headerlink" title="相关方法"></a>相关方法</h3><ul>
+<li><p><code>Object.getPrototype()</code>/<code>__proto__</code></p>
+<p>返回指定对象的原型（隐式原型）</p>
+<p><code>__proto__</code>虽然在绝大数浏览器都能正常工作，但官方不推荐且已标为废弃，使用<code>Object.getPrototypeOf()</code>替代</p>
+</li>
+<li><p><code>Object.prototype.isPrototypeOf()</code></p>
+<p>  判断对象是否在另一个对象原型链上</p>
+</li>
 </ul>
 
             </div>

@@ -237,7 +237,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年5月10日 上午
+                  本文最后更新于：2021年5月21日 上午
                 
               </p>
             
@@ -395,7 +395,8 @@ handler.construct()
 <h2 id="Generator"><a href="#Generator" class="headerlink" title="Generator"></a>Generator</h2><ul>
 <li>可以暂停的状态机，遇到yield则暂停</li>
 <li>.next（）执行到下一个yield</li>
-<li>自执行generator<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">co</span>(<span class="hljs-params">fn</span>)</span>&#123;
+<li>自执行generator<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// co函数简单实现</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">co</span>(<span class="hljs-params">fn</span>)</span>&#123;
   <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve,reject</span>)=&gt;</span>&#123;
     <span class="hljs-keyword">const</span> gen = fn()
     <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">step</span>(<span class="hljs-params">nextF</span>)</span>&#123;
@@ -416,9 +417,9 @@ handler.construct()
   &#125;)
 &#125;
 </code></pre></div>
-<h2 id="async-await-1"><a href="#async-await-1" class="headerlink" title="async/await"></a>async/await</h2>generator语法糖<h2 id="Class类"><a href="#Class类" class="headerlink" title="Class类"></a>Class类</h2></li>
+<h2 id="async-await-1"><a href="#async-await-1" class="headerlink" title="async/await"></a>async/await</h2>generator语法糖</li>
 </ul>
-<ol>
+<h2 id="Class类"><a href="#Class类" class="headerlink" title="Class类"></a>Class类</h2><ol>
 <li><p>类表达式和类声明</p>
  <div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> A = <span class="hljs-class"><span class="hljs-keyword">class</span> </span>&#123;
 

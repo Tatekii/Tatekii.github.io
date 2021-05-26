@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.7k 字
+      1.6k 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      27
+      25
        分钟
     </span>
   
@@ -237,7 +237,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年4月27日 凌晨
+                  本文最后更新于：2021年5月20日 晚上
                 
               </p>
             
@@ -262,19 +262,8 @@
 </ol>
 </li>
 </ul>
-<h2 id="异步任务"><a href="#异步任务" class="headerlink" title="异步任务"></a>异步任务</h2><ul>
-<li>setTimeout/setInterval<blockquote>
-<p>需要注意的是，setTimeout()只是将事件插入了”任务队列”，必须等到当前代码（执行栈）执行完，主线程才会去执行它指定的回调函数。要是当前代码耗时很长，有可能要等很久，所以并没有办法保证，回调函数一定会在setTimeout()指定的时间执行</p>
-</blockquote>
+<h2 id="微任务-宏任务"><a href="#微任务-宏任务" class="headerlink" title="微任务/宏任务"></a>微任务/宏任务</h2><p>不同的异步任务被分为两类：微任务（<code>micro task</code>）和宏任务（<code>macro task</code>）</p>
 <ul>
-<li>DOM事件(onclick,onload)</li>
-<li>Promise</li>
-</ul>
-</li>
-</ul>
-<h2 id="微任务-宏任务"><a href="#微任务-宏任务" class="headerlink" title="微任务/宏任务"></a>微任务/宏任务</h2><ul>
-<li><p>不同的异步任务被分为两类：微任务（<code>micro task</code>）和宏任务（<code>macro task</code>）</p>
-</li>
 <li><p>JS的事件循环中每个宏任务称为一个<code>Tick</code>(标记)，在每个标记的末尾会追加一个微任务队列，一个宏任务执行完后会执行所有的微任务，直到队列清空。</p>
 </li>
 <li><p>微任务包括 <code>process.nextTick</code> ，<code>promise.then</code> ，<code>catch</code>,<code>finally</code> ，<code>MutationObserver</code></p>
@@ -282,7 +271,7 @@
 <li>！遇到<code>nextTick</code>会提到微任务的栈顶</li>
 </ul>
 </li>
-<li><p>宏任务包括 <code>整体代码script</code> ， <code>setTimeout</code> ，<code>setInterval</code> ，<code>setImmediate</code> ，<code>I/O</code>操作 ，<code>UI</code>渲染</p>
+<li><p>宏任务包括 <code>setTimeout</code> ，<code>setInterval</code> ，<code>setImmediate</code> ，<code>I/O</code>操作 ，<code>UI</code>渲染</p>
 </li>
 </ul>
 <h2 id="面试题"><a href="#面试题" class="headerlink" title="面试题"></a>面试题</h2><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// js执行顺序</span>

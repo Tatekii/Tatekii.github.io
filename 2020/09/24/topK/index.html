@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      957 字
+      1k 字
     </span>
   
 
@@ -237,7 +237,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年5月2日 晚上
+                  本文最后更新于：2021年5月26日 下午
                 
               </p>
             
@@ -246,15 +246,12 @@
 <li><p>局部冒泡<br>！！输出结果无序</p>
 <div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">bubbleSort</span>(<span class="hljs-params">arr, k</span>) </span>&#123;
   <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; k; i++) &#123;
-    <span class="hljs-keyword">let</span> flag = <span class="hljs-literal">false</span>;
     <span class="hljs-comment">// 冒泡执行k次</span>
-    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> j = arr.length - <span class="hljs-number">1</span>; j &gt; <span class="hljs-number">0</span> + i; j--) &#123;
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> j = arr.length - <span class="hljs-number">1</span>; j &gt; i; j--) &#123;
       <span class="hljs-keyword">if</span> (arr[j] &lt; arr[j - <span class="hljs-number">1</span>]) &#123;
         [arr[j], arr[j - <span class="hljs-number">1</span>]] = [arr[j - <span class="hljs-number">1</span>], arr[j]];
-        flag = <span class="hljs-literal">true</span>;
       &#125;
     &#125;
-    <span class="hljs-keyword">if</span> (!flag) <span class="hljs-keyword">break</span>;
   &#125;
 &#125;
 <span class="hljs-comment">// K相当于冒泡次数</span>
@@ -303,49 +300,48 @@ data[k - <span class="hljs-number">1</span>];</code></pre></div></li>
 
 
 <ul>
-<li>快速排序</li>
+<li>快速选择<blockquote>
+<p>快排的改装</p>
+</blockquote>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">minK</span>(<span class="hljs-params">arr,k</span>)</span>&#123;
+  <span class="hljs-comment">// 第k大的元素</span>
+  <span class="hljs-keyword">return</span> quickSort(arr,k)
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">quickSort</span>(<span class="hljs-params">arr,k</span>)</span>&#123;
+  <span class="hljs-keyword">return</span> quick(arr,<span class="hljs-number">0</span>,arr.length-<span class="hljs-number">1</span>,k)
+
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">quick</span>(<span class="hljs-params">arr,l,r,k</span>)</span>&#123;
+    <span class="hljs-keyword">const</span> index = partition(arr,l,r)
+    <span class="hljs-comment">// 这里开始和一般快排不同</span>
+    <span class="hljs-comment">// 第k大的值，索引为k-1</span>
+    <span class="hljs-comment">// partition选出的位置与这个k比较</span>
+    <span class="hljs-comment">// 根据pivot与k-1的相对位置，每次只用继续partition一半</span>
+    <span class="hljs-keyword">if</span>(index === k-<span class="hljs-number">1</span>)&#123;
+      <span class="hljs-keyword">return</span> arr[index]
+    &#125;
+    <span class="hljs-keyword">if</span>(index &gt; k-<span class="hljs-number">1</span>)&#123;
+      <span class="hljs-keyword">return</span> quick(arr,l,index-<span class="hljs-number">1</span>,k)
+    &#125;
+    <span class="hljs-keyword">if</span>(index &lt; k-<span class="hljs-number">1</span>)&#123;
+      <span class="hljs-keyword">return</span> quick(arr,index+<span class="hljs-number">1</span>,r,k)
+    &#125;
+  &#125;
+&#125;
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">partition</span>(<span class="hljs-params">arr,l,r</span>)</span>&#123;
+  <span class="hljs-keyword">const</span> pivot = arr[r]
+  <span class="hljs-keyword">let</span> i = l
+  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> j = l;j&lt;r;j++)&#123;
+    <span class="hljs-keyword">if</span>(arr[j]&lt;pivot)&#123;
+      [arr[j],arr[i]] = [arr[i],arr[j]]
+      i++
+    &#125;
+  &#125;
+  [arr[i],arr[r]] = [arr[r],arr[i]]
+  <span class="hljs-keyword">return</span> i 
+&#125;
+</code></pre></div></li>
 </ul>
-<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">//分割出来的索引位置，与k的索引位置比较</span>
-<span class="hljs-comment">//第k大的值，小到大排序后就是 [nums.length - k] 索引的位置</span>
-<span class="hljs-comment">//减少操作次数，不用完全排序一遍</span>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">findK</span>(<span class="hljs-params">nums, k</span>) </span>&#123;
-  <span class="hljs-keyword">return</span> quickSelect(nums, nums.length - k);
-&#125;
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">quickSelect</span>(<span class="hljs-params">arr, k</span>) </span>&#123;
-  <span class="hljs-keyword">return</span> quick(arr, <span class="hljs-number">0</span>, arr.length - <span class="hljs-number">1</span>, k);
-&#125;
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">quick</span>(<span class="hljs-params">arr, left, right, k</span>) </span>&#123;
-  <span class="hljs-keyword">let</span> index;
-  <span class="hljs-keyword">if</span> (left &lt; right) &#123;
-    index = partition(arr, left, right);
-    <span class="hljs-keyword">if</span> (k === index) &#123;
-      <span class="hljs-keyword">return</span> arr[index];
-    &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (k &lt; index) &#123;
-      <span class="hljs-keyword">return</span> quick(arr, left, index - <span class="hljs-number">1</span>, k);
-    &#125; <span class="hljs-keyword">else</span> &#123;
-      <span class="hljs-keyword">return</span> quick(arr, index + <span class="hljs-number">1</span>, right, k);
-    &#125;
-  &#125;
-  <span class="hljs-keyword">return</span> arr[left];
-&#125;
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">partition</span>(<span class="hljs-params">arr, left, right</span>) </span>&#123;
-  <span class="hljs-keyword">let</span> base = arr[<span class="hljs-built_in">Math</span>.floor(<span class="hljs-built_in">Math</span>.random() * (right - left + <span class="hljs-number">1</span>)) + left];
-  <span class="hljs-keyword">let</span> L = left,
-    R = right;
-  <span class="hljs-keyword">while</span> (L &lt; R) &#123;
-    <span class="hljs-keyword">while</span> (arr[L] &lt; base) &#123;
-      L++;
-    &#125;
-    <span class="hljs-keyword">while</span> (arr[R] &gt; base) &#123;
-      R--;
-    &#125;
-    <span class="hljs-keyword">if</span> (L &lt; R) [arr[L], arr[R]] = [arr[R], arr[L]];
-
-    <span class="hljs-keyword">if</span> (arr[L] === arr[R] &amp;&amp; L !== R) L++;
-  &#125;
-  <span class="hljs-keyword">return</span> L;
-&#125;</code></pre></div>
-
 <h2 id="出现最多-最少的-K-个元素"><a href="#出现最多-最少的-K-个元素" class="headerlink" title="出现最多/最少的 K 个元素"></a>出现最多/最少的 K 个元素</h2><ul>
 <li>傻瓜 map 映射一个 arr 进行排序</li>
 </ul>
@@ -429,7 +425,11 @@ data[k - <span class="hljs-number">1</span>];</code></pre></div></li>
 
 
 <ul>
-<li>桶排序<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">showMost</span>(<span class="hljs-params">arr,k</span>)</span>&#123;
+<li>桶排序</li>
+</ul>
+<p>出现次数最多的前k个数</p>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">showMost</span>(<span class="hljs-params">arr,k</span>)</span>&#123;
+  <span class="hljs-comment">// 记录各数字出现次数</span>
   <span class="hljs-keyword">const</span> map = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Map</span>()
   arr.map(<span class="hljs-function">(<span class="hljs-params">num</span>) =&gt;</span> &#123;
     <span class="hljs-keyword">if</span> (map.has(num)) &#123;
@@ -442,6 +442,8 @@ data[k - <span class="hljs-number">1</span>];</code></pre></div></li>
   <span class="hljs-keyword">return</span> buckerSort(map,k)
 &#125;
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">buckerSort</span>(<span class="hljs-params">map,k</span>)</span>&#123;
+  <span class="hljs-comment">// 按照出现次数作为arr数组下标划分桶</span>
+  <span class="hljs-comment">// 将数字放入桶中</span>
   <span class="hljs-keyword">let</span> arr = []
   <span class="hljs-keyword">let</span> res = []
   map.forEach(<span class="hljs-function">(<span class="hljs-params">value,key</span>)=&gt;</span>&#123;
@@ -450,17 +452,18 @@ data[k - <span class="hljs-number">1</span>];</code></pre></div></li>
     &#125;<span class="hljs-keyword">else</span>&#123;
       arr[value].push(key)
     &#125;
+    <span class="hljs-comment">// 出现了value次的数字有...</span>
   &#125;)
-
+  <span class="hljs-comment">// 逆向遍历桶数组</span>
+  <span class="hljs-comment">// </span>
   <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = arr.length - <span class="hljs-number">1</span> ; i&gt;=<span class="hljs-number">0</span> &amp;&amp; res.length &lt; k ; i--)&#123;
+    <span class="hljs-comment">// 从出现最多的数字开始收集直到收集到k个</span>
     <span class="hljs-keyword">if</span>(arr[i])&#123;
       res.push(...arr[i])
     &#125;
   &#125;
   <span class="hljs-keyword">return</span> res
-&#125;</code></pre></div></li>
-</ul>
-
+&#125;</code></pre></div>
             </div>
             <hr>
             <div>
@@ -493,7 +496,7 @@ data[k - <span class="hljs-number">1</span>];</code></pre></div></li>
                     
                       <a href="/2020/09/29/%E9%98%9F%E5%88%97/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">队列算法题</span>
+                        <span class="hidden-mobile">队列及算法题</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     

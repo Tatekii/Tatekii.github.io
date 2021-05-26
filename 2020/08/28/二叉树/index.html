@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.1k 字
+      1.7k 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      18
+      26
        分钟
     </span>
   
@@ -237,7 +237,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年5月18日 中午
+                  本文最后更新于：2021年5月24日 下午
                 
               </p>
             
@@ -257,15 +257,17 @@
 </li>
 </ul>
 <h2 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h2><p>最多只有两个子节点的树结构</p>
-<ul>
-<li>平衡二叉树</li>
-<li>满二叉树</li>
-<li>完全二叉树</li>
-<li>二叉搜索树【BST】：右子大于父大于左子<ul>
-<li>二叉搜索树的中序遍历得到升序排列</li>
+<p>二叉树是n个有限元素的集合，该集合或者为空、或者由一个称为根（root）的元素及两个不相交的、被分别称为左子树和右子树的二叉树组成</p>
+<h4 id="平衡二叉树"><a href="#平衡二叉树" class="headerlink" title="平衡二叉树"></a>平衡二叉树</h4><p>任意节点的左右子树高度差不大于1</p>
+<h4 id="满二叉树：每一层节点数都达到最大值"><a href="#满二叉树：每一层节点数都达到最大值" class="headerlink" title="满二叉树：每一层节点数都达到最大值"></a>满二叉树：每一层节点数都达到最大值</h4><ul>
+<li>一个层数为k 的满二叉树总结点数为：2^k-1</li>
+<li>第i层上的结点数为：2^(i-1)</li>
+<li>一个层数为k的满二叉树的叶子结点个数（也就是最后一层）：2^(k-1)<h4 id="完全二叉树"><a href="#完全二叉树" class="headerlink" title="完全二叉树"></a>完全二叉树</h4></li>
 </ul>
-</li>
-</ul>
+<p>如果对满二叉树的结点进行编号, 约定编号从根结点起, 自上而下, 自左而右。则深度为k的, 有n个结点的二叉树, 当且仅当其每一个结点都与深度为k的满二叉树中编号从1至n的结点一一对应时, 称之为完全二叉树。</p>
+<h4 id="二叉搜索树【BST】：右子大于父大于左子"><a href="#二叉搜索树【BST】：右子大于父大于左子" class="headerlink" title="二叉搜索树【BST】：右子大于父大于左子"></a>二叉搜索树【BST】：右子大于父大于左子</h4><blockquote>
+<p>二叉搜索树的中序遍历得到升序排列</p>
+</blockquote>
 <h2 id="二叉树遍历"><a href="#二叉树遍历" class="headerlink" title="二叉树遍历"></a>二叉树遍历</h2><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">BinaryTree</span>(<span class="hljs-params"></span>) </span>&#123;
   <span class="hljs-keyword">const</span> Node = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">val</span>) </span>&#123;
     <span class="hljs-built_in">this</span>.val = val;
@@ -283,17 +285,13 @@
 </ul>
 <div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">preOrderTraverse</span>(<span class="hljs-params">node</span>) </span>&#123;
   <span class="hljs-keyword">let</span> res = [];
-  <span class="hljs-keyword">let</span> stack = [];
-  <span class="hljs-keyword">if</span> (node) stack.push(node);
+  <span class="hljs-keyword">let</span> stack = [node];
+
   <span class="hljs-keyword">while</span> (stack.length &gt; <span class="hljs-number">0</span>) &#123;
     <span class="hljs-keyword">let</span> curNode = stack.pop();
     res.push(curNode.val);
-    <span class="hljs-keyword">if</span> (curNode.right !== <span class="hljs-literal">null</span>) &#123;
-      stack.push(curNode.right);
-    &#125;
-    <span class="hljs-keyword">if</span> (curNode.left !== <span class="hljs-literal">null</span>) &#123;
-      stack.push(curNode.left);
-    &#125;
+    curNode.left &amp;&amp; stack.push(curNode.left)
+    curNode.right &amp;&amp; stack.push(curNode.right)
   &#125;
   <span class="hljs-keyword">return</span> res;
 &#125;</code></pre></div>
@@ -311,28 +309,26 @@
 <h2 id="二叉树算法题"><a href="#二叉树算法题" class="headerlink" title="二叉树算法题"></a>二叉树算法题</h2><ul>
 <li>计算路径</li>
 </ul>
-<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// 输入二叉树和一个值，求出按照二叉树路径求和等于该值的路径</span>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// 输入一棵二叉树和一个整数，打印出二叉树中节点值的和为输入整数的所有路径。从树的根节点开始往下一直到叶节点所经过的节点形成一条路径。</span>
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">pathSum</span>(<span class="hljs-params">root,sum</span>)</span>&#123;
   <span class="hljs-keyword">if</span>(!root) <span class="hljs-keyword">return</span> []
   <span class="hljs-keyword">if</span>(root.value===sum) <span class="hljs-keyword">return</span> [root.value]
   <span class="hljs-keyword">const</span> paths = []
+
   <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">searchPath</span>(<span class="hljs-params">node,target,prePath</span>)</span>&#123;
-    <span class="hljs-comment">/**</span>
-<span class="hljs-comment">    / <span class="hljs-doctag">@parma </span>target 与最终sum的差值</span>
-<span class="hljs-comment">    / <span class="hljs-doctag">@parma </span>prePath 到此的路径</span>
-<span class="hljs-comment">    */</span>
-    <span class="hljs-keyword">const</span>  = target-node.val
+    <span class="hljs-keyword">const</span> target = sum - node.val
     <span class="hljs-keyword">const</span> curPath = [...prePath,node.val]
-    <span class="hljs-keyword">if</span>(!node.left &amp;&amp; !node.right &amp;&amp; ===<span class="hljs-number">0</span>)&#123;
+    <span class="hljs-keyword">if</span>(!node.left &amp;&amp; !node.right &amp;&amp; target===<span class="hljs-number">0</span>)&#123;
+      <span class="hljs-comment">// 一直要到叶子结点</span>
       paths.push(curPath)
+      <span class="hljs-keyword">return</span>
     &#125;
-    <span class="hljs-keyword">if</span>(node.left)&#123;
-      searchPath(node.left,,curPath)
-    &#125;
-    <span class="hljs-keyword">if</span>(node.right)&#123;
-      searchPath(node.right,,curPath)
-    &#125;
+    node.left &amp;&amp; searchPath(node.left,target,curPath)
+    node.right &amp;&amp; searchPath(node.right,target,curPath)
   &#125;
+
+  searchPath(root,sum,[])
+  <span class="hljs-keyword">return</span> paths
 &#125;</code></pre></div>
 
 <ul>
@@ -386,13 +382,13 @@
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">maxDepth</span>(<span class="hljs-params">root</span>)</span>&#123;
   <span class="hljs-keyword">let</span> max = <span class="hljs-number">0</span>
   <span class="hljs-keyword">if</span>(!root) <span class="hljs-keyword">return</span> max
-  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">search</span>(<span class="hljs-params">node,dep</span>)</span>&#123;
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">BFS</span>(<span class="hljs-params">node,dep</span>)</span>&#123;
     <span class="hljs-keyword">if</span>(!node) <span class="hljs-keyword">return</span>
     max = <span class="hljs-built_in">Math</span>.max(max,++dep)
-    search(node.left)
-    search(node.right)
+    BFS(node.left,dep)
+    BFS(node.right,dep)
   &#125;
-  search(root,<span class="hljs-number">0</span>)
+  BFS(root,<span class="hljs-number">0</span>)
   <span class="hljs-keyword">return</span> max
 &#125;
 
@@ -418,22 +414,22 @@
 </ul>
 <div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">kthLargest</span>(<span class="hljs-params">root, k</span>) </span>&#123;
   <span class="hljs-keyword">if</span> (!root) <span class="hljs-keyword">return</span>;
-  <span class="hljs-keyword">let</span> kth;
+  <span class="hljs-keyword">let</span> res = root.val
   <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">DFS</span>(<span class="hljs-params">node</span>) </span>&#123;
     <span class="hljs-keyword">if</span> (!node) <span class="hljs-keyword">return</span>;
     DFS(node.right);
     <span class="hljs-keyword">if</span> (--k === <span class="hljs-number">0</span>) &#123;
-      kth = node.val;
+      res = node.val;
       <span class="hljs-keyword">return</span>;
     &#125;
     DFS(node.right);
   &#125;
-  <span class="hljs-keyword">return</span> kth;
+  DFS(root)
+  <span class="hljs-keyword">return</span> res
 &#125;</code></pre></div>
 
 <ul>
-<li>二叉树的最近公共祖先</li>
-</ul>
+<li><p>二叉树的最近公共祖先<br>对于有根树 T 的两个结点 p、q，最近公共祖先表示为一个结点 x，满足 x 是 p、q 的祖先且 x 的深度尽可能大（一个节点也可以是它自己的祖先）</p>
 <div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">lowestCommonAncestor</span>(<span class="hljs-params">root, p, q</span>) </span>&#123;
   <span class="hljs-keyword">if</span> (!root) <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>
   <span class="hljs-keyword">if</span>(root === p || root === q) <span class="hljs-keyword">return</span> root
@@ -441,11 +437,8 @@
   <span class="hljs-keyword">const</span> r = lowerCommonAncestor(root.right, p, q);
   l &amp;&amp; r ? root : l || r
 &#125;
-</code></pre></div>
-
-<ul>
-<li>二叉搜索树的最近公共祖先</li>
-</ul>
+</code></pre></div></li>
+<li><p>二叉搜索树的最近公共祖先<br>二叉搜索树中 rightTree &gt; root  &gt; leftTree</p>
 <div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// 递归</span>
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">lowestCommonAncestor</span>(<span class="hljs-params">root, p, q</span>) </span>&#123;
   <span class="hljs-keyword">if</span> (root.val &lt; p.val &amp;&amp; root.val &lt; q.val) &#123;
@@ -456,46 +449,18 @@
   &#125;
   <span class="hljs-keyword">return</span> root;
 &#125;
+</code></pre></div></li>
+<li><p>二叉搜索树节点间最小差</p>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// 中序排列后，最小差就是该数组中相邻元素最小差</span>
 
-<span class="hljs-comment">// 迭代</span>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">lowestCommonAncestor</span>(<span class="hljs-params">root, p, q</span>) </span>&#123;
-  <span class="hljs-keyword">while</span> (root) &#123;
-    <span class="hljs-keyword">if</span> (root.val &lt; p.val &amp;&amp; root.val &lt; q.val) &#123;
-      root = root.right
-    &#125;
-    <span class="hljs-keyword">if</span> (root.val &gt; p.val &amp;&amp; root.val &gt; q.val) &#123;
-      root = root.left
-    &#125;
-  &#125;
-  <span class="hljs-keyword">return</span> root;
-&#125;</code></pre></div>
-<ul>
-<li>二叉搜索树节点间最小差<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// 中序排列后，最小差就是该数组中相邻元素最小差</span>
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">minDiffInBST</span>(<span class="hljs-params">root</span>)</span>&#123;
-  <span class="hljs-comment">// 使用辅助栈</span>
-  <span class="hljs-keyword">const</span> stack = []
   <span class="hljs-keyword">let</span> pre = <span class="hljs-literal">null</span>
   <span class="hljs-keyword">let</span> min = <span class="hljs-built_in">Number</span>.MAX_SAFE_INTEGER
-  <span class="hljs-keyword">while</span>(root || stack.length)&#123;
-    <span class="hljs-keyword">while</span>(root)&#123;
-      stack.push(root)
-      root = root.left
-    &#125;
-    root = stack.pop()
-    pre!==<span class="hljs-literal">null</span> &amp;&amp; min = <span class="hljs-built_in">Math</span>.min(min,root.val-pre)
-    pre = root.val
-    root = root.right
-  &#125;
-  <span class="hljs-keyword">return</span> min
-&#125;
-
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">minDiffInBST</span>(<span class="hljs-params">root</span>)</span>&#123;
-  <span class="hljs-keyword">let</span> pre = <span class="hljs-literal">null</span>
-  <span class="hljs-keyword">let</span> min = MAX_SAFE_INTEGER
   <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">DFS</span>(<span class="hljs-params">node</span>)</span>&#123;
     <span class="hljs-keyword">if</span>(!node) <span class="hljs-keyword">return</span>
     DFS(node.left)
     <span class="hljs-keyword">if</span>(pre===<span class="hljs-literal">null</span>)&#123;
+      <span class="hljs-comment">// init阶段</span>
       pre = node.val
     &#125;<span class="hljs-keyword">else</span>&#123;
       min = <span class="hljs-built_in">Math</span>.min(min,node.val-pre)
@@ -504,22 +469,114 @@
     <span class="hljs-comment">// 中序列遍历，pre存储上一个值，由于BST特性，cur.val永远大于pre</span>
     DFS(node.right)
   &#125;
+&#125;
+
+
+<span class="hljs-comment">// 使用辅助栈</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">minDiffInBST</span>(<span class="hljs-params">root</span>)</span>&#123;
+  <span class="hljs-keyword">let</span> pre = <span class="hljs-literal">null</span>
+  <span class="hljs-keyword">let</span> min = <span class="hljs-built_in">Number</span>.MAX_SAFE_INTEGER
+  <span class="hljs-keyword">const</span> stack = []
+  <span class="hljs-keyword">while</span>(root || stack.length&gt;<span class="hljs-number">0</span>)&#123;
+    <span class="hljs-keyword">while</span>(root)&#123;
+      stack.push(root)
+      root = root.left
+    &#125;
+    <span class="hljs-keyword">const</span> node = stack.pop()
+    <span class="hljs-keyword">if</span>(pre === <span class="hljs-literal">null</span>)&#123;
+      pre = node.val
+    &#125;<span class="hljs-keyword">else</span>&#123;
+      min = <span class="hljs-built_in">Math</span>.min(min,node.val - pre)
+      pre = node.val
+    &#125;
+    root = node.right
+  &#125;
+  <span class="hljs-keyword">return</span> min
 &#125;</code></pre></div></li>
 </ul>
 <ul>
-<li>从上到下打印二叉树<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">printTree</span>(<span class="hljs-params">root</span>)</span>&#123;
+<li><p>从上到下打印二叉树<br>[[第一层],[第二层],[第三层]]</p>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">printTree</span>(<span class="hljs-params">root</span>)</span>&#123;
   <span class="hljs-keyword">if</span>(!root) <span class="hljs-keyword">return</span> []
-  <span class="hljs-keyword">const</span> queue = [[root,<span class="hljs-number">0</span>]]
+  <span class="hljs-keyword">const</span> stack = [[root,<span class="hljs-number">0</span>]]
   <span class="hljs-keyword">const</span> res = []
-  <span class="hljs-keyword">while</span>(queue.length&gt;<span class="hljs-number">0</span>)&#123;
-    <span class="hljs-keyword">const</span> [node,level] = queue.shift()
+  <span class="hljs-keyword">while</span>(stack.length&gt;<span class="hljs-number">0</span>)&#123;
+    <span class="hljs-keyword">const</span> [node,level] = stack.shift()
     <span class="hljs-keyword">if</span>(res[level]) res[level] = []
     res[level].push(node.val)
 
-    node.left &amp;&amp; queue.push([node.left,level+<span class="hljs-number">1</span>])
-    node.right &amp;&amp; queue.push(node.right,level+<span class="hljs-number">1</span>)
+    node.left &amp;&amp; stack.push([node.left,level+<span class="hljs-number">1</span>])
+    node.right &amp;&amp; stack.push(node.right,level+<span class="hljs-number">1</span>)
   &#125;
   <span class="hljs-keyword">return</span> res
+&#125;
+
+<span class="hljs-keyword">var</span> levelOrder = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">root</span>) </span>&#123;
+  <span class="hljs-keyword">if</span>(!root)&#123;
+      <span class="hljs-keyword">return</span> []
+  &#125;
+  <span class="hljs-keyword">const</span> stack=[root]
+  <span class="hljs-keyword">const</span> res=[]
+  <span class="hljs-keyword">let</span> count = <span class="hljs-literal">true</span><span class="hljs-comment">//正反打印，奇数行左右，偶数行右左</span>
+  <span class="hljs-keyword">while</span>(stack.length&gt;<span class="hljs-number">0</span>)&#123;
+      <span class="hljs-keyword">let</span> size = stack.length
+      <span class="hljs-keyword">const</span> curLevel =[]
+      <span class="hljs-keyword">while</span>(size--)&#123;
+        <span class="hljs-comment">// 用单独循环操作当前层</span>
+          <span class="hljs-keyword">const</span> node = stack.shift()
+          <span class="hljs-keyword">if</span>(count)&#123;
+              curLevel.push(node.val)
+          &#125; <span class="hljs-keyword">else</span> &#123;
+            curLevel.unshift(node.val)
+          &#125;
+            node.left &amp;&amp; stack.push(node.left)
+            node.right &amp;&amp; stack.push(node.right)
+      &#125;
+      count = !count
+      res.push(curLevel)
+  &#125;
+  <span class="hljs-keyword">return</span> res
+&#125;;</code></pre></div></li>
+<li><p>判断平衡二叉树</p>
+<p>平衡二叉树，左右子树深度差不大于1</p>
+</li>
+</ul>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isBalanced</span>(<span class="hljs-params">root</span>)</span>&#123;
+  <span class="hljs-keyword">let</span> res = <span class="hljs-literal">true</span>
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">dfs</span>(<span class="hljs-params">node</span>)</span>&#123;
+    <span class="hljs-keyword">if</span>(!node) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>
+    <span class="hljs-keyword">let</span> left = dfs(node.left)
+    <span class="hljs-keyword">let</span> right = dfs(node.right)
+    <span class="hljs-keyword">if</span>(<span class="hljs-built_in">Math</span>.abs(left-right)&gt;<span class="hljs-number">1</span>) res = <span class="hljs-literal">false</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">Math</span>.max(left,right) + <span class="hljs-number">1</span>
+  &#125;
+  dfs(root)
+  <span class="hljs-keyword">return</span> res
+&#125;
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isBalanced</span>(<span class="hljs-params">root</span>)</span>&#123;
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">dfs</span>(<span class="hljs-params">node</span>)</span>&#123;
+    <span class="hljs-keyword">if</span>(!node) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
+    <span class="hljs-keyword">const</span> left = dfs(node.left)
+    <span class="hljs-keyword">const</span> right = dfs(node.right)
+    <span class="hljs-keyword">if</span>(<span class="hljs-built_in">Math</span>.abs(left-right)&gt;<span class="hljs-number">1</span> || left === -<span class="hljs-number">1</span> || right === -<span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">Math</span>.max(left,right) + <span class="hljs-number">1</span>
+  &#125;
+  <span class="hljs-keyword">return</span> dfs(root) !== -<span class="hljs-number">1</span>
+&#125;</code></pre></div>
+
+<ul>
+<li>判断对称二叉树<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// 对称的二叉树</span>
+<span class="hljs-comment">// l = r</span>
+<span class="hljs-comment">// l.right = r.left &amp;&amp; l.left = r.right</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isMirrorTree</span>(<span class="hljs-params">root</span>)</span>&#123;
+  <span class="hljs-keyword">if</span>(!root) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">recur</span>(<span class="hljs-params">l,r</span>)</span>&#123;
+    <span class="hljs-keyword">if</span>(l == <span class="hljs-literal">null</span> &amp;&amp; r == <span class="hljs-literal">null</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>
+    <span class="hljs-keyword">if</span>(l == <span class="hljs-literal">null</span> || r == <span class="hljs-literal">null</span> || l!==r) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
+    <span class="hljs-keyword">return</span> recur(l.left,r.right) &amp;&amp; recur(l.right,l,left) 
+  &#125;
+  <span class="hljs-keyword">return</span> recur(root.left,root.right)
 &#125;</code></pre></div></li>
 </ul>
 

@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      767 字
+      1k 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      8
+      11
        分钟
     </span>
   
@@ -237,17 +237,18 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年5月13日 晚上
+                  本文最后更新于：2021年5月26日 晚上
                 
               </p>
             
             <div class="markdown-body">
               <h1 id="OSI-参考模型"><a href="#OSI-参考模型" class="headerlink" title="OSI 参考模型"></a>OSI 参考模型</h1><p><code>OSI参考模型（OSI/RM）</code>的全称是开放系统互连参考模型<code>（Open System Interconnection Reference Model，OSI/RM）</code>，它是由国际标准化组织（International Standard Organization，ISO）提出的一个网络系统互连模型。</p>
 <ul>
-<li><p>在这个 OSI 七层模型中，每一层都为其上一层提供服务、并为其上一层提供一个访问接口或界面。</p>
+<li><p>在这个 OSI 七层模型中，每一层都为其上一层提供服务和访问接口</p>
 </li>
-<li><p>不同主机之间的相同层次称为<strong>对等层</strong>。如主机 A 中的表示层和主机 B 中的表示层互为对等层、主机 A 中的会话层和主机 B 中的会话层互为对等层等。</p>
+<li><p>不同主机之间的相同层称为<strong>对等层</strong></p>
 </li>
+<li></li>
 <li><p>对等层之间互相通信需要遵守一定的规则，如通信的内容、通信的方式，我们将其称为<strong>协议</strong>（Protocol）。</p>
 </li>
 <li><p>我们将某个主机上运行的某种协议的集合称为<strong>协议栈</strong>。主机正是利用这个协议栈来接收和发送数据的。</p>
@@ -259,27 +260,60 @@
 <li>利用传输介质为数据链路层提供物理连接，传输二进制数据</li>
 <li>数据的单位称为比特<code>bit</code></li>
 </ul>
-<h3 id="数据链路层Data-Link-Layer"><a href="#数据链路层Data-Link-Layer" class="headerlink" title="数据链路层Data Link Layer"></a>数据链路层<code>Data Link Layer</code></h3><ul>
+<h3 id="数据链路层Data-Link-Layer"><a href="#数据链路层Data-Link-Layer" class="headerlink" title="数据链路层Data Link Layer"></a>数据链路层<code>Data Link Layer</code></h3><blockquote>
+<p>MAC地址</p>
+</blockquote>
+<ul>
 <li>物理地址寻址、数据的成帧、流量控制、数据的检错、重发等。</li>
 <li>数据的单位称为帧<code>frame</code></li>
-<li><code>ARP</code>（Address Resolution Protocol，地址解析协议）</li>
+<li>协议<ul>
+<li><code>ARP</code>（Address Resolution Protocol，地址解析协议）IP地址映射到MAC地址</li>
 <li><code>RARP</code>（Reverse Address Resolution Protocol，逆地址解析协议）</li>
 </ul>
-<h3 id="网络层Network-Layer"><a href="#网络层Network-Layer" class="headerlink" title="网络层Network Layer"></a>网络层<code>Network Layer</code></h3><ul>
-<li>数据链路层的数据在这一层被转换为数据包，然后通过路径选择、分段组合、顺序、进/出路由等控制，传送到另一个网络设备。</li>
+</li>
+</ul>
+<h3 id="网络层Network-Layer"><a href="#网络层Network-Layer" class="headerlink" title="网络层Network Layer"></a>网络层<code>Network Layer</code></h3><blockquote>
+<p>IP地址</p>
+</blockquote>
+<ul>
+<li>数据链路层的数据在这一层被转换为数据包，根据网络地址传送到目的结点</li>
 <li>数据的单位称为包<code>packet</code></li>
-<li><code>IP</code> 协议（Internet Protocol，网际协议）</li>
+<li>协议<ul>
+<li><code>IP</code> 协议（Internet Protocol，网际协议）<ol>
+<li><code>IP</code>是整个<code>TCP/IP</code>协议族的核心，也是构成互联网的基础。它可以向传输层提供各种协议的信息，例如<code>TCP、UDP</code>等；对下可将<code>IP信息包</code>放到链路层，通过以太网、令牌环网络等各种技术来传送。</li>
+<li><code>IP信息包</code>传送使用<code>非连接式</code>的传送方式。非连接式的传送方式是指IP信息包传送时，源设备与目的设备双方不必事先连接，即可将IP信息包送达。即源设备完全不用理会目的设备，而只是单纯地将IP信息包逐一送出。至于目的设备是否收到每个信息包、是否收到正确的信息包等，则由上层的协议(例如<code>TCP</code>)来负责检查</li>
+</ol>
+</li>
 <li><code>ICMP</code> 协议（Internet Control Message Protocol，网际控制报文协议）</li>
 <li><code>IGMP</code> 协议（Internet Group Management Protocol，网际组管理协议）</li>
 </ul>
+</li>
+</ul>
 <h3 id="传输层Transport-Layer"><a href="#传输层Transport-Layer" class="headerlink" title="传输层Transport Layer"></a>传输层<code>Transport Layer</code></h3><ul>
-<li><p>提供端对端的接口</p>
+<li><p>提供端对端的接口，向两个主机中进程之间的通信提供服务，根据协议可向会话层交付可靠的网络连接，同时对于高层屏蔽了低层的技术细节</p>
 </li>
-<li><p>数据的单位称为数据段<code>segment</code></p>
+<li><p>数据的单位称为数据段<code>Segment</code>或报文</p>
 </li>
-<li><p><code>TCP</code>面向连接，可靠传输，流量控制和拥塞机制，一对一通信，头部较大</p>
+<li><p>协议</p>
+<ul>
+<li><p><code>TCP</code>（Transmission Control Protocol）传输控制协议</p>
+<ol>
+<li>面向连接（建立握手连接）</li>
+<li>可靠交付，保证数据的完整和顺序无差错</li>
+<li>单播点对点</li>
+<li>头部较大</li>
+</ol>
 </li>
-<li><p><code>UDP</code>面向报文，不可靠传输，一对多多对一，头部较小</p>
+<li><p><code>UDP</code>（User Datagram Protocol）用户数据协议</p>
+<ol>
+<li>面向报文（无需握手）</li>
+<li>不可靠交付，数据发送不受丢包和网络波动影响</li>
+<li>单播和广播，</li>
+<li>头部较小</li>
+<li>直播，在线会议，语音，即时通信</li>
+</ol>
+</li>
+</ul>
 </li>
 </ul>
 <h3 id="会话层Session-Layer"><a href="#会话层Session-Layer" class="headerlink" title="会话层Session Layer"></a>会话层<code>Session Layer</code></h3><ul>
@@ -290,9 +324,12 @@
 <li>处理数据编码、数据格式转换和加密解密</li>
 </ul>
 <h3 id="应用层Application-Layer"><a href="#应用层Application-Layer" class="headerlink" title="应用层Application Layer"></a>应用层<code>Application Layer</code></h3><ul>
-<li><p>应用程序访问网络服务的接口</p>
-</li>
-<li><p><code>HTTP</code>、<code>FTP</code>、<code>SMTP</code>、<code>POP3</code>、<code>IMAP4</code></p>
+<li>应用程序访问网络服务的接口</li>
+<li>协议<ul>
+<li><code>HTTP</code>（Hyper Text Transfer Protocol，超文本传输协议）</li>
+<li><code>FTP</code>（File Transfer Protocol，文件传输协议）</li>
+<li>邮件相关的<code>POP3</code>（Post Office Protocol - V3）和<code>SMTP</code>（Simple Mail Transfer Protocol，简单邮件传输协议）</li>
+</ul>
 </li>
 </ul>
 <hr>
@@ -300,18 +337,11 @@
 <li>TCP/IP 分层模型（TCP/IP Layering Model）被称作因特网分层模型(Internet Layering Model)、因特网参考模型(Internet Reference Model)</li>
 </ul>
 <h2 id="TCP-IP-中各层的作用"><a href="#TCP-IP-中各层的作用" class="headerlink" title="TCP/IP 中各层的作用"></a>TCP/IP 中各层的作用</h2><h3 id="链路层"><a href="#链路层" class="headerlink" title="链路层"></a>链路层</h3><blockquote>
-<p>对应着 OSI/RM 的数据链路层和物理层</p>
+<p>对应着 OSI/RM 的数据链路层+物理层</p>
 </blockquote>
-<h3 id="网络层"><a href="#网络层" class="headerlink" title="网络层"></a>网络层</h3><h3 id="传输层"><a href="#传输层" class="headerlink" title="传输层"></a>传输层</h3><h3 id="应用层"><a href="#应用层" class="headerlink" title="应用层"></a>应用层</h3><ul>
-<li><p><code>FTP</code>（File Transfer Protocol，文件传输协议）,</p>
-</li>
-<li><p><code>DNS</code>（Domain Name System，域名系统）,</p>
-</li>
-<li><p><code>HTTP</code>（Hyper Text Transfer Protocol，超文本传输协议）,</p>
-</li>
-<li><p><code>SMTP</code>（Simple Mail Transfer Protocol，简单邮件传输协议）</p>
-</li>
-</ul>
+<h3 id="网络层"><a href="#网络层" class="headerlink" title="网络层"></a>网络层</h3><h3 id="传输层"><a href="#传输层" class="headerlink" title="传输层"></a>传输层</h3><h3 id="应用层"><a href="#应用层" class="headerlink" title="应用层"></a>应用层</h3><blockquote>
+<p>对应OSI/RM 的表示层+会话层+应用层</p>
+</blockquote>
 
             </div>
             <hr>

@@ -18,7 +18,7 @@
   <meta name="author" content="tatekii">
   <meta name="keywords" content="">
   
-  <title>队列算法题 - 不知名的笔记本</title>
+  <title>队列及算法题 - 不知名的笔记本</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
@@ -163,7 +163,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="队列算法题">
+            <span class="h2" id="subtitle" title="队列及算法题">
               
             </span>
 
@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      336 字
+      358 字
     </span>
   
 
@@ -233,11 +233,11 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">队列算法题</h1>
+            <h1 style="display: none">队列及算法题</h1>
             
               <p class="note note-info">
                 
-                  本文最后更新于：2020年9月29日 下午
+                  本文最后更新于：2021年5月23日 晚上
                 
               </p>
             
@@ -252,23 +252,22 @@
 &#125;
 ArrayQueue.prototype.enqueue = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">item</span>)</span>&#123;
   <span class="hljs-keyword">if</span>(<span class="hljs-built_in">this</span>.tail === <span class="hljs-built_in">this</span>.n)&#123;<span class="hljs-comment">// tail后没有空余空间</span>
-    <span class="hljs-keyword">if</span>(head === <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span><span class="hljs-comment">// head也在0位，表示都是满的</span>
-    <span class="hljs-comment">//出队后head不在0了</span>
+    <span class="hljs-keyword">if</span>(head === <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span><span class="hljs-comment">// 判断是否队列前方有已经出队的位置</span>
+    <span class="hljs-comment">// 有则将整个队列向前移动</span>
     <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = head;i&lt;<span class="hljs-built_in">this</span>.tail;i++)&#123;
       <span class="hljs-built_in">this</span>.items[i-head] = <span class="hljs-built_in">this</span>.items[i]
-    &#125;<span class="hljs-comment">// 往前搬移</span>
-    tail = tail-head
-    head = <span class="hljs-number">0</span>
+    &#125;
+    <span class="hljs-built_in">this</span>.tail = <span class="hljs-built_in">this</span>.tail-<span class="hljs-built_in">this</span>.head
+    <span class="hljs-built_in">this</span>.head = <span class="hljs-number">0</span>
   &#125;
   <span class="hljs-built_in">this</span>.items[<span class="hljs-built_in">this</span>.tail] = item
   <span class="hljs-built_in">this</span>.tail ++
   <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>
 &#125;
 ArrayQueue.prototype.dequeue = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;
-  <span class="hljs-keyword">if</span>(head === tail) <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>
-  <span class="hljs-keyword">const</span> ret = items.shift()
-  head ++
-  <span class="hljs-keyword">return</span> ret
+  <span class="hljs-keyword">if</span>(<span class="hljs-built_in">this</span>.head === <span class="hljs-built_in">this</span>.tail) <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>
+  <span class="hljs-built_in">this</span>.head ++ 
+  <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.items.shift()
 &#125;</code></pre></div></li>
 <li><p>!循环队列</p>
 <div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// 避免了顺序队列中的数据搬移操作</span>
@@ -313,6 +312,7 @@ LinkedListQueue.prototype = &#123;
     &#125;
     <span class="hljs-keyword">if</span>(<span class="hljs-built_in">this</span>.curLen &gt;= <span class="hljs-built_in">this</span>.len) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
     <span class="hljs-keyword">let</span> cur = <span class="hljs-built_in">this</span>.head
+    <span class="hljs-comment">// 循环到链表末尾</span>
     <span class="hljs-keyword">while</span>(cur.next)&#123;
       cur = cur.next
     &#125;
@@ -323,6 +323,7 @@ LinkedListQueue.prototype = &#123;
   &#125;,
   dequeue : <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;
     <span class="hljs-keyword">let</span> cur = <span class="hljs-built_in">this</span>.head
+    <span class="hljs-comment">// 删除表头</span>
     <span class="hljs-built_in">this</span>.head = cur.next
     <span class="hljs-built_in">this</span>.curLen --
     <span class="hljs-keyword">return</span> cur

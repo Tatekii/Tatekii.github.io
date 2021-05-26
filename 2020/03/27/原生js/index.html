@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.8k 字
+      1.9k 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      26
+      27
        分钟
     </span>
   
@@ -237,7 +237,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年4月22日 下午
+                  本文最后更新于：2021年5月26日 下午
                 
               </p>
             
@@ -387,7 +387,7 @@ element.addEventListener();
 <span class="hljs-built_in">parseInt</span>(val, radix);</code></pre></div>
 
 <ul>
-<li><p>严格模式<code>use strick</code></p>
+<li><p>严格模式<code>use strict</code></p>
 <ul>
 <li>严格模式通过抛出错误来消除了一些原有静默错误和编码错误。</li>
 <li>严格模式修复了一些导致 JavaScript 引擎难以执行优化的缺陷，提高代码运行效率。</li>
@@ -442,10 +442,16 @@ sort(); <span class="hljs-comment">//排序</span>
 reverse(); <span class="hljs-comment">//倒序</span>
 splice(); <span class="hljs-comment">// 删除</span>
 flat();</code></pre></div></li>
-<li><p>洗牌</p>
+<li><p>洗牌算法</p>
 </li>
 </ul>
-<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">shuffle</span>(<span class="hljs-params">arr</span>) </span>&#123;
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">shuffle</span>(<span class="hljs-params">arr</span>)</span>&#123;
+  <span class="hljs-keyword">return</span> arr.sort(<span class="hljs-function">()=&gt;</span><span class="hljs-built_in">Math</span>.random()-<span class="hljs-number">0.5</span>)
+  <span class="hljs-comment">//由于js中sort方法的特殊性，对于数据量小于10和大于10的排序方法不一样</span>
+  <span class="hljs-comment">// Math.random()-0.5不能做到真正意义上的完全随机</span>
+&#125;
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">shuffle</span>(<span class="hljs-params">arr</span>) </span>&#123;
   <span class="hljs-keyword">let</span> len = arr.length
   <span class="hljs-keyword">while</span> (len) &#123;
     <span class="hljs-keyword">const</span> i = <span class="hljs-built_in">Math</span>.floor(<span class="hljs-built_in">Math</span>.random() * len--);

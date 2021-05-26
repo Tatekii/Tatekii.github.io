@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      3.2k 字
+      3.7k 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      51
+      60
        分钟
     </span>
   
@@ -237,7 +237,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年5月18日 中午
+                  本文最后更新于：2021年5月20日 晚上
                 
               </p>
             
@@ -717,13 +717,10 @@ RandomizedSet.prototype.getRandom = <span class="hljs-function"><span class="hlj
 <span class="hljs-comment">// 找规律</span>
 <span class="hljs-comment">// 约瑟夫环</span>
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">lastRemaining</span>(<span class="hljs-params">n,m</span>)</span>&#123;
-  <span class="hljs-comment">// 只剩下一个数字时,这个最后剩下的数字索引为0</span>
-  <span class="hljs-comment">// 反推</span>
-  <span class="hljs-comment">// 剩下两个数字时，这个最后剩下的数字当前索引为(上一轮索引+m)%2</span>
-  <span class="hljs-comment">// 取%考虑索引溢出</span>
-  <span class="hljs-comment">// 剩下三个数字时，这个最后剩下的数字当前索引为(上一轮索引+m)%3</span>
-  <span class="hljs-comment">// 得到公式 </span>
-  <span class="hljs-comment">// n个数字 ，这个最后剩下的数字当前索引为(上一轮索引+m)%n</span>
+  <span class="hljs-comment">// 0，1，2，3，4，5...n-1,n</span>
+  <span class="hljs-comment">// n = 1 时输出 0</span>
+  <span class="hljs-comment">// 反推得到公式 </span>
+  <span class="hljs-comment">// n个数字,由于从0开始排列，则索引===数值</span>
   <span class="hljs-comment">// 当前状态用f(n,m)表示，则上一轮为f(n-1,m)</span>
   <span class="hljs-comment">// f(n,m) = (f(n-1,m)+m)%n</span>
     <span class="hljs-keyword">if</span>(n===<span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>
@@ -797,11 +794,13 @@ PrefixTree.prototype.search = <span class="hljs-function"><span class="hljs-keyw
 PrefixTree.prototype.startWith = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">prefix</span>)</span>&#123;
   <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.loop(prefix)
 &#125;</code></pre></div></li>
-<li><p>青蛙跳台阶</p>
+<li><p>青蛙跳台阶/斐波那契数列</p>
+<blockquote>
+<p>注意别搞混了，fibonacci数列排列是固定的<br>fib数列 [0,1,1,2,3]<br>青蛙跳法 [0,1,2,3]</p>
+</blockquote>
 </li>
 </ul>
 <div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">numWays</span>(<span class="hljs-params">n</span>)</span>&#123;
-  <span class="hljs-keyword">if</span>(n===<span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>
   <span class="hljs-keyword">if</span>(n&lt;=<span class="hljs-number">2</span>) <span class="hljs-keyword">return</span> n
   <span class="hljs-keyword">let</span> res = <span class="hljs-number">0</span>
   <span class="hljs-keyword">let</span> i = <span class="hljs-number">2</span>
@@ -827,6 +826,12 @@ PrefixTree.prototype.startWith = <span class="hljs-function"><span class="hljs-k
     arr[i] = arr[i-<span class="hljs-number">1</span>] + arr[i-<span class="hljs-number">2</span>]
   &#125;
   <span class="hljs-keyword">return</span> arr[i]
+&#125;
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Fibonacci</span>(<span class="hljs-params">n</span>)</span>&#123;
+  <span class="hljs-keyword">if</span>(n===<span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>
+  <span class="hljs-keyword">if</span>(n===<span class="hljs-number">1</span> || n===<span class="hljs-number">2</span>) <span class="hljs-keyword">return</span> n
+  <span class="hljs-keyword">return</span> Fibonacci(n-<span class="hljs-number">1</span>) + Fibonacci(n-<span class="hljs-number">2</span>)
 &#125;</code></pre></div>
 
 <ul>
@@ -870,6 +875,84 @@ PrefixTree.prototype.startWith = <span class="hljs-function"><span class="hljs-k
 &#125;
 <span class="hljs-built_in">console</span>.log(reverseArray(a));
 </code></pre></div></li>
+<li><p>约瑟夫环</p>
+<p>0,1,···,n-1这n个数字排成一个圆圈，从数字0开始，每次从这个圆圈里删除第m个数字（删除后从下一个数字开始计数）。求出这个圆圈里剩下的最后一个数字。</p>
+<div class="hljs code-wrapper"><pre><code>例如，0、1、2、3、4这5个数字组成一个圆圈，从数字0开始每次删除第3个数字，则删除的前4个数字依次是2、0、4、1，因此最后剩下的数字是3。
+</code></pre></div>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// 递归公式</span>
+<span class="hljs-comment">// f(n,m) = (f(n-1,m)+m)%n 本轮索引=上轮索引+m%n</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">lastRemaining</span>(<span class="hljs-params">n,m</span>)</span>&#123;
+  <span class="hljs-keyword">if</span>(n===<span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>
+  <span class="hljs-keyword">return</span> (lastRemaining(n-<span class="hljs-number">1</span>,m)+m)%n
+&#125;
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">lastRemaining</span>(<span class="hljs-params">n,m</span>)</span>&#123;
+  <span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>
+  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> j = <span class="hljs-number">2</span>; j&lt;=m ;j++)&#123;
+    i = (i+m)%j
+  &#125;
+  <span class="hljs-keyword">return</span> i
+&#125;</code></pre></div></li>
+<li><p>连续子数组的最大和</p>
+<p>输入一个整型数组，数组中的一个或连续多个整数组成一个子数组。求所有子数组的和的最大值。<br>要求时间复杂度为O(n)。</p>
+<p>  示例1:</p>
+<p>  输入: nums = [-2,1,-3,4,-1,2,1,-5,4]<br>  输出: 6<br>  解释: 连续子数组 [4,-1,2,1] 的和最大，为 6。</p>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// 状态转移</span>
+<span class="hljs-comment">// 由连续元素来求和</span>
+<span class="hljs-comment">// dp[i] 位置的累加值由dp[i-1]决定，dp[i-1]不为负则加上dp[i-1]</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">maxSubArray</span>(<span class="hljs-params">nums</span>)</span>&#123;
+  <span class="hljs-keyword">if</span>(nums.length &lt; <span class="hljs-number">2</span>) <span class="hljs-keyword">return</span> nums
+  <span class="hljs-keyword">let</span> max = nums[<span class="hljs-number">0</span>]
+  <span class="hljs-keyword">const</span> dp = [nums[<span class="hljs-number">0</span>]]
+  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">1</span> ;i&lt;nums.length;i++)&#123;
+    dp[i] = dp[i-<span class="hljs-number">1</span>] &gt; <span class="hljs-number">0</span> ? nums[i] + dp[i-<span class="hljs-number">1</span>]:nums[i]
+    <span class="hljs-keyword">if</span>(dp[i]&gt;max) max = dp[i]
+  &#125;
+  <span class="hljs-keyword">return</span> max
+&#125;
+
+<span class="hljs-comment">// 使用变量记忆dp[i-1]的值</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">maxSubArray</span>(<span class="hljs-params">nums</span>)</span>&#123;
+  <span class="hljs-keyword">if</span>(nums.length &lt; <span class="hljs-number">2</span>) <span class="hljs-keyword">return</span> nums
+  <span class="hljs-keyword">let</span> max = nums[<span class="hljs-number">0</span>]
+  <span class="hljs-keyword">let</span> preDp = <span class="hljs-number">0</span> <span class="hljs-comment">// init 0 </span>
+  <span class="hljs-keyword">let</span> curDp
+  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> n <span class="hljs-keyword">of</span> nums)&#123;
+    curDp = n
+    curDp += preDp &gt; <span class="hljs-number">0</span> ? preDp : <span class="hljs-number">0</span>
+    <span class="hljs-keyword">if</span>(curDp&gt;max) max = curDp
+    preDp = curDp
+  &#125;
+  <span class="hljs-keyword">return</span> max
+&#125;</code></pre></div></li>
+</ul>
+<ul>
+<li>[0 ~ n-1]中缺省的值<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// 正确的数组应该value===index</span>
+<span class="hljs-comment">// [0,1,3] =&gt; 2</span>
+<span class="hljs-comment">// [1,2] =&gt; 0</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">missingNumber</span>(<span class="hljs-params">nums</span>) </span>&#123;
+  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span> ;i&lt;nums.length;i++)&#123;
+    <span class="hljs-keyword">if</span>(i!==nums[i]) <span class="hljs-keyword">return</span> i
+  &#125;
+&#125;
+
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">missingNumber</span>(<span class="hljs-params">nums</span>) </span>&#123;
+  <span class="hljs-keyword">let</span> l = <span class="hljs-number">0</span>
+  <span class="hljs-keyword">let</span> r = nums.length - <span class="hljs-number">1</span>
+  <span class="hljs-keyword">while</span>(l&gt;=r)&#123;
+    <span class="hljs-keyword">let</span> mid = <span class="hljs-built_in">Math</span>.floor((r-l)/<span class="hljs-number">2</span>)+l
+    <span class="hljs-keyword">if</span>(mid === nums[mid])&#123;
+      <span class="hljs-comment">// 中间位置数值正确，说明缺省数值在右边</span>
+      l = mid + <span class="hljs-number">1</span>
+    &#125;<span class="hljs-keyword">else</span>&#123;
+      <span class="hljs-comment">// 中间数值已经不正确，说明缺省数值在左边</span>
+      r = mid - <span class="hljs-number">1</span>
+    &#125;
+  &#125;
+  <span class="hljs-comment">// 跳出while后r在l的左边</span>
+  <span class="hljs-keyword">return</span> l
+&#125;</code></pre></div></li>
 </ul>
 
             </div>
