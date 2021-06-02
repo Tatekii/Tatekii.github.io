@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      2.8k 字
+      2.9k 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      43
+      44
        分钟
     </span>
   
@@ -237,7 +237,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年5月26日 下午
+                  本文最后更新于：2021年6月1日 晚上
                 
               </p>
             
@@ -325,28 +325,34 @@
 <span class="hljs-comment">// 1 &quot;b&quot;</span></code></pre></div></li>
 </ul>
 <h2 id="判断数组"><a href="#判断数组" class="headerlink" title="判断数组"></a>判断数组</h2><ol>
-<li><code>arr.constructor===Array</code></li>
-<li><code>arr instanceof Array</code></li>
-<li><code>Array.prototype.isPrototypeOf(arr)</code><blockquote>
+<li><p><code>arr.constructor===Array</code></p>
+</li>
+<li><p><code>arr instanceof Array</code></p>
+</li>
+<li><p><code>Array.prototype.isPrototypeOf(arr)</code></p>
+<blockquote>
 <p>这三种查找原型的方法，如果手动更改对象的原型也可欺骗过检测</p>
 </blockquote>
 </li>
+<li><p><code>Object.prototype.toString.call(arr)===&#39;[object Array]&#39;</code></p>
+</li>
+<li><p><code>Array.isArray()</code></p>
+</li>
 </ol>
-<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> arr = [];
-<span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">Array</span>.prototype.isPrototypeOf(arr));
-<span class="hljs-built_in">console</span>.log(arr <span class="hljs-keyword">instanceof</span> <span class="hljs-built_in">Array</span>);
-<span class="hljs-built_in">console</span>.log(arr.constructor === <span class="hljs-built_in">Array</span>);
-arr = &#123;
-  __proto__: <span class="hljs-built_in">Array</span>.prototype,
-&#125;;
-<span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">Array</span>.prototype.isPrototypeOf(arr));
-<span class="hljs-built_in">console</span>.log(arr <span class="hljs-keyword">instanceof</span> <span class="hljs-built_in">Array</span>);
-<span class="hljs-built_in">console</span>.log(arr.constructor === <span class="hljs-built_in">Array</span>);</code></pre></div>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> notArr = &#123;
+    __proto__:<span class="hljs-built_in">Array</span>.prototype&#125;
+    &#125;
+notArr.constructor = <span class="hljs-built_in">Array</span>
+<span class="hljs-comment">// true</span>
+<span class="hljs-built_in">Array</span>.prototype.isPrototypeOf(notArr)
+<span class="hljs-comment">// true</span>
+notArr <span class="hljs-keyword">instanceof</span> <span class="hljs-built_in">Array</span>
+<span class="hljs-comment">// true</span>
+<span class="hljs-built_in">Object</span>.prototype.toString.call(notArr)
+<span class="hljs-comment">// &quot;[object Object]&quot;</span>
+<span class="hljs-built_in">Array</span>.isArray(notArr)
+<span class="hljs-comment">// false</span></code></pre></div>
 
-<ol>
-<li><code>Object.prototype.toString.call(arr)===&#39;[object Array]&#39;</code></li>
-<li><code>Array.isArray()</code></li>
-</ol>
 <h2 id="数组去重"><a href="#数组去重" class="headerlink" title="数组去重"></a>数组去重</h2><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> arr = [<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">4</span>, <span class="hljs-number">4</span>, <span class="hljs-number">4</span>];
 <span class="hljs-comment">// 1</span>
 <span class="hljs-keyword">let</span> uni1 = <span class="hljs-built_in">Array</span>.from(<span class="hljs-keyword">new</span> <span class="hljs-built_in">Set</span>(arr));
@@ -415,7 +421,7 @@ arr = &#123;
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">flat2</span>(<span class="hljs-params">arr</span>) </span>&#123;
   <span class="hljs-keyword">let</span> res = [];
   <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> item <span class="hljs-keyword">of</span> arr) &#123;
-    <span class="hljs-built_in">Array</span>.isArray(item) ? (res = res.concat.flat2(item)) : res.push(item);
+    <span class="hljs-built_in">Array</span>.isArray(item) ? (res.push(...flat2(item)) : res.push(item);
   &#125;
   <span class="hljs-keyword">return</span> res;
 &#125;
@@ -441,7 +447,8 @@ arr = &#123;
     .map((item) =  <span class="hljs-built_in">Number</span>(item));
 &#125;
 <span class="hljs-comment">// 6 flat()</span>
-flat(<span class="hljs-literal">Infinity</span>);</code></pre></div>
+flat(<span class="hljs-literal">Infinity</span>);
+</code></pre></div>
 <h2 id="数组排序"><a href="#数组排序" class="headerlink" title="数组排序"></a>数组排序</h2><h3 id="V8中的sort"><a href="#V8中的sort" class="headerlink" title="V8中的sort()"></a>V8中的sort()</h3><ul>
 <li>7.0之前 arr.length =10【插入排序】， 10【快速排序】</li>
 <li>7.0之后 【timesort】 <h3 id="常见排序方法"><a href="#常见排序方法" class="headerlink" title="常见排序方法"></a>常见排序方法</h3><h4 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h4><blockquote>
@@ -705,6 +712,21 @@ flat(<span class="hljs-literal">Infinity</span>);</code></pre></div>
     <span class="hljs-comment">// arr指针向左扫，归位元素后将累加计数数组中计数-1</span>
   &#125;
   <span class="hljs-keyword">return</span> temp <span class="hljs-comment">// or copy temp to origin arr </span>
+&#125;</code></pre></div>
+
+<h4 id="洗牌算法"><a href="#洗牌算法" class="headerlink" title="洗牌算法"></a>洗牌算法</h4><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">shuffle</span>(<span class="hljs-params">arr</span>)</span>&#123;
+  <span class="hljs-keyword">return</span> arr.sort(<span class="hljs-function">()=&gt;</span><span class="hljs-built_in">Math</span>.random()-<span class="hljs-number">0.5</span>)
+  <span class="hljs-comment">//由于js中sort方法的特殊性，对于数据量小于10和大于10的排序方法不一样</span>
+  <span class="hljs-comment">// Math.random()-0.5不能做到真正意义上的完全随机</span>
+&#125;
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">shuffle</span>(<span class="hljs-params">arr</span>) </span>&#123;
+  <span class="hljs-keyword">let</span> len = arr.length
+  <span class="hljs-keyword">while</span> (len) &#123;
+    <span class="hljs-keyword">const</span> i = <span class="hljs-built_in">Math</span>.floor(<span class="hljs-built_in">Math</span>.random() * len--);
+    [arr[i],arr[len]] = [arr[len],arr[i]]
+  &#125;
+  <span class="hljs-keyword">return</span> arr;
 &#125;</code></pre></div>
             </div>
             <hr>

@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      215 字
+      220 字
     </span>
   
 
@@ -237,7 +237,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年4月20日 晚上
+                  本文最后更新于：2021年6月1日 晚上
                 
               </p>
             
@@ -246,41 +246,33 @@
 ^                     |
 |                     v
 &lt;---------------------&lt;</code></pre></div>
-
-<ol>
-<li><p>单向通信</p>
-</li>
-<li><p><code>Controller</code>只起到路由作用，业务逻辑都在<code>View</code>中</p>
-</li>
-<li><p>UI交互<code>View</code> 传送指令到 <code>Controller</code> ；</p>
-</li>
-<li><p><code>Controller</code> 完成业务逻辑后，操作 <code>Model</code> 改变数据 ；</p>
-</li>
-<li><p>Model通知 <code>View</code>更新，用户得到反馈。</p>
-</li>
-</ol>
+<ul>
+<li><code>View</code>可以访问<code>Model</code>,不可避免的会包含一些业务逻辑，导致特定<code>View</code>依赖特定<code>Model</code></li>
+<li>视图的更新逻辑由<code>View</code>自己完成</li>
+<li><code>View</code>监听<code>Model</code>改变的的广播</li>
+<li>用户可以操作<code>View</code>或者直接操作<code>Controller</code></li>
+</ul>
 <h3 id="MVPModel-View-Presenter"><a href="#MVPModel-View-Presenter" class="headerlink" title="MVPModel-View-Presenter"></a>MVP<code>Model-View-Presenter</code></h3><div class="hljs code-wrapper"><pre><code class="hljs javascript">
 View &lt;--&gt; Presenter &lt;==&gt; Model
 </code></pre></div>
-<ol>
-<li><p>双向通信</p>
+<ul>
+<li><p><code>View</code> 与 <code>Model</code> 之间通过 <code>Presenter</code>解偶</p>
 </li>
-<li><p><code>View</code> 与 <code>Model</code> 之间不通信，通过 <code>Presenter</code>解偶</p>
+<li><p>主要的程序逻都在<code>Presenter</code>中，接受<code>Model</code>层的数据，并且处理之后传递给<code>View</code>层，还需要处理<code>View</code>层的用户交互等操作。</p>
 </li>
-<li><p>主要的程序逻辑在<code>Presenter</code>中</p>
+<li><p><code>View</code>不部署任何业务逻辑,被动视图，只提供接口</p>
 </li>
-<li><p><code>View</code> 非常薄，不部署任何业务逻辑</p>
+<li><p><code>Model</code>改变的的广播由<code>Presenter</code>监听</p>
 </li>
-<li><p><em>Presenter与具体的View是没有直接关联的</em>，而是通过定义好的接口进行交互，从而使得在变更View时候可以保持Presenter的不变，这样就可以重用。</p>
-</li>
-</ol>
+</ul>
 <h3 id="MVVMModel-View-ViewModel"><a href="#MVVMModel-View-ViewModel" class="headerlink" title="MVVMModel-View-ViewModel"></a>MVVM<code>Model-View-ViewModel</code></h3><div class="hljs code-wrapper"><pre><code class="hljs javascript">
 View &lt;==&gt; ViewModel &lt;==&gt; Model
 </code></pre></div>
 
-<blockquote>
-<p>mvvm模式将Presener改名为View Model，基本上与MVP模式一致，由框架代替开发者完成事件收集和view更新的工作</p>
-</blockquote>
+<ul>
+<li><code>ViewModel</code>可以理解为是MVP中<code>View</code>的数据模型和<code>Presenter</code>的合体</li>
+<li>以前全部由<code>Presenter</code>负责的<code>View</code>和<code>Model</code>之间数据同步操作交由框架实现双向绑定</li>
+</ul>
 
             </div>
             <hr>

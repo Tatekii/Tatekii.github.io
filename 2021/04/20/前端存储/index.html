@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      517 字
+      646 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      5
+      8
        分钟
     </span>
   
@@ -237,7 +237,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年5月25日 下午
+                  本文最后更新于：2021年5月27日 中午
                 
               </p>
             
@@ -281,9 +281,9 @@
 </li>
 <li><p><code>expires/Max-Age</code> 过期时间，如没设置则与会话时效相同（关闭浏览器窗口失效）</p>
 </li>
-<li><p><code>httponly</code>　      只能传输不能查看</p>
+<li><p><code>HttpOnly</code>　      只能传输不能查看</p>
 </li>
-<li><p><code>secure</code>          只使用HTTPS传输</p>
+<li><p><code>Secure</code>          只使用HTTPS传输</p>
 </li>
 <li><p><code>sameSite = </code></p>
 <ul>
@@ -292,13 +292,22 @@
 <p>现代浏览器会将没有声明 SameSite 值的 cookie 默认设置为Lax</p>
 </blockquote>
 </li>
-<li><code>None</code> 需配合<code>secure</code>使用用 <code>Set-Cookie: widget_session=xxxxx; SameSite=None; Secure</code></li>
+<li><code>None</code> 需配合<code>secure</code>使用用 <code>Set-Cookie: widget_session=xxxxx; SameSite=None; Secure</code><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-built_in">Set</span>-Cookie: &lt;cookie-name&gt;=&lt;cookie-value&gt;
+<span class="hljs-built_in">Set</span>-Cookie: &lt;cookie-name&gt;=&lt;cookie-value&gt;; Expires=&lt;date&gt;
+<span class="hljs-built_in">Set</span>-Cookie: &lt;cookie-name&gt;=&lt;cookie-value&gt;; Max-Age=&lt;non-zero-digit&gt;
+<span class="hljs-built_in">Set</span>-Cookie: &lt;cookie-name&gt;=&lt;cookie-value&gt;; Domain=&lt;domain-value&gt;
+<span class="hljs-built_in">Set</span>-Cookie: &lt;cookie-name&gt;=&lt;cookie-value&gt;; Path=&lt;path-value&gt;
+<span class="hljs-built_in">Set</span>-Cookie: &lt;cookie-name&gt;=&lt;cookie-value&gt;; Secure
+<span class="hljs-built_in">Set</span>-Cookie: &lt;cookie-name&gt;=&lt;cookie-value&gt;; HttpOnly
+
+<span class="hljs-built_in">Set</span>-Cookie: &lt;cookie-name&gt;=&lt;cookie-value&gt;; SameSite=Strict
+<span class="hljs-built_in">Set</span>-Cookie: &lt;cookie-name&gt;=&lt;cookie-value&gt;; SameSite=Lax
+<span class="hljs-built_in">Set</span>-Cookie: &lt;cookie-name&gt;=&lt;cookie-value&gt;; SameSite=None; Secure</code></pre></div>
+<h3 id="IndexedDB"><a href="#IndexedDB" class="headerlink" title="IndexedDB"></a><code>IndexedDB</code></h3></li>
 </ul>
 </li>
 </ul>
 </li>
-</ul>
-<h3 id="IndexedDB"><a href="#IndexedDB" class="headerlink" title="IndexedDB"></a><code>IndexedDB</code></h3><ul>
 <li><p>除非被清理否则一直存在</p>
 </li>
 <li><p>数据大小无限制</p>

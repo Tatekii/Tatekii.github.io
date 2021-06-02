@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      566 字
+      666 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      8
+      10
        分钟
     </span>
   
@@ -237,7 +237,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年5月4日 下午
+                  本文最后更新于：2021年5月27日 下午
                 
               </p>
             
@@ -269,12 +269,13 @@ MinStack.prototype.min = <span class="hljs-function"><span class="hljs-keyword">
   <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.min[<span class="hljs-built_in">this</span>.min.length-<span class="hljs-number">1</span>]
 &#125;
 </code></pre></div></li>
-<li><p>判断括号是否闭合</p>
+<li><p>判断括号是否合法</p>
 </li>
 </ul>
 <div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// ()</span>
 <span class="hljs-comment">// []</span>
 <span class="hljs-comment">// &#123;&#125;</span>
+<span class="hljs-comment">// (&#123;[)]&#125;</span>
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">bracketCheck</span>(<span class="hljs-params">str</span>)</span>&#123;
   <span class="hljs-keyword">const</span> brackets = &#123;
     <span class="hljs-string">&#x27;(&#x27;</span>:<span class="hljs-string">&#x27;)&#x27;</span>,
@@ -298,14 +299,18 @@ MinStack.prototype.min = <span class="hljs-function"><span class="hljs-keyword">
 </ul>
 <p>输入：n = 3<br>输出：[“((()))”,”(()())”,”(())()”,”()(())”,”()()()”]</p>
 <div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">generateParenthesis</span>(<span class="hljs-params">n</span>)</span>&#123;
+  <span class="hljs-comment">//n对括号</span>
+  <span class="hljs-comment">//可用的左括号数量l=n</span>
+  <span class="hljs-comment">//可用的右括号数量r=n</span>
   <span class="hljs-keyword">const</span> res = []
-  DFS(l,r,<span class="hljs-string">&#x27;&#x27;</span>)
+  DFS(n,n,<span class="hljs-string">&#x27;&#x27;</span>)
   <span class="hljs-keyword">return</span> res
 
   <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">DFS</span>(<span class="hljs-params">l,r,str</span>)</span>&#123;
     <span class="hljs-comment">// 考虑合理闭合的括号组合</span>
     <span class="hljs-comment">// 生成过程中左右括号可使用的数量</span>
     <span class="hljs-keyword">if</span>(str.length===<span class="hljs-number">2</span>*n)&#123;
+      <span class="hljs-comment">// 2n个字符说明凑够一种</span>
       <span class="hljs-keyword">return</span> res.push(str)
     &#125;
     <span class="hljs-keyword">if</span>(l&gt;<span class="hljs-number">0</span>)&#123;
@@ -320,23 +325,39 @@ MinStack.prototype.min = <span class="hljs-function"><span class="hljs-keyword">
 
 
 <ul>
-<li>删除字符串内相邻重复项<div class="hljs code-wrapper"><pre><code class="hljs javascript">给出由小写字母组成的字符串 S ，重复项删除操作 会选择两个相邻且相同的字母，并删除它们。
+<li>删除字符串内相邻重复项<br>给出由小写字母组成的字符串 S ，删除所有相邻重复项<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// &#x27;ababccca&#x27;</span>
+<span class="hljs-comment">// pre = &#x27;&#x27;</span>
+<span class="hljs-comment">// c = a</span>
+<span class="hljs-comment">// stack = [&#x27;&#x27;,a]</span>
 
-在 S 上反复执行重复项删除操作，直到无法继续删除。
+<span class="hljs-comment">// pre = a</span>
+<span class="hljs-comment">// c = c</span>
+<span class="hljs-comment">// stack = [&#x27;&#x27;,a,c]</span>
 
-在完成所有重复项删除操作后返回最终的字符串。答案保证唯一。
+<span class="hljs-comment">// pre = c</span>
+<span class="hljs-comment">// c = c</span>
+<span class="hljs-comment">// stack = [&#x27;&#x27;,a]</span>
 
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">delDup</span>(<span class="hljs-params">S</span>)</span>&#123;
-  <span class="hljs-keyword">let</span> stack = [],pre = <span class="hljs-string">&#x27;&#x27;</span>
-  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> c <span class="hljs-keyword">of</span> S)&#123;
-    pre = stack.pop()
-    <span class="hljs-keyword">if</span>(c !== pre)&#123;
-      stack.push(pre)
-      stack.push(c)
+<span class="hljs-comment">// pre = a</span>
+<span class="hljs-comment">// c = c</span>
+<span class="hljs-comment">// stack = [&#x27;&#x27;,a,c]</span>
+
+<span class="hljs-comment">//</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">delDup</span>(<span class="hljs-params">s</span>)</span>&#123;
+  <span class="hljs-keyword">const</span> stack = [s[<span class="hljs-number">0</span>]]
+  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">1</span> ;i &lt; s.length ;i++)&#123;
+    <span class="hljs-keyword">const</span> pre = stack.pop()
+    <span class="hljs-comment">// 每次取出上一个末尾字符</span>
+    <span class="hljs-keyword">const</span> cur = s[i]
+    <span class="hljs-keyword">if</span>(cur !== pre)&#123;
+      <span class="hljs-comment">// 不是相同字符则存储起来</span>
+      <span class="hljs-comment">// 是相同字符则由于pop方法已经从结果中删除</span>
+      stack.push(pre,cur)
     &#125;
   &#125;
   <span class="hljs-keyword">return</span> stack.join(<span class="hljs-string">&#x27;&#x27;</span>)
-&#125;</code></pre></div></li>
+&#125;
+</code></pre></div></li>
 </ul>
 <ul>
 <li>滑动窗口最大值<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// k 为窗口大小</span>
@@ -344,18 +365,23 @@ MinStack.prototype.min = <span class="hljs-function"><span class="hljs-keyword">
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">maxInSlideWin</span>(<span class="hljs-params">arr,k</span>)</span>&#123;
   <span class="hljs-keyword">let</span> res = []
   <span class="hljs-keyword">let</span> <span class="hljs-built_in">window</span> = []
+  <span class="hljs-comment">// window存储索引</span>
   <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span> ; i &lt; arr.length ; i++)&#123;
     <span class="hljs-keyword">if</span>(i-<span class="hljs-built_in">window</span>[<span class="hljs-number">0</span>]&gt;=k)&#123;
       <span class="hljs-comment">// 窗口大小超过限制</span>
       <span class="hljs-built_in">window</span>.shift()
+      <span class="hljs-comment">// 抛弃前面的值</span>
     &#125;
     <span class="hljs-keyword">while</span>(arr[<span class="hljs-built_in">window</span>[<span class="hljs-built_in">window</span>.length-<span class="hljs-number">1</span>]]&lt;=arr[i])&#123;
-      <span class="hljs-comment">// 用指针位置的值与窗口索引值比较</span>
+      <span class="hljs-comment">// 用指针位置的值与窗口尾部索引值比较</span>
       <span class="hljs-comment">// 循环删除比指针小的值索引</span>
       <span class="hljs-built_in">window</span>.pop()
     &#125;
     <span class="hljs-built_in">window</span>.push(i)
+    <span class="hljs-comment">// i之前都比i大</span>
     <span class="hljs-keyword">if</span>(i&gt;=k-<span class="hljs-number">1</span>)&#123;
+      <span class="hljs-comment">// 索引k-1开始收集窗口最大值，</span>
+      <span class="hljs-comment">// k-1之前窗口都还没到尺寸</span>
       res.push(arr[<span class="hljs-built_in">window</span>[<span class="hljs-number">0</span>]])
       <span class="hljs-comment">// 保证窗口内最左值=边索引为最大值</span>
     &#125;

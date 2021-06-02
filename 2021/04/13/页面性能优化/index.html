@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      557 字
+      568 字
     </span>
   
 
@@ -237,7 +237,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年4月22日 下午
+                  本文最后更新于：2021年5月26日 晚上
                 
               </p>
             
@@ -264,7 +264,7 @@
     imgList = imgList.filter(<span class="hljs-function">(<span class="hljs-params">img,index</span>)=&gt;</span>!doneList.includes(i))
   &#125;
 &#125;
-<span class="hljs-built_in">document</span>.addEventListener(<span class="hljs-string">&#x27;scroll&#x27;</span>,debounce(lazyLoad))
+<span class="hljs-built_in">document</span>.addEventListener(<span class="hljs-string">&#x27;scroll&#x27;</span>,_.debounce(lazyLoad))
 <span class="hljs-comment">// 加上节流</span></code></pre></div>
 
 <h2 id="非核心代码异步加载"><a href="#非核心代码异步加载" class="headerlink" title="非核心代码异步加载"></a>非核心代码异步加载</h2><ul>
@@ -286,17 +286,15 @@
 </ul>
 <h2 id="预解析DNS"><a href="#预解析DNS" class="headerlink" title="预解析DNS"></a>预解析DNS</h2><p><code>DNS Prefetch</code> 是一种DNS 预解析技术，当浏览网页时，浏览器会在加载网页时对网页中的域名进行解析缓存，这样在单击当前网页中的连接时就无需进行DNS的解析，减少用户等待时间，提高用户体验。</p>
 <ol>
-<li><p>http中浏览器会对a标签自动开启dns预解析</p>
-</li>
-<li><p>https用meta信息来告知浏览器, 当前页面要做DNS预解析:</p>
-</li>
-</ol>
+<li><p><code>HTTP</code>中浏览器会对<code>&lt;a&gt;标签</code>自动开启dns预解析</p>
 <blockquote>
 <p>对于https页面，大部分浏览器是关闭a标签的dns预解析的</p>
 </blockquote>
-<p><code>&lt;meta http-equiv=&quot;x-dns-prefetch-control&quot; content=&quot;on&quot; /&gt;</code></p>
-<ol start="2">
-<li>在页面header中使用link标签来强制对DNS预解析:</li>
+</li>
+<li><p><code>HTTPS</code>用meta信息来告知浏览器, 当前页面要做DNS预解析:<br><code>&lt;meta http-equiv=&quot;x-dns-prefetch-control&quot; content=&quot;on&quot; /&gt;</code></p>
+</li>
+<li><p>在页面<code>&lt;head&gt;</code>中使用<code>&lt;link&gt;标签</code>来强制对DNS预解析:</p>
+</li>
 </ol>
 <p><code> &lt;link rel=&quot;dns-prefetch&quot; href=&quot;http://bdimg.share.baidu.com&quot; /&gt;</code></p>
 <h2 id="预渲染和服务端渲染"><a href="#预渲染和服务端渲染" class="headerlink" title="预渲染和服务端渲染"></a>预渲染和服务端渲染</h2><ul>

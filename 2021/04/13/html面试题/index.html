@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.9k 字
+      1.7k 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      22
+      20
        分钟
     </span>
   
@@ -237,35 +237,29 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年5月12日 下午
+                  本文最后更新于：2021年5月31日 上午
                 
               </p>
             
             <div class="markdown-body">
-              <h2 id="HTML5-新特性"><a href="#HTML5-新特性" class="headerlink" title="HTML5 新特性"></a>HTML5 新特性</h2><h3 id="移除"><a href="#移除" class="headerlink" title="移除"></a>移除</h3><ul>
+              <h1 id="HTML5-新特性"><a href="#HTML5-新特性" class="headerlink" title="HTML5 新特性"></a>HTML5 新特性</h1><h3 id="移除"><a href="#移除" class="headerlink" title="移除"></a>移除</h3><ul>
 <li><p>纯表现的元素/可以用css实现的元素：<code>basefont</code>，<code>big</code>，<code>center</code>，<code>font</code>, <code>s</code>，<code>strike</code></p>
 </li>
-<li><p>对可用性产生负面影响的元素：<code>frame</code>，<code>frameset</code>，<code>noframes</code>；</p>
-</li>
-</ul>
-<h3 id="新增"><a href="#新增" class="headerlink" title="新增"></a>新增</h3><ul>
-<li><p>拖拽API </p>
-</li>
-<li><p><code>canvas</code> 画布和内联 <code>svg</code></p>
+<li><p>对可用性产生负面影响的元素：<code>frame</code>，<code>frame- </code>canvas<code>画布和内联</code>svg`</p>
 </li>
 <li><p><code>audio/video</code> 音视频元素</p>
 </li>
 <li><p>语意化更好的标签，比如<code>header,nav,section,article,footer,aside</code></p>
 </li>
-<li><p>表单校验API</p>
+<li><p>纯html表单校验(数据格式，数据范围，占位符，必填等)</p>
 </li>
-<li><p>增强了<code>input</code>类型:<code>color,date,url,time,tel,range</code></p>
+<li><p>增强了<code>input</code>类型:<code>color</code>,<code>date</code>,<code>datetime-local</code>,<code>range</code>,<code>tel</code>,<code>search</code>,<code>url</code></p>
 </li>
-<li><p>新的表单元素:<code>datalist,progress,meter</code></p>
+<li><p>新的表单元素:<code>datalist,progress,meter,output,keygen</code></p>
 </li>
 <li><p><code>manifest</code>web应用离线缓存</p>
 </li>
-<li><p>地理定位<code>Geolocation</code> API</p>
+<li><p>地理定位<code>geolocation</code> API</p>
 </li>
 <li><p><code>webworker</code>将JS计算交给后台线程</p>
 </li>
@@ -277,20 +271,13 @@
 </li>
 </ul>
 <h3 id="HTML5-哪些标签可以做-SEO-优化"><a href="#HTML5-哪些标签可以做-SEO-优化" class="headerlink" title="HTML5 哪些标签可以做 SEO 优化"></a>HTML5 哪些标签可以做 SEO 优化</h3><p><code>title、meta、header、footer、nav、article、aside</code></p>
-<h3 id="meta标签的作用"><a href="#meta标签的作用" class="headerlink" title="meta标签的作用"></a>meta标签的作用</h3><ul>
-<li>charset 字符编码</li>
-<li>关键词seo优化 </li>
-<li>适用与移动设备的viewport scale页面缩放</li>
-<li>dns预解析</li>
-<li>csp内容安全策略</li>
+<h1 id="meta元数据标签"><a href="#meta元数据标签" class="headerlink" title="meta元数据标签"></a>meta元数据标签</h1><ul>
+<li><code>charset</code> 字符编码</li>
+<li><code>keywords</code>关键词和爬虫</li>
+<li><code>viewport</code> scale页面缩放</li>
+<li><code>CSP</code>内容安全策略</li>
 </ul>
-<h3 id="link和-import和src"><a href="#link和-import和src" class="headerlink" title="link和@import和src"></a><code>link</code>和<code>@import</code>和<code>src</code></h3><ul>
-<li><code>src</code>指向外部资源的位置，该资源会被嵌入src所在位置，浏览器会在此处暂停其他资源的下载</li>
-<li><code>link</code>引入css，icon，定义RSS等。与页面加载同时进行。</li>
-<li><code>@import</code>只能引入样式表。页面加载完后才下载。可能会有兼容问题</li>
-<li>同样引入css，link权重较高<h3 id="HTML5-的离线存储"><a href="#HTML5-的离线存储" class="headerlink" title="HTML5 的离线存储"></a>HTML5 的离线存储</h3></li>
-</ul>
-<p>在用户没有联网时，可以正常访问站点或应用；在联网的情况下，更新用户机器上的缓存文件。</p>
+<h1 id="HTML5-的离线存储"><a href="#HTML5-的离线存储" class="headerlink" title="HTML5 的离线存储"></a>HTML5 的离线存储</h1><p>在用户没有联网时，可以正常访问站点或应用；在联网的情况下，更新用户机器上的缓存文件。</p>
 <p>如何使用：<br>1、页面头部加入一个 manifest 的属性<br>2、在 cache.manifest 文件的编写离线存储的资源<br>3、在离线状态下，操作 window.applicationCache 进行需求实现</p>
 <h4 id="浏览器是如何对-HTML5-的离线存储资源进行管理和加载的"><a href="#浏览器是如何对-HTML5-的离线存储资源进行管理和加载的" class="headerlink" title="浏览器是如何对 HTML5 的离线存储资源进行管理和加载的"></a>浏览器是如何对 HTML5 的离线存储资源进行管理和加载的</h4><ul>
 <li><p>在线的情况下，浏览器发现 HTML 头部有 manifest 属性，它会请求 manifest 文件，如果是第一次访问 app，浏览器会根据 manifest 文件的内容下载相应的资源并且进行离线存储。</p>
@@ -300,46 +287,13 @@
 <li><p>离线的情况下，浏览器直接使用离线存储的资源。</p>
 </li>
 </ul>
-<h3 id="严格模式和混杂模式"><a href="#严格模式和混杂模式" class="headerlink" title="严格模式和混杂模式"></a>严格模式和混杂模式</h3><ul>
-<li>严格模式的排版和 JS 运作模式是 以该浏览器支持的最高标准运行。</li>
-<li>混杂模式中，页面以宽松的向后兼容的方式显示。模拟老式浏览器的行为以 防止站点无法工作</li>
+<h1 id="盒模型"><a href="#盒模型" class="headerlink" title="盒模型"></a>盒模型</h1><p>HTML 文档中的每个元素都使用一个矩形盒子来描述其占用空间，这个模型称为盒模型。盒模型包含四个区域：<code>margin</code>（外边距），<code>border</code>（边框），<code>padding</code>（内边距），<code>content</code>（内容区域）</p>
+<h2 id="标准模型和-IE-模型"><a href="#标准模型和-IE-模型" class="headerlink" title="标准模型和 IE 模型"></a>标准模型和 IE 模型</h2><ul>
+<li>通过[box-sizing]设置</li>
+<li>标准模型[content-box]的宽和高只计算 content 部分</li>
+<li>ie 模型[border-box]的宽高包括 padding 和 border</li>
 </ul>
-<h3 id="超链接访问过后-hover-样式就不出现了"><a href="#超链接访问过后-hover-样式就不出现了" class="headerlink" title="超链接访问过后 hover 样式就不出现了"></a>超链接访问过后 hover 样式就不出现了</h3><p>被点击访问过的超链接样式不在具有 hover 和 active 了解决方法是改变 CSS 属性排列顺序: <code>L-V-H-A</code></p>
-<div class="hljs code-wrapper"><pre><code class="hljs CSS"><span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:link</span> &#123;
-&#125;
-<span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:visited</span> &#123;
-&#125;
-<span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:hover</span> &#123;
-&#125;
-<span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:active</span> &#123;
-&#125;</code></pre></div>
-
-<h2 id="盒模型"><a href="#盒模型" class="headerlink" title="盒模型"></a>盒模型</h2><blockquote>
-<p>概念<br>HTML 文档中的每个元素都使用一个矩形盒子来描述其占用空间，这个模型称为盒模型。盒模型包含四个区域：<code>margin</code>（外边距），<code>border</code>（边框），<code>padding</code>（内边距），<code>content</code>（内容区域</p>
-</blockquote>
-<h3 id="行内元素和块级元素"><a href="#行内元素和块级元素" class="headerlink" title="行内元素和块级元素"></a>行内元素和块级元素</h3><h4 id="行内元素"><a href="#行内元素" class="headerlink" title="行内元素"></a>行内元素</h4><p><code>display inline</code></p>
-<ol>
-<li><p>和其他元素在同一行内</p>
-</li>
-<li><p>行内元素不能设置 width、height、margin、padding</p>
-</li>
-<li><p>默认高度和宽度就是内容的高度和宽度</p>
-</li>
-<li><p>可以设置 margin-left 和 margin-right 属性，无法设置 margin-top 和 margin-bottom 属性</p>
-</li>
-<li><p>border 和 padding 可以设置，但是 border-top 和 padding-top 到页面顶部后就不再增加</p>
-</li>
-</ol>
-<div class="hljs code-wrapper"><pre><code class="hljs javascript">img; <span class="hljs-comment">//可以设置宽高</span>
-span;
-lable;
-strong;
-a;
-input; <span class="hljs-comment">//可以设置宽高</span>
-select; <span class="hljs-comment">//可以设置宽高</span>
-textarea; <span class="hljs-comment">//可以设置宽高</span></code></pre></div>
-
-<h4 id="块级元素"><a href="#块级元素" class="headerlink" title="块级元素"></a>块级元素</h4><p><code>display block</code></p>
+<h2 id="块级元素"><a href="#块级元素" class="headerlink" title="块级元素"></a>块级元素</h2><p><code>display block</code></p>
 <ol>
 <li><p>独占一行</p>
 </li>
@@ -348,11 +302,11 @@ textarea; <span class="hljs-comment">//可以设置宽高</span></code></pre></d
 <li><p>默认宽度是容器的 100%</p>
 </li>
 </ol>
-<div class="hljs code-wrapper"><pre><code class="hljs javascript">artical; <span class="hljs-comment">// h5</span>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript">article; <span class="hljs-comment">// h5</span>
 div;
 header; <span class="hljs-comment">// h5</span>
 section; <span class="hljs-comment">// h5</span>
-adress; <span class="hljs-comment">// h5</span>
+address; <span class="hljs-comment">// h5</span>
 ol;
 ul;
 aside; <span class="hljs-comment">// h5</span>
@@ -365,10 +319,25 @@ p;
 h1 - h6;
 table;
 form;</code></pre></div>
+<h2 id="行内元素"><a href="#行内元素" class="headerlink" title="行内元素"></a>行内元素</h2><p><code>display inline</code></p>
+<ol>
+<li>行内排列</li>
+<li>不能设置 <code>width</code>、<code>height</code>,默认高度和宽度就是内容的高度和宽度</li>
+<li>可以设置 <code>margin-left/right</code>，无法设置 <code>margin-top\bottom</code></li>
+<li><code>border</code> 和 <code>padding</code> 可以设置，但是 <code>border-top</code> 和 <code>padding-top</code> 到页面顶部后就不再增加</li>
+</ol>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript">img; <span class="hljs-comment">//可以设置宽高</span>
+span;
+label;
+strong;
+a;
+input; <span class="hljs-comment">//可以设置宽高</span>
+select; <span class="hljs-comment">//可以设置宽高</span>
+textarea; <span class="hljs-comment">//可以设置宽高</span></code></pre></div>
 
-<ul>
-<li>行内块级元素<br><code>display line-block</code></li>
-</ul>
+
+<h2 id="行内块元素"><a href="#行内块元素" class="headerlink" title="行内块元素"></a>行内块元素</h2><p><code>display line-block</code></p>
+<p>在行内排列的块级元素</p>
 <div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// 兼容</span>
 div &#123;
     display： inline-block；
@@ -376,59 +345,52 @@ div &#123;
     display：inline；<span class="hljs-comment">//一旦触发了hasLayout设置display：inline和display：block效果相似。</span>
 &#125;</code></pre></div>
 
-<ol>
-<li>不自动换行</li>
-<li>识别宽高</li>
-<li>左向右排列</li>
+
+<h1 id="DOM元素的尺寸和位置"><a href="#DOM元素的尺寸和位置" class="headerlink" title="DOM元素的尺寸和位置"></a>DOM元素的尺寸和位置</h1><ol>
+<li><code>HTMLElement.style</code>【content】【只能获取内联样式】</li>
+<li><code>HTMLElement.currentStyle</code>// 【只支持ie】【样式的实时计算结果】</li>
+<li><code>window.getComputedStyle(HTMLElement)</code>【只读】【样式的实时计算结果】</li>
+<li><code>HTMLElement.offsetHeight</code>// 【content+padding+border + 滚动条】</li>
+<li><code>HTMLElement.offsetTop//Left</code>// 【相较于offsetParent的偏移 margin+position】</li>
+<li><code>HTMLElement.clientHeight</code>// 【content+padding - 滚动条】</li>
+<li><code>HTMLElement.scrollHeight</code>// 【没有滚动条时等于clientHeight】</li>
+<li><code>HTMLElement.scrollTop</code>// 【滚动像量】</li>
+<li><code>HTMLElement.getBoundingClientRect()</code>//获取元素的大小及位置</li>
 </ol>
-<h3 id="优雅降级和渐进增强"><a href="#优雅降级和渐进增强" class="headerlink" title="优雅降级和渐进增强"></a>优雅降级和渐进增强</h3><p>_优雅降级_：Web 站点在所有新式浏览器中都能正常工作，如果用户使用的是旧式浏览器，则代码会针对旧版本的 IE 进行降级处理，使之在旧式浏览器上以某种形式降级体验而不至于完全不能使用。</p>
-<p>_渐进增强_：从被所有浏览器支持的基本功能开始，逐步地添加那些只有新版本浏览器才支持的功能，向页面增加不影响基础浏览器的额外样式和功能。当浏览器支持时，它们会自定地呈现出来并发挥作用。</p>
-<h3 id="常见空-VOID-元素"><a href="#常见空-VOID-元素" class="headerlink" title="常见空 VOID 元素"></a>常见空 VOID 元素</h3><p><code>br、hr、img、input、link、meta</code></p>
-<h3 id="window-onload-和-DOMContentLoaded-的区别"><a href="#window-onload-和-DOMContentLoaded-的区别" class="headerlink" title="window.onload 和 DOMContentLoaded 的区别"></a>window.onload 和 DOMContentLoaded 的区别</h3><p><code>window.onload</code>页面的全部资源加载完<br><code>DOMContentLoaded</code>纯HTML加载完</p>
-<h3 id="visibilityState-有哪些用途"><a href="#visibilityState-有哪些用途" class="headerlink" title="visibilityState 有哪些用途"></a>visibilityState 有哪些用途</h3><p>通过<code>visibilityState</code>的值检测页面当前是否可见，以及打开页面的时间等<br>在页面被切换到其他后台进程的时候，自动暂停音乐或视频的播放</p>
-<h3 id="标准模型和-IE-模型"><a href="#标准模型和-IE-模型" class="headerlink" title="标准模型和 IE 模型"></a>标准模型和 IE 模型</h3><ul>
-<li>通过[box-sizing]设置</li>
-<li>标准模型[content-box]的宽和高只计算 content 部分</li>
-<li>ie 模型[border-box]的宽高包括 padding 和 border</li>
-</ul>
-<h3 id="获取-DOM-元素的-style"><a href="#获取-DOM-元素的-style" class="headerlink" title="获取 DOM 元素的 style"></a>获取 DOM 元素的 style</h3><ol>
-<li><code>dom.style.width/height</code>content 只能获取内联样式</li>
-<li><code>dom.currentStyle.width/height</code>// 只支持ie</li>
-<li><code>window.getComputedStyle(ele).width/height</code></li>
-<li><code>offsetHeight</code>// content+padding+border + 滚动条</li>
-<li><code>offsetTop//Left</code>//相较于offsetParent的偏移 margin+position</li>
-<li><code>clientHeight</code>// content+padding - 滚动条</li>
-<li><code>scrollHeight</code>// 没有滚动条时等于clientHeight</li>
-<li><code>scrollTop</code>// 滚动像素数</li>
-</ol>
-<p>// 滚动到底</p>
+<p>！滚动到底</p>
 <blockquote>
 <p>ele.scrollHeight - ele.scrollTop === ele.clientHeight</p>
 </blockquote>
-<h3 id="边距重叠"><a href="#边距重叠" class="headerlink" title="边距重叠"></a>边距重叠</h3><p>两个或多个块级盒子的!!垂直!!相邻边界会重合，它们的边界宽度是相邻边界宽度中的最大值。<br>特别注意内容为空的盒子。</p>
-<h2 id="BFC"><a href="#BFC" class="headerlink" title="BFC"></a>BFC</h2><p>Block Formatting Context 块级格式化上下文,是常规流式布局中一个决定块级盒子布局及浮动相互影响的一个区域，拥有与普通盒模型不同的特性。</p>
-<h3 id="BFC特性"><a href="#BFC特性" class="headerlink" title="BFC特性"></a>BFC特性</h3><ul>
-<li><p>BFC内盒子竖向排列</p>
-</li>
-<li><p>BFC内盒子之间会发生margin合并</p>
+<p>！元素进入可视范围(懒加载)</p>
+<blockquote>
+<p>要加载元素的.offsetTop - 容器.scrollTop &lt;= document.documentElement.clientHeight</p>
+</blockquote>
+<blockquote>
+<p>要加载元素getBoundingClientRect()后的top &lt;= document.documentElement.clientHeight<br>！js获取这些属性会触发重排</p>
+</blockquote>
+<h1 id="BFC"><a href="#BFC" class="headerlink" title="BFC"></a>BFC</h1><p>（Block Formatting Context） 块级格式化上下文,是一个对块级盒子的布局及浮动相互影响有特殊规则的区域</p>
+<h2 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h2><blockquote>
+<p>一句话就是BFC内外不会互相影响。。。</p>
+</blockquote>
+<ul>
+<li><p>BFC内盒子之间会发生外边距合并</p>
 </li>
 <li><p>BFC内浮动元素参与高度计算（高度塌陷）</p>
 </li>
 <li><p>BFC内盒子不会超出BFC边界（浮动覆盖）</p>
 <h3 id="下列方式会创建BFC："><a href="#下列方式会创建BFC：" class="headerlink" title="下列方式会创建BFC："></a>下列方式会创建BFC：</h3><ul>
 <li>根元素<code>HTML</code></li>
-<li>浮动元素（元素的 <code>float</code> 不是 <code>none</code>）</li>
-<li>定位元素（元素的 <code>position</code> 为 <code>absolute</code> 或 <code>fixed</code></li>
-<li><code>overflow</code> 值不为 <code>visible</code> 的块元素</li>
-<li><code>display</code> 值为 <code>flow-root</code> 的元素</li>
-<li>行内块元素（元素的 <code>display</code> 为 <code>inline-block</code></li>
-<li>弹性元素（<code>display</code> 为 <code>flex</code> 或 <code>inline-flex</code> 元素的直接子元素）</li>
-<li>网格元素（<code>display</code> 为 <code>grid</code> 或 <code>inline-grid</code> 元素的直接子元素）</li>
-<li>表格有关（<code>display</code> 为 <code>table``table-row``table-row-group``table-header-group``table-footer-group</code>）</li>
+<li>浮动元素：<code>float</code> 不为 <code>none</code></li>
+<li>定位元素：<code>position</code> 为 <code>absolute</code> 或 <code>fixed</code></li>
+<li><code>overflow</code> 不为 <code>visible</code> （<code>auto</code>,<code>scroll</code>,<code>hidden</code></li>
+<li><code>display</code> 为 <code>flow-root</code> 可以显式BFC</li>
+<li>行内块元素<code>display</code> 为 <code>inline-block</code></li>
+<li>弹性元素<code>display</code> 为 <code>flex</code> 或 <code>inline-flex</code> 元素的直接子元素</li>
+<li>网格元素<code>display</code> 为 <code>grid</code> 或 <code>inline-grid</code> 元素的直接子元素</li>
+<li>表格元素<code>display</code> 为 <code>table``table-cell</code>或<code>table-xxx</code>等匿名表格元素</li>
 </ul>
 </li>
 </ul>
-<p>[MDN] <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Block_formatting_context">https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Block_formatting_context</a> “块格式化上下文”</p>
 <h3 id="清除浮动"><a href="#清除浮动" class="headerlink" title="清除浮动"></a>清除浮动</h3><ul>
 <li>用父元素伪类清除浮动</li>
 </ul>
@@ -456,14 +418,33 @@ div &#123;
 <li>父元素 BFC</li>
 </ul>
 <p>设置能触发 BFC 的属性均可</p>
-<h3 id="页面导入样式时，使用-link-和-import-有什么区别"><a href="#页面导入样式时，使用-link-和-import-有什么区别" class="headerlink" title="页面导入样式时，使用 link 和@import 有什么区别"></a>页面导入样式时，使用 link 和@import 有什么区别</h3><ul>
-<li><p>link 是 XHTML 标签，除了加载 CSS 外，还可以定义 RSS 等其他事务；@import 属于 CSS 范畴，只能加载 CSS。</p>
+<h1 id="超链接伪类顺序"><a href="#超链接伪类顺序" class="headerlink" title="超链接伪类顺序"></a>超链接伪类顺序</h1><p>被点击访问过的超链接样式不在具有 hover 和 active 了解决方法是改变 CSS 属性排列顺序: <code>L-V-H-A</code></p>
+<div class="hljs code-wrapper"><pre><code class="hljs CSS"><span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:link</span> &#123;
+&#125;
+<span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:visited</span> &#123;
+&#125;
+<span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:hover</span> &#123;
+&#125;
+<span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:active</span> &#123;
+&#125;</code></pre></div>
+<h1 id="优雅降级和渐进增强"><a href="#优雅降级和渐进增强" class="headerlink" title="优雅降级和渐进增强"></a>优雅降级和渐进增强</h1><p>_优雅降级_：Web 站点在所有新式浏览器中都能正常工作，如果用户使用的是旧式浏览器，则代码会针对旧版本的 IE 进行降级处理，使之在旧式浏览器上以某种形式降级体验而不至于完全不能使用。</p>
+<p>_渐进增强_：从被所有浏览器支持的基本功能开始，逐步地添加那些只有新版本浏览器才支持的功能，向页面增加不影响基础浏览器的额外样式和功能。当浏览器支持时，它们会自定地呈现出来并发挥作用。</p>
+<h1 id="常见空-VOID-元素"><a href="#常见空-VOID-元素" class="headerlink" title="常见空 VOID 元素"></a>常见空 VOID 元素</h1><p><code>br、hr、img、input、link、meta</code></p>
+<h1 id="window-onload-和-DOMContentLoaded-的区别"><a href="#window-onload-和-DOMContentLoaded-的区别" class="headerlink" title="window.onload 和 DOMContentLoaded 的区别"></a><code>window.onload</code> 和 <code>DOMContentLoaded</code> 的区别</h1><p><code>window.onload</code>页面的全部资源加载完<br><code>DOMContentLoaded</code>纯HTML加载完</p>
+<h1 id="visibilityState"><a href="#visibilityState" class="headerlink" title="visibilityState"></a><code>visibilityState</code></h1><p>通过<code>visibilityState</code>的值检测页面当前是否可见，以及打开页面的时间等<br>在页面被切换到其他后台进程的时候，自动暂停音乐或视频的播放</p>
+<h1 id="外边距重叠"><a href="#外边距重叠" class="headerlink" title="外边距重叠"></a>外边距重叠</h1><ol>
+<li>同层相邻块级元素之间外边距重叠</li>
+<li>子元素与父元素的外边距重叠</li>
+<li>空元素(margin-top直接贴到margin-bottom时)</li>
+</ol>
+<h1 id="link-和-import-有什么区别"><a href="#link-和-import-有什么区别" class="headerlink" title="link 和@import 有什么区别"></a>link 和@import 有什么区别</h1><ul>
+<li><p><code>link</code>  是 XHTML 标签，除了加载 CSS 外，还可以定义 RSS ，rel和图标等；<code>@import</code> 只能加载 CSS。</p>
 </li>
-<li><p>link 引用 CSS 时，在页面载入时同时加载；@import 需要页面网页完全载入以后加载。</p>
+<li><p><code>link</code> 引用 CSS 时，在页面载入时同时加载；<code>@import</code> 需要页面网页完全载入以后加载。</p>
 </li>
-<li><p>link 是 XHTML 标签，无兼容问题；@import 是在 CSS2.1 提出的，低版本的浏览器（IE5 以下）不支持。</p>
+<li><p><code>@import</code> 是在 CSS2.1 提出的，低版本的浏览器（IE5 以下）不支持。</p>
 </li>
-<li><p>link 支持使用 Javascript 控制 DOM 去改变样式；而@import 不支持。</p>
+<li><p><code>link</code> 支持使用 Javascript 控制 DOM 去改变样式；而<code>@import</code> 不支持。</p>
 </li>
 </ul>
 

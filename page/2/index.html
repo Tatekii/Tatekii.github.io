@@ -182,25 +182,31 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/04/13/Promise/">Promise</a>
+        <a href="/2021/04/13/js%E9%97%AD%E5%8C%85/">作用域链与闭包</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2021/04/13/Promise/">
+        <a href="/2021/04/13/js%E9%97%AD%E5%8C%85/">
           
           
             
           
-          promisePromise 对象用于处理异步操作，它表示一个尚未完成且预计在未来完成的异步操作。
-特性
-解决回调地狱
-统一的 API 接口处理异步任务
-链式调用
-返回值穿透
-错误冒泡
+          作用域与作用域链作用域：变量可以起作用的范围
+】全局作用域】
+变量在函数外内声明
 
-Promise 对象有以下两个特点
-对象的状态不受外界影响。Promise 对象代表一个异步操作，有三种状态：pending（进行中）、fulfilled（已成功）和rejected（已失败）。只有异步操作的结果
+全局变量：在任何地方都可以访问到的变量，关闭网页或浏览器才会销毁
+
+
+【函数作用域】（局部作用域）
+变量在函数内声明
+
+局部变量：只在固定的代码片段内可访问到的变量
+局部变量在函数开始执行时创建，函数执行完后局部变量会自动销毁。
+
+
+【块级作用域】（es5）
+任何一对花括号&#123;&#125;中的语句集都属于一
         </a>
       </p>
 
@@ -208,7 +214,7 @@ Promise 对象有以下两个特点
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2021-04-13 00:22" pubdate>
+            <time datetime="2021-04-13 01:04" pubdate>
               2021-04-13
             </time>
           </div>
@@ -218,286 +224,7 @@ Promise 对象有以下两个特点
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/es6/">es6</a>
-            
               <a href="/tags/javascript/">javascript</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/04/13/es6%E6%96%B0%E7%89%B9%E6%80%A7/">es6新特性</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/04/13/es6%E6%96%B0%E7%89%B9%E6%80%A7/">
-          
-          
-            
-          
-          let / const
-都用于声明变量
-不存在变量提升，暂时性死区
-不能重复声明
-快级作用域
-
-let
-可以重新赋值const
-声明时需赋值
-只读不可改变（对于复杂变量，可以修改变量内容，变量内存地址未改变）
-
-变量的解构赋值
-只有可遍历（具备遍历器[Symbol.Iterator]）的数据结构才能解构赋值用途
-遍历数据
-交换变量
-提取对象中的数据
-函数参数默认值
-指定模块
-
-字符串，数值，函数，
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-04-13 00:45" pubdate>
-              2021-04-13
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
-            
-              <a href="/tags/javascript/">javascript</a>
-            
-              <a href="/tags/ES6/">ES6</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/04/13/js%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF/">js运行机制</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/04/13/js%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF/">
-          
-          
-            
-          
-          ref:javascript 运行机制 EventLoop
-JS的单线程JavaScript的单线程，与它的用途有关。作为浏览器脚本语言，JavaScript的主要用途是与用户互动，以及操作DOM。这决定了它只能是单线程，否则会带来很复杂的同步问题。
-EventLoop
-概括：主线程不断从任务队列读取任务进入执行栈执行的循环过程
-
-因为 js 是单线程运行的，在代码执行的时候，通过将不同函数的执行
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-04-13 00:40" pubdate>
-              2021-04-13
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
-            
-              <a href="/tags/javascript/">javascript</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2020/08/02/%E7%AE%97%E6%B3%95%E9%A2%98/">算法题</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2020/08/02/%E7%AE%97%E6%B3%95%E9%A2%98/">
-          
-          
-            
-          
-          
-两数之合
-  function twoSum(arr,target)&#123;
-  let res = []
-  let map = new Map()
-  // 使用数值-&gt;索引建立map
-  // 每次循环计算得出当前差值
-  // 在map中查找这个差值既能得出索引
-  for(let i = 0 ; i&lt;arr.length;i++)&#123;
-    let k = t
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-08-02 11:22" pubdate>
-              2020-08-02
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
-            
-              <a href="/tags/javascript/">javascript</a>
-            
-              <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2020/08/27/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95%E9%A2%98/">操作字符串算法题</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2020/08/27/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95%E9%A2%98/">
-          
-          
-            
-          
-          
-寻找最长公公前缀
-// 输入: [&quot;flower&quot;,&quot;flow&quot;,&quot;flight&quot;]
-// 输出: &quot;fl&quot;
-
-function commonPrefix(...strs)&#123;
-  if(!strs.length || strs.length===0) return &quot;&quot;
-  let re
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-08-27 17:56" pubdate>
-              2020-08-27
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
-            
-              <a href="/tags/javascript/">javascript</a>
-            
-              <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2020/11/25/vue_diff%E7%AE%97%E6%B3%95/">vue的diff算法</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2020/11/25/vue_diff%E7%AE%97%E6%B3%95/">
-          
-          
-            
-          
-          概念
-diff算法，包含渲染器如何对各种类型的vNode的属性，text，fragment进行patch更新，以及判断是patch vNode，还是新增还是删除
-同级比较
-
-基础的diff
-新节点没有子节点-&gt;删除久的
-新节点只有一个子节点-&gt;删除旧的并添加新的
-
-核心diff
-新旧节点都有多个子节点
-
-没有key
-就地更新key的作用
-vNode中的唯一标识符
-用于保存新旧vNode
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-11-25 12:59" pubdate>
-              2020-11-25
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/javascript/">javascript</a>
-            
-              <a href="/tags/vue/">vue</a>
-            
-              <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
             
           </div>
         
@@ -568,52 +295,6 @@ HTTP 报文组成部分
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/05/11/node%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86%E7%82%B9/">node相关知识点</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/05/11/node%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86%E7%82%B9/">
-          
-          
-            
-          
-          
-引用模块的目录分析
-在当前目录下查找package.json(CommonJS包规范定义的包描述文件)，通过JSON.parse()解析出包描述对象，从中取出main属性指定的文件名进行定位。如果文件缺少扩展名，将会进入扩展名分析的步骤。 　　
-而如果main属性制定的文件名错误，或者压根没有package.json文件，Node会将index当做默认文件名，然后依次查找index.js、ind
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-05-11 09:07" pubdate>
-              2021-05-11
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/javascript/">javascript</a>
-            
-              <a href="/tags/node/">node</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
         <a href="/2021/04/13/html%E9%9D%A2%E8%AF%95%E9%A2%98/">HTML面试题</a>
       </h1>
 
@@ -626,17 +307,13 @@ HTTP 报文组成部分
           HTML5 新特性移除
 纯表现的元素/可以用css实现的元素：basefont，big，center，font, s，strike
 
-对可用性产生负面影响的元素：frame，frameset，noframes；
-
-
-新增
-拖拽API 
-
-canvas 画布和内联 svg
+对可用性产生负面影响的元素：frame，frame- canvas画布和内联svg`
 
 audio/video 音视频元素
 
-语意化更好的标签，比如header,nav,section,article,footer
+语意化更好的标签，比如header,nav,section,article,footer,aside
+
+纯html表单校验(数据格式，数据范
         </a>
       </p>
 
@@ -670,28 +347,25 @@ audio/video 音视频元素
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/04/13/js%E4%B8%AD%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/">js数据类型的判断与转换</a>
+        <a href="/2020/08/02/%E7%AE%97%E6%B3%95%E9%A2%98/">算法题</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2021/04/13/js%E4%B8%AD%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/">
+        <a href="/2020/08/02/%E7%AE%97%E6%B3%95%E9%A2%98/">
           
           
             
           
-          ECAMScript 中不能自定义数据类型，只能为下列 7 种简单数据类型（原始类型）
-String
-
-Number
-
-特殊的NaNtypeof NaN === &#x27;number&#x27;
-唯一一个自相反的值
-NaN !== NaN
-
-
-Boolean
-
-在条件判断时，除了 undefined， null， false， NaN， &#39;&#39;， 0， -0，其他所有值都转为 t
+          
+两数之合
+  function twoSum(arr,target)&#123;
+  let res = []
+  let map = new Map()
+  // 使用数值-&gt;索引建立map
+  // 每次循环计算得出当前差值
+  // 在map中查找这个差值既能得出索引
+  for(let i = 0 ; i&lt;arr.length;i++)&#123;
+    let k = t
         </a>
       </p>
 
@@ -699,7 +373,122 @@ Boolean
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2021-04-13 00:19" pubdate>
+            <time datetime="2020-08-02 11:22" pubdate>
+              2020-08-02
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
+            
+              <a href="/tags/javascript/">javascript</a>
+            
+              <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/03/27/%E5%8E%9F%E7%94%9Fjs/">原生js</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/03/27/%E5%8E%9F%E7%94%9Fjs/">
+          
+          
+            
+          
+          javascript
+js 是一门函数优先的轻量级解释型语言，基于原型编程的动态脚本语言
+
+
+函数是一等公民（变量提升，函数可以作为函数的参数，返回值，可以赋值给变量，【函数式编程的条件】
+面向对象编程
+弱类型语言（变量的类型在运行时会变化，强类型语言的变量类型编译时就确定且不会改变
+基于原型（区别于基于类[类和实例]，js 中万物皆为[对象]
+基于原型的语言具有所谓原型对象（prototypic
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-03-27 14:00" pubdate>
+              2020-03-27
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
+            
+              <a href="/tags/js/">js</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/04/13/flex/">flex布局</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/04/13/flex/">
+          
+          
+            
+          
+          ref:阮一峰的网络日志
+容器的属性
+flex-direction 主轴的方向 
+
+row(默认住) | row-reverse 横向排列
+column | column-reverse纵向排列
+
+
+flex-wrap 换行
+
+nowrap不换行
+wrap换行
+wrap-reverse逆序换行
+
+
+flex-flow(上述两种的简写)
+
+justify-content 主轴上的对齐方式
+
+flex
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-04-13 00:44" pubdate>
               2021-04-13
             </time>
           </div>
@@ -709,7 +498,232 @@ Boolean
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
+              <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
+            
+              <a href="/tags/css/">css</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/04/13/es6%E6%96%B0%E7%89%B9%E6%80%A7/">es6新特性</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/04/13/es6%E6%96%B0%E7%89%B9%E6%80%A7/">
+          
+          
+            
+          
+          【let / const】
+都用于声明变量
+不存在变量提升，暂时性死区
+不能重复声明
+快级作用域
+
+let
+可以重新赋值const
+声明时需赋值
+只读不可改变（对于复杂变量，可以修改变量内容，变量内存地址未改变）
+
+【解构赋值】只有可遍历（具备遍历器[Symbol.Iterator]）的数据结构才能解构赋值
+用途
+交换变量
+提取对象中的数据
+解构默认值
+剩余运算
+
+【字符串】
+识别
+
+includ
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-04-13 00:45" pubdate>
+              2021-04-13
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
+            
               <a href="/tags/javascript/">javascript</a>
+            
+              <a href="/tags/ES6/">ES6</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/04/13/%E7%BD%91%E7%BB%9C%E5%88%86%E5%B1%82%E6%A8%A1%E5%9E%8B/">网络分层模型</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/04/13/%E7%BD%91%E7%BB%9C%E5%88%86%E5%B1%82%E6%A8%A1%E5%9E%8B/">
+          
+          
+            
+          
+          OSI 参考模型OSI参考模型（OSI/RM）的全称是开放系统互连参考模型（Open System Interconnection Reference Model，OSI/RM），它是由国际标准化组织（International Standard Organization，ISO）提出的一个网络系统互连模型。
+
+在这个 OSI 七层模型中，每一层都为其上一层提供服务和访问接口
+
+不同主机之间的相同
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-04-13 00:21" pubdate>
+              2021-04-13
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/http/">http</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/04/04/div%E9%AB%98%E5%BA%A6%E4%B8%BA%E9%AB%98%E5%BA%A6%E4%B8%80%E5%8D%8A/">div高度为高度一半</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/04/04/div%E9%AB%98%E5%BA%A6%E4%B8%BA%E9%AB%98%E5%BA%A6%E4%B8%80%E5%8D%8A/">
+          
+          
+            
+          
+          知识点position属性
+static
+正常流，默认值
+top, right, bottom, left 和 z-index 属性无效。
+
+
+relative
+相对正常流偏移
+原位置有预留空间
+
+
+absolute
+移出正常文档流
+相对于最近的 非static 定位祖先元素偏移
+不为元素预留空间
+
+
+fixed
+移出正常文档流
+相对于屏幕视口（viewport）的位置来指定元素位置
+不为元素预留
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-04-04 11:13" pubdate>
+              2021-04-04
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
+            
+              <a href="/tags/css/">css</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/03/24/css%E9%9D%A2%E8%AF%95%E9%A2%98/">CSS面试题</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/03/24/css%E9%9D%A2%E8%AF%95%E9%A2%98/">
+          
+          
+            
+          
+          CSS3 新特性
+边框属性border-radius，box-shadow，border-image
+背景控制background-size,background-origin
+文字效果和自动换行text-shadow,word-wrap
+自定义字体@font-face
+2d/3d 变换，过渡和动画transition``animation
+CSS多列布局CSS Multi-column Layo
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-03-24 11:00" pubdate>
+              2020-03-24
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
+            
+              <a href="/tags/CSS/">CSS</a>
             
           </div>
         

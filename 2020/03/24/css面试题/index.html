@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.4k 字
+      1.6k 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      21
+      25
        分钟
     </span>
   
@@ -237,7 +237,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年4月21日 中午
+                  本文最后更新于：2021年5月28日 中午
                 
               </p>
             
@@ -248,7 +248,7 @@
 <li>文字效果和自动换行<code>text-shadow,word-wrap</code></li>
 <li>自定义字体<code>@font-face</code></li>
 <li>2d/3d 变换，过渡和动画<code>transition``animation</code></li>
-<li>多栏布局column</li>
+<li>CSS多列布局<code>CSS Multi-column Layout</code></li>
 <li>盒模型属性<code>box-sizing</code></li>
 <li>弹性盒子<code>flex</code></li>
 <li>更强大的多媒体查询<h2 id="浏览器兼容"><a href="#浏览器兼容" class="headerlink" title="浏览器兼容"></a>浏览器兼容</h2></li>
@@ -293,13 +293,13 @@
 </ul>
 <h2 id="画椭圆"><a href="#画椭圆" class="headerlink" title="画椭圆"></a>画椭圆</h2><p><code>border-radius属性</code></p>
 <ul>
-<li>boder-radius 是简写属性<ul>
+<li>border-radius 是简写属性<ul>
 <li>border-top-left-radius</li>
 <li>border-top-right-radius</li>
 <li>border-bottom-right-radius</li>
-<li>border-botom-left-radius</li>
-<li>top 左右，bottom 右左，顺时针</li>
-<li>/ 用来分隔水平方向和垂直方向<div class="hljs code-wrapper"><pre><code class="hljs CSS"><span class="hljs-comment">/* 绘制半椭圆 */</span>
+<li>border-bottom-left-radius</li>
+<li>top 左右，bottom 右左，顺时针顺序</li>
+<li>“/“ 用来分隔水平方向和垂直方向<div class="hljs code-wrapper"><pre><code class="hljs CSS"><span class="hljs-comment">/* 绘制半椭圆 */</span>
 <span class="hljs-selector-tag">div</span>&#123;
  <span class="hljs-attribute">width</span>: <span class="hljs-number">100px</span>;
  <span class="hljs-attribute">height</span>: <span class="hljs-number">0</span>;
@@ -311,7 +311,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="文本溢出"><a href="#文本溢出" class="headerlink" title="文本溢出"></a>文本溢出</h2><ul>
+<h2 id="文本控制"><a href="#文本控制" class="headerlink" title="文本控制"></a>文本控制</h2><ul>
 <li><p>单行文本居中，多行文本左对齐</p>
 <div class="hljs code-wrapper"><pre><code class="hljs CSS"><span class="hljs-selector-tag">div</span>&#123;
   <span class="hljs-attribute">text-align</span>:center
@@ -344,27 +344,65 @@ text-overflow: ellipsis；
 /* （多行文本的情况下，用省略号 “…” 隐藏溢出范围的文本) */</code></pre></div></li>
 </ul>
 <h2 id="dpr-1px边框"><a href="#dpr-1px边框" class="headerlink" title="dpr 1px边框"></a>dpr 1px边框</h2><ul>
-<li><code>@media</code>配合<code>transform:scale()</code></li>
-<li>查询设备dpr等比缩放px大小<div class="hljs code-wrapper"><pre><code class="hljs CSS">.<span class="hljs-number">1px</span>_border:before&#123;
-  content:<span class="hljs-string">&#x27;&#x27;</span>;
-  <span class="hljs-attribute">position</span>:absolute;
-  <span class="hljs-attribute">top</span>:<span class="hljs-number">0</span>;
-  <span class="hljs-attribute">left</span>:<span class="hljs-number">0</span>;
-  <span class="hljs-attribute">width</span>:<span class="hljs-number">100%</span>;
-  <span class="hljs-attribute">height</span>:<span class="hljs-number">1px</span>;
-  <span class="hljs-attribute">background-color</span>:<span class="hljs-number">#000</span>;
-  <span class="hljs-attribute">transform-origin</span>:<span class="hljs-number">50%</span>,<span class="hljs-number">0</span>
+<li><p>伪元素配合媒体查询<code>transform:scale()</code></p>
+<div class="hljs code-wrapper"><pre><code class="hljs CSS"><span class="hljs-selector-class">.onePx_border</span>:after&#123;
+    /* 整个div边框 */
+    content: <span class="hljs-string">&#x27;&#x27;</span>;
+    <span class="hljs-attribute">position</span>: absolute;
+    <span class="hljs-attribute">left</span>: <span class="hljs-number">0</span>;
+    <span class="hljs-attribute">top</span>: <span class="hljs-number">0</span>;
+    <span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> solid <span class="hljs-number">#cccccc</span>;
+    <span class="hljs-comment">/* 注意宽高和圆角单位都要配合媒体查询 */</span>
+    <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">26px</span>;？？？
+    <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>/<span class="hljs-number">200%</span>/<span class="hljs-number">333%</span>
+    height: <span class="hljs-number">100%</span>/<span class="hljs-number">200%</span>/<span class="hljs-number">333%</span>
+
+
+    /* 单独一边的边框 */
+    content: <span class="hljs-string">&#x27;&#x27;</span>;
+    <span class="hljs-attribute">position</span>: absolute;
+    <span class="hljs-attribute">left</span>: <span class="hljs-number">0</span>;
+    <span class="hljs-attribute">bottom</span>: <span class="hljs-number">0</span>;
+    <span class="hljs-attribute">background</span>: <span class="hljs-number">#cccccc</span>;
+    <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
+    <span class="hljs-attribute">height</span>: <span class="hljs-number">1px</span>;
 &#125;
 <span class="hljs-keyword">@media</span> <span class="hljs-keyword">only</span> screen <span class="hljs-keyword">and</span> (<span class="hljs-attribute">-webkit-min-device-pixel-ratio</span>: <span class="hljs-number">2</span>) &#123;
-  .<span class="hljs-number">1px</span>_border:before &#123;
-    transform: scaleY (<span class="hljs-number">0.5</span>);
+  <span class="hljs-selector-class">.onePx_border</span>:after &#123;
+    -webkit-transform: <span class="hljs-built_in">scaleY</span>(<span class="hljs-number">0.5</span>);
+    <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">scaleY</span>(<span class="hljs-number">0.5</span>);
+    -webkit-<span class="hljs-attribute">transform-origin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span>;
+    <span class="hljs-attribute">transform-origin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span>;
   &#125;
 
 <span class="hljs-keyword">@media</span> <span class="hljs-keyword">only</span> screen <span class="hljs-keyword">and</span> (<span class="hljs-attribute">-webkit-min-device-pixel-ratio</span>: <span class="hljs-number">3</span>) &#123;
-  .<span class="hljs-number">1px</span>_border:before &#123;
-    transform: scaleY (<span class="hljs-number">0.33</span>);
+  <span class="hljs-selector-class">.onePx_border</span>:after &#123;
+    -webkit-transform: <span class="hljs-built_in">scaleY</span>(<span class="hljs-number">0.3</span>);
+    <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">scaleY</span>(<span class="hljs-number">0.3</span>);
+    -webkit-<span class="hljs-attribute">transform-origin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span>;
+    <span class="hljs-attribute">transform-origin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span>;
   &#125;
 &#125;</code></pre></div></li>
+<li><p>rem + viewport</p>
+<ol>
+<li>整体缩放px单位<div class="hljs code-wrapper"><pre><code class="hljs javascript">&lt;script&gt;
+  (<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;
+    <span class="hljs-comment">// scale</span>
+    <span class="hljs-keyword">var</span> clientWidth = <span class="hljs-built_in">window</span>.screen.width;
+    <span class="hljs-keyword">var</span> dpr = <span class="hljs-built_in">window</span>.devicePixelRatio;
+    <span class="hljs-keyword">var</span> vp = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">&#x27;meta&#x27;</span>);
+    vp.name = <span class="hljs-string">&#x27;viewport&#x27;</span>;
+    vp.content = <span class="hljs-string">`initial-scale=<span class="hljs-subst">$&#123;<span class="hljs-number">1.0</span> * <span class="hljs-number">1</span> <span class="hljs-regexp">/ dpr&#125;, maximum-scale=$&#123;1.0 * 1 /</span> dpr&#125;</span>, minimum-scale=<span class="hljs-subst">$&#123;<span class="hljs-number">1.0</span> * <span class="hljs-number">1</span> / dpr&#125;</span>, user-scalable=no, width=device-width`</span>;
+    <span class="hljs-keyword">var</span> m = <span class="hljs-built_in">document</span>.getElementsByTagName(<span class="hljs-string">&#x27;meta&#x27;</span>)[<span class="hljs-number">0</span>];
+    m.parentNode.insertBefore(vp, m);
+    
+    <span class="hljs-comment">// rem</span>
+    <span class="hljs-built_in">document</span>.documentElement.style.fontSize = ?
+  &#125;)();
+&lt;/script&gt;</code></pre></div></li>
+<li>其他元素使用rem单位</li>
+</ol>
+</li>
 </ul>
 <h2 id="垂直居中div"><a href="#垂直居中div" class="headerlink" title="垂直居中div"></a>垂直居中div</h2><ul>
 <li>绝对定位+上下左右0+margin 0</li>
@@ -372,13 +410,12 @@ text-overflow: ellipsis；
 <li>绝对定位+负translate</li>
 <li>flex+justify-content+align-items</li>
 <li>table-cell+vertical-align</li>
-<li>table+table-cell</li>
 </ul>
-<h2 id="三栏布局"><a href="#三栏布局" class="headerlink" title="三栏布局"></a>三栏布局</h2><div class="hljs code-wrapper"><pre><code>左右固定，中自适应
-</code></pre></div>
-<ol>
-<li>绝对定位</li>
-<li>左右浮动【自适应元素要放在最后】 <div class="hljs code-wrapper"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span>
+<h2 id="三栏布局-左右固定中间自适应"><a href="#三栏布局-左右固定中间自适应" class="headerlink" title="三栏布局(左右固定中间自适应)"></a>三栏布局(左右固定中间自适应)</h2><ol>
+<li><p>绝对定位</p>
+</li>
+<li><p>左右浮动【自适应元素要放在最后】</p>
+ <div class="hljs code-wrapper"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;utf-8&quot;</span>&gt;</span>
@@ -424,7 +461,8 @@ text-overflow: ellipsis；
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></code></pre></div></li>
-<li>全部左浮，-margin移到上一行【自适应元素放在最前】 <div class="hljs code-wrapper"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span>
+<li><p>全部左浮，-margin移到上一行【自适应元素放在最前】</p>
+ <div class="hljs code-wrapper"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;utf-8&quot;</span>&gt;</span>
@@ -475,7 +513,8 @@ text-overflow: ellipsis；
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></code></pre></div></li>
-<li>全部左浮，center元素需要撑开center-wrapper【自适应元素放在最前】<div class="hljs code-wrapper"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span>
+<li><p>全部左浮，center元素需要撑开center-wrapper【自适应元素放在最前】</p>
+<div class="hljs code-wrapper"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span>
  <span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
    <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
      <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;utf-8&quot;</span> /&gt;</span>
@@ -532,9 +571,33 @@ text-overflow: ellipsis；
      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
    <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
  <span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></code></pre></div></li>
-<li>flex</li>
-<li>grid</li>
-<li>table-cell</li>
+<li><p>flex</p>
+<p> <code>flex-grow</code>:1自适应填充剩余空间</p>
+</li>
+<li><p>grid</p>
+<p> <code>grid-template-column/row</code>中给自适应元素写auto大小</p>
+</li>
+<li><p>table</p>
+<p> table下的<code>table-cell</code>会自动自适应没写width的元素</p>
+<div class="hljs code-wrapper"><pre><code class="hljs css"><span class="hljs-selector-class">.wrapper</span>&#123;
+   <span class="hljs-attribute">display</span>:table;
+   <span class="hljs-attribute">width</span>:<span class="hljs-number">100%</span>;
+ &#125;
+  <span class="hljs-selector-class">.wrapper</span> <span class="hljs-selector-tag">div</span>&#123;
+    <span class="hljs-attribute">height</span>:<span class="hljs-number">300px</span>;
+    <span class="hljs-attribute">display</span>:table-cell
+   &#125;
+ <span class="hljs-selector-class">.main</span>&#123;
+   <span class="hljs-attribute">background</span>:pink;
+ &#125;
+ <span class="hljs-selector-class">.left</span>&#123;
+   <span class="hljs-attribute">width</span>:<span class="hljs-number">100px</span>;
+   <span class="hljs-attribute">background</span>:red;
+ &#125;
+ <span class="hljs-selector-class">.right</span>&#123;
+   <span class="hljs-attribute">width</span>:<span class="hljs-number">150px</span>;
+   <span class="hljs-attribute">background</span>:yellow;
+ &#125;</code></pre></div></li>
 </ol>
 
             </div>

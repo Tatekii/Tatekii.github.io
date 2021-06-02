@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      833 字
+      875 字
     </span>
   
 
@@ -237,7 +237,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年5月18日 上午
+                  本文最后更新于：2021年5月28日 上午
                 
               </p>
             
@@ -247,13 +247,13 @@
 <div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// 输入: [&quot;flower&quot;,&quot;flow&quot;,&quot;flight&quot;]</span>
 <span class="hljs-comment">// 输出: &quot;fl&quot;</span>
 
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">commonPrefix</span>(<span class="hljs-params">...strs</span>)</span>&#123;
-  <span class="hljs-keyword">if</span>(!strs.length || strs.length===<span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&quot;</span>
-  <span class="hljs-keyword">let</span> ref = strs[<span class="hljs-number">0</span>]
-  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">1</span>;i&lt;strs.length;i++)&#123;
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">commonPrefix</span>(<span class="hljs-params">...str</span>)</span>&#123;
+  <span class="hljs-keyword">if</span>(!str.length || str.length===<span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&quot;</span>
+  <span class="hljs-keyword">let</span> ref = str[<span class="hljs-number">0</span>]
+  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">1</span>;i&lt;str.length;i++)&#123;
     <span class="hljs-keyword">let</span> j = <span class="hljs-number">0</span>
-    <span class="hljs-keyword">for</span>(;j&lt;ref.length &amp;&amp; j&lt;strs[i].length;j++)&#123;
-      <span class="hljs-keyword">if</span>(ref.chartAt(j)!==strs[i].chartAt(j)) <span class="hljs-keyword">break</span>
+    <span class="hljs-keyword">for</span>(;j&lt;ref.length &amp;&amp; j&lt;str[i].length;j++)&#123;
+      <span class="hljs-keyword">if</span>(ref.chartAt(j)!==str[i].chartAt(j)) <span class="hljs-keyword">break</span>
     &#125;
     ref = ref.subString(<span class="hljs-number">0</span>,j)
   &#125;
@@ -261,21 +261,14 @@
 &#125;
 </code></pre></div></li>
 <li><p>连字符转为驼峰</p>
-<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">hump</span>(<span class="hljs-params">str</span>)</span>&#123;
-  <span class="hljs-keyword">return</span> str.replace(<span class="hljs-regexp">/-\w/g</span>,$<span class="hljs-number">1</span>=&gt;&#123;
-    <span class="hljs-keyword">return</span> $<span class="hljs-number">1.</span>slice(<span class="hljs-number">1</span>).toUpperCase()
-  &#125;)
-&#125;
+<div class="hljs code-wrapper"><pre><code class="hljs typescript"><span class="hljs-keyword">const</span> toCamelCase = <span class="hljs-function">(<span class="hljs-params">str:<span class="hljs-built_in">string</span></span>) =&gt;</span> str.replace(<span class="hljs-regexp">/-\w/g</span>,$=&gt;$.slice(<span class="hljs-number">1</span>).toUpperCase())
 </code></pre></div></li>
 </ul>
 <ul>
 <li>将字符串改为首字母大写<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">//-i-hate -_you_</span>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Upper</span>(<span class="hljs-params">str</span>)</span>&#123;
-  <span class="hljs-keyword">let</span> rule = <span class="hljs-regexp">/\b_?(\w)/g</span>
-  <span class="hljs-keyword">return</span> str.replace(rule,($<span class="hljs-number">1</span>=&gt;&#123;
-    <span class="hljs-keyword">return</span> $<span class="hljs-number">1.</span>toUpperCase()
-  &#125;))
-&#125;</code></pre></div></li>
+  <span class="hljs-comment">// \b匹配单词边界</span>
+  <span class="hljs-comment">// 加上_判断？</span>
+<span class="hljs-keyword">const</span> firstUpper = <span class="hljs-function">(<span class="hljs-params">str:string</span>) =&gt;</span> str.replace(<span class="hljs-regexp">/\b_?\w/g</span>,$=&gt;$.toUpperCase())</code></pre></div></li>
 </ul>
 <ul>
 <li>反转句子<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">//  正则</span>
@@ -287,12 +280,13 @@
 
 <span class="hljs-comment">//</span>
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">reverseWords</span>(<span class="hljs-params">str</span>)</span>&#123;
+  <span class="hljs-comment">// 也可以使用string+ &#x27; &#x27; </span>
+  <span class="hljs-comment">// 这里使用数组  </span>
   <span class="hljs-keyword">let</span> arr = []
+  str = srt.trim()
   <span class="hljs-keyword">let</span> left = <span class="hljs-number">0</span>
   <span class="hljs-keyword">let</span> right = str.length-<span class="hljs-number">1</span>
   <span class="hljs-keyword">let</span> word = <span class="hljs-string">&#x27;&#x27;</span>
-  <span class="hljs-keyword">while</span>(str.charAt(left)===<span class="hljs-string">&#x27; &#x27;</span>) left++
-  <span class="hljs-keyword">while</span>(str.charAt(right)===<span class="hljs-string">&#x27; &#x27;</span>) right--
   <span class="hljs-comment">// 去除头尾多余空格</span>
   <span class="hljs-keyword">while</span>(left&lt;=right)&#123;
     <span class="hljs-keyword">let</span> char = str.charAt(left)
@@ -305,6 +299,9 @@
     left ++
   &#125;
   arr.unshift(word)
+  <span class="hljs-comment">// 上面单词的添加是基于该位置字符是否为空</span>
+  <span class="hljs-comment">// 则最后一个单词的末尾非空将不会被添加</span>
+  <span class="hljs-comment">// 所以最后加上arr.unshift(word)</span>
   <span class="hljs-keyword">return</span> arr.join(<span class="hljs-string">&#x27; &#x27;</span>)
 &#125;</code></pre></div></li>
 </ul>
@@ -360,13 +357,11 @@
 <li><p>计算二进制数中1的个数</p>
 <div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// n 为32位二进制数</span>
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">hammingWeight1</span>(<span class="hljs-params">n</span>)</span>&#123;
-  <span class="hljs-keyword">const</span> numStr = n.toString(<span class="hljs-number">2</span>).toString()
-  <span class="hljs-comment">// 呈现字符串或数组</span>
-  <span class="hljs-comment">//const numStr = n.toString(2).split(&#x27;’)</span>
-  <span class="hljs-comment">// 然后就是遍历判断</span>
+  <span class="hljs-keyword">const</span> numStr = n.toString(<span class="hljs-number">2</span>)
+  <span class="hljs-comment">// 转为二进制后记数</span>
   <span class="hljs-keyword">let</span> showTimes = <span class="hljs-number">0</span>
   <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i =<span class="hljs-number">0</span>;i&lt;numStr.length;i++)&#123;
-    <span class="hljs-keyword">if</span>(i===<span class="hljs-string">&#x27;1&#x27;</span>)&#123;
+    <span class="hljs-keyword">if</span>(numStr[i]===<span class="hljs-string">&#x27;1&#x27;</span>)&#123;
       showTimes++
     &#125;
   &#125;
@@ -380,8 +375,8 @@
   <span class="hljs-keyword">let</span> showTimes = <span class="hljs-number">0</span>
   <span class="hljs-keyword">while</span>(n!=<span class="hljs-number">0</span>)&#123;
     showTimes += n&amp;<span class="hljs-number">1</span>
-    <span class="hljs-comment">// 与1 &amp;运算，1的二进制为1</span>
-    <span class="hljs-comment">// &amp;只有左右都为1时输出1</span>
+    <span class="hljs-comment">// &amp;运算，1的二进制为1</span>
+    <span class="hljs-comment">// 则左右都为1时输出1</span>
     n&gt;&gt;&gt;=<span class="hljs-number">1</span>
   &#125;
   <span class="hljs-keyword">return</span> showTimes
@@ -392,14 +387,16 @@
   <span class="hljs-keyword">let</span> showTimes = <span class="hljs-number">0</span>
   <span class="hljs-keyword">while</span>(n!=<span class="hljs-number">0</span>)&#123;
     showTimes ++ 
-    n  = n &amp; (n-<span class="hljs-number">1</span>)
+    n &amp;= n-<span class="hljs-number">1</span>
     <span class="hljs-comment">// 二进制 - 中</span>
     <span class="hljs-comment">// n-1 相当 于n把最右边的1变为0,其后面的0变为1</span>
     <span class="hljs-comment">// n与n-1进行与运算,1&amp;1=1,即只改变了最右边第一个1</span>
-    <span class="hljs-comment">// 0001000</span>
-    <span class="hljs-comment">// 0000111</span>
-    <span class="hljs-comment">// 0000000</span>
-    <span class="hljs-comment">// 循环删除右边的1</span>
+    <span class="hljs-comment">// n       =&gt; 0001100</span>
+    <span class="hljs-comment">// n-1     =&gt; 0001011</span>
+    <span class="hljs-comment">// n&amp;(n-1) =&gt; 0001000</span>
+    <span class="hljs-comment">// n-1     =&gt; 0000111</span>
+    <span class="hljs-comment">// n&amp;(n-1) =&gt; 0000000</span>
+    <span class="hljs-comment">// 跳出循环</span>
   &#125;
   <span class="hljs-keyword">return</span> showTimes
 &#125;</code></pre></div></li>

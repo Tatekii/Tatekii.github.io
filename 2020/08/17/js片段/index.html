@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      799 字
+      782 字
     </span>
   
 
@@ -237,7 +237,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年4月13日 晚上
+                  本文最后更新于：2021年6月1日 晚上
                 
               </p>
             
@@ -246,7 +246,8 @@
 <li>字母的所有组合</li>
 </ul>
 <div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> anagrams = <span class="hljs-function"><span class="hljs-params">str</span> =&gt;</span> &#123;
-  <span class="hljs-keyword">if</span>(str.length&lt;=<span class="hljs-number">2</span>) <span class="hljs-keyword">return</span> str.length===<span class="hljs-number">2</span> ? [str , str[<span class="hljs-number">1</span>] + str[<span class="hljs-number">0</span>]] :str
+  <span class="hljs-keyword">if</span>(str.length===<span class="hljs-number">2</span>) <span class="hljs-keyword">return</span> [str , str[<span class="hljs-number">1</span>] + str[<span class="hljs-number">0</span>]]
+  <span class="hljs-comment">// 手写长度为2时候的排列</span>
 
   <span class="hljs-comment">// 这里使用reduce的第三个参数index，正在处理的元素</span>
   <span class="hljs-comment">// 如果提供了initialValue，则起始索引号为0，否则从索引1起始。</span>
@@ -258,7 +259,7 @@
     <span class="hljs-comment">// c bd =&gt; cbd cdb</span>
     <span class="hljs-comment">// d bc =&gt; dbc dcb</span>
     <span class="hljs-comment">// b...</span>
-    <span class="hljs-keyword">return</span> acc.concat(anagrams(other).map(<span class="hljs-function"><span class="hljs-params">char</span>=&gt;</span>cur+char))
+    <span class="hljs-keyword">return</span> acc.push(anagrams(other).map(<span class="hljs-function"><span class="hljs-params">char</span>=&gt;</span>cur+char))
     <span class="hljs-comment">// 递归至两位数数组颠倒排序,并将所有可能与当前处理元素组合</span>
   &#125;,[])
   <span class="hljs-comment">// 指定initialValue</span>
@@ -385,11 +386,6 @@ bifurcate([<span class="hljs-string">&quot;beep&quot;</span>, <span class="hljs-
 <span class="hljs-comment">// timeTaken(() =&gt; Math.pow(2, 10)) -&gt; 1024</span>
 <span class="hljs-comment">// (logged): timeTaken: 0.02099609375ms</span></code></pre></div>
 
-<ul>
-<li>打乱数组</li>
-</ul>
-<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> shuffle = <span class="hljs-function">(<span class="hljs-params">arr</span>) =&gt;</span> arr.sort(<span class="hljs-function">() =&gt;</span> <span class="hljs-built_in">Math</span>.random() - <span class="hljs-number">0.5</span>);
-<span class="hljs-comment">// shuffle([1,2,3]) -&gt; [2,3,1]</span></code></pre></div>
 
 <ul>
 <li>RGB 转十六进制</li>

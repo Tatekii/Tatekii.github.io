@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.6k 字
+      1.8k 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      20
+      23
        分钟
     </span>
   
@@ -237,12 +237,12 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年5月21日 上午
+                  本文最后更新于：2021年5月29日 下午
                 
               </p>
             
             <div class="markdown-body">
-              <h2 id="let-const"><a href="#let-const" class="headerlink" title="let / const"></a>let / const</h2><ul>
+              <h2 id="【let-const】"><a href="#【let-const】" class="headerlink" title="【let / const】"></a>【let / const】</h2><ul>
 <li>都用于声明变量</li>
 <li>不存在变量提升，暂时性死区</li>
 <li>不能重复声明</li>
@@ -253,67 +253,94 @@
 <li>声明时需赋值</li>
 <li>只读不可改变（对于复杂变量，可以修改变量内容，变量内存地址未改变）</li>
 </ul>
-<h2 id="变量的解构赋值"><a href="#变量的解构赋值" class="headerlink" title="变量的解构赋值"></a>变量的解构赋值</h2><ul>
-<li>只有可遍历（具备遍历器<code>[Symbol.Iterator]</code>）的数据结构才能解构赋值<h3 id="用途"><a href="#用途" class="headerlink" title="用途"></a>用途</h3></li>
-<li>遍历数据</li>
+<h2 id="【解构赋值】"><a href="#【解构赋值】" class="headerlink" title="【解构赋值】"></a>【解构赋值】</h2><p>只有可遍历（具备遍历器<code>[Symbol.Iterator]</code>）的数据结构才能解构赋值</p>
+<h3 id="用途"><a href="#用途" class="headerlink" title="用途"></a>用途</h3><ul>
 <li>交换变量</li>
 <li>提取对象中的数据</li>
-<li>函数参数默认值</li>
-<li>指定模块</li>
+<li>解构默认值</li>
+<li>剩余运算</li>
 </ul>
-<h2 id="字符串，数值，函数，数组，对象扩展"><a href="#字符串，数值，函数，数组，对象扩展" class="headerlink" title="字符串，数值，函数，数组，对象扩展"></a>字符串，数值，函数，数组，对象扩展</h2><p>例如：</p>
+<h2 id="【字符串】"><a href="#【字符串】" class="headerlink" title="【字符串】"></a>【字符串】</h2><ul>
+<li><p>识别</p>
 <ul>
-<li>模版字符串（变量插值，多行字符串</li>
-<li>安全整数<code>Number.isSafeInteger</code>,<code>Number.MAX_SAFE_INTEGER</code>,<code>Number.MAX_SAFE_INTEGER</code><blockquote>
-<p>+-2^53 +-10^16</p>
-</blockquote>
+<li><code>includes()</code></li>
+<li><code>startsWith()</code></li>
+<li><code>endsWith()</code> </li>
+</ul>
 </li>
+<li><p>补全</p>
+<ul>
+<li><code>padStart(len,x)</code>// 补全后的最小长度，不足则用x在开头填充</li>
+<li><code>padEnd()</code>// 在末尾填充</li>
+</ul>
+</li>
+<li><p>重复</p>
+<p><code>String.prototype.repeat()</code></p>
+</li>
+<li><p>模版字符串<code>多行，插值$&#123;x&#125;</code></p>
+</li>
+</ul>
+<h2 id="【数值】"><a href="#【数值】" class="headerlink" title="【数值】"></a>【数值】</h2><blockquote>
+<p>普通number类型只能保留53个二进制位/16个10进制位的精度</p>
+</blockquote>
+<ul>
+<li>最大最小安全整数<code>Number.MAX_SAFE_INTEGER</code>,<code>Number.MAX_SAFE_INTEGER</code></li>
+<li>识别<ul>
+<li><code>Number.isSafeInteger()</code></li>
+<li><code>Number.isFinite()</code></li>
+</ul>
+</li>
+<li>大数<code>BigInt</code>类型，后要加上字母n<code>123n</code>，没有位数限制 </li>
 <li>指数运算<code>**</code></li>
-<li>大数<code>BigInt</code>，后要加上字母n<code>123n</code>，没有位数限制<blockquote>
-<p>普通number类型只能保留53个二进制位/16个10进制位</p>
-</blockquote>
-</li>
-<li>箭头函数<ul>
+</ul>
+<h2 id="【数组】"><a href="#【数组】" class="headerlink" title="【数组】"></a>【数组】</h2><ul>
+<li>方法<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-built_in">Array</span>.from() <span class="hljs-comment">// 从一个类似数组或可迭代对象创建一个新的，浅拷贝的数组实例。</span>
+<span class="hljs-built_in">Array</span>.of() <span class="hljs-comment">// Array()只传一个参数就作为新建的数组长度</span>
+includes()
+copyWithin()
+fill()
+find() / findIndex()
+keys(),values(),entries()
+flat()</code></pre></div></li>
+<li>扩展运算符</li>
+</ul>
+<h2 id="【对象】"><a href="#【对象】" class="headerlink" title="【对象】"></a>【对象】</h2><ul>
+<li><p>方法</p>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-built_in">Object</span>.is(a,b)<span class="hljs-comment">// 比较两个值是否严格相等，与（===）基本类似</span>
+<span class="hljs-comment">// Object.is与全等的区别</span>
+<span class="hljs-comment">//  Object.is(+0,-0);  //false</span>
+<span class="hljs-comment">//  +0 === -0  //true</span>
+
+<span class="hljs-comment">//  Object.is(NaN,NaN); //true</span>
+<span class="hljs-comment">//  NaN === NaN  //false</span>
+<span class="hljs-built_in">Object</span>.assign() <span class="hljs-comment">// 潜拷贝</span></code></pre></div></li>
+<li><p>扩展运算符</p>
+<h2 id="【函数】"><a href="#【函数】" class="headerlink" title="【函数】"></a>【函数】</h2></li>
+<li><p>箭头函数</p>
+<ul>
 <li>箭头函数的 this 是语法上的，静态绑定书写时的上下文，不会改变</li>
 <li>箭头函数没有<code>prototype</code> —&gt; <strong>不能作为构造函数，不能 new</strong></li>
 <li>箭头函数没有<code>arguments</code>属性</li>
 <li>不能用作<code>generator</code>函数</li>
 </ul>
 </li>
+<li><p>函数参数默认值<code>function fn1(arg1=&#39;xxx&#39;)&#123;&#125;</code></p>
+</li>
+<li><p>函数剩余参数<code>function(a, b, ...theArgs)</code></p>
+</li>
 </ul>
-<ul>
-<li><p>函数参数默认值</p>
-</li>
-<li><p><code>...rest</code></p>
-</li>
-<li><p>扩展运算符<code>...</code></p>
-</li>
-<li><p>一堆数组方法</p>
-<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-built_in">Array</span>.from()
-<span class="hljs-built_in">Array</span>.of()
-includes()
-copyWithin()
-find()/findIndex()
-keys(),values(),entries()</code></pre></div></li>
-<li><p>对象方法</p>
-<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-built_in">Object</span>.is()
-<span class="hljs-built_in">Object</span>.assign()
-getPrototypeOf()/setPrototypeOf()
-.__proto__ =</code></pre></div>
-<h2 id="Symbol"><a href="#Symbol" class="headerlink" title="Symbol"></a>Symbol</h2><p>独一无二的值,<code>Symbol()</code>声明</p>
-<h2 id="Set-WeakSet"><a href="#Set-WeakSet" class="headerlink" title="Set/WeakSet"></a>Set/WeakSet</h2></li>
-<li><p>Set类似于数组，但是成员的值都是唯一的</p>
-<div class="hljs code-wrapper"><pre><code class="hljs javascript">size
+<h2 id="【Symbol】"><a href="#【Symbol】" class="headerlink" title="【Symbol】"></a>【Symbol】</h2><p>独一无二的值,<code>Symbol()</code>声明</p>
+<h2 id="【Set-WeakSet】"><a href="#【Set-WeakSet】" class="headerlink" title="【Set/WeakSet】"></a>【Set/WeakSet】</h2><ul>
+<li>Set类似于数组，但是成员的值都是唯一的<div class="hljs code-wrapper"><pre><code class="hljs javascript">size
 add()
 <span class="hljs-keyword">delete</span>()
 has()
 clear()</code></pre></div></li>
-<li><p>WeakSet的成员只能是对象，【弱引用】，【不可遍历】</p>
-<div class="hljs code-wrapper"><pre><code class="hljs javascript">add()
+<li>WeakSet的成员只能是对象，【弱引用】，【不可遍历】<div class="hljs code-wrapper"><pre><code class="hljs javascript">add()
 <span class="hljs-keyword">delete</span>()
 has()</code></pre></div></li>
 </ul>
-<h2 id="Map-WeakMap"><a href="#Map-WeakMap" class="headerlink" title="Map/WeakMap"></a>Map/WeakMap</h2><ul>
+<h2 id="【Map-WeakMap】"><a href="#【Map-WeakMap】" class="headerlink" title="【Map/WeakMap】"></a>【Map/WeakMap】</h2><ul>
 <li>Object的键传统上只能使用字符串，Map无此限制<div class="hljs code-wrapper"><pre><code class="hljs javascript">size
 set(key,value) <span class="hljs-comment">// 返回整个 Map 结构</span>
 get() <span class="hljs-comment">// 找不到该 key 返回 undefined</span>
@@ -325,7 +352,7 @@ get()
 has()
 <span class="hljs-keyword">delete</span>()</code></pre></div></li>
 </ul>
-<h2 id="Proxy"><a href="#Proxy" class="headerlink" title="Proxy"></a>Proxy</h2><p>拦截器/代理 <code>const _proxy1 = new Proxy(target,handler)</code></p>
+<h2 id="【Proxy】"><a href="#【Proxy】" class="headerlink" title="【Proxy】"></a>【Proxy】</h2><p>拦截器/代理 <code>const _proxy1 = new Proxy(target,handler)</code></p>
 <div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// 常用handlers</span>
 handler.getPrototypeOf()
 <span class="hljs-comment">// Object.getPrototypeOf 方法的捕捉器。</span>
@@ -350,14 +377,14 @@ handler.apply()
 handler.construct()
 <span class="hljs-comment">// new 操作符的捕捉器。</span></code></pre></div>
 
-<h2 id="Reflect"><a href="#Reflect" class="headerlink" title="Reflect"></a>Reflect</h2><p>操作对象的API</p>
+<h2 id="【Reflect】"><a href="#【Reflect】" class="headerlink" title="【Reflect】"></a>【Reflect】</h2><p>操作对象的API</p>
 <ul>
 <li>将对象操作的返回更合理化（报错-&gt;false</li>
 <li>将对象操作函数化<blockquote>
 <p>某些Object操作是命令式，比如name in obj和delete obj[name]，而Reflect.has(obj, name)和Reflect.deleteProperty(obj, name)让它们变成了函数行为。</p>
 </blockquote>
 </li>
-<li>与Proxy中方法均对应<h2 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a>Promise</h2></li>
+<li>与Proxy中方法均对应<h2 id="【Promise】"><a href="#【Promise】" class="headerlink" title="【Promise】"></a>【Promise】</h2></li>
 <li>处理异步操作，避免回调嵌套</li>
 <li>状态不可逆</li>
 <li>中途不可停止</li>
@@ -378,7 +405,7 @@ handler.construct()
 </code></pre></div>
 
 
-<h2 id="Iterator和for…of循环"><a href="#Iterator和for…of循环" class="headerlink" title="Iterator和for…of循环"></a>Iterator和for…of循环</h2><h3 id="Symbol-Iterator"><a href="#Symbol-Iterator" class="headerlink" title="[Symbol.Iterator]"></a>[Symbol.Iterator]</h3><ul>
+<h2 id="【Iterator迭代器】"><a href="#【Iterator迭代器】" class="headerlink" title="【Iterator迭代器】"></a>【Iterator迭代器】</h2><h3 id="Symbol-Iterator"><a href="#Symbol-Iterator" class="headerlink" title="[Symbol.Iterator]"></a>[Symbol.Iterator]</h3><ul>
 <li>统一的遍历集合数据的借口</li>
 <li>只要拥有<code>[Symbol.Iterator]</code>的数据结构都可以用for…of遍历</li>
 </ul>
@@ -388,11 +415,10 @@ handler.construct()
 <li>Set</li>
 <li>String</li>
 <li>TypedArray</li>
-<li>函数的 arguments 对象</li>
-<li>NodeList 对象</li>
+<li>函数的 arguments</li>
+<li>Dom Node</li>
 </ul>
-<h3 id="promise"><a href="#promise" class="headerlink" title="promise"></a>promise</h3><h3 id="generator"><a href="#generator" class="headerlink" title="generator"></a>generator</h3><h3 id="async-await"><a href="#async-await" class="headerlink" title="async/await"></a>async/await</h3><p>async 函数就是将 Generator 函数的星号（*）替换成 async，将 yield 替换成 await。<br>可以看作是多个异步操作包装成的 Promise 对象，await命令就是内部 then 命令的语法糖。</p>
-<h2 id="Generator"><a href="#Generator" class="headerlink" title="Generator"></a>Generator</h2><ul>
+<h2 id="【Generator】"><a href="#【Generator】" class="headerlink" title="【Generator】"></a>【Generator】</h2><ul>
 <li>可以暂停的状态机，遇到yield则暂停</li>
 <li>.next（）执行到下一个yield</li>
 <li>自执行generator<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// co函数简单实现</span>
@@ -417,9 +443,9 @@ handler.construct()
   &#125;)
 &#125;
 </code></pre></div>
-<h2 id="async-await-1"><a href="#async-await-1" class="headerlink" title="async/await"></a>async/await</h2>generator语法糖</li>
+<h2 id="【async-await】"><a href="#【async-await】" class="headerlink" title="【async/await】"></a>【async/await】</h2>async 函数就是将 Generator 函数的星号（*）替换成 async，将 yield 替换成 await。<br>可以看作是多个异步操作包装成的 Promise 对象，await命令就是内部 then 命令的语法糖。</li>
 </ul>
-<h2 id="Class类"><a href="#Class类" class="headerlink" title="Class类"></a>Class类</h2><ol>
+<h2 id="【Class】"><a href="#【Class】" class="headerlink" title="【Class】"></a>【Class】</h2><ol>
 <li><p>类表达式和类声明</p>
  <div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> A = <span class="hljs-class"><span class="hljs-keyword">class</span> </span>&#123;
 
@@ -474,9 +500,23 @@ handler.construct()
     <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.#func3()
   &#125;
 &#125;</code></pre></div></li>
-</ol>
-<h2 id="模块化"><a href="#模块化" class="headerlink" title="模块化"></a>模块化</h2><ol>
-<li>语法</li>
+<li><p>getter / setter</p>
+<p> 当使用 get 关键字时，属性将被定义在实例的原型上，当使用Object.defineProperty()时，属性将被定义在实例自身上。</p>
+ <div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Example</span> </span>&#123;
+  <span class="hljs-keyword">get</span> <span class="hljs-title">hello</span>() &#123;
+    <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;world&#x27;</span>;
+  &#125;
+&#125;
+
+<span class="hljs-keyword">const</span> obj = <span class="hljs-keyword">new</span> Example();
+<span class="hljs-built_in">console</span>.log(obj.hello);
+<span class="hljs-comment">// &quot;world&quot;</span>
+
+<span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">Object</span>.getOwnPropertyDescriptor(obj, <span class="hljs-string">&#x27;hello&#x27;</span>));
+<span class="hljs-comment">// undefined</span></code></pre></div>
+<h2 id="【模块化-ES-module】"><a href="#【模块化-ES-module】" class="headerlink" title="【模块化 ES module】"></a>【模块化 ES module】</h2></li>
+<li><p>语法</p>
+</li>
 </ol>
 <p><code>export / export</code></p>
 <div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// 这是 Node 中向外暴露成员的形式：</span>

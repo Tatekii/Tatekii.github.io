@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      2.8k 字
+      2.2k 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      39
+      30
        分钟
     </span>
   
@@ -237,7 +237,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年5月11日 上午
+                  本文最后更新于：2021年6月1日 晚上
                 
               </p>
             
@@ -247,7 +247,7 @@
 </li>
 <li><p><code>Number</code></p>
 <ul>
-<li>特殊的<code>NaN</code><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">typeof</span> <span class="hljs-literal">NaN</span> === <span class="hljs-string">&#x27;number&#x27;</span>
+<li><code>NaN</code><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">typeof</span> <span class="hljs-literal">NaN</span> === <span class="hljs-string">&#x27;number&#x27;</span>
 唯一一个自相反的值
 <span class="hljs-literal">NaN</span> !== <span class="hljs-literal">NaN</span></code></pre></div></li>
 </ul>
@@ -258,22 +258,21 @@
 <li>布尔值与其他类型比较都会转为数字</li>
 </ul>
 </li>
-<li><p><code>Null</code></p>
+<li><p><code>null</code></p>
 <ul>
 <li><code>typeof null = object</code>,<em>null 表示一个空对象指针</em></li>
 <li>null 必须手动设置，常用于作为参数传入，说明该参数不是对象</li>
 <li>设置为 null 的变量或者对象会被内存收集器回收</li>
-<li>null 转为数字类型值为 0</li>
-<li>Null 和 Undefined</li>
-<li>if 为 false</li>
+<li><code>null</code> 转为数字类型值为 <code>0</code></li>
 </ul>
 </li>
-<li><p><code>Undefined</code></p>
+</ul>
+<ul>
+<li><p><code>undefined</code></p>
 <ul>
 <li>调用一个值而它本身没有赋值</li>
-<li><code>undefined == null</code> 两个等号</li>
-<li>undefined 转为数字类型为 NaN</li>
-<li>if 为 false</li>
+<li><code>undefined == null</code> </li>
+<li><code>undefined</code> 转为数字类型为 <code>NaN</code></li>
 </ul>
 </li>
 <li><p><code>Symbol</code>[ES6 新增]</p>
@@ -297,7 +296,7 @@
 </li>
 </ul>
 <h1 id="类型判断"><a href="#类型判断" class="headerlink" title="类型判断"></a>类型判断</h1><h2 id="typeOf"><a href="#typeOf" class="headerlink" title="typeOf"></a><code>typeOf</code></h2><ul>
-<li>对未声明的变量，只能执行一个有用的操作，就是对它调用<code>typeof</code>,不报错，return <code>undefined</code></li>
+<li>对未声明的变量，只有对它调用<code>typeof</code>不报错，return <code>undefined</code></li>
 <li>特殊的几个</li>
 </ul>
 <div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">typeof</span> <span class="hljs-literal">undefined</span>; <span class="hljs-comment">// &#x27;undefined&#x27;</span>
@@ -307,9 +306,9 @@
 
 <h2 id="isNaN"><a href="#isNaN" class="headerlink" title="isNaN"></a><code>isNaN</code></h2><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">isNaN</span>(<span class="hljs-literal">NaN</span>));    <span class="hljs-comment">//true</span>
 <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">isNaN</span>(<span class="hljs-number">10</span>));     <span class="hljs-comment">//false</span>
-<span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">isNaN</span>(<span class="hljs-string">&quot;10&quot;</span>));   <span class="hljs-comment">//  false</span>
-<span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">isNaN</span>(<span class="hljs-string">&quot;blue&quot;</span>)); <span class="hljs-comment">// true</span>
-<span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">isNaN</span>(<span class="hljs-literal">true</span>));   <span class="hljs-comment">// false</span>
+<span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">isNaN</span>(<span class="hljs-string">&quot;10&quot;</span>));   <span class="hljs-comment">//false</span>
+<span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">isNaN</span>(<span class="hljs-string">&quot;blue&quot;</span>)); <span class="hljs-comment">//true</span>
+<span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">isNaN</span>(<span class="hljs-literal">true</span>));   <span class="hljs-comment">//false</span>
 </code></pre></div>
 
 <h2 id="instanceof"><a href="#instanceof" class="headerlink" title="instanceof"></a><code>instanceof</code></h2><p><code>instanceof</code> 运算符用来测试一个对象在其原型链中是否存在一个构造函数的 <code>prototype</code> 属性，但它不能检测<code>null</code> 和 <code>undefined</code></p>
@@ -317,7 +316,7 @@
 &#123;&#125; <span class="hljs-keyword">instanceof</span> <span class="hljs-built_in">Object</span> <span class="hljs-comment">// true</span>
 <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>() <span class="hljs-keyword">instanceof</span> <span class="hljs-built_in">Date</span> <span class="hljs-comment">// true</span>
 <span class="hljs-keyword">new</span> <span class="hljs-built_in">RegExp</span>() <span class="hljs-keyword">instanceof</span> <span class="hljs-built_in">RegExp</span> <span class="hljs-comment">// true</span>
-<span class="hljs-literal">null</span> <span class="hljs-keyword">instanceof</span> Null <span class="hljs-comment">// error</span>
+<span class="hljs-literal">null</span> <span class="hljs-keyword">instanceof</span> <span class="hljs-literal">null</span> <span class="hljs-comment">// error</span>
 <span class="hljs-literal">undefined</span> <span class="hljs-keyword">instanceof</span> <span class="hljs-literal">undefined</span> <span class="hljs-comment">// error</span></code></pre></div>
 
 <h2 id="constructor-NaN"><a href="#constructor-NaN" class="headerlink" title="constructor"></a><code>constructor</code></h2><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> arr = [];
@@ -342,24 +341,30 @@
 <span class="hljs-keyword">let</span> num2 = <span class="hljs-built_in">Number</span>(<span class="hljs-string">&quot;&quot;</span>); <span class="hljs-comment">// 0</span>
 <span class="hljs-keyword">let</span> num3 = <span class="hljs-built_in">Number</span>(<span class="hljs-string">&quot;000011&quot;</span>); <span class="hljs-comment">// 11</span>
 <span class="hljs-keyword">let</span> num4 = <span class="hljs-built_in">Number</span>(<span class="hljs-literal">true</span>); <span class="hljs-comment">// 1</span></code></pre></div>
-<h3 id="parseInt-主要用于字符串"><a href="#parseInt-主要用于字符串" class="headerlink" title="parseInt() 主要用于字符串"></a>parseInt() 主要用于字符串</h3><ul>
-<li>如果第一个字符不是数值字符、加号或减号，立即返回NaN<br>。这意味着空字符串也会返回 <div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> num2 = <span class="hljs-built_in">parseInt</span>(<span class="hljs-string">&quot;&quot;</span>);  <span class="hljs-comment">// NaN</span>
+<h3 id="parseInt-string-radix-主要用于字符串"><a href="#parseInt-string-radix-主要用于字符串" class="headerlink" title="parseInt(string, radix) 主要用于字符串"></a>parseInt(string, radix) 主要用于字符串</h3><ul>
+<li>如果第一个字符不是数值字符、加号或减号，立即返回NaN<br>,这意味着空字符串也会返回 NaN<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> num2 = <span class="hljs-built_in">parseInt</span>(<span class="hljs-string">&quot;&quot;</span>);  <span class="hljs-comment">// NaN</span>
 <span class="hljs-keyword">let</span> num3 = <span class="hljs-built_in">parseInt</span>(<span class="hljs-string">&quot;0xA&quot;</span>); <span class="hljs-comment">// 10</span>
 <span class="hljs-keyword">let</span> num4 = <span class="hljs-built_in">parseInt</span>(<span class="hljs-number">22.5</span>); <span class="hljs-comment">//22</span>
 <span class="hljs-keyword">let</span> num5 = <span class="hljs-built_in">parseInt</span>(<span class="hljs-string">&quot;abc&quot;</span>); <span class="hljs-comment">// NaN</span>
 <span class="hljs-keyword">let</span> num6 = <span class="hljs-built_in">parseInt</span>(<span class="hljs-string">&quot;123abc&quot;</span>) <span class="hljs-comment">// 123</span>
-</code></pre></div>
-<h3 id="parseFloat-主要用于字符串"><a href="#parseFloat-主要用于字符串" class="headerlink" title="parseFloat() 主要用于字符串"></a>parseFloat() 主要用于字符串</h3></li>
+
+[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>].map(<span class="hljs-built_in">parseInt</span>)
+<span class="hljs-comment">// [1, NaN, NaN]</span>
+<span class="hljs-comment">// map调用的回调会默认传入三个参数【当前元素，当前索引，当前数组】</span>
+<span class="hljs-comment">// parseInt(1,0) =&gt; 1</span>
+<span class="hljs-comment">// parseInt(2,1) =&gt; radix&gt;=2,NaN</span>
+<span class="hljs-comment">// parseInt(3,2) =&gt; 木有二进制表示的3,NaN</span></code></pre></div>
+<h3 id="parseFloat-string-主要用于字符串"><a href="#parseFloat-string-主要用于字符串" class="headerlink" title="parseFloat(string) 主要用于字符串"></a>parseFloat(string) 主要用于字符串</h3></li>
 <li>只解析十进制</li>
-<li>忽略其次出现的小数点<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> num1 = <span class="hljs-built_in">parseFloat</span>(<span class="hljs-string">&quot;1234blue&quot;</span>); <span class="hljs-comment">// 1234</span>
+<li>忽略2次出现的小数点<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> num1 = <span class="hljs-built_in">parseFloat</span>(<span class="hljs-string">&quot;1234blue&quot;</span>); <span class="hljs-comment">// 1234</span>
 <span class="hljs-keyword">let</span> num2 = <span class="hljs-built_in">parseFloat</span>(<span class="hljs-string">&quot;0xA&quot;</span>); <span class="hljs-comment">// 0</span>
 <span class="hljs-keyword">let</span> num3 = <span class="hljs-built_in">parseFloat</span>(<span class="hljs-string">&quot;22.5&quot;</span>); <span class="hljs-comment">// 22.5</span>
 <span class="hljs-keyword">let</span> num4 = <span class="hljs-built_in">parseFloat</span>(<span class="hljs-string">&quot;22.34.5&quot;</span>); <span class="hljs-comment">// 22.34</span>
 <span class="hljs-keyword">let</span> num5 = <span class="hljs-built_in">parseFloat</span>(<span class="hljs-string">&quot;0908.5&quot;</span>);  <span class="hljs-comment">//908.5</span>
 <span class="hljs-keyword">let</span> num6 = <span class="hljs-built_in">parseFloat</span>(<span class="hljs-string">&quot;3.125e7&quot;</span>); <span class="hljs-comment">// 31250000</span></code></pre></div></li>
 </ul>
-<h2 id="转为字符串"><a href="#转为字符串" class="headerlink" title="转为字符串"></a>转为字符串</h2><h3 id="toString-NaN"><a href="#toString-NaN" class="headerlink" title="toString()"></a>toString()</h3><ul>
-<li>null和undefined没有toString()方法<br>String()<h3 id="String"><a href="#String" class="headerlink" title="String()"></a>String()</h3></li>
+<h2 id="转为字符串"><a href="#转为字符串" class="headerlink" title="转为字符串"></a>转为字符串</h2><h3 id="toString-NaN"><a href="#toString-NaN" class="headerlink" title="toString()"></a>toString()</h3><p>  null和undefined没有toString()方法</p>
+<h3 id="String"><a href="#String" class="headerlink" title="String()"></a>String()</h3><ul>
 <li><em>优先调用toString()</em></li>
 <li>null 转换为 ‘null’</li>
 <li>undefined 转换为 ‘undefined’</li>
@@ -369,10 +374,11 @@
 <span class="hljs-literal">undefined</span>
 <span class="hljs-literal">null</span>
 <span class="hljs-number">0</span>
+-<span class="hljs-number">0</span>
 <span class="hljs-literal">NaN</span>
 <span class="hljs-string">&#x27;&#x27;</span></code></pre></div></li>
 </ul>
-<h1 id="隐式转换介绍"><a href="#隐式转换介绍" class="headerlink" title="隐式转换介绍"></a>隐式转换介绍</h1><ul>
+<h1 id="隐式转换"><a href="#隐式转换" class="headerlink" title="隐式转换"></a>隐式转换</h1><ul>
 <li>在 js 中，当运算符在运算时，如果两边数据不统一，CPU 就无法计算，这时我们编译器会自动将运算符两边的数据做一个数据类型转换，转成一样的数据类型再计算</li>
 <li>这种无需程序员手动转换，而由编译器自动转换的方式就称为隐式转换</li>
 <li>例如 1 &gt; “0”这行代码在 js 中并不会报错，编译器在运算符时会先把右边的”0”转成数字 0`然后在比较大小</li>
@@ -382,16 +388,7 @@
 <li>转成 number 类型：++/–(自增自减运算符) + - * / %(算术运算符) &gt; &lt; &gt;= &lt;= == != === !=== (关系运算符)</li>
 <li>转成 boolean 类型：!（逻辑非运算符）</li>
 </ul>
-<h2 id="字符串连接符与算术运算符隐式转换规则混淆"><a href="#字符串连接符与算术运算符隐式转换规则混淆" class="headerlink" title="字符串连接符与算术运算符隐式转换规则混淆"></a>字符串连接符与算术运算符隐式转换规则混淆</h2><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// 常见面试题如下</span>
-<span class="hljs-built_in">console</span>.log(<span class="hljs-number">1</span> + <span class="hljs-string">&quot;true&quot;</span>); <span class="hljs-comment">// ‘1true‘’</span>
-<span class="hljs-built_in">console</span>.log(<span class="hljs-number">1</span> + <span class="hljs-literal">true</span>); <span class="hljs-comment">//2</span>
-<span class="hljs-built_in">console</span>.log(<span class="hljs-number">1</span> + <span class="hljs-literal">undefined</span>); <span class="hljs-comment">//   NaN</span>
-<span class="hljs-built_in">console</span>.log(<span class="hljs-number">1</span> + <span class="hljs-literal">null</span>); <span class="hljs-comment">//1</span></code></pre></div>
-
-<ol>
-<li>字符串连接符+：会把其他数据类型调用 String()方法转成字符串然后拼接</li>
-<li>算术运算符+ ：会把其他数据类型调用 Number（）方法转成数字然后做加法计算</li>
-</ol>
+<h2 id="字符串连接符与算术运算符"><a href="#字符串连接符与算术运算符" class="headerlink" title="字符串连接符与算术运算符"></a>字符串连接符与算术运算符</h2><p><code>+</code>左右有字符串则转为字符串拼接，否则转为数字计算</p>
 <div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">//+是字符串连接符： String(1) + &#x27;true&#x27; = &#x27;1true&#x27;</span>
 <span class="hljs-built_in">console</span>.log(<span class="hljs-number">1</span> + <span class="hljs-string">&quot;true&quot;</span>); <span class="hljs-comment">//1true</span>
 <span class="hljs-comment">//+是算术运算符 ： 1 + Number(true) = 1 + 1 = 2</span>
@@ -402,21 +399,8 @@
 <span class="hljs-built_in">console</span>.log(<span class="hljs-number">1</span> + <span class="hljs-literal">null</span>); <span class="hljs-comment">//1</span>
 <span class="hljs-comment">//</span></code></pre></div>
 
-<h2 id="关系运算符：会把其他数据类型转换成-number-之后再比较关系"><a href="#关系运算符：会把其他数据类型转换成-number-之后再比较关系" class="headerlink" title="关系运算符：会把其他数据类型转换成 number 之后再比较关系"></a>关系运算符：会把其他数据类型转换成 number 之后再比较关系</h2><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// 常见面试题如下</span>
-<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;2&quot;</span> &gt; <span class="hljs-number">10</span>); <span class="hljs-comment">//false</span>
-<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;2&quot;</span> &gt; <span class="hljs-string">&quot;10&quot;</span>); <span class="hljs-comment">//true</span>
-<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;abc&quot;</span> &gt; <span class="hljs-string">&quot;b&quot;</span>); <span class="hljs-comment">//false</span>
-<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;abc&quot;</span> &gt; <span class="hljs-string">&quot;aad&quot;</span>); <span class="hljs-comment">//true</span>
-<span class="hljs-built_in">console</span>.log(<span class="hljs-literal">NaN</span> == <span class="hljs-literal">NaN</span>); <span class="hljs-comment">//false</span>
-<span class="hljs-built_in">console</span>.log(<span class="hljs-literal">undefined</span> == <span class="hljs-literal">null</span>); <span class="hljs-comment">//true</span></code></pre></div>
-
-<ol>
-<li>当关系运算符两边有一边是字符串的时候，会将其他数据类型使用 Number()转换，然后比较关系<br><code>console.log ( &quot;2&quot; &gt; 10 );//false Number(&#39;2&#39;) &gt; 10 = 2 &gt; 10 = false</code></li>
-<li>当关系运算符两边都是字符串的时候，此时同时转成 number 然后比较关系<br><em>此时并不是按照 Number()的形式转成数字，而是按照字符串对应的 unicode 编码来转成数字</em><blockquote>
-<p>使用这个方法可以查看字符的 unicode 编码： 字符串.charCodeAt(字符下标，默认为 0)</p>
-</blockquote>
-</li>
-</ol>
+<h2 id="关系运算符"><a href="#关系运算符" class="headerlink" title="关系运算符"></a>关系运算符</h2><p>会把其他数据类型转换成 number 之后再比较关系</p>
+<p><em>此时并不是按照 Number()的形式转成数字，而是按照字符串对应的 unicode 编码来转成数字</em></p>
 <div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;2&quot;</span> &gt; <span class="hljs-string">&quot;10&quot;</span>); <span class="hljs-comment">//true     &#x27;2&#x27;.charCodeAt() &gt; &#x27;10&#x27;.charCodeAt() = 50 &gt; 49 = true</span>
 <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;2&quot;</span>.charCodeAt()); <span class="hljs-comment">//数字50</span>
 <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;10&quot;</span>.charCodeAt()); <span class="hljs-comment">//数字49（默认返回第一个字符的编码，如果想要查询第二个字符可以传参下标）</span>
@@ -435,7 +419,7 @@
 <h2 id="复杂数据类型在隐式转换时会先转成-String，然后再转成-Number-运算"><a href="#复杂数据类型在隐式转换时会先转成-String，然后再转成-Number-运算" class="headerlink" title="复杂数据类型在隐式转换时会先转成 String，然后再转成 Number 运算"></a>复杂数据类型在隐式转换时会先转成 String，然后再转成 Number 运算</h2><p>复杂数据类型转 number 顺序如下</p>
 <ol>
 <li>先使用<code>valueOf()</code>方法获取其原始值，如果原始值不是<code>number</code>类型，则使用 <code>toString()</code>方法转成<code>string</code></li>
-<li>再将 string 转成 number 运算</li>
+<li>再将 <code>string</code> 转成 <code>number</code> 运算</li>
 </ol>
 <div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-built_in">console</span>.log([<span class="hljs-number">1</span>, <span class="hljs-number">2</span>] == <span class="hljs-string">&quot;1,2&quot;</span>); <span class="hljs-comment">//true     先将左边数组转成string，然后右边也是string则转成unicode编码运算</span>
 <span class="hljs-built_in">console</span>.log([<span class="hljs-number">1</span>, <span class="hljs-number">2</span>].valueOf()); <span class="hljs-comment">// [1,2]</span>
@@ -445,8 +429,9 @@
 <span class="hljs-built_in">console</span>.log(a.valueOf().toString()); <span class="hljs-comment">//[object Object]</span>
 <span class="hljs-comment">//分析：逻辑与运算一假则假，要想if分支语句小括号条件成立，则必须要让a的值同时等于1 且 等于 2 且等于3乍看之下，好像根本不可能实现，但是复杂数据类型会先调用valueOf()方法,然后转成number运算而对象的</span></code></pre></div>
 
-<h2 id="逻辑非隐式转换与关系运算符隐式转换搞混淆"><a href="#逻辑非隐式转换与关系运算符隐式转换搞混淆" class="headerlink" title="逻辑非隐式转换与关系运算符隐式转换搞混淆"></a>逻辑非隐式转换与关系运算符隐式转换搞混淆</h2><ul>
-<li>空数组的 toString()方法会得到空字符串，而空对象的 toString()方法会得到字符串<code>[object Object]</code> （注意第一个小写 o，第二个大写 O 哟）</li>
+<h2 id="逻辑非隐式转换与关系运算符"><a href="#逻辑非隐式转换与关系运算符" class="headerlink" title="逻辑非隐式转换与关系运算符"></a>逻辑非隐式转换与关系运算符</h2><ul>
+<li>空数组的 toString()方法会得到空字符串</li>
+<li>空对象的 toString()方法会得到字符串<code>[object Object]</code> </li>
 </ul>
 <div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">Boolean</span>([])); <span class="hljs-comment">// true</span>
 <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">Boolean</span>(![])); <span class="hljs-comment">// false</span>
@@ -465,16 +450,9 @@
 <span class="hljs-comment">// [object Object] == false</span>
 <span class="hljs-built_in">console</span>.log(&#123;&#125; == &#123;&#125;); <span class="hljs-comment">//false</span></code></pre></div>
 
-<h3 id="原理分析"><a href="#原理分析" class="headerlink" title="原理分析"></a>原理分析</h3><ol>
-<li><p>关系运算符：将其他数据类型转成数字</p>
-</li>
-<li><p>逻辑非：将其他数据类型使用<code>Boolean()</code>转成布尔类型</p>
-</li>
-<li><p>以下八种情况转换为布尔类型会得到 false</p>
-<p><code>0 、-0、NaN、undefined、null、&#39;&#39;(空字符串)、false、document.all()</code></p>
-</li>
-<li><p>除以上八种情况之外所有数据都会得到 true</p>
-</li>
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><ol>
+<li>关系运算符：将其他数据类型转成数字</li>
+<li>逻辑非：将其他数据类型使用<code>Boolean()</code>转成布尔类型</li>
 </ol>
 <div class="hljs code-wrapper"><pre><code class="hljs javascript">[].valueOf().toString(); <span class="hljs-comment">// 得到空字符串</span>
 <span class="hljs-comment">// Number(&#x27;&#x27;) == 0 成立</span>
@@ -511,70 +489,8 @@
 
 <span class="hljs-built_in">console</span>.log([].valueOf().toString()); <span class="hljs-comment">//&#x27;&#x27; 空字符串</span></code></pre></div>
 
-<h1 id="类型转换的场景"><a href="#类型转换的场景" class="headerlink" title="类型转换的场景"></a>类型转换的场景</h1><h3 id="转换为-String-的场景"><a href="#转换为-String-的场景" class="headerlink" title="转换为 String 的场景"></a>转换为 String 的场景</h3><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;2&quot;</span> + <span class="hljs-number">1</span>); <span class="hljs-comment">//21</span>
-<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;2&quot;</span> + <span class="hljs-literal">true</span>); <span class="hljs-comment">// 2true</span>
-<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;2&quot;</span> + <span class="hljs-literal">null</span>); <span class="hljs-comment">// 2null</span>
-
-<span class="hljs-keyword">var</span> obj2 = &#123;
-  toString: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;
-    <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;a&quot;</span>;
-  &#125;,
-&#125;;
-<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;2&quot;</span> + obj2); <span class="hljs-comment">// 2a</span>
-
-<span class="hljs-keyword">var</span> obj1 = &#123;
-  a: <span class="hljs-number">1</span>,
-  b: <span class="hljs-number">2</span>,
-&#125;;
-<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;2&quot;</span> + obj1); <span class="hljs-comment">//2obj1</span>
-
-<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;2&quot;</span> + &#123;&#125;); <span class="hljs-comment">// 2[object Object]</span>
-<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;2&quot;</span> + []); <span class="hljs-comment">// 2[object Object]</span>
-<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;2&quot;</span> + <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;&#125;); <span class="hljs-comment">// 2</span>
-<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;2&quot;</span> + [<span class="hljs-string">&quot;msy&quot;</span>, <span class="hljs-number">123</span>]); <span class="hljs-comment">// 2msy,123</span></code></pre></div>
-
-<h3 id="转换为-Number-的场景"><a href="#转换为-Number-的场景" class="headerlink" title="转换为 Number 的场景"></a>转换为 Number 的场景</h3><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">Number</span>(<span class="hljs-literal">false</span>)); <span class="hljs-comment">// 0</span>
-<span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">Number</span>(<span class="hljs-literal">true</span>)); <span class="hljs-comment">// 1</span>
-<span class="hljs-built_in">console</span>.log(<span class="hljs-literal">true</span> + <span class="hljs-number">1</span>); <span class="hljs-comment">// 2</span>
-<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;2&quot;</span> + <span class="hljs-string">&quot;5&quot;</span>); <span class="hljs-comment">// 25</span>
-<span class="hljs-built_in">console</span>.log(<span class="hljs-literal">false</span> - <span class="hljs-number">6</span>); <span class="hljs-comment">// -6</span>
-<span class="hljs-built_in">console</span>.log([] * <span class="hljs-number">6</span>); <span class="hljs-comment">// 0</span>
-<span class="hljs-built_in">console</span>.log(<span class="hljs-literal">true</span> / <span class="hljs-string">&quot;5&quot;</span>); <span class="hljs-comment">// 0.2</span>
-<span class="hljs-built_in">console</span>.log(<span class="hljs-literal">true</span> / <span class="hljs-number">5</span>); <span class="hljs-comment">// 0.2</span>
-<span class="hljs-built_in">console</span>.log(<span class="hljs-literal">false</span> / <span class="hljs-number">5</span>); <span class="hljs-comment">// 0</span>
-<span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">Number</span>(<span class="hljs-string">&quot;abc&quot;</span>)); <span class="hljs-comment">// NaN</span>
-<span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">Number</span>(<span class="hljs-literal">null</span>)); <span class="hljs-comment">// 0</span>
-<span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">Number</span>(<span class="hljs-literal">undefined</span>)); <span class="hljs-comment">// NaN</span>
-<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;abc&quot;</span> + <span class="hljs-literal">true</span>); <span class="hljs-comment">//abctrue</span></code></pre></div>
-
-<h3 id=""><a href="#" class="headerlink" title="[]"></a>[]</h3><div class="hljs code-wrapper"><pre><code class="hljs javascript">[] == ![]; <span class="hljs-comment">// true</span>
-<span class="hljs-comment">// &#x27;&#x27; == 0</span>
-<span class="hljs-built_in">console</span>.log(![]); <span class="hljs-comment">// false</span>
-<span class="hljs-built_in">console</span>.log([]); <span class="hljs-comment">// []</span>
-<span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">Number</span>(![])); <span class="hljs-comment">// 0</span>
-<span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">Number</span>([])); <span class="hljs-comment">// 0</span></code></pre></div>
-
-<h3 id="NaN"><a href="#NaN" class="headerlink" title="NaN"></a>NaN</h3><p>什么时候返回 NaN （开篇第二道题也得到解决）</p>
-<ul>
-<li>无穷大除以无穷大</li>
-<li>给任意负数做开方运算</li>
-<li>算数运算符与不是数字或无法转换为数字的操作数一起使用</li>
-<li>字符串解析成数字</li>
-<li>一元运算符</li>
-</ul>
-<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-built_in">console</span>.log(+<span class="hljs-string">&quot;abc&quot;</span>); <span class="hljs-comment">// NaN</span>
-<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;abc&quot;</span>);</code></pre></div>
-
-<h3 id="String-和-toString"><a href="#String-和-toString" class="headerlink" title="String 和 toString"></a>String 和 toString</h3><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// toString()可以将数据都转为字符串，但是null和undefined不可以转换。</span>
-<span class="hljs-comment">// 可以转进制</span>
-<span class="hljs-literal">null</span>.toString(); <span class="hljs-comment">//报错</span>
-<span class="hljs-literal">undefined</span>.toString(); <span class="hljs-comment">//报错</span></code></pre></div>
-
-<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// String()可以将null和undefined转换为字符串，但是没法转进制字符串</span>
-<span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">String</span>(<span class="hljs-literal">null</span>));
-<span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">String</span>(<span class="hljs-literal">undefined</span>));</code></pre></div>
-
-<h2 id="值的比较"><a href="#值的比较" class="headerlink" title="值的比较"></a>值的比较</h2><h3 id="es6-新增Object-is-判断"><a href="#es6-新增Object-is-判断" class="headerlink" title="es6 新增Object.is()判断"></a>es6 新增<code>Object.is()</code>判断</h3><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-built_in">Object</span>.is(<span class="hljs-literal">null</span>, <span class="hljs-literal">null</span>); <span class="hljs-comment">// true</span>
+<h2 id="值的比较"><a href="#值的比较" class="headerlink" title="值的比较"></a>值的比较</h2><h3 id="es6-新增Object-is-判断"><a href="#es6-新增Object-is-判断" class="headerlink" title="es6 新增Object.is()判断"></a>es6 新增<code>Object.is()</code>判断</h3><p>修复了转布尔值的bug</p>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-built_in">Object</span>.is(<span class="hljs-literal">null</span>, <span class="hljs-literal">null</span>); <span class="hljs-comment">// true</span>
 <span class="hljs-built_in">Object</span>.is(<span class="hljs-literal">undefined</span>, <span class="hljs-literal">undefined</span>); <span class="hljs-comment">// true</span>
 <span class="hljs-built_in">Object</span>.is(<span class="hljs-number">0</span>, -<span class="hljs-number">0</span>); <span class="hljs-comment">// false</span>
 <span class="hljs-built_in">Object</span>.is(<span class="hljs-number">0</span>, +<span class="hljs-number">0</span>); <span class="hljs-comment">// true</span>
