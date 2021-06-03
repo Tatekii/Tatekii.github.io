@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.8k 字
+      2.1k 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      23
+      26
        分钟
     </span>
   
@@ -237,7 +237,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年5月29日 下午
+                  本文最后更新于：2021年6月2日 下午
                 
               </p>
             
@@ -419,8 +419,28 @@ handler.construct()
 <li>Dom Node</li>
 </ul>
 <h2 id="【Generator】"><a href="#【Generator】" class="headerlink" title="【Generator】"></a>【Generator】</h2><ul>
-<li>可以暂停的状态机，遇到yield则暂停</li>
-<li>.next（）执行到下一个yield</li>
+<li><p>调用一个生成器函数并不会马上执行它里面的语句，而是返回一个这个生成器的 <code>迭代器</code> （ iterator ）对象。当这个迭代器的 <code>next()</code> 方法被调用时，其内的语句会执行到下一个<code>yield</code>的位置，<code>yield</code> 后紧跟迭代器要返回的值。</p>
+</li>
+<li><p>或者如果用的是 <code>yield*</code>，则表示将执行权移交给另一个生成器函数（当前生成器暂停执行）。</p>
+</li>
+<li><p><code>next()</code>方法返回一个对象，<code>&#123;value:当前的返回,done:是否迭代完&#125;</code>}</p>
+</li>
+<li><p>当在生成器函数中显式 <code>return</code> 时，会导致生成器立即变为完成状态，如果 <code>return</code> 后面跟了一个值，那么这个值会作为当前调用 <code>next()</code> 方法返回值。</p>
+</li>
+<li><p>调用 <code>next()</code>方法时，如果传入了参数，那么这个参数会传给上一条执行的 <code>yield</code>语句左边的变量，例如下面例子中的 x ：</p>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> *<span class="hljs-title">gen</span>(<span class="hljs-params"></span>)</span>&#123;
+    <span class="hljs-keyword">yield</span> <span class="hljs-number">10</span>;
+    x=<span class="hljs-keyword">yield</span> <span class="hljs-string">&#x27;foo&#x27;</span>;
+    <span class="hljs-keyword">yield</span> x;
+&#125;
+
+<span class="hljs-keyword">var</span> gen_obj=gen();
+<span class="hljs-built_in">console</span>.log(gen_obj.next());<span class="hljs-comment">// 执行 yield 10，返回 10</span>
+<span class="hljs-built_in">console</span>.log(gen_obj.next());<span class="hljs-comment">// 执行 yield &#x27;foo&#x27;，返回 &#x27;foo&#x27;</span>
+<span class="hljs-built_in">console</span>.log(gen_obj.next(<span class="hljs-number">100</span>));<span class="hljs-comment">// 将 100 赋给上一条 yield &#x27;foo&#x27; 的左值，即执行 x=100，返回 100</span>
+<span class="hljs-built_in">console</span>.log(gen_obj.next());<span class="hljs-comment">// 执行完毕，value 为 undefined，done 为 true</span></code></pre></div></li>
+</ul>
+<ul>
 <li>自执行generator<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// co函数简单实现</span>
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">co</span>(<span class="hljs-params">fn</span>)</span>&#123;
   <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve,reject</span>)=&gt;</span>&#123;

@@ -237,43 +237,12 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年6月1日 晚上
+                  本文最后更新于：2021年6月2日 中午
                 
               </p>
             
             <div class="markdown-body">
-              <h1 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h1><h2 id="【分析请求资源】"><a href="#【分析请求资源】" class="headerlink" title="【分析请求资源】"></a>【分析请求资源】</h2><ul>
-<li><p>不同浏览器对资源优先级分类</p>
-</li>
-<li><p>安全策略检查 </p>
-<p>内容安全策略（Content Security Policy，缩写 CSP)是由浏览器提供的一种白名单制度。发者通过配置，来告诉浏览器各类外部资源的加载和执行限制，来提高网页的安全性。一种最常用应用就是通过限制非信任域名脚本的加载来预防XSS攻击。</p>
-<p>可以通过两种方式来配置CSP：</p>
-<ol>
-<li>HTTP请求头的<code>Content-Security-Policy</code></li>
-<li><code>meta</code>标签 <div class="hljs code-wrapper"><pre><code class="hljs javascript">&lt;meta http-equiv=<span class="hljs-string">&quot;Content-Security-Policy&quot;</span> content=<span class="hljs-string">&quot;script-src &#x27;self&#x27;;style-src nos.netease.com kaola.com;&quot;</span>&gt;</code></pre></div></li>
-</ol>
-</li>
-<li><p>资源优先级计算</p>
-<ol>
-<li><code>html,font,css</code></li>
-<li><code>&lt;link rel=&quot;preload&quot;&gt;,script,xhr</code></li>
-<li><code>img,audio,video</code></li>
-<li><code>prefetch</code></li>
-</ol>
-</li>
-<li><p>顺序调整</p>
-<ol>
-<li>同步XHR请求优先级调整到最高</li>
-<li>图片根据是否出现在可视区域</li>
-<li><code>async/defer</code>的<code>script</code>标签请求优先级降低</li>
-</ol>
-</li>
-</ul>
-<h2 id="【应用缓存策略】"><a href="#【应用缓存策略】" class="headerlink" title="【应用缓存策略】"></a>【应用缓存策略】</h2><ul>
-<li>强缓存</li>
-<li>协商缓存<h2 id="【DNS解析】"><a href="#【DNS解析】" class="headerlink" title="【DNS解析】"></a>【DNS解析】</h2></li>
-</ul>
-<ol>
+              <h1 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h1><h2 id="【DNS解析】"><a href="#【DNS解析】" class="headerlink" title="【DNS解析】"></a>【DNS解析】</h2><ol>
 <li>查找浏览器DNS缓存</li>
 <li>查找系统HOST文件</li>
 <li>DNS查询<blockquote>
@@ -299,6 +268,37 @@
 <li>【SERVER】 收到后，将client发送的<code>ISN(c)</code>+1作为<code>ACK</code>字符，并且也生成自己的<code>ISN(s)</code>发送给【CLIENT】</li>
 <li>【CLIENT】 收到后，同样将<code>ISN(s)</code>+1作为<code>ACK</code>字符发送给【SERVER】</li>
 </ol>
+<h2 id="【分析请求资源】"><a href="#【分析请求资源】" class="headerlink" title="【分析请求资源】"></a>【分析请求资源】</h2><ul>
+<li><p>不同浏览器对资源优先级分类</p>
+</li>
+<li><p>安全策略检查 </p>
+<p>内容安全策略（Content Security Policy，缩写 CSP)是由浏览器提供的一种白名单制度。发者通过配置，来告诉浏览器各类外部资源的加载和执行限制，来提高网页的安全性。一种最常用应用就是通过限制非信任域名脚本的加载来预防XSS攻击。</p>
+<p>可以通过两种方式来配置CSP：</p>
+<ol>
+<li>HTTP请求头的<code>Content-Security-Policy</code></li>
+<li><code>meta</code>标签 <div class="hljs code-wrapper"><pre><code class="hljs javascript">&lt;meta http-equiv=<span class="hljs-string">&quot;Content-Security-Policy&quot;</span> content=<span class="hljs-string">&quot;script-src &#x27;self&#x27;;style-src nos.netease.com kaola.com;&quot;</span>&gt;</code></pre></div></li>
+</ol>
+</li>
+<li><p>资源优先级计算</p>
+<ol>
+<li><code>html,font,css</code></li>
+<li><code>preload,script,xhr</code></li>
+<li><code>img,audio,video</code></li>
+<li><code>prefetch</code></li>
+</ol>
+</li>
+<li><p>顺序调整</p>
+<ol>
+<li>同步XHR请求优先级调整到最高</li>
+<li>图片根据是否出现在可视区域</li>
+<li><code>async/defer</code>的<code>script</code>标签请求优先级降低</li>
+</ol>
+</li>
+</ul>
+<h2 id="【应用缓存策略】"><a href="#【应用缓存策略】" class="headerlink" title="【应用缓存策略】"></a>【应用缓存策略】</h2><ul>
+<li>强缓存</li>
+<li>协商缓存</li>
+</ul>
 <h2 id="【渲染页面】"><a href="#【渲染页面】" class="headerlink" title="【渲染页面】"></a>【渲染页面】</h2><h3 id="DOM-Tree"><a href="#DOM-Tree" class="headerlink" title="DOM Tree"></a>DOM Tree</h3><ul>
 <li>处理html标记，生成DOM树，所有标签都会包含在内</li>
 <li>DOM的构建是增量的</li>
@@ -313,14 +313,14 @@
 </ul>
 <h3 id="Render-Tree"><a href="#Render-Tree" class="headerlink" title="Render Tree"></a>Render Tree</h3><ul>
 <li>对DOM节点找到与其匹配的CSSOM规则并应用</li>
-<li>只包含DOM树中的可见元素(忽略像<code>display：none/&lt;header&gt;</code>)</li>
+<li>只包含DOM树中的可见元素(忽略像<code>display：none/&lt;head&gt;标签</code>)</li>
 </ul>
-<h3 id="Layout"><a href="#Layout" class="headerlink" title="Layout"></a>Layout</h3><p>浏览器依据Render树和设备屏幕信息<strong>重排</strong>一次，计算出每个节点的尺寸和在屏幕上的位置</p>
+<h3 id="Layout"><a href="#Layout" class="headerlink" title="Layout"></a>Layout</h3><p>浏览器依据Render树和设备屏幕信息<strong>重排</strong>一次，从 <code>&lt;html&gt;标签</code> 开始往下依次计算所有的节点几何尺寸和位置</p>
 <h3 id="Paint"><a href="#Paint" class="headerlink" title="Paint"></a>Paint</h3><p>根据上一步得到的像素信息<strong>重绘</strong>页面</p>
 <h3 id="Display"><a href="#Display" class="headerlink" title="Display"></a>Display</h3><p>GPU合成各图层，显示在屏幕上</p>
 <h1 id="重点概念"><a href="#重点概念" class="headerlink" title="重点概念"></a>重点概念</h1><h3 id="重排reflow"><a href="#重排reflow" class="headerlink" title="重排reflow"></a>重排<code>reflow</code></h3><ul>
-<li>从 <code>&lt;html&gt;标签</code> 开始往下依次计算所有的节点几何尺寸和位置</li>
-<li>有些情况下，比如修改了元素的样式，浏览器并不会立刻reflow，而是会把这样的操作积攒一批，然后做一次 处理，这又叫异步 reflow 或增量异步 reflow。在有些情况下，比如resize 窗口，改变了页面默认的字体等。对于这些操作，浏览器会马上进行 reflow。</li>
+<li>有些情况下，比如修改了元素的样式，浏览器并不会立刻reflow，而是会把这样的操作积攒一批，然后做一次处理，这又叫异步 reflow 或增量异步 reflow。</li>
+<li>在有些情况下，比如resize 窗口，改变了页面默认的字体等。对于这些操作，浏览器会马上进行 reflow。</li>
 <li>除了渲染树的直接变化，当获取一些需要计算的属性时，浏览器为取得正确的值也会触发重排,这些属性包括：<code>offsetXXX、scrollXXX、clientXXX、getComputedStyle()</code></li>
 <li>重排必定触发重绘</li>
 </ul>
@@ -375,7 +375,7 @@
 <li> <code>translate</code>代替修改几何信息<code>left,top...</code></li>
 <li> <code>opacity</code>代替<code>visibility</code></li>
 <li> 动画元素脱离文档流<code>position:absolute/fixed</code></li>
-<li> <code>will-change</code>属性</li>
+<li> 加上<code>will-change</code>属性</li>
 </ul>
 </li>
 </ol>
