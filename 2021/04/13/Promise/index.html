@@ -237,7 +237,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年6月2日 中午
+                  本文最后更新于：2021年6月4日 中午
                 
               </p>
             
@@ -576,7 +576,7 @@ p.then(<span class="hljs-built_in">console</span>.log).catch(<span class="hljs-b
 &#125;;
 <span class="hljs-built_in">Promise</span>.any = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">pArr</span>) </span>&#123;
   <span class="hljs-comment">// 有resolve就resolve</span>
-  <span class="hljs-comment">// reject全部err</span>
+  <span class="hljs-comment">// 都没有resolve则返回一个由所有err组成的AggregateError对象</span>
   <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve,reject</span>) =&gt;</span> &#123;
     <span class="hljs-keyword">if</span>(!pArr.length) <span class="hljs-keyword">return</span> reject(<span class="hljs-keyword">new</span> AggregateError([]))
     <span class="hljs-keyword">const</span> res = []
@@ -618,7 +618,7 @@ p.then(<span class="hljs-built_in">console</span>.log).catch(<span class="hljs-b
     <span class="hljs-keyword">if</span>(!pArr.length) <span class="hljs-keyword">return</span> resolve([])
     <span class="hljs-keyword">const</span> res = [];
     pArr.forEach(<span class="hljs-function">(<span class="hljs-params">pItem, index</span>) =&gt;</span> &#123;
-      <span class="hljs-keyword">if</span> (pItem <span class="hljs-keyword">instanceof</span> <span class="hljs-built_in">Promise</span>) &#123;
+      <span class="hljs-comment">// if (pItem instanceof Promise) &#123;</span>
         pItem.then(
           (v) =&gt; &#123;
             res[index] = &#123; <span class="hljs-attr">status</span>: <span class="hljs-string">&quot;resolve&quot;</span>, <span class="hljs-attr">value</span>: v &#125;;
@@ -627,9 +627,9 @@ p.then(<span class="hljs-built_in">console</span>.log).catch(<span class="hljs-b
             res[index] = &#123; <span class="hljs-attr">status</span>: <span class="hljs-string">&quot;reject&quot;</span>, <span class="hljs-attr">reason</span>: e &#125;;
           &#125;
         );
-      &#125; <span class="hljs-keyword">else</span> &#123;
-        res[index] = &#123; <span class="hljs-attr">status</span>: <span class="hljs-string">&quot;resolve&quot;</span>, <span class="hljs-attr">value</span>: pItem &#125;;
-      &#125;
+      <span class="hljs-comment">// &#125; else &#123;</span>
+      <span class="hljs-comment">//   res[index] = &#123; status: &quot;resolve&quot;, value: pItem &#125;;</span>
+      <span class="hljs-comment">// &#125;</span>
     &#125;);
     resolve(res);
   &#125;);

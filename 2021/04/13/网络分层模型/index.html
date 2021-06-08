@@ -237,7 +237,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年5月29日 下午
+                  本文最后更新于：2021年6月4日 中午
                 
               </p>
             
@@ -261,7 +261,10 @@
 <li>数据的单位称为比特<code>bit</code></li>
 </ul>
 <h3 id="数据链路层Data-Link-Layer"><a href="#数据链路层Data-Link-Layer" class="headerlink" title="数据链路层Data Link Layer"></a>数据链路层<code>Data Link Layer</code></h3><blockquote>
-<p>MAC地址 =&gt; 物理地址</p>
+<p>MAC地址 =&gt; 物理地址 </p>
+</blockquote>
+<blockquote>
+<p>相邻节点</p>
 </blockquote>
 <ul>
 <li>物理地址寻址、数据的成帧、流量控制、检错重发等。控制帧在物理信道的传输</li>
@@ -273,10 +276,13 @@
 </li>
 </ul>
 <h3 id="网络层Network-Layer"><a href="#网络层Network-Layer" class="headerlink" title="网络层Network Layer"></a>网络层<code>Network Layer</code></h3><blockquote>
-<p>IP地址 =&gt; 逻辑地址</p>
+<p>IP地址 =&gt; MAC地址 </p>
+</blockquote>
+<blockquote>
+<p>不相邻节点</p>
 </blockquote>
 <ul>
-<li>数据链路层的数据在这一层被转换为数据包，根据网络地址传送到目的结点</li>
+<li>将传输层数据封装成包，并根据IP地址选择路由路径并在网络中传输</li>
 <li>数据的单位称为包<code>packet</code></li>
 <li>协议<ul>
 <li><code>IP</code> 协议（Internet Protocol，网际协议）<ol>
@@ -319,7 +325,7 @@
 </ul>
 <h3 id="会话层Session-Layer"><a href="#会话层Session-Layer" class="headerlink" title="会话层Session Layer"></a>会话层<code>Session Layer</code></h3><ul>
 <li>管理表示层之间的连接（会话）</li>
-<li>组织和协调两个会话进程之间的通信</li>
+<li>组织和协调两个会话进程之间的通信,并对数据交换进行管理</li>
 </ul>
 <h3 id="表示层Presentation-Layer"><a href="#表示层Presentation-Layer" class="headerlink" title="表示层Presentation Layer"></a>表示层<code>Presentation Layer</code></h3><ul>
 <li>处理数据编码、数据格式转换和加密解密</li>

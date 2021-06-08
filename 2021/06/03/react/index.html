@@ -18,7 +18,7 @@
   <meta name="author" content="tatekii">
   <meta name="keywords" content="">
   
-  <title>浏览器缓存策略 - 不知名的笔记本</title>
+  <title>react-beginner - 不知名的笔记本</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
@@ -163,7 +163,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="浏览器缓存策略">
+            <span class="h2" id="subtitle" title="react-beginner">
               
             </span>
 
@@ -173,8 +173,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2020-09-17 10:20" pubdate>
-        2020年9月17日 上午
+      <time datetime="2021-06-03 20:38" pubdate>
+        2021年6月3日 晚上
       </time>
     </span>
   
@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      948 字
+      377 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      10
+      5
        分钟
     </span>
   
@@ -233,7 +233,7 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">浏览器缓存策略</h1>
+            <h1 style="display: none">react-beginner</h1>
             
               <p class="note note-info">
                 
@@ -242,88 +242,49 @@
               </p>
             
             <div class="markdown-body">
-              <h2 id="强缓存"><a href="#强缓存" class="headerlink" title="强缓存"></a>强缓存</h2><ul>
-<li> 浏览器直接验证本地资源看是否过期，如果没过期直接使用本地缓存，并返回<code>200</code>和显示(<code>from memory cache / from disk cache)</code>(根据内存空闲情况和资源类型，并且memory cache页面关闭后会清理，下次加载是从disk cache)</li>
-<li> 验证两种字段<h3 id="Expires"><a href="#Expires" class="headerlink" title="Expires"></a><code>Expires</code></h3></li>
-</ul>
-<ol>
-<li>http 1.0</li>
-<li>时间戳格式<code>Expires: Wed, 22 Oct 2018 08:41:00 GMT</code></li>
-<li>使用本地时间验证，与服务器时间之间的误差或者本地时间的修改都后会造成缓存失效</li>
-</ol>
-<h3 id="Cache-control"><a href="#Cache-control" class="headerlink" title="Cache-control"></a><code>Cache-control</code></h3><ol>
-<li><p>http 1.1</p>
-</li>
-<li><p>可选参数：</p>
-<ul>
-<li><code>public</code>,<code>private</code><ul>
-<li><code>public</code> 表示该资源可以被所有客户端和代理服务器缓存</li>
-<li><code>private</code> 表示该资源仅能客户端缓存[<em>默认值</em>]</li>
-</ul>
-</li>
-<li><code>max-age</code><ul>
-<li>单位为毫秒，表示多长时间后过期</li>
-<li>可设置为 <strong>0</strong> 立即请求新资源</li>
-</ul>
-</li>
-<li><code>s-maxage</code> 会在<code>public</code>字段生效时覆盖<code>Expires</code>和<code>max-age</code> </li>
-<li><code>no-cache</code>,<code>no-store</code><ul>
-<li><code>no-cache</code> 会缓存资源，但要协商缓存验证</li>
-<li><code>no-store</code> 不缓存</li>
-</ul>
-</li>
-<li><code>max-age=0 || no-cache</code>会进入协商缓存</li>
-</ul>
-</li>
-</ol>
-<h3 id="Pragma"><a href="#Pragma" class="headerlink" title="Pragma"></a><code>Pragma</code></h3><ol>
-<li>只为了兼容http1.0</li>
-<li><code>Pragma = no-cache</code>与<code>Cache-Control: no-cache</code>效果一致</li>
-</ol>
-<h3 id="优先级"><a href="#优先级" class="headerlink" title="优先级"></a>优先级</h3><p><code>Cache-Control -&gt; Expires</code></p>
-<h2 id="协商缓存"><a href="#协商缓存" class="headerlink" title="协商缓存"></a>协商缓存</h2><ul>
-<li>浏览器携带缓存标识向服务器发起请求，询问服务器缓存有效性</li>
-<li>协商缓存生效，返回<code>304</code>和<code>Not Modified</code></li>
-<li>协商缓存失效，返回<code>200</code>和请求结果<h3 id="Last-modified-If-Modified-Since"><a href="#Last-modified-If-Modified-Since" class="headerlink" title="Last-modified + If-Modified-Since"></a><code>Last-modified + If-Modified-Since</code></h3></li>
-</ul>
-<ol>
-<li><p>服务器返回资源的同时在<code>response header</code>中添加 <code>Last-Modified</code>字段，值是该资源在服务器上的最后修改时间<br> <code>Last-Modified: Fri, 22 Jul 2016 01:47:00 GMT</code></p>
-</li>
-<li><p>再次请求该资源时，浏览器检测到资源中存在 <code>Last-Modified</code>字段，则会将这个时间戳作为<code>If-Modified-Since</code>的值加入请求头中发送给服务器</p>
-</li>
-<li><p>服务器根据自身资源的修改时间和来自请求的时间戳判断资源是否更新，返回相对应的结果</p>
-</li>
-</ol>
-<h4 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h4><ul>
-<li>本地打开缓存文件，即使没有对文件进行修改，但还是会造成 <code>Last-Modified</code> 被修改</li>
-<li><code>Last-Modified</code> 只能以秒计时，如果在不可感知的时间内修改完成文件，则不能体现被修改过</li>
-</ul>
-<h3 id="ETag-If-Not-Match"><a href="#ETag-If-Not-Match" class="headerlink" title="ETag + If-Not-Match"></a><code>ETag + If-Not-Match</code></h3><ol>
-<li>服务器为资源进行hash计算生成唯一的标识符<code>Etag</code>加入返回头，资源的修改会导致标识改变</li>
-<li>浏览器请求时将资源自带的标识作为<code>If-None-Match</code>的值加入请求头中发送给服务器</li>
-<li>服务器根据同一资源标识是否一致返回相应结果</li>
-</ol>
-<blockquote>
-<p>ETag:\W   弱验证，新旧资源不需要逐字节一一对应新旧资源的比较会使用较为宽松的算法</p>
+              <h1 id="React"><a href="#React" class="headerlink" title="React"></a>React</h1><blockquote>
+<p>构建用户页面的javascript库，并不是完整的MVC框架</p>
 </blockquote>
-<blockquote>
-<p>If-Match  条件请求，在请求方法为 GET 和 HEAD 的情况下，服务器仅在请求的资源匹配该ETag值时才会返回资源。而对于 PUT 或其他非安全方法来说，只有在满足条件的情况下才可以将数据上传。例如:Range请求 or 避免更新丢失（用户上传覆盖其他用户提交的更新）</p>
+<h2 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h2><h3 id="React-createElement"><a href="#React-createElement" class="headerlink" title="React.createElement"></a><code>React.createElement</code></h3><p>JSX 元素只是调用 <code>React.createElement(component, props, ...children)</code> 的语法糖</p>
+<h3 id="ReactDOM-render-element-container-callback"><a href="#ReactDOM-render-element-container-callback" class="headerlink" title="ReactDOM.render(element, container[, callback)"></a><code>ReactDOM.render(element, container[, callback)</code></h3><p>在提供的 <code>container</code> 里渲染一个 React 元素，并返回对该组件的引用（或者针对无状态组件返回 null）。</p>
+<p>如果 React 元素之前已经在 <code>container</code> 里渲染过，这将会对其执行更新操作，并仅会在必要时改变 DOM 以映射最新的 React 元素。</p>
+<p>如果提供了可选的回调函数，该回调将在组件被渲染或更新之后被执行。</p>
+<h2 id="JSX语法"><a href="#JSX语法" class="headerlink" title="JSX语法"></a>JSX语法</h2><ul>
+<li>语法糖，更能体现react的声明式特点，逻辑和页面标签写在一起</li>
+<li>jsx不是标准的ECMAScript语法，babel编译<div class="hljs code-wrapper"><pre><code class="hljs jsx"><span class="hljs-keyword">const</span> title = (
+  <span class="hljs-comment">// 推荐使用小括号包裹</span>
+  &lt;h1&gt;我是个title&lt;/h1&gt;
+)</code></pre></div></li>
+<li>jsx中的属性名驼峰命名</li>
+<li><code>&#123;..中可以写js表达式，区别vue的双括号..&#125;</code></li>
+</ul>
+<h3 id="条件渲染"><a href="#条件渲染" class="headerlink" title="条件渲染"></a>条件渲染</h3><div class="hljs code-wrapper"><pre><code class="hljs jsx"><span class="hljs-comment">// if else</span>
+<span class="hljs-keyword">if</span>()&#123;
+  <span class="hljs-keyword">return</span> xxx
+&#125;<span class="hljs-keyword">else</span>&#123;
+  <span class="hljs-keyword">return</span> xxx
+&#125;
+
+<span class="hljs-comment">// 三元表达式</span>
+<span class="hljs-keyword">return</span> flag ? (.&lt;dv&gt;..) : (..&lt;dv&gt;.)
+
+<span class="hljs-comment">// 逻辑与运算符</span>
+<span class="hljs-keyword">return</span> flag &amp;&amp; (..&lt;dv&gt;.)</code></pre></div>
+
+<h3 id="循环渲染"><a href="#循环渲染" class="headerlink" title="循环渲染"></a>循环渲染</h3><blockquote>
+<p>key的作用和vue一样用于diff时复用节点</p>
 </blockquote>
-<h2 id="缓存策略"><a href="#缓存策略" class="headerlink" title="缓存策略"></a>缓存策略</h2><ol>
-<li><p>先判断<code>Cache-Control</code>，在<code>Cache-Control</code>的<code>max-age</code>之内，直接返回<code>200 from cache</code>；</p>
-</li>
-<li><p>没有<code>Cache-Control</code>再判断<code>Expires</code>，在<code>Expires</code>之内，直接返回<code>200 from cache</code></p>
-</li>
-<li><p><code>Cache-Control=no-cache/no-store</code>或者不符合<code>Expires</code>，浏览器向服务器发送请求</p>
-</li>
-<li><p> 服务器判断<code>If-Modified-Since</code>和<code>If-None-Match</code>，两者同时出现时会忽略<code>If-Modified-Since</code>，有效则返回<code>304</code>，失效则返回新资源。</p>
-</li>
-</ol>
-<h2 id="用户行为的影响"><a href="#用户行为的影响" class="headerlink" title="用户行为的影响"></a>用户行为的影响</h2><ol>
-<li><em>地址栏</em>访问，链接跳转是正常用户行为，将会触发浏览器缓存机制；</li>
-<li><em>F5</em>刷新，进行协商缓存判断；</li>
-<li><em>ctrl+F5</em>刷新，指定强缓存和协商缓存都失效。</li>
-</ol>
+<div class="hljs code-wrapper"><pre><code class="hljs jsx"><span class="hljs-keyword">const</span> data = [&#123;&#125;...&#123;&#125;...&#123;&#125;]
+<span class="hljs-keyword">const</span> list = (
+  &#123;data.map(<span class="hljs-function"><span class="hljs-params">item</span>=&gt;</span>&#123;
+    <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">key</span>=<span class="hljs-string">&#123;item.id&#125;</span>&gt;</span>&#123;item.name&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+  &#125;)&#125;
+)</code></pre></div>
+
+<h3 id="样式"><a href="#样式" class="headerlink" title="样式"></a>样式</h3><ul>
+<li>行内样式,双括号<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> title = (<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&#123;&#123;color:</span>&quot;<span class="hljs-attr">red</span>&quot;&#125;&#125;&gt;</span>我是个title<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span>)</code></pre></div></li>
+<li>className<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> title = (<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;xxx&quot;</span>&gt;</span>我是个title<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span>)</code></pre></div></li>
+</ul>
 
             </div>
             <hr>
@@ -334,7 +295,9 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
+                      <a class="hover-with-bg" href="/tags/javascript/">javascript</a>
+                    
+                      <a class="hover-with-bg" href="/tags/react/">react</a>
                     
                   </div>
                 
@@ -351,9 +314,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2020/09/24/topK/">
+                      <a href="/2021/06/03/react2/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">topK问题</span>
+                        <span class="hidden-mobile">react-component</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -361,8 +324,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2020/09/07/vue3/">
-                        <span class="hidden-mobile">vue3proxy</span>
+                      <a href="/2021/05/11/node%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86%E7%82%B9/">
+                        <span class="hidden-mobile">node相关知识点</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
