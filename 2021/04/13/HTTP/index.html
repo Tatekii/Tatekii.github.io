@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      29
+      30
        分钟
     </span>
   
@@ -237,7 +237,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年5月31日 下午
+                  本文最后更新于：2021年6月10日 下午
                 
               </p>
             
@@ -457,16 +457,16 @@
 <li>使用<code>CA证书</code>的公钥<code>解密``站点证书</code>的<code>签名</code>得到校验码1</li>
 <li>使用证书制定的摘要算法对<code>站点证书</code>明文计算得到校验码2</li>
 <li>比较两个校验码相同则说明证书没被篡改</li>
-<li>后面就开始查看证书是否在有效期，是否对应当前域名，是否在吊销列表中</li>
+<li>后面就开始查看证书是否在有效期，是否对应当前域名，是否在吊销列表中等</li>
 </ol>
 <h3 id="HTTPS-工作流程"><a href="#HTTPS-工作流程" class="headerlink" title="HTTPS 工作流程"></a>HTTPS 工作流程</h3><ol>
-<li>用户访问:443</li>
-<li>服务器返回证书</li>
+<li>用户访问:443,发送客户端支持的加密算法列表和随机数<code>Random_C</code></li>
+<li>服务器返回证书和<code>Random_S</code></li>
 <li>用户浏览器使用 <em><strong>CA公钥</strong></em> 打开并验证证书的合法性得到证书中的 <em><strong>服务器公钥</strong></em></li>
-<li>用户生成 <em><strong>客户端私钥</strong></em>，并使用 <em><strong>服务器公钥</strong></em> 加密发送给服务器</li>
-<li>服务器使用自己的 <em><strong>服务器私钥</strong></em> 解密，得到 <em><strong>客户端私钥</strong></em></li>
-<li>至此双方得到了对称加密密钥</li>
-<li>之后的连接都只使用对称加密</li>
+<li>用户生成生新的随机数<code>Premaster secret</code>，并使用 <em><strong>服务器公钥</strong></em> 加密发送给服务器</li>
+<li>服务器使用自己的 <em><strong>服务器私钥</strong></em> 解密，得到 <code>Premaster secret</code></li>
+<li>此后双方使用同样的加密算法对三个随机数进行计算得到对称的密钥<code>enc_key</code></li>
+<li>至此双方得到了对称加密密钥,之后的连接都只使用对称加密</li>
 </ol>
 <h2 id="TCP握手"><a href="#TCP握手" class="headerlink" title="TCP握手"></a>TCP握手</h2><h3 id="三次握手"><a href="#三次握手" class="headerlink" title="三次握手"></a>三次握手</h3><ol>
 <li>为了确保通信双方收发能力正常</li>

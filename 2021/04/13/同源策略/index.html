@@ -237,7 +237,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年5月26日 下午
+                  本文最后更新于：2021年6月10日 下午
                 
               </p>
             
@@ -260,6 +260,7 @@
 <li><p><code>window.name</code>  </p>
 </li>
 <li><p><code>postMessage</code></p>
+<p>对新打开的窗口或者iframe的contentWindow属性、执行window.open返回的窗口对象</p>
 <div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// pageA通过iframe嵌入了pageB</span>
 <span class="hljs-comment">// pageA中代码</span>
 <span class="hljs-built_in">window</span>.iframe[i].postMessage(<span class="hljs-string">&#x27;data&#x27;</span>,<span class="hljs-string">&#x27;pageB的URL&#x27;</span>)
@@ -315,9 +316,10 @@ callback: <span class="hljs-string">&quot;jsonpCallback&quot;</span>
 <span class="hljs-comment">//处理data</span>
     &#125;);</code></pre></div></li>
 <li><p><code>imgPing</code><strong>添加img标签src中放入get请求</strong></p>
+<p>只能发送GET请求，无法接受返回</p>
 <div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> img = <span class="hljs-keyword">new</span> Image();
 img.onload = img.onerror = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;
-    alert(<span class="hljs-string">&quot;已发送&quot;</span>);
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;已发送&quot;</span>);
 &#125;;
 img.src = <span class="hljs-string">&quot;http://xxx.xxx.com/query?key=value&quot;</span>;
 <span class="hljs-comment">// 设置完src属性那一刻开始请求就发送了</span></code></pre></div></li>

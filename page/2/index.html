@@ -182,37 +182,21 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/04/13/es6%E6%96%B0%E7%89%B9%E6%80%A7/">es6新特性</a>
+        <a href="/2021/04/13/%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">前端性能优化</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2021/04/13/es6%E6%96%B0%E7%89%B9%E6%80%A7/">
+        <a href="/2021/04/13/%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">
           
           
             
           
-          【let / const】
-都用于声明变量
-不存在变量提升，暂时性死区
-不能重复声明
-快级作用域
-
-let
-可以重新赋值const
-声明时需赋值
-只读不可改变（对于复杂变量，可以修改变量内容，变量内存地址未改变）
-
-【解构赋值】只有可遍历（具备遍历器[Symbol.Iterator]）的数据结构才能解构赋值
-用途
-交换变量
-提取对象中的数据
-解构默认值
-剩余运算
-
-【字符串】
-识别
-
-includ
+          页面优化资源合理使用缓存策略缓存请求封装axios二次请求缓存…
+图片懒加载const imgList = [...document.querySelectAll(&#x27;img&#x27;)]
+function lazyLoad(imgList)&#123;
+  let count = 0
+  const len = imgList.length
+  return function()&#1
         </a>
       </p>
 
@@ -220,7 +204,7 @@ includ
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2021-04-13 00:45" pubdate>
+            <time datetime="2021-04-13 00:41" pubdate>
               2021-04-13
             </time>
           </div>
@@ -232,9 +216,113 @@ includ
             
               <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
             
-              <a href="/tags/javascript/">javascript</a>
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/04/13/%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5/">web安全</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/04/13/%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5/">
+          
+          
             
-              <a href="/tags/ES6/">ES6</a>
+          
+          同源策略定义
+两个URl !同协议 !同域名 !同端口
+同源策略限制了同一个源加载的脚本和文档如何与其他源的资源进行交互，包括js脚本，缓存的读取，cookie，ajax等
+三种标签不受同源限制script link img
+
+跨域的方法
+代理服务器nginx,各种devServer
+
+document.domain
+前提是两个页面主要域相同
+&#x27;someWebSite.com/dir1/
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-04-13 01:09" pubdate>
+              2021-04-13
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/04/13/HTTP/">HTTP协议</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/04/13/HTTP/">
+          
+          
+            
+          
+          HTTP（HyperText Transfer Protocol，超文本传输协议
+HTTP 是基于 TCP/IP 协议的应用层协议，用于客户端和服务器之间的通信链路层，网络层，传输层，应用层
+
+HTTP 报文组成部分
+请求报文
+
+请求行 Request Method,Request URL
+请求头 包含若干属性，key:value 值
+空行
+请求体
+
+
+响应报文
+
+状态行 Request Vers
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-04-13 00:36" pubdate>
+              2021-04-13
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/http/">http</a>
+            
+              <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
             
           </div>
         
@@ -295,6 +383,260 @@ includ
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/2020/11/25/vue_diff%E7%AE%97%E6%B3%95/">vue的diff算法</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/11/25/vue_diff%E7%AE%97%E6%B3%95/">
+          
+          
+            
+          
+          概念
+diff算法，包含渲染器如何对各种类型的vNode的属性，text，fragment进行patch更新，以及判断是patch vNode，还是新增还是删除
+采用同级比较
+
+基础的diff
+新节点没有子节点-&gt;删除全部旧的子节点
+新节点只有一个子节点-&gt;删除旧的并添加新的
+
+核心diff
+新旧节点都有多个子节点时，新旧子节点间的diffoldChildrenNode :[a,x,c
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-11-25 12:59" pubdate>
+              2020-11-25
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/javascript/">javascript</a>
+            
+              <a href="/tags/vue/">vue</a>
+            
+              <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/06/08/svg%E5%9B%BE%E6%A0%87%E5%B0%81%E8%A3%85%E7%BB%84%E4%BB%B6/">svg图标封装组件</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/06/08/svg%E5%9B%BE%E6%A0%87%E5%B0%81%E8%A3%85%E7%BB%84%E4%BB%B6/">
+          
+          
+            
+          
+          
+VUE项目中将svg图标封装为组件,后续拷贝进svg文件直接使用
+
+icon组件&lt;template&gt;
+  &lt;svg :class=&quot;svgClass&quot; aria-hidden=&quot;true&quot; 
+
+  // /* aria-hidden=&quot;true&quot;将元素从可访问树上移除 */
+
+  v-on=&quot;$listene
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-06-08 12:29" pubdate>
+              2021-06-08
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/javascript/">javascript</a>
+            
+              <a href="/tags/vue/">vue</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/04/13/Promise/">Promise</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/04/13/Promise/">
+          
+          
+            
+          
+          promisePromise 对象用于处理异步操作，它表示一个尚未完成且预计在未来完成的异步操作。
+特性
+解决回调地狱，使用统一的 API 接口处理异步任务
+链式调用
+返回值穿透（onFulfilled不是function时，上一步的执行结果value将继续向后传递）
+错误冒泡（
+
+
+回调地狱
+
+function f1()&#123;
+  //f2的执行需要等待f1的结果
+  return f2(
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-04-13 00:22" pubdate>
+              2021-04-13
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/es6/">es6</a>
+            
+              <a href="/tags/javascript/">javascript</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/06/03/react/">react-beginner</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/06/03/react/">
+          
+          
+            
+          
+          React
+构建用户页面的javascript库，并不是完整的MVC框架
+
+IntroReact.createElementJSX 元素只是调用 React.createElement(component, props, ...children) 的语法糖
+ReactDOM.render(element, container[, callback)在提供的 container 里渲染一个 Reac
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-06-03 20:38" pubdate>
+              2021-06-03
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/javascript/">javascript</a>
+            
+              <a href="/tags/react/">react</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/09/17/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98%E7%AD%96%E7%95%A5/">浏览器缓存策略</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/09/17/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98%E7%AD%96%E7%95%A5/">
+          
+          
+            
+          
+          强缓存
+ 浏览器直接验证本地资源看是否过期，如果没过期直接使用本地缓存，并返回200和显示(from memory cache / from disk cache)(根据内存空闲情况和资源类型，并且memory cache页面关闭后会清理，下次加载是从disk cache)
+ 验证两种字段Expires
+
+
+http 1.0
+时间戳格式Expires: Wed, 22 Oct 2018 08:41
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-09-17 10:20" pubdate>
+              2020-09-17
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/2021/04/13/vue%E7%BB%84%E4%BB%B6%E9%80%9A%E4%BF%A1/">vue组件之间通信方式</a>
       </h1>
 
@@ -337,364 +679,6 @@ $emit和prop
               <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
             
               <a href="/tags/vue/">vue</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/04/13/mvcmvpmvvm/">MVC/MVP/MVVM</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/04/13/mvcmvpmvvm/">
-          
-          
-            
-          
-          MVCModel-View-ControllerView-&gt;Controller-&gt;Model
-^                     |
-|                     v
-&lt;---------------------&lt;
-
-View可以访问Model,不可避免的会包含一些业务逻辑，导致特定View依赖特定Model
-视图的更新逻辑由View自己完成
-Vie
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-04-13 00:27" pubdate>
-              2021-04-13
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/04/13/js%E4%B8%AD%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/">js数据类型的判断与转换</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/04/13/js%E4%B8%AD%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/">
-          
-          
-            
-          
-          ECAMScript 中不能自定义数据类型，只能为下列 7 种简单数据类型（原始类型）
-String
-
-Number
-
-NaNtypeof NaN === &#x27;number&#x27;
-唯一一个自相反的值
-NaN !== NaN
-
-
-Boolean
-
-在条件判断时，除了 undefined， null， false， NaN， &#39;&#39;， 0， -0，其他所有值都转为 true
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-04-13 00:19" pubdate>
-              2021-04-13
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/javascript/">javascript</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/04/13/js%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF/">js运行机制</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/04/13/js%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF/">
-          
-          
-            
-          
-          ref:javascript 运行机制 EventLoop
-JS的单线程JavaScript的单线程，与它的用途有关。作为浏览器脚本语言，JavaScript的主要用途是与用户互动，以及操作DOM。这决定了它只能是单线程,保证执行任务的有序并复杂的同步问题。
-EventLoop主线程不断从任务队列读取任务进入执行栈执行的循环过程
-因为 js 是单线程运行的，在代码执行的时候，通过将不同函数的执行上
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-04-13 00:40" pubdate>
-              2021-04-13
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
-            
-              <a href="/tags/javascript/">javascript</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/04/13/%E6%95%B0%E7%BB%84/">数组</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/04/13/%E6%95%B0%E7%BB%84/">
-          
-          
-            
-          
-          创建数组// 字面量
-let arr = []
-let arr = [1,2,3,4]
-// 构造函数
-let arr = new Array()
-let arr = new Array(/传入数组代表数组长度/)
-let arr = new Array(&#x27;item1&#x27;,&#x27;item2&#x27;/传入元素/)
-let arr = Array(10)/省略new操作符/
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-04-13 00:24" pubdate>
-              2021-04-13
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/javascript/">javascript</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2020/08/17/js%E7%89%87%E6%AE%B5/">待整理的js片段</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2020/08/17/js%E7%89%87%E6%AE%B5/">
-          
-          
-            
-          
-          
-字母的所有组合
-
-const anagrams = str =&gt; &#123;
-  if(str.length===2) return [str , str[1] + str[0]]
-  // 手写长度为2时候的排列
-
-  // 这里使用reduce的第三个参数index，正在处理的元素
-  // 如果提供了initialValue，则起始索引号为0，否则从索引1起始。
-  return 
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-08-17 16:07" pubdate>
-              2020-08-17
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
-            
-              <a href="/tags/javascript/">javascript</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/04/13/js%E6%A8%A1%E5%9D%97%E5%8C%96/">js模块化</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/04/13/js%E6%A8%A1%E5%9D%97%E5%8C%96/">
-          
-          
-            
-          
-          
-模块化的演进过程
-
-
-文件划分
-命名空间 (将每个模块暴露在全局对象
-IIFE 立即执行函数 
-
-模块化开发的思想模块化的开发方式可以提高代码复用率，方便进行代码的管理。通常一个文件就是一个模块，有自己的作用域，只向外暴露特定的变量和函数。
-模块化的好处
-命名冲突
-文件依赖
-代码复用
-不污染全局空间
-
-CommonJS (Node.js)
-运行在服务端`
-
-代码同步加载
-
-代码可以多次加载，但是
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-04-13 01:01" pubdate>
-              2021-04-13
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
-            
-              <a href="/tags/javascript/">javascript</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/04/13/js%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">面向对象</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/04/13/js%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">
-          
-          
-            
-          
-          ref:https://github.com/CyC2018
-面向对象的设计思想面向对象的设计思想是从自然界中来的，因为在自然界中就存在类（Class）和实例（Instance）的概念。
-
-Class 是一种抽象概念，比如我们定义的 Class——Student ，是指学生这个概念，
-
-而实例（Instance）则是一个个具体的 Student ，比如， Michael 和 Bob 是两个具体的 
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-04-13 00:35" pubdate>
-              2021-04-13
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
-            
-              <a href="/tags/javascript/">javascript</a>
             
           </div>
         

@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.7k 字
+      1.9k 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      24
+      26
        分钟
     </span>
   
@@ -237,30 +237,35 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年5月17日 上午
+                  本文最后更新于：2021年6月8日 晚上
                 
               </p>
             
             <div class="markdown-body">
               <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><ul>
 <li>diff算法，包含渲染器如何对各种类型的vNode的属性，text，fragment进行patch更新，以及判断是patch vNode，还是新增还是删除</li>
-<li>同级比较</li>
+<li>采用同级比较</li>
 </ul>
 <h3 id="基础的diff"><a href="#基础的diff" class="headerlink" title="基础的diff"></a>基础的diff</h3><ul>
-<li>新节点没有子节点-&gt;删除久的</li>
+<li>新节点没有子节点-&gt;删除全部旧的子节点</li>
 <li>新节点只有一个子节点-&gt;删除旧的并添加新的</li>
 </ul>
 <h3 id="核心diff"><a href="#核心diff" class="headerlink" title="核心diff"></a>核心diff</h3><ul>
-<li>新旧节点都有多个子节点</li>
+<li>新旧节点都有多个子节点时，新旧子节点间的diff<div class="hljs code-wrapper"><pre><code class="hljs javascript">oldChildrenNode :[a,x,c,f]
+
+newChildrenNode :[a,c,f,r]</code></pre></div></li>
 </ul>
 <h4 id="没有key"><a href="#没有key" class="headerlink" title="没有key"></a>没有key</h4><ul>
-<li>就地更新<h4 id="key的作用"><a href="#key的作用" class="headerlink" title="key的作用"></a>key的作用</h4></li>
+<li>就地更新策略</li>
+</ul>
+<p>取出新旧vNode数组中较短的一个为基准进行一对一比较，新的比旧的长则添加新node部分，否则删除旧node部分，这个比较是相同位置就地比较</p>
+<h4 id="key的作用"><a href="#key的作用" class="headerlink" title="key的作用"></a>key的作用</h4><ul>
 <li>vNode中的唯一标识符</li>
 <li>用于保存新旧vNode的映射关系</li>
 <li>找到可复用的vNode</li>
 <li>用移动节点达到更新目的⭐️</li>
 </ul>
-<h4 id="React-最大索引值k"><a href="#React-最大索引值k" class="headerlink" title="React 最大索引值k"></a>React 最大索引值k</h4><ul>
+<h4 id="React-最大递增索引值k"><a href="#React-最大递增索引值k" class="headerlink" title="React 最大递增索引值k"></a>React 最大递增索引值k</h4><ul>
 <li>两次循环，遍历新node去旧node中寻找新vnode位置</li>
 <li>如果索引呈现递增趋势<div class="hljs code-wrapper"><pre><code class="hljs javascript">old: key1 key2 key3
 <span class="hljs-keyword">new</span>: key1 key2 key3</code></pre></div>
@@ -271,7 +276,10 @@
 <span class="hljs-keyword">new</span>: key1 key2 key3
 k = <span class="hljs-number">2</span> 之前的所有节点都需要移动</code></pre></div>
 <p>  <code>k</code>为在旧 children 中所遇到的最大索引值，则后续匹配的索引小于这个值意味着都需要移动</p>
-<h3 id="Vue-双端比较-snabbdom"><a href="#Vue-双端比较-snabbdom" class="headerlink" title="Vue 双端比较 snabbdom"></a>Vue 双端比较 snabbdom</h3><div class="hljs code-wrapper"><pre><code class="hljs javascript">
+<h3 id="Vue2的双端比较"><a href="#Vue2的双端比较" class="headerlink" title="Vue2的双端比较"></a>Vue2的双端比较</h3><blockquote>
+<p>借鉴<code>snabbdom.js</code></p>
+</blockquote>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript">
 (oStart)               [oEnd]
  oldA   oldB   oldC    oldD
 
@@ -398,60 +406,61 @@ k = <span class="hljs-number">2</span> 之前的所有节点都需要移动</cod
       removeVnodes(parentElm, oldCh, oldStartIdx, oldEndIdx)
     &#125;
   &#125;</code></pre></div>
-<h3 id="Vue3的inferno"><a href="#Vue3的inferno" class="headerlink" title="Vue3的inferno"></a>Vue3的inferno</h3></li>
-<li><p>排除相同的前置和后置元素</p>
-<div class="hljs code-wrapper"><pre><code class="hljs javascript">[j]   [preEnd]
- |       |
- a   b   c
- |       |
---------------
- |           |
- a   e   b   c
- |           |   
-[j]       [nextEnd]
+<h3 id="Vue3-借鉴inferno和ivi的算法"><a href="#Vue3-借鉴inferno和ivi的算法" class="headerlink" title="Vue3 借鉴inferno和ivi的算法"></a>Vue3 借鉴<code>inferno</code>和<code>ivi</code>的算法</h3></li>
+<li><p>排除相同的首位节点</p>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript">[j]             [preEnd]
+ |                  |
+ a   e   f  k   b   c
+ |                  |
+---------------------
+ |                  |
+ a   f   k  e   b   c
+ |                  |   
+[j]             [nextEnd]
 
-[j][preEnd]
- |   |
- a   b   c
- |   |
-----------------
- |         |
- a  【e】   b   c
- |         |   
-[j]     [nextEnd]
+    [j] [preEnd]
+     |      |
+ a   e   f  k   b   c
+     |      |
+---------------------
+     |      |
+ a   f   k  e   b   c
+     |      |   
+    [j] [nextEnd]
 </code></pre></div>
 <ul>
 <li>分别从新旧节点的头和尾出发</li>
 <li>依次遍历到key值不一样时停止 </li>
-<li>这样匹配成功后剩下的部分就是需要新增/删除的vNode</li>
+<li>这样匹配成功后剩下的部分就是需要新增/删除的vNode们</li>
 </ul>
 </li>
 <li><p>使用剩余新children的长度建立source索引数组</p>
-<div class="hljs code-wrapper"><pre><code class="hljs javascript">oldChildren = [b,c,d,f]
-newChildren = [c,d,b,g]  
-<span class="hljs-comment">// 默认全为-1</span>
-source = [-<span class="hljs-number">1</span>,-<span class="hljs-number">1</span>,-<span class="hljs-number">1</span>,-<span class="hljs-number">1</span>]
-<span class="hljs-comment">//为新vnode建立key，index索引表</span>
-keyIndex = &#123;<span class="hljs-attr">c</span>:<span class="hljs-number">0</span>,<span class="hljs-attr">d</span>:<span class="hljs-number">1</span>,<span class="hljs-attr">b</span>:<span class="hljs-number">2</span>,<span class="hljs-attr">g</span>:<span class="hljs-number">3</span>&#125;
-<span class="hljs-comment">// 遍历旧children中key去keyIndex中查找，有这个key则把该位置的-1改为旧vNode的索引，并且patch该节点  </span>
-source = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">0</span>,-<span class="hljs-number">1</span>]
-</code></pre></div></li>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript">  oldChildren = [e,f,k]
+  newChildren = [f,k,e]
+  source = [-<span class="hljs-number">1</span>,-<span class="hljs-number">1</span>,-<span class="hljs-number">1</span>]
+- 为新vnode建立key，index索引表
+  <span class="hljs-string">``</span><span class="hljs-string">`js</span>
+<span class="hljs-string">  keyIndex = &#123;f:0,k:1,e:2&#125;</span></code></pre></div></li>
+<li><p>遍历旧children中key去keyIndex中查找<code>k = kenIndex[oldChildren[i]]</code>，有这个k则把<code>source</code>数组该位置的-1改为旧vNode的索引，并且patch该节点 ;<code>k=undefined</code>则说明该节点已经被删除，而source中依旧为-1的节点为新增节点</p>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript">source = [<span class="hljs-number">2</span>,<span class="hljs-number">0</span>,<span class="hljs-number">1</span>]</code></pre></div></li>
 <li><p>判断是否需要移动</p>
-<div class="hljs code-wrapper"><pre><code class="hljs javascript">source = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">0</span>,-<span class="hljs-number">1</span>]
-<span class="hljs-comment">//source中，最大索引为2，2之后有小于2的索引，说明需要移动</span></code></pre></div></li>
-<li><p>根据source数组求出最长递增子序列</p>
-<div class="hljs code-wrapper"><pre><code class="hljs javascript">LIS = [<span class="hljs-number">0</span>，<span class="hljs-number">1</span>]
+<div class="hljs code-wrapper"><pre><code class="hljs javascript">source = [<span class="hljs-number">2</span>,<span class="hljs-number">0</span>,<span class="hljs-number">1</span>]
+<span class="hljs-comment">//source中，最大索引为2，2之后有小于2的索引，说明需要移动</span>
+<span class="hljs-comment">//根据source数组求出最长递增子序列</span>
+LIS = [<span class="hljs-number">1</span>，<span class="hljs-number">2</span>]
 <span class="hljs-comment">// LIS中存储的是source索引</span>
-<span class="hljs-comment">// 表示新旧children中这几个节点递增</span></code></pre></div></li>
+<span class="hljs-comment">// 表示新旧children中这几个节点位置保持递增关系</span></code></pre></div></li>
 <li><p>根据LIS得出不进行移动的节点</p>
-<div class="hljs code-wrapper"><pre><code class="hljs javascript">newChildren[LIS] = [c,d]</code></pre></div></li>
-<li><p>从LIS和新children尾处建立指针处理余下节点</p>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript">newChildren[LIS] = [f,k]</code></pre></div></li>
+<li><p>从LIS和新children尾处建立两个指针处理余下节点</p>
+</li>
+<li><p>比较指针的索引是是否相同，不同则移动DOM位置到上个指针的真实DOM之前</p>
+<blockquote>
+<p>oldVnode.el = 真实DOM，同时source.key = -1的节点直接创建了新的真实DOM</p>
+</blockquote>
 </li>
 </ul>
-<blockquote>
-<p>最长上升子序列</p>
-</blockquote>
-<ul>
+<h3 id="最长递增子序列"><a href="#最长递增子序列" class="headerlink" title="最长递增子序列"></a>最长递增子序列</h3><ul>
 <li>子序列：不要求连续</li>
 <li>字串：要求连续</li>
 </ul>
@@ -539,9 +548,9 @@ source = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2020/11/30/%E6%89%93%E5%8C%85%E4%BC%98%E5%8C%96/">
+                      <a href="/2021/01/27/axios/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">打包优化</span>
+                        <span class="hidden-mobile">axios</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     

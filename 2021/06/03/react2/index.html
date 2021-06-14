@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      68 字
+      124 字
     </span>
   
 
@@ -237,7 +237,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年6月4日 上午
+                  本文最后更新于：2021年6月12日 下午
                 
               </p>
             
@@ -256,7 +256,20 @@
     &lt;div&gt;我是Com1&lt;/div&gt;
   )
 &#125;
-ReactDOM.render(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Com1</span> /&gt;</span></span>,<span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">&#x27;app&#x27;</span>))</code></pre></div></li>
+ReactDOM.render(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Com1</span> /&gt;</span></span>,<span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">&#x27;app&#x27;</span>))</code></pre></div>
+<blockquote>
+<p>babel转译后,function运行在严格模式下,严格模式的this指向null</p>
+</blockquote>
+<h2 id="类组件"><a href="#类组件" class="headerlink" title="类组件"></a>类组件</h2><div class="hljs code-wrapper"><pre><code class="hljs javascript">- 大写首字母
+- <span class="hljs-keyword">extends</span>自<span class="hljs-string">`React.Component`</span>
+- 必须<span class="hljs-keyword">return</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyCom2</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span></span>&#123;
+  <span class="hljs-function"><span class="hljs-title">render</span>(<span class="hljs-params"></span>)</span>&#123;
+    <span class="hljs-keyword">return</span> (
+      &lt;div&gt;我是Com2&lt;/div&gt;
+    )
+  &#125;
+&#125;</code></pre></div></li>
 </ul>
 
             </div>

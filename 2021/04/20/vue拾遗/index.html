@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      2k 字
+      2.1k 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      31
+      33
        分钟
     </span>
   
@@ -237,7 +237,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年6月3日 下午
+                  本文最后更新于：2021年6月8日 晚上
                 
               </p>
             
@@ -305,25 +305,37 @@
 
       <span class="hljs-keyword">let</span> updateComponent;
 
-        updateComponent = <span class="hljs-function">() =&gt;</span> &#123;
-          vm._update(vm._render(), hydrating);
-        &#125;;
-        <span class="hljs-keyword">new</span> Watcher(vm, updateComponent, noop, &#123;
-          before () &#123;
-            <span class="hljs-keyword">if</span> (vm._isMounted) &#123;
-              <span class="hljs-number">12.</span> callHook(vm, <span class="hljs-string">&#x27;⭐️beforeUpdate&#x27;</span>)
-            &#125;
-          &#125;
-          <span class="hljs-comment">//渲染函数update</span>
-          <span class="hljs-function"><span class="hljs-title">update</span>(<span class="hljs-params"></span>)</span>&#123;
-          ...
-          <span class="hljs-number">13.</span> callHook(vm, <span class="hljs-string">&#x27;⭐️updated&#x27;</span>)
-          ...
-          &#125;
+      updateComponent = <span class="hljs-function">() =&gt;</span> &#123;
+        vm._update(vm._render(), hydrating);
 
-        &#125;, <span class="hljs-literal">true</span>)
-        <span class="hljs-number">11.</span> callHook(vm, <span class="hljs-string">&#x27;⭐️mounted&#x27;</span>);
-      <span class="hljs-keyword">return</span> vm
+        ------update函数
+        Vue.prototype._update = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">vnode, hydrating</span>) </span>&#123;
+
+          <span class="hljs-keyword">if</span> (!prevVnode) &#123;
+            <span class="hljs-comment">// initial render</span>
+            vm.$el = vm.__patch__(vm.$el, vnode, hydrating, <span class="hljs-literal">false</span> <span class="hljs-comment">/* removeOnly */</span>);
+          &#125; <span class="hljs-keyword">else</span> &#123;
+            <span class="hljs-comment">// updates</span>
+            vm.$el = vm.__patch__(prevVnode, vnode);
+        &#125;;
+        ------
+      &#125;;
+
+
+      ------更新逻辑
+      <span class="hljs-keyword">new</span> Watcher(vm, updateComponent, noop, &#123;
+          before: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">before</span> (<span class="hljs-params"></span>) </span>&#123;
+          <span class="hljs-keyword">if</span> (vm._isMounted) &#123;
+            callHook(vm, <span class="hljs-string">&#x27;beforeUpdate&#x27;</span>);
+          &#125;
+        &#125;
+      subs[i].notify  ---&gt; Watcher.prototype.update()
+      callHook(vm, <span class="hljs-string">&#x27;⭐️beforeDestroy&#x27;</span>);
+      ------
+  &#125;, <span class="hljs-literal">true</span> <span class="hljs-comment">/* isRenderWatcher */</span>);
+
+      vm._isMounted = <span class="hljs-literal">true</span>;
+      callHook(vm, <span class="hljs-string">&#x27;mounted&#x27;</span>);
     &#125;
 <span class="hljs-number">14.</span> Vue.prototype.$destroy = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;
 
@@ -344,7 +356,15 @@
 <span class="hljs-comment">// keep-alive</span>
 callHook(vm, <span class="hljs-string">&#x27;⭐️activated&#x27;</span>);  
 callHook(vm, <span class="hljs-string">&#x27;⭐️deactivated&#x27;</span>);</code></pre></div>
-
+<h3 id="beforeCreate之前做了什么"><a href="#beforeCreate之前做了什么" class="headerlink" title="beforeCreate之前做了什么"></a>beforeCreate之前做了什么</h3><ul>
+<li>绑定<code>$root</code></li>
+<li>绑定<code>$parent</code></li>
+<li>将实例push进父组件<code>$children</code></li>
+<li>绑定<code>$attrs</code>和<code>$listener</code><h3 id="created之前做了什么"><a href="#created之前做了什么" class="headerlink" title="created之前做了什么"></a>created之前做了什么</h3></li>
+<li>绑定<code>inject</code></li>
+<li>初始化<code>props,data,methods,watch,computed</code></li>
+<li>绑定<code>provide</code></li>
+</ul>
 <h1 id="响应式原理"><a href="#响应式原理" class="headerlink" title="响应式原理"></a>响应式原理</h1><h3 id="defineReactive"><a href="#defineReactive" class="headerlink" title="defineReactive"></a><code>defineReactive</code></h3><div class="hljs code-wrapper"><pre><code class="hljs javascript">defineReactive (
   ...
 ) &#123;
@@ -531,20 +551,20 @@ Dep.target = <span class="hljs-literal">null</span>
   Dep.target = targetStack.pop()
 &#125;</code></pre></div>
 <h2 id="⭐️收集依赖⭐️"><a href="#⭐️收集依赖⭐️" class="headerlink" title="⭐️收集依赖⭐️"></a>⭐️收集依赖⭐️</h2><ol>
-<li>initState阶段为数据添加getter,setter绑定,并为每个数据生成一个新Dep实例</li>
-<li>mountComponent执行过程中，组件实例化一个渲染watcher，并作为Dep.target</li>
-<li>render函数访问数据触发数据的getter，将当前渲染watcher添加到该数据持有的Dep实例subs数组中</li>
-<li>同时渲染watcher也将用一个deps数组保存自己订阅了谁，这样做的意义是在下次update时将不再显示页面上的数据绑定移除<blockquote>
+<li>initState阶段为数据添加getter,setter绑定,并为每个数据生成一个新<code>Dep</code>实例</li>
+<li>mountComponent执行过程中，组件实例化一个渲染<code>Watcher</code>，并指定为<code>Dep.target</code></li>
+<li><code>render</code>函数执行访问数据触发数据的getter，将当前渲染<code>Watcher</code>添加到该数据持有的<code>Dep.subs</code>数组中</li>
+<li>同时渲染<code>Watcher</code>也有一个<code>deps</code>数组保存自己订阅了谁，这样做的意义是在下次<code>Watcher.update</code>时将不再显示页面上的数据绑定移除(对比新旧<code>deps</code>数组)<blockquote>
 <p>可以理解成data数据的subs数组中每个watcher即代表一个受该数据响应式影响的组件实例</p>
 </blockquote>
 </li>
 </ol>
 <h2 id="🔥派发更新🔥"><a href="#🔥派发更新🔥" class="headerlink" title="🔥派发更新🔥"></a>🔥派发更新🔥</h2><ol>
-<li>修改数据触发setter，执行dep.notify()</li>
-<li>遍历当前数据subs中的watcher，执行其update()</li>
-<li>vue不会每次数据更新就立刻去更新视图，而是用队列管理这些回调任务</li>
+<li>修改数据触发setter，执行该数据持有的<code>Dep.notify</code>方法</li>
+<li>遍历当前数据<code>Dep.subs</code>中的每一个<code>Watcher</code>，执行其<code>Watcher.update()</code></li>
+<li>vue不会每次数据更新就立刻去更新视图，而是用队列管理这些回调任务<code>queueWatcher</code></li>
 <li>队列会判断watcher是否重复，并且进行排序【先父后子】【自定义watcher&gt;渲染watcher】</li>
-<li>在下一个tick执行这个队列的回调，patch实例</li>
+<li>在下一个tick执行这个队列的回调<code>updateComponent</code>函数，<code>patch</code>实例</li>
 </ol>
 <h1 id="nextTick"><a href="#nextTick" class="headerlink" title="nextTick"></a><code>nextTick</code></h1><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">nextTick</span> (<span class="hljs-params">cb, ctx</span>) </span>&#123;
   <span class="hljs-keyword">var</span> _resolve;

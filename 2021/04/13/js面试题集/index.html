@@ -237,7 +237,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年6月4日 下午
+                  本文最后更新于：2021年6月14日 下午
                 
               </p>
             
@@ -441,67 +441,72 @@ event.fire(<span class="hljs-string">&#x27;sleep&#x27;</span>);
 <div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// 防抖</span>
 <span class="hljs-comment">// 多次触发最后一次执行</span>
 <span class="hljs-comment">// 连续触发过程中计时器被重置</span>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">debounce</span>(<span class="hljs-params">func,delay,immediate = <span class="hljs-literal">true</span>,...args1</span>)</span>&#123;
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">debounce</span>(<span class="hljs-params">func, delay, immediate = <span class="hljs-literal">true</span>, ...args1</span>) </span>&#123;
   <span class="hljs-keyword">if</span>(<span class="hljs-keyword">typeof</span> func !== <span class="hljs-string">&#x27;function&#x27;</span>) <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">TypeError</span>(<span class="hljs-string">&#x27;must apply to an Function&#x27;</span>)
-  <span class="hljs-keyword">let</span> timer = <span class="hljs-literal">null</span>
-  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">_debounce</span>(<span class="hljs-params">...args2</span>)</span>&#123;
-    <span class="hljs-keyword">if</span>(timer)&#123;
-      <span class="hljs-built_in">clearTimeout</span>(timer)
-      timer = <span class="hljs-literal">null</span>
+  
+  <span class="hljs-keyword">let</span> timer;
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">_debounce</span>(<span class="hljs-params">...args2</span>) </span>&#123;
+    <span class="hljs-keyword">if</span> (timer) &#123;
+      <span class="hljs-built_in">clearTimeout</span>(timer);
+      timer = <span class="hljs-literal">null</span>;
     &#125;
-    <span class="hljs-keyword">if</span>(!timer &amp;&amp; immediate)&#123;
-      func.apply(<span class="hljs-built_in">this</span>,[...args1,...args2])
-      timer = <span class="hljs-built_in">setTimeout</span>(<span class="hljs-literal">null</span>,delay)
-    &#125;<span class="hljs-keyword">else</span>&#123;
-      timer = <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">()=&gt;</span>&#123;
-        func.apply(<span class="hljs-built_in">this</span>,[...args1,...args2])
-        <span class="hljs-built_in">clearTimeout</span>(timer)
-        timer = <span class="hljs-literal">null</span>
-      &#125;,delay)
+
+    <span class="hljs-keyword">if</span> (immediate) &#123;
+      <span class="hljs-keyword">var</span> callNow = !timer;
+      timer = <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> &#123;
+        <span class="hljs-built_in">clearTimeout</span>(timer);
+        timer = <span class="hljs-literal">null</span>;
+      &#125;, delay);
+      <span class="hljs-keyword">if</span> (callNow) func.apply(<span class="hljs-built_in">this</span>, [...args1, ...args2]);
+    &#125; <span class="hljs-keyword">else</span> &#123;
+      timer = <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> &#123;
+        func.apply(<span class="hljs-built_in">this</span>, [...args1, ...args2]);
+        <span class="hljs-built_in">clearTimeout</span>(timer);
+        timer = <span class="hljs-literal">null</span>;
+      &#125;, delay);
     &#125;
   &#125;
-  _debounce.cancel = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;
+  _debounce.cancel = <span class="hljs-function">() =&gt;</span> &#123;
     <span class="hljs-built_in">clearTimeout</span>(timer)
     timer = <span class="hljs-literal">null</span>
   &#125;
-  <span class="hljs-keyword">return</span> _debounce
+  <span class="hljs-keyword">return</span> _debounce;
 &#125;
 
 
 <span class="hljs-comment">// 节流</span>
 <span class="hljs-comment">// 连续触发限制定时间隔执行</span>
 <span class="hljs-comment">// 连续触发过程中计时器不会被重置</span>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">throttle</span>(<span class="hljs-params">func,delay,clock = <span class="hljs-literal">true</span>,...args1</span>)</span>&#123;
-  <span class="hljs-comment">//clock 使用定时器</span>
-  <span class="hljs-comment">//clock = false 使用时间戳</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">throttle</span>(<span class="hljs-params">func,delay,tail = <span class="hljs-literal">true</span>,...args1</span>)</span>&#123;
+  <span class="hljs-comment">//tail 使用定时器</span>
+  <span class="hljs-comment">//tail = false 使用时间戳</span>
   <span class="hljs-keyword">if</span>(<span class="hljs-keyword">typeof</span> func !== <span class="hljs-string">&#x27;function&#x27;</span>) <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">TypeError</span>(<span class="hljs-string">&#x27;must apply to an Function&#x27;</span>)
   <span class="hljs-keyword">let</span> timer = <span class="hljs-literal">null</span>
   <span class="hljs-keyword">let</span> pre = <span class="hljs-number">0</span>
-  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">_throttle</span>(<span class="hljs-params">...args2</span>)</span>&#123;
-    <span class="hljs-keyword">if</span>(clock)&#123;
-      <span class="hljs-keyword">if</span>(timer) <span class="hljs-keyword">return</span> 
+  <span class="hljs-keyword">if</span>(tail)&#123;
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">_throttle</span>(<span class="hljs-params">...args2</span>)</span>&#123;
+      <span class="hljs-keyword">if</span>(timer) <span class="hljs-keyword">return</span>
       timer = <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">()=&gt;</span>&#123;
         func.apply(<span class="hljs-built_in">this</span>,[...args1,...args2])
         <span class="hljs-built_in">clearTimeout</span>(timer)
         timer = <span class="hljs-literal">null</span>
       &#125;,delay)
-    &#125;<span class="hljs-keyword">else</span>&#123;
-      <span class="hljs-keyword">const</span> now = <span class="hljs-built_in">Date</span>.now()
-      <span class="hljs-keyword">if</span>(now - pre &gt; delay)&#123;
+  &#125;
+    _throttle.cancel = <span class="hljs-function">() =&gt;</span> &#123;
+    <span class="hljs-built_in">clearTimeout</span>(timer)
+    timer = <span class="hljs-literal">null</span>
+    &#125;
+    <span class="hljs-keyword">return</span> _throttle
+  &#125;<span class="hljs-keyword">else</span>&#123;
+    <span class="hljs-keyword">return</span>  <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">...args2</span>)</span>&#123;
+      <span class="hljs-keyword">const</span> now = +<span class="hljs-built_in">Date</span>.now()
+      <span class="hljs-keyword">if</span>((now-pre) &gt; delay)&#123;
         func.apply(<span class="hljs-built_in">this</span>,[...args1,...args2])
         pre = now
       &#125;
     &#125;
   &#125;
-  _throttle.cancel = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;
-    <span class="hljs-built_in">clearTimeout</span>(timer)
-    timer = <span class="hljs-literal">null</span>
-  &#125;
-  <span class="hljs-keyword">return</span> _throttle
 &#125;
-
-    <span class="hljs-comment">// const f1 = throttle(()=&gt;console.log(1),3000,false)</span>
-    <span class="hljs-comment">// setInterval(f1, 1000);</span>
 </code></pre></div>
 
 <ul>
@@ -661,7 +666,7 @@ myArray.name = <span class="hljs-string">&quot;啦啦啦&quot;</span>;
 </ul>
 <div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-built_in">Function</span>.prototype._call = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">context, ...args</span>) </span>&#123;
   <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> <span class="hljs-built_in">this</span> !== <span class="hljs-string">&quot;function&quot;</span>) <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">TypeError</span>(<span class="hljs-string">&quot;must call a function&quot;</span>);
-  context = context || <span class="hljs-built_in">window</span> || <span class="hljs-built_in">global</span>
+  context = context || <span class="hljs-built_in">window</span>
   <span class="hljs-keyword">const</span> caller = <span class="hljs-built_in">Symbol</span>(<span class="hljs-string">&quot;caller&quot;</span>);
   context[caller] = <span class="hljs-built_in">this</span>;
   <span class="hljs-keyword">let</span> result = context[caller](...args);
@@ -671,7 +676,7 @@ myArray.name = <span class="hljs-string">&quot;啦啦啦&quot;</span>;
 
 <span class="hljs-built_in">Function</span>.prototype._apply = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">context, args</span>) </span>&#123;
   <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> <span class="hljs-built_in">this</span> !== <span class="hljs-string">&quot;function&quot;</span>) <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">TypeError</span>(<span class="hljs-string">&quot;must apply a function&quot;</span>);
-  context = context || <span class="hljs-built_in">window</span> || <span class="hljs-built_in">global</span>
+  context = context || <span class="hljs-built_in">window</span>
   <span class="hljs-keyword">const</span> caller = <span class="hljs-built_in">Symbol</span>(<span class="hljs-string">&quot;caller&quot;</span>);
   context[caller] = <span class="hljs-built_in">this</span>;
   <span class="hljs-keyword">let</span> result = context[caller](...args);
@@ -682,23 +687,22 @@ myArray.name = <span class="hljs-string">&quot;啦啦啦&quot;</span>;
 <span class="hljs-comment">// 返回一个原函数的拷贝，并拥有指定的this值和初始参数。</span>
 <span class="hljs-built_in">Function</span>.prototype._bind = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">context, ...args1</span>) </span>&#123;
   <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> <span class="hljs-built_in">this</span> !== <span class="hljs-string">&quot;function&quot;</span>) <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">TypeError</span>(<span class="hljs-string">&quot;must bind a function&quot;</span>);
-  context = context || <span class="hljs-built_in">window</span> || <span class="hljs-built_in">global</span>
+  context = context || <span class="hljs-built_in">window</span>
   <span class="hljs-keyword">const</span> originFn = <span class="hljs-built_in">this</span>;
-  <span class="hljs-keyword">const</span> notBFn = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;&#125;;
   <span class="hljs-keyword">const</span> boundFn = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">...args2</span>) </span>&#123;
-    <span class="hljs-keyword">return</span> originFn.apply(<span class="hljs-built_in">this</span> <span class="hljs-keyword">instanceof</span> originFn ? <span class="hljs-built_in">this</span> : context, [
+    <span class="hljs-keyword">return</span> originFn.apply(boundFn.prototype.isPrototypeOf(<span class="hljs-built_in">this</span>) ? <span class="hljs-built_in">this</span> : context, [
       <span class="hljs-comment">// 如果绑定函数被new调用</span>
-      <span class="hljs-comment">// 则this指向new obj的this</span>
+      <span class="hljs-comment">// 则this指向生的成新对象</span>
       ...args1,
       ...args2,
     ]);
   &#125;;
 
-  <span class="hljs-keyword">if</span> (<span class="hljs-built_in">this</span>.prototype) &#123;
-    notBFn.prototype = <span class="hljs-built_in">this</span>.prototype;
-  &#125;
-  boundFn.prototype = <span class="hljs-keyword">new</span> notBFn();
-  <span class="hljs-comment">// boundFn.prototype = Object.create(this.prototype)</span>
+  <span class="hljs-comment">// if (this.prototype) &#123;</span>
+  <span class="hljs-comment">//   notBFn.prototype = this.prototype;</span>
+  <span class="hljs-comment">// &#125;</span>
+  <span class="hljs-comment">// boundFn.prototype = new notBFn();</span>
+  boundFn.prototype = <span class="hljs-built_in">Object</span>.create(originFn.prototype)
   <span class="hljs-comment">// 使用notBFn间接连接boundFn和originFn原型链</span>
   <span class="hljs-keyword">return</span> boundFn;
 &#125;;</code></pre></div>

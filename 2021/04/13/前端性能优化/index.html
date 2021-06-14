@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      622 字
+      1.3k 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      8
+      20
        分钟
     </span>
   
@@ -237,13 +237,12 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年6月4日 上午
+                  本文最后更新于：2021年6月10日 下午
                 
               </p>
             
             <div class="markdown-body">
-              <h2 id="利用好浏览器缓存"><a href="#利用好浏览器缓存" class="headerlink" title="利用好浏览器缓存"></a>利用好浏览器缓存</h2><h2 id="请求缓存"><a href="#请求缓存" class="headerlink" title="请求缓存"></a>请求缓存</h2><p>封装axios二次请求缓存…</p>
-<h2 id="资源压缩，精灵图，js-css-html代码的压缩"><a href="#资源压缩，精灵图，js-css-html代码的压缩" class="headerlink" title="资源压缩，精灵图，js/css/html代码的压缩"></a>资源压缩，精灵图，js/css/html代码的压缩</h2><h2 id="静态资源CDN"><a href="#静态资源CDN" class="headerlink" title="静态资源CDN"></a>静态资源CDN</h2><p>webpack插件html-webpack-plugin，动态加script标签</p>
+              <h1 id="页面优化"><a href="#页面优化" class="headerlink" title="页面优化"></a>页面优化</h1><h2 id="资源合理使用缓存策略"><a href="#资源合理使用缓存策略" class="headerlink" title="资源合理使用缓存策略"></a>资源合理使用缓存策略</h2><h2 id="缓存请求"><a href="#缓存请求" class="headerlink" title="缓存请求"></a>缓存请求</h2><p>封装axios二次请求缓存…</p>
 <h2 id="图片懒加载"><a href="#图片懒加载" class="headerlink" title="图片懒加载"></a>图片懒加载</h2><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> imgList = [...document.querySelectAll(<span class="hljs-string">&#x27;img&#x27;</span>)]
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">lazyLoad</span>(<span class="hljs-params">imgList</span>)</span>&#123;
   <span class="hljs-keyword">let</span> count = <span class="hljs-number">0</span>
@@ -303,7 +302,166 @@
 <li><code>SSR:server side render</code></li>
 <li><code>prerender-spa-plugin</code>不适用于个性化的，内容变化大，多路由的页面<br>可以用来优化单页应用</li>
 </ul>
-<h2 id="打包优化"><a href="#打包优化" class="headerlink" title="打包优化"></a>打包优化</h2>
+<hr>
+<h1 id="打包优化"><a href="#打包优化" class="headerlink" title="打包优化"></a>打包优化</h1><h2 id="路由懒加载"><a href="#路由懒加载" class="headerlink" title="路由懒加载"></a>路由懒加载</h2><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">new</span> Router(&#123;
+  routes: [
+    &#123;
+      path: <span class="hljs-string">&#x27;/home&#x27;</span>,
+      component: <span class="hljs-function">() =&gt;</span> <span class="hljs-keyword">import</span>(<span class="hljs-string">&#x27;@/components/home&#x27;</span>),
+    &#125;,
+    &#123;
+      path: <span class="hljs-string">&#x27;/about&#x27;</span>,
+      component: <span class="hljs-function">() =&gt;</span> <span class="hljs-keyword">import</span>(<span class="hljs-string">&#x27;@/components/home&#x27;</span>),
+    &#125;,
+  ],
+&#125;)</code></pre></div>
+<h2 id="按需引入"><a href="#按需引入" class="headerlink" title="按需引入"></a>按需引入</h2><ol>
+<li>elementui官网配置方法不适用</li>
+<li>vuecli中babel配置文件为<code>babel.config.js</code></li>
+<li>安装<code>babel-plugin-component</code></li>
+<li>配置<code>babel.config.js</code></li>
+</ol>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-built_in">module</span>.exports = &#123;
+  presets: [
+    <span class="hljs-string">&#x27;@vue/cli-plugin-babel/preset&#x27;</span>
+  ],
+  plugins: [
+    [
+      <span class="hljs-string">&quot;component&quot;</span>,<span class="hljs-comment">// 插件位置</span>
+      &#123;
+        <span class="hljs-string">&quot;libraryName&quot;</span>: <span class="hljs-string">&quot;element-ui&quot;</span>,
+        <span class="hljs-string">&quot;styleLibraryName&quot;</span>: <span class="hljs-string">&quot;theme-chalk&quot;</span>
+      &#125;
+    ]
+  ]
+&#125;
+</code></pre></div>
+
+<ul>
+<li>修改<code>main.js</code><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">import</span> &#123; MenuItem,Container,Header,Aside,Main,Input,Footer,Avatar, Menu, Table, TableColumn, Pagination ,Button&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;element-ui&quot;</span>;
+
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> item <span class="hljs-keyword">of</span> [MenuItem,Container,Header,Aside,Main,Input,Footer,Avatar, Menu, Table, TableColumn, Pagination,Button]) &#123;
+  Vue.use(item);
+&#125;</code></pre></div></li>
+<li>也可以单独独立出自定义组件,二次封装<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// eleui.js</span>
+<span class="hljs-keyword">import</span> &#123; MenuItem,Container,Header,Aside,Main,Input,Footer,Avatar, Menu, Table, TableColumn, Pagination ,Button&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;element-ui&quot;</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;
+  install : <span class="hljs-function">(<span class="hljs-params">Vue</span>) =&gt;</span> &#123;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> co <span class="hljs-keyword">of</span> [MenuItem,Container,Header,Aside,Main,Input,Footer,Avatar, Menu, Table, TableColumn, Pagination ,Button])&#123;
+      Vue.use(co)
+    &#125;
+  &#125;
+&#125;
+
+
+<span class="hljs-comment">// main.js</span>
+<span class="hljs-keyword">import</span> eleUI <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./eleUI.js&#x27;</span>
+Vue.use(eleUI)</code></pre></div>
+<h2 id="抽离组件库-代码分割"><a href="#抽离组件库-代码分割" class="headerlink" title="抽离组件库(代码分割)"></a>抽离组件库(代码分割)</h2><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-built_in">module</span>.exports = &#123;
+  chainWebpack: <span class="hljs-function"><span class="hljs-params">config</span> =&gt;</span> &#123;
+      config.optimization.splitChunks(&#123;
+        chunks: <span class="hljs-string">&#x27;all&#x27;</span>,
+        cacheGroups: &#123;
+          vendors: &#123;
+            name: <span class="hljs-string">&#x27;chunk-vendors&#x27;</span>,
+            test: <span class="hljs-regexp">/[\\/]node_modules[\\/]/</span>,
+            priority: <span class="hljs-number">10</span>,
+            chunks: <span class="hljs-string">&#x27;initial&#x27;</span>
+          &#125;,
+          echarts: &#123;
+            name: <span class="hljs-string">&#x27;chunk-echarts&#x27;</span>,
+            priority: <span class="hljs-number">20</span>,
+            test: <span class="hljs-regexp">/[\\/]node_modules[\\/]_?echarts(.*)/</span>
+          &#125;
+        &#125;
+      &#125;)
+    &#125;
+&#125;</code></pre></div>
+<h2 id="CDN"><a href="#CDN" class="headerlink" title="CDN"></a>CDN</h2></li>
+</ul>
+<ol>
+<li>安装<code>html-webpack-plugin</code></li>
+<li>修改<code>public/index.html</code><div class="hljs code-wrapper"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;utf-8&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">&quot;X-UA-Compatible&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;IE=edge&quot;</span> /&gt;</span>
+    &lt;meta
+      name=&quot;viewport&quot;
+      content=&quot;width=device-width,initial-scale=1.0,user-scalable=no&quot;
+    /&gt;
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;icon&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;&lt;%= BASE_URL %&gt;favicon.ico&quot;</span> /&gt;</span>
+
+    <span class="hljs-comment">&lt;!-- 使用CDN的CSS文件 --&gt;</span>
+    &lt;% for (var i in htmlWebpackPlugin.options.cdn &amp;&amp;
+    htmlWebpackPlugin.options.cdn.css) &#123; %&gt;
+    &lt;link
+      href=&quot;&lt;%= htmlWebpackPlugin.options.cdn.css[i] %&gt;&quot;
+      rel=&quot;preload&quot;
+      as=&quot;style&quot;
+    /&gt;
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;&lt;%= htmlWebpackPlugin.options.cdn.css[i] %&gt;&quot;</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> /&gt;</span>
+    &lt;% &#125; %&gt;
+    <span class="hljs-comment">&lt;!-- 使用CDN的CSS文件 --&gt;</span>
+
+  <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">noscript</span>&gt;</span>
+      &lt;strong
+        &gt;We&#x27;re sorry but moviapp doesn&#x27;t work properly without JavaScript
+        enabled. Please enable it to continue.&lt;/strong
+      &gt;
+    <span class="hljs-tag">&lt;/<span class="hljs-name">noscript</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;app&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+    <span class="hljs-comment">&lt;!-- built files will be auto injected --&gt;</span>
+
+    <span class="hljs-comment">&lt;!-- 使用CDN的JS文件 --&gt;</span>
+    &lt;% for (var i in htmlWebpackPlugin.options.cdn &amp;&amp;
+    htmlWebpackPlugin.options.cdn.js) &#123; %&gt;
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;&lt;%= htmlWebpackPlugin.options.cdn.js[i] %&gt;&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+    &lt;% &#125; %&gt;
+    <span class="hljs-comment">&lt;!-- 使用CDN的JS文件 --&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</code></pre></div></li>
+</ol>
+<ul>
+<li>配置<code>vue.config.js</code></li>
+</ul>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// 判断生产环境</span>
+<span class="hljs-keyword">const</span> isProduction = process.env.NODE_ENV === <span class="hljs-string">&quot;production&quot;</span>;
+<span class="hljs-keyword">const</span> cdn = &#123;
+  <span class="hljs-comment">// 随便抓几个</span>
+  js: [
+    <span class="hljs-string">&quot;https://cdn.bootcdn.net/ajax/libs/vue/2.6.0/vue.runtime.esm.js&quot;</span>,
+    <span class="hljs-string">&quot;https://cdn.bootcdn.net/ajax/libs/vue-router/3.1.3/vue-router.esm.js&quot;</span>
+  ],
+&#125;;
+
+<span class="hljs-built_in">module</span>.exports = &#123;
+  configureWebpack: <span class="hljs-function">(<span class="hljs-params">config</span>) =&gt;</span> &#123;
+    <span class="hljs-keyword">if</span> (isProduction) &#123;
+      config.externals = &#123;
+        <span class="hljs-comment">// 排除的依赖，不从bundle中引入的依赖</span>
+        <span class="hljs-string">&quot;vue&quot;</span>: <span class="hljs-string">&quot;Vue&quot;</span>,
+        <span class="hljs-string">&quot;vue-router&quot;</span>: <span class="hljs-string">&quot;VueRouter&quot;</span>
+      &#125;;
+    &#125;
+  &#125;,
+  chainWebpack: <span class="hljs-function">(<span class="hljs-params">config</span>) =&gt;</span> &#123;
+    <span class="hljs-keyword">if</span> (isProduction) &#123;
+      config.plugin(<span class="hljs-string">&quot;html&quot;</span>).tap(<span class="hljs-function">(<span class="hljs-params">args</span>) =&gt;</span> &#123;
+        <span class="hljs-comment">// 传递给 html-webpack-plugin&#x27;s 构造函数的新参数</span>
+        args[<span class="hljs-number">0</span>].cdn = cdn;
+        <span class="hljs-keyword">return</span> args;
+      &#125;);
+    &#125;
+  &#125;,
+&#125;;</code></pre></div>
+
+<h2 id="脚手架都会带的各种代码压缩"><a href="#脚手架都会带的各种代码压缩" class="headerlink" title="脚手架都会带的各种代码压缩"></a>脚手架都会带的各种代码压缩</h2>
             </div>
             <hr>
             <div>

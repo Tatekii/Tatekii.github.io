@@ -237,7 +237,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年6月3日 晚上
+                  本文最后更新于：2021年6月13日 下午
                 
               </p>
             
@@ -249,15 +249,17 @@
 <p>主机和本地域名服务器之间使用递归查询，本地域名服务器要负责一直到查询得出结果</p>
 <p>本地域名服务器和其他服务器之间的使用递归查询，防止单台域名服务器压力过大</p>
 </blockquote>
-<ol>
-<li>本地DNS服务器查找自己缓存</li>
-<li>本地DNS服务器向【根域名服务器】发送请求，根域名服务器返回顶级域名服务器的地址<code>com</code></li>
-<li>本地DNS服务器向顶级域名服务器发送请求，顶级域名返回二级域名的服务器地址<code>baidu.com</code></li>
-<li>本地DNS服务器向二级域名服务器发送请求，得到目标主机IP地址，存入本地DNS服务器缓存并返回给用户主机</li>
-<li>用户主机和浏览器都将缓存这个IP地址的映射</li>
-</ol>
 </li>
 </ol>
+<blockquote>
+<p>DNS请求使用<code>UDP</code>协议，如果请求失败则使用<code>TCP</code>重试</p>
+</blockquote>
+<div class="hljs code-wrapper"><pre><code>1. 本地DNS服务器查找自己缓存
+2. 本地DNS服务器向【根域名服务器】发送请求，根域名服务器返回顶级域名服务器的地址`com`
+3. 本地DNS服务器向顶级域名服务器发送请求，顶级域名返回二级域名的服务器地址`baidu.com`
+4. 本地DNS服务器向二级域名服务器发送请求，得到目标主机IP地址，存入本地DNS服务器缓存并返回给用户主机
+5. 用户主机和浏览器都将缓存这个IP地址的映射
+</code></pre></div>
 <h2 id="【TCP握手】"><a href="#【TCP握手】" class="headerlink" title="【TCP握手】"></a>【TCP握手】</h2><p>对应IP地址，端口建立TCP连接，构造HTTP请求并与服务器握手后发送tcp数据包</p>
 <p>  TCP三次握手</p>
 <blockquote>
@@ -320,7 +322,7 @@
 <h3 id="Display"><a href="#Display" class="headerlink" title="Display"></a>Display</h3><p>GPU合成各图层，显示在屏幕上</p>
 <h1 id="重点概念"><a href="#重点概念" class="headerlink" title="重点概念"></a>重点概念</h1><h3 id="重排reflow"><a href="#重排reflow" class="headerlink" title="重排reflow"></a>重排<code>reflow</code></h3><ul>
 <li>有些情况下，比如修改了元素的样式，浏览器并不会立刻reflow，而是会把这样的操作积攒一批，然后做一次处理，这又叫异步 reflow 或增量异步 reflow。</li>
-<li>在有些情况下，比如resize 窗口，改变了页面默认的字体等。对于这些操作，浏览器会马上进行 reflow。</li>
+<li>在有些情况下，比如窗口<code>resize</code>，改变了页面默认的字体等。对于这些操作，浏览器会马上进行 reflow。</li>
 <li>除了渲染树的直接变化，当获取一些需要计算的属性时，浏览器为取得正确的值也会触发重排,这些属性包括：<code>offsetXXX、scrollXXX、clientXXX、getComputedStyle()</code></li>
 <li>重排必定触发重绘</li>
 </ul>

@@ -237,7 +237,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年5月31日 上午
+                  本文最后更新于：2021年6月14日 下午
                 
               </p>
             
@@ -430,7 +430,10 @@ div &#123;
 <h1 id="优雅降级和渐进增强"><a href="#优雅降级和渐进增强" class="headerlink" title="优雅降级和渐进增强"></a>优雅降级和渐进增强</h1><p>_优雅降级_：Web 站点在所有新式浏览器中都能正常工作，如果用户使用的是旧式浏览器，则代码会针对旧版本的 IE 进行降级处理，使之在旧式浏览器上以某种形式降级体验而不至于完全不能使用。</p>
 <p>_渐进增强_：从被所有浏览器支持的基本功能开始，逐步地添加那些只有新版本浏览器才支持的功能，向页面增加不影响基础浏览器的额外样式和功能。当浏览器支持时，它们会自定地呈现出来并发挥作用。</p>
 <h1 id="常见空-VOID-元素"><a href="#常见空-VOID-元素" class="headerlink" title="常见空 VOID 元素"></a>常见空 VOID 元素</h1><p><code>br、hr、img、input、link、meta</code></p>
-<h1 id="window-onload-和-DOMContentLoaded-的区别"><a href="#window-onload-和-DOMContentLoaded-的区别" class="headerlink" title="window.onload 和 DOMContentLoaded 的区别"></a><code>window.onload</code> 和 <code>DOMContentLoaded</code> 的区别</h1><p><code>window.onload</code>页面的全部资源加载完<br><code>DOMContentLoaded</code>纯HTML加载完</p>
+<h1 id="window-load-和-DOMContentLoaded-的区别"><a href="#window-load-和-DOMContentLoaded-的区别" class="headerlink" title="window.load 和 DOMContentLoaded 的区别"></a><code>window.load</code> 和 <code>DOMContentLoaded</code> 的区别</h1><ul>
+<li><code>window.load</code>当整个页面及所有依赖资源如样式表和图片都已完成加载时，将触发load事件。</li>
+<li><code>DOMContentLoaded</code>纯HTML加载完</li>
+</ul>
 <h1 id="visibilityState"><a href="#visibilityState" class="headerlink" title="visibilityState"></a><code>visibilityState</code></h1><p>通过<code>visibilityState</code>的值检测页面当前是否可见，以及打开页面的时间等<br>在页面被切换到其他后台进程的时候，自动暂停音乐或视频的播放</p>
 <h1 id="外边距重叠"><a href="#外边距重叠" class="headerlink" title="外边距重叠"></a>外边距重叠</h1><ol>
 <li>同层相邻块级元素之间外边距重叠</li>
@@ -440,7 +443,7 @@ div &#123;
 <h1 id="link-和-import-有什么区别"><a href="#link-和-import-有什么区别" class="headerlink" title="link 和@import 有什么区别"></a>link 和@import 有什么区别</h1><ul>
 <li><p><code>link</code>  是 XHTML 标签，除了加载 CSS 外，还可以定义 RSS ，rel和图标等；<code>@import</code> 只能加载 CSS。</p>
 </li>
-<li><p><code>link</code> 引用 CSS 时，在页面载入时同时加载；<code>@import</code> 需要页面网页完全载入以后加载。</p>
+<li><p><code>link</code> 支持并行下载；<code>@import</code> 串行下载且需放在样式表顶层。</p>
 </li>
 <li><p><code>@import</code> 是在 CSS2.1 提出的，低版本的浏览器（IE5 以下）不支持。</p>
 </li>
