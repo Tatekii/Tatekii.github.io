@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      918 字
+      913 字
     </span>
   
 
@@ -237,7 +237,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年4月22日 下午
+                  本文最后更新于：2021年6月14日 晚上
                 
               </p>
             
@@ -302,7 +302,7 @@ reverse()</code></pre></div>
 <li>劫持了对象上的<code>属性</code></li>
 <li>数据结构越复杂初始性能会越差,需要递归遍历绑定<code>defineProperty</code></li>
 <li>为保持响应式还需要为新增数据再次绑定<code>defineProperty</code></li>
-<li>原数据的修改即可触发拦截器</li>
+<li>原数据的修改触发拦截器</li>
 </ol>
 <h3 id="proxy"><a href="#proxy" class="headerlink" title="proxy"></a><code>proxy</code></h3><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> p = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Proxy</span>(target, handler)
 handler.getPrototypeOf()
@@ -334,7 +334,7 @@ handler.construct()
 </code></pre></div>
 <ol>
 <li>不兼容<code>IE</code></li>
-<li>劫持<code>整个对象</code>，无需对对象本体的变化作出修改</li>
+<li>劫持<code>整个对象</code>，无需对对象本体作出修改</li>
 <li>拦截器响应的是<code>proxy</code>生成的代理对象，原数据的修改将不会触发拦截器</li>
 <li>拦截器种类繁多</li>
 </ol>
@@ -561,7 +561,7 @@ handler.construct()
 
   <footer class="text-center mt-5 py-3">
   <div class="footer-content">
-     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
   </div>
   
   <div class="statistics">

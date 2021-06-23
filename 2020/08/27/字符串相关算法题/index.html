@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      875 字
+      949 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      13
+      14
        分钟
     </span>
   
@@ -237,7 +237,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年5月28日 上午
+                  本文最后更新于：2021年6月14日 晚上
                 
               </p>
             
@@ -405,6 +405,22 @@
   <span class="hljs-keyword">if</span>(<span class="hljs-regexp">/^\s$/</span>.test(s)) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
   <span class="hljs-keyword">return</span> <span class="hljs-built_in">Number</span>(s).toString() !== <span class="hljs-string">&#x27;NaN&#x27;</span>
 &#125;</code></pre></div></li>
+<li><p>千分位加逗号</p>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> rule  = <span class="hljs-regexp">/(\d)(?=(\d&#123;3&#125;)+\.)/g</span>
+s1.replace(rule,<span class="hljs-string">&#x27;$1,&#x27;</span>)</code></pre></div></li>
+<li><p>解析URL参数</p>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> rule = <span class="hljs-regexp">/([^?=&amp;]+)=([^&amp;#]*)/g</span>
+url.match.reduce(<span class="hljs-function">(<span class="hljs-params">a,b</span>)=&gt;</span>&#123;
+  <span class="hljs-keyword">const</span> [key,value] = b.split(<span class="hljs-string">&#x27;=&#x27;</span>)
+  k = <span class="hljs-built_in">decodeURIComponent</span>(key)
+  v = <span class="hljs-built_in">decodeURIComponent</span>(value)
+  <span class="hljs-keyword">if</span>(a[k]===<span class="hljs-string">&#x27;undefined&#x27;</span>)&#123;
+    a[k] = value
+  &#125;<span class="hljs-keyword">else</span>&#123;
+    a[k] = [...a[k],value]
+  &#125;
+  <span class="hljs-keyword">return</span> a
+&#125;,&#123;&#125;)</code></pre></div></li>
 </ul>
 
             </div>
@@ -539,7 +555,7 @@
 
   <footer class="text-center mt-5 py-3">
   <div class="footer-content">
-     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
   </div>
   
   <div class="statistics">

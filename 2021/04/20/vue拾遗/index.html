@@ -237,7 +237,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年6月8日 晚上
+                  本文最后更新于：2021年6月14日 晚上
                 
               </p>
             
@@ -361,9 +361,9 @@ callHook(vm, <span class="hljs-string">&#x27;⭐️deactivated&#x27;</span>);</c
 <li>绑定<code>$parent</code></li>
 <li>将实例push进父组件<code>$children</code></li>
 <li>绑定<code>$attrs</code>和<code>$listener</code><h3 id="created之前做了什么"><a href="#created之前做了什么" class="headerlink" title="created之前做了什么"></a>created之前做了什么</h3></li>
-<li>绑定<code>inject</code></li>
+<li>绑定<code>injections</code></li>
 <li>初始化<code>props,data,methods,watch,computed</code></li>
-<li>绑定<code>provide</code></li>
+<li>绑定<code>provider</code></li>
 </ul>
 <h1 id="响应式原理"><a href="#响应式原理" class="headerlink" title="响应式原理"></a>响应式原理</h1><h3 id="defineReactive"><a href="#defineReactive" class="headerlink" title="defineReactive"></a><code>defineReactive</code></h3><div class="hljs code-wrapper"><pre><code class="hljs javascript">defineReactive (
   ...
@@ -551,9 +551,9 @@ Dep.target = <span class="hljs-literal">null</span>
   Dep.target = targetStack.pop()
 &#125;</code></pre></div>
 <h2 id="⭐️收集依赖⭐️"><a href="#⭐️收集依赖⭐️" class="headerlink" title="⭐️收集依赖⭐️"></a>⭐️收集依赖⭐️</h2><ol>
-<li>initState阶段为数据添加getter,setter绑定,并为每个数据生成一个新<code>Dep</code>实例</li>
+<li>实例initState阶段为data数据添加getter,setter绑定,并为每个数据生成一个<code>Dep</code>实例</li>
 <li>mountComponent执行过程中，组件实例化一个渲染<code>Watcher</code>，并指定为<code>Dep.target</code></li>
-<li><code>render</code>函数执行访问数据触发数据的getter，将当前渲染<code>Watcher</code>添加到该数据持有的<code>Dep.subs</code>数组中</li>
+<li><code>render</code>函数执行访问数据触发数据的getter，将当前组件渲染<code>Watcher</code>添加到该数据持有的<code>Dep.subs</code>数组中</li>
 <li>同时渲染<code>Watcher</code>也有一个<code>deps</code>数组保存自己订阅了谁，这样做的意义是在下次<code>Watcher.update</code>时将不再显示页面上的数据绑定移除(对比新旧<code>deps</code>数组)<blockquote>
 <p>可以理解成data数据的subs数组中每个watcher即代表一个受该数据响应式影响的组件实例</p>
 </blockquote>
@@ -642,9 +642,9 @@ Dep.target = <span class="hljs-literal">null</span>
   &#125;
 &#125;</code></pre></div>
 <ol>
-<li>遍历Computed内的key，为每个key创建computed watcher</li>
+<li>实例initState阶段遍历Computed内的key，为每个key创建computed watcher</li>
 <li>利用 Object.defineProperty 给 key 值添加 getter</li>
-<li>渲染函数访问到computed内的key时候，触发getter，生成一个Dep实例，并且此时Dep.target是渲染watcher，渲染watcher就订阅了这个key的变化</li>
+<li>渲染函数访问到computed内的属性时候触发getter，生成一个Dep实例，并且此时Dep.target是渲染watcher，渲染watcher就订阅了这个key的变化</li>
 <li>执行这个compute key的计算逻辑，访问依赖的数据会触发其中响应式数据的getter，则computed watcher也就订阅了data的变化，最后也返回计算值并缓存起来</li>
 <li>当依赖的响应式数据变化时，响应的computed watcher会收到通知</li>
 <li>computed watcher会重新求值，比较两次运算结果，结果改变时才会通知渲染watcher更新</li>
@@ -668,9 +668,9 @@ Dep.target = <span class="hljs-literal">null</span>
 <ol>
 <li>遍历Watch内的key</li>
 <li>遍历每一个handler，为每一个handler创建user watcher</li>
-<li>user watcher会被添加进订阅响应数据的subs[]完成订阅</li>
+<li>user watcher会被添加进订阅响应数据的subs数组完成订阅</li>
 <li>响应式数据的变化会通知到user watcher</li>
-<li>渲染函数如果访问这个watch属性，也同理会订阅他的改变</li>
+<li>渲染函数如果访问这个watch属性，也同理会被推入该watch属性的subs数组,订阅其变化</li>
 </ol>
 
             </div>
@@ -803,7 +803,7 @@ Dep.target = <span class="hljs-literal">null</span>
 
   <footer class="text-center mt-5 py-3">
   <div class="footer-content">
-     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
   </div>
   
   <div class="statistics">

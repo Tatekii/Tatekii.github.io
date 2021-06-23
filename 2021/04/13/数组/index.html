@@ -618,15 +618,13 @@ flat(<span class="hljs-literal">Infinity</span>);
     <span class="hljs-comment">// 不断缩小间隔的长度</span>
     <span class="hljs-comment">// 最终会为1</span>
     <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = gap;i&lt;len;i++)&#123;
-      <span class="hljs-keyword">const</span> temp = arr[i]
+      <span class="hljs-keyword">const</span> pivot = arr[i]
       <span class="hljs-keyword">let</span> j = i
-      <span class="hljs-keyword">if</span>(arr[j-gap]&gt;temp)&#123;
         <span class="hljs-keyword">while</span>(arr[j-gap]&gt;temp &amp;&amp; j-gap&gt;=<span class="hljs-number">0</span>)&#123;
           arr[j] = arr[j-gap]
           j-=gap
         &#125;
-      &#125;
-      arr[j] = temp
+      arr[j] = pivot
     &#125;
   &#125;
   <span class="hljs-keyword">return</span> arr
@@ -838,7 +836,7 @@ flat(<span class="hljs-literal">Infinity</span>);
 
   <footer class="text-center mt-5 py-3">
   <div class="footer-content">
-     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
   </div>
   
   <div class="statistics">

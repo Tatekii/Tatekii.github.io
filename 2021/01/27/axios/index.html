@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      231 字
+      226 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      4
+      3
        分钟
     </span>
   
@@ -237,13 +237,13 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年2月23日 晚上
+                  本文最后更新于：2021年6月23日 下午
                 
               </p>
             
             <div class="markdown-body">
               <h2 id="拦截器"><a href="#拦截器" class="headerlink" title="拦截器"></a>拦截器</h2><ul>
-<li><p>拦截器中可以修改config和response</p>
+<li><p>添加拦截器</p>
 <div class="hljs code-wrapper"><pre><code class="hljs javascript">axios.interceptors.request.use(
   (config) =&gt; &#123;
     &lt;!-- 加入参数 --&gt;
@@ -286,8 +286,8 @@ request2
 request1
 response1
 response2</code></pre></div></li>
-<li><p>取消请求</p>
-<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> CancelToken = axios.CancelToken;
+</ul>
+<h2 id="取消请求"><a href="#取消请求" class="headerlink" title="取消请求"></a>取消请求</h2>  <div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> CancelToken = axios.CancelToken;
 <span class="hljs-keyword">let</span> cancel = <span class="hljs-literal">null</span>
 btn.onclick = <span class="hljs-function">() =&gt;</span> &#123;
   <span class="hljs-keyword">if</span>(cancel !== <span class="hljs-literal">null</span>) cancel()
@@ -303,9 +303,7 @@ btn.onclick = <span class="hljs-function">() =&gt;</span> &#123;
   &#125;)
 &#125;.then(<span class="hljs-function"><span class="hljs-params">res</span>=&gt;</span>&#123;
   cancel = <span class="hljs-literal">null</span>
-&#125;)</code></pre></div></li>
-</ul>
-
+&#125;)</code></pre></div>
             </div>
             <hr>
             <div>
@@ -436,7 +434,7 @@ btn.onclick = <span class="hljs-function">() =&gt;</span> &#123;
 
   <footer class="text-center mt-5 py-3">
   <div class="footer-content">
-     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
   </div>
   
   <div class="statistics">

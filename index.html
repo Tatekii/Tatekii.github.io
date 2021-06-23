@@ -182,23 +182,25 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/04/13/%E6%95%B0%E7%BB%84/">数组</a>
+        <a href="/2021/01/27/axios/">axios</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2021/04/13/%E6%95%B0%E7%BB%84/">
+        <a href="/2021/01/27/axios/">
           
           
             
           
-          创建数组// 字面量
-let arr = []
-let arr = [1,2,3,4]
-// 构造函数
-let arr = new Array()
-let arr = new Array(/传入数组代表数组长度/)
-let arr = new Array(&#x27;item1&#x27;,&#x27;item2&#x27;/传入元素/)
-let arr = Array(10)/省略new操作符/
+          拦截器
+添加拦截器
+axios.interceptors.request.use(
+  (config) =&gt; &#123;
+    &lt;!-- 加入参数 --&gt;
+    config.params = &#123;a:666&#125;
+    return config
+  &#125;,
+  (err) =&gt; &#123;
+    return Promise.reje
         </a>
       </p>
 
@@ -206,8 +208,8 @@ let arr = Array(10)/省略new操作符/
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2021-04-13 00:24" pubdate>
-              2021-04-13
+            <time datetime="2021-01-27 09:45" pubdate>
+              2021-01-27
             </time>
           </div>
         
@@ -215,6 +217,8 @@ let arr = Array(10)/省略new操作符/
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
             
               <a href="/tags/javascript/">javascript</a>
             
@@ -230,28 +234,20 @@ let arr = Array(10)/省略new操作符/
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/04/13/js%E4%B8%AD%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/">js数据类型的判断与转换</a>
+        <a href="/2021/06/03/react_rookie/">react-beginner</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2021/04/13/js%E4%B8%AD%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/">
+        <a href="/2021/06/03/react_rookie/">
           
           
             
           
-          ECAMScript 中不能自定义数据类型，只能为下列 7 种简单数据类型（原始类型）
-String
+          React
+构建用户页面的 javascript 库，并不是完整的 MVC 框架
 
-Number
-
-NaNtypeof NaN === &#x27;number&#x27;
-唯一一个自相反的值
-NaN !== NaN
-
-
-Boolean
-
-在条件判断时，除了 undefined， null， false， NaN， &#39;&#39;， 0， -0，其他所有值都转为 true
+IntroReact.createElementJSX 元素只是调用 React.createElement(component, props, ...children) 的语法糖
+ReactDOM.render(element, container[, callback)在提供的 container 里渲染一个 
         </a>
       </p>
 
@@ -259,8 +255,8 @@ Boolean
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2021-04-13 00:19" pubdate>
-              2021-04-13
+            <time datetime="2021-06-03 20:38" pubdate>
+              2021-06-03
             </time>
           </div>
         
@@ -271,6 +267,8 @@ Boolean
             
               <a href="/tags/javascript/">javascript</a>
             
+              <a href="/tags/react/">react</a>
+            
           </div>
         
       </div>
@@ -283,25 +281,16 @@ Boolean
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/04/13/html%E9%9D%A2%E8%AF%95%E9%A2%98/">HTML面试题</a>
+        <a href="/2021/06/17/react_diff%E7%AE%97%E6%B3%95/">react-diff</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2021/04/13/html%E9%9D%A2%E8%AF%95%E9%A2%98/">
+        <a href="/2021/06/17/react_diff%E7%AE%97%E6%B3%95/">
           
           
             
           
-          HTML5 新特性移除
-纯表现的元素/可以用css实现的元素：basefont，big，center，font, s，strike
-
-对可用性产生负面影响的元素：frame，frame- canvas画布和内联svg`
-
-audio/video 音视频元素
-
-语意化更好的标签，比如header,nav,section,article,footer,aside
-
-纯html表单校验(数据格式，数据范
+          
         </a>
       </p>
 
@@ -309,7 +298,64 @@ audio/video 音视频元素
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2021-04-13 00:43" pubdate>
+            <time datetime="2021-06-17 16:45" pubdate>
+              2021-06-17
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/javascript/">javascript</a>
+            
+              <a href="/tags/react/">react</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/04/13/HTTP/">HTTP协议</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/04/13/HTTP/">
+          
+          
+            
+          
+          HTTP（HyperText Transfer Protocol，超文本传输协议
+HTTP 是基于 TCP/IP 协议的应用层协议，用于客户端和服务器之间的通信链路层，网络层，传输层，应用层
+
+HTTP 报文组成部分
+请求报文
+
+请求行 Request Method,Request URL
+请求头 包含若干属性，key:value 值
+空行
+请求体
+
+
+响应报文
+
+状态行 Request Vers
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-04-13 00:36" pubdate>
               2021-04-13
             </time>
           </div>
@@ -319,60 +365,9 @@ audio/video 音视频元素
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
-            
-              <a href="/tags/HTML/">HTML</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2020/03/27/%E5%8E%9F%E7%94%9Fjs/">原生js</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2020/03/27/%E5%8E%9F%E7%94%9Fjs/">
-          
-          
-            
-          
-          javascript
-js 是一门函数优先的轻量级解释型语言，基于原型编程的动态脚本语言
-
-
-函数是一等公民（变量提升，函数可以作为函数的参数，返回值，可以赋值给变量，【函数式编程的条件】
-面向对象编程
-弱类型语言（变量的类型在运行时会变化，强类型语言的变量类型编译时就确定且不会改变
-基于原型（区别于基于类[类和实例]，js 中万物皆为[对象]
-基于原型的语言具有所谓原型对象（prototypic
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-03-27 14:00" pubdate>
-              2020-03-27
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
+              <a href="/tags/http/">http</a>
             
               <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
-            
-              <a href="/tags/js/">js</a>
             
           </div>
         
@@ -425,6 +420,167 @@ Event.on(&quot;test
               <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
             
               <a href="/tags/javascript/">javascript</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/04/13/js%E6%A8%A1%E5%9D%97%E5%8C%96/">js模块化</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/04/13/js%E6%A8%A1%E5%9D%97%E5%8C%96/">
+          
+          
+            
+          
+          
+模块化的演进过程
+
+
+文件划分
+命名空间 (将每个模块暴露在全局对象
+IIFE 立即执行函数 
+
+模块化开发的思想模块化的开发方式可以提高代码复用率，方便进行代码的管理。通常一个文件就是一个模块，有自己的作用域，只向外暴露特定的变量和函数。
+CommonJS (Node.js)
+运行在服务端
+
+代码同步加载
+
+代码可以多次加载，但是运行结果会被缓存
+
+require(&#39;xxx&#39;)
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-04-13 01:01" pubdate>
+              2021-04-13
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
+            
+              <a href="/tags/javascript/">javascript</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/04/13/html%E9%9D%A2%E8%AF%95%E9%A2%98/">HTML面试题</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/04/13/html%E9%9D%A2%E8%AF%95%E9%A2%98/">
+          
+          
+            
+          
+          HTML5 新特性移除
+纯表现的元素/可以用css实现的元素：basefont，big，center，font, s，strike
+
+对可用性产生负面影响的元素：frame,frameset
+
+语意化更好的标签，比如header,nav,section,article,footer,aside
+
+增强了input类型:color,date,datetime-local,range,tel,sear
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-04-13 00:43" pubdate>
+              2021-04-13
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
+            
+              <a href="/tags/HTML/">HTML</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/08/27/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95%E9%A2%98/">操作字符串算法题</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/08/27/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95%E9%A2%98/">
+          
+          
+            
+          
+          
+寻找最长公公前缀
+// 输入: [&quot;flower&quot;,&quot;flow&quot;,&quot;flight&quot;]
+// 输出: &quot;fl&quot;
+
+function commonPrefix(...str)&#123;
+  if(!str.length || str.length===0) return &quot;&quot;
+  let ref =
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-08-27 17:56" pubdate>
+              2020-08-27
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
+            
+              <a href="/tags/javascript/">javascript</a>
+            
+              <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
             
           </div>
         
@@ -492,31 +648,23 @@ DNS请求使用UDP协议，如果请求失败则使用TCP重试
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/04/20/%E5%89%8D%E7%AB%AF%E5%AD%98%E5%82%A8/">前端涉及到的数据存储</a>
+        <a href="/2021/04/13/%E6%95%B0%E7%BB%84/">数组</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2021/04/20/%E5%89%8D%E7%AB%AF%E5%AD%98%E5%82%A8/">
+        <a href="/2021/04/13/%E6%95%B0%E7%BB%84/">
           
           
             
           
-          LocalStorage[h5 web storage]
-不会过期
-
-数据大小5MB
-
-同源共享同一份localStorage
-
-只能为string类型,注意需要JSON转换
-
-
-SessionStorage[h5 web storage]
-会话期间可用（即只要浏览器处于打开状态，包括页面重新加载和恢复）
-
-数据大小5MB
-
-不跨窗口共享,就算同一url的多个tabsessionStorage各自
+          创建数组// 字面量
+let arr = []
+let arr = [1,2,3,4]
+// 构造函数
+let arr = new Array()
+let arr = new Array(/传入数组代表数组长度/)
+let arr = new Array(&#x27;item1&#x27;,&#x27;item2&#x27;/传入元素/)
+let arr = Array(10)/省略new操作符/
         </a>
       </p>
 
@@ -524,126 +672,7 @@ SessionStorage[h5 web storage]
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2021-04-20 18:06" pubdate>
-              2021-04-20
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/06/03/react2/">react-component</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/06/03/react2/">
-          
-          
-            
-          
-          
-组件是react一等公民
-
-
-组件：复用，独立，组合
-
-创建组件函数组件（使用函数创建）
-大写首字母
-必须return
-包括箭头函数function Com1()&#123;
-  return (
-    &lt;div&gt;我是Com1&lt;/div&gt;
-  )
-&#125;
-ReactDOM.render(&lt;Com1 /&gt;,document.getElementById(
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-06-03 21:27" pubdate>
-              2021-06-03
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/javascript/">javascript</a>
-            
-              <a href="/tags/react/">react</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/04/13/es6%E6%96%B0%E7%89%B9%E6%80%A7/">es6新特性</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/04/13/es6%E6%96%B0%E7%89%B9%E6%80%A7/">
-          
-          
-            
-          
-          【let / const】
-都用于声明变量
-不存在变量提升，暂时性死区
-不能重复声明
-快级作用域
-
-let
-可以重新赋值const
-声明时需赋值
-只读不可改变（对于复杂变量，可以修改变量内容，变量内存地址未改变）
-
-【解构赋值】只有可遍历（具备遍历器[Symbol.Iterator]）的数据结构才能解构赋值
-用途
-交换变量
-提取对象中的数据
-解构默认值
-剩余运算
-
-【字符串】
-识别
-
-includ
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-04-13 00:45" pubdate>
+            <time datetime="2021-04-13 00:24" pubdate>
               2021-04-13
             </time>
           </div>
@@ -653,56 +682,7 @@ includ
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
-            
               <a href="/tags/javascript/">javascript</a>
-            
-              <a href="/tags/ES6/">ES6</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/04/13/%E7%BD%91%E7%BB%9C%E5%88%86%E5%B1%82%E6%A8%A1%E5%9E%8B/">网络分层模型</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/04/13/%E7%BD%91%E7%BB%9C%E5%88%86%E5%B1%82%E6%A8%A1%E5%9E%8B/">
-          
-          
-            
-          
-          OSI 参考模型OSI参考模型（OSI/RM）的全称是开放系统互连参考模型（Open System Interconnection Reference Model，OSI/RM），它是由国际标准化组织（International Standard Organization，ISO）提出的一个网络系统互连模型。
-
-在这个 OSI 七层模型中，每一层都为其上一层提供服务和访问接口
-
-不同主机之间的相同
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-04-13 00:21" pubdate>
-              2021-04-13
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/http/">http</a>
             
           </div>
         
@@ -762,7 +742,7 @@ includ
 
   <footer class="text-center mt-5 py-3">
   <div class="footer-content">
-     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
   </div>
   
   <div class="statistics">

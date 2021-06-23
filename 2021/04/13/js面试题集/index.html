@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      4.8k 字
+      4.9k 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      85
+      86
        分钟
     </span>
   
@@ -237,7 +237,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年6月14日 下午
+                  本文最后更新于：2021年6月16日 下午
                 
               </p>
             
@@ -1395,7 +1395,8 @@ getName();
 </code></pre></div></li>
 </ul>
 <ul>
-<li>扁平化转换<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// 实现一个 fn 函数</span>
+<li><p>扁平化转换</p>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// 实现一个 fn 函数</span>
 <span class="hljs-keyword">const</span> o = &#123; <span class="hljs-attr">a</span>: <span class="hljs-number">1</span>, <span class="hljs-attr">b</span>: [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, &#123; <span class="hljs-attr">c</span>: <span class="hljs-literal">true</span> &#125;], <span class="hljs-attr">d</span>: &#123; <span class="hljs-attr">e</span>: <span class="hljs-number">2</span>, <span class="hljs-attr">f</span>: <span class="hljs-number">3</span> &#125;, <span class="hljs-attr">g</span>: <span class="hljs-literal">null</span> &#125;;
 <span class="hljs-comment">// fn(o) =&gt; 扁平化转换</span>
 <span class="hljs-comment">// &#123; &quot;a&quot;: 1, &quot;b[0]&quot;: 1, &quot;b[1]&quot;: 2, &quot;b[2].c&quot;: true, &quot;d.e&quot;: 2, ... &#125;</span>
@@ -1427,6 +1428,21 @@ getName();
   <span class="hljs-keyword">return</span> res;
 &#125;
 <span class="hljs-built_in">console</span>.log(objectFlat(o));</code></pre></div></li>
+<li><p>变量连续赋值</p>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript">a = b = <span class="hljs-number">3</span>
+<span class="hljs-comment">// 一般来说执行顺序是</span>
+b = <span class="hljs-number">3</span>
+a = b
+
+
+<span class="hljs-comment">// 当遇到`.`操作符,操作优先级会高于赋值</span>
+<span class="hljs-keyword">let</span> a = &#123;<span class="hljs-attr">name</span>:<span class="hljs-number">666</span>&#125;
+b = a
+a.x = a = &#123;<span class="hljs-attr">name</span>:<span class="hljs-number">222</span>&#125;
+<span class="hljs-comment">// 先执行a.x = &#123;name:222&#125;</span>
+<span class="hljs-comment">// 后改变a指针 a = &#123;name:222&#125;</span>
+a.x <span class="hljs-comment">// &#123;name:222&#125; undefined</span>
+b.x <span class="hljs-comment">// &#123;name:666,x:&#123;name:222&#125;&#125; &#123;name:222&#125;</span></code></pre></div></li>
 </ul>
 
             </div>
@@ -1559,7 +1575,7 @@ getName();
 
   <footer class="text-center mt-5 py-3">
   <div class="footer-content">
-     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
   </div>
   
   <div class="statistics">
