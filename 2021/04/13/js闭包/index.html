@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      850 字
+      933 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      10
+      11
        分钟
     </span>
   
@@ -237,7 +237,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年5月31日 下午
+                  本文最后更新于：2021年7月3日 下午
                 
               </p>
             
@@ -273,15 +273,40 @@
 </li>
 </ul>
 <h2 id="作用域链"><a href="#作用域链" class="headerlink" title="作用域链"></a>作用域链</h2><p>只有函数可以制造作用域结构， 那么只要是代码，就至少有一个作用域, 即全局作用域。凡是代码中有函数，那么这个函数就构成另一个作用域。如果函数中还有函数，那么在这个作用域中就又可以诞生一个作用域。</p>
-<p>将这样的所有的作用域之间的可以向上访问的关系称为<code>作用域链</code></p>
+<p>将这样的所有的作用域之间的联系称为<code>作用域链</code></p>
 <h1 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h1><ul>
-<li>函数与其词法环境共同构成 <em>闭包（closure）</em> 。</li>
-<li>词法环境 = 代码内变量标识符与变量值和函数值之间的关联关系（环境记录）+ 对外部词法环境的引用</li>
-<li>闭包函数会保持对外部词法环境的引用，使外部变量常驻内存不可回收</li>
+<li><p>函数与其词法环境共同构成 <em>闭包（closure）</em> 。</p>
+</li>
+<li><p>词法环境 = 代码内变量标识符与值之间的关联关系（环境记录）+ 对外部词法环境的引用</p>
+</li>
+<li><p>所有函数会自动通过隐藏的 [[Environment]] 属性记住创建它们的位置,保存对其创建位置的此法环境的引用.</p>
+</li>
 </ul>
 <h2 id="闭包的用途"><a href="#闭包的用途" class="headerlink" title="闭包的用途"></a>闭包的用途</h2><ul>
-<li>实现数据(变量和方法)私有化</li>
-<li>函数柯里化</li>
+<li><p>实现数据(变量和方法)私有化</p>
+</li>
+<li><p>函数柯里化</p>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">curry</span>(<span class="hljs-params">func,...args1</span>)</span>&#123;
+  <span class="hljs-keyword">const</span> fnLen = func.length
+  <span class="hljs-keyword">const</span> argsArr = [...args1]
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">_curry</span>(<span class="hljs-params">...args2</span>)</span>&#123;
+    argsArr = [argsArr,...args2]
+    <span class="hljs-keyword">return</span> argsArr.length &gt;= fnLen ? func.apply(<span class="hljs-built_in">this</span>,argsArr) : _curry
+  &#125;
+  <span class="hljs-keyword">return</span> _curry
+&#125;
+
+<span class="hljs-comment">// 传世经典累加函数add</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">add</span>(<span class="hljs-params">...args1</span>)</span>&#123;
+  <span class="hljs-keyword">let</span> res = [...arg1].reduce(<span class="hljs-function">(<span class="hljs-params">a,b</span>)=&gt;</span>a+b)
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">innerAdd</span>(<span class="hljs-params">...args2</span>)</span>&#123;
+    res = [...res,...args2].reduce(<span class="hljs-function">(<span class="hljs-params">a,b</span>)=&gt;</span>a+b)
+    <span class="hljs-keyword">return</span> innerAdd
+  &#125;
+  innerAdd.toString = <span class="hljs-function">() =&gt;</span> res
+  <span class="hljs-comment">// 打印方法会调用toString</span>
+  <span class="hljs-keyword">return</span> innerAdd
+&#125;</code></pre></div></li>
 </ul>
 <h2 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h2><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addCounter</span>(<span class="hljs-params"></span>) </span>&#123;
   <span class="hljs-keyword">let</span> counter = <span class="hljs-number">0</span>; <span class="hljs-comment">// 执行结束后不会被清除</span>

@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.5k 字
+      1.6k 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      18
+      19
        分钟
     </span>
   
@@ -237,7 +237,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年6月1日 下午
+                  本文最后更新于：2021年7月3日 下午
                 
               </p>
             
@@ -245,40 +245,40 @@
               <p>ref:<a target="_blank" rel="noopener" href="https://github.com/CyC2018/CS-Notes/blob/master/notes/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E6%80%9D%E6%83%B3.md">https://github.com/CyC2018</a></p>
 <h2 id="面向对象的设计思想"><a href="#面向对象的设计思想" class="headerlink" title="面向对象的设计思想"></a>面向对象的设计思想</h2><p>面向对象的设计思想是从自然界中来的，因为在自然界中就存在类（Class）和实例（Instance）的概念。</p>
 <ul>
-<li><p>Class 是一种抽象概念，比如我们定义的 Class——Student ，是指学生这个概念，</p>
+<li><p>  Class 是一种抽象概念，比如我们定义的 Class——Student ，是指学生这个概念，</p>
 </li>
-<li><p>而实例（Instance）则是一个个具体的 Student ，比如， Michael 和 Bob 是两个具体的 Student 。</p>
+<li><p>  而实例（Instance）则是一个个具体的 Student ，比如， Michael 和 Bob 是两个具体的 Student 。</p>
 </li>
-<li><p>面向过程就是分析出解决问题所需要的步骤，然后用函数把这些步骤一步一步实现。</p>
+<li><p>  面向过程就是分析出解决问题所需要的步骤，然后用函数把这些步骤一步一步实现。</p>
 </li>
-<li><p>面向对象是把构成问题事务分解成各个对象，建立对象的目的不是为了完成一个步骤，而是为了描叙某个事物在整个解决问题的步骤中的行为。</p>
+<li><p>  面向对象是把构成问题事务分解成各个对象，建立对象的目的不是为了完成一个步骤，而是为了描叙某个事物在整个解决问题的步骤中的行为。</p>
 </li>
 </ul>
 <h2 id="面向对象三要素"><a href="#面向对象三要素" class="headerlink" title="面向对象三要素"></a>面向对象三要素</h2><h3 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h3><p>利用抽象数据类型将数据和基于数据的操作封装在一起，使其构成一个不可分割的独立实体。数据被保护在抽象数据类型的内部，尽可能地隐藏内部的细节，只保留一些对外接口使之与外部发生联系。用户无需知道对象内部的细节，但可以通过对象对外提供的接口来访问该对象。</p>
 <ul>
-<li>减少耦合：可以独立地开发、测试、优化、使用、理解和修改</li>
-<li>减轻维护的负担：可以更容易被程序员理解，并且在调试的时候可以不影响其他模块</li>
-<li>有效地调节性能：可以通过剖析确定哪些模块影响了系统的性能<br>提高软件的可重用性</li>
-<li>降低了构建大型系统的风险：即使整个系统不可用，但是这些独立的模块却有可能是可用的</li>
+<li>  减少耦合：可以独立地开发和测试</li>
+<li>  减轻维护的负担：可以更容易被程序员理解，并且在调试的时候可以不影响其他模块</li>
+<li>有效地调节性能：可以通过剖析确定哪些模块影响了系统的性能<br>  提高软件的可重用性</li>
+<li>  降低了构建大型系统的风险：即使整个系统不可用，但是这些独立的模块却有可能是可用的</li>
 </ul>
 <div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// 以下 Person 类封装 name、gender、age 等属性，外界只能通过 get() 方法获取一个 Person 对象的 name 属性和 gender 属性，而无法获取 age 属性，但是 age 属性可以供 work() 方法使用。</span>
 
 <span class="hljs-comment">// 注意到 gender 属性使用 int 数据类型进行存储，封装使得用户注意不到这种实现细节。并且在需要修改 gender 属性使用的数据类型时，也可以在不影响客户端代码的情况下进行。</span>
-public <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span> </span>&#123;
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span> </span>&#123;
 
     private <span class="hljs-built_in">String</span> name;
     private int gender;
     private int age;
 
-    public <span class="hljs-built_in">String</span> <span class="hljs-function"><span class="hljs-title">getName</span>(<span class="hljs-params"></span>)</span> &#123;
+    <span class="hljs-built_in">String</span> <span class="hljs-function"><span class="hljs-title">getName</span>(<span class="hljs-params"></span>)</span> &#123;
         <span class="hljs-keyword">return</span> name;
     &#125;
 
-    public <span class="hljs-built_in">String</span> <span class="hljs-function"><span class="hljs-title">getGender</span>(<span class="hljs-params"></span>)</span> &#123;
+    <span class="hljs-built_in">String</span> <span class="hljs-function"><span class="hljs-title">getGender</span>(<span class="hljs-params"></span>)</span> &#123;
         <span class="hljs-keyword">return</span> gender == <span class="hljs-number">0</span> ? <span class="hljs-string">&quot;man&quot;</span> : <span class="hljs-string">&quot;woman&quot;</span>;
     &#125;
 
-    public <span class="hljs-keyword">void</span> <span class="hljs-function"><span class="hljs-title">work</span>(<span class="hljs-params"></span>)</span> &#123;
+    <span class="hljs-keyword">void</span> <span class="hljs-function"><span class="hljs-title">work</span>(<span class="hljs-params"></span>)</span> &#123;
         <span class="hljs-keyword">if</span> (<span class="hljs-number">18</span> &lt;= age &amp;&amp; age &lt;= <span class="hljs-number">50</span>) &#123;
             System.out.println(name + <span class="hljs-string">&quot; is working very hard!&quot;</span>);
         &#125; <span class="hljs-keyword">else</span> &#123;
@@ -288,37 +288,37 @@ public <span class="hljs-class"><span class="hljs-keyword">class</span> <span cl
 &#125;</code></pre></div>
 
 <h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h3><ul>
-<li><p>子类可以访问父类非private属性</p>
+<li><p>  子类可以访问父类非 private 属性</p>
 </li>
-<li><p>里氏替换原则，子类对象必须能够替换掉父类对象。</p>
+<li><p>  里氏替换原则，子类对象必须能够替换掉父类对象。</p>
 </li>
-<li><p>提高代码的复用性，继承是多态的前提。</p>
+<li><p>  提高代码的复用性，继承是多态的前提。</p>
 </li>
 </ul>
 <h3 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h3><ul>
-<li><p>父类或接口定义的引用变量可以指向子类或实例对象，即多种不同状态</p>
+<li><p>  父类或接口定义的引用变量可以指向子类或实例对象，即多种不同状态</p>
 </li>
-<li><p>提高了程序的扩展性</p>
+<li><p>  提高了程序的扩展性</p>
 </li>
 </ul>
 <div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">//  下面的代码中，乐器类（Instrument）有两个子类：Wind 和 Percussion，它们都覆盖了父类的 play() 方法，并且在 main() 方法中使用父类 Instrument 来引用 Wind 和 Percussion 对象。在Instrument 引用调用 play() 方法时，会执行实际引用对象所在类的 play() 方法，而不是 Instrument 的方法。</span>
-public <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Instrument</span> </span>&#123;
-    public <span class="hljs-keyword">void</span> <span class="hljs-function"><span class="hljs-title">play</span>(<span class="hljs-params"></span>)</span> &#123;
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Instrument</span> </span>&#123;
+    <span class="hljs-keyword">void</span> <span class="hljs-function"><span class="hljs-title">play</span>(<span class="hljs-params"></span>)</span> &#123;
         System.out.println(<span class="hljs-string">&quot;Instument is playing...&quot;</span>);
     &#125;
 &#125;
-public <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Wind</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Instrument</span> </span>&#123;
-    public <span class="hljs-keyword">void</span> <span class="hljs-function"><span class="hljs-title">play</span>(<span class="hljs-params"></span>)</span> &#123;
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Wind</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Instrument</span> </span>&#123;
+    <span class="hljs-keyword">void</span> <span class="hljs-function"><span class="hljs-title">play</span>(<span class="hljs-params"></span>)</span> &#123;
         System.out.println(<span class="hljs-string">&quot;Wind is playing...&quot;</span>);
     &#125;
 &#125;
-public <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Percussion</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Instrument</span> </span>&#123;
-    public <span class="hljs-keyword">void</span> <span class="hljs-function"><span class="hljs-title">play</span>(<span class="hljs-params"></span>)</span> &#123;
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Percussion</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Instrument</span> </span>&#123;
+    <span class="hljs-keyword">void</span> <span class="hljs-function"><span class="hljs-title">play</span>(<span class="hljs-params"></span>)</span> &#123;
         System.out.println(<span class="hljs-string">&quot;Percussion is playing...&quot;</span>);
     &#125;
 &#125;
-public <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Music</span> </span>&#123;
-    public <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-function"><span class="hljs-title">main</span>(<span class="hljs-params"><span class="hljs-built_in">String</span>[] args</span>)</span> &#123;
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Music</span> </span>&#123;
+    <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-function"><span class="hljs-title">main</span>(<span class="hljs-params"><span class="hljs-built_in">String</span>[] args</span>)</span> &#123;
         List&lt;Instrument&gt; instruments = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();
         instruments.add(<span class="hljs-keyword">new</span> Wind());
         instruments.add(<span class="hljs-keyword">new</span> Percussion());
@@ -349,20 +349,22 @@ public <span class="hljs-class"><span class="hljs-keyword">class</span> <span cl
 </li>
 </ul>
 <h2 id="原型"><a href="#原型" class="headerlink" title="原型"></a>原型</h2><p><code>JavaScript</code> 是一种基于原型的语言 (prototype-based language)</p>
-<p>区别于其他面向对象的语言实例中复制父类的全部属性，js则使用原型去访问公有属性。</p>
+<p>区别于其他面向对象的语言实例中复制父类的全部属性，js 则使用原型去访问公有属性。</p>
 <h2 id="原型链"><a href="#原型链" class="headerlink" title="原型链"></a>原型链</h2><p>每个构造函数都有一个原型对象，而每个实例都包含一个指向原型对象的内部指针<code>__proto__</code>。如果这个原型对象是另一个构造函数的实例，则这个原型对象也可以访问自己的原型对象，这样层层递进链式访问的关系就叫做<code>原型链</code>。</p>
-<p>js中查找属性时，先查找实例自身，后查找原型对象，再沿着原型链不断上溯，直到原型链的尽头.</p>
+<p>js 中查找属性时，先查找实例自身，后查找原型对象，再沿着原型链不断上溯，直到原型链的尽头.</p>
 <h3 id="特殊的Object和Function"><a href="#特殊的Object和Function" class="headerlink" title="特殊的Object和Function"></a>特殊的<code>Object</code>和<code>Function</code></h3><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">typeof</span> <span class="hljs-built_in">Function</span>.prototype = <span class="hljs-string">&quot;function&quot;</span>
 <span class="hljs-built_in">Function</span>.prototype = <span class="hljs-built_in">Function</span>.__proto__<span class="hljs-comment">//f()&#123;[native code]&#125;</span>
 
 <span class="hljs-comment">// 所有引用类型都继承自Object</span>
 <span class="hljs-built_in">Function</span>.prototype.__proto__ === <span class="hljs-built_in">Object</span>.prototype <span class="hljs-comment">// true</span>
 </code></pre></div>
-<h3 id="只有函数才有prototype"><a href="#只有函数才有prototype" class="headerlink" title="只有函数才有prototype"></a>只有函数才有<code>prototype</code></h3><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f1</span>(<span class="hljs-params"></span>)</span>&#123;&#125;
-f1.__proto__ === <span class="hljs-built_in">Function</span>.prototype <span class="hljs-comment">// f1直接由Function构造而来</span>
 
-<span class="hljs-keyword">const</span> obj1 = &#123;&#125;
-obj1.prototype <span class="hljs-comment">// undefined</span></code></pre></div>
+<h3 id="只有函数才有prototype"><a href="#只有函数才有prototype" class="headerlink" title="只有函数才有prototype"></a>只有函数才有<code>prototype</code></h3><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f1</span>(<span class="hljs-params"></span>) </span>&#123;&#125;
+f1.__proto__ === <span class="hljs-built_in">Function</span>.prototype; <span class="hljs-comment">// f1直接由Function构造而来</span>
+
+<span class="hljs-keyword">const</span> obj1 = &#123;&#125;;
+obj1.prototype; <span class="hljs-comment">// undefined</span></code></pre></div>
+
 <h3 id="原形链的终点"><a href="#原形链的终点" class="headerlink" title="原形链的终点"></a>原形链的终点</h3><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">typeof</span> <span class="hljs-built_in">Object</span>.prototype === <span class="hljs-string">&#x27;object&#x27;</span>
 <span class="hljs-comment">// 意味着Object的原型是也是一个对象</span>
 
@@ -372,6 +374,7 @@ obj1.prototype <span class="hljs-comment">// undefined</span></code></pre></div>
 
 <span class="hljs-comment">// 为了让原型链有终点。Javascript规定，</span>
 <span class="hljs-built_in">Object</span>.prototype.__proto__ === <span class="hljs-literal">null</span></code></pre></div>
+
 <p><img src="../images/proto.png" srcset="/img/loading.gif" lazyload alt="proto"></p>
 <div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f1</span>(<span class="hljs-params"></span>)</span>&#123;&#125;
 f1.__proto__ = <span class="hljs-built_in">Function</span>.prototype = <span class="hljs-function"><span class="hljs-title">f</span>(<span class="hljs-params"></span>)</span>&#123; [native code] &#125;
@@ -384,13 +387,19 @@ obj.__proto__.__proto__ = <span class="hljs-literal">null</span></code></pre></d
 
 <h3 id="相关方法"><a href="#相关方法" class="headerlink" title="相关方法"></a>相关方法</h3><ul>
 <li><p><code>Object.getPrototype()</code>/<code>__proto__</code></p>
-<p>返回指定对象的原型（隐式原型）</p>
-<p><code>__proto__</code>虽然在绝大数浏览器都能正常工作，但官方不推荐且已标为废弃，使用<code>Object.getPrototypeOf()</code>替代</p>
+<p>  返回指定对象的原型（隐式原型）</p>
+<p>  <code>__proto__</code>虽然在绝大数浏览器都能正常工作，但官方不推荐且已标为废弃，使用<code>Object.getPrototypeOf()</code>替代</p>
 </li>
 <li><p><code>Object.prototype.isPrototypeOf()</code></p>
 <p>  判断对象是否在另一个对象原型链上</p>
 </li>
 </ul>
+<h2 id="this-的指向"><a href="#this-的指向" class="headerlink" title="this 的指向"></a>this 的指向</h2><ol>
+<li>函数的 <code>this</code> 指向函数运行时的执行上下文</li>
+<li>当函数被当作对象的方法调用时,<code>this</code> 指向调用对象</li>
+<li>new 操作符生成的对象 <code>this</code> 指向自己</li>
+<li>箭头函数的<code>this</code>取决于外部函数体的<code>this</code></li>
+</ol>
 
             </div>
             <hr>

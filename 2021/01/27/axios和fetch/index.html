@@ -18,7 +18,7 @@
   <meta name="author" content="tatekii">
   <meta name="keywords" content="">
   
-  <title>地址中输入URL回车后发生了什么 - 不知名的笔记本</title>
+  <title>axios和fetch - 不知名的笔记本</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
@@ -163,7 +163,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="地址中输入URL回车后发生了什么">
+            <span class="h2" id="subtitle" title="axios和fetch">
               
             </span>
 
@@ -173,8 +173,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-04-13 00:16" pubdate>
-        2021年4月13日 凌晨
+      <time datetime="2021-01-27 09:45" pubdate>
+        2021年1月27日 上午
       </time>
     </span>
   
@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.3k 字
+      310 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      15
+      4
        分钟
     </span>
   
@@ -233,139 +233,98 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">地址中输入URL回车后发生了什么</h1>
+            <h1 style="display: none">axios和fetch</h1>
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年7月3日 下午
+                  本文最后更新于：2021年6月27日 晚上
                 
               </p>
             
             <div class="markdown-body">
-              <h1 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h1><h2 id="【DNS解析】"><a href="#【DNS解析】" class="headerlink" title="【DNS解析】"></a>【DNS解析】</h2><ol>
-<li>查找浏览器DNS缓存</li>
-<li>查找系统HOST文件</li>
-<li>DNS查询<blockquote>
-<p>主机和本地域名服务器之间使用递归查询，本地域名服务器要负责一直到查询得出结果</p>
-<p>本地域名服务器和其他服务器之间的使用递归查询，防止单台域名服务器压力过大</p>
+              <h1 id="axios"><a href="#axios" class="headerlink" title="axios"></a>axios</h1><blockquote>
+<p>基于XHR的Promise封装</p>
 </blockquote>
-</li>
+<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ol>
+<li>PromiseAPI</li>
+<li>客户端防止<code>CSRF</code></li>
+<li>提供并发请求的接口</li>
+<li>从node创建http请求</li>
+<li>拦截器</li>
+<li>取消请求abort</li>
 </ol>
-<blockquote>
-<p>DNS请求使用<code>UDP</code>协议，如果请求失败则使用<code>TCP</code>重试</p>
-</blockquote>
-<div class="hljs code-wrapper"><pre><code>1. 本地DNS服务器查找自己缓存
-2. 本地DNS服务器向【根域名服务器】发送请求，根域名服务器返回顶级域名服务器的地址`com`
-3. 本地DNS服务器向顶级域名服务器发送请求，顶级域名返回二级域名的服务器地址`baidu.com`
-4. 本地DNS服务器向二级域名服务器发送请求，得到目标主机IP地址，存入本地DNS服务器缓存并返回给用户主机
-5. 用户主机和浏览器都将缓存这个IP地址的映射
-</code></pre></div>
-<h2 id="【TCP握手】"><a href="#【TCP握手】" class="headerlink" title="【TCP握手】"></a>【TCP握手】</h2><p>对应IP地址，端口建立TCP连接，构造HTTP请求并与服务器握手后发送tcp数据包</p>
-<p>  TCP三次握手</p>
-<blockquote>
-<p>客户端与服务端互相确认收发能力</p>
-</blockquote>
-<ol>
-<li>【CLIENT】 发送<code>SYN</code>报文，指明自己的初始化序列号<code>ISN(c)</code></li>
-<li>【SERVER】 收到后，将client发送的<code>ISN(c)</code>+1作为<code>ACK</code>字符，并且也生成自己的<code>ISN(s)</code>发送给【CLIENT】</li>
-<li>【CLIENT】 收到后，同样将<code>ISN(s)</code>+1作为<code>ACK</code>字符发送给【SERVER】</li>
-</ol>
-<h2 id="【分析请求资源】"><a href="#【分析请求资源】" class="headerlink" title="【分析请求资源】"></a>【分析请求资源】</h2><ul>
-<li><p>不同浏览器对资源优先级分类</p>
-</li>
-<li><p>安全策略检查 </p>
-<p>内容安全策略(Content Security Policy，缩写 CSP)是由浏览器提供的一种白名单制度。发者通过配置，来告诉浏览器各类外部资源的加载和执行限制，来提高网页的安全性。一种最常用应用就是通过限制非信任域名脚本的加载来预防XSS攻击。</p>
-<p>可以通过两种方式来配置CSP：</p>
-<ol>
-<li>HTTP请求头的<code>Content-Security-Policy</code></li>
-<li><code>meta</code>标签 <div class="hljs code-wrapper"><pre><code class="hljs javascript">&lt;meta http-equiv=<span class="hljs-string">&quot;Content-Security-Policy&quot;</span> content=<span class="hljs-string">&quot;script-src &#x27;self&#x27;;style-src nos.netease.com kaola.com;&quot;</span>&gt;</code></pre></div></li>
-</ol>
-</li>
-<li><p>资源优先级计算</p>
-<ol>
-<li><code>html,font,css</code></li>
-<li><code>preload,script,xhr</code></li>
-<li><code>img,audio,video</code></li>
-<li><code>prefetch</code></li>
-</ol>
-</li>
-<li><p>顺序调整</p>
-<ol>
-<li>同步XHR请求优先级调整到最高</li>
-<li>图片根据是否出现在可视区域</li>
-<li><code>async/defer</code>的<code>script</code>标签请求优先级降低</li>
-</ol>
-</li>
-</ul>
-<h2 id="【应用缓存策略】"><a href="#【应用缓存策略】" class="headerlink" title="【应用缓存策略】"></a>【应用缓存策略】</h2><ul>
-<li>强缓存</li>
-<li>协商缓存</li>
-</ul>
-<h2 id="【渲染页面】"><a href="#【渲染页面】" class="headerlink" title="【渲染页面】"></a>【渲染页面】</h2><h3 id="DOM-Tree"><a href="#DOM-Tree" class="headerlink" title="DOM Tree"></a>DOM Tree</h3><ul>
-<li>处理html标记，生成DOM树，所有标签都会包含在内</li>
-<li>DOM的构建是增量的</li>
-<li>解析完一个节点的所有子元素才会解析他的兄弟元素</li>
-</ul>
-<h3 id="CSSOM-Tree"><a href="#CSSOM-Tree" class="headerlink" title="CSSOM Tree"></a>CSSOM Tree</h3><ul>
-<li>加载所有样式，生成CSSOM树</li>
-<li>CSSOM的构建会阻塞渲染<blockquote>
-<p>不同来源的样式（内联、内部style标签和外部引用）可能会发送覆盖，所以要等他们全加载完才能继续渲染</p>
-</blockquote>
-</li>
-</ul>
-<h3 id="Render-Tree"><a href="#Render-Tree" class="headerlink" title="Render Tree"></a>Render Tree</h3><ul>
-<li>对DOM节点找到与其匹配的CSSOM规则并应用</li>
-<li>只包含DOM树中的可见元素(忽略像<code>display：none/&lt;head&gt;标签</code>)</li>
-</ul>
-<h3 id="Layout"><a href="#Layout" class="headerlink" title="Layout"></a>Layout</h3><p>浏览器依据Render树和设备屏幕信息<strong>重排</strong>一次，从 <code>&lt;html&gt;标签</code> 开始往下依次计算所有的节点几何尺寸和位置</p>
-<h3 id="Paint"><a href="#Paint" class="headerlink" title="Paint"></a>Paint</h3><p>根据上一步得到的像素信息<strong>重绘</strong>页面</p>
-<h3 id="Display"><a href="#Display" class="headerlink" title="Display"></a>Display</h3><p>GPU合成各图层，显示在屏幕上</p>
-<h1 id="重点概念"><a href="#重点概念" class="headerlink" title="重点概念"></a>重点概念</h1><h3 id="重排reflow"><a href="#重排reflow" class="headerlink" title="重排reflow"></a>重排<code>reflow</code></h3><ul>
-<li>有些情况下，比如修改了元素的样式，浏览器并不会立刻reflow，而是会把这样的操作积攒一批，然后做一次处理，这又叫异步 reflow 或增量异步 reflow。</li>
-<li>在有些情况下，比如窗口<code>resize</code>，改变了页面默认的字体等。对于这些操作，浏览器会马上进行 reflow。</li>
-<li>除了渲染树的直接变化，当获取一些需要计算的属性时，浏览器为取得正确的值也会触发重排,这些属性包括：<code>offsetXXX、scrollXXX、clientXXX、getComputedStyle()</code></li>
-<li>重排必定触发重绘</li>
-</ul>
-<h3 id="重绘"><a href="#重绘" class="headerlink" title="重绘"></a>重绘</h3><p>改变某个元素的背景色、文字颜色、边框颜色等等不影响它周围或内部布局的属性时，屏幕的一部分要重绘，但是元素的几何尺寸没有变。</p>
-<h3 id="合成层"><a href="#合成层" class="headerlink" title="合成层"></a>合成层</h3><p>区别于一般的图层，合成层【composite】使用GPU线程进行计算</p>
-<h3 id="提升到合成层的条件"><a href="#提升到合成层的条件" class="headerlink" title="提升到合成层的条件"></a>提升到合成层的条件</h3><ul>
-<li>3D<code>transform</code></li>
-<li><code>opacity</code></li>
-<li><code>filter</code></li>
-<li><code>will-change</code></li>
-<li><code>&lt;video&gt;,&lt;audio&gt;,&lt;canvas&gt;</code></li>
-<li><code>position:fixed</code></li>
-</ul>
-<h3 id="解析URL参数"><a href="#解析URL参数" class="headerlink" title="解析URL参数"></a>解析URL参数</h3><ol>
-<li><p>正则解析</p>
- <div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> rule = <span class="hljs-regexp">/([^?=&amp;]+)=([^&amp;#]*)/g</span>
-<span class="hljs-comment">// (匹配非[?=&amp;]且出现多次的字符)</span>
-<span class="hljs-comment">// =</span>
-<span class="hljs-comment">// (匹配出现0次或多次的非[&amp;#]的字符) </span>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">parseURL</span>(<span class="hljs-params">url</span>)</span>&#123;
-  <span class="hljs-keyword">return</span> url.match(rule).reduce(<span class="hljs-function">(<span class="hljs-params">a,b</span>)=&gt;</span>&#123;
-    <span class="hljs-keyword">let</span> [key,value] = b.split(<span class="hljs-string">&#x27;=&#x27;</span>)
-    key = <span class="hljs-built_in">decodeURIComponent</span>(key)
-    value = <span class="hljs-built_in">decodeURIComponent</span>(value)
-    <span class="hljs-keyword">if</span>(a[key]===<span class="hljs-string">&#x27;undefined&#x27;</span>)&#123;
-      a[key] = value
-    &#125;<span class="hljs-keyword">else</span>&#123;
-      a[key] = [...a[key],value]
-    &#125;
-    <span class="hljs-keyword">return</span> a
-  &#125;,&#123;&#125;)
-&#125;</code></pre></div>
-</li>
-<li><p>API解析</p>
-<p> URLSearchParams<br> <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/URLSearchParams">https://developer.mozilla.org/zh-CN/docs/Web/API/URLSearchParams</a></p>
- <div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">parseURL</span>(<span class="hljs-params">url</span>)</span>&#123;
-  <span class="hljs-keyword">const</span> urlObj = <span class="hljs-keyword">new</span> URLSearchParams(url.slice(url.indexOf(<span class="hljs-string">&#x27;?&#x27;</span>)))
-  <span class="hljs-keyword">const</span> res = []
-  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> key <span class="hljs-keyword">of</span> urlObj.keys())&#123;
-    res[key] = urlObj.getAll(key)
+<h2 id="拦截器"><a href="#拦截器" class="headerlink" title="拦截器"></a>拦截器</h2><ul>
+<li><p>添加拦截器</p>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript">axios.interceptors.request.use(
+  (config) =&gt; &#123;
+    &lt;!-- 加入参数 --&gt;
+    config.params = &#123;<span class="hljs-attr">a</span>:<span class="hljs-number">666</span>&#125;
+    <span class="hljs-keyword">return</span> config
+  &#125;,
+  (err) =&gt; &#123;
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">Promise</span>.reject(err)
   &#125;
-  <span class="hljs-keyword">return</span> res
-&#125;</code></pre></div></li>
+);</code></pre></div></li>
+<li><p>执行顺序</p>
+<ul>
+<li>请求拦截器 后面的拦截器先执行</li>
+<li>响应拦截器 前面的拦截器先执行</li>
+</ul>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript">axios.interceptors.request.use(<span class="hljs-function"><span class="hljs-params">config</span>=&gt;</span>&#123;
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;request1&#x27;</span>)
+&#125;,<span class="hljs-function"><span class="hljs-params">err</span>=&gt;</span>&#123;
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;err1&#x27;</span>)
+&#125;)
+axios.interceptors.request.use(<span class="hljs-function"><span class="hljs-params">config</span>=&gt;</span>&#123;
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;request2&#x27;</span>)
+&#125;,<span class="hljs-function"><span class="hljs-params">err</span>=&gt;</span>&#123;
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;err2&#x27;</span>)
+&#125;)
+
+axios.interceptors.response.use(<span class="hljs-function"><span class="hljs-params">res</span>=&gt;</span>&#123;
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;response1&#x27;</span>)
+&#125;，err=&gt;&#123;
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;resErr1&#x27;</span>)
+&#125;)
+axios.interceptors.response.use(<span class="hljs-function"><span class="hljs-params">res</span>=&gt;</span>&#123;
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;response2&#x27;</span>)
+&#125;，err=&gt;&#123;
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;resErr2&#x27;</span>)
+&#125;)
+
+&lt;!-- <span class="hljs-built_in">console</span> --&gt;
+request2
+request1
+response1
+response2</code></pre></div></li>
+</ul>
+<h2 id="取消请求"><a href="#取消请求" class="headerlink" title="取消请求"></a>取消请求</h2>  <div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> CancelToken = axios.CancelToken;
+<span class="hljs-keyword">let</span> cancel = <span class="hljs-literal">null</span>
+btn.onclick = <span class="hljs-function">() =&gt;</span> &#123;
+  <span class="hljs-keyword">if</span>(cancel !== <span class="hljs-literal">null</span>) cancel()
+  &lt;!-- 执行取消函数 --&gt;
+  axios(&#123;
+    method:<span class="hljs-string">&#x27;GET&#x27;</span>,
+    url:<span class="hljs-string">&#x27;http://xxxxxxx&#x27;</span>,
+    &lt;!--  --&gt;
+    cancelToken : <span class="hljs-keyword">new</span> CancelToken(<span class="hljs-function"><span class="hljs-params">c</span>=&gt;</span>&#123;
+      cancel = c
+      &lt;!-- cancelToken --&gt;
+    &#125;)
+  &#125;)
+&#125;.then(<span class="hljs-function"><span class="hljs-params">res</span>=&gt;</span>&#123;
+  cancel = <span class="hljs-literal">null</span>
+&#125;)</code></pre></div>
+
+
+<h1 id="fetch"><a href="#fetch" class="headerlink" title="fetch"></a>fetch</h1><blockquote>
+<p>原生api</p>
+</blockquote>
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><ol>
+<li>只针对网络请求报错(请求不能完成)</li>
+<li>携带cookie要添加配置</li>
+<li>不支持取消请求abort</li>
+<li>无法检测请求进度</li>
 </ol>
 
             </div>
@@ -378,6 +337,8 @@
                     <i class="iconfont icon-tags"></i>
                     
                       <a class="hover-with-bg" href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
+                    
+                      <a class="hover-with-bg" href="/tags/javascript/">javascript</a>
                     
                   </div>
                 
@@ -394,9 +355,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/04/13/js%E4%B8%AD%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/">
+                      <a href="/2021/04/04/div%E9%AB%98%E5%BA%A6%E4%B8%BA%E9%AB%98%E5%BA%A6%E4%B8%80%E5%8D%8A/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">js数据类型的判断与转换</span>
+                        <span class="hidden-mobile">div高度为高度一半</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -404,8 +365,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/04/06/%E6%89%B9%E9%87%8F%E6%98%A0%E5%B0%84%E6%A8%A1%E5%9D%97/">
-                        <span class="hidden-mobile">文件夹内批量映射为模块</span>
+                      <a href="/2020/11/25/vue_diff%E7%AE%97%E6%B3%95/">
+                        <span class="hidden-mobile">vue的diff算法</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

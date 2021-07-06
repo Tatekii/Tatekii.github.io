@@ -237,7 +237,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年6月14日 晚上
+                  本文最后更新于：2021年7月6日 上午
                 
               </p>
             
@@ -272,7 +272,7 @@
 <li><p><code>history</code>API</p>
 </li>
 </ul>
-<h3 id="HTML5-哪些标签可以做-SEO-优化"><a href="#HTML5-哪些标签可以做-SEO-优化" class="headerlink" title="HTML5 哪些标签可以做 SEO 优化"></a>HTML5 哪些标签可以做 SEO 优化</h3><p><code>title、meta、header、footer、nav、article、aside</code></p>
+<h3 id="HTML5-哪些标签可以做-SEO"><a href="#HTML5-哪些标签可以做-SEO" class="headerlink" title="HTML5 哪些标签可以做 SEO"></a>HTML5 哪些标签可以做 SEO</h3><p><code>title、meta、header、footer、nav、article、aside</code></p>
 <h1 id="meta元数据标签"><a href="#meta元数据标签" class="headerlink" title="meta元数据标签"></a>meta元数据标签</h1><ul>
 <li><code>charset</code> 字符编码</li>
 <li><code>keywords</code>关键词和爬虫</li>
@@ -280,7 +280,11 @@
 <li><code>CSP</code>内容安全策略</li>
 </ul>
 <h1 id="HTML5-的离线存储"><a href="#HTML5-的离线存储" class="headerlink" title="HTML5 的离线存储"></a>HTML5 的离线存储</h1><p>在用户没有联网时，可以正常访问站点或应用；在联网的情况下，更新用户机器上的缓存文件。</p>
-<p>如何使用：<br>1、页面头部加入一个 manifest 的属性<br>2、在 cache.manifest 文件的编写离线存储的资源<br>3、在离线状态下，操作 window.applicationCache 进行需求实现</p>
+<ol>
+<li>页面头部加入一个 manifest 的属性</li>
+<li>在 cache.manifest 文件的编写离线存储的资源</li>
+<li>在离线状态下，操作 window.applicationCache 进行需求实现</li>
+</ol>
 <h4 id="浏览器是如何对-HTML5-的离线存储资源进行管理和加载的"><a href="#浏览器是如何对-HTML5-的离线存储资源进行管理和加载的" class="headerlink" title="浏览器是如何对 HTML5 的离线存储资源进行管理和加载的"></a>浏览器是如何对 HTML5 的离线存储资源进行管理和加载的</h4><ul>
 <li><p>在线的情况下，浏览器发现 HTML 头部有 manifest 属性，它会请求 manifest 文件，如果是第一次访问 app，浏览器会根据 manifest 文件的内容下载相应的资源并且进行离线存储。</p>
 </li>
@@ -290,10 +294,12 @@
 </li>
 </ul>
 <h1 id="盒模型"><a href="#盒模型" class="headerlink" title="盒模型"></a>盒模型</h1><p>HTML 文档中的每个元素都使用一个矩形盒子来描述其占用空间，这个模型称为盒模型。盒模型包含四个区域：<code>margin</code>（外边距），<code>border</code>（边框），<code>padding</code>（内边距），<code>content</code>（内容区域）</p>
+<blockquote>
+<p>outline和box-shadow都会从margin box区域开始计算</p>
+</blockquote>
 <h2 id="标准模型和-IE-模型"><a href="#标准模型和-IE-模型" class="headerlink" title="标准模型和 IE 模型"></a>标准模型和 IE 模型</h2><ul>
-<li>通过[box-sizing]设置</li>
-<li>标准模型[content-box]的宽和高只计算 content 部分</li>
-<li>ie 模型[border-box]的宽高包括 padding 和 border</li>
+<li>标准模型<code>box-sizing:content-box</code>,对其设置宽高只作用于<code>content box</code>区域</li>
+<li>ie 模型<code>box-sizing:border-box</code>,对其设置宽高会作用于<code>content box</code>,<code>padding box</code>和 <code>border box</code>区域</li>
 </ul>
 <h2 id="块级元素"><a href="#块级元素" class="headerlink" title="块级元素"></a>块级元素</h2><p><code>display block</code></p>
 <ol>
@@ -349,15 +355,20 @@ div &#123;
 
 
 <h1 id="DOM元素的尺寸和位置"><a href="#DOM元素的尺寸和位置" class="headerlink" title="DOM元素的尺寸和位置"></a>DOM元素的尺寸和位置</h1><ol>
-<li><code>HTMLElement.style</code>【content】【只能获取内联样式】</li>
-<li><code>HTMLElement.currentStyle</code>// 【只支持ie】【样式的实时计算结果】</li>
-<li><code>window.getComputedStyle(HTMLElement)</code>【只读】【样式的实时计算结果】</li>
-<li><code>HTMLElement.offsetHeight</code>// 【content+padding+border + 滚动条】</li>
-<li><code>HTMLElement.offsetTop//Left</code>// 【相较于offsetParent的偏移 margin+position】</li>
-<li><code>HTMLElement.clientHeight</code>// 【content+padding - 滚动条】</li>
-<li><code>HTMLElement.scrollHeight</code>// 【没有滚动条时等于clientHeight】</li>
-<li><code>HTMLElement.scrollTop</code>// 【滚动像量】</li>
-<li><code>HTMLElement.getBoundingClientRect()</code>//获取元素的大小及位置</li>
+<li><p><code>HTMLElement.style</code>【只能获取内联样式】</p>
+</li>
+<li><p><code>window.getComputedStyle(HTMLElement)</code>【获取包含所有样式属性的对象</p>
+</li>
+<li><p><code>HTMLElement.getBoundingClientRect()</code>【描绘元素为相对窗口的矩形盒子】</p>
+</li>
+<li><p><code>HTMLElement.offsetWidth/offsetHeight </code> 【content+padding+border+scrollbar】</p>
+</li>
+<li><p><code>HTMLElement.clientWidth/clientHeight</code> 【content+padding】</p>
+</li>
+<li><p><code>HTMLElement.scrollWidth/scrollHeight </code>// 【包含滚出可是区域部分的clientWidth/clientHeight】</p>
+</li>
+<li><p><code>HTMLElement.scrollTop</code>// 【从元素的左上角开始，滚动出元素的上半部分的 width/height】</p>
+</li>
 </ol>
 <p>！滚动到底</p>
 <blockquote>
@@ -383,9 +394,9 @@ div &#123;
 <h3 id="下列方式会创建BFC："><a href="#下列方式会创建BFC：" class="headerlink" title="下列方式会创建BFC："></a>下列方式会创建BFC：</h3><ul>
 <li>根元素<code>HTML</code></li>
 <li>浮动元素：<code>float</code> 不为 <code>none</code></li>
-<li>定位元素：<code>position</code> 为 <code>absolute</code> 或 <code>fixed</code></li>
-<li><code>overflow</code> 不为 <code>visible</code> （<code>auto</code>,<code>scroll</code>,<code>hidden</code></li>
-<li><code>display</code> 为 <code>flow-root</code> 可以显式BFC</li>
+<li>绝对定位元素：<code>position</code> 为 <code>absolute</code> 或 <code>fixed</code></li>
+<li><code>overflow</code> 不为 <code>visible</code></li>
+<li><code>display</code> 为 <code>flow-root</code></li>
 <li>行内块元素<code>display</code> 为 <code>inline-block</code></li>
 <li>弹性元素<code>display</code> 为 <code>flex</code> 或 <code>inline-flex</code> 元素的直接子元素</li>
 <li>网格元素<code>display</code> 为 <code>grid</code> 或 <code>inline-grid</code> 元素的直接子元素</li>
@@ -403,7 +414,6 @@ div &#123;
   <span class="hljs-attribute">display</span>: block;
   <span class="hljs-attribute">height</span>: <span class="hljs-number">0</span>;
   <span class="hljs-attribute">overflow</span>: hidden;
-  <span class="hljs-attribute">visibility</span>: hidden;
 &#125;
 <span class="hljs-selector-class">.clearfather</span> &#123;
   *zoom: <span class="hljs-number">1</span>; <span class="hljs-comment">/* ie6/7 */</span>

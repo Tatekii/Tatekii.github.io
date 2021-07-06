@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.7k 字
+      1.5k 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      22
+      20
        分钟
     </span>
   
@@ -237,7 +237,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年6月10日 下午
+                  本文最后更新于：2021年7月6日 上午
                 
               </p>
             
@@ -247,7 +247,7 @@
 <li>同源策略限制了同一个源加载的脚本和文档如何与其他源的资源进行交互，包括js脚本，缓存的读取，cookie，ajax等</li>
 <li>三种标签不受同源限制<code>script</code> <code>link</code> <code>img</code></li>
 </ul>
-<h3 id="跨域的方法"><a href="#跨域的方法" class="headerlink" title="跨域的方法"></a>跨域的方法</h3><ul>
+<h3 id="域的方法"><a href="#域的方法" class="headerlink" title="域的方法"></a>域的方法</h3><ul>
 <li><p>代理服务器<code>nginx,各种devServer</code></p>
 </li>
 <li><p><code>document.domain</code></p>
@@ -382,7 +382,10 @@ xhr.withCredentials = <span class="hljs-literal">true</span>;  <span class="xml"
 </ul>
 <h2 id="XSS跨域脚本攻击"><a href="#XSS跨域脚本攻击" class="headerlink" title="XSS跨域脚本攻击"></a>XSS跨域脚本攻击</h2><p><code>Cross-site scripting</code></p>
 <blockquote>
-<p>浏览器渲染过程中执行了预期外的恶意代码，使非法脚本在用户页面内运行</p>
+<p>浏览器渲染过程中执行了预期外的恶意代码</p>
+</blockquote>
+<blockquote>
+<p>XSS利用web开发过程中的漏洞执行攻击</p>
 </blockquote>
 <ul>
 <li><p>存储型XSS</p>
@@ -400,35 +403,25 @@ xhr.withCredentials = <span class="hljs-literal">true</span>;  <span class="xml"
 </ul>
 </li>
 </ul>
-<h3 id="防范XSS"><a href="#防范XSS" class="headerlink" title="防范XSS"></a>防范XSS</h3><blockquote>
-<p>XSS利用web开发过程中的漏洞执行攻击</p>
-</blockquote>
-<ul>
+<h3 id="防范XSS"><a href="#防范XSS" class="headerlink" title="防范XSS"></a>防范XSS</h3><ul>
 <li><p>使用内容安全策略CSP<code>Content Security Policy</code>,限制该页面可以获取的资源和来源</p>
 </li>
-<li><p>! <code>jsonp</code>如何防止xss</p>
-<ol>
-<li>前后端约定jsonp请求的js的回调函数名</li>
-<li>服务器端指定返回的数据格式为json</li>
-<li>进行referrer验证 （<code>$_SERVER[&#39;HTTP_REFERRER&#39;] 中的 host</code>）</li>
-</ol>
-</li>
-<li><p>对所有用户提交内容进行可靠的输入验证，包括URL、查询关键字、HTTP头、REFER、POST数据等，仅接受指定长度范围内、采用适当格式、采用所预期的字符的内容提交，对其他的一律过滤。尤其对“&lt;”，“&gt;”，“；”，“””等特殊字符做过滤；</p>
+<li><p>对所有用户提交内容进行可靠的输入验证，包括URL、查询关键字、HTTP头、REFER、POST数据等</p>
 </li>
 <li><p>任何内容输出到页面之前都必须加以<code>en-code</code>编码，避免生成意外的html标签；</p>
 </li>
-<li><p>实现Session 标记（session tokens）、CAPTCHA（验证码）系统或者HTTP引用头检查，以防功能被第三方网站所执行，对于用户提交信息的中的img等link，检查是否有重定向回本站、不是真的图片等可疑操作。</p>
-</li>
 <li><p><code>cookie</code> 内不存储敏感信息如账号密码等，并设施<code>http only</code></p>
 </li>
-<li><p>对于远程内容的引用，采用<code>CSP</code>内容安全策略</p>
-</li>
 </ul>
-<h2 id="CSRF跨域请求伪造"><a href="#CSRF跨域请求伪造" class="headerlink" title="CSRF跨域请求伪造"></a>CSRF跨域请求伪造</h2><p><code>Cross-site request forgery</code><br> 利用用户的登陆状态诱导至恶意网站，以合法身份向原先网站发送恶意请求</p>
+<h2 id="CSRF跨域请求伪造"><a href="#CSRF跨域请求伪造" class="headerlink" title="CSRF跨域请求伪造"></a>CSRF跨域请求伪造</h2><p><code>Cross-site request forgery</code></p>
+<blockquote>
+<p>利用用户登录态</p>
+</blockquote>
 <h3 id="防御CSRF"><a href="#防御CSRF" class="headerlink" title="防御CSRF"></a>防御CSRF</h3><ul>
 <li>验证<code>http</code>请求的来源<code>origin</code>和<code>referrer</code></li>
 <li>设置<code>cookie</code>的<code>SameSite</code>属性，使<code>cookie</code>只可被第一方使用</li>
 <li>设置客户端请求携带<code>session token</code>，并在服务器端验证<code>token</code></li>
+<li>验证码 </li>
 </ul>
 <h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><h4 id="SQl注入"><a href="#SQl注入" class="headerlink" title="SQl注入"></a>SQl注入</h4><ol>
 <li><p>黑客提交畸形数据改变语义提交sql查询得到非法数据</p>

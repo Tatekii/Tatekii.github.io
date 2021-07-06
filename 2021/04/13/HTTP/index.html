@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      2.8k 字
+      2.7k 字
     </span>
   
 
@@ -237,7 +237,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年6月16日 下午
+                  本文最后更新于：2021年7月2日 上午
                 
               </p>
             
@@ -310,28 +310,42 @@
 <p><code>4xx 处理发生错误，责任在客户端</code>,</p>
 <p><code>5xx 处理发生错误，责任在服务端</code></p>
 <h4 id="常见-code"><a href="#常见-code" class="headerlink" title="常见 code"></a>常见 code</h4><ul>
-<li>100 继续发送</li>
-<li>101 协议升级</li>
-<li>200 OK</li>
-<li>206 处理了部分请求</li>
-<li></li>
-<li>301 永久性重定向，资源已经分配了新的 URl</li>
-<li>302 临时重定向</li>
-<li>303 表示资源存在着另一个 URL，应使用 GET 方法获取资源<blockquote>
+<li><p>100 继续发送</p>
+</li>
+<li><p>101 协议升级</p>
+</li>
+<li><p>200 OK</p>
+</li>
+<li><p>301 永久性重定向，资源已经分配了新的 URl</p>
+</li>
+<li><p>302 临时重定向</p>
+</li>
+<li><p>303 表示资源存在着另一个 URL，应使用 GET 方法获取资源</p>
+<blockquote>
 <p>对于 301/302/303 响应，几乎所有浏览器都会删除报文主体并自动用 GET 重新请求</p>
 </blockquote>
 </li>
-<li>304 资源未修改</li>
+<li><p>304 资源未修改</p>
+</li>
 <li></li>
-<li>400 Bad Request请求报文语法错误</li>
-<li>401 Unauthorized需要认证</li>
-<li>403 Forbidden禁止访问</li>
-<li>404 Not Found</li>
-<li>405 不允许该请求方法</li>
-<li>408 请求超时</li>
-<li>500 服务器错误</li>
-<li>503 服务器过载</li>
-<li>505 不支持该版本HTTP协议</li>
+<li><p>400 Bad Request请求报文语法错误</p>
+</li>
+<li><p>401 Unauthorized需要认证</p>
+</li>
+<li><p>403 Forbidden禁止访问</p>
+</li>
+<li><p>404 Not Found</p>
+</li>
+<li><p>405 不允许该请求方法</p>
+</li>
+<li><p>408 请求超时</p>
+</li>
+<li><p>500 服务器错误</p>
+</li>
+<li><p>503 服务器过载</p>
+</li>
+<li><p>505 不支持该版本HTTP协议</p>
+</li>
 </ul>
 <h2 id="HTTP-发展"><a href="#HTTP-发展" class="headerlink" title="HTTP 发展"></a>HTTP 发展</h2><h3 id="HTTP-0-9"><a href="#HTTP-0-9" class="headerlink" title="HTTP 0.9"></a>HTTP 0.9</h3><ul>
 <li><p><code>GET</code></p>
@@ -346,7 +360,7 @@
 <li>刷新无副作用</li>
 <li>能保存书签，会被浏览器缓存，加入历史记录</li>
 <li>编码urlencoded</li>
-<li>参数数据类型限制为ASCII字符，浏览器或者服务器会对URL长度做限制</li>
+<li>浏览器或者服务器会对URL长度做限制</li>
 </ol>
 </li>
 <li><p><code>POST</code></p>
@@ -354,7 +368,6 @@
 <li>请求参数放在body中</li>
 <li>刷新提示再次提交？</li>
 <li>不缓存不保存不记录</li>
-<li>编码form-data，</li>
 <li>数据类型无限制</li>
 </ol>
 </li>
@@ -462,7 +475,7 @@
 </ol>
 <h3 id="HTTPS-工作流程"><a href="#HTTPS-工作流程" class="headerlink" title="HTTPS 工作流程"></a>HTTPS 工作流程</h3><ol>
 <li>用户访问:443,发送客户端支持的加密算法列表和随机数<code>Random_C</code></li>
-<li>服务器返回证书和<code>Random_S</code></li>
+<li>服务器根据支持的贾母算法计算并返回证书和随机数<code>Random_S</code></li>
 <li>用户浏览器使用 <em><strong>CA公钥</strong></em> 打开并验证证书的合法性得到证书中的 <em><strong>服务器公钥</strong></em></li>
 <li>用户生成生新的随机数<code>Premaster secret</code>，并使用 <em><strong>服务器公钥</strong></em> 加密发送给服务器</li>
 <li>服务器使用自己的 <em><strong>服务器私钥</strong></em> 解密，得到 <code>Premaster secret</code></li>

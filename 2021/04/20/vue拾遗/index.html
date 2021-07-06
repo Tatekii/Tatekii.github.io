@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      2.1k 字
+      2.2k 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      33
+      34
        分钟
     </span>
   
@@ -237,7 +237,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年6月14日 晚上
+                  本文最后更新于：2021年7月6日 上午
                 
               </p>
             
@@ -342,7 +342,7 @@
     <span class="hljs-number">15.</span> callHook(vm, <span class="hljs-string">&#x27;⭐️beforeDestroy&#x27;</span>);
     <span class="hljs-comment">// 销毁实例，子实例，从父组件children中删除，销毁所有事件和指令</span>
     remove(parent.$children, vm);
-    vm._watcher.teardown();  
+    vm._watcher.teardown();
     vm.__patch__(vm._vnode, <span class="hljs-literal">null</span>);
     <span class="hljs-comment">// fire destroyed hook</span>
     <span class="hljs-number">16.</span> callHook(vm, <span class="hljs-string">&#x27;⭐️destroyed&#x27;</span>);
@@ -354,16 +354,19 @@
 &#125;
 
 <span class="hljs-comment">// keep-alive</span>
-callHook(vm, <span class="hljs-string">&#x27;⭐️activated&#x27;</span>);  
+callHook(vm, <span class="hljs-string">&#x27;⭐️activated&#x27;</span>);
 callHook(vm, <span class="hljs-string">&#x27;⭐️deactivated&#x27;</span>);</code></pre></div>
-<h3 id="beforeCreate之前做了什么"><a href="#beforeCreate之前做了什么" class="headerlink" title="beforeCreate之前做了什么"></a>beforeCreate之前做了什么</h3><ul>
-<li>绑定<code>$root</code></li>
-<li>绑定<code>$parent</code></li>
-<li>将实例push进父组件<code>$children</code></li>
-<li>绑定<code>$attrs</code>和<code>$listener</code><h3 id="created之前做了什么"><a href="#created之前做了什么" class="headerlink" title="created之前做了什么"></a>created之前做了什么</h3></li>
-<li>绑定<code>injections</code></li>
-<li>初始化<code>props,data,methods,watch,computed</code></li>
-<li>绑定<code>provider</code></li>
+
+<h3 id="beforeCreate-之前做了什么"><a href="#beforeCreate-之前做了什么" class="headerlink" title="beforeCreate 之前做了什么"></a>beforeCreate 之前做了什么</h3><ul>
+<li>  绑定<code>$root</code></li>
+<li>  绑定<code>$parent</code></li>
+<li>  将实例 push 进父组件<code>$children</code></li>
+<li>  绑定<code>$attrs</code>和<code>$listener</code></li>
+</ul>
+<h3 id="created-之前做了什么"><a href="#created-之前做了什么" class="headerlink" title="created 之前做了什么"></a>created 之前做了什么</h3><ul>
+<li>  绑定<code>injections</code></li>
+<li>  初始化<code>props,data,methods,watch,computed</code></li>
+<li>  绑定<code>provider</code></li>
 </ul>
 <h1 id="响应式原理"><a href="#响应式原理" class="headerlink" title="响应式原理"></a>响应式原理</h1><h3 id="defineReactive"><a href="#defineReactive" class="headerlink" title="defineReactive"></a><code>defineReactive</code></h3><div class="hljs code-wrapper"><pre><code class="hljs javascript">defineReactive (
   ...
@@ -419,6 +422,7 @@ callHook(vm, <span class="hljs-string">&#x27;⭐️deactivated&#x27;</span>);</c
     callHook(vm, <span class="hljs-string">&#x27;mounted&#x27;</span>)
   &#125;
 &#125;</code></pre></div>
+
 <h3 id="Watcher"><a href="#Watcher" class="headerlink" title="Watcher"></a><code>Watcher</code></h3><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Watcher</span> </span>&#123;
   <span class="hljs-title">constructor</span> (<span class="hljs-params"></span>
 <span class="hljs-params">    vm,</span>
@@ -443,7 +447,7 @@ callHook(vm, <span class="hljs-string">&#x27;⭐️deactivated&#x27;</span>);</c
 
   get () &#123;
 ⭐️  <span class="hljs-comment">//首先触发watcher中的get（）</span>
-    <span class="hljs-comment">// pushTarget方法    </span>
+    <span class="hljs-comment">// pushTarget方法</span>
     pushTarget(<span class="hljs-built_in">this</span>)
     <span class="hljs-keyword">let</span> value
 
@@ -455,7 +459,7 @@ callHook(vm, <span class="hljs-string">&#x27;⭐️deactivated&#x27;</span>);</c
 ⭐️ <span class="hljs-comment">// 当前组件收集完成后清理</span>
     popTarget()
     <span class="hljs-built_in">this</span>.cleanupDeps()
-    
+
     <span class="hljs-keyword">return</span> value
   &#125;
 
@@ -508,7 +512,7 @@ callHook(vm, <span class="hljs-string">&#x27;⭐️deactivated&#x27;</span>);</c
   <span class="hljs-keyword">static</span> target: ?Watcher;
   id: number;
   subs: <span class="hljs-built_in">Array</span>&lt;Watcher&gt;;
-  
+
   <span class="hljs-title">constructor</span> (<span class="hljs-params"></span>) &#123;
     <span class="hljs-built_in">this</span>.id = uid++
     <span class="hljs-built_in">this</span>.subs = []
@@ -550,61 +554,82 @@ Dep.target = <span class="hljs-literal">null</span>
 <span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">popTarget</span> (<span class="hljs-params"></span>) </span>&#123;
   Dep.target = targetStack.pop()
 &#125;</code></pre></div>
-<h2 id="⭐️收集依赖⭐️"><a href="#⭐️收集依赖⭐️" class="headerlink" title="⭐️收集依赖⭐️"></a>⭐️收集依赖⭐️</h2><ol>
-<li>实例initState阶段为data数据添加getter,setter绑定,并为每个数据生成一个<code>Dep</code>实例</li>
-<li>mountComponent执行过程中，组件实例化一个渲染<code>Watcher</code>，并指定为<code>Dep.target</code></li>
-<li><code>render</code>函数执行访问数据触发数据的getter，将当前组件渲染<code>Watcher</code>添加到该数据持有的<code>Dep.subs</code>数组中</li>
+
+<h2 id="⭐️-收集依赖-⭐️"><a href="#⭐️-收集依赖-⭐️" class="headerlink" title="⭐️ 收集依赖 ⭐️"></a>⭐️ 收集依赖 ⭐️</h2><ol>
+<li>实例 initState 阶段为 data 数据添加 getter,setter 绑定,并为每个数据生成一个<code>Dep</code>实例</li>
+<li>mountComponent 执行过程中，组件实例化一个渲染<code>Watcher</code>，并指定为<code>Dep.target</code></li>
+<li><code>render</code>函数执行访问数据触发数据的 getter，将当前组件渲染<code>Watcher</code>添加到该数据持有的<code>Dep.subs</code>数组中</li>
 <li>同时渲染<code>Watcher</code>也有一个<code>deps</code>数组保存自己订阅了谁，这样做的意义是在下次<code>Watcher.update</code>时将不再显示页面上的数据绑定移除(对比新旧<code>deps</code>数组)<blockquote>
-<p>可以理解成data数据的subs数组中每个watcher即代表一个受该数据响应式影响的组件实例</p>
+<p>可以理解成 data 数据的 subs 数组中每个 watcher 即代表一个受该数据响应式影响的组件实例</p>
 </blockquote>
 </li>
 </ol>
-<h2 id="🔥派发更新🔥"><a href="#🔥派发更新🔥" class="headerlink" title="🔥派发更新🔥"></a>🔥派发更新🔥</h2><ol>
-<li>修改数据触发setter，执行该数据持有的<code>Dep.notify</code>方法</li>
+<h2 id="🔥-派发更新-🔥"><a href="#🔥-派发更新-🔥" class="headerlink" title="🔥 派发更新 🔥"></a>🔥 派发更新 🔥</h2><ol>
+<li>修改数据触发 setter，执行该数据持有的<code>Dep.notify</code>方法</li>
 <li>遍历当前数据<code>Dep.subs</code>中的每一个<code>Watcher</code>，执行其<code>Watcher.update()</code></li>
-<li>vue不会每次数据更新就立刻去更新视图，而是用队列管理这些回调任务<code>queueWatcher</code></li>
-<li>队列会判断watcher是否重复，并且进行排序【先父后子】【自定义watcher&gt;渲染watcher】</li>
-<li>在下一个tick执行这个队列的回调<code>updateComponent</code>函数，<code>patch</code>实例</li>
+<li>vue 不会每次数据更新就立刻去更新视图，而是用队列管理这些回调任务<code>queueWatcher</code></li>
+<li>队列会判断 watcher 是否重复，并且进行排序【先父后子】【自定义 watcher&gt;渲染 watcher】</li>
+<li>在下一个 tick 执行这个队列的回调<code>updateComponent</code>函数，<code>patch</code>实例</li>
 </ol>
-<h1 id="nextTick"><a href="#nextTick" class="headerlink" title="nextTick"></a><code>nextTick</code></h1><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">nextTick</span> (<span class="hljs-params">cb, ctx</span>) </span>&#123;
-  <span class="hljs-keyword">var</span> _resolve;
-  callbacks.push(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;
-    <span class="hljs-keyword">if</span> (cb) &#123;
-      <span class="hljs-keyword">try</span> &#123;
-        cb.call(ctx);
-      &#125; <span class="hljs-keyword">catch</span> (e) &#123;
-        handleError(e, ctx, <span class="hljs-string">&#x27;nextTick&#x27;</span>);
-      &#125;
-    &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (_resolve) &#123;
-      _resolve(ctx);
-    &#125;
-  &#125;);
-  <span class="hljs-keyword">if</span> (!pending) &#123;
-    pending = <span class="hljs-literal">true</span>;
-    <span class="hljs-keyword">if</span> (useMacroTask) &#123;
-      macroTimerFunc(); <span class="hljs-comment">// SetImmediate</span>
-    &#125; <span class="hljs-keyword">else</span> &#123;
-      microTimerFunc(); <span class="hljs-comment">// SetTimeout</span>
-    &#125;
-  &#125;
-  <span class="hljs-comment">// $flow-disable-line</span>
-  <span class="hljs-keyword">if</span> (!cb &amp;&amp; <span class="hljs-keyword">typeof</span> <span class="hljs-built_in">Promise</span> !== <span class="hljs-string">&#x27;undefined&#x27;</span>) &#123;
-    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">resolve</span>) </span>&#123;
-      _resolve = resolve;
-    &#125;)
+<h1 id="nextTick"><a href="#nextTick" class="headerlink" title="nextTick"></a><code>nextTick</code></h1><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> callbacks = []
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">flushCallbacks</span> (<span class="hljs-params"></span>) </span>&#123;
+  pending = <span class="hljs-literal">false</span>
+  <span class="hljs-keyword">const</span> copies = callbacks.slice(<span class="hljs-number">0</span>)
+  callbacks.length = <span class="hljs-number">0</span>
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; copies.length; i++) &#123;
+    copies[i]()
   &#125;
 &#125;
-</code></pre></div>
-<ul>
-<li>执行主线程的过程就是一个tick</li>
-<li>执行完当前tick包括所有同步任务，异步任务（宏任务，微任务）</li>
-<li>nextTick就是把回调加入本次tick的尾部执行</li>
-<li>vue根据环境尝试使用<code>Promise``SetImmediate``SetTimeout</code></li>
-</ul>
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">nextTick</span> (<span class="hljs-params">cb?: <span class="hljs-built_in">Function</span>, ctx?: <span class="hljs-built_in">Object</span></span>) </span>&#123;
+  <span class="hljs-keyword">let</span> _resolve
+  callbacks.push(<span class="hljs-function">() =&gt;</span> &#123;
+    <span class="hljs-keyword">if</span> (cb) &#123;
+      <span class="hljs-keyword">try</span> &#123;
+        cb.call(ctx)
+      &#125; <span class="hljs-keyword">catch</span> (e) &#123;
+        handleError(e, ctx, <span class="hljs-string">&#x27;nextTick&#x27;</span>)
+      &#125;
+    &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (_resolve) &#123;
+      _resolve(ctx)
+    &#125;
+  &#125;)
+  <span class="hljs-keyword">if</span> (!pending) &#123;
+    pending = <span class="hljs-literal">true</span>
+⭐️    timerFunc() <span class="hljs-comment">// &lt;---------------</span>
+  &#125;
+&#125;
+
+<span class="hljs-comment">// promise</span>
+timerFunc = <span class="hljs-function">() =&gt;</span> &#123;
+	p.then(flushCallbacks);
+&#125;;
+<span class="hljs-comment">// MutationObserver</span>
+<span class="hljs-keyword">const</span> observer = <span class="hljs-keyword">new</span> MutationObserver(flushCallbacks);
+<span class="hljs-keyword">const</span> textNode = <span class="hljs-built_in">document</span>.createTextNode(<span class="hljs-built_in">String</span>(counter));
+observer.observe(textNode, &#123;
+	characterData: <span class="hljs-literal">true</span>,
+&#125;);
+timerFunc = <span class="hljs-function">() =&gt;</span> &#123;
+	counter = (counter + <span class="hljs-number">1</span>) % <span class="hljs-number">2</span>;
+	textNode.data = <span class="hljs-built_in">String</span>(counter);
+&#125;;
+<span class="hljs-comment">// setImmediate</span>
+timerFunc = <span class="hljs-function">() =&gt;</span> &#123;
+	setImmediate(flushCallbacks);
+&#125;;
+<span class="hljs-comment">// setTimeout</span>
+timerFunc = <span class="hljs-function">() =&gt;</span> &#123;
+	<span class="hljs-built_in">setTimeout</span>(flushCallbacks, <span class="hljs-number">0</span>);
+&#125;;</code></pre></div>
+<p>派发更新时<code>queueWatcher</code>使用<code>nextTick()</code>来执行<code>watcher</code>队列,则手动调用<code>nextTick()</code>也会将自己的cb加入callbacks数组中,<code>timerFunc</code>执行时我们的cb是在所有watcher执行完后执行的,所以拿到了最新的DOM</p>
 <h1 id="组件生命周期关系"><a href="#组件生命周期关系" class="headerlink" title="组件生命周期关系"></a>组件生命周期关系</h1><ul>
-<li>组件的调用顺序都是先父后子,渲染完成的顺序是先子后父。</li>
-<li>组件的销毁操作是先父后子，销毁完成的顺序是先子后父。<h3 id="加载渲染过程"><a href="#加载渲染过程" class="headerlink" title="加载渲染过程"></a>加载渲染过程</h3>父beforeCreate-&gt;父created-&gt;父beforeMount-&gt;子beforeCreate-&gt;子created-&gt;子beforeMount- &gt;子mounted-&gt;父mounted<h3 id="子组件更新过程"><a href="#子组件更新过程" class="headerlink" title="子组件更新过程"></a>子组件更新过程</h3>父beforeUpdate-&gt;子beforeUpdate-&gt;子updated-&gt;父updated<h3 id="销毁过程"><a href="#销毁过程" class="headerlink" title="销毁过程"></a>销毁过程</h3>父beforeDestroy-&gt;子beforeDestroy-&gt;子destroyed-&gt;父destroyed</li>
+<li>  组件的调用顺序都是先父后子,渲染完成的顺序是先子后父。</li>
+<li>  组件的销毁操作是先父后子，销毁完成的顺序是先子后父。</li>
 </ul>
+<h3 id="加载渲染过程"><a href="#加载渲染过程" class="headerlink" title="加载渲染过程"></a>加载渲染过程</h3><p>父 beforeCreate-&gt;父 created-&gt;父 beforeMount-&gt;子 beforeCreate-&gt;子 created-&gt;子 beforeMount- &gt;子 mounted-&gt;父 mounted</p>
+<h3 id="子组件更新过程"><a href="#子组件更新过程" class="headerlink" title="子组件更新过程"></a>子组件更新过程</h3><p>父 beforeUpdate-&gt;子 beforeUpdate-&gt;子 updated-&gt;父 updated</p>
+<h3 id="销毁过程"><a href="#销毁过程" class="headerlink" title="销毁过程"></a>销毁过程</h3><p>父 beforeDestroy-&gt;子 beforeDestroy-&gt;子 destroyed-&gt;父 destroyed</p>
 <h1 id="计算属性和侦听属性"><a href="#计算属性和侦听属性" class="headerlink" title="计算属性和侦听属性"></a>计算属性和侦听属性</h1><h2 id="Computed"><a href="#Computed" class="headerlink" title="Computed"></a><code>Computed</code></h2><div class="hljs code-wrapper"><pre><code class="hljs javascript">initComputed (vm: Component, <span class="hljs-attr">computed</span>: <span class="hljs-built_in">Object</span>) &#123;
 
   <span class="hljs-keyword">const</span> watchers = vm._computedWatchers = <span class="hljs-built_in">Object</span>.create(<span class="hljs-literal">null</span>)
@@ -632,6 +657,7 @@ Dep.target = <span class="hljs-literal">null</span>
     &#125;
   &#125;
 &#125;</code></pre></div>
+
 <div class="hljs code-wrapper"><pre><code class="hljs javascript">createComputedGetter (key) &#123;
   <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">computedGetter</span> (<span class="hljs-params"></span>) </span>&#123;
     <span class="hljs-keyword">const</span> watcher = <span class="hljs-built_in">this</span>._computedWatchers &amp;&amp; <span class="hljs-built_in">this</span>._computedWatchers[key]
@@ -641,17 +667,20 @@ Dep.target = <span class="hljs-literal">null</span>
     &#125;
   &#125;
 &#125;</code></pre></div>
+
 <ol>
-<li>实例initState阶段遍历Computed内的key，为每个key创建computed watcher</li>
+<li>实例 initState 阶段遍历 Computed 内的 key，为每个 key 创建 computed watcher</li>
 <li>利用 Object.defineProperty 给 key 值添加 getter</li>
-<li>渲染函数访问到computed内的属性时候触发getter，生成一个Dep实例，并且此时Dep.target是渲染watcher，渲染watcher就订阅了这个key的变化</li>
-<li>执行这个compute key的计算逻辑，访问依赖的数据会触发其中响应式数据的getter，则computed watcher也就订阅了data的变化，最后也返回计算值并缓存起来</li>
-<li>当依赖的响应式数据变化时，响应的computed watcher会收到通知</li>
-<li>computed watcher会重新求值，比较两次运算结果，结果改变时才会通知渲染watcher更新</li>
+<li>渲染函数访问到 computed 内的属性时候触发 getter，生成一个 Dep 实例，并且此时 Dep.target 是渲染 watcher，渲染 watcher 就订阅了这个 key 的变化</li>
+<li>执行这个 compute key 的计算逻辑，访问依赖的数据会触发其中响应式数据的 getter，则 computed watcher 也就订阅了 data 的变化，最后也返回计算值并缓存起来</li>
+<li>当依赖的响应式数据变化时，响应的 computed watcher 会收到通知</li>
+<li>computed watcher 会重新求值，比较两次运算结果，结果改变时才会通知渲染 watcher 更新</li>
 </ol>
 <h2 id="Watch"><a href="#Watch" class="headerlink" title="Watch"></a><code>Watch</code></h2><ul>
-<li>deep</li>
-<li>immediate<div class="hljs code-wrapper"><pre><code class="hljs javascript">initWatch (vm: Component, <span class="hljs-attr">watch</span>: <span class="hljs-built_in">Object</span>) &#123;
+<li>  deep</li>
+<li>  immediate</li>
+</ul>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript">initWatch (vm: Component, <span class="hljs-attr">watch</span>: <span class="hljs-built_in">Object</span>) &#123;
   <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> key <span class="hljs-keyword">in</span> watch) &#123;
     <span class="hljs-keyword">const</span> handler = watch[key]
     <span class="hljs-keyword">if</span> (<span class="hljs-built_in">Array</span>.isArray(handler)) &#123;
@@ -663,14 +692,14 @@ Dep.target = <span class="hljs-literal">null</span>
       createWatcher(vm, key, handler)
     &#125;
   &#125;
-&#125;</code></pre></div></li>
-</ul>
+&#125;</code></pre></div>
+
 <ol>
-<li>遍历Watch内的key</li>
-<li>遍历每一个handler，为每一个handler创建user watcher</li>
-<li>user watcher会被添加进订阅响应数据的subs数组完成订阅</li>
-<li>响应式数据的变化会通知到user watcher</li>
-<li>渲染函数如果访问这个watch属性，也同理会被推入该watch属性的subs数组,订阅其变化</li>
+<li>遍历 Watch 内的 key</li>
+<li>遍历每一个 handler，为每一个 handler 创建 user watcher</li>
+<li>user watcher 会被添加进订阅响应数据的 subs 数组完成订阅</li>
+<li>响应式数据的变化会通知到 user watcher</li>
+<li>渲染函数如果访问这个 watch 属性，也同理会被推入该 watch 属性的 subs 数组,订阅其变化</li>
 </ol>
 
             </div>

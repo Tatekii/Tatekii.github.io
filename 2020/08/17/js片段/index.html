@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      782 字
+      719 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      13
+      12
        分钟
     </span>
   
@@ -237,7 +237,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年6月1日 晚上
+                  本文最后更新于：2021年7月6日 上午
                 
               </p>
             
@@ -286,22 +286,6 @@ anagrams(<span class="hljs-string">&#x27;abcd&#x27;</span>) =&gt; [
   <span class="hljs-comment">// 即匹配到了每一个单词的首字母</span>
 &#125;;</code></pre></div>
 
-<ul>
-<li>格式化只有首字母大写</li>
-</ul>
-<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> capitalize = <span class="hljs-function">(<span class="hljs-params">str, lowerRest = <span class="hljs-literal">false</span></span>) =&gt;</span> &#123;
-  <span class="hljs-keyword">return</span> (
-    str.slice(<span class="hljs-number">0</span>, <span class="hljs-number">1</span>).toUpperCase() +
-    (lowerRest ? str.slice(<span class="hljs-number">1</span>).toLowerCase() : str.slice(<span class="hljs-number">1</span>))
-  );
-&#125;;</code></pre></div>
-
-<ul>
-<li>出现次数</li>
-</ul>
-<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> countOccurrences = <span class="hljs-function">(<span class="hljs-params">arr, value</span>) =&gt;</span>
-  arr.reduce(<span class="hljs-function">(<span class="hljs-params">a, v</span>) =&gt;</span> (v === value ? a + <span class="hljs-number">1</span> : a + <span class="hljs-number">0</span>), <span class="hljs-number">0</span>);
-<span class="hljs-comment">// countOccurrences([1,1,2,1,2,3], 1) -&gt; 3</span></code></pre></div>
 
 <ul>
 <li>Deep flatten array</li>

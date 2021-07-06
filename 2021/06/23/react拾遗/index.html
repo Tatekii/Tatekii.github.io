@@ -18,7 +18,7 @@
   <meta name="author" content="tatekii">
   <meta name="keywords" content="">
   
-  <title>axios - 不知名的笔记本</title>
+  <title>react拾遗 - 不知名的笔记本</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
@@ -163,7 +163,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="axios">
+            <span class="h2" id="subtitle" title="react拾遗">
               
             </span>
 
@@ -173,8 +173,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-01-27 09:45" pubdate>
-        2021年1月27日 上午
+      <time datetime="2021-06-23 13:27" pubdate>
+        2021年6月23日 下午
       </time>
     </span>
   
@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      226 字
+      559 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      3
+      8
        分钟
     </span>
   
@@ -233,77 +233,156 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">axios</h1>
+            <h1 style="display: none">react拾遗</h1>
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年6月23日 下午
+                  本文最后更新于：2021年6月24日 中午
                 
               </p>
             
             <div class="markdown-body">
-              <h2 id="拦截器"><a href="#拦截器" class="headerlink" title="拦截器"></a>拦截器</h2><ul>
-<li><p>添加拦截器</p>
-<div class="hljs code-wrapper"><pre><code class="hljs javascript">axios.interceptors.request.use(
-  (config) =&gt; &#123;
-    &lt;!-- 加入参数 --&gt;
-    config.params = &#123;<span class="hljs-attr">a</span>:<span class="hljs-number">666</span>&#125;
-    <span class="hljs-keyword">return</span> config
-  &#125;,
-  (err) =&gt; &#123;
-    <span class="hljs-keyword">return</span> <span class="hljs-built_in">Promise</span>.reject(err)
+              <h1 id="⭐️-生命周期"><a href="#⭐️-生命周期" class="headerlink" title="⭐️ 生命周期"></a>⭐️ 生命周期</h1><h2 id="Commit"><a href="#Commit" class="headerlink" title="Commit"></a>Commit</h2><blockquote>
+<p>将状态变化渲染到视图中</p>
+</blockquote>
+<ol>
+<li>beforeMutation</li>
+<li>mutation</li>
+<li>layout</li>
+</ol>
+<h1 id="⭐️Hooks"><a href="#⭐️Hooks" class="headerlink" title="⭐️Hooks"></a>⭐️Hooks</h1><h1 id="⭐️Redux"><a href="#⭐️Redux" class="headerlink" title="⭐️Redux"></a>⭐️Redux</h1><h2 id="createStore"><a href="#createStore" class="headerlink" title="createStore"></a><code>createStore</code></h2><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">/*</span>
+<span class="hljs-comment">* @param &#123;Function&#125; reducer</span>
+<span class="hljs-comment">* @param &#123;any&#125; preloadedState 初始化的state</span>
+<span class="hljs-comment">* @param &#123;Function&#125; enhancer 中间件</span>
+<span class="hljs-comment">*/</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createStore</span>(<span class="hljs-params">reducer,preloadedState,enhancer</span>)</span>&#123;
+  <span class="hljs-keyword">if</span>(<span class="hljs-keyword">typeof</span> preloadedState === <span class="hljs-string">&#x27;function&#x27;</span> &amp;&amp; <span class="hljs-keyword">typeof</span> enhancer === <span class="hljs-string">&#x27;undefined&#x27;</span>)&#123;
+    <span class="hljs-comment">// 如果preloadedState是个中间件</span>
+    enhancer = preloadedState
+    preloadedState = <span class="hljs-literal">undefined</span>
   &#125;
-);</code></pre></div></li>
-<li><p>执行顺序</p>
-<ul>
-<li>请求拦截器 后面的拦截器先执行</li>
-<li>响应拦截器 前面的拦截器先执行</li>
-</ul>
-<div class="hljs code-wrapper"><pre><code class="hljs javascript">axios.interceptors.request.use(<span class="hljs-function"><span class="hljs-params">config</span>=&gt;</span>&#123;
-  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;request1&#x27;</span>)
-&#125;,<span class="hljs-function"><span class="hljs-params">err</span>=&gt;</span>&#123;
-  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;err1&#x27;</span>)
-&#125;)
-axios.interceptors.request.use(<span class="hljs-function"><span class="hljs-params">config</span>=&gt;</span>&#123;
-  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;request2&#x27;</span>)
-&#125;,<span class="hljs-function"><span class="hljs-params">err</span>=&gt;</span>&#123;
-  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;err2&#x27;</span>)
-&#125;)
+  <span class="hljs-keyword">let</span> currentReducer = reducer
+  <span class="hljs-keyword">let</span> currentState = preloadedState <span class="hljs-comment">// 保存state</span>
+  <span class="hljs-keyword">let</span> currentListeners = [] <span class="hljs-comment">// 监听者数组</span>
 
-axios.interceptors.response.use(<span class="hljs-function"><span class="hljs-params">res</span>=&gt;</span>&#123;
-  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;response1&#x27;</span>)
-&#125;，err=&gt;&#123;
-  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;resErr1&#x27;</span>)
-&#125;)
-axios.interceptors.response.use(<span class="hljs-function"><span class="hljs-params">res</span>=&gt;</span>&#123;
-  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;response2&#x27;</span>)
-&#125;，err=&gt;&#123;
-  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;resErr2&#x27;</span>)
-&#125;)
+  <span class="hljs-keyword">let</span> nextListeners = currentListeners
 
-&lt;!-- <span class="hljs-built_in">console</span> --&gt;
-request2
-request1
-response1
-response2</code></pre></div></li>
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getState</span>(<span class="hljs-params"></span>)</span>&#123;
+    <span class="hljs-keyword">return</span> currentState
+  &#125;
+
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">subscribe</span>(<span class="hljs-params">listener</span>)</span>&#123;
+    <span class="hljs-keyword">if</span>(nextListeners === currentListeners)&#123;
+      nextListeners = [...currentListeners]
+      <span class="hljs-comment">// 浅拷贝一次,避免影响别的地方修改currentListeners</span>
+    &#125;
+    nextListeners.push(listener)
+    <span class="hljs-comment">// 添加监听</span>
+
+    <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">unsubscribe</span>(<span class="hljs-params"></span>)</span>&#123;
+      <span class="hljs-keyword">if</span>(nextListeners === currentListeners)&#123;
+        nextListeners = [...currentListeners]
+      &#125;
+
+      <span class="hljs-keyword">const</span> index = nextListeners.indexOf(listener)
+      nextListeners.splice(index,<span class="hljs-number">1</span>)
+      <span class="hljs-comment">// 移除监听</span>
+    &#125;
+  &#125;
+
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">dispatch</span>(<span class="hljs-params">action</span>) </span>&#123;
+    currentState = currentReducer(currentState,action) <span class="hljs-comment">// 计算新state</span>
+
+    <span class="hljs-keyword">const</span> listeners = (currentListeners = nextListeners) <span class="hljs-comment">// 更新currentListeners数组</span>
+
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span> ;i&lt;listener.length;i++&gt;)&#123;
+      listeners[i]()
+    &#125;
+
+    <span class="hljs-keyword">return</span> action
+  &#125;
+
+  dispatch(&#123;<span class="hljs-attr">type</span>:<span class="hljs-string">&#x27;INIT&#x27;</span>&#125;)
+  <span class="hljs-comment">// 手动触发一次dispatch,初始化state</span>
+
+  <span class="hljs-keyword">return</span>&#123;
+    getState,
+    subscribe,
+    dispatch
+  &#125;
+&#125;
+</code></pre></div>
+
+<h1 id="⭐️React-redux"><a href="#⭐️React-redux" class="headerlink" title="⭐️React-redux"></a>⭐️React-redux</h1><h2 id="connect"><a href="#connect" class="headerlink" title="connect"></a><code>connect</code></h2><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// connect(...)(UI组件)</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">connect</span>(<span class="hljs-params">mapStateToProps = state =&gt; state,mapDispatchToToProps = ()=&gt;&#123;&#125;</span>) =&gt; (<span class="hljs-params">WrapComponent</span>) =&gt; </span>&#123;
+  <span class="hljs-keyword">return</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ConnectComponent</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span></span>&#123;
+    <span class="hljs-keyword">static</span> contextTypes = &#123;
+      store:PropTypes.object
+    &#125;
+
+    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">props,context</span>)</span>&#123;
+      <span class="hljs-comment">// context由上层Provider传下</span>
+      <span class="hljs-built_in">super</span>(props,context)
+      <span class="hljs-built_in">this</span>.state = &#123;
+        props:&#123;&#125;
+      &#125;
+    &#125;
+
+    <span class="hljs-function"><span class="hljs-title">componentDidMount</span>(<span class="hljs-params"></span>)</span>&#123;
+      <span class="hljs-keyword">const</span> &#123; store &#125; = <span class="hljs-built_in">this</span>.context
+      store.subscribe(<span class="hljs-function">()=&gt;</span><span class="hljs-built_in">this</span>.update()) <span class="hljs-comment">// store添加加update这个回调</span>
+      <span class="hljs-comment">// store中state改变时触发这个update方法</span>
+      <span class="hljs-built_in">this</span>.update()
+    &#125;
+
+    <span class="hljs-function"><span class="hljs-title">update</span>(<span class="hljs-params"></span>)</span>&#123;
+      <span class="hljs-comment">// update方法将最新的store属性收集并传给ui组件</span>
+      <span class="hljs-keyword">const</span> &#123; store &#125; = <span class="hljs-built_in">this</span>.context
+      <span class="hljs-keyword">const</span> stateProps = mapStateToProps(store.getState())
+      <span class="hljs-keyword">const</span> dispatchProps = mapDispatchToToProps(store.dispatch)
+      <span class="hljs-comment">// 取得store中的state和dispatch</span>
+
+      <span class="hljs-built_in">this</span>.setState(&#123;
+        props:&#123;
+          ...this.state.props,
+          ...stateProps,
+          ...dispatchProps
+        &#125;
+      &#125;)
+      <span class="hljs-comment">// setState导致render(),更新子组件props</span>
+    &#125;
+
+    <span class="hljs-function"><span class="hljs-title">render</span>(<span class="hljs-params"></span>)</span>&#123;
+      <span class="hljs-keyword">return</span> (
+        <span class="hljs-comment">// 作为正常props一股脑丢给UI组件</span>
+        &lt;WrapComponent &#123;...this.state.props&#125; /&gt;
+      )
+    &#125;
+  &#125;
+&#125;</code></pre></div>
+
+<h1 id="⭐️-面试题"><a href="#⭐️-面试题" class="headerlink" title="⭐️ 面试题"></a>⭐️ 面试题</h1><ul>
+<li><p><code>useEffec</code>(fn,[])和 componentDidMount 的区别</p>
+<ol>
+<li><code>useEffec</code>(fn,[])在<code>commit</code>执行完之后异步执行 fn 回调</li>
+<li><code>componentDidMount</code>在<code>commit中的mutation</code>执行完时候和<code>layout</code>同步执行</li>
+<li><code>useLayoutEffec</code>能实现和<code>👆</code>一样的效果</li>
+</ol>
+</li>
+<li><p><code>react-redux</code>如何将 store 的 state 注入组件</p>
+<p>  通过<code>connect</code>函数在 ui 组件上套壳,将来自 provider 的 context 中取出 store 并将其属性作为 props 传给 ui 组件,同时订阅 store 的更新保证 props 数据也是最新的</p>
+</li>
+<li><p><code>redux-thunk</code>中间件</p>
+  <div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">import</span> &#123; createStore, applyMiddleware &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;redux&quot;</span>;
+
+<span class="hljs-keyword">import</span> thunk <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;redux-thunk&quot;</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> createStore(xxxreducer, applyMiddleware(thunk));</code></pre></div>
+
+<p>  后就可以使用 function 作为 action</p>
+</li>
 </ul>
-<h2 id="取消请求"><a href="#取消请求" class="headerlink" title="取消请求"></a>取消请求</h2>  <div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> CancelToken = axios.CancelToken;
-<span class="hljs-keyword">let</span> cancel = <span class="hljs-literal">null</span>
-btn.onclick = <span class="hljs-function">() =&gt;</span> &#123;
-  <span class="hljs-keyword">if</span>(cancel !== <span class="hljs-literal">null</span>) cancel()
-  &lt;!-- 执行取消函数 --&gt;
-  axios(&#123;
-    method:<span class="hljs-string">&#x27;GET&#x27;</span>,
-    url:<span class="hljs-string">&#x27;http://xxxxxxx&#x27;</span>,
-    &lt;!--  --&gt;
-    cancelToken : <span class="hljs-keyword">new</span> CancelToken(<span class="hljs-function"><span class="hljs-params">c</span>=&gt;</span>&#123;
-      cancel = c
-      &lt;!-- cancelToken --&gt;
-    &#125;)
-  &#125;)
-&#125;.then(<span class="hljs-function"><span class="hljs-params">res</span>=&gt;</span>&#123;
-  cancel = <span class="hljs-literal">null</span>
-&#125;)</code></pre></div>
+
             </div>
             <hr>
             <div>
@@ -315,7 +394,7 @@ btn.onclick = <span class="hljs-function">() =&gt;</span> &#123;
                     
                       <a class="hover-with-bg" href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
                     
-                      <a class="hover-with-bg" href="/tags/javascript/">javascript</a>
+                      <a class="hover-with-bg" href="/tags/react/">react</a>
                     
                   </div>
                 
@@ -332,18 +411,12 @@ btn.onclick = <span class="hljs-function">() =&gt;</span> &#123;
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/04/04/div%E9%AB%98%E5%BA%A6%E4%B8%BA%E9%AB%98%E5%BA%A6%E4%B8%80%E5%8D%8A/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">div高度为高度一半</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2020/11/25/vue_diff%E7%AE%97%E6%B3%95/">
-                        <span class="hidden-mobile">vue的diff算法</span>
+                      <a href="/2021/06/17/react_diff%E7%AE%97%E6%B3%95/">
+                        <span class="hidden-mobile">react-diff</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

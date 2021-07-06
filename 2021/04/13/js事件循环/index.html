@@ -237,19 +237,19 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年6月1日 晚上
+                  本文最后更新于：2021年7月1日 晚上
                 
               </p>
             
             <div class="markdown-body">
               <p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/10714ad38f9a">ref:javascript 运行机制 EventLoop</a></p>
-<h2 id="JS的单线程"><a href="#JS的单线程" class="headerlink" title="JS的单线程"></a>JS的单线程</h2><p>JavaScript的单线程，与它的用途有关。作为浏览器脚本语言，JavaScript的主要用途是与用户互动，以及操作DOM。这决定了它只能是单线程,保证执行任务的有序并复杂的同步问题。</p>
+<h2 id="JS-的单线程"><a href="#JS-的单线程" class="headerlink" title="JS 的单线程"></a>JS 的单线程</h2><p>JavaScript 的单线程，与它的用途有关。作为浏览器脚本语言，JavaScript 的主要用途是与用户互动，以及操作 DOM。这决定了它只能是单线程,保证执行任务的有序并复杂的同步问题。</p>
 <h2 id="EventLoop"><a href="#EventLoop" class="headerlink" title="EventLoop"></a>EventLoop</h2><p>主线程不断从任务队列读取任务进入执行栈执行的循环过程</p>
 <p>因为 js 是单线程运行的，在代码执行的时候，通过将不同函数的执行上下文压入执行栈中来保证代码的有序执行。如果遇到了异步任务，js 引擎并不会一直等待其返回结果，而是会将这个事件挂起，继续执行执行栈中的其他任务。当异步事件执行完毕后，再将异步事件对应的回调加入到与当前执行栈中不同的另一个任务队列中等待执行。</p>
 <ul>
 <li><p>事件循环</p>
 <ol>
-<li>循环开始，整体函数script推入执行栈</li>
+<li>循环开始，整体函数 script 推入执行栈</li>
 <li>执行执行栈中同步函数</li>
 <li>遇到异步函数将其回调分别加入<em>宏任务队列</em>和<em>微任务队列</em></li>
 <li>执行栈为空后（同步函数执行完），查看任务队列里微任务推入执行栈执行</li>
@@ -258,338 +258,349 @@
 </ol>
 </li>
 </ul>
-<h2 id="微任务-宏任务"><a href="#微任务-宏任务" class="headerlink" title="微任务/宏任务"></a>微任务/宏任务</h2><p>不同的异步任务被分为两类：微任务（<code>micro task</code>）和宏任务（<code>macro task</code>）</p>
+<h2 id="微任务-宏任务"><a href="#微任务-宏任务" class="headerlink" title="微任务/宏任务"></a>微任务/宏任务</h2><p>任务队列被分为两类：微任务（<code>micro task</code>）队列和宏任务（<code>macro task</code>）队列</p>
 <ul>
-<li><p>JS的事件循环中每个宏任务称为一个<code>Tick</code>(标记)，在每个标记的末尾会追加一个微任务队列，一个宏任务执行完后会执行所有的微任务，直到队列清空。</p>
+<li><p>  JS 的事件循环中每个宏任务的末尾会追加一个微任务队列，宏任务执行完后会执行所有的微任务</p>
 </li>
 <li><p>微任务包括 <code>process.nextTick</code> ，<code>promise.then</code> ，<code>catch</code>,<code>finally</code> ，<code>MutationObserver</code></p>
 <ul>
-<li>！遇到<code>nextTick</code>会提到微任务的栈顶</li>
+<li>  ！遇到<code>nextTick</code>会提到微任务的栈顶</li>
+<li>  遇到 <code>await</code>时,对<code>await</code>右侧进行计算,接着先去去执行<code>async</code>外部的同步函数,后再回到<code>async</code>函数中</li>
 </ul>
 </li>
-<li><p>宏任务包括 <code>setTimeout</code> ，<code>setInterval</code> ，<code>setImmediate</code> ，<code>I/O</code>操作 ，<code>UI</code>渲染</p>
+<li><p>  宏任务包括 <code>setTimeout</code> ，<code>setInterval</code> ，<code>setImmediate</code> ，<code>I/O</code>操作 ，<code>UI</code>渲染</p>
 </li>
 </ul>
-<h2 id="面试题"><a href="#面试题" class="headerlink" title="面试题"></a>面试题</h2><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// js执行顺序</span>
+<h2 id="面试题"><a href="#面试题" class="headerlink" title="面试题"></a>面试题</h2><ol>
+<li><p>```javascript<br> // 1<br> console.log(“script start”); // 1</p>
+<p> setTimeout(function () {</p>
+<div class="hljs code-wrapper"><pre><code> console.log(&quot;setTimeout&quot;); // 4
+</code></pre></div>
+<p> }, 0);</p>
+<p> Promise.resolve()</p>
+<div class="hljs code-wrapper"><pre><code> .then(function () &#123;
+     console.log(&quot;promise1&quot;); //2
+ &#125;)
+ .then(function () &#123;
+     console.log(&quot;promise2&quot;); //3
+ &#125;);
+</code></pre></div>
+ <div class="hljs code-wrapper"><pre><code class="hljs coffeescript">
+<span class="hljs-number">1.</span>  ```<span class="javascript">javascript</span>
+<span class="javascript">    <span class="hljs-comment">// 2</span></span>
+<span class="javascript">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;1&quot;</span>); <span class="hljs-comment">//1</span></span>
 
-<span class="hljs-comment">// 1</span>
-<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;script start&quot;</span>);  <span class="hljs-comment">// 1</span>
+<span class="javascript">    <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span>
+<span class="javascript">    	<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;2&quot;</span>); <span class="hljs-comment">// 5</span></span>
+<span class="javascript">    	process.nextTick(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span>
+<span class="javascript">    		<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;3&quot;</span>); <span class="hljs-comment">//7</span></span>
+<span class="javascript">    	&#125;);</span>
+<span class="javascript">    	<span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">resolve</span>) </span>&#123;</span>
+<span class="javascript">    		<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;4&quot;</span>); <span class="hljs-comment">//6</span></span>
+<span class="javascript">    		resolve();</span>
+<span class="javascript">    	&#125;).then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span>
+<span class="javascript">    		<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;5&quot;</span>); <span class="hljs-comment">//8</span></span>
+<span class="javascript">    	&#125;);</span>
+<span class="javascript">    &#125;);</span>
+<span class="javascript">    process.nextTick(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span>
+<span class="javascript">    	<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;6&quot;</span>); <span class="hljs-comment">//3</span></span>
+<span class="javascript">    &#125;);</span>
+<span class="javascript">    <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">resolve</span>) </span>&#123;</span>
+<span class="javascript">    	<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;7&quot;</span>); <span class="hljs-comment">//2</span></span>
+<span class="javascript">    	resolve();</span>
+<span class="javascript">    &#125;).then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span>
+<span class="javascript">    	<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;8&quot;</span>); <span class="hljs-comment">//4</span></span>
+<span class="javascript">    &#125;);</span>
 
-<span class="hljs-built_in">setTimeout</span>(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;
-  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;setTimeout&quot;</span>);<span class="hljs-comment">// 4</span>
-&#125;, <span class="hljs-number">0</span>);
+<span class="javascript">    <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span>
+<span class="javascript">    	<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;9&quot;</span>); <span class="hljs-comment">//9</span></span>
+<span class="javascript">    	process.nextTick(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span>
+<span class="javascript">    		<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;10&quot;</span>); <span class="hljs-comment">//11</span></span>
+<span class="javascript">    	&#125;);</span>
+<span class="javascript">    	<span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">resolve</span>) </span>&#123;</span>
+<span class="javascript">    		<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;11&quot;</span>); <span class="hljs-comment">//10</span></span>
+<span class="javascript">    		resolve();</span>
+<span class="javascript">    	&#125;).then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span>
+<span class="javascript">    		<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;12&quot;</span>);</span>
+<span class="javascript">    	&#125;); <span class="hljs-comment">//12</span></span>
+<span class="javascript">    &#125;);</span></code></pre></div></li>
+<li><p>```javascript<br> // 3<br> async function async1() {</p>
+<div class="hljs code-wrapper"><pre><code> console.log(1); //1
+ new Promise(() =&gt; &#123;
+     console.log(2); //2
+ &#125;);
+ Promise.resolve().then(() =&gt; &#123;
+     console.log(&quot;异步3&quot;); //6
+ &#125;);
+ console.log(&quot;同步3&quot;); //3
+</code></pre></div>
+<p> }</p>
+<p> Promise.resolve().then(() =&gt; {</p>
+<div class="hljs code-wrapper"><pre><code> console.log(4); //5
+</code></pre></div>
+<p> });</p>
+<p> setTimeout(() =&gt; {</p>
+<div class="hljs code-wrapper"><pre><code> console.log(5); //7
+</code></pre></div>
+<p> });</p>
+<p> async1();</p>
+<p> console.log(6); //4</p>
+ <div class="hljs code-wrapper"><pre><code class="hljs coffeescript">
+<span class="hljs-number">1.</span>  ```<span class="javascript">javascript</span>
+<span class="javascript">    <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span>
+<span class="javascript">    	<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;定时器开始啦&quot;</span>);</span>
+<span class="javascript">    &#125;);</span>
 
-<span class="hljs-built_in">Promise</span>.resolve()
-  .then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;promise1&quot;</span>);<span class="hljs-comment">//2</span>
-  &#125;)
-  .then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;promise2&quot;</span>);<span class="hljs-comment">//3</span>
-  &#125;);
+<span class="javascript">    <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">resolve</span>) </span>&#123;</span>
+<span class="javascript">    	<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;马上执行for循环啦&quot;</span>);</span>
+<span class="javascript">    	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10000</span>; i++) &#123;</span>
+<span class="javascript">    		i == <span class="hljs-number">99</span> &amp;&amp; resolve();</span>
+<span class="javascript">    	&#125;</span>
+<span class="javascript">    &#125;).then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span>
+<span class="javascript">    	<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;执行then函数啦&quot;</span>);</span>
+<span class="javascript">    &#125;);</span>
 
+<span class="javascript">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;代码执行结束&quot;</span>);</span>
 
+<span class="javascript">    <span class="hljs-comment">// 马上执行for循环啦</span></span>
+<span class="javascript">    <span class="hljs-comment">// 代码执行结束</span></span>
+<span class="javascript">    <span class="hljs-comment">// 执行then函数啦</span></span>
+<span class="javascript">    <span class="hljs-comment">// 定时器开始啦</span></span></code></pre></div></li>
+<li><p>```javascript<br> setTimeout(function () {</p>
+<div class="hljs code-wrapper"><pre><code> console.log(&quot;setTimeout&quot;);
+</code></pre></div>
+<p> });</p>
+<p> new Promise(function (resolve) {</p>
+<div class="hljs code-wrapper"><pre><code> console.log(&quot;promise&quot;);
+ resolve();
+</code></pre></div>
+<p> }).then(function () {</p>
+<div class="hljs code-wrapper"><pre><code> console.log(&quot;then&quot;);
+</code></pre></div>
+<p> });</p>
+<p> console.log(“console”);</p>
+<p> // promise<br> // console<br> // then<br> // setTimeout</p>
+ <div class="hljs code-wrapper"><pre><code class="hljs coffeescript">
+<span class="hljs-number">1.</span>  ```<span class="javascript">javascript</span>
+<span class="javascript">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;1&quot;</span>);</span>
 
-<span class="hljs-comment">// 2</span>
-<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;1&quot;</span>); <span class="hljs-comment">//1</span>
+<span class="javascript">    <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span>
+<span class="javascript">    	<span class="hljs-comment">// console.log(&#x27;2&#x27;);</span></span>
+<span class="javascript">    	process.nextTick(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span>
+<span class="javascript">    		<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;3&quot;</span>);</span>
+<span class="javascript">    	&#125;);</span>
+<span class="javascript">    	<span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">resolve</span>) </span>&#123;</span>
+<span class="javascript">    		<span class="hljs-comment">// console.log(&#x27;4&#x27;);</span></span>
+<span class="javascript">    		resolve();</span>
+<span class="javascript">    	&#125;).then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span>
+<span class="javascript">    		<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;5&quot;</span>);</span>
+<span class="javascript">    	&#125;);</span>
+<span class="javascript">    &#125;);</span>
 
-<span class="hljs-built_in">setTimeout</span>(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;
-  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;2&quot;</span>);<span class="hljs-comment">// 5</span>
-  process.nextTick(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;3&quot;</span>);<span class="hljs-comment">//7</span>
-  &#125;);
-  <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">resolve</span>) </span>&#123;
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;4&quot;</span>);<span class="hljs-comment">//6</span>
-    resolve();
-  &#125;).then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;5&quot;</span>);<span class="hljs-comment">//8</span>
-  &#125;);
-&#125;);
-process.nextTick(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;
-  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;6&quot;</span>); <span class="hljs-comment">//3</span>
-&#125;);
-<span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">resolve</span>) </span>&#123;
-  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;7&quot;</span>); <span class="hljs-comment">//2</span>
-  resolve();
-&#125;).then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;
-  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;8&quot;</span>); <span class="hljs-comment">//4</span>
-&#125;);
+<span class="javascript">    process.nextTick(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span>
+<span class="javascript">    	<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;6&quot;</span>);</span>
+<span class="javascript">    &#125;);</span>
 
-<span class="hljs-built_in">setTimeout</span>(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;
-  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;9&quot;</span>); <span class="hljs-comment">//9</span>
-  process.nextTick(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;10&quot;</span>); <span class="hljs-comment">//11</span>
-  &#125;);
-  <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">resolve</span>) </span>&#123;
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;11&quot;</span>); <span class="hljs-comment">//10</span>
-    resolve();
-  &#125;).then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;12&quot;</span>);
-  &#125;);<span class="hljs-comment">//12</span>
-&#125;);
+<span class="javascript">    <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">resolve</span>) </span>&#123;</span>
+<span class="javascript">    	<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;7&quot;</span>);</span>
+<span class="javascript">    	resolve();</span>
+<span class="javascript">    &#125;).then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span>
+<span class="javascript">    	<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;8&quot;</span>);</span>
+<span class="javascript">    &#125;);</span>
 
+<span class="javascript">    <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span>
+<span class="javascript">    	process.nextTick(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span>
+<span class="javascript">    		<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;10&quot;</span>);</span>
+<span class="javascript">    	&#125;);</span>
+<span class="javascript">    	<span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">resolve</span>) </span>&#123;</span>
+<span class="javascript">    		resolve();</span>
+<span class="javascript">    	&#125;).then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span>
+<span class="javascript">    		<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;12&quot;</span>);</span>
+<span class="javascript">    	&#125;);</span>
+<span class="javascript">    &#125;);</span></code></pre></div></li>
+<li><p>```javascript<br> setTimeout(() =&gt; {</p>
+<div class="hljs code-wrapper"><pre><code> console.log(1);
+</code></pre></div>
+<p> }, 0);<br> Promise.resolve().then(() =&gt; {</p>
+<div class="hljs code-wrapper"><pre><code> console.log(2);
+</code></pre></div>
+<p> });<br> console.log(3);</p>
+<p> // 3 2<br> // 1</p>
+ <div class="hljs code-wrapper"><pre><code class="hljs coffeescript">
+<span class="hljs-number">1.</span>  ```<span class="javascript">javascript</span>
+<span class="javascript">    <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> &#123;</span>
+<span class="javascript">    	<span class="hljs-built_in">console</span>.log(<span class="hljs-number">1</span>);</span>
+<span class="javascript">    &#125;, <span class="hljs-number">0</span>);</span>
+<span class="javascript">    <span class="hljs-keyword">let</span> a = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve</span>) =&gt;</span> &#123;</span>
+<span class="javascript">    	<span class="hljs-built_in">console</span>.log(<span class="hljs-number">2</span>);</span>
+<span class="javascript">    	resolve();</span>
+<span class="javascript">    &#125;)</span>
+<span class="javascript">    	.then(<span class="hljs-function">() =&gt;</span> &#123;</span>
+<span class="javascript">    		<span class="hljs-built_in">console</span>.log(<span class="hljs-number">3</span>);</span>
+<span class="javascript">    	&#125;)</span>
+<span class="javascript">    	.then(<span class="hljs-function">() =&gt;</span> &#123;</span>
+<span class="javascript">    		<span class="hljs-built_in">console</span>.log(<span class="hljs-number">4</span>);</span>
+<span class="javascript">    	&#125;);</span>
+<span class="javascript">    <span class="hljs-built_in">console</span>.log(<span class="hljs-number">5</span>);</span>
 
-<span class="hljs-comment">// 3</span>
-<span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">async1</span>(<span class="hljs-params"></span>)</span>&#123;
-  <span class="hljs-built_in">console</span>.log(<span class="hljs-number">1</span>) <span class="hljs-comment">//1</span>
-  <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">()=&gt;</span>&#123;
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-number">2</span>)<span class="hljs-comment">//2</span>
-  &#125;)
-  <span class="hljs-built_in">Promise</span>.resolve().then(<span class="hljs-function">()=&gt;</span>&#123;
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;异步3&#x27;</span>)<span class="hljs-comment">//6</span>
-  &#125;)
-  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;同步3&#x27;</span>)<span class="hljs-comment">//3</span>
-&#125;
+<span class="javascript">    <span class="hljs-comment">// 2 5 3 4</span></span>
+<span class="javascript">    <span class="hljs-comment">// 1</span></span></code></pre></div></li>
+<li><p>```javascript<br> let a = new Promise((resolve) =&gt; {</p>
+<div class="hljs code-wrapper"><pre><code> console.log(2);
+ resolve();
+</code></pre></div>
+<p> }).then(() =&gt; {</p>
+<div class="hljs code-wrapper"><pre><code> console.log(5);
+</code></pre></div>
+<p> });<br> a.then(() =&gt; {</p>
+<div class="hljs code-wrapper"><pre><code> console.log(3);
+</code></pre></div>
+<p> });<br> a.then(() =&gt; {</p>
+<div class="hljs code-wrapper"><pre><code> console.log(4);
+</code></pre></div>
+<p> });</p>
+<p> // 2 5 3 4</p>
+ <div class="hljs code-wrapper"><pre><code class="hljs coffeescript">
+<span class="hljs-number">1.</span>  ```<span class="javascript">javascript</span>
+<span class="javascript">    <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> &#123;</span>
+<span class="javascript">    	<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;promise1&quot;</span>);</span>
+<span class="javascript">    	resolve();</span>
+<span class="javascript">    &#125;)</span>
+<span class="javascript">    	.then(<span class="hljs-function">() =&gt;</span> &#123;</span>
+<span class="javascript">    		<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;then11&quot;</span>);</span>
+<span class="javascript">    		<span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> &#123;</span>
+<span class="javascript">    			<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;promise2&quot;</span>);</span>
+<span class="javascript">    			resolve();</span>
+<span class="javascript">    		&#125;)</span>
+<span class="javascript">    			.then(<span class="hljs-function">() =&gt;</span> &#123;</span>
+<span class="javascript">    				<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;then21&quot;</span>);</span>
+<span class="javascript">    			&#125;)</span>
+<span class="javascript">    			.then(<span class="hljs-function">() =&gt;</span> &#123;</span>
+<span class="javascript">    				<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;then23&quot;</span>);</span>
+<span class="javascript">    			&#125;);</span>
+<span class="javascript">    	&#125;)</span>
+<span class="javascript">    	.then(<span class="hljs-function">() =&gt;</span> &#123;</span>
+<span class="javascript">    		<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;then12&quot;</span>);</span>
+<span class="javascript">    	&#125;);</span>
 
-<span class="hljs-built_in">Promise</span>.resolve().then(<span class="hljs-function">()=&gt;</span>&#123;
-  <span class="hljs-built_in">console</span>.log(<span class="hljs-number">4</span>)<span class="hljs-comment">//5</span>
-&#125;)
+<span class="javascript">    <span class="hljs-comment">// promise1,then11,promise2,then21,then12,then23</span></span></code></pre></div></li>
+<li><p>```javascript<br> new Promise((resolve, reject) =&gt; {</p>
+<div class="hljs code-wrapper"><pre><code> console.log(&quot;promise1&quot;);
+ resolve();
+</code></pre></div>
+<p> })</p>
+<div class="hljs code-wrapper"><pre><code> .then(() =&gt; &#123;
+     console.log(&quot;then11&quot;);
+     return new Promise((resolve, reject) =&gt; &#123;
+         console.log(&quot;promise2&quot;);
+         resolve();
+     &#125;)
+         .then(() =&gt; &#123;
+             console.log(&quot;then21&quot;);
+         &#125;)
+         .then(() =&gt; &#123;
+             console.log(&quot;then23&quot;);
+         &#125;);
+ &#125;)
+ .then(() =&gt; &#123;
+     console.log(&quot;then12&quot;);
+ &#125;);
+</code></pre></div>
+<p> // promise1 then11  promise2 then21 then12  then23</p>
+ <div class="hljs code-wrapper"><pre><code class="hljs coffeescript">
+<span class="hljs-number">1.</span>  ```<span class="javascript">javascript</span>
+<span class="javascript">    <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> &#123;</span>
+<span class="javascript">    	<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;promise1&quot;</span>);</span>
+<span class="javascript">    	resolve();</span>
+<span class="javascript">    &#125;)</span>
+<span class="javascript">    	.then(<span class="hljs-function">() =&gt;</span> &#123;</span>
+<span class="javascript">    		<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;then11&quot;</span>);</span>
+<span class="javascript">    		<span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> &#123;</span>
+<span class="javascript">    			<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;promise2&quot;</span>);</span>
+<span class="javascript">    			resolve();</span>
+<span class="javascript">    		&#125;)</span>
+<span class="javascript">    			.then(<span class="hljs-function">() =&gt;</span> &#123;</span>
+<span class="javascript">    				<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;then21&quot;</span>);</span>
+<span class="javascript">    			&#125;)</span>
+<span class="javascript">    			.then(<span class="hljs-function">() =&gt;</span> &#123;</span>
+<span class="javascript">    				<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;then23&quot;</span>);</span>
+<span class="javascript">    			&#125;);</span>
+<span class="javascript">    	&#125;)</span>
+<span class="javascript">    	.then(<span class="hljs-function">() =&gt;</span> &#123;</span>
+<span class="javascript">    		<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;then12&quot;</span>);</span>
+<span class="javascript">    	&#125;);</span>
+<span class="javascript">    <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> &#123;</span>
+<span class="javascript">    	<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;promise3&quot;</span>);</span>
+<span class="javascript">    	resolve();</span>
+<span class="javascript">    &#125;).then(<span class="hljs-function">() =&gt;</span> &#123;</span>
+<span class="javascript">    	<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;then31&quot;</span>);</span>
+<span class="javascript">    &#125;);</span>
 
-<span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">()=&gt;</span>&#123;
-  <span class="hljs-built_in">console</span>.log(<span class="hljs-number">5</span>)<span class="hljs-comment">//7</span>
-&#125;)
+<span class="javascript">    <span class="hljs-comment">//promise1 promise3 then11 promise2 then31 then21 then12 then23</span></span></code></pre></div></li>
+<li><p>```javascript<br> async function async1() {</p>
+<div class="hljs code-wrapper"><pre><code> console.log(&quot;async1 start&quot;);
+ await async2();
+ console.log(&quot;async1 end&quot;);
+</code></pre></div>
+<p> }</p>
+<p> async function async2() {</p>
+<div class="hljs code-wrapper"><pre><code> console.log(&quot;async2&quot;);
+</code></pre></div>
+<p> }</p>
+<p> console.log(“script start”);</p>
+<p> setTimeout(function () {</p>
+<div class="hljs code-wrapper"><pre><code> console.log(&quot;settimeout&quot;);
+</code></pre></div>
+<p> }, 0);</p>
+<p> async1();</p>
+<p> new Promise(function (resolve) {</p>
+<div class="hljs code-wrapper"><pre><code> console.log(&quot;promise1&quot;);
+ resolve();
+</code></pre></div>
+<p> }).then(function () {</p>
+<div class="hljs code-wrapper"><pre><code> console.log(&quot;promise2&quot;);
+</code></pre></div>
+<p> });<br> console.log(“script end”);</p>
+<p> // script start,async1 start,async2,promise1,script end,async1 end,promise2<br> // settimeout</p>
+ <div class="hljs code-wrapper"><pre><code class="hljs coffeescript">
+<span class="hljs-number">1.</span>  ```<span class="javascript">javascript</span>
+<span class="javascript">    <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">async1</span>(<span class="hljs-params"></span>) </span>&#123;</span>
+<span class="javascript">    	<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;async1 start&quot;</span>);</span>
+<span class="javascript">    	<span class="hljs-keyword">await</span> async2();</span>
+<span class="javascript">    	<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;async1 end&quot;</span>);</span>
+<span class="javascript">    &#125;</span>
 
-async1()
+<span class="javascript">    <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">async2</span>(<span class="hljs-params"></span>) </span>&#123;</span>
+<span class="javascript">    	<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;async2&quot;</span>);</span>
+<span class="javascript">    &#125;</span>
 
-<span class="hljs-built_in">console</span>.log(<span class="hljs-number">6</span>)<span class="hljs-comment">//4</span></code></pre></div>
-<ol>
-<li><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-built_in">setTimeout</span>(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;定时器开始啦&#x27;</span>)
-&#125;);
+<span class="javascript">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;script start&quot;</span>);</span>
 
-<span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">resolve</span>)</span>&#123;
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;马上执行for循环啦&#x27;</span>);
-    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10000</span>; i++)&#123;
-        i == <span class="hljs-number">99</span> &amp;&amp; resolve();
-    &#125;
-&#125;).then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;执行then函数啦&#x27;</span>)
-&#125;);
+<span class="javascript">    <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span>
+<span class="javascript">    	<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;settimeout&quot;</span>);</span>
+<span class="javascript">    &#125;);</span>
 
-<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;代码执行结束&#x27;</span>);
+<span class="javascript">    async1();</span>
 
-<span class="hljs-comment">// 马上执行for循环啦</span>
-<span class="hljs-comment">// 代码执行结束</span>
-<span class="hljs-comment">// 执行then函数啦</span>
-<span class="hljs-comment">// 定时器开始啦</span>
-</code></pre></div></li>
-<li><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-built_in">setTimeout</span>(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;setTimeout&#x27;</span>);
-&#125;)
+<span class="javascript">    <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">resolve</span>) </span>&#123;</span>
+<span class="javascript">    	<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;promise1&quot;</span>);</span>
+<span class="javascript">    	resolve();</span>
+<span class="javascript">    &#125;).then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span>
+<span class="javascript">    	<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;promise2&quot;</span>);</span>
+<span class="javascript">    &#125;);</span>
 
-<span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">resolve</span>) </span>&#123;
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;promise&#x27;</span>);
-    resolve()
-&#125;).then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;then&#x27;</span>);
-&#125;)
+<span class="javascript">    setImmediate(<span class="hljs-function">() =&gt;</span> &#123;</span>
+<span class="javascript">    	<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;setImmediate&quot;</span>);</span>
+<span class="javascript">    &#125;);</span>
 
-<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;console&#x27;</span>);
+<span class="javascript">    process.nextTick(<span class="hljs-function">() =&gt;</span> &#123;</span>
+<span class="javascript">    	<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;process&quot;</span>);</span>
+<span class="javascript">    &#125;);</span>
 
-<span class="hljs-comment">// promise</span>
-<span class="hljs-comment">// console</span>
-<span class="hljs-comment">// then</span>
-<span class="hljs-comment">// setTimeout</span>
-</code></pre></div></li>
-<li><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;1&#x27;</span>);
+<span class="javascript">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;script end&quot;</span>);</span>
 
-<span class="hljs-built_in">setTimeout</span>(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;
-    <span class="hljs-comment">// console.log(&#x27;2&#x27;);</span>
-    process.nextTick(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;
-        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;3&#x27;</span>);
-    &#125;)
-    <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">resolve</span>) </span>&#123;
-        <span class="hljs-comment">// console.log(&#x27;4&#x27;);</span>
-        resolve();
-    &#125;).then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;
-        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;5&#x27;</span>)
-    &#125;)
-&#125;)
-
-process.nextTick(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;6&#x27;</span>);
-&#125;)
-
-<span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">resolve</span>) </span>&#123;
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;7&#x27;</span>);
-    resolve();
-&#125;).then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;8&#x27;</span>)
-&#125;)
-
-<span class="hljs-built_in">setTimeout</span>(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;
-    process.nextTick(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;
-        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;10&#x27;</span>);
-    &#125;)
-    <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">resolve</span>) </span>&#123;
-        resolve();
-    &#125;).then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;
-        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;12&#x27;</span>)
-    &#125;)
-&#125;)
-</code></pre></div></li>
-<li><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">()=&gt;</span>&#123;
-   <span class="hljs-built_in">console</span>.log(<span class="hljs-number">1</span>) 
-&#125;,<span class="hljs-number">0</span>)
-<span class="hljs-built_in">Promise</span>.resolve().then(<span class="hljs-function">()=&gt;</span>&#123;
-   <span class="hljs-built_in">console</span>.log(<span class="hljs-number">2</span>) 
-&#125;)
-<span class="hljs-built_in">console</span>.log(<span class="hljs-number">3</span>) 
-
-<span class="hljs-comment">// 3 2</span>
-<span class="hljs-comment">// 1</span></code></pre></div></li>
-<li><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">()=&gt;</span>&#123;
-   <span class="hljs-built_in">console</span>.log(<span class="hljs-number">1</span>) 
-&#125;,<span class="hljs-number">0</span>)
-<span class="hljs-keyword">let</span> a=<span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve</span>)=&gt;</span>&#123;
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-number">2</span>)
-    resolve()
-&#125;).then(<span class="hljs-function">()=&gt;</span>&#123;
-   <span class="hljs-built_in">console</span>.log(<span class="hljs-number">3</span>) 
-&#125;).then(<span class="hljs-function">()=&gt;</span>&#123;
-   <span class="hljs-built_in">console</span>.log(<span class="hljs-number">4</span>) 
-&#125;)
-<span class="hljs-built_in">console</span>.log(<span class="hljs-number">5</span>) 
-
-<span class="hljs-comment">// 2 5 3 4</span>
-<span class="hljs-comment">// 1</span></code></pre></div></li>
-<li><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> a = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve</span>) =&gt;</span> &#123;
-  <span class="hljs-built_in">console</span>.log(<span class="hljs-number">2</span>)
-  resolve()
-  &#125;).then(<span class="hljs-function">()=&gt;</span>&#123;
-  <span class="hljs-built_in">console</span>.log(<span class="hljs-number">5</span>)
-  &#125;)
-  a.then(<span class="hljs-function">() =&gt;</span> &#123;
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-number">3</span>)
-  &#125;)
-  a.then(<span class="hljs-function">() =&gt;</span> &#123;
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-number">4</span>)
-  &#125;)
-
-<span class="hljs-comment">// 2 5 3 4</span></code></pre></div></li>
-<li><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve,reject</span>)=&gt;</span>&#123;
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;promise1&quot;</span>)
-    resolve()
-&#125;).then(<span class="hljs-function">()=&gt;</span>&#123;
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;then11&quot;</span>)
-    <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve,reject</span>)=&gt;</span>&#123;
-        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;promise2&quot;</span>)
-        resolve()
-    &#125;).then(<span class="hljs-function">()=&gt;</span>&#123;
-        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;then21&quot;</span>)
-    &#125;).then(<span class="hljs-function">()=&gt;</span>&#123;
-        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;then23&quot;</span>) 
-    &#125;)
-&#125;).then(<span class="hljs-function">()=&gt;</span>&#123;
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;then12&quot;</span>)
-&#125;)
-
-<span class="hljs-comment">// promise1,then11,promise2,then21,then12,then23</span></code></pre></div></li>
-<li><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve,reject</span>)=&gt;</span>&#123;
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;promise1&quot;</span>)
-    resolve()
-&#125;).then(<span class="hljs-function">()=&gt;</span>&#123;
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;then11&quot;</span>) 
-    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve,reject</span>)=&gt;</span>&#123;
-        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;promise2&quot;</span>)
-        resolve()
-    &#125;).then(<span class="hljs-function">()=&gt;</span>&#123;
-        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;then21&quot;</span>) 
-    &#125;).then(<span class="hljs-function">()=&gt;</span>&#123;
-        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;then23&quot;</span>) 
-    &#125;)
-&#125;).then(<span class="hljs-function">()=&gt;</span>&#123;
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;then12&quot;</span>)  
-&#125;)
-<span class="hljs-comment">// promise1 then11  promise2 then21 then12  then23</span></code></pre></div></li>
-<li><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve,reject</span>)=&gt;</span>&#123;
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;promise1&quot;</span>)  
-    resolve()
-&#125;).then(<span class="hljs-function">()=&gt;</span>&#123;
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;then11&quot;</span>)  
-    <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve,reject</span>)=&gt;</span>&#123;
-        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;promise2&quot;</span>)  
-        resolve()
-    &#125;).then(<span class="hljs-function">()=&gt;</span>&#123;
-        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;then21&quot;</span>)  
-    &#125;).then(<span class="hljs-function">()=&gt;</span>&#123;
-        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;then23&quot;</span>)  
-    &#125;)
-&#125;).then(<span class="hljs-function">()=&gt;</span>&#123;
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;then12&quot;</span>)  
-&#125;)
-<span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve,reject</span>)=&gt;</span>&#123;
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;promise3&quot;</span>)  
-    resolve()
-&#125;).then(<span class="hljs-function">()=&gt;</span>&#123;
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;then31&quot;</span>)  
-&#125;)
-
-<span class="hljs-comment">//promise1 promise3 then11 promise2 then31 then21 then12 then23</span></code></pre></div></li>
-<li><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">async1</span>(<span class="hljs-params"></span>) </span>&#123;
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;async1 start&quot;</span>);
-    <span class="hljs-keyword">await</span>  async2();
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;async1 end&quot;</span>);
-&#125;
-
-<span class="hljs-keyword">async</span>  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">async2</span>(<span class="hljs-params"></span>) </span>&#123;
-    <span class="hljs-built_in">console</span>.log( <span class="hljs-string">&#x27;async2&#x27;</span>);
-&#125;
-
-<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;script start&quot;</span>);
-
-<span class="hljs-built_in">setTimeout</span>(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;settimeout&quot;</span>);
-&#125;,<span class="hljs-number">0</span>);
-
-async1();
-
-<span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">resolve</span>) </span>&#123;
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;promise1&quot;</span>);
-    resolve();
-&#125;).then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;promise2&quot;</span>);
-&#125;);
-<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;script end&#x27;</span>);
-
-<span class="hljs-comment">// script start,async1 start,async2,promise1,script end,async1 end,promise2</span>
-<span class="hljs-comment">// settimeout</span></code></pre></div></li>
-<li><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">async1</span>(<span class="hljs-params"></span>) </span>&#123;
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;async1 start&quot;</span>);
-    <span class="hljs-keyword">await</span>  async2();
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;async1 end&quot;</span>);
-&#125;
-
-<span class="hljs-keyword">async</span>  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">async2</span>(<span class="hljs-params"></span>) </span>&#123;
-    <span class="hljs-built_in">console</span>.log( <span class="hljs-string">&#x27;async2&#x27;</span>);
-&#125;
-
-<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;script start&quot;</span>);
-
-<span class="hljs-built_in">setTimeout</span>(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;settimeout&quot;</span>);
-&#125;);
-
-async1()
-
-<span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">resolve</span>) </span>&#123;
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;promise1&quot;</span>);
-    resolve();
-&#125;).then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;promise2&quot;</span>);
-&#125;);
-
-setImmediate(<span class="hljs-function">()=&gt;</span>&#123;
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;setImmediate&quot;</span>)
-&#125;)
-
-process.nextTick(<span class="hljs-function">()=&gt;</span>&#123;
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;process&quot;</span>)
-&#125;)
-
-<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;script end&#x27;</span>); 
-
-<span class="hljs-comment">//script start,async1 start,async2,promise1,script end,process,async1 end,promise2</span>
-<span class="hljs-comment">//sttimeout,setImmediate</span></code></pre></div></li>
+<span class="javascript">    <span class="hljs-comment">//script start,async1 start,async2,promise1,script end,process,async1 end,promise2</span></span>
+<span class="javascript">    <span class="hljs-comment">//sttimeout,setImmediate</span></span></code></pre></div></li>
 </ol>
 
             </div>

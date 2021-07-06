@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      2k 字
+      2.1k 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      26
+      27
        分钟
     </span>
   
@@ -237,7 +237,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年6月11日 下午
+                  本文最后更新于：2021年7月6日 上午
                 
               </p>
             
@@ -318,7 +318,7 @@ flat()</code></pre></div></li>
 <h2 id="【函数】"><a href="#【函数】" class="headerlink" title="【函数】"></a>【函数】</h2></li>
 <li><p>箭头函数</p>
 <ul>
-<li>箭头函数的 this 是语法上的，静态绑定书写时的上下文，不会改变</li>
+<li>箭头函数没有自己的this,静态绑定书写时的上下文</li>
 <li>箭头函数没有<code>prototype</code> —&gt; <strong>不能作为构造函数，不能 new</strong></li>
 <li>箭头函数没有<code>arguments</code>属性</li>
 <li>不能用作<code>generator</code>函数</li>
@@ -351,6 +351,13 @@ clear() <span class="hljs-comment">// 无返回值</span></code></pre></div></li
 get()
 has()
 <span class="hljs-keyword">delete</span>()</code></pre></div></li>
+<li>map和object的区别<ol>
+<li>键的变量类型限制</li>
+<li>map原生具有遍历器</li>
+<li>map遍历时保持插入时的顺序(object遍历时会对整数键名排序)</li>
+<li>map.size()返回长度</li>
+</ol>
+</li>
 </ul>
 <h2 id="【Proxy】"><a href="#【Proxy】" class="headerlink" title="【Proxy】"></a>【Proxy】</h2><p>拦截器/代理 <code>const _proxy1 = new Proxy(target,handler)</code></p>
 <div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// 常用handlers</span>
@@ -423,7 +430,7 @@ handler.construct()
 </li>
 <li><p>或者如果用的是 <code>yield*</code>，则表示将执行权移交给另一个生成器函数（当前生成器暂停执行）。</p>
 </li>
-<li><p><code>next()</code>方法返回一个对象，<code>&#123;value:当前的返回,done:是否迭代完&#125;</code>}</p>
+<li><p><code>next()</code>方法返回一个对象，<code>&#123;value:当前的返回,done:是否迭代完&#125;</code></p>
 </li>
 <li><p>当在生成器函数中显式 <code>return</code> 时，会导致生成器立即变为完成状态，如果 <code>return</code> 后面跟了一个值，那么这个值会作为当前调用 <code>next()</code> 方法返回值。</p>
 </li>
@@ -483,12 +490,18 @@ handler.construct()
   <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">name</span>)</span>&#123;
     <span class="hljs-built_in">this</span>.name = name
   &#125;
+
+  <span class="hljs-function"><span class="hljs-title">fun1</span>(<span class="hljs-params"></span>)</span>&#123;&#125;
 &#125;
 
 <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">A</span> <span class="hljs-title">extend</span> <span class="hljs-title">B</span></span>&#123;
   <span class="hljs-title">constructor</span> (<span class="hljs-params">name</span>)&#123;
-    <span class="hljs-built_in">super</span>(name)
+    <span class="hljs-built_in">super</span>(name) <span class="hljs-comment">// 调用父类构造函数 // </span>
       &#125;
+  &#125;
+
+  <span class="hljs-function"><span class="hljs-title">fun2</span>(<span class="hljs-params"></span>)</span>&#123;
+    <span class="hljs-built_in">super</span>.fun1() <span class="hljs-comment">// 调用一个父类方法</span>
   &#125;
 </code></pre></div></li>
 <li><p>静态字段，私有字段，私有实例字段</p>
@@ -573,7 +586,15 @@ handler.construct()
 <li><p>模块化工具 webpack,rollup</p>
 </li>
 </ol>
+<h2 id="装饰器语法"><a href="#装饰器语法" class="headerlink" title="装饰器语法"></a>装饰器语法</h2><div class="hljs code-wrapper"><pre><code class="hljs javascript">@demo
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyClass</span></span>&#123;&#125;
 
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">demo</span>(<span class="hljs-params">target</span>)</span>&#123;
+  target.value = <span class="hljs-number">666</span>
+&#125;
+
+<span class="hljs-comment">// 等价于</span>
+MyClass = demo(MyClass)</code></pre></div>
             </div>
             <hr>
             <div>

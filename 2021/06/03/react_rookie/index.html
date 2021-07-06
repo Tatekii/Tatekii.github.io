@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      2.8k 字
+      3k 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      45
+      47
        分钟
     </span>
   
@@ -237,7 +237,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年6月23日 下午
+                  本文最后更新于：2021年7月6日 上午
                 
               </p>
             
@@ -443,8 +443,8 @@ Com1.defaultProps = &#123;
 </blockquote>
 <h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><ul>
 <li>  <code>constructor</code></li>
-<li><code>getDerivedStateFromProps</code>  <div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">static</span> <span class="hljs-function"><span class="hljs-title">getDerivedStateFromProps</span>(<span class="hljs-params">props</span>)</span>&#123;
-  <span class="hljs-keyword">return</span> props <span class="hljs-comment">// state由props派生</span>
+<li>[不用记]<code>getDerivedStateFromProps</code>  <div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">static</span> <span class="hljs-function"><span class="hljs-title">getDerivedStateFromProps</span>(<span class="hljs-params">props</span>)</span>&#123;
+  <span class="hljs-keyword">return</span> props <span class="hljs-comment">// state完全由props派生</span>
 &#125;</code></pre></div></li>
 <li>  <code>render</code></li>
 <li>  <code>componentDidMount</code></li>
@@ -490,7 +490,7 @@ Com1.defaultProps = &#123;
 <li><p><code>PubSubJS</code><br><a target="_blank" rel="noopener" href="https://github.com/mroderick/PubSubJS">https://github.com/mroderick/PubSubJS</a></p>
  <div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// create a function to subscribe to topics</span>
 <span class="hljs-keyword">var</span> mySubscriber = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">msg, data</span>) </span>&#123;
-  <span class="hljs-built_in">console</span>.log(msg, data);
+	<span class="hljs-built_in">console</span>.log(msg, data);
 &#125;;
 
 <span class="hljs-comment">// add the function to the list of subscribers for a particular topic</span>
@@ -508,7 +508,8 @@ PubSub.publish(<span class="hljs-string">&quot;MY TOPIC&quot;</span>, <span clas
 PubSub.publishSync(<span class="hljs-string">&quot;MY TOPIC&quot;</span>, <span class="hljs-string">&quot;hello world!&quot;</span>);</code></pre></div></li>
 <li><p><code>Context</code></p>
 <blockquote>
-<p>类似vue的provide和inject</p>
+<p>类似 vue 的 provide 和 inject</p>
+</blockquote>
  <div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">//祖先组件中</span>
 <span class="hljs-keyword">const</span> MyContext1 = React.createContext(defaultValue);
 <span class="hljs-keyword">const</span> MyContext2  = React.createContext(defaultValue);
@@ -525,7 +526,7 @@ PubSub.publishSync(<span class="hljs-string">&quot;MY TOPIC&quot;</span>, <span 
   )
 &#125;
 </code></pre></div>
-</blockquote>
+
  <div class="hljs code-wrapper"><pre><code class="hljs jsx"><span class="hljs-comment">// class组件中</span>
 <span class="hljs-keyword">static</span> contextType = MyContext1 <span class="hljs-comment">//只适用于消费一个context的情况</span>
 <span class="hljs-built_in">this</span>.context<span class="hljs-comment">//取值</span>
@@ -540,9 +541,9 @@ PubSub.publishSync(<span class="hljs-string">&quot;MY TOPIC&quot;</span>, <span 
   &#125;
 &lt;/MyContext2.Consumer&gt;</code></pre></div></li>
 <li><p><code>Redux</code></p>
-<h1 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h1></li>
+</li>
 </ol>
-<h2 id="根路由标签"><a href="#根路由标签" class="headerlink" title="根路由标签"></a>根路由标签</h2><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">import</span> &#123; BrowserRouter &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react-router-dom&quot;</span>;
+<h1 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h1><h2 id="根路由标签"><a href="#根路由标签" class="headerlink" title="根路由标签"></a>根路由标签</h2><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">import</span> &#123; BrowserRouter &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react-router-dom&quot;</span>;
 <span class="hljs-keyword">import</span> &#123; HashRouter &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react-router-dom&quot;</span>;
 ReactDOM.render(
 	&lt;React.StrictMode&gt;
@@ -631,9 +632,11 @@ ReactDOM.render(
 
 <h1 id="Redux"><a href="#Redux" class="headerlink" title="Redux"></a>Redux</h1><h2 id="redux"><a href="#redux" class="headerlink" title="redux"></a>redux</h2><ul>
 <li><code>action</code><ul>
-<li>  同步<code>object</code></li>
-<li>  异步<code>function</code></li>
+<li>  同步<code>action&lt;object&gt;</code></li>
+<li>  异步<code>action&lt;function&gt;</code></li>
 </ul>
+<div class="hljs code-wrapper"><pre><code>原生只能处理同步action,action中的switch机制
+</code></pre></div>
 </li>
 <li>  <code>reducer</code></li>
 <li><code>store</code><ul>
@@ -643,7 +646,7 @@ ReactDOM.render(
 </li>
 </ul>
 <h2 id="react-redux"><a href="#react-redux" class="headerlink" title="react-redux"></a>react-redux</h2><ul>
-<li><p><code>reducer</code><br>  reducer 需是一个纯函数:</p>
+<li><p><code>reducer</code><br>  reducer 就是一个纯函数:</p>
 <blockquote>
 <p>纯函数:</p>
 <ol>
@@ -715,17 +718,38 @@ XXXaction,XXXaction
   allReducer, composeWithDevtools(applyMiddleware(thunk))
 )
 </code></pre></div>
+
+<h2 id="减少样板代码"><a href="#减少样板代码" class="headerlink" title="减少样板代码"></a>减少样板代码</h2><ul>
+<li><p>redux-actions<br>  <a target="_blank" rel="noopener" href="https://github.com/redux-utilities/redux-actions">https://github.com/redux-utilities/redux-actions</a><br>  协助生成 action creator</p>
+  <div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">import</span> &#123; createAction &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;redux-actions&#x27;</span>
+...
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> increment = createAction(<span class="hljs-string">&#x27;INCREMENT&#x27;</span>)
+
+
+<span class="hljs-keyword">import</span> &#123; handleActions &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;redux-action&#x27;</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> handleActions(&#123;
+  INCREMENT:<span class="hljs-function"><span class="hljs-params">state</span> =&gt;</span> state + <span class="hljs-number">1</span>
+&#125;,<span class="hljs-number">0</span>)</code></pre></div></li>
+<li><p>  cli(yeoman)</p>
+</li>
+</ul>
 <h1 id="hooks"><a href="#hooks" class="headerlink" title="hooks"></a>hooks</h1><p>函数式组件获得类组件能力</p>
 <h2 id="StateHook"><a href="#StateHook" class="headerlink" title="StateHook"></a>StateHook</h2><p><code>const [currentValue,setNewValue] = React.useState(initValue)</code><br><code>setNewValue(newValue) or setNewValue(value=&gt;&#123;...newValue&#125;)</code></p>
-<h2 id="EffectHook"><a href="#EffectHook" class="headerlink" title="EffectHook"></a>EffectHook</h2><div class="hljs code-wrapper"><pre><code class="hljs javascript">React.useEffect(<span class="hljs-function">()=&gt;</span>&#123;
-    <span class="hljs-comment">// 副作用操作</span>
-  <span class="hljs-keyword">return</span> <span class="hljs-function">() =&gt;</span> &#123;
-    <span class="hljs-comment">// willUnMount</span>
-  &#125;
-&#125;,[stateValue]) <span class="hljs-comment">// 为[]则相当于didMount</span>
-</code></pre></div>
+<h2 id="EffectHook"><a href="#EffectHook" class="headerlink" title="EffectHook"></a>EffectHook</h2><div class="hljs code-wrapper"><pre><code class="hljs javascript">React.useEffect(<span class="hljs-function">() =&gt;</span> &#123;
+	<span class="hljs-comment">// 副作用操作</span>
+	<span class="hljs-keyword">return</span> <span class="hljs-function">() =&gt;</span> &#123;
+		<span class="hljs-comment">// willUnMount</span>
+	&#125;;
+&#125;, [stateValue]); <span class="hljs-comment">// 为[]则相当于didMount</span></code></pre></div>
 
-<h2 id="RefHook"><a href="#RefHook" class="headerlink" title="RefHook"></a>RefHook</h2><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> xxxRef = React.useRef()</code></pre></div>
+<p>三种情况</p>
+<ol>
+<li>useEffect(fn) -&gt; Mount+Update</li>
+<li>useEffect(fn,[]) -&gt; Mount</li>
+<li>useEffect(fn,[dep]) -&gt; Mount 和 dep 变化时</li>
+</ol>
+<h2 id="RefHook"><a href="#RefHook" class="headerlink" title="RefHook"></a>RefHook</h2><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> xxxRef = React.useRef();</code></pre></div>
+
 <h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><h2 id="setState"><a href="#setState" class="headerlink" title="setState"></a>setState</h2><ul>
 <li><p>对象式</p>
   <div class="hljs code-wrapper"><pre><code class="hljs javascript">setState(<span class="hljs-string">`stateChange(状态改变对象)`</span>, [callBack]);</code></pre></div></li>
@@ -738,7 +762,8 @@ XXXaction,XXXaction
 <li><p>  <code>callback</code>在<code>render()</code>后调用</p>
 </li>
 </ul>
-<h2 id="路由懒加载"><a href="#路由懒加载" class="headerlink" title="路由懒加载"></a>路由懒加载</h2><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">import</span> &#123;lazy,Suspense&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;react&#x27;</span>
+<h2 id="路由懒加载"><a href="#路由懒加载" class="headerlink" title="路由懒加载"></a>路由懒加载</h2><p><code>React.lazy</code>使用 dynamic import 标准,返回一个 promise,在 pending 状态期间渲染 loading 组件</p>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">import</span> &#123;lazy,Suspense&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;react&#x27;</span>
 
 <span class="hljs-keyword">const</span> Com1 = lazy(<span class="hljs-function">()=&gt;</span>&#123;<span class="hljs-keyword">import</span>(<span class="hljs-string">&#x27;./Com1/index&#x27;</span>)&#125;)
 
@@ -748,32 +773,33 @@ XXXaction,XXXaction
     &lt;NavLink to=<span class="hljs-string">&quot;/com1&quot;</span>&gt;Com1&lt;/NavLink&gt;
 
 
-    &lt;Suspense fallback=&#123;等待加载的组件&#125;&gt;
+    &lt;Suspense fallback=&#123;<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Loading</span> /&gt;</span></span>&#125;&gt;
       &lt;Route path=<span class="hljs-string">&quot;/com1&quot;</span> component=&#123;Com1&#125; /&gt;
     &lt;/Suspense&gt;
   )
 &#125;</code></pre></div>
 
 <h2 id="JSX-Fragment"><a href="#JSX-Fragment" class="headerlink" title="JSX Fragment"></a>JSX Fragment</h2><blockquote>
-<p>代替根div</p>
+<p>代替根 div</p>
 </blockquote>
 <div class="hljs code-wrapper"><pre><code class="hljs html">import &#123; Fragment &#125;&gt; from &#x27;react`
-<span class="hljs-tag">&lt;<span class="hljs-name">Fragment</span> <span class="hljs-attr">key</span>=<span class="hljs-string">&#123;&#125;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">Fragment</span>&gt;</span> 
+<span class="hljs-tag">&lt;<span class="hljs-name">Fragment</span> <span class="hljs-attr">key</span>=<span class="hljs-string">&#123;&#125;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">Fragment</span>&gt;</span>
 <span class="hljs-comment">&lt;!-- 可以拥有key --&gt;</span>
 
 <span class="hljs-comment">&lt;!-- 短语法 --&gt;</span>
 <span class="hljs-tag">&lt;&gt;</span>
 ...
 <span class="hljs-tag">&lt;/&gt;</span></code></pre></div>
-<h2 id="优化子组件更新"><a href="#优化子组件更新" class="headerlink" title="优化子组件更新"></a>优化子组件更新</h2><blockquote>
-<p>一般子组件即使props没改变或者没接受props也会随父组件rerender</p>
+
+<h2 id="子组件更新"><a href="#子组件更新" class="headerlink" title="子组件更新"></a>子组件更新</h2><blockquote>
+<p>一般子组件即使 props 没改变或者没接受 props 也会随父组件 rerender</p>
 </blockquote>
-<p><code>PureComponent</code>***<strong>浅层</strong>***比较<code>props</code>和<code>state</code>,同时<code>shouldComponentUpdate</code> 将跳过所有子组件树的 <code>prop</code> 更新</p>
-<h2 id="组件composition"><a href="#组件composition" class="headerlink" title="组件composition"></a>组件composition</h2><blockquote>
+<p><code>PureComponent</code>**_<strong>浅层</strong>_**比较<code>props</code>和<code>state</code>,同时<code>shouldComponentUpdate</code> 将跳过所有子组件树的 <code>prop</code> 更新</p>
+<h2 id="组件-composition"><a href="#组件-composition" class="headerlink" title="组件 composition"></a>组件 composition</h2><blockquote>
 <p>组件可以接受任意 props，包括基本数据类型</p>
 </blockquote>
 <blockquote>
-<p>将jsx元素以及函数通过props传递实现类似vue slot效果</p>
+<p>将 jsx 元素以及函数通过 props 传递实现类似 vue slot 效果</p>
 </blockquote>
 <blockquote>
 <p>向组件内部动态传入内容</p>
@@ -782,56 +808,44 @@ XXXaction,XXXaction
 <li><code>.children</code>获得组件标签内内容</li>
 </ol>
 <div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">FancyBorder</span>(<span class="hljs-params">props</span>) </span>&#123;
-  <span class="hljs-keyword">return</span> (
-    &lt;div className=&#123;<span class="hljs-string">&#x27;FancyBorder FancyBorder-&#x27;</span> + props.color&#125;&gt;
-      &#123;props.children&#125;
-    &lt;/div&gt;
-  );
+	<span class="hljs-keyword">return</span> (
+		&lt;div className=&#123;<span class="hljs-string">&quot;FancyBorder FancyBorder-&quot;</span> + props.color&#125;&gt;
+			&#123;props.children&#125;
+		&lt;/div&gt;
+	);
 &#125;
 
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">WelcomeDialog</span>(<span class="hljs-params"></span>) </span>&#123;
-  <span class="hljs-keyword">return</span> (
-    &lt;FancyBorder color=<span class="hljs-string">&quot;blue&quot;</span>&gt;
-      &lt;h1 className=<span class="hljs-string">&quot;Dialog-title&quot;</span>&gt;
-        Welcome
-      &lt;/h1&gt;
-      &lt;p className=<span class="hljs-string">&quot;Dialog-message&quot;</span>&gt;
-        Thank you <span class="hljs-keyword">for</span> visiting our spacecraft!
-      &lt;/p&gt;
-    &lt;/FancyBorder&gt;
-  );
+	<span class="hljs-keyword">return</span> (
+		&lt;FancyBorder color=<span class="hljs-string">&quot;blue&quot;</span>&gt;
+			&lt;h1 className=<span class="hljs-string">&quot;Dialog-title&quot;</span>&gt;Welcome&lt;/h1&gt;
+			&lt;p className=<span class="hljs-string">&quot;Dialog-message&quot;</span>&gt;
+				Thank you <span class="hljs-keyword">for</span> visiting our spacecraft!
+			&lt;/p&gt;
+		&lt;/FancyBorder&gt;
+	);
 &#125;</code></pre></div>
 
 <ol start="2">
 <li>或者使用约定名称</li>
 </ol>
 <div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">SplitPane</span>(<span class="hljs-params">props</span>) </span>&#123;
-  <span class="hljs-keyword">return</span> (
-    &lt;div className=<span class="hljs-string">&quot;SplitPane&quot;</span>&gt;
-      &lt;div className=<span class="hljs-string">&quot;SplitPane-left&quot;</span>&gt;
-        &#123;props.left&#125;
-      &lt;/div&gt;
-      &lt;div className=<span class="hljs-string">&quot;SplitPane-right&quot;</span>&gt;
-        &#123;props.right&#125;
-      &lt;/div&gt;
-    &lt;/div&gt;
-  );
+	<span class="hljs-keyword">return</span> (
+		&lt;div className=<span class="hljs-string">&quot;SplitPane&quot;</span>&gt;
+			&lt;div className=<span class="hljs-string">&quot;SplitPane-left&quot;</span>&gt;&#123;props.left&#125;&lt;/div&gt;
+			&lt;div className=<span class="hljs-string">&quot;SplitPane-right&quot;</span>&gt;&#123;props.right&#125;&lt;/div&gt;
+		&lt;/div&gt;
+	);
 &#125;
 
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">App</span>(<span class="hljs-params"></span>) </span>&#123;
-  <span class="hljs-keyword">return</span> (
-    &lt;SplitPane
-      left=&#123;
-        &lt;Contacts /&gt;
-      &#125;
-      right=&#123;
-        &lt;Chat /&gt;
-      &#125; /&gt;
-  );
+	<span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">SplitPane</span> <span class="hljs-attr">left</span>=<span class="hljs-string">&#123;</span>&lt;<span class="hljs-attr">Contacts</span> /&gt;</span>&#125; right=&#123;<span class="hljs-tag">&lt;<span class="hljs-name">Chat</span> /&gt;</span>&#125; /&gt;</span>;
 &#125;</code></pre></div>
 
 <ol start="3">
-<li>通过props传递携带另一个props的函数<div class="hljs code-wrapper"><pre><code class="hljs jsx"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">App</span>(<span class="hljs-params"></span>)</span>&#123;
+<li>通过 props 传递携带另一个 props 的函数</li>
+</ol>
+<div class="hljs code-wrapper"><pre><code class="hljs jsx"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">App</span>(<span class="hljs-params"></span>)</span>&#123;
   <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">A</span> <span class="hljs-attr">customizeFn</span>=<span class="hljs-string">&#123;(p1)</span>=&gt;</span>&#123;<span class="hljs-tag">&lt;<span class="hljs-name">B</span> <span class="hljs-attr">p1</span>=<span class="hljs-string">&#123;p1&#125;/</span>&gt;</span>&#125;&#125;/&gt;</span>
 &#125;
 
@@ -847,8 +861,8 @@ XXXaction,XXXaction
   <span class="hljs-keyword">return</span> (
     &lt;div&gt;我是B我收到了&#123;props.p1&#125;&lt;/div&gt;
   )
-&#125;</code></pre></div></li>
-</ol>
+&#125;</code></pre></div>
+
 <h2 id="错误边界"><a href="#错误边界" class="headerlink" title="错误边界"></a>错误边界</h2><p>错误边界是一种 React 组件，这种组件可以捕获发生在其子组件树任何位置的 JavaScript 错误，并打印这些错误，同时展示降级 UI，而并不会渲染那些发生崩溃的子组件树。错误边界在渲染期间、生命周期方法和整个组件树的构造函数中捕获错误。</p>
 <div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">static</span> <span class="hljs-function"><span class="hljs-title">getDerivedStateFromError</span>(<span class="hljs-params">error</span>)</span> &#123;
   <span class="hljs-comment">// 更新 state 使下一次渲染能够显示降级后的 UI</span>
@@ -859,6 +873,7 @@ XXXaction,XXXaction
   <span class="hljs-comment">// 你同样可以将错误日志上报给服务器</span>
   logErrorToMyService(error, errorInfo);
 &#125;</code></pre></div>
+
             </div>
             <hr>
             <div>
