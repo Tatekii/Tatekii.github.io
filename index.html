@@ -182,25 +182,25 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/08/17/js%E7%89%87%E6%AE%B5/">待整理的js片段</a>
+        <a href="/2020/08/02/%E7%AE%97%E6%B3%95%E9%A2%98/">算法题</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/08/17/js%E7%89%87%E6%AE%B5/">
+        <a href="/2020/08/02/%E7%AE%97%E6%B3%95%E9%A2%98/">
           
           
             
           
           
-字母的所有组合
-
-const anagrams = str =&gt; &#123;
-  if(str.length===2) return [str , str[1] + str[0]]
-  // 手写长度为2时候的排列
-
-  // 这里使用reduce的第三个参数index，正在处理的元素
-  // 如果提供了initialValue，则起始索引号为0，否则从索引1起始。
-  return 
+两数之合
+  function twoSum(arr,target)&#123;
+  let res = []
+  let map = new Map()
+  // 使用数值-&gt;索引建立map
+  // 每次循环计算得出当前差值
+  // 在map中查找这个差值既能得出索引
+  for(let i = 0 ; i&lt;arr.length;i++)&#123;
+    let k = t
         </a>
       </p>
 
@@ -208,8 +208,8 @@ const anagrams = str =&gt; &#123;
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2020-08-17 16:07" pubdate>
-              2020-08-17
+            <time datetime="2020-08-02 11:22" pubdate>
+              2020-08-02
             </time>
           </div>
         
@@ -221,6 +221,8 @@ const anagrams = str =&gt; &#123;
               <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
             
               <a href="/tags/javascript/">javascript</a>
+            
+              <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
             
           </div>
         
@@ -282,157 +284,6 @@ let arr = Array(10)/省略new操作符/
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/04/13/Promise/">Promise</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/04/13/Promise/">
-          
-          
-            
-          
-          promisePromise 对象用于处理异步操作，它表示一个尚未完成且预计在未来完成的异步操作。
-特性
-  解决回调地狱，使用统一的 API 接口处理异步任务
-  链式调用
-  返回值穿透（onFulfilled 不是 function 时，上一步的执行结果 value 将继续向后传递）
-  错误冒泡（
-
-
-回调地狱
-
-function f1()&#123;
-  //f2的执行需要等待f1的结果
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-04-13 00:22" pubdate>
-              2021-04-13
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/es6/">es6</a>
-            
-              <a href="/tags/javascript/">javascript</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/06/03/react_rookie/">react-beginner</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/06/03/react_rookie/">
-          
-          
-            
-          
-          React
-构建用户页面的 javascript 库，并不是完整的 MVC 框架
-
-IntroReact.createElementJSX 元素只是调用 React.createElement(component, props, ...children) 的语法糖
-ReactDOM.render(element, container[, callback)在提供的 container 里渲染一个 
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-06-03 20:38" pubdate>
-              2021-06-03
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/javascript/">javascript</a>
-            
-              <a href="/tags/react/">react</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/04/13/html%E9%9D%A2%E8%AF%95%E9%A2%98/">HTML面试题</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/04/13/html%E9%9D%A2%E8%AF%95%E9%A2%98/">
-          
-          
-            
-          
-          HTML5 新特性移除
-纯表现的元素/可以用css实现的元素：basefont，big，center，font, s，strike
-
-对可用性产生负面影响的元素：frame,frameset
-
-语意化更好的标签，比如header,nav,section,article,footer,aside
-
-增强了input类型:color,date,datetime-local,range,tel,sear
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-04-13 00:43" pubdate>
-              2021-04-13
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
-            
-              <a href="/tags/HTML/">HTML</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
         <a href="/2020/08/27/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95%E9%A2%98/">操作字符串算法题</a>
       </h1>
 
@@ -443,13 +294,14 @@ ReactDOM.render(element, container[, callback)在提供的 container 里渲染�
             
           
           
-寻找最长公公前缀
+  寻找最长公公前缀
+
 // 输入: [&quot;flower&quot;,&quot;flow&quot;,&quot;flight&quot;]
 // 输出: &quot;fl&quot;
 
-function commonPrefix(...str)&#123;
-  if(!str.length || str.length===0) return &quot;&quot;
-  let ref =
+function commonPrefix(...str) &#123;
+	if (!str.length || str.length === 0) return &quot;&quot;;
+	let
         </a>
       </p>
 
@@ -485,37 +337,27 @@ function commonPrefix(...str)&#123;
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/04/13/es6%E6%96%B0%E7%89%B9%E6%80%A7/">es6新特性</a>
+        <a href="/2021/06/23/react%E6%8B%BE%E9%81%97/">react拾遗</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2021/04/13/es6%E6%96%B0%E7%89%B9%E6%80%A7/">
+        <a href="/2021/06/23/react%E6%8B%BE%E9%81%97/">
           
           
             
           
-          【let / const】
-都用于声明变量
-不存在变量提升，暂时性死区
-不能重复声明
-快级作用域
+          ⭐️ 生命周期Commit
+将状态变化渲染到视图中
 
-let
-可以重新赋值const
-声明时需赋值
-只读不可改变（对于复杂变量，可以修改变量内容，变量内存地址未改变）
 
-【解构赋值】只有可遍历（具备遍历器[Symbol.Iterator]）的数据结构才能解构赋值
-用途
-交换变量
-提取对象中的数据
-解构默认值
-剩余运算
+beforeMutation
+mutation
+layout
 
-【字符串】
-识别
-
-includ
+⭐️Hooks⭐️ReduxcreateStore/*
+* @param &#123;Function&#125; reducer
+* @param &#123;any&#125; preloadedState 初始化的state
+* @param &#123;Function&
         </a>
       </p>
 
@@ -523,7 +365,55 @@ includ
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2021-04-13 00:45" pubdate>
+            <time datetime="2021-06-23 13:27" pubdate>
+              2021-06-23
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
+            
+              <a href="/tags/react/">react</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/04/13/js%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">面向对象</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/04/13/js%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">
+          
+          
+            
+          
+          ref:https://github.com/CyC2018
+面向对象的设计思想面向对象的设计思想是从自然界中来的，因为在自然界中就存在类（Class）和实例（Instance）的概念。
+
+  Class 是一种抽象概念，比如我们定义的 Class——Student ，是指学生这个概念，
+
+  而实例（Instance）则是一个个具体的 Student ，比如， Michael 和 Bob 是两个
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-04-13 00:35" pubdate>
               2021-04-13
             </time>
           </div>
@@ -537,7 +427,60 @@ includ
             
               <a href="/tags/javascript/">javascript</a>
             
-              <a href="/tags/ES6/">ES6</a>
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/04/13/js%E9%97%AD%E5%8C%85/">作用域链与闭包</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/04/13/js%E9%97%AD%E5%8C%85/">
+          
+          
+            
+          
+          作用域与作用域链作用域：变量可以起作用的范围
+全局作用域
+变量在函数外内声明
+
+全局变量：在任何地方都可以访问到的变量，关闭网页或浏览器才会销毁
+
+
+函数作用域（局部作用域）
+变量在函数内声明
+
+局部变量：只在固定的代码片段内可访问到的变量,在函数开始执行时创建，函数执行完后局部变量会自动销毁。
+
+
+块级作用域（es5）
+任何一对花括号&#123;&#125;中的语句集都属于一个块，在这之中定义的
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-04-13 01:04" pubdate>
+              2021-04-13
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/javascript/">javascript</a>
             
           </div>
         
@@ -551,26 +494,25 @@ includ
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/04/13/%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5/">web安全</a>
+        <a href="/2021/04/13/js%E9%9D%A2%E8%AF%95%E9%A2%98%E9%9B%86/">js面试题集</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2021/04/13/%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5/">
+        <a href="/2021/04/13/js%E9%9D%A2%E8%AF%95%E9%A2%98%E9%9B%86/">
           
           
             
           
-          同源策略定义
-两个URl !同协议 !同域名 !同端口
-同源策略限制了同一个源加载的脚本和文档如何与其他源的资源进行交互，包括js脚本，缓存的读取，cookie，ajax等
-三种标签不受同源限制script link img
+          
+  实现 EventEmitter
 
-域的方法
-代理服务器nginx,各种devServer
-
-document.domain
-前提是两个页面主要域相同
-&#x27;someWebSite.com/dir1/p
+// 请实现下面的自定义事件 Event 对象的接口，功能见注释(测试1)
+// 该 Event 对象的接口需要能被其他对象拓展复用(测试2)
+// 测试1
+Event.on(&quot;test&quot;, function (result) &#123;
+	console.log(result);
+&#125;);
+Event.on(&quot;tes
         </a>
       </p>
 
@@ -578,7 +520,57 @@ document.domain
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2021-04-13 01:09" pubdate>
+            <time datetime="2021-04-13 00:40" pubdate>
+              2021-04-13
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
+            
+              <a href="/tags/javascript/">javascript</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/04/13/%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">前端性能优化</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/04/13/%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">
+          
+          
+            
+          
+          打包优化
+代码分割module.exports = &#123;
+  chainWebpack: config =&gt; &#123;
+      config.optimizationsplitChunks(&#123;
+        chunks: &#x27;all&#x27;,
+        cacheGroups: &#123;
+          vendors: &#123;
+
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-04-13 00:41" pubdate>
               2021-04-13
             </time>
           </div>
@@ -602,20 +594,29 @@ document.domain
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/04/20/vue%E6%8B%BE%E9%81%97/">vue拾遗</a>
+        <a href="/2021/04/13/%E9%A1%B5%E9%9D%A2%E6%B8%B2%E6%9F%93%E6%B5%81%E7%A8%8B/">地址中输入URL回车后发生了什么</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2021/04/20/vue%E6%8B%BE%E9%81%97/">
+        <a href="/2021/04/13/%E9%A1%B5%E9%9D%A2%E6%B8%B2%E6%9F%93%E6%B5%81%E7%A8%8B/">
           
           
             
           
-          生命周期1. initLifecycle(vm)&#123; // 初始化生命周期
-//关联`$parent`,并将自己添加进父组件的`$children`数组,生成自己的`$children`数组和`$refs`对象,并指定`$root`指针
-  var parent = options.parent;
-  parent.$children.push(vm);
-  vm.$parent = pa
+          步骤【DNS解析】
+查找浏览器DNS缓存
+查找系统HOST文件
+DNS查询
+主机和本地域名服务器之间使用递归查询，本地域名服务器要负责一直到查询得出结果
+本地域名服务器和其他服务器之间的使用递归查询，防止单台域名服务器压力过大
+
+
+
+
+DNS请求使用UDP协议，如果请求失败则使用TCP重试
+
+1. 本地DNS服务器查找自己缓存
+2. 本地DNS服务器向【根域名服务器】发送请求，根域名服务器返回顶级
         </a>
       </p>
 
@@ -623,8 +624,8 @@ document.domain
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2021-04-20 16:59" pubdate>
-              2021-04-20
+            <time datetime="2021-04-13 00:16" pubdate>
+              2021-04-13
             </time>
           </div>
         
@@ -634,8 +635,6 @@ document.domain
             <i class="iconfont icon-tags"></i>
             
               <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
-            
-              <a href="/tags/vue/">vue</a>
             
           </div>
         
@@ -649,22 +648,25 @@ document.domain
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/09/17/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98%E7%AD%96%E7%95%A5/">浏览器缓存策略</a>
+        <a href="/2020/08/17/js%E7%89%87%E6%AE%B5/">待整理的js片段</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/09/17/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98%E7%AD%96%E7%95%A5/">
+        <a href="/2020/08/17/js%E7%89%87%E6%AE%B5/">
           
           
             
           
-          强缓存
- 浏览器直接验证本地资源看是否过期，如果没过期直接使用本地缓存，并返回200和显示(from memory cache / from disk cache)(根据内存空闲情况和资源类型，并且memory cache页面关闭后会清理，下次加载是从disk cache)
- 验证两种字段Expires
+          
+字母的所有组合
 
+const anagrams = str =&gt; &#123;
+  if(str.length===2) return [str , str[1] + str[0]]
+  // 手写长度为2时候的排列
 
-http 1.0
-时间戳格式Expires: Wed, 22 Oct 2018 08:41
+  // 这里使用reduce的第三个参数index，正在处理的元素
+  // 如果提供了initialValue，则起始索引号为0，否则从索引1起始。
+  return 
         </a>
       </p>
 
@@ -672,8 +674,8 @@ http 1.0
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2020-09-17 10:20" pubdate>
-              2020-09-17
+            <time datetime="2020-08-17 16:07" pubdate>
+              2020-08-17
             </time>
           </div>
         
@@ -683,6 +685,8 @@ http 1.0
             <i class="iconfont icon-tags"></i>
             
               <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
+            
+              <a href="/tags/javascript/">javascript</a>
             
           </div>
         

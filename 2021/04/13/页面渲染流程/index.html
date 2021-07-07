@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.3k 字
+      1.2k 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      15
+      14
        分钟
     </span>
   
@@ -237,7 +237,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年7月3日 下午
+                  本文最后更新于：2021年7月6日 上午
                 
               </p>
             
@@ -338,22 +338,16 @@
 </ul>
 <h3 id="解析URL参数"><a href="#解析URL参数" class="headerlink" title="解析URL参数"></a>解析URL参数</h3><ol>
 <li><p>正则解析</p>
- <div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> rule = <span class="hljs-regexp">/([^?=&amp;]+)=([^&amp;#]*)/g</span>
-<span class="hljs-comment">// (匹配非[?=&amp;]且出现多次的字符)</span>
-<span class="hljs-comment">// =</span>
-<span class="hljs-comment">// (匹配出现0次或多次的非[&amp;#]的字符) </span>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">parseURL</span>(<span class="hljs-params">url</span>)</span>&#123;
+ <div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">parseQueryString</span>(<span class="hljs-params">url</span>)</span>&#123;
+  <span class="hljs-keyword">const</span> rule = <span class="hljs-regexp">/([^?=&amp;]+)=([^&amp;#]*)/g</span>  
   <span class="hljs-keyword">return</span> url.match(rule).reduce(<span class="hljs-function">(<span class="hljs-params">a,b</span>)=&gt;</span>&#123;
-    <span class="hljs-keyword">let</span> [key,value] = b.split(<span class="hljs-string">&#x27;=&#x27;</span>)
-    key = <span class="hljs-built_in">decodeURIComponent</span>(key)
-    value = <span class="hljs-built_in">decodeURIComponent</span>(value)
-    <span class="hljs-keyword">if</span>(a[key]===<span class="hljs-string">&#x27;undefined&#x27;</span>)&#123;
-      a[key] = value
-    &#125;<span class="hljs-keyword">else</span>&#123;
-      a[key] = [...a[key],value]
-    &#125;
+    <span class="hljs-keyword">let</span> [k,v] = b.split(<span class="hljs-string">&#x27;=&#x27;</span>)
+    k = <span class="hljs-built_in">decodeURIComponent</span>(k)
+    v = decodeIRIComponent(v)
+    a[k] = a[k] ? [...a[k],v] : v
     <span class="hljs-keyword">return</span> a
   &#125;,&#123;&#125;)
+  <span class="hljs-keyword">return</span> res
 &#125;</code></pre></div>
 </li>
 <li><p>API解析</p>

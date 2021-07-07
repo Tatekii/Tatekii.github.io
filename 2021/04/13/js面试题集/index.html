@@ -237,7 +237,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年7月3日 下午
+                  本文最后更新于：2021年7月6日 下午
                 
               </p>
             
@@ -604,7 +604,7 @@ asyncPool(<span class="hljs-number">2</span>, arr, cb);</code></pre></div>
 	<span class="hljs-keyword">if</span> (!isObject(source) || cache.has(source)) <span class="hljs-keyword">return</span> source;
 
 	<span class="hljs-keyword">const</span> res = source.constructor === <span class="hljs-built_in">Object</span> ? &#123;&#125; : <span class="hljs-built_in">Object</span>.create(Source.constructor.prototype);
-	<span class="hljs-comment">//<span class="hljs-doctag">NOTE:</span>维持继承关系</span>
+	<span class="hljs-comment">//<span class="hljs-doctag">NOTE:</span>其他类型的对象</span>
 
 	<span class="hljs-built_in">Reflect</span>.ownKeys(source).forEach(<span class="hljs-function">(<span class="hljs-params">k</span>) =&gt;</span> &#123;
 		cache.add(source[k]);

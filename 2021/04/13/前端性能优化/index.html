@@ -237,7 +237,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年7月3日 下午
+                  本文最后更新于：2021年7月6日 上午
                 
               </p>
             
@@ -448,7 +448,7 @@ Vue.use(eleUI)</code></pre></div></li>
 <h2 id="非核心代码异步加载"><a href="#非核心代码异步加载" class="headerlink" title="非核心代码异步加载"></a>非核心代码异步加载</h2><ul>
 <li><p>异步加载的方式</p>
 <ol>
-<li>动态创建script标签，window.onload加入页面</li>
+<li>动态创建script标签</li>
 <li>script<code>defer</code></li>
 <li>script<code>async</code></li>
 </ol>
@@ -457,7 +457,7 @@ Vue.use(eleUI)</code></pre></div></li>
 <ul>
 <li>普通的<code>script</code>，html解析暂停，立即下载和执行这个脚本</li>
 <li><code>&lt;script async&gt;</code>，html解析和该脚本的加载同时进行，下载完后执行脚本时暂停html解析</li>
-<li><code>&lt;script defer&gt;</code>，html解析和该脚本的加载同时进行，脚本在页面解析完成后才执行</li>
+<li><code>&lt;script defer&gt;</code>，html解析和该脚本的加载同时进行，脚本在页面解析完成后才执行—&gt;<code>DOMContentLoaded</code> 之前执行</li>
 </ul>
 <p>  <img src="../images/script.png" srcset="/img/loading.gif" lazyload alt="script"></p>
 </li>

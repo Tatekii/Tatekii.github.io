@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      559 字
+      604 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      8
+      9
        分钟
     </span>
   
@@ -237,7 +237,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年6月24日 中午
+                  本文最后更新于：2021年7月6日 晚上
                 
               </p>
             
@@ -380,6 +380,13 @@
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> createStore(xxxreducer, applyMiddleware(thunk));</code></pre></div>
 
 <p>  后就可以使用 function 作为 action</p>
+</li>
+<li><p><code>setState同步异步</code></p>
+<ol>
+<li>合成事件和生命周期中的<code>setState</code>是异步的</li>
+<li>原生事件和<code>setTimeout</code>中的<code>setState</code>是同步的</li>
+<li>使用<code>setState</code>的<code>callback</code>总能拿到最新的值</li>
+</ol>
 </li>
 </ul>
 
