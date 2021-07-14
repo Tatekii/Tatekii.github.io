@@ -237,7 +237,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年7月6日 下午
+                  本文最后更新于：2021年7月11日 晚上
                 
               </p>
             
@@ -454,13 +454,11 @@ event.fire(<span class="hljs-string">&quot;sleep&quot;</span>);
 	<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">_debounce</span>(<span class="hljs-params">...args2</span>) </span>&#123;
 		<span class="hljs-keyword">if</span> (timer) &#123;
 			<span class="hljs-built_in">clearTimeout</span>(timer);
-			timer = <span class="hljs-literal">null</span>;
 		&#125;
 
 		<span class="hljs-keyword">if</span> (immediate) &#123;
-			<span class="hljs-keyword">var</span> callNow = !timer;
+			<span class="hljs-keyword">const</span> callNow = !timer;
 			timer = <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> &#123;
-				<span class="hljs-built_in">clearTimeout</span>(timer);
 				timer = <span class="hljs-literal">null</span>;
 			&#125;, delay);
 			<span class="hljs-keyword">if</span> (callNow) func.apply(<span class="hljs-built_in">this</span>, [...args1, ...args2]);
@@ -482,7 +480,7 @@ event.fire(<span class="hljs-string">&quot;sleep&quot;</span>);
 <span class="hljs-comment">// 节流</span>
 <span class="hljs-comment">// 函数以间隔固定时间执行</span>
 <span class="hljs-comment">// 连续触发过程中计时器不会被重置</span>
-<span class="hljs-comment">// <span class="hljs-doctag">NOTE:</span>屏幕滚动事件,记录多媒体播放进度</span>
+<span class="hljs-comment">// <span class="hljs-doctag">NOTE:</span>scrollEvent,clickEvent,resizeEvent,记录多媒体播放进度</span>
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">throttle</span>(<span class="hljs-params">func, delay, tail = <span class="hljs-literal">true</span>, ...args1</span>) </span>&#123;
 	<span class="hljs-comment">//tail 使用定时器</span>
 	<span class="hljs-comment">//tail = false 使用时间戳</span>
@@ -1241,7 +1239,7 @@ getName();
 <ul>
 <li>  Ajax</li>
 </ul>
-<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> request = <span class="hljs-function">(<span class="hljs-params">method, url, <span class="hljs-keyword">async</span> = <span class="hljs-literal">true</span>, data</span>) =&gt;</span> &#123;
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> request = <span class="hljs-function">(<span class="hljs-params">method, url , data</span>) =&gt;</span> &#123;
 	<span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> &#123;
 		<span class="hljs-keyword">const</span> xhr = <span class="hljs-keyword">new</span> XMLHttpRequest();
 		xhr.onreadystatechange = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;

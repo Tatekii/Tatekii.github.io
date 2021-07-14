@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      3.9k 字
+      4.2k 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      63
+      68
        分钟
     </span>
   
@@ -237,7 +237,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年7月7日 下午
+                  本文最后更新于：2021年7月14日 上午
                 
               </p>
             
@@ -993,6 +993,75 @@ PrefixTree.prototype.startWith = <span class="hljs-function"><span class="hljs-k
   &#125;
   <span class="hljs-keyword">return</span> res
 &#125;</code></pre></div></li>
+<li><p>电商SKU全排列</p>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> attrs = &#123;
+  names: [<span class="hljs-string">&quot;iPhone X&quot;</span>, <span class="hljs-string">&quot;iPhone XS&quot;</span>, <span class="hljs-string">&quot;iPhone 11&quot;</span>],
+  colors: [<span class="hljs-string">&quot;黑色&quot;</span>, <span class="hljs-string">&quot;白色&quot;</span>, <span class="hljs-string">&quot;红色&quot;</span>],
+  storage: [<span class="hljs-string">&quot;64g&quot;</span>, <span class="hljs-string">&quot;128G&quot;</span>, <span class="hljs-string">&quot;256g&quot;</span>],
+&#125;;
+
+<span class="hljs-keyword">let</span> combine = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">chunks</span>) </span>&#123;
+  <span class="hljs-keyword">let</span> res = [];
+  <span class="hljs-keyword">const</span> keysName = <span class="hljs-built_in">Object</span>.keys(chunks);
+  <span class="hljs-comment">// 由于是操作对象,多增加一个keys数组</span>
+  <span class="hljs-keyword">let</span> helper = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">chunkIndex, prev</span>) </span>&#123;
+    <span class="hljs-keyword">let</span> curKey = keysName[chunkIndex];
+    <span class="hljs-keyword">let</span> curChunk = chunks[curKey];
+    <span class="hljs-keyword">let</span> isLast = chunkIndex === keysName.length - <span class="hljs-number">1</span>;
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> val <span class="hljs-keyword">of</span> curChunk) &#123;
+      <span class="hljs-keyword">const</span> cur = prev.concat(<span class="hljs-string">`<span class="hljs-subst">$&#123;curKey&#125;</span>:<span class="hljs-subst">$&#123;val&#125;</span>`</span>);
+      <span class="hljs-keyword">if</span> (isLast) &#123;
+        <span class="hljs-comment">// 如果已经处理到数组的最后一项了 则把拼接的结果放入返回值中</span>
+        res.push(cur);
+      &#125; <span class="hljs-keyword">else</span> &#123;
+        helper(chunkIndex + <span class="hljs-number">1</span>, cur);
+      &#125;
+    &#125;
+  &#125;;
+
+  <span class="hljs-comment">// 从属性数组下标为 0 开始处理</span>
+  <span class="hljs-comment">// 并且此时的 prev 是个空数组</span>
+  helper(<span class="hljs-number">0</span>, []);
+
+  <span class="hljs-keyword">return</span> res;
+&#125;;</code></pre></div></li>
+<li><p>leetcode 77.组合</p>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript">输入: n = <span class="hljs-number">4</span>, k = <span class="hljs-number">2</span>;
+&lt;!-- <span class="hljs-number">1</span>到n的数字组成k长度的数组的所有组合 --&gt;
+输出:
+[
+  [<span class="hljs-number">2</span>,<span class="hljs-number">4</span>],
+  [<span class="hljs-number">3</span>,<span class="hljs-number">4</span>],
+  [<span class="hljs-number">2</span>,<span class="hljs-number">3</span>],
+  [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>],
+  [<span class="hljs-number">1</span>,<span class="hljs-number">3</span>],
+  [<span class="hljs-number">1</span>,<span class="hljs-number">4</span>],
+]
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">combine</span>(<span class="hljs-params">n,k</span>)</span>&#123;
+  <span class="hljs-keyword">const</span> res = []
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">helper</span>(<span class="hljs-params">start,prev</span>)</span>&#123;
+    <span class="hljs-keyword">const</span> len = prev.length
+    <span class="hljs-keyword">if</span>(len === k)&#123;
+      res.push(prev)
+      <span class="hljs-keyword">return</span> 
+    &#125;
+    <span class="hljs-comment">// 剪枝,还能剩下几个空位</span>
+    <span class="hljs-keyword">const</span> rest = k-len
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = start ; i &lt;= n ;i++)&#123;
+      <span class="hljs-keyword">if</span>(n-i+<span class="hljs-number">1</span>&lt;rest)&#123;
+        <span class="hljs-comment">// 递增关系+1</span>
+        <span class="hljs-comment">// n是最大数字,减去当前数字+1</span>
+        <span class="hljs-keyword">return</span> <span class="hljs-comment">// 往后的i都不会符合,直接return</span>
+        
+      &#125;
+      helper(i+<span class="hljs-number">1</span>,prev.concat(i))
+    &#125;
+  &#125;
+  helper(<span class="hljs-number">1</span>,[])
+  <span class="hljs-keyword">return</span> res
+&#125;
+</code></pre></div></li>
 </ul>
 
             </div>
